@@ -87,13 +87,9 @@ void main() {
     expect((r as NotCovered).reason, NotCoveredReason.duration);
   });
 
-  test('StateError quando una regola non ha motivazione', () {
+  test('una KB senza la motivazione TRIAL-LOAD è rifiutata da fromJson', () {
     final b = _bundle();
     (b['rationales']! as Map<String, Object?>).remove('TRIAL-LOAD');
-    final broken = KnowledgeBase.fromJson(b);
-    expect(
-      () => generatePlan(testProfileJson(), broken),
-      throwsA(isA<StateError>()),
-    );
+    expect(() => KnowledgeBase.fromJson(b), throwsA(isA<KbFormatException>()));
   });
 }
