@@ -8,7 +8,15 @@ import '../support/profiles.dart';
 
 Map<String, Object?> _bundle() {
   final b = minimalBundle();
-  (b['parameters']! as Map<String, Object?>)['mesocycle'] = {
+  final params = b['parameters']! as Map<String, Object?>;
+  params['trialLoad'] = {
+    'group': 'trialLoad',
+    'target': 'parameters',
+    'values': {'x': 1},
+    'provisional': true,
+    'engineConstraints': {'maxRepsPlusRir': 10},
+  };
+  params['mesocycle'] = {
     'group': 'mesocycle',
     'target': 'mesocycle',
     'values': {

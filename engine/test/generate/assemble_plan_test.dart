@@ -26,6 +26,13 @@ Map<String, Object?> _bundle() {
     },
     'provisional': true,
   };
+  params['trialLoad'] = {
+    'group': 'trialLoad',
+    'target': 'parameters',
+    'values': {'x': 1},
+    'provisional': true,
+    'engineConstraints': {'maxRepsPlusRir': 10},
+  };
   (b['rationales']! as Map<String, Object?>)['TRIAL-LOAD'] = {
     'ruleId': 'TRIAL-LOAD',
     'key': 'trial.load',
