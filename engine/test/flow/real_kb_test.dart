@@ -112,10 +112,23 @@ void main() {
     );
   });
 
-  test('stesso profilo e stessa KB danno lo stesso JSON', () {
-    final a = jsonEncode(plan(profile()));
-    final b = jsonEncode(plan(profile()));
-    expect(a, b);
+  test('stesso profilo e KB ricostruita due volte danno lo stesso JSON', () {
+    String once() {
+      final built = buildBundle(Directory('../kb'));
+      expect(built.errors, isEmpty);
+      final fresh = KnowledgeBase.fromJson(built.json);
+      final result = generatePlan(profile(), fresh);
+      return jsonEncode((result as Generated).plan);
+    }
+
+    expect(once(), once());
+  });
+
+  test('senza attrezzatura sufficiente il profilo non è coperto', () {
+    expect(
+      notCovered(profile(equipment: ['bench'])).reason,
+      NotCoveredReason.equipment,
+    );
   });
 
   test('engineVersion coincide con la versione di pubspec.yaml', () {

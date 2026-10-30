@@ -77,14 +77,36 @@ void _checkSplit(
   }
 }
 
+void _unknownKeys(
+  Map<Object?, Object?> map,
+  Set<String> allowed,
+  String path,
+  List<String> failures,
+) {
+  for (final k in map.keys) {
+    if (!allowed.contains(k.toString())) {
+      failures.add('$path.$k: chiave non gestita');
+    }
+  }
+}
+
 void _checkMesocycle(
   Map<String, Object?> plan,
   Map<String, Object?> expect,
   List<String> failures,
 ) {
-  final raw = expect['mesocycle'];
-  if (raw is! Map) return;
-  final wanted = raw.cast<String, Object?>();
+  if (!expect.containsKey('mesocycle')) return;
+  final wanted = expect['mesocycle'];
+  if (wanted is! Map) {
+    failures.add('expect.mesocycle: forma non valida');
+    return;
+  }
+  _unknownKeys(
+    wanted,
+    const {'weeks', 'lastWeekType', 'rirTargetByWeek'},
+    'expect.mesocycle',
+    failures,
+  );
   final weeks = <Map>[
     for (final w in (plan['mesocycle'] as Map)['weeks'] as List) w as Map,
   ];
@@ -102,23 +124,32 @@ void _checkMesocycle(
       );
     }
   }
+  if (!wanted.containsKey('rirTargetByWeek')) return;
   final rirRaw = wanted['rirTargetByWeek'];
-  if (rirRaw is Map) {
-    for (final e in rirRaw.entries) {
-      final number = int.tryParse(e.key.toString());
-      Map? week;
-      for (final w in weeks) {
-        if (w['number'] == number) week = w;
-      }
-      if (week == null) {
-        failures.add('mesocycle.rirTargetByWeek: settimana ${e.key} assente');
-      } else if (_num(week['rirTarget']) != _num(e.value) ||
-          (week['rirTarget'] == null) != (e.value == null)) {
-        failures.add(
-          'mesocycle.rirTargetByWeek.${e.key}: atteso ${_describe(e.value)}, '
-          'ottenuto ${_describe(week['rirTarget'])}',
-        );
-      }
+  if (rirRaw is! Map) {
+    failures.add('expect.mesocycle.rirTargetByWeek: forma non valida');
+    return;
+  }
+  for (final e in rirRaw.entries) {
+    final number = int.tryParse(e.key.toString());
+    if (number == null) {
+      failures.add(
+        'expect.mesocycle.rirTargetByWeek.${e.key}: settimana non numerica',
+      );
+      continue;
+    }
+    Map? week;
+    for (final w in weeks) {
+      if (w['number'] == number) week = w;
+    }
+    if (week == null) {
+      failures.add('mesocycle.rirTargetByWeek: settimana ${e.key} assente');
+    } else if (_num(week['rirTarget']) != _num(e.value) ||
+        (week['rirTarget'] == null) != (e.value == null)) {
+      failures.add(
+        'mesocycle.rirTargetByWeek.${e.key}: atteso ${_describe(e.value)}, '
+        'ottenuto ${_describe(week['rirTarget'])}',
+      );
     }
   }
 }
@@ -128,38 +159,55 @@ void _checkInitialLoad(
   Map<String, Object?> expect,
   List<String> failures,
 ) {
+  if (!expect.containsKey('initialLoad')) return;
   final raw = expect['initialLoad'];
-  if (raw is! Map) return;
-  final byId = <String, Map>{};
+  if (raw is! Map) {
+    failures.add('expect.initialLoad: forma non valida');
+    return;
+  }
+  final byId = <String, List<Map>>{};
   for (final s in plan['sessions'] as List) {
     for (final b in (s as Map)['blocks'] as List) {
       for (final e in (b as Map)['exercises'] as List) {
         final m = e as Map;
         final initial = m['initialLoad'];
-        if (initial is Map) byId[m['exerciseId'] as String] = initial;
+        if (initial is Map) {
+          byId.putIfAbsent(m['exerciseId'] as String, () => <Map>[]).add(initial);
+        }
       }
     }
   }
   for (final entry in raw.entries) {
     final id = entry.key.toString();
     final want = entry.value;
-    final actual = byId[id];
-    if (actual == null || want is! Map) {
+    if (want is! Map) {
+      failures.add('expect.initialLoad.$id: forma non valida');
+      continue;
+    }
+    _unknownKeys(want, const {'kg', 'source'}, 'expect.initialLoad.$id', failures);
+    if (!want.containsKey('kg') || !want.containsKey('source')) {
+      failures.add('expect.initialLoad.$id: servono kg e source');
+      continue;
+    }
+    final occurrences = byId[id];
+    if (occurrences == null) {
       failures.add('initialLoad.$id: esercizio assente dal piano');
       continue;
     }
-    if (_num(actual['kg']) != _num(want['kg']) ||
-        (actual['kg'] == null) != (want['kg'] == null)) {
-      failures.add(
-        'initialLoad.$id.kg: atteso ${_describe(want['kg'])}, '
-        'ottenuto ${_describe(actual['kg'])}',
-      );
-    }
-    if (actual['source'] != want['source']) {
-      failures.add(
-        'initialLoad.$id.source: atteso ${_describe(want['source'])}, '
-        'ottenuto ${_describe(actual['source'])}',
-      );
+    for (final actual in occurrences) {
+      if (_num(actual['kg']) != _num(want['kg']) ||
+          (actual['kg'] == null) != (want['kg'] == null)) {
+        failures.add(
+          'initialLoad.$id.kg: atteso ${_describe(want['kg'])}, '
+          'ottenuto ${_describe(actual['kg'])}',
+        );
+      }
+      if (actual['source'] != want['source']) {
+        failures.add(
+          'initialLoad.$id.source: atteso ${_describe(want['source'])}, '
+          'ottenuto ${_describe(actual['source'])}',
+        );
+      }
     }
   }
 }
@@ -170,11 +218,26 @@ void _checkWeeklySets(
   KnowledgeBase kb,
   List<String> failures,
 ) {
+  if (!expect.containsKey('weeklySetsAtLeast')) return;
   final raw = expect['weeklySetsAtLeast'];
-  if (raw is! Map) return;
+  if (raw is! Map) {
+    failures.add('expect.weeklySetsAtLeast: forma non valida');
+    return;
+  }
+  _unknownKeys(
+    raw,
+    const {'counting', 'values'},
+    'expect.weeklySetsAtLeast',
+    failures,
+  );
   final counting = raw['counting'];
   if (counting != 'fractional') {
     failures.add('weeklySetsAtLeast.counting: $counting non supportato');
+    return;
+  }
+  final values = raw['values'];
+  if (values is! Map || values.isEmpty) {
+    failures.add('expect.weeklySetsAtLeast.values: forma non valida');
     return;
   }
   final totals = <String, double>{};
@@ -193,8 +256,6 @@ void _checkWeeklySets(
       }
     }
   }
-  final values = raw['values'];
-  if (values is! Map) return;
   for (final e in values.entries) {
     final muscle = e.key.toString();
     final minimum = _num(e.value);
@@ -298,5 +359,10 @@ List<EvalCase> runEval(Directory kbDir) {
     for (final e in goldenDir.listSync(followLinks: false))
       if (e is File && e.path.endsWith('.yaml')) e,
   ]..sort((a, b) => a.path.compareTo(b.path));
+  if (files.isEmpty) {
+    return <EvalCase>[
+      EvalCase('golden', <String>['nessun caso in kb/golden']),
+    ];
+  }
   return <EvalCase>[for (final f in files) _runCase(f, kbDir, kb)];
 }
