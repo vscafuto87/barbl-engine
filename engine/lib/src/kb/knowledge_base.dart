@@ -1,15 +1,6 @@
+import 'kb_format_exception.dart';
 import 'models.dart';
 import 'reader.dart';
-
-/// Il pacchetto non ha il formato atteso.
-class KbFormatException implements Exception {
-  KbFormatException(this.message);
-
-  final String message;
-
-  @override
-  String toString() => 'KbFormatException: $message';
-}
 
 /// Knowledge base letta dal pacchetto JSON (stessa forma che scrive `bundle`).
 class KnowledgeBase {

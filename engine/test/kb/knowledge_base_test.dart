@@ -170,6 +170,58 @@ void main() {
       );
     });
 
+    test('un esercizio a corpo libero senza stepKg ha stepKg nullo', () {
+      final json = minimalBundle();
+      (json['exercises'] as Map)['push_up'] = {
+        'id': 'push_up',
+        'name': {'it': 'Piegamenti', 'en': 'Push-up'},
+        'equipment': 'bodyweight',
+        'requires': <Object?>[],
+        'pattern': 'horizontal_push',
+        'muscles': {'primary': 'chest'},
+        'loading': {'whenLoadUnknown': 'manual'},
+      };
+      final kb = KnowledgeBase.fromJson(json);
+      expect(kb.exercises['push_up']!.stepKg, isNull);
+      expect(kb.exercises['push_up']!.secondaryMuscles, isEmpty);
+    });
+
+    test('stepKg intero diventa double', () {
+      final json = minimalBundle();
+      final ex = (json['exercises'] as Map)['squat'] as Map;
+      (ex['loading'] as Map)['stepKg'] = 2;
+      final kb = KnowledgeBase.fromJson(json);
+      expect(kb.exercises['squat']!.stepKg, 2.0);
+    });
+
+    test('repsOverride e askLoad dello slot', () {
+      final json = minimalBundle();
+      final t = (json['templates'] as Map)['t1'] as Map;
+      final sessions = t['sessions'] as List;
+      final blocks = (sessions.single as Map)['blocks'] as List;
+      final slot = ((blocks.single as Map)['slots'] as List).single as Map;
+      slot['repsOverride'] = {'min': 6, 'max': 8};
+      final kb = KnowledgeBase.fromJson(json);
+      final read = kb.templates.single.sessions.single.blocks.single.slots.single;
+      expect(read.repsOverride, (min: 6, max: 8));
+      expect(read.askLoad, true);
+    });
+
+    test('il mesociclo conserva la lista delle settimane', () {
+      final json = minimalBundle();
+      final meso = (json['parameters'] as Map)['mesocycle'] as Map;
+      meso['values'] = {
+        'weeks': [
+          {'number': 1, 'type': 'load', 'rirTarget': 3},
+          {'number': 2, 'type': 'deload', 'rirTarget': 4},
+        ],
+      };
+      final kb = KnowledgeBase.fromJson(json);
+      final weeks = kb.parameterGroups['mesocycle']!.values['weeks'] as List;
+      expect(weeks, hasLength(2));
+      expect((weeks[1] as Map)['type'], 'deload');
+    });
+
     test('un tipo sbagliato indica il percorso del campo', () {
       final json = minimalBundle();
       final ex = (json['exercises'] as Map)['squat'] as Map;

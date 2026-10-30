@@ -25,7 +25,7 @@ class KbExercise {
       pattern: stringAt(json, 'pattern', path),
       primaryMuscle: stringAt(muscles, 'primary', '$path.muscles'),
       secondaryMuscles: stringsOrEmpty(muscles, 'secondary', '$path.muscles'),
-      stepKg: doubleAt(loading, 'stepKg', '$path.loading'),
+      stepKg: doubleOrNull(loading, 'stepKg', '$path.loading'),
       whenLoadUnknown: stringAt(loading, 'whenLoadUnknown', '$path.loading'),
     );
   }
@@ -37,7 +37,8 @@ class KbExercise {
   final String pattern;
   final String primaryMuscle;
   final List<String> secondaryMuscles;
-  final double stepKg;
+  /// Passo di carico in kg; nullo per gli esercizi a corpo libero.
+  final double? stepKg;
   final String whenLoadUnknown;
 }
 

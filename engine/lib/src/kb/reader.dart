@@ -1,4 +1,4 @@
-import 'knowledge_base.dart';
+import 'kb_format_exception.dart';
 
 /// Lettura tipizzata dei dati JSON del pacchetto: ogni errore diventa una
 /// [KbFormatException] con il percorso del campo.
@@ -82,3 +82,6 @@ Map<String, Object?> mapOrEmpty(
   String key,
   String path,
 ) => m[key] == null ? const {} : mapAt(m, key, path);
+
+double? doubleOrNull(Map<String, Object?> m, String key, String path) =>
+    m[key] == null ? null : asDouble(m[key], '$path.$key');
