@@ -12,3 +12,5 @@ export 'src/generate/result.dart'
         InvalidProfile,
         NotCovered,
         NotCoveredReason;
+
+export 'src/generate/generate_plan.dart' show generatePlan;
