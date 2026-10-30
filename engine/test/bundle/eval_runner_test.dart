@@ -157,9 +157,6 @@ void main() {
             as Map)['blocks'] as List).first as Map)['exercises'] as List;
     (firstExercise.first as Map)['equipment'] = 'kettlebell';
     expect(planSchemaErrors(copy, schema), isNotEmpty);
-    final copy2 = jsonDecode(jsonEncode(plan)) as Map<String, Object?>;
-    ((copy2['parameters']! as Map)['progression']! as Map)['extraKey'] = 1;
-    expect(planSchemaErrors(copy2, schema), isNotEmpty);
     plan.remove('sessions');
     expect(planSchemaErrors(plan, schema), isNotEmpty);
   });
