@@ -224,12 +224,22 @@ void main() {
     expect(() => jsonEncode(plan), returnsNormally);
   });
 
-  test('StateError se una regola non ha la motivazione', () {
+  test('senza la motivazione TRIAL-LOAD il pacchetto è rifiutato', () {
     final b = _bundle();
     (b['rationales']! as Map<String, Object?>).remove('TRIAL-LOAD');
-    expect(
-      () => _plan(KnowledgeBase.fromJson(b)),
-      throwsA(isA<StateError>()),
-    );
+    expect(() => KnowledgeBase.fromJson(b), throwsA(isA<KbFormatException>()));
+  });
+
+  test('modificare il piano non cambia la KnowledgeBase', () {
+    final kb = KnowledgeBase.fromJson(_bundle());
+    final before = jsonEncode(_plan(kb));
+    final plan = _plan(kb);
+    final params = plan['parameters']! as Map<String, Object?>;
+    (params['progression']! as Map<String, Object?>)['stepKg'] = 999;
+    final rationales = plan['rationales']! as List;
+    ((rationales.first as Map<String, Object?>)['values']!
+        as Map<String, Object?>)['injected'] = 1;
+    ((plan['mesocycle']! as Map<String, Object?>)['weeks']! as List).clear();
+    expect(jsonEncode(_plan(kb)), before);
   });
 }

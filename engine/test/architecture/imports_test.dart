@@ -40,6 +40,7 @@ void main() {
   });
 
   test('lib/ fuori da src/bundle non importa yaml, dart:io, json_schema', () {
+    expect(Directory('lib').existsSync(), isTrue);
     expect(importViolations(Directory('lib')), isEmpty);
   });
 }

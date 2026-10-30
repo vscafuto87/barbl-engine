@@ -57,7 +57,7 @@ class KnowledgeBase {
     final rationaleMap = collection('rationales', KbRationale.fromJson);
     final ruleIds = rationaleMap.keys.toList()..sort();
 
-    return KnowledgeBase._(
+    final kb = KnowledgeBase._(
       rulesVersion: stringAt(json, 'rulesVersion', root),
       kbCommit: stringOrNull(json, 'kbCommit', root),
       primaryWeight: doubleAt(weights, 'primary', 'setWeights'),
@@ -70,6 +70,72 @@ class KnowledgeBase {
       principles: collection('principles', KbPrinciple.fromJson),
       sources: collection('sources', KbSource.fromJson),
     );
+    _checkInvariants(kb);
+    return kb;
+  }
+
+  /// Invarianti su cui si regge la generazione: il confine di fiducia è qui,
+  /// non nel costruttore del pacchetto.
+  static void _checkInvariants(KnowledgeBase kb) {
+    for (final t in kb.templates) {
+      final sessionIds = {for (final s in t.sessions) s.id};
+      for (final e in t.defaultSchedule.entries) {
+        if (!sessionIds.contains(e.value)) {
+          throw KbFormatException(
+            'templates.${t.id}.defaultSchedule.${e.key}: la seduta '
+            '${e.value} non esiste nel template',
+          );
+        }
+      }
+      for (final s in t.sessions) {
+        if (!supportedFocuses.contains(s.focus)) {
+          throw KbFormatException(
+            'templates.${t.id}.${s.id}: focus ${s.focus} non gestito '
+            '(ammessi ${(supportedFocuses.toList()..sort()).join(', ')})',
+          );
+        }
+        for (final b in s.blocks) {
+          if (b.type == 'superset' && b.label == null) {
+            throw KbFormatException(
+              'templates.${t.id}.${s.id}: un blocco superset senza label',
+            );
+          }
+        }
+      }
+    }
+    final meso = kb.parameterGroups['mesocycle'];
+    if (meso == null) {
+      throw KbFormatException('parameters.mesocycle: gruppo mancante');
+    }
+    final weeks = meso.values['weeks'];
+    if (weeks is! List) {
+      throw KbFormatException(
+        'parameters.mesocycle.values.weeks: deve essere una lista',
+      );
+    }
+    for (var i = 0; i < weeks.length; i++) {
+      final w = weeks[i];
+      final path = 'parameters.mesocycle.values.weeks[$i]';
+      if (w is! Map) {
+        throw KbFormatException('$path: deve essere una mappa');
+      }
+      if (w['number'] is! int) {
+        throw KbFormatException('$path.number: deve essere un intero');
+      }
+      if (w['type'] != 'load' && w['type'] != 'deload') {
+        throw KbFormatException('$path.type: deve essere load o deload');
+      }
+      final rir = w['rirTarget'];
+      if (rir != null && rir is! int) {
+        throw KbFormatException('$path.rirTarget: deve essere intero o nullo');
+      }
+    }
+    if (kb.parameterGroups.containsKey('trialLoad') &&
+        !kb.rationales.any((r) => r.ruleId == 'TRIAL-LOAD')) {
+      throw KbFormatException(
+        'rationales.TRIAL-LOAD: manca ma esiste il gruppo trialLoad',
+      );
+    }
   }
 
   final String rulesVersion;

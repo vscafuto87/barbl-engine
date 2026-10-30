@@ -217,6 +217,8 @@ def main() -> int:
                     r.error(where, f"{sess['id']} blocco {bi + 1}: un blocco single ha un solo slot")
                 if block["type"] == "superset" and len(block["slots"]) < 2:
                     r.error(where, f"{sess['id']} blocco {bi + 1}: un superset ha almeno due slot")
+                if block["type"] == "superset" and not block.get("label"):
+                    r.error(where, f"{sess['id']} blocco {bi + 1}: un superset ha una label")
                 for slot in block["slots"]:
                     if slot["pattern"] not in patterns:
                         r.error(where, f"{sess['id']}: pattern inesistente '{slot['pattern']}'")

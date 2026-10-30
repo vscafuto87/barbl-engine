@@ -65,7 +65,7 @@ Map<String, Object?> _block(
   final isSuperset = block.type == 'superset';
   return {
     'type': block.type,
-    if (isSuperset) 'label': block.label,
+    if (isSuperset && block.label != null) 'label': block.label,
     if (isSuperset) 'restSeconds': block.restSeconds,
     'exercises': [
       for (final pe in block.exercises) _exercise(pe, loads, rules, kb),

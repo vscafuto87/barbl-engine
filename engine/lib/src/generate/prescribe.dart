@@ -89,7 +89,7 @@ Result<List<PrescribedSession>> prescribe(
     final focus = cs.session.focus;
     // Il focus dipende solo dal template, che `bundle` ha già validato: un
     // valore sconosciuto è un errore di programmazione, non un profilo.
-    if (focus != 'upper_body' && focus != 'legs') {
+    if (!supportedFocuses.contains(focus)) {
       throw StateError('unsupported focus: $focus');
     }
     var totalSets = 0;

@@ -3,6 +3,19 @@ import '../kb/knowledge_base.dart';
 const String _mesocycleGroup = 'mesocycle';
 const String _parametersTarget = 'parameters';
 
+/// Copia profonda di Map e List, così il piano non condivide istanze con la KB.
+Object? deepCopy(Object? v) {
+  if (v is Map) {
+    return <String, Object?>{
+      for (final e in v.entries) e.key.toString(): deepCopy(e.value),
+    };
+  }
+  if (v is List) {
+    return <Object?>[for (final e in v) deepCopy(e)];
+  }
+  return v;
+}
+
 /// Blocco `parameters` del piano: un oggetto per gruppo con `target: parameters`.
 Map<String, Object?> buildParameters(KnowledgeBase kb) {
   final groups = kb.parameterGroups.values
@@ -12,7 +25,7 @@ Map<String, Object?> buildParameters(KnowledgeBase kb) {
   return {
     for (final g in groups)
       g.group: <String, Object?>{
-        ...g.values,
+        ...(deepCopy(g.values)! as Map<String, Object?>),
         'provisional': g.provisional,
         if (g.ruleId != null) 'ruleId': g.ruleId,
       },

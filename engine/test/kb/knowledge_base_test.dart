@@ -113,5 +113,77 @@ void main() {
         ),
       );
     });
+
+    group('invarianti della generazione', () {
+      Matcher rejects(String part) => throwsA(
+        isA<KbFormatException>().having(
+          (e) => e.message,
+          'message',
+          contains(part),
+        ),
+      );
+
+      test('un focus non gestito è rifiutato', () {
+        final json = minimalBundle();
+        final tpl = (json['templates'] as Map)['t1'] as Map;
+        ((tpl['sessions'] as List).first as Map)['focus'] = 'full_body';
+        expect(() => KnowledgeBase.fromJson(json), rejects('full_body'));
+      });
+
+      test('un defaultSchedule verso una seduta inesistente è rifiutato', () {
+        final json = minimalBundle();
+        final tpl = (json['templates'] as Map)['t1'] as Map;
+        (tpl['defaultSchedule'] as Map)['mon'] = 'ghost';
+        expect(() => KnowledgeBase.fromJson(json), rejects('ghost'));
+      });
+
+      test('un superset senza label è rifiutato', () {
+        final json = minimalBundle();
+        final tpl = (json['templates'] as Map)['t1'] as Map;
+        final block =
+            ((tpl['sessions'] as List).first as Map)['blocks'] as List;
+        (block.first as Map)['type'] = 'superset';
+        expect(() => KnowledgeBase.fromJson(json), rejects('label'));
+      });
+
+      test('il gruppo mesocycle è obbligatorio', () {
+        final json = minimalBundle();
+        (json['parameters'] as Map).remove('mesocycle');
+        expect(() => KnowledgeBase.fromJson(json), rejects('mesocycle'));
+      });
+
+      test('weeks deve essere una lista', () {
+        final json = minimalBundle();
+        final meso = (json['parameters'] as Map)['mesocycle'] as Map;
+        meso['values'] = {'weeks': 'cinque'};
+        expect(() => KnowledgeBase.fromJson(json), rejects('weeks'));
+      });
+
+      test('una settimana mal tipizzata è rifiutata', () {
+        for (final bad in <Map<String, Object?>>[
+          {'number': '1', 'type': 'load', 'rirTarget': 3},
+          {'number': 1, 'type': 'altro', 'rirTarget': 3},
+          {'number': 1, 'type': 'load', 'rirTarget': 2.5},
+        ]) {
+          final json = minimalBundle();
+          final meso = (json['parameters'] as Map)['mesocycle'] as Map;
+          meso['values'] = {
+            'weeks': [bad],
+          };
+          expect(() => KnowledgeBase.fromJson(json), rejects('weeks[0]'));
+        }
+      });
+
+      test('trialLoad senza la motivazione TRIAL-LOAD è rifiutato', () {
+        final json = minimalBundle();
+        (json['parameters'] as Map)['trialLoad'] = {
+          'group': 'trialLoad',
+          'target': 'parameters',
+          'values': {'x': 1},
+          'provisional': true,
+        };
+        expect(() => KnowledgeBase.fromJson(json), rejects('TRIAL-LOAD'));
+      });
+    });
   });
 }

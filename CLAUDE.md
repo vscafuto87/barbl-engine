@@ -18,7 +18,7 @@ Motore dei piani di allenamento di Barbl e la sua knowledge base. `kb/` contiene
 - `kb/conflicts.yaml` — conflitti tra fonti e decisioni prese.
 - `kb/golden/` — profili sintetici e proprietà attese, per le eval del motore.
 - `kb/tools/` — validatore (`python3 kb/tools/validate.py`) e strumenti di estrazione.
-- `engine/` — pacchetto Dart (`lib/src/kb/`, `generate/`, `contract/`, `bundle/`, riga di comando in `bin/`).
+- `engine/` — pacchetto Dart (`lib/src/kb/`, `generate/` (con la scrittura del piano), `contract/` (lettura del profilo), `bundle/`, riga di comando in `bin/`).
 - `docs/superpowers/{specs,plans}/` — specifica e piano di lavoro.
 
 ## Regole sulla KB che non si discutono
@@ -35,7 +35,7 @@ Motore dei piani di allenamento di Barbl e la sua knowledge base. `kb/` contiene
 
 ## Regole sul motore che non si discutono
 
-- **Nessun numero di dominio nel codice Dart**: serie, ripetizioni, recuperi, RIR, soglie e tempi vengono solo dalla KB. Le costanti ammesse sono quelle di formato (`bundleFormat = 1`, `schemaVersion` del contratto `"2.0"`, `"1.0"` del profilo).
+- **Nessun numero di dominio nel codice Dart**: serie, ripetizioni, recuperi, RIR, soglie e tempi vengono solo dalla KB. Le costanti ammesse sono quelle di formato, copiate dagli schemi del contratto e dalla specifica (`bundleFormat = 1`, `schemaVersion` `"2.0"` del piano e `"1.0"` del profilo, valori enumerati e predefiniti dello schema del profilo, mappa tier → evidenza).
 - **`generatePlan` è pura e deterministica**: niente orologio, casualità o I/O; non lancia per un profilo.
 - **`lib/` fuori da `lib/src/bundle/` non importa `package:yaml`, `dart:io` né `package:json_schema`** (lo verifica `engine/test/architecture/imports_test.dart`).
 

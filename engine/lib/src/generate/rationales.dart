@@ -1,5 +1,6 @@
 import '../kb/knowledge_base.dart';
 import '../kb/models.dart';
+import 'plan_parameters.dart' show deepCopy;
 
 // Costanti di formato: etichetta di evidenza del contratto per ogni livello di
 // fonte della KB (1 = position stand ... 5 = pratica dei coach).
@@ -70,7 +71,7 @@ List<Map<String, Object?>> buildRationales(KnowledgeBase kb) {
         'ruleId': r.ruleId,
         'level': r.level,
         'key': r.key,
-        'values': Map<String, Object?>.from(r.exampleValues),
+        'values': deepCopy(r.exampleValues),
         'text': {'it': r.textIt, 'en': r.textEn},
         'sources': _publicSources(r, kb),
       },

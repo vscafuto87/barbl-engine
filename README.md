@@ -15,4 +15,7 @@ La specifica è in `docs/superpowers/specs/`, il piano di lavoro in `docs/superp
 pip install -r kb/requirements.txt
 python3 kb/tools/validate.py          # validazione della KB
 cd engine && dart test                # test del motore
+cd engine && dart run barbl_engine bundle --kb ../kb --out bundle.json   # pacchetto della KB
+cd engine && dart run barbl_engine generate --profile <file> --kb ../kb  # piano su stdout
+cd engine && dart run barbl_engine eval --kb ../kb                       # casi d'oro (gira anche in CI)
 ```

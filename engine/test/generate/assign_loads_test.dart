@@ -49,6 +49,12 @@ KnowledgeBase _kb({
       'provisional': true,
       'engineConstraints': {'maxRepsPlusRir': limit},
     };
+    (b['rationales']! as Map<String, Object?>)['TRIAL-LOAD'] = {
+      'ruleId': 'TRIAL-LOAD',
+      'key': 'trial.load',
+      'level': 'set',
+      'text': {'it': 'a', 'en': 'b'},
+    };
   }
   return KnowledgeBase.fromJson(b);
 }

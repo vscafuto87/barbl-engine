@@ -1,5 +1,8 @@
 import 'reader.dart';
 
+/// Focus di seduta che la generazione sa trattare (colonna di recupero).
+const Set<String> supportedFocuses = {'upper_body', 'legs'};
+
 /// Esercizio della KB.
 class KbExercise {
   const KbExercise({

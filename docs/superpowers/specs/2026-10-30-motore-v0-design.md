@@ -35,8 +35,8 @@ barbl-engine/
 │   ├── lib/barbl_engine.dart ← API pubblica
 │   ├── lib/src/kb/           ← modelli della KB e lettura del pacchetto
 │   ├── lib/src/generate/     ← i sei passi
-│   ├── lib/src/contract/     ← lettura del profilo, scrittura del piano
-│   ├── lib/src/bundle/       ← YAML → pacchetto (solo riga di comando)
+│   ├── lib/src/contract/     ← lettura del profilo (la scrittura del piano è in generate/assemble_plan.dart)
+│   ├── lib/src/bundle/       ← YAML → pacchetto, eval e comandi (solo riga di comando)
 │   ├── bin/barbl_engine.dart ← riga di comando
 │   └── test/
 ├── docs/superpowers/{specs,plans}/
@@ -144,7 +144,7 @@ Prima di restituire `Generated`, il motore ricontrolla il piano e, se un control
 
 - ogni seduta entro `sessionDurationMin` (già garantito dal passo 3);
 - ogni `ruleId` citato da un esercizio ha la sua motivazione;
-- ogni esercizio del piano esiste nella KB e la sua attrezzatura è nel profilo.
+- ogni esercizio del piano esiste nella KB (l'attrezzatura nel profilo è già garantita dalla scelta degli esercizi, passo 2).
 
 Il volume settimanale per muscolo non è un controllo della libreria: dipende dal profilo e lo verificano i casi d'oro in `eval` (`weeklySetsAtLeast`). Un controllo generale (ogni muscolo allenato ≥ `bandMin`) fallirebbe oggi sui polpacci, che il template allena con un solo esercizio: è una lacuna della KB da registrare in `conflicts.yaml`, non da nascondere.
 
@@ -177,7 +177,7 @@ dart run barbl_engine eval     [--kb ../kb]
 ## CI e verifica
 
 - `kb.yml`: il workflow di barbl-kb, su `kb/**`.
-- `engine.yml`: su ogni PR e su `main`, `dart-lang/setup-dart` (stable), `dart pub get`, `dart analyze --fatal-infos`, `dart format --set-exit-if-changed`, `dart test`, `dart run barbl_engine eval`.
+- `engine.yml`: su ogni PR e su `main`, `dart-lang/setup-dart` (stable), `dart pub get`, `dart analyze`, `dart test`, `dart run barbl_engine eval --kb ../kb` (`--fatal-infos` e `dart format` non sono in CI).
 - Nell'ambiente di lavoro di Claude l'SDK di Dart non si scarica: la verifica è la CI della PR (e Vincenzo può lanciare gli stessi comandi sul Mac). Nessun lavoro si dichiara finito senza la CI verde.
 
 ## Modifiche dovute quando il motore si collega all'app (fuori da questa specifica)
@@ -188,6 +188,7 @@ dart run barbl_engine eval     [--kb ../kb]
 4. `gym.equipment` del profilo come enum (decisione del 30 ottobre).
 5. Conteggio frazionario nella regola 8 (`C-RULE8-FRACTIONAL`).
 6. `RulesPlanGenerator` nell'app, con il pacchetto tra gli asset e la gestione di `NotCovered`.
+7. Prova nei superset: `military_press` (superset A) esce con sorgente `trial_set` e la regola `TRIAL-LOAD`, mentre l'app fa la prova solo per un bilanciere da solo in un blocco (decisione A4) e per un superset chiede il carico a mano. Serve una regola della KB (tipo di blocco ammesso alla prova); il motore resta com'è.
 
 ## Fuori dall'ambito
 
