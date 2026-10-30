@@ -87,6 +87,8 @@ Result<List<PrescribedSession>> prescribe(
   final sessions = <PrescribedSession>[];
   for (final cs in chosen) {
     final focus = cs.session.focus;
+    // Il focus dipende solo dal template, che `bundle` ha già validato: un
+    // valore sconosciuto è un errore di programmazione, non un profilo.
     if (focus != 'upper_body' && focus != 'legs') {
       throw StateError('unsupported focus: $focus');
     }
@@ -99,8 +101,13 @@ Result<List<PrescribedSession>> prescribe(
         final slot = chosenSlot.slot;
         final role = prescription.roles[slot.role];
         if (role == null) {
-          throw StateError(
-            'role ${slot.role} missing in prescription ${prescription.id}',
+          // Dipende dall'obiettivo del profilo: è un rifiuto, non un'eccezione.
+          return Rejected(
+            NotCovered(
+              NotCoveredReason.goal,
+              'role ${slot.role} missing in prescription ${prescription.id} '
+              '(session ${cs.session.id})',
+            ),
           );
         }
         final override = slot.repsOverride;

@@ -167,9 +167,10 @@ void main() {
       ),
     );
     expect(reason.reason, NotCoveredReason.duration);
-    expect(reason.detail, contains('lower_a'));
-    expect(reason.detail, contains('57'));
-    expect(reason.detail, contains('56'));
+    expect(
+      reason.detail,
+      'session=lower_a estimated=57 min exceeds limit=56 min',
+    );
   });
 
   test('nessuna prescrizione per l\'obiettivo: Rejected goal', () {
@@ -202,5 +203,25 @@ void main() {
     );
     final sessions = _ok(prescribe([_session(kb)], testProfile(), kb));
     expect(sessions.single.blocks.single.exercises.single.sets, 2);
+  });
+
+  test('ruolo assente nella prescrizione: Rejected goal', () {
+    final kb = _kb();
+    final reason = _rejected(
+      prescribe([_session(kb, roles: const ['secondary'])], testProfile(), kb),
+    );
+    expect(reason.reason, NotCoveredReason.goal);
+    expect(
+      reason.detail,
+      'role secondary missing in prescription muscle_gain (session lower_a)',
+    );
+  });
+
+  test('focus sconosciuto (invariante del template): StateError', () {
+    final kb = _kb();
+    expect(
+      () => prescribe([_session(kb, focus: 'full_body')], testProfile(), kb),
+      throwsA(isA<StateError>()),
+    );
   });
 }
