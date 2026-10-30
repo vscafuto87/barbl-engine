@@ -20,6 +20,7 @@ sessions:
     slots:
     - pattern: horizontal_push
       role: main
+      askLoad: true
       candidates:
       - barbell_bench_press
       - dumbbell_bench_press
@@ -30,12 +31,14 @@ sessions:
     slots:
     - pattern: horizontal_pull
       role: secondary
+      askLoad: true
       candidates:
       - dumbbell_row
       - seated_cable_row
       - barbell_row
     - pattern: vertical_push
       role: secondary
+      askLoad: true
       candidates:
       - military_press
       - seated_dumbbell_shoulder_press
@@ -78,6 +81,7 @@ sessions:
     slots:
     - pattern: squat
       role: main
+      askLoad: true
       candidates:
       - squat
       - leg_press

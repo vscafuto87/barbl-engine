@@ -35,3 +35,13 @@ conflicts:
       prove per fissare RIR esatti.
   resolution:
     it: 'Nessuna modifica: un RIR diverso per tipo di esercizio resta un''ipotesi da rivalutare.'
+- id: C-CALVES-BAND
+  status: open
+  date: '2026-10-30'
+  between:
+  - templates/upper_lower_4d
+  - P-VOL-MIN-10
+  summary:
+    it: Nel template i polpacci hanno un solo esercizio da 3 serie a settimana, sotto le 10 del principio.
+  resolution:
+    it: 'Da decidere con il coach: un secondo esercizio o un''eccezione dichiarata per i polpacci.'

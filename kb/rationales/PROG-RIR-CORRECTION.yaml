@@ -1,6 +1,7 @@
 ruleId: PROG-RIR-CORRECTION
 key: correction.setBelow
 level: set
+everyExercise: true
 text:
   it: 'Serie {setNumber} a RIR {rir}: per la {nextSetNumber} ti propongo **{kg} kg**.'
   en: 'Set {setNumber} at {rir} RIR: for set {nextSetNumber} I suggest **{kg} kg**.'

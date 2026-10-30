@@ -138,6 +138,9 @@
                           "type": "string"
                         }
                       },
+                      "askLoad": {
+                        "type": "boolean"
+                      },
                       "repsOverride": {
                         "type": "object",
                         "required": [

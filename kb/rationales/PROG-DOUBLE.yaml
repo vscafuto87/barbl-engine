@@ -1,6 +1,7 @@
 ruleId: PROG-DOUBLE
 key: progression.double
 level: set
+everyExercise: true
 text:
   it: Se tutte le serie arrivano alle ripetizioni massime con RIR almeno pari al target, la volta dopo
     il carico sale di {stepKg} kg.

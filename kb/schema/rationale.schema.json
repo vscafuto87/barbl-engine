@@ -24,6 +24,9 @@
         "mesocycle"
       ]
     },
+    "everyExercise": {
+      "type": "boolean"
+    },
     "text": {
       "type": "object",
       "required": [

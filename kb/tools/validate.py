@@ -276,6 +276,12 @@ def main() -> int:
     for rid in sorted(rule_ids):
         if rid not in rationales:
             r.error("rationales/", f"manca la motivazione di '{rid}'")
+    every = [ra for ra in rationales.values() if ra.get("everyExercise")]
+    for ra in every:
+        if ra.get("level") != "set":
+            r.error(ra["_file"], "everyExercise è ammesso solo su una motivazione di livello 'set'")
+    if not every:
+        r.error("rationales/", "nessuna motivazione ha everyExercise: il motore non avrebbe le regole da mostrare")
     for k, ra in rationales.items():
         where = ra["_file"]
         it, en = ra["text"]["it"], ra["text"]["en"]
