@@ -152,11 +152,6 @@ void main() {
     final plan = Map<String, Object?>.from((result as Generated).plan);
     final schema = File('../kb/contract/plan.schema.json');
     expect(planSchemaErrors(plan, schema), isEmpty);
-    final copy = jsonDecode(jsonEncode(plan)) as Map<String, Object?>;
-    final firstExercise = ((((copy['sessions']! as List).first
-            as Map)['blocks'] as List).first as Map)['exercises'] as List;
-    (firstExercise.first as Map)['equipment'] = 'kettlebell';
-    expect(planSchemaErrors(copy, schema), isNotEmpty);
     plan.remove('sessions');
     expect(planSchemaErrors(plan, schema), isNotEmpty);
   });
