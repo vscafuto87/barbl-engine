@@ -1,21 +1,21 @@
-# barbl-kb
+# kb
 
 Knowledge base dei piani di allenamento di Barbl. `barbl-engine` la legge come dati e produce piani conformi al contratto dell'app (`docs/contratto/` nel repository `barbl`, `schemaVersion` 2.0).
 
-La KB non contiene testo di libri o programmi: solo regole, parametri e template scritti con parole nostre, ognuno con il riferimento alla sua fonte. Le regole di lavoro sono in `CLAUDE.md`.
+La KB non contiene testo di libri o programmi: solo regole, parametri e template scritti con parole nostre, ognuno con il riferimento alla sua fonte. Le regole di lavoro sono nel `CLAUDE.md` della radice del repository.
 
 ## Come la usa il motore
 
 | Passo del motore | File letti |
 | --- | --- |
-| 1. Sceglie il template dai giorni e dall'obiettivo del profilo | `templates/` |
-| 2. Riempie ogni slot con il primo candidato disponibile nella palestra | `exercises/`, `vocab/equipment.yaml` |
-| 3. Prescrive serie, ripetizioni e recuperi per ruolo e controlla la durata | `prescriptions/` |
-| 4. Imposta i carichi iniziali: `knownLoads` del profilo o serie di prova | `exercises/` (`loading`), `parameters/trialLoad.yaml` |
-| 5. Scrive mesociclo, `parameters` e motivazioni con le fonti | `parameters/`, `rationales/`, `principles/`, `sources/` |
-| 6. Controlla il piano: contratto, fascia di volume, casi d'oro | `contract/`, `golden/` |
+| 1. Sceglie il template dai giorni e dall'obiettivo del profilo | `kb/templates/` |
+| 2. Riempie ogni slot con il primo candidato disponibile nella palestra | `kb/exercises/`, `kb/vocab/equipment.yaml` |
+| 3. Prescrive serie, ripetizioni e recuperi per ruolo e controlla la durata | `kb/prescriptions/` |
+| 4. Imposta i carichi iniziali: `knownLoads` del profilo o serie di prova | `kb/exercises/` (`loading`), `kb/parameters/trialLoad.yaml` |
+| 5. Scrive mesociclo, `parameters` e motivazioni con le fonti | `kb/parameters/`, `kb/rationales/`, `kb/principles/`, `kb/sources/` |
+| 6. Controlla il piano: contratto, fascia di volume, casi d'oro | `kb/contract/`, `kb/golden/` |
 
-Il volume per muscolo si conta in modo frazionario (`vocab/muscles.yaml`, `setWeights`): una serie vale 1 sul muscolo primario e 0,5 sui secondari. Nel piano `muscles` resta l'elenco ordinato con il primario per primo, come oggi.
+Il volume per muscolo si conta in modo frazionario (`kb/vocab/muscles.yaml`, `setWeights`): una serie vale 1 sul muscolo primario e 0,5 sui secondari. Nel piano `muscles` resta l'elenco ordinato con il primario per primo, come oggi.
 
 ## Stato della versione 0.1.0
 
@@ -28,7 +28,7 @@ Il volume per muscolo si conta in modo frazionario (`vocab/muscles.yaml`, `setWe
 ## Comandi
 
 ```bash
-pip install -r requirements.txt
-python3 tools/validate.py
-python3 tools/validate.py --sources-md ~/Progetti/app-palestra/sources/md   # cerca frasi copiate dai libri
+pip install -r kb/requirements.txt
+python3 kb/tools/validate.py
+python3 kb/tools/validate.py --sources-md ~/Progetti/app-palestra/sources/md   # cerca frasi copiate dai libri
 ```

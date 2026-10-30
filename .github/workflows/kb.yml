@@ -2,16 +2,18 @@ name: Validazione KB
 
 on:
   pull_request:
+    paths: ['kb/**']
   push:
     branches: [main]
+    paths: ['kb/**']
 
 jobs:
-  validate:
+  validate-kb:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -r requirements.txt
-      - run: python3 tools/validate.py
+      - run: pip install -r kb/requirements.txt
+      - run: python3 kb/tools/validate.py
