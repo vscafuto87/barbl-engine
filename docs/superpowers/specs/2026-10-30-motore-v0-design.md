@@ -115,7 +115,7 @@ Ogni passo è una funzione pura in `lib/src/generate/`, con test propri.
 
 ### 3. Prescrizione e durata
 
-- Prescrizione: quella con `goal` del profilo in `appliesTo`. Per ogni esercizio, dal ruolo dello slot: `sets`, `reps` (o `repsOverride` dello slot), `rirFollowsMesocycle`, `warmup`, `restSeconds` dal `focus` della seduta (`upper` per `upper_body`, `lower` per `lower_body`).
+- Prescrizione: quella con `goal` del profilo in `appliesTo`. Per ogni esercizio, dal ruolo dello slot: `sets`, `reps` (o `repsOverride` dello slot), `rirFollowsMesocycle`, `warmup`, `restSeconds` dal `focus` della seduta (`upper` per `upper_body`, `lower` per `legs`; `full_body` non ha ancora una colonna nelle prescrizioni, quindi `bundle` rifiuta un template che lo usa).
 - Superset: `restSeconds` del blocco = `supersetRestSeconds`; negli esercizi del superset `restSeconds` è `null`; `label` dal template.
 - `stepKg` dall'esercizio; `equipment`, `muscles` (primario, poi secondari) e `name` (italiano, come il piano fisso) dall'esercizio.
 - Durata: `estimatedDurationMin` = somma delle serie della seduta × `timeBudget.minutesPerSet`. Se una seduta supera `sessionDurationMin` → `NotCovered(duration)`; il motore non toglie serie.
