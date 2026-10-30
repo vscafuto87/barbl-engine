@@ -1,5 +1,6 @@
 import '../contract/profile.dart';
 import '../kb/knowledge_base.dart';
+import '../kb/models.dart';
 import 'assemble_plan.dart';
 import 'assign_loads.dart';
 import 'choose_exercises.dart';
