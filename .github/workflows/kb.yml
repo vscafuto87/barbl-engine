@@ -2,10 +2,9 @@ name: Validazione KB
 
 on:
   pull_request:
-    paths: ['kb/**']
+    paths: ['kb/**', '.github/workflows/kb.yml']
   push:
-    branches: [main]
-    paths: ['kb/**']
+    paths: ['kb/**', '.github/workflows/kb.yml']
 
 jobs:
   validate-kb:
