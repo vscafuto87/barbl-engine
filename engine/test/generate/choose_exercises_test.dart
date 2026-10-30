@@ -96,7 +96,9 @@ void main() {
     });
 
     test('duplicato e valore sconosciuto: stesso esito del caso vuoto', () {
-      _expectNoEquipment(_choose({'barbell', 'barbell', 'jetpack'}));
+      _expectNoEquipment(
+        _choose(Set<String>.of(['barbell', 'barbell', 'jetpack'])),
+      );
     });
 
     test('un valore sconosciuto accanto a quelli buoni è ignorato', () {
