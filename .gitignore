@@ -1,0 +1,8 @@
+build/
+*.pdf
+md/
+structured/
+.dart_tool/
+.packages
+__pycache__/
+.DS_Store

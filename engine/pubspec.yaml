@@ -1,0 +1,18 @@
+name: barbl_engine
+description: Motore dei piani di allenamento di Barbl.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.13.5
+
+dependencies:
+  yaml: ^3.1.2
+  json_schema: ^5.2.0
+
+dev_dependencies:
+  test: ^1.25.0
+  lints: ^6.0.0
+
+executables:
+  barbl_engine: barbl_engine
