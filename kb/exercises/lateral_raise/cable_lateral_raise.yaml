@@ -1,0 +1,17 @@
+id: cable_lateral_raise
+name:
+  it: Alzate laterali ai cavi
+  en: Cable lateral raise
+equipment: cable
+requires:
+- cables
+pattern: lateral_raise
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_lateral_raise
