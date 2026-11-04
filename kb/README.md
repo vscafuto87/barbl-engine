@@ -17,7 +17,7 @@ La KB non contiene testo di libri o programmi: solo regole, parametri e template
 
 Il volume per muscolo si conta in modo frazionario (`kb/vocab/muscles.yaml`, `setWeights`): una serie vale 1 sul muscolo primario e 0,5 sui secondari. Nel piano `muscles` resta l'elenco ordinato con il primario per primo, come oggi.
 
-## Stato della versione 0.2.0
+## Stato della versione 0.3.0
 
 - **Copertura**: un template, `upper_lower_4d` (4 giorni, obiettivo massa o entrambi), con esercizi per le tre palestre del profilo (completa, casa, solo manubri). Profili a 3 o 5 giorni e obiettivo forza non sono ancora coperti.
 - **Valori**: tutti provvisori, ripresi dal piano fisso dell'app; nessun principio è ancora confermato da un coach.

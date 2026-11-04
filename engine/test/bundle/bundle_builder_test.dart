@@ -29,7 +29,7 @@ void main() {
     final result = buildBundle(Directory('../kb'));
     expect(result.errors, isEmpty);
     final kb = KnowledgeBase.fromJson(result.json);
-    expect(kb.rulesVersion, '0.2.0');
+    expect(kb.rulesVersion, '0.3.0');
     expect(kb.exercises, hasLength(35));
     expect(kb.templates, hasLength(1));
     expect(kb.parameterGroups, hasLength(10));
