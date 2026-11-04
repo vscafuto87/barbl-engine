@@ -39,5 +39,5 @@ La matrice di 324 profili che controlla copertura e proprietà dei piani generat
 ```bash
 pip install -r kb/requirements.txt
 python3 kb/tools/validate.py
-python3 kb/tools/validate.py --sources-md ~/Progetti/app-palestra/sources/md   # cerca frasi copiate dai libri
+python3 kb/tools/validate.py --sources-md ../barbl-sources/md   # cerca frasi copiate dai libri
 ```
