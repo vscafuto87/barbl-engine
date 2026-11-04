@@ -527,11 +527,16 @@
                 },
                 "upper": {
                   "type": "integer"
+                },
+                "fullBody": {
+                  "type": "integer",
+                  "description": "Ore minime per una seduta Full body; facoltativo, se manca vale upper"
                 }
               }
             },
             "shiftsWeek": {
-              "type": "boolean"
+              "type": "boolean",
+              "description": "Il motore emette sempre false; l'app lo tratta come false (si sposta solo dentro la settimana del piano)"
             },
             "provisional": {
               "type": "boolean",
