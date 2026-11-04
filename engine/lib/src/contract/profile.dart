@@ -54,6 +54,7 @@ class Profile {
     required this.sessionDurationMin,
     required this.experience,
     required this.knownLoads,
+    this.knownReps = const {},
     this.emphasis = const [],
   });
 
@@ -68,6 +69,10 @@ class Profile {
 
   /// `exerciseId` -> kg; `null` = «Non lo so».
   final Map<String, double?> knownLoads;
+
+  /// `exerciseId` -> ripetizioni con cui l'utente ha fatto quel carico; solo
+  /// per gli esercizi con un carico. Assente = il carico vale com'è.
+  final Map<String, int> knownReps;
 
   /// Distretti da privilegiare, nell'ordine del profilo (al massimo due);
   /// vuota = nessuna enfasi.
@@ -243,6 +248,7 @@ ProfileRead readProfile(Map<String, Object?> json) {
   }
 
   final knownLoads = <String, double?>{};
+  final knownReps = <String, int>{};
   if (json.containsKey('knownLoads')) {
     final v = json['knownLoads'];
     if (v is! List) {
@@ -275,9 +281,14 @@ ProfileRead readProfile(Map<String, Object?> json) {
             errors.add('$path.kg: deve essere un numero positivo o null');
           }
         }
+        int? reps;
         if (item.containsKey('reps') && item['reps'] != null) {
-          if (_asInt(item['reps']) == null) {
+          reps = _asInt(item['reps']);
+          if (reps == null) {
             errors.add('$path.reps: deve essere un intero o null');
+          } else if (reps <= 0) {
+            errors.add('$path.reps: deve essere positivo');
+            reps = null;
           }
         }
         if (id != null) {
@@ -285,6 +296,7 @@ ProfileRead readProfile(Map<String, Object?> json) {
             errors.add('$path.exerciseId: duplicato ($id)');
           } else if (kgOk) {
             knownLoads[id] = kg;
+            if (kg != null && reps != null) knownReps[id] = reps;
           }
         }
       }
@@ -328,6 +340,7 @@ ProfileRead readProfile(Map<String, Object?> json) {
     sessionDurationMin: sessionDurationMin!,
     experience: experience!,
     knownLoads: Map.unmodifiable(knownLoads),
+    knownReps: Map.unmodifiable(knownReps),
     emphasis: List.unmodifiable(emphasis),
   ));
 }

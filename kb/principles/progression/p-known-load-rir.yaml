@@ -1,0 +1,19 @@
+id: P-KNOWN-LOAD-RIR
+topic: progression
+statement:
+  it: 'Un carico noto dichiarato con le ripetizioni si converte come una serie di prova: si assume che
+    l''ultima ripetizione fosse vicina al cedimento (nessuna ripetizione di riserva), perché chi dichiara
+    un carico di solito indica una serie impegnativa e le persone sottostimano la riserva. La scelta
+    è prudente: porta a un carico di partenza più basso, che la progressione corregge in poche sedute.'
+  en: 'A known load declared with its reps is converted like a test set: the last rep is assumed to be
+    close to failure (no reps in reserve), because people who state a load usually mean a hard set and
+    tend to underestimate their reserve. The choice is conservative: it gives a lower starting load,
+    which progression corrects within a few sessions.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- parameters/trialLoad
+sources:
+- id: barbl-design
+  access: full_text

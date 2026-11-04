@@ -19,6 +19,7 @@ KnowledgeBase _kb({
   bool withTrial = true,
   int limit = 10,
   List<Object?>? weeks,
+  bool withConversion = true,
 }) {
   final b = minimalBundle(
     exercises: {
@@ -47,7 +48,11 @@ KnowledgeBase _kb({
       'target': 'parameters',
       'values': {'x': 1},
       'provisional': true,
-      'engineConstraints': {'maxRepsPlusRir': limit},
+      'engineConstraints': {
+        'maxRepsPlusRir': limit,
+        if (withConversion)
+          'knownLoadConversion': {'epleyDivisor': 30, 'assumedRir': 0},
+      },
     };
     (b['rationales']! as Map<String, Object?>)['TRIAL-LOAD'] = {
       'ruleId': 'TRIAL-LOAD',
@@ -86,7 +91,9 @@ PrescribedSession _session(
   ],
 );
 
-Profile _profile(Map<String, double?> known) => Profile(
+Profile _profile(Map<String, double?> known, {Map<String, int> reps = const {}}) =>
+    Profile(
+  knownReps: reps,
   goal: 'muscle_gain',
   gymType: 'full',
   equipment: const {'barbell'},
@@ -172,5 +179,40 @@ void main() {
     final kb = _kb(withTrial: false);
     final r = assignLoads([_session(kb, 'squat')], _profile({}), kb);
     expect(r['squat']!.source, LoadSource.manual);
+  });
+
+  test('carico con ripetizioni: Epley e poi carico al RIR della settimana 1', () {
+    final kb = _kb();
+    final r = assignLoads(
+      [_session(kb, 'squat')],
+      _profile({'squat': 80}, reps: {'squat': 8}),
+      kb,
+    );
+    // 80 x 8 -> e1RM 101,3; a 6 ripetizioni e RIR 3 -> 77,95; passo 2,5.
+    expect(r['squat']!.kg, 77.5);
+    expect(r['squat']!.source, LoadSource.estimate);
+    expect(r['squat']!.source.json, 'estimate');
+  });
+
+  test('carico senza ripetizioni: vale com\'è', () {
+    final kb = _kb();
+    final r = assignLoads(
+      [_session(kb, 'squat')],
+      _profile({'squat': 80}),
+      kb,
+    );
+    expect(r['squat']!.kg, 80);
+    expect(r['squat']!.source, LoadSource.profile);
+  });
+
+  test('senza parametri di conversione il carico vale com\'è', () {
+    final kb = _kb(withConversion: false);
+    final r = assignLoads(
+      [_session(kb, 'squat')],
+      _profile({'squat': 80}, reps: {'squat': 8}),
+      kb,
+    );
+    expect(r['squat']!.kg, 80);
+    expect(r['squat']!.source, LoadSource.profile);
   });
 }

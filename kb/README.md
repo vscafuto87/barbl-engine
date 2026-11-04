@@ -18,7 +18,11 @@ La KB non contiene testo di libri o programmi: solo regole, parametri e template
 
 Il volume per muscolo si conta in modo frazionario (`kb/vocab/muscles.yaml`, `setWeights`): una serie vale 1 sul muscolo primario e 0,5 sui secondari. Nel piano `muscles` resta l'elenco ordinato con il primario per primo, come oggi.
 
-## Stato della versione 0.7.0
+## Stato della versione 0.8.0
+
+- **Carichi noti con ripetizioni** (KB 0.8.0): `knownLoads[].reps` non è più ignorato. Il carico `kg × reps` si porta a carico di lavoro come la regola 14 dell'app: e1RM = kg × (1 + (reps + RIR assunto) / divisore), carico = e1RM ÷ (1 + (ripetizioni minime dello slot + RIR della prima settimana di carico) / divisore), arrotondato al passo inferiore dell'esercizio. Divisore (30, Epley) e RIR assunto (0, scelta prudente di design, `P-KNOWN-LOAD-RIR`) stanno in `parameters/trialLoad.yaml`. Senza `reps`, senza passo o senza RIR il carico vale com'è (`source: profile`). Il carico convertito ha `source: estimate`.
+
+## Versione 0.7.0
 
 - **Enfasi** (KB 0.7.0, profilo 1.2): il profilo può chiedere fino a due distretti da privilegiare (`emphasis`: `glutes_hamstrings`, `shoulders`, `arms`). Ogni valore ha un file in `kb/emphasis/` (schema `schema/emphasis.schema.json`) con i muscoli del distretto e, per template, al massimo due sedute con uno slot complementare da aggiungere in coda. Il motore valuta gli slot nell'ordine del profilo e poi in quello dei posti; uno slot entra solo se la seduta, con le 3 serie complementari della prescrizione, resta entro `sessionDurationMin` (stessa stima della prescrizione), altrimenti si salta senza errore. Gli esercizi aggiunti citano la regola `EMPHASIS` (livello `session`); la motivazione entra nel piano solo quando un esercizio la cita, così un piano senza enfasi è identico a prima. Principio di design `P-EMPHASIS` (fonte `barbl-design`), con `P-VOL-DOSE-HYP` per il legame tra serie in più e crescita. Il validatore controlla file, sedute, pattern, candidati per ogni palestra e muscoli del distretto (primario del primo candidato). Caso d'oro 05 (5 giorni da 60 minuti, glutei e femorali più braccia, `golden/profile-5d-60min-emphasis.json`).
 - **Posti dell'enfasi**:

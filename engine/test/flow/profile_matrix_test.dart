@@ -154,12 +154,21 @@ class _Combo {
   /// Lo stesso profilo senza enfasi.
   _Combo get base => _Combo(days, duration, goal, gym, experience);
 
+  Map<String, int> get knownReps => {
+    for (final l in _knownLoadsByExperience[experience]!)
+      if (l['kg'] != null && l['reps'] != null)
+        l['exerciseId']! as String: (l['reps']! as num).toInt(),
+  };
+
   Map<String, double> get knownKg => {
     for (final l in _knownLoadsByExperience[experience]!)
       if (l['kg'] != null)
         l['exerciseId']! as String: (l['kg']! as num).toDouble(),
   };
 }
+
+// Costante di formato di Epley, solo per la verifica della conversione.
+const int _epleyDivisor = 30;
 
 final List<_Combo> _combos = [
   for (final d in _days)
@@ -258,6 +267,7 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
       (r! as Map<String, Object?>)['ruleId']! as String,
   };
   final known = c.knownKg;
+  final knownReps = c.knownReps;
   final loadsById = <String, String>{};
   for (final e in _exercisesOf(plan)) {
     final id = e['exerciseId']! as String;
@@ -290,8 +300,24 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
       out.add('$id: carichi iniziali diversi tra le occorrenze');
     }
     if (known.containsKey(id)) {
-      if (source != 'profile' || kg?.toDouble() != known[id]) {
-        out.add('$id: carico noto ${known[id]} ma initialLoad $kg/$source');
+      final reps = knownReps[id];
+      if (reps == null) {
+        if (source != 'profile' || kg?.toDouble() != known[id]) {
+          out.add('$id: carico noto ${known[id]} ma initialLoad $kg/$source');
+        }
+      } else {
+        // Carico con ripetizioni: convertito. Mai oltre il massimale stimato
+        // di quella serie, multiplo del passo, mai nullo.
+        final step = kbExercise.stepKg;
+        final e1rm = known[id]! * (1 + reps / _epleyDivisor);
+        if (source != 'estimate' ||
+            kg == null ||
+            kg <= 0 ||
+            kg > e1rm ||
+            (step != null && (kg / step) % 1 != 0)) {
+          out.add('$id: carico noto ${known[id]} x $reps ma initialLoad '
+              '$kg/$source');
+        }
       }
     } else if (kg != null) {
       out.add('$id: kg $kg senza un carico noto nel profilo');
