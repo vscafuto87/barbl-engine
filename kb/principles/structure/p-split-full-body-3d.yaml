@@ -1,0 +1,17 @@
+id: P-SPLIT-FULL-BODY-3D
+topic: structure
+statement:
+  it: 'Con tre giorni a settimana si sceglie di allenare tutto il corpo a ogni seduta: ogni muscolo
+    riceve tre stimoli, un giorno di riposo separa le sedute e il volume settimanale resta sopra il
+    minimo. È una scelta di design di Barbl, non un risultato di uno studio.'
+  en: 'With three days a week, the choice is to train the whole body in every session: each muscle gets
+    three stimuli, a rest day separates the sessions and weekly volume stays above the minimum. This is
+    a Barbl design choice, not a study finding.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: barbl-design
+  access: full_text

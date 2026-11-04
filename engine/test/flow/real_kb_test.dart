@@ -105,10 +105,17 @@ void main() {
   });
 
   test('giorni, obiettivo e durata non coperti', () {
-    expect(notCovered(profile(daysPerWeek: 3)).reason, NotCoveredReason.days);
     expect(notCovered(profile(daysPerWeek: 5)).reason, NotCoveredReason.days);
     expect(notCovered(profile(goal: 'strength')).reason,
         NotCoveredReason.goal);
+    expect(
+      notCovered(profile(daysPerWeek: 3, goal: 'strength')).reason,
+      NotCoveredReason.goal,
+    );
+    expect(
+      notCovered(profile(daysPerWeek: 3, sessionDurationMin: 45)).reason,
+      NotCoveredReason.duration,
+    );
     expect(notCovered(profile(sessionDurationMin: 45)).reason,
         NotCoveredReason.duration);
   });
