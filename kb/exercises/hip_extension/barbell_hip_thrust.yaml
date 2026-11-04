@@ -1,0 +1,19 @@
+id: barbell_hip_thrust
+name:
+  it: Hip thrust con bilanciere
+  en: Barbell hip thrust
+equipment: barbell
+requires:
+- barbell
+- bench
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary:
+  - hamstrings
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_hip_thrust

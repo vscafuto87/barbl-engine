@@ -1,0 +1,19 @@
+id: dumbbell_hip_thrust
+name:
+  it: Hip thrust con manubrio
+  en: Dumbbell hip thrust
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary:
+  - hamstrings
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_hip_thrust

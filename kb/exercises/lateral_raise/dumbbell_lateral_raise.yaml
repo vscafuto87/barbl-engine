@@ -1,0 +1,17 @@
+id: dumbbell_lateral_raise
+name:
+  it: Alzate laterali con manubri
+  en: Dumbbell lateral raise
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: lateral_raise
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_lateral_raise

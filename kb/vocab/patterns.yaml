@@ -16,3 +16,8 @@ patterns:
   - { id: knee_extension,  region: lower, mechanics: isolation, name: { it: Estensione del ginocchio, en: Knee extension } }
   - { id: knee_flexion,    region: lower, mechanics: isolation, name: { it: Flessione del ginocchio, en: Knee flexion } }
   - { id: calf_raise,      region: lower, mechanics: isolation, name: { it: Polpacci,           en: Calf raise } }
+  # Aggiunti con il template a 5 giorni per spalle e glutei (vedi docs/eval-matrice.md). L'estensione
+  # d'anca è un isolamento: si muove solo l'anca, il ginocchio resta fermo.
+  - { id: lateral_raise,   region: upper, mechanics: isolation, name: { it: Alzate laterali,    en: Lateral raise } }
+  - { id: rear_delt_fly,   region: upper, mechanics: isolation, name: { it: Deltoide posteriore, en: Rear delt fly } }
+  - { id: hip_extension,   region: lower, mechanics: isolation, name: { it: Estensione d'anca,  en: Hip extension } }

@@ -1,0 +1,17 @@
+id: dumbbell_rear_delt_fly
+name:
+  it: Alzate posteriori con manubri
+  en: Dumbbell rear delt fly
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: rear_delt_fly
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_rear_delt_fly

@@ -1,0 +1,18 @@
+id: P-SPLIT-PPL-UL-5D
+topic: structure
+statement:
+  it: 'Con cinque giorni a settimana si sceglie di alternare due sedute upper/lower e tre sedute spinta,
+    trazione e gambe: ogni muscolo riceve due stimoli, le sedute restano brevi (al massimo 15 serie) e
+    tra due sedute di gambe passano almeno 72 ore. È una scelta di design di Barbl, non un risultato di
+    uno studio.'
+  en: 'With five days a week, the choice is to combine two upper/lower sessions with three push, pull and
+    legs sessions: each muscle gets two stimuli, sessions stay short (at most 15 sets) and at least 72
+    hours pass between two leg sessions. This is a Barbl design choice, not a study finding.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: barbl-design
+  access: full_text
