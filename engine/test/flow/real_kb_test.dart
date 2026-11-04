@@ -84,7 +84,7 @@ void main() {
     kb = KnowledgeBase.fromJson(built.json);
   });
 
-  test('il caso d\'oro 01 passa', () {
+  test('i casi d\'oro passano', () {
     final cases = runEval(Directory('../kb'));
     expect(cases.where((c) => !c.passed).map((c) => '${c.id} ${c.failures}'),
         isEmpty);
@@ -132,13 +132,11 @@ void main() {
     expect(encoded, hasLength(3));
   });
 
-  test('giorni, obiettivo e durata non coperti', () {
+  test('giorni e durata non coperti', () {
     expect(notCovered(profile(daysPerWeek: 5)).reason, NotCoveredReason.days);
-    expect(notCovered(profile(goal: 'strength')).reason,
-        NotCoveredReason.goal);
     expect(
-      notCovered(profile(daysPerWeek: 3, goal: 'strength')).reason,
-      NotCoveredReason.goal,
+      notCovered(profile(daysPerWeek: 5, goal: 'strength')).reason,
+      NotCoveredReason.days,
     );
     expect(
       notCovered(profile(daysPerWeek: 3, sessionDurationMin: 45)).reason,
@@ -146,6 +144,95 @@ void main() {
     );
     expect(notCovered(profile(sessionDurationMin: 45)).reason,
         NotCoveredReason.duration);
+  });
+
+  test('forza a 45 e 60 minuti: rifiuto per durata, non un\'eccezione', () {
+    for (final days in [3, 4]) {
+      for (final minutes in [45, 60]) {
+        final r = notCovered(profile(
+          daysPerWeek: days,
+          goal: 'strength',
+          sessionDurationMin: minutes,
+        ));
+        expect(r.reason, NotCoveredReason.duration, reason: '$days $minutes');
+        expect(r.detail, isNotEmpty);
+      }
+    }
+  });
+
+  test('forza a 3 e 4 giorni da 75 minuti: piano completo in ogni palestra',
+      () {
+    for (final days in [3, 4]) {
+      for (final gym in [
+        ('full', <String>[
+          'barbell',
+          'rack',
+          'bench',
+          'dumbbells',
+          'machines',
+          'cables',
+          'smith_machine',
+        ]),
+        ('home', ['barbell', 'rack', 'bench', 'dumbbells']),
+        ('dumbbells', ['dumbbells', 'bench']),
+      ]) {
+        final p = plan(profile(
+          daysPerWeek: days,
+          goal: 'strength',
+          sessionDurationMin: 75,
+          gymType: gym.$1,
+          equipment: gym.$2,
+        ));
+        expect(p['goal'], 'strength');
+        expect((p['sessions']! as List), hasLength(days));
+        for (final s in p['sessions']! as List) {
+          expect((s as Map)['estimatedDurationMin'] as num,
+              lessThanOrEqualTo(75));
+        }
+      }
+    }
+  });
+
+  test('forza: il principale ha ripetizioni più basse della massa', () {
+    int benchRepsMin(Map<String, Object?> p) {
+      for (final s in p['sessions']! as List) {
+        for (final b in (s as Map)['blocks'] as List) {
+          for (final e in (b as Map)['exercises'] as List) {
+            final m = e as Map;
+            if (m['exerciseId'] == 'barbell_bench_press') {
+              return ((m['reps'] as Map)['min'] as num).toInt();
+            }
+          }
+        }
+      }
+      throw StateError('panca assente');
+    }
+
+    final strength =
+        plan(profile(goal: 'strength', sessionDurationMin: 75));
+    final muscle = plan(profile(sessionDurationMin: 75));
+    expect(benchRepsMin(strength), lessThan(benchRepsMin(muscle)));
+  });
+
+  test('both resta sulla prescrizione della massa', () {
+    for (final days in [3, 4]) {
+      final both = plan(profile(daysPerWeek: days, goal: 'both'));
+      final muscle = plan(profile(daysPerWeek: days, goal: 'muscle_gain'));
+      both['goal'] = muscle['goal'];
+      expect(jsonEncode(both), jsonEncode(muscle));
+    }
+  });
+
+  test('forza senza carichi noti: la prova resta ammessa per gli askLoad', () {
+    final p = plan(profile(
+      goal: 'strength',
+      sessionDurationMin: 75,
+      noKnownLoads: true,
+    ));
+    expect(
+      trialExercises(p),
+      {'barbell_bench_press', 'military_press', 'squat'},
+    );
   });
 
   test('un profilo senza gym è non valido', () {

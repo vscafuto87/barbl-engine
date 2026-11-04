@@ -45,3 +45,40 @@ conflicts:
     it: Nel template i polpacci hanno un solo esercizio da 3 serie a settimana, sotto le 10 del principio.
   resolution:
     it: 'Da decidere con il coach: un secondo esercizio o un''eccezione dichiarata per i polpacci.'
+- id: C-REST-STRENGTH
+  status: open
+  date: '2026-11-04'
+  between:
+  - P-REST-NEUTRAL
+  - P-REST-LONG-COMPOUND
+  - P-REST-MAIN-STR
+  summary:
+    it: Per la forza ACSM (tier 1) non trova differenze tra recuperi sotto e sopra un minuto; Helms e Schoenfeld
+      (tier 4) consigliano almeno 2-3 minuti sui multiarticolari pesanti perché il carico si mantenga tra
+      le serie, e la prescrizione strength usa 3-4 minuti sull'esercizio principale.
+  resolution:
+    it: 'Decisione provvisoria: recuperi lunghi sui multiarticolari pesanti (prescriptions/strength.yaml),
+      perché servono a ripetere il carico pesante delle serie successive, che è ciò che conta per la forza
+      (P-RIR-STR, P-STRENGTH-REP-ZONE); il dato ACSM riguarda l''esito finale, non il carico mantenuto nella
+      seduta. I valori esatti sono di design (P-REST-MAIN-STR). Da rivedere con il coach: se i recuperi si
+      accorciano, scende anche il tempo per serie (P-TIME-PER-SET-STR) e la forza può coprire i 60 minuti.'
+- id: C-STRENGTH-VOLUME
+  status: open
+  date: '2026-11-04'
+  between:
+  - P-VOL-DOSE-STR
+  - P-STRENGTH-REP-ZONE
+  - templates/upper_lower_4d
+  - templates/full_body_3d
+  summary:
+    it: Per la forza Pelland non trova un guadagno chiaro oltre circa 5 serie frazionarie a settimana, mentre
+      i template, nati per la massa, danno 9-13 serie frazionarie ai muscoli principali; inoltre con 3 serie
+      sul principale petto, dorso e quadricipiti scendono a 9, sotto bandMin di parameters/belowBand (fascia
+      dell'ipertrofia); e con molti complementari la quota di serie da 1-6 ripetizioni resta intorno alla
+      metà, sotto i due terzi-tre quarti di Helms.
+  resolution:
+    it: 'Decisione provvisoria: per la forza si usano gli stessi template della massa con la prescrizione
+      strength, senza togliere o aggiungere slot. Il volume in eccesso rispetto a P-VOL-DOSE-STR è accettato
+      (Helms indica comunque 5-12 serie e più per la forza); la fascia di belowBand non è un obiettivo della
+      forza e l''eval a matrice non la controlla per questo obiettivo. Template propri per la forza (meno
+      complementari, più serie pesanti) restano da decidere con il coach.'

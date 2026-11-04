@@ -4,6 +4,7 @@ daysPerWeek: 3
 goals:
 - muscle_gain
 - both
+- strength
 defaultSchedule:
   mon: full_a
   wed: full_b

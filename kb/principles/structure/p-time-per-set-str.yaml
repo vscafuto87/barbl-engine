@@ -1,0 +1,16 @@
+id: P-TIME-PER-SET-STR
+topic: structure
+statement:
+  it: 'Con i recuperi dell''obiettivo forza una serie di lavoro, recupero e riscaldamenti compresi, occupa
+    circa 4 minuti invece di 3: stima di design ricavata dai recuperi della prescrizione, non da uno
+    studio.'
+  en: 'With the strength goal''s rests a working set, including rest and warm-ups, takes about 4 minutes
+    instead of 3: a design estimate derived from the prescription''s rests, not from a study.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- prescriptions
+sources:
+- id: barbl-design
+  access: full_text
