@@ -27,6 +27,8 @@ sources:
   - 180
   - 184
   access: full_text
+- id: grgic-2018-rest-strength
+  access: abstract_only
 conflicts:
 - with: conflicts.yaml#C-REST-STRENGTH
   status: open

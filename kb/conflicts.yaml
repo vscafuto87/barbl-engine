@@ -58,7 +58,9 @@ conflicts:
   summary:
     it: Per la forza ACSM (tier 1) non trova differenze tra recuperi sotto e sopra un minuto; Helms e Schoenfeld
       (tier 4) consigliano almeno 2-3 minuti sui multiarticolari pesanti perché il carico si mantenga tra
-      le serie, e la prescrizione strength usa 3-4 minuti sull'esercizio principale.
+      le serie, e la prescrizione strength usa 3-4 minuti sull'esercizio principale. La revisione sistematica di Grgic 2018
+      (tier 2, solo abstract) concilia le due letture. Per la forza bastano 60-120 secondi a chi non è allenato,
+      mentre chi è allenato ha bisogno di più di 2 minuti.
   resolution:
     it: 'Decisione provvisoria: recuperi lunghi sui multiarticolari pesanti (prescriptions/strength.yaml),
       perché servono a ripetere il carico pesante delle serie successive, che è ciò che conta per la forza
