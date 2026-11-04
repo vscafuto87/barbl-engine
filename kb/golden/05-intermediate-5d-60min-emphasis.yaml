@@ -1,0 +1,54 @@
+id: golden-05
+name:
+  it: Intermedio, 5 giorni da 60 minuti, massa, palestra completa, enfasi su glutei e femorali e braccia
+profile: golden/profile-5d-60min-emphasis.json
+expect:
+  split: push_pull_legs
+  sessions: 5
+  scheduleDays:
+  - mon
+  - tue
+  - thu
+  - fri
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      3: 2
+  initialLoad:
+    barbell_bench_press:
+      kg: 85
+      source: profile
+    barbell_row:
+      kg: null
+      source: manual
+    squat:
+      kg: null
+      source: trial_set
+  emphasisExercises:
+    legs:
+    - barbell_hip_thrust
+    pull:
+    - dumbbell_curl
+    upper:
+    - overhead_cable_triceps_extension
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      shoulders: 10
+      quadriceps: 10
+      hamstrings: 12
+      glutes: 14
+      biceps: 14
+      triceps: 14
+  validAgainst: contract/plan.schema.json
+origin:
+  it: Caso di Barbl, non del contratto dell'app. Lo stesso profilo del caso 04 in versione 1.2, con 60
+    minuti e l'enfasi su glutei e femorali e su braccia (in quest'ordine). Il template ppl_ul_5d ha un
+    posto per glutei e femorali (hip thrust in Gambe) e due per le braccia (curl in Pull, estensione
+    del gomito in Upper); con 3 serie complementari ciascuno le sedute passano a 16 e 18 serie (48 e 54
+    minuti), dentro i 60. Rispetto al caso 04 glutei, bicipiti e tricipiti salgono di 3 serie frazionarie
+    e i femorali di 1,5. A 45 minuti nessuno dei tre posti entrerebbe (sedute già a 13 e 15 serie).

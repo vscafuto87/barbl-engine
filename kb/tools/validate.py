@@ -470,7 +470,7 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
             session_sets[sess["id"]] = sets_in_session
         # Enfasi, come il motore: in ordine di profilo e di placement, uno slot entra solo se la seduta
         # resta entro la durata (M3); altrimenti si salta.
-        applied: dict[str, list[str]] = {}
+        applied: dict[str, list[str]] = {}  # seduta -> esercizi aggiunti per enfasi, in ordine
         for em_id in profile.get("emphasis", []):
             em = emphases.get(em_id)
             if not em:
@@ -486,17 +486,18 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
                 session_sets[pl["session"]] += sets
                 add_volume(pick, sets)
                 chosen.setdefault(pick["id"], {"role": pl["slot"]["role"], "reps": pr["roles"][pl["slot"]["role"]]["reps"]})
-                applied.setdefault(em_id, []).append(pl["session"])
+                applied.setdefault(pl["session"], []).append(pick["id"])
         for sid, sets_in_session in session_sets.items():
             minutes = sets_in_session * per_set
             if minutes > max_minutes:
                 r.error(where, f"{sid}: circa {minutes} minuti, oltre i {max_minutes} del profilo")
-        want_applied = exp.get("emphasisSessions")
+        want_applied = exp.get("emphasisExercises")
         if want_applied is not None:
-            got = {k: v for k, v in applied.items()}
             want = {k: list(v) for k, v in want_applied.items()}
-            if got != want:
-                r.error(where, f"sedute con l'enfasi {got} invece di {want}")
+            if applied != want:
+                r.error(where, f"esercizi aggiunti per enfasi {applied} invece di {want}")
+        elif applied:
+            r.error(where, f"esercizi aggiunti per enfasi {applied} senza emphasisExercises in expect")
         ws = exp.get("weeklySetsAtLeast", {})
         if ws:
             if ws.get("counting") != "fractional":
