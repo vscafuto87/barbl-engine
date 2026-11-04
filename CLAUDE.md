@@ -24,7 +24,7 @@ Motore dei piani di allenamento di Barbl e la sua knowledge base. `kb/` contiene
 ## Regole sulla KB che non si discutono
 
 - **Mai il testo delle fonti.** Le fonti con `use: internal` (libri e programmi acquistati) entrano solo come riferimento: titolo, pagina, file locale. Ogni frase della KB è scritta con parole nostre. Il validatore, con `--sources-md`, cerca sequenze di 8 parole copiate dai Markdown estratti.
-- **I PDF, i Markdown estratti e i dati strutturati dei programmi non entrano mai nel repository.** Restano in `~/Progetti/app-palestra/sources/` sul Mac.
+- **I PDF, i Markdown estratti e i dati strutturati dei programmi non entrano mai in questo repository.** I Markdown estratti stanno nel repository privato `vscafuto87/barbl-sources` (cartella `md/`, con i marcatori `<!-- p. N -->`): si clona accanto a questo, si legge e basta, e non si rende mai pubblico.
 - **Ogni numero ha un'origine.** Un valore di `kb/parameters/` o `kb/prescriptions/` cita i principi da cui viene; se nessuna fonte lo sostiene è un principio di tipo `design`, dichiarato come tale.
 - **Gerarchia delle fonti** per risolvere i conflitti (`tier`): 1 position stand e umbrella review, 2 meta-analisi e meta-regressioni, 3 RCT, 4 libri e programmi di autori evidence-based, 5 pratica dei coach e scelte di design. Un conflitto si registra in `kb/conflicts.yaml`, non si nasconde.
 - **Provvisorio finché non confermato.** Un principio è `confirmed` solo con almeno una fonte primaria letta nel testo completo (`access: full_text`) e la revisione di un coach (`reviewedBy`). Un gruppo di parametri ha `provisional: false` solo se tutti i suoi principi sono confermati. Un principio con un conflitto `open` non alimenta un parametro confermato.
@@ -42,7 +42,7 @@ Motore dei piani di allenamento di Barbl e la sua knowledge base. `kb/` contiene
 ## Comandi
 
 - Validazione della KB: `python3 kb/tools/validate.py` (richiede `pyyaml` e `jsonschema`: `pip install -r kb/requirements.txt`)
-- Controllo dei testi copiati: `python3 kb/tools/validate.py --sources-md ~/Progetti/app-palestra/sources/md`
+- Controllo dei testi copiati: `python3 kb/tools/validate.py --sources-md ../barbl-sources/md` (con `barbl-sources` clonato accanto a questo repository)
 - Test del motore: `cd engine && dart test`
 
 ## Modo di lavorare

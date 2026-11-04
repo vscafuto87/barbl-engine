@@ -7,7 +7,7 @@ d'oro. Con --sources-md cerca anche frasi copiate dai Markdown dei libri.
 
 Uso:
     python3 tools/validate.py
-    python3 tools/validate.py --sources-md ~/Progetti/app-palestra/sources/md
+    python3 tools/validate.py --sources-md ../../barbl-sources/md   (da kb/, con barbl-sources accanto al repository)
 """
 from __future__ import annotations
 
@@ -434,8 +434,13 @@ def check_copied_text(r: Report, md_dir: Path) -> None:
     def words(s: str) -> list[str]:
         return re.findall(r"[a-zà-ù0-9]+", s.lower())
 
+    files = sorted(md_dir.expanduser().glob("*.md"))
+    if not files:
+        # Un percorso sbagliato non deve passare in silenzio come «nessun testo copiato».
+        r.error("--sources-md", f"nessun Markdown in {md_dir}")
+        return
     grams: set[tuple[str, ...]] = set()
-    for f in sorted(md_dir.glob("*.md")):
+    for f in files:
         w = words(f.read_text(encoding="utf-8", errors="ignore"))
         grams.update(tuple(w[i:i + NGRAM]) for i in range(len(w) - NGRAM + 1))
 
