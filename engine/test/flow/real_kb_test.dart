@@ -64,6 +64,19 @@ Set<String> trialExercises(Map<String, Object?> p) {
   return out;
 }
 
+Set<String> askLoadExercises(Map<String, Object?> p) {
+  final out = <String>{};
+  for (final s in p['sessions']! as List) {
+    for (final b in (s as Map)['blocks'] as List) {
+      for (final e in (b as Map)['exercises'] as List) {
+        final m = e as Map;
+        if (m['askLoad'] == true) out.add(m['exerciseId'] as String);
+      }
+    }
+  }
+  return out;
+}
+
 void main() {
   setUpAll(() {
     final built = buildBundle(Directory('../kb'));
@@ -110,6 +123,24 @@ void main() {
       trialExercises(p),
       {'barbell_bench_press', 'military_press', 'squat'},
     );
+  });
+
+  test('piano 3.0: i quattro esercizi chiave hanno askLoad e nome {it, en}',
+      () {
+    final p = plan(profile());
+    expect(p['schemaVersion'], '3.0');
+    expect(
+      askLoadExercises(p),
+      {'barbell_bench_press', 'dumbbell_row', 'military_press', 'squat'},
+    );
+    for (final s in p['sessions']! as List) {
+      for (final b in (s as Map)['blocks'] as List) {
+        for (final e in (b as Map)['exercises'] as List) {
+          final name = (e as Map)['name'] as Map;
+          expect(name.keys, containsAll(['it', 'en']));
+        }
+      }
+    }
   });
 
   test('stesso profilo e KB ricostruita due volte danno lo stesso JSON', () {
