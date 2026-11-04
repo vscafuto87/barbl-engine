@@ -45,6 +45,25 @@
         }
       }
     },
+    "localizedName": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "it",
+        "en"
+      ],
+      "description": "Nome mostrato all'utente, in italiano e in inglese (entrambi obbligatori)",
+      "properties": {
+        "it": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
     "exercise": {
       "type": "object",
       "additionalProperties": false,
@@ -62,7 +81,7 @@
           "type": "string"
         },
         "name": {
-          "type": "string"
+          "$ref": "#/$defs/localizedName"
         },
         "equipment": {
           "enum": [
@@ -135,8 +154,27 @@
                 "profile",
                 "estimate",
                 "trial_set",
+                "manual",
                 "to_be_defined"
-              ]
+              ],
+              "description": "profile = dato dall'utente; estimate = calcolato dal motore; trial_set = la prima seduta propone una serie di prova; manual = il carico lo sceglie l'utente in seduta (kg nullo); to_be_defined = solo nella fixture"
+            }
+          },
+          "if": {
+            "properties": {
+              "source": {
+                "const": "manual"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "properties": {
+              "kg": {
+                "type": "null"
+              }
             }
           }
         },
@@ -154,6 +192,11 @@
         "toBeDefined": {
           "type": "boolean",
           "description": "true = segnaposto: il contenuto arriverà dal motore vero"
+        },
+        "askLoad": {
+          "type": "boolean",
+          "default": false,
+          "description": "true = l'onboarding chiede il carico noto di questo esercizio. Il motore e il piano fisso lo scrivono solo quando è vero; senza la chiave vale false"
         }
       }
     },
@@ -565,7 +608,7 @@
   },
   "properties": {
     "schemaVersion": {
-      "const": "2.0"
+      "const": "3.0"
     },
     "id": {
       "type": "string"

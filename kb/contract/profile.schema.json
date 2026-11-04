@@ -16,7 +16,10 @@
   ],
   "properties": {
     "schemaVersion": {
-      "const": "1.0"
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
     },
     "goal": {
       "enum": [
@@ -43,9 +46,17 @@
         "equipment": {
           "type": "array",
           "items": {
-            "type": "string"
+            "enum": [
+              "barbell",
+              "rack",
+              "bench",
+              "dumbbells",
+              "machines",
+              "cables",
+              "smith_machine"
+            ]
           },
-          "description": "Identificativi dell'attrezzatura disponibile, es. barbell, rack, cables"
+          "description": "Attrezzatura disponibile: uno o più dei sette valori dell'enum"
         },
         "barKg": {
           "type": "number",
