@@ -40,6 +40,9 @@ Map<String, Object?> _exercise(
   if (load.source == LoadSource.trialSet && !rules.contains(_trialRuleId)) {
     rules.add(_trialRuleId);
   }
+  if (pe.fromEmphasis && !rules.contains(emphasisRuleId)) {
+    rules.add(emphasisRuleId);
+  }
   return {
     'exerciseId': ex.id,
     'name': {'it': ex.nameIt, 'en': ex.nameEn},
