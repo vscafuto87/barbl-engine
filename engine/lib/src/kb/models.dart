@@ -24,6 +24,7 @@ class KbExercise {
     required this.secondaryMuscles,
     required this.stepKg,
     required this.whenLoadUnknown,
+    this.substitutes = const [],
   });
 
   factory KbExercise.fromJson(Map<String, Object?> json, String path) {
@@ -40,6 +41,7 @@ class KbExercise {
       secondaryMuscles: stringsOrEmpty(muscles, 'secondary', '$path.muscles'),
       stepKg: doubleOrNull(loading, 'stepKg', '$path.loading'),
       whenLoadUnknown: stringAt(loading, 'whenLoadUnknown', '$path.loading'),
+      substitutes: stringsOrEmpty(json, 'substitutes', path),
     );
   }
 
@@ -51,6 +53,10 @@ class KbExercise {
   final String pattern;
   final String primaryMuscle;
   final List<String> secondaryMuscles;
+
+  /// Esercizi che possono sostituirlo, in ordine di preferenza.
+  final List<String> substitutes;
+
   /// Passo di carico in kg; nullo per gli esercizi a corpo libero.
   final double? stepKg;
   final String whenLoadUnknown;

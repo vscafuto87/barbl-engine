@@ -22,11 +22,40 @@ const List<String> _weekDays = [
   'sun',
 ];
 
+/// Le alternative di [ex] per «Sostituisci»: i suoi sostituti nell'ordine
+/// della KB, solo se eseguibili con l'attrezzatura del profilo e non già
+/// presenti nella stessa seduta. Il carico non si converte (nessun rapporto
+/// tra esercizi ha ancora una fonte): `manual`, scelto dall'utente in seduta.
+List<Map<String, Object?>> _alternatives(
+  KbExercise ex,
+  Set<String> inSession,
+  Profile profile,
+  KnowledgeBase kb,
+) {
+  final out = <Map<String, Object?>>[];
+  for (final id in ex.substitutes) {
+    final alt = kb.exercises[id];
+    if (alt == null || id == ex.id || inSession.contains(id)) continue;
+    if (!alt.requires.every(profile.equipment.contains)) continue;
+    out.add({
+      'exerciseId': alt.id,
+      'name': {'it': alt.nameIt, 'en': alt.nameEn},
+      'equipment': alt.equipment,
+      'muscles': [alt.primaryMuscle, ...alt.secondaryMuscles],
+      if (alt.stepKg != null) 'stepKg': alt.stepKg,
+      'initialLoad': {'kg': null, 'source': LoadSource.manual.json},
+    });
+  }
+  return out;
+}
+
 Map<String, Object?> _exercise(
   PrescribedExercise pe,
   Map<String, InitialLoad> loads,
   List<String> everyExerciseRules,
   KnowledgeBase kb,
+  Set<String> inSession,
+  Profile profile,
 ) {
   final ex = pe.exercise;
   if (!kb.exercises.containsKey(ex.id)) {
@@ -57,14 +86,20 @@ Map<String, Object?> _exercise(
     if (ex.stepKg != null) 'stepKg': ex.stepKg,
     'rules': rules,
     if (pe.askLoad) 'askLoad': true,
+    ..._withAlternatives(_alternatives(ex, inSession, profile, kb)),
   };
 }
+
+Map<String, Object?> _withAlternatives(List<Map<String, Object?>> list) =>
+    list.isEmpty ? const {} : {'alternatives': list};
 
 Map<String, Object?> _block(
   PrescribedBlock block,
   Map<String, InitialLoad> loads,
   List<String> rules,
   KnowledgeBase kb,
+  Set<String> inSession,
+  Profile profile,
 ) {
   final isSuperset = block.type == 'superset';
   return {
@@ -72,7 +107,8 @@ Map<String, Object?> _block(
     if (isSuperset && block.label != null) 'label': block.label,
     if (isSuperset) 'restSeconds': block.restSeconds,
     'exercises': [
-      for (final pe in block.exercises) _exercise(pe, loads, rules, kb),
+      for (final pe in block.exercises)
+        _exercise(pe, loads, rules, kb, inSession, profile),
     ],
   };
 }
@@ -99,7 +135,11 @@ Map<String, Object?> assemblePlan({
         'focus': s.focus,
         'estimatedDurationMin': s.estimatedDurationMin,
         'blocks': [
-          for (final b in s.blocks) _block(b, loads, everyExerciseRules, kb),
+          for (final b in s.blocks)
+            _block(b, loads, everyExerciseRules, kb, {
+              for (final bb in s.blocks)
+                for (final e in bb.exercises) e.exercise.id,
+            }, profile),
         ],
       },
   ];
@@ -139,7 +179,8 @@ Map<String, Object?> assemblePlan({
 Set<String> _citedRules(List<Map<String, Object?>> sessions) => {
   for (final s in sessions)
     for (final b in s['blocks']! as List<Object?>)
-      for (final e in (b! as Map<String, Object?>)['exercises']! as List<Object?>)
+      for (final e
+          in (b! as Map<String, Object?>)['exercises']! as List<Object?>)
         for (final r in (e! as Map<String, Object?>)['rules']! as List<Object?>)
           r! as String,
 };
