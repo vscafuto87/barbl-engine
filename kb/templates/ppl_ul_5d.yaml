@@ -1,0 +1,240 @@
+id: ppl_ul_5d
+split: push_pull_legs
+daysPerWeek: 5
+goals:
+- muscle_gain
+- both
+defaultSchedule:
+  mon: upper
+  tue: lower
+  thu: push
+  fri: pull
+  sat: legs
+sessions:
+- id: push
+  name:
+    it: Push
+    en: Push
+  focus: upper_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: main
+      askLoad: true
+      candidates:
+      - barbell_bench_press
+      - dumbbell_bench_press
+      - machine_chest_press
+      - push_up
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: secondary
+      candidates:
+      - incline_dumbbell_press
+      - machine_chest_press
+      - push_up
+  - type: single
+    slots:
+    - pattern: vertical_push
+      role: secondary
+      candidates:
+      - seated_dumbbell_shoulder_press
+      - machine_shoulder_press
+      - military_press
+  - type: single
+    slots:
+    - pattern: elbow_extension
+      role: accessory
+      candidates:
+      - cable_triceps_pushdown
+      - dumbbell_overhead_triceps_extension
+      - barbell_skull_crusher
+- id: pull
+  name:
+    it: Pull
+    en: Pull
+  focus: upper_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: horizontal_pull
+      role: main
+      askLoad: true
+      candidates:
+      - barbell_row
+      - chest_supported_dumbbell_row
+      - seated_cable_row
+  - type: single
+    slots:
+    - pattern: vertical_pull
+      role: secondary
+      candidates:
+      - lat_pulldown
+      - dumbbell_row
+      - chest_supported_dumbbell_row
+  - type: single
+    slots:
+    - pattern: rear_delt_fly
+      role: accessory
+      candidates:
+      - cable_rear_delt_fly
+      - dumbbell_rear_delt_fly
+  - type: single
+    slots:
+    - pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - cable_curl
+      - barbell_curl
+      - dumbbell_curl
+- id: legs
+  name:
+    it: Gambe
+    en: Legs
+  focus: legs
+  blocks:
+  - type: single
+    slots:
+    - pattern: squat
+      role: main
+      askLoad: true
+      candidates:
+      - squat
+      - leg_press
+      - goblet_squat
+  - type: single
+    slots:
+    - pattern: hinge
+      role: secondary
+      candidates:
+      - romanian_deadlift
+      - dumbbell_romanian_deadlift
+  - type: single
+    slots:
+    - pattern: lunge
+      role: secondary
+      candidates:
+      - bulgarian_split_squat
+      - dumbbell_walking_lunge
+  - type: single
+    slots:
+    - pattern: calf_raise
+      role: accessory
+      candidates:
+      - standing_calf_raise
+      - dumbbell_calf_raise
+- id: upper
+  name:
+    it: Upper
+    en: Upper
+  focus: upper_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: secondary
+      candidates:
+      - machine_chest_press
+      - dumbbell_bench_press
+      - push_up
+  - type: single
+    slots:
+    - pattern: horizontal_pull
+      role: secondary
+      candidates:
+      - seated_cable_row
+      - chest_supported_dumbbell_row
+      - dumbbell_row
+  - type: single
+    slots:
+    - pattern: vertical_push
+      role: secondary
+      candidates:
+      - machine_shoulder_press
+      - military_press
+      - seated_dumbbell_shoulder_press
+  - type: single
+    slots:
+    - pattern: lateral_raise
+      role: accessory
+      candidates:
+      - cable_lateral_raise
+      - dumbbell_lateral_raise
+  - type: single
+    slots:
+    - pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - dumbbell_curl
+      - cable_curl
+      - barbell_curl
+- id: lower
+  name:
+    it: Lower
+    en: Lower
+  focus: legs
+  blocks:
+  - type: single
+    slots:
+    - pattern: squat
+      role: secondary
+      candidates:
+      - leg_press
+      - goblet_squat
+      - smith_machine_squat
+  - type: single
+    slots:
+    - pattern: hinge
+      role: secondary
+      candidates:
+      - dumbbell_romanian_deadlift
+      - romanian_deadlift
+  - type: single
+    slots:
+    - pattern: hip_extension
+      role: secondary
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+  - type: single
+    slots:
+    - pattern: knee_flexion
+      role: accessory
+      candidates:
+      - leg_curl
+      - romanian_deadlift
+      - dumbbell_romanian_deadlift
+  - type: single
+    slots:
+    - pattern: calf_raise
+      role: accessory
+      candidates:
+      - dumbbell_calf_raise
+      - standing_calf_raise
+principles:
+- P-SPLIT-PPL-UL-5D
+- P-FREQ-MIN-2
+- P-FREQ-HYP-NEUTRAL
+- P-PATTERNS
+- P-VOL-MIN-10
+- P-RECOVERY-48H
+- P-TIME-PER-SET
+structureSources:
+- id: nippard-essentials
+  note: 'versione 5x, pp. 20-24: ordine delle sedute nella settimana (upper, lower, riposo, spinta, trazione,
+    gambe, riposo)'
+notes:
+  it: 'Struttura scelta da Barbl (principio di design P-SPLIT-PPL-UL-5D); l''ordine delle sedute nella
+    settimana segue la versione a 5 giorni della fonte di struttura. Al massimo 15 serie per seduta (Push,
+    Pull e Gambe 13, Upper e Lower 15; circa 45 minuti con 3 minuti per serie): il template copre anche
+    le sedute da 45 minuti. Calendario lunedì, martedì, giovedì, venerdì, sabato: tra Lower (martedì)
+    e Gambe (sabato) passano 96 ore e tra Gambe e il Lower successivo 72, sopra le 48-72 ore di P-RECOVERY-48H
+    per gli arti inferiori; le sedute della parte alta sono separate da almeno 24 ore. Nella settimana
+    petto, dorso, quadricipiti, bicipiti, tricipiti, spalle, femorali e glutei raggiungono le 10 serie
+    frazionarie con due stimoli; i polpacci restano a 6 (C-CALVES-BAND): portarli a 10 richiederebbe sedute
+    oltre le 15 serie. Le spalle comprendono le alzate laterali e posteriori, perché il vocabolario dei
+    muscoli non distingue i capi del deltoide. Con la palestra a soli manubri il Lower ripete lo stacco
+    rumeno con manubri nello slot dei femorali, perché il catalogo non ha una flessione del ginocchio
+    senza macchine.'

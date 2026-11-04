@@ -132,11 +132,11 @@ void main() {
     expect(encoded, hasLength(3));
   });
 
-  test('giorni e durata non coperti', () {
-    expect(notCovered(profile(daysPerWeek: 5)).reason, NotCoveredReason.days);
+  test('obiettivo e durata non coperti', () {
+    // Il template a 5 giorni è solo per massa ed entrambi.
     expect(
       notCovered(profile(daysPerWeek: 5, goal: 'strength')).reason,
-      NotCoveredReason.days,
+      NotCoveredReason.goal,
     );
     expect(
       notCovered(profile(daysPerWeek: 3, sessionDurationMin: 45)).reason,

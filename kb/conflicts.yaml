@@ -40,9 +40,12 @@ conflicts:
   date: '2026-10-30'
   between:
   - templates/upper_lower_4d
+  - templates/ppl_ul_5d
   - P-VOL-MIN-10
   summary:
-    it: Nel template i polpacci hanno un solo esercizio da 3 serie a settimana, sotto le 10 del principio.
+    it: Nel template a 4 giorni i polpacci hanno un solo esercizio da 3 serie a settimana, sotto le 10 del
+      principio; in quello a 5 giorni due esercizi da 3 serie (6), perché con sedute di al massimo 15 serie
+      non c'è spazio per un terzo e un quarto.
   resolution:
     it: 'Da decidere con il coach: un secondo esercizio o un''eccezione dichiarata per i polpacci.'
 - id: C-REST-STRENGTH
