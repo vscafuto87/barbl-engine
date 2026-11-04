@@ -1,0 +1,174 @@
+id: full_body_3d
+split: full_body
+daysPerWeek: 3
+goals:
+- muscle_gain
+- both
+defaultSchedule:
+  mon: full_a
+  wed: full_b
+  fri: full_c
+sessions:
+- id: full_a
+  name:
+    it: Full body A
+    en: Full body A
+  focus: full_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: main
+      askLoad: true
+      candidates:
+      - barbell_bench_press
+      - dumbbell_bench_press
+      - machine_chest_press
+      - push_up
+  - type: single
+    slots:
+    - pattern: horizontal_pull
+      role: secondary
+      askLoad: true
+      candidates:
+      - dumbbell_row
+      - seated_cable_row
+      - barbell_row
+  - type: single
+    slots:
+    - pattern: squat
+      role: main
+      askLoad: true
+      candidates:
+      - squat
+      - leg_press
+      - goblet_squat
+  - type: single
+    slots:
+    - pattern: hinge
+      role: secondary
+      candidates:
+      - romanian_deadlift
+      - dumbbell_romanian_deadlift
+  - type: single
+    slots:
+    - pattern: elbow_extension
+      role: accessory
+      candidates:
+      - cable_triceps_pushdown
+      - barbell_skull_crusher
+      - dumbbell_overhead_triceps_extension
+- id: full_b
+  name:
+    it: Full body B
+    en: Full body B
+  focus: full_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: secondary
+      candidates:
+      - incline_dumbbell_press
+      - machine_chest_press
+      - push_up
+  - type: single
+    slots:
+    - pattern: vertical_pull
+      role: secondary
+      candidates:
+      - lat_pulldown
+      - chest_supported_dumbbell_row
+      - dumbbell_row
+  - type: single
+    slots:
+    - pattern: vertical_push
+      role: secondary
+      candidates:
+      - seated_dumbbell_shoulder_press
+      - machine_shoulder_press
+      - military_press
+  - type: single
+    slots:
+    - pattern: lunge
+      role: secondary
+      candidates:
+      - bulgarian_split_squat
+      - dumbbell_walking_lunge
+  - type: single
+    slots:
+    - pattern: knee_flexion
+      role: accessory
+      candidates:
+      - leg_curl
+      - dumbbell_romanian_deadlift
+  - type: single
+    slots:
+    - pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - dumbbell_curl
+      - cable_curl
+      - barbell_curl
+- id: full_c
+  name:
+    it: Full body C
+    en: Full body C
+  focus: full_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: horizontal_pull
+      role: main
+      askLoad: true
+      candidates:
+      - barbell_row
+      - chest_supported_dumbbell_row
+      - seated_cable_row
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: secondary
+      candidates:
+      - machine_chest_press
+      - dumbbell_bench_press
+      - push_up
+  - type: single
+    slots:
+    - pattern: squat
+      role: secondary
+      candidates:
+      - leg_press
+      - smith_machine_squat
+      - goblet_squat
+  - type: single
+    slots:
+    - pattern: elbow_extension
+      role: accessory
+      candidates:
+      - overhead_cable_triceps_extension
+      - dumbbell_overhead_triceps_extension
+      - barbell_skull_crusher
+  - type: single
+    slots:
+    - pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - cable_curl
+      - barbell_curl
+      - dumbbell_curl
+principles:
+- P-SPLIT-FULL-BODY-3D
+- P-FREQ-MIN-2
+- P-FREQ-HYP-NEUTRAL
+- P-PATTERNS
+- P-VOL-MIN-10
+- P-RECOVERY-48H
+notes:
+  it: 'Struttura scelta da Barbl (principio di design P-SPLIT-FULL-BODY-3D), non ripresa da una fonte.
+    Ogni seduta ha una spinta, una trazione e una gamba; nella settimana petto, dorso, quadricipiti,
+    bicipiti e tricipiti superano le 10 serie frazionarie e hanno tre stimoli. Lunedì, mercoledì e
+    venerdì lasciano almeno 48 ore tra le sedute. Al massimo 18 serie per seduta (circa 54 minuti): il
+    template copre le durate da 60 minuti in su; con 45 minuti il profilo resta non coperto per durata.
+    I polpacci non hanno uno slot (vedi C-CALVES-BAND). Con la palestra a soli manubri alcuni slot ripetono lo stesso esercizio in sedute
+    diverse, perché il catalogo ne ha pochi per pattern.'

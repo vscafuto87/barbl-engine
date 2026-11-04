@@ -9,7 +9,10 @@ Map<String, Object?> minimalBundle({
   'kbCommit': 'abc123',
   'muscles': <String, Object?>{},
   'setWeights': {'primary': 1, 'secondary': 0.5},
-  'patterns': <String, Object?>{},
+  'patterns': [
+    {'id': 'squat', 'region': 'lower'},
+    {'id': 'horizontal_push', 'region': 'upper'},
+  ],
   'equipment': <String, Object?>{},
   'sources': {
     's1': {

@@ -46,7 +46,7 @@ void main() {
   });
 
   test('un profilo non coperto esce con 2 e il motivo su stderr', () {
-    final profile = writeProfile((j) => {...j, 'daysPerWeek': 3});
+    final profile = writeProfile((j) => {...j, 'daysPerWeek': 5});
     final r = runCli(['generate', '--profile', profile, '--kb', '../kb']);
     expect(r.code, 2);
     expect(r.out, isEmpty);

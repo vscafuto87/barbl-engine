@@ -1,7 +1,12 @@
 import 'reader.dart';
 
 /// Focus di seduta che la generazione sa trattare (colonna di recupero).
-const Set<String> supportedFocuses = {'upper_body', 'legs'};
+const Set<String> supportedFocuses = {'upper_body', 'legs', 'full_body'};
+
+/// Regioni dei pattern (`kb/vocab/patterns.yaml`) che scelgono la colonna di
+/// recupero di una seduta full body.
+const String regionUpper = 'upper';
+const String regionLower = 'lower';
 
 /// Esercizio della KB.
 class KbExercise {

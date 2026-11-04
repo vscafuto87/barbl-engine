@@ -126,8 +126,27 @@ void main() {
       test('un focus non gestito è rifiutato', () {
         final json = minimalBundle();
         final tpl = (json['templates'] as Map)['t1'] as Map;
+        ((tpl['sessions'] as List).first as Map)['focus'] = 'neck';
+        expect(() => KnowledgeBase.fromJson(json), rejects('neck'));
+      });
+
+      test('un focus full_body è accettato se i pattern hanno una regione', () {
+        final json = minimalBundle();
+        final tpl = (json['templates'] as Map)['t1'] as Map;
         ((tpl['sessions'] as List).first as Map)['focus'] = 'full_body';
-        expect(() => KnowledgeBase.fromJson(json), rejects('full_body'));
+        final kb = KnowledgeBase.fromJson(json);
+        expect(kb.patternRegions, {
+          'squat': 'lower',
+          'horizontal_push': 'upper',
+        });
+      });
+
+      test('full_body con un pattern senza regione è rifiutato', () {
+        final json = minimalBundle();
+        json['patterns'] = <Object?>[];
+        final tpl = (json['templates'] as Map)['t1'] as Map;
+        ((tpl['sessions'] as List).first as Map)['focus'] = 'full_body';
+        expect(() => KnowledgeBase.fromJson(json), rejects('squat'));
       });
 
       test('un defaultSchedule verso una seduta inesistente è rifiutato', () {

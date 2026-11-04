@@ -90,6 +90,34 @@ void main() {
         isEmpty);
   });
 
+  test('il caso 02 (3 giorni, full body) genera un piano valido', () {
+    final json =
+        jsonDecode(File('../kb/golden/profile-3d.json').readAsStringSync())
+            as Map<String, Object?>;
+    final p = plan(json);
+    final sessions = (p['sessions']! as List).cast<Map>();
+    expect(sessions, hasLength(3));
+    expect(sessions.map((s) => s['focus']), everyElement('full_body'));
+    expect(p['split'], 'full_body');
+  });
+
+  test('3 giorni con home e dumbbells: nessuno slot vuoto', () {
+    final base =
+        jsonDecode(File('../kb/golden/profile-3d.json').readAsStringSync())
+            as Map<String, Object?>;
+    for (final gym in [
+      ('home', ['barbell', 'rack', 'bench', 'dumbbells']),
+      ('dumbbells', ['dumbbells', 'bench']),
+    ]) {
+      final json = jsonDecode(jsonEncode(base)) as Map<String, Object?>;
+      final jsonGym = json['gym']! as Map<String, Object?>;
+      jsonGym['type'] = gym.$1;
+      jsonGym['equipment'] = gym.$2;
+      final p = plan(json);
+      expect((p['sessions']! as List), hasLength(3));
+    }
+  });
+
   test('full, home e dumbbells danno tre piani validi e diversi', () {
     final full = plan(profile());
     final home = plan(profile(
@@ -105,10 +133,17 @@ void main() {
   });
 
   test('giorni, obiettivo e durata non coperti', () {
-    expect(notCovered(profile(daysPerWeek: 3)).reason, NotCoveredReason.days);
     expect(notCovered(profile(daysPerWeek: 5)).reason, NotCoveredReason.days);
     expect(notCovered(profile(goal: 'strength')).reason,
         NotCoveredReason.goal);
+    expect(
+      notCovered(profile(daysPerWeek: 3, goal: 'strength')).reason,
+      NotCoveredReason.goal,
+    );
+    expect(
+      notCovered(profile(daysPerWeek: 3, sessionDurationMin: 45)).reason,
+      NotCoveredReason.duration,
+    );
     expect(notCovered(profile(sessionDurationMin: 45)).reason,
         NotCoveredReason.duration);
   });

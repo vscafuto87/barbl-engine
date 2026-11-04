@@ -16,6 +16,7 @@ class KnowledgeBase {
     required this.rationales,
     required this.principles,
     required this.sources,
+    required this.patternRegions,
   });
 
   /// Formato del pacchetto che questa versione del motore sa leggere.
@@ -57,6 +58,14 @@ class KnowledgeBase {
     final rationaleMap = collection('rationales', KbRationale.fromJson);
     final ruleIds = rationaleMap.keys.toList()..sort();
 
+    final patternList = listAt(json, 'patterns', root);
+    final patternRegions = <String, String>{};
+    for (var i = 0; i < patternList.length; i++) {
+      final path = 'patterns[$i]';
+      final p = asMap(patternList[i], path);
+      patternRegions[stringAt(p, 'id', path)] = stringAt(p, 'region', path);
+    }
+
     final kb = KnowledgeBase._(
       rulesVersion: stringAt(json, 'rulesVersion', root),
       kbCommit: stringOrNull(json, 'kbCommit', root),
@@ -69,6 +78,7 @@ class KnowledgeBase {
       rationales: [for (final id in ruleIds) rationaleMap[id]!],
       principles: collection('principles', KbPrinciple.fromJson),
       sources: collection('sources', KbSource.fromJson),
+      patternRegions: patternRegions,
     );
     _checkInvariants(kb);
     return kb;
@@ -95,6 +105,24 @@ class KnowledgeBase {
           );
         }
         for (final b in s.blocks) {
+          if (s.focus == 'full_body') {
+            // La colonna di recupero di una seduta full body viene dalla
+            // regione del pattern di ogni esercizio che può essere scelto.
+            for (final slot in b.slots) {
+              for (final id in slot.candidates) {
+                final ex = kb.exercises[id];
+                if (ex == null) continue;
+                final region = kb.patternRegions[ex.pattern];
+                if (region != regionUpper && region != regionLower) {
+                  throw KbFormatException(
+                    'templates.${t.id}.${s.id}: il pattern ${ex.pattern} di '
+                    '$id non ha una regione ($regionUpper o $regionLower) '
+                    'in patterns',
+                  );
+                }
+              }
+            }
+          }
           if (b.type == 'superset' && b.label == null) {
             throw KbFormatException(
               'templates.${t.id}.${s.id}: un blocco superset senza label',
@@ -149,4 +177,7 @@ class KnowledgeBase {
   final List<KbRationale> rationales;
   final Map<String, KbPrinciple> principles;
   final Map<String, KbSource> sources;
+
+  /// Regione (`upper` o `lower`) di ogni pattern di movimento.
+  final Map<String, String> patternRegions;
 }

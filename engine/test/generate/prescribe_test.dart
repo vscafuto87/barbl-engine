@@ -220,8 +220,63 @@ void main() {
   test('focus sconosciuto (invariante del template): StateError', () {
     final kb = _kb();
     expect(
-      () => prescribe([_session(kb, focus: 'full_body')], testProfile(), kb),
+      () => prescribe([_session(kb, focus: 'neck')], testProfile(), kb),
       throwsA(isA<StateError>()),
     );
+  });
+
+  test('seduta full_body: il recupero segue la regione del pattern', () {
+    final kb = KnowledgeBase.fromJson(
+      minimalBundle(
+        exercises: {
+          'squat': {
+            'id': 'squat',
+            'name': {'it': 'Squat', 'en': 'Squat'},
+            'equipment': 'barbell',
+            'requires': ['barbell', 'rack'],
+            'pattern': 'squat',
+            'muscles': {'primary': 'quadriceps'},
+            'loading': {'stepKg': 2.5, 'whenLoadUnknown': 'trial_set'},
+          },
+          'bench': {
+            'id': 'bench',
+            'name': {'it': 'Panca', 'en': 'Bench'},
+            'equipment': 'barbell',
+            'requires': ['barbell', 'bench'],
+            'pattern': 'horizontal_push',
+            'muscles': {'primary': 'chest'},
+            'loading': {'stepKg': 2.5, 'whenLoadUnknown': 'trial_set'},
+          },
+        },
+      ),
+    );
+    ChosenSlot slot(String pattern, String id) => ChosenSlot(
+      KbSlot(
+        pattern: pattern,
+        role: 'main',
+        candidates: [id],
+        askLoad: false,
+        repsOverride: null,
+      ),
+      kb.exercises[id]!,
+    );
+    final chosen = ChosenSession(
+      KbSession(
+        id: 'full_a',
+        nameIt: 'Full A',
+        focus: 'full_body',
+        blocks: const [],
+      ),
+      [
+        ChosenBlock('single', null, [slot('horizontal_push', 'bench')]),
+        ChosenBlock('single', null, [slot('squat', 'squat')]),
+      ],
+    );
+    final sessions = _ok(prescribe([chosen], testProfile(), kb));
+    final rests = [
+      for (final b in sessions.single.blocks)
+        for (final e in b.exercises) e.restSeconds,
+    ];
+    expect(rests, [150, 180]);
   });
 }

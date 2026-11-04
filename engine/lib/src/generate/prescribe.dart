@@ -60,6 +60,25 @@ class PrescribedSession {
   final List<PrescribedBlock> blocks;
 }
 
+/// Colonna di recupero: per `upper_body` e `legs` la decide la seduta; per
+/// `full_body` la decide la regione del pattern dell'esercizio scelto
+/// (`kb/vocab/patterns.yaml`).
+int _restFor(String focus, KbRole role, KbExercise exercise, KnowledgeBase kb) {
+  switch (focus) {
+    case 'upper_body':
+      return role.restUpper;
+    case 'legs':
+      return role.restLower;
+    case 'full_body':
+      final region = kb.patternRegions[exercise.pattern];
+      if (region == regionUpper) return role.restUpper;
+      if (region == regionLower) return role.restLower;
+      // `KnowledgeBase.fromJson` lo esclude per costruzione.
+      throw StateError('pattern ${exercise.pattern} senza regione');
+  }
+  throw StateError('unsupported focus: $focus');
+}
+
 /// Passo 3: serie, ripetizioni e recuperi dalla prescrizione dell'obiettivo,
 /// poi controllo della durata (limite incluso). Il motore non toglie serie.
 Result<List<PrescribedSession>> prescribe(
@@ -113,7 +132,7 @@ Result<List<PrescribedSession>> prescribe(
         final override = slot.repsOverride;
         final int? rest = isSuperset
             ? null
-            : (focus == 'upper_body' ? role.restUpper : role.restLower);
+            : _restFor(focus, role, chosenSlot.exercise, kb);
         totalSets += role.sets;
         exercises.add(
           PrescribedExercise(

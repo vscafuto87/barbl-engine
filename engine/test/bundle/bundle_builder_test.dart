@@ -29,9 +29,9 @@ void main() {
     final result = buildBundle(Directory('../kb'));
     expect(result.errors, isEmpty);
     final kb = KnowledgeBase.fromJson(result.json);
-    expect(kb.rulesVersion, '0.3.0');
+    expect(kb.rulesVersion, '0.4.0');
     expect(kb.exercises, hasLength(35));
-    expect(kb.templates, hasLength(1));
+    expect(kb.templates, hasLength(2));
     expect(kb.parameterGroups, hasLength(10));
     expect(kb.rationales, hasLength(11));
   });
@@ -68,13 +68,13 @@ void main() {
     );
   });
 
-  test('un focus full_body è un errore', () {
+  test('un focus sconosciuto è un errore', () {
     final dir = kbCopy();
     final f = File('${dir.path}/templates/upper_lower_4d.yaml');
     f.writeAsStringSync(
       f.readAsStringSync().replaceFirst(
         'focus: upper_body',
-        'focus: full_body',
+        'focus: neck',
       ),
     );
     final result = buildBundle(dir);
