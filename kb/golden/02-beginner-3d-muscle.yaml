@@ -1,0 +1,42 @@
+id: golden-02
+name:
+  it: Principiante, 3 giorni da 60 minuti, massa, palestra completa
+profile: golden/profile-3d.json
+expect:
+  split: full_body
+  sessions: 3
+  scheduleDays:
+  - mon
+  - wed
+  - fri
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      3: 2
+  initialLoad:
+    barbell_bench_press:
+      kg: null
+      source: trial_set
+    squat:
+      kg: null
+      source: trial_set
+    dumbbell_row:
+      kg: null
+      source: manual
+    barbell_row:
+      kg: null
+      source: manual
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      quadriceps: 10
+      biceps: 10
+      triceps: 10
+  validAgainst: contract/plan.schema.json
+origin:
+  it: Caso di Barbl, non del contratto dell'app. Profilo 1.1 senza carichi noti. Gli esercizi con
+    askLoad che ammettono la serie di prova (panca e squat) la ricevono, gli altri hanno il carico
+    da digitare a mano.
