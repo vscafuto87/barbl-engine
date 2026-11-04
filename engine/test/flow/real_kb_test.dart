@@ -19,9 +19,9 @@ Map<String, Object?> profile({
   bool noKnownLoads = false,
   bool noGym = false,
 }) {
-  final json =
-      jsonDecode(File('../kb/golden/profile-example.json').readAsStringSync())
-          as Map<String, Object?>;
+  final json = jsonDecode(
+    File('../kb/golden/profile-example.json').readAsStringSync(),
+  ) as Map<String, Object?>;
   final gym = json['gym']! as Map<String, Object?>;
   if (gymType != null) gym['type'] = gymType;
   if (equipment != null) gym['equipment'] = equipment;
@@ -86,14 +86,16 @@ void main() {
 
   test('i casi d\'oro passano', () {
     final cases = runEval(Directory('../kb'));
-    expect(cases.where((c) => !c.passed).map((c) => '${c.id} ${c.failures}'),
-        isEmpty);
+    expect(
+      cases.where((c) => !c.passed).map((c) => '${c.id} ${c.failures}'),
+      isEmpty,
+    );
   });
 
   test('il caso 02 (3 giorni, full body) genera un piano valido', () {
-    final json =
-        jsonDecode(File('../kb/golden/profile-3d.json').readAsStringSync())
-            as Map<String, Object?>;
+    final json = jsonDecode(
+      File('../kb/golden/profile-3d.json').readAsStringSync(),
+    ) as Map<String, Object?>;
     final p = plan(json);
     final sessions = (p['sessions']! as List).cast<Map>();
     expect(sessions, hasLength(3));
@@ -105,9 +107,9 @@ void main() {
   });
 
   test('3 giorni con home e dumbbells: nessuno slot vuoto', () {
-    final base =
-        jsonDecode(File('../kb/golden/profile-3d.json').readAsStringSync())
-            as Map<String, Object?>;
+    final base = jsonDecode(
+      File('../kb/golden/profile-3d.json').readAsStringSync(),
+    ) as Map<String, Object?>;
     for (final gym in [
       ('home', ['barbell', 'rack', 'bench', 'dumbbells']),
       ('dumbbells', ['dumbbells', 'bench']),
@@ -123,14 +125,15 @@ void main() {
 
   test('full, home e dumbbells danno tre piani validi e diversi', () {
     final full = plan(profile());
-    final home = plan(profile(
-      gymType: 'home',
-      equipment: ['barbell', 'rack', 'bench', 'dumbbells'],
-    ));
-    final dumbbells = plan(profile(
-      gymType: 'dumbbells',
-      equipment: ['dumbbells', 'bench'],
-    ));
+    final home = plan(
+      profile(
+        gymType: 'home',
+        equipment: ['barbell', 'rack', 'bench', 'dumbbells'],
+      ),
+    );
+    final dumbbells = plan(
+      profile(gymType: 'dumbbells', equipment: ['dumbbells', 'bench']),
+    );
     final encoded = {jsonEncode(full), jsonEncode(home), jsonEncode(dumbbells)};
     expect(encoded, hasLength(3));
   });
@@ -145,40 +148,51 @@ void main() {
       notCovered(profile(daysPerWeek: 3, sessionDurationMin: 45)).reason,
       NotCoveredReason.duration,
     );
-    expect(notCovered(profile(sessionDurationMin: 45)).reason,
-        NotCoveredReason.duration);
+    expect(
+      notCovered(profile(sessionDurationMin: 45)).reason,
+      NotCoveredReason.duration,
+    );
   });
 
   test('5 giorni a 45 minuti: piano completo in ogni palestra', () {
     for (final goal in ['muscle_gain', 'both']) {
       for (final gym in [
-        ('full', <String>[
-          'barbell',
-          'rack',
-          'bench',
-          'dumbbells',
-          'machines',
-          'cables',
-          'smith_machine',
-        ]),
+        (
+          'full',
+          <String>[
+            'barbell',
+            'rack',
+            'bench',
+            'dumbbells',
+            'machines',
+            'cables',
+            'smith_machine',
+          ],
+        ),
         ('home', ['barbell', 'rack', 'bench', 'dumbbells']),
         ('dumbbells', ['dumbbells', 'bench']),
       ]) {
-        final p = plan(profile(
-          daysPerWeek: 5,
-          goal: goal,
-          sessionDurationMin: 45,
-          gymType: gym.$1,
-          equipment: gym.$2,
-        ));
+        final p = plan(
+          profile(
+            daysPerWeek: 5,
+            goal: goal,
+            sessionDurationMin: 45,
+            gymType: gym.$1,
+            equipment: gym.$2,
+          ),
+        );
         expect(p['split'], 'push_pull_legs');
         final sessions = (p['sessions']! as List).cast<Map>();
         expect(sessions, hasLength(5));
         for (final s in sessions) {
-          expect(s['estimatedDurationMin'] as num, lessThanOrEqualTo(45),
-              reason: '${gym.$1} ${s['id']}');
+          expect(
+            s['estimatedDurationMin'] as num,
+            lessThanOrEqualTo(45),
+            reason: '${gym.$1} ${s['id']}',
+          );
           final exercises = [
-            for (final b in s['blocks'] as List) ...(b as Map)['exercises'] as List,
+            for (final b in s['blocks'] as List)
+              ...(b as Map)['exercises'] as List,
           ];
           expect(exercises, isNotEmpty, reason: '${gym.$1} ${s['id']}');
         }
@@ -190,11 +204,9 @@ void main() {
   test('3 e 4 giorni a 45 minuti: ancora rifiuto per durata', () {
     for (final days in [3, 4]) {
       for (final goal in ['muscle_gain', 'both']) {
-        final r = notCovered(profile(
-          daysPerWeek: days,
-          goal: goal,
-          sessionDurationMin: 45,
-        ));
+        final r = notCovered(
+          profile(daysPerWeek: days, goal: goal, sessionDurationMin: 45),
+        );
         expect(r.reason, NotCoveredReason.duration, reason: '$days $goal');
       }
     }
@@ -203,49 +215,60 @@ void main() {
   test('forza a 45 e 60 minuti: rifiuto per durata, non un\'eccezione', () {
     for (final days in [3, 4]) {
       for (final minutes in [45, 60]) {
-        final r = notCovered(profile(
-          daysPerWeek: days,
-          goal: 'strength',
-          sessionDurationMin: minutes,
-        ));
+        final r = notCovered(
+          profile(
+            daysPerWeek: days,
+            goal: 'strength',
+            sessionDurationMin: minutes,
+          ),
+        );
         expect(r.reason, NotCoveredReason.duration, reason: '$days $minutes');
         expect(r.detail, isNotEmpty);
       }
     }
   });
 
-  test('forza a 3 e 4 giorni da 75 minuti: piano completo in ogni palestra',
-      () {
-    for (final days in [3, 4]) {
-      for (final gym in [
-        ('full', <String>[
-          'barbell',
-          'rack',
-          'bench',
-          'dumbbells',
-          'machines',
-          'cables',
-          'smith_machine',
-        ]),
-        ('home', ['barbell', 'rack', 'bench', 'dumbbells']),
-        ('dumbbells', ['dumbbells', 'bench']),
-      ]) {
-        final p = plan(profile(
-          daysPerWeek: days,
-          goal: 'strength',
-          sessionDurationMin: 75,
-          gymType: gym.$1,
-          equipment: gym.$2,
-        ));
-        expect(p['goal'], 'strength');
-        expect((p['sessions']! as List), hasLength(days));
-        for (final s in p['sessions']! as List) {
-          expect((s as Map)['estimatedDurationMin'] as num,
-              lessThanOrEqualTo(75));
+  test(
+    'forza a 3 e 4 giorni da 75 minuti: piano completo in ogni palestra',
+    () {
+      for (final days in [3, 4]) {
+        for (final gym in [
+          (
+            'full',
+            <String>[
+              'barbell',
+              'rack',
+              'bench',
+              'dumbbells',
+              'machines',
+              'cables',
+              'smith_machine',
+            ],
+          ),
+          ('home', ['barbell', 'rack', 'bench', 'dumbbells']),
+          ('dumbbells', ['dumbbells', 'bench']),
+        ]) {
+          final p = plan(
+            profile(
+              daysPerWeek: days,
+              goal: 'strength',
+              sessionDurationMin: 75,
+              gymType: gym.$1,
+              equipment: gym.$2,
+            ),
+          );
+          expect(p['goal'], 'strength');
+          expect((p['sessions']! as List), hasLength(days));
+          for (final s in p['sessions']! as List) {
+            expect(
+              (s as Map)['estimatedDurationMin'] as num,
+              lessThanOrEqualTo(75),
+            );
+          }
         }
       }
-    }
-  });
+    },
+  );
 
   test('forza: il principale ha ripetizioni più basse della massa', () {
     int benchRepsMin(Map<String, Object?> p) {
@@ -262,8 +285,7 @@ void main() {
       throw StateError('panca assente');
     }
 
-    final strength =
-        plan(profile(goal: 'strength', sessionDurationMin: 75));
+    final strength = plan(profile(goal: 'strength', sessionDurationMin: 75));
     final muscle = plan(profile(sessionDurationMin: 75));
     expect(benchRepsMin(strength), lessThan(benchRepsMin(muscle)));
   });
@@ -278,15 +300,14 @@ void main() {
   });
 
   test('forza senza carichi noti: la prova resta ammessa per gli askLoad', () {
-    final p = plan(profile(
-      goal: 'strength',
-      sessionDurationMin: 75,
-      noKnownLoads: true,
-    ));
-    expect(
-      trialExercises(p),
-      {'barbell_bench_press', 'military_press', 'squat'},
+    final p = plan(
+      profile(goal: 'strength', sessionDurationMin: 75, noKnownLoads: true),
     );
+    expect(trialExercises(p), {
+      'barbell_bench_press',
+      'military_press',
+      'squat',
+    });
   });
 
   test('un piano senza enfasi non ha la motivazione EMPHASIS', () {
@@ -304,29 +325,34 @@ void main() {
 
   test('senza carichi noti la prova è solo degli slot che la ammettono', () {
     final p = plan(profile(noKnownLoads: true));
-    expect(
-      trialExercises(p),
-      {'barbell_bench_press', 'military_press', 'squat'},
-    );
+    expect(trialExercises(p), {
+      'barbell_bench_press',
+      'military_press',
+      'squat',
+    });
   });
 
-  test('piano 3.0: i quattro esercizi chiave hanno askLoad e nome {it, en}',
-      () {
-    final p = plan(profile());
-    expect(p['schemaVersion'], '3.0');
-    expect(
-      askLoadExercises(p),
-      {'barbell_bench_press', 'dumbbell_row', 'military_press', 'squat'},
-    );
-    for (final s in p['sessions']! as List) {
-      for (final b in (s as Map)['blocks'] as List) {
-        for (final e in (b as Map)['exercises'] as List) {
-          final name = (e as Map)['name'] as Map;
-          expect(name.keys, containsAll(['it', 'en']));
+  test(
+    'piano 3.0: i quattro esercizi chiave hanno askLoad e nome {it, en}',
+    () {
+      final p = plan(profile());
+      expect(p['schemaVersion'], '3.0');
+      expect(askLoadExercises(p), {
+        'barbell_bench_press',
+        'dumbbell_row',
+        'military_press',
+        'squat',
+      });
+      for (final s in p['sessions']! as List) {
+        for (final b in (s as Map)['blocks'] as List) {
+          for (final e in (b as Map)['exercises'] as List) {
+            final name = (e as Map)['name'] as Map;
+            expect(name.keys, containsAll(['it', 'en']));
+          }
         }
       }
-    }
-  });
+    },
+  );
 
   test('stesso profilo e KB ricostruita due volte danno lo stesso JSON', () {
     String once() {
@@ -347,10 +373,64 @@ void main() {
     );
   });
 
+  test(
+    'le alternative sono sostituti della KB, eseguibili e fuori dalla seduta',
+    () {
+      var total = 0;
+      for (final gym in [
+        (
+          'full',
+          <String>[
+            'barbell',
+            'rack',
+            'bench',
+            'dumbbells',
+            'machines',
+            'cables',
+            'smith_machine',
+          ],
+        ),
+        ('home', ['barbell', 'rack', 'bench', 'dumbbells']),
+        ('dumbbells', ['dumbbells', 'bench']),
+      ]) {
+        final p = plan(profile(gymType: gym.$1, equipment: gym.$2));
+        for (final s in p['sessions']! as List) {
+          final inSession = <String>{
+            for (final b in (s as Map)['blocks'] as List)
+              for (final e in (b as Map)['exercises'] as List)
+                (e as Map)['exerciseId'] as String,
+          };
+          for (final b in s['blocks'] as List) {
+            for (final e in (b as Map)['exercises'] as List) {
+              final m = e as Map;
+              final alts = (m['alternatives'] as List?) ?? const [];
+              final allowed = kb.exercises[m['exerciseId']]!.substitutes;
+              for (final a in alts.cast<Map>()) {
+                total++;
+                final id = a['exerciseId'] as String;
+                expect(allowed, contains(id), reason: '${m['exerciseId']}');
+                expect(inSession, isNot(contains(id)));
+                expect(
+                  kb.exercises[id]!.requires.every(gym.$2.contains),
+                  isTrue,
+                  reason: '$id in ${gym.$1}',
+                );
+                expect(a['initialLoad'], {'kg': null, 'source': 'manual'});
+              }
+            }
+          }
+        }
+      }
+      expect(total, greaterThan(0));
+    },
+  );
+
   test('engineVersion coincide con la versione di pubspec.yaml', () {
     final text = File('pubspec.yaml').readAsStringSync();
-    final match = RegExp(r'^version:\s*(\S+)\s*$', multiLine: true)
-        .firstMatch(text);
+    final match = RegExp(
+      r'^version:\s*(\S+)\s*$',
+      multiLine: true,
+    ).firstMatch(text);
     expect(match, isNotNull);
     expect(engineVersion, match!.group(1));
   });

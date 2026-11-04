@@ -197,6 +197,13 @@
           "type": "boolean",
           "default": false,
           "description": "true = l'onboarding chiede il carico noto di questo esercizio. Il motore e il piano fisso lo scrivono solo quando è vero; senza la chiave vale false"
+        },
+        "alternatives": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/alternative"
+          },
+          "description": "Facoltativo, vale lista vuota se manca: gli esercizi che «Sostituisci» propone per questo slot, in ordine di preferenza, ciascuno con il carico già convertito (`initialLoad`). Il motore li scrive dagli esercizi sostitutivi della sua knowledge base, solo se eseguibili con l'attrezzatura della palestra e non già presenti nella stessa seduta."
         }
       }
     },
@@ -605,6 +612,89 @@
             },
             "source": {
               "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "alternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exerciseId",
+        "name",
+        "equipment",
+        "initialLoad"
+      ],
+      "description": "Un esercizio con cui si può sostituire quello dello slot, già adattato alla palestra dell'utente. Sets, ripetizioni, RIR e recupero sono quelli dell'esercizio dello slot: l'alternativa porta solo ciò che cambia.",
+      "properties": {
+        "exerciseId": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/$defs/localizedName"
+        },
+        "equipment": {
+          "enum": [
+            "barbell",
+            "dumbbell",
+            "machine",
+            "cable",
+            "smith_machine",
+            "bodyweight",
+            "other"
+          ],
+          "description": "Attrezzo con cui si esegue l'esercizio. barbell = bilanciere con dischi caricati a mano (l'app mostra i dischi per lato)"
+        },
+        "muscles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stepKg": {
+          "type": "number"
+        },
+        "initialLoad": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kg",
+            "source"
+          ],
+          "properties": {
+            "kg": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "source": {
+              "enum": [
+                "profile",
+                "estimate",
+                "trial_set",
+                "manual",
+                "to_be_defined"
+              ],
+              "description": "profile = dato dall'utente; estimate = calcolato dal motore; trial_set = la prima seduta propone una serie di prova; manual = il carico lo sceglie l'utente in seduta (kg nullo); to_be_defined = solo nella fixture"
+            }
+          },
+          "if": {
+            "properties": {
+              "source": {
+                "const": "manual"
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "then": {
+            "properties": {
+              "kg": {
+                "type": "null"
+              }
             }
           }
         }
