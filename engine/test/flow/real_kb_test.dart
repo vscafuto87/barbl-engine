@@ -99,6 +99,9 @@ void main() {
     expect(sessions, hasLength(3));
     expect(sessions.map((s) => s['focus']), everyElement('full_body'));
     expect(p['split'], 'full_body');
+    final move = (p['parameters']! as Map)['move']! as Map;
+    expect((move['minRestHours']! as Map)['fullBody'], 48);
+    expect(move['shiftsWeek'], false);
   });
 
   test('3 giorni con home e dumbbells: nessuno slot vuoto', () {

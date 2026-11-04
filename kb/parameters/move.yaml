@@ -5,6 +5,7 @@ values:
   minRestHours:
     lower: 48
     upper: 24
+    fullBody: 48
   shiftsWeek: false
 provisional: true
 principles:
