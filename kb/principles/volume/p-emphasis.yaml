@@ -1,0 +1,19 @@
+id: P-EMPHASIS
+topic: volume
+statement:
+  it: 'Per un distretto scelto dalla persona si aggiunge un esercizio complementare in coda ad al massimo
+    due sedute della settimana, con le serie del ruolo complementare, e solo se la seduta resta nella
+    durata indicata. Quali sedute e quali esercizi è una scelta di design di Barbl; che più serie
+    settimanali diano più crescita a quel muscolo viene da P-VOL-DOSE-HYP.'
+  en: 'For a body area the person picks, one accessory exercise is appended to at most two sessions of
+    the week, with the sets of the accessory role, and only if the session stays within the chosen
+    duration. Which sessions and which exercises is a Barbl design choice; that more weekly sets give
+    that muscle more growth comes from P-VOL-DOSE-HYP.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- emphasis
+sources:
+- id: barbl-design
+  access: full_text

@@ -3,8 +3,10 @@ Map<String, Object?> minimalBundle({
   Map<String, Object?>? templates,
   Map<String, Object?>? exercises,
   Map<String, Object?>? prescriptions,
+  Map<String, Object?>? emphasis,
 }) => {
   'bundleFormat': 1,
+  if (emphasis != null) 'emphasis': emphasis,
   'rulesVersion': '9.9.9',
   'kbCommit': 'abc123',
   'muscles': <String, Object?>{},
@@ -129,5 +131,45 @@ Map<String, Object?> minimalBundle({
       'exampleValues': {'stepKg': 2.5},
       'sourcesFrom': 'parameters/progression',
     },
+    if (emphasis != null) 'EMPHASIS': emphasisRationale(),
   },
+};
+
+/// Motivazione `EMPHASIS` per la KB minima.
+Map<String, Object?> emphasisRationale() => {
+  'ruleId': 'EMPHASIS',
+  'key': 'emphasis.added',
+  'level': 'session',
+  'text': {'it': 'Enfasi', 'en': 'Emphasis'},
+  'principles': ['P-1'],
+};
+
+/// Un'enfasi per la KB minima: uno slot per seduta di [sessions] nel
+/// template [template].
+Map<String, Object?> testEmphasis({
+  String id = 'glutes_hamstrings',
+  String template = 't1',
+  List<String> sessions = const ['lower_a'],
+  String pattern = 'squat',
+  String role = 'main',
+  List<String> candidates = const ['squat'],
+}) => {
+  'id': id,
+  'name': {'it': id, 'en': id},
+  'muscles': ['quadriceps'],
+  'placements': {
+    template: [
+      for (final s in sessions)
+        {
+          'session': s,
+          'slot': {
+            'pattern': pattern,
+            'role': role,
+            'candidates': candidates,
+          },
+        },
+    ],
+  },
+  'principles': ['P-1'],
+  'provisional': true,
 };

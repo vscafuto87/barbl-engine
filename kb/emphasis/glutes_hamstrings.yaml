@@ -1,0 +1,58 @@
+id: glutes_hamstrings
+name:
+  it: Glutei e femorali
+  en: Glutes and hamstrings
+muscles:
+- glutes
+- hamstrings
+placements:
+  full_body_3d:
+  - session: full_a
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+  - session: full_c
+    slot:
+      pattern: knee_flexion
+      role: accessory
+      candidates:
+      - leg_curl
+      - romanian_deadlift
+      - dumbbell_romanian_deadlift
+  upper_lower_4d:
+  - session: lower_a
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+  - session: lower_b
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+  ppl_ul_5d:
+  - session: legs
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+principles:
+- P-EMPHASIS
+- P-VOL-DOSE-HYP
+provisional: true
+notes:
+  it: 'Hip thrust nelle sedute che non lo hanno già (Full A, Lower A, Lower B, Gambe) e una flessione
+    del ginocchio in Full C, l''unica seduta full body senza femorali come primario. Nel template a 5
+    giorni c''è un solo posto: il Lower ha già hip thrust, flessione del ginocchio e stacco rumeno, e
+    un secondo esercizio uguale nella stessa seduta non aggiunge varietà. Senza macchine la flessione
+    del ginocchio diventa lo stacco rumeno (bilanciere a casa, manubri nella palestra a soli manubri),
+    come negli slot dei template.'

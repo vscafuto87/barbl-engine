@@ -1,0 +1,70 @@
+id: arms
+name:
+  it: Braccia
+  en: Arms
+muscles:
+- biceps
+- triceps
+placements:
+  full_body_3d:
+  - session: full_a
+    slot:
+      pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - cable_curl
+      - dumbbell_curl
+      - barbell_curl
+  - session: full_b
+    slot:
+      pattern: elbow_extension
+      role: accessory
+      candidates:
+      - cable_triceps_pushdown
+      - dumbbell_overhead_triceps_extension
+      - barbell_skull_crusher
+  upper_lower_4d:
+  - session: upper_a
+    slot:
+      pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - cable_curl
+      - barbell_curl
+      - dumbbell_curl
+  - session: upper_b
+    slot:
+      pattern: elbow_extension
+      role: accessory
+      candidates:
+      - overhead_cable_triceps_extension
+      - barbell_skull_crusher
+      - dumbbell_overhead_triceps_extension
+  ppl_ul_5d:
+  - session: pull
+    slot:
+      pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - dumbbell_curl
+      - barbell_curl
+      - cable_curl
+  - session: upper
+    slot:
+      pattern: elbow_extension
+      role: accessory
+      candidates:
+      - overhead_cable_triceps_extension
+      - barbell_skull_crusher
+      - dumbbell_overhead_triceps_extension
+principles:
+- P-EMPHASIS
+- P-VOL-DOSE-HYP
+provisional: true
+notes:
+  it: 'Un curl e un''estensione del gomito, ciascuno in una seduta diversa. A 3 giorni il curl va in Full A
+    (che ha solo i tricipiti) e l''estensione in Full B (che ha solo il curl). A 4 giorni le due sedute
+    Upper hanno già un superset di braccia: l''esercizio aggiunto ha un ordine dei candidati diverso da
+    quello del superset, così a palestra completa e a casa è un esercizio diverso; con i soli manubri il
+    catalogo ha un solo curl e una sola estensione e l''esercizio si ripete. A 5 giorni il curl va in
+    Pull e l''estensione in Upper, che non ha un isolamento dei tricipiti.'

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://barbl/kb/emphasis.schema.json",
+  "title": "Enfasi",
+  "description": "Lavoro mirato su un distretto scelto nel profilo (emphasis): per ogni template, le sedute a cui si aggiunge in coda uno slot. Un template senza voce non cambia.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "muscles",
+    "placements",
+    "principles",
+    "provisional"
+  ],
+  "properties": {
+    "id": {
+      "enum": [
+        "glutes_hamstrings",
+        "shoulders",
+        "arms"
+      ]
+    },
+    "name": {
+      "type": "object",
+      "required": [
+        "it",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "it": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "muscles": {
+      "description": "Muscoli del distretto (vocab/muscles.yaml): il primario del primo candidato di ogni slot è tra questi.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "placements": {
+      "description": "Per id di template: al massimo due sedute, uno slot per seduta.",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 2,
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "session",
+            "slot"
+          ],
+          "properties": {
+            "session": {
+              "type": "string"
+            },
+            "slot": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "pattern",
+                "role",
+                "candidates"
+              ],
+              "properties": {
+                "pattern": {
+                  "type": "string"
+                },
+                "role": {
+                  "const": "accessory"
+                },
+                "candidates": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "principles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "provisional": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "object",
+      "required": [
+        "it"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "it": {
+          "type": "string",
+          "minLength": 1
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -84,11 +84,29 @@ Map<String, Object?> assemblePlan({
   required Map<String, InitialLoad> loads,
   required KnowledgeBase kb,
 }) {
-  final rationales = buildRationales(kb);
   final everyExerciseRules = [
     for (final r in kb.rationales)
       if (r.everyExercise) r.ruleId,
   ]..sort();
+  final sessionsJson = <Map<String, Object?>>[
+    for (final s in sessions)
+      {
+        'id': s.id,
+        'name': s.nameIt,
+        'focus': s.focus,
+        'estimatedDurationMin': s.estimatedDurationMin,
+        'blocks': [
+          for (final b in s.blocks) _block(b, loads, everyExerciseRules, kb),
+        ],
+      },
+  ];
+  // La motivazione dell'enfasi entra solo nei piani che la usano, così un
+  // piano senza enfasi resta identico a quello di una KB senza enfasi.
+  final cited = _citedRules(sessionsJson);
+  final rationales = [
+    for (final r in buildRationales(kb))
+      if (r['ruleId'] != emphasisRuleId || cited.contains(emphasisRuleId)) r,
+  ];
 
   final plan = <String, Object?>{
     'schemaVersion': _planSchemaVersion,
@@ -105,18 +123,7 @@ Map<String, Object?> assemblePlan({
         if (template.defaultSchedule.containsKey(day))
           {'day': day, 'sessionId': template.defaultSchedule[day]},
     ],
-    'sessions': [
-      for (final s in sessions)
-        {
-          'id': s.id,
-          'name': s.nameIt,
-          'focus': s.focus,
-          'estimatedDurationMin': s.estimatedDurationMin,
-          'blocks': [
-            for (final b in s.blocks) _block(b, loads, everyExerciseRules, kb),
-          ],
-        },
-    ],
+    'sessions': sessionsJson,
     'rationales': rationales,
     'parameters': buildParameters(kb),
   };
@@ -124,6 +131,15 @@ Map<String, Object?> assemblePlan({
   _checkRules(plan, rationales);
   return plan;
 }
+
+/// Regole citate dagli esercizi delle sedute.
+Set<String> _citedRules(List<Map<String, Object?>> sessions) => {
+  for (final s in sessions)
+    for (final b in s['blocks']! as List<Object?>)
+      for (final e in (b! as Map<String, Object?>)['exercises']! as List<Object?>)
+        for (final r in (e! as Map<String, Object?>)['rules']! as List<Object?>)
+          r! as String,
+};
 
 /// Ogni regola citata da un esercizio ha la sua motivazione nel piano.
 void _checkRules(

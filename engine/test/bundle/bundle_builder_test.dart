@@ -33,7 +33,46 @@ void main() {
     expect(kb.exercises, hasLength(41));
     expect(kb.templates, hasLength(3));
     expect(kb.parameterGroups, hasLength(10));
-    expect(kb.rationales, hasLength(11));
+    expect(kb.rationales, hasLength(12));
+    expect(kb.emphases.keys, ['arms', 'glutes_hamstrings', 'shoulders']);
+    for (final em in kb.emphases.values) {
+      expect(em.placements.keys,
+          containsAll(['full_body_3d', 'upper_lower_4d', 'ppl_ul_5d']));
+    }
+  });
+
+  test('un\'enfasi verso una seduta inesistente è un errore con file', () {
+    final dir = kbCopy();
+    final f = File('${dir.path}/emphasis/arms.yaml');
+    final text = f.readAsStringSync();
+    expect(text.contains('session: pull'), isTrue);
+    f.writeAsStringSync(text.replaceFirst('session: pull', 'session: ghost'));
+    final result = buildBundle(dir);
+    expect(
+      result.errors.where(
+        (e) => e.contains('emphasis/arms.yaml') && e.contains('ghost'),
+      ),
+      isNotEmpty,
+    );
+  });
+
+  test('un\'enfasi con un candidato inesistente è un errore', () {
+    final dir = kbCopy();
+    final f = File('${dir.path}/emphasis/shoulders.yaml');
+    f.writeAsStringSync(
+      f.readAsStringSync().replaceFirst(
+        '- cable_lateral_raise',
+        '- nonexistent_ex',
+      ),
+    );
+    final result = buildBundle(dir);
+    expect(
+      result.errors.where(
+        (e) => e.contains('emphasis/shoulders.yaml') &&
+            e.contains('nonexistent_ex'),
+      ),
+      isNotEmpty,
+    );
   });
 
   test('due costruzioni danno gli stessi byte', () {
