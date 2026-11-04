@@ -47,7 +47,7 @@ Motore dei piani di allenamento di Barbl e la sua knowledge base. `kb/` contiene
 
 ## Modo di lavorare
 
-- **Mai commit diretti su `main`.** Ogni lavoro va su un ramo (`feature/…`, `kb/…`, `fix/…`, `docs/…`) e arriva su `main` con una pull request approvata da Vincenzo. Non fare il merge da solo.
+- **Mai commit diretti su `main`.** Ogni lavoro va su un ramo (`feature/…`, `kb/…`, `fix/…`, `docs/…`) e arriva su `main` con una pull request. Dal 4 novembre 2026 Vincenzo autorizza Claude a unire le pull request (merge commit) quando la CI (`validate-kb` ed `engine`) è verde, non ci sono commenti di revisione aperti e Vincenzo l'ha chiesto o la pull request è di Claude su un suo incarico; mai con la CI rossa o in corso, mai con `--force`, mai su un ramo di altri senza richiesta. I tag di rilascio restano da confermare con Vincenzo.
 - Prima di dichiarare finito: CI verde (`validate-kb` ed `engine`) e, per la KB, `python3 kb/tools/validate.py` senza errori.
 - Una pull request per tema (una ricerca, un gruppo di esercizi, un template, una parte del motore).
 - Commit e testi in italiano.
