@@ -6,6 +6,7 @@ Profile testProfile({
   int daysPerWeek = 4,
   Set<String> equipment = const {'barbell', 'rack', 'bench'},
   int sessionDurationMin = 60,
+  List<String> emphasis = const [],
 }) => Profile(
   goal: goal,
   gymType: 'full',
@@ -16,6 +17,7 @@ Profile testProfile({
   sessionDurationMin: sessionDurationMin,
   experience: 'over_2_years',
   knownLoads: const {},
+  emphasis: emphasis,
 );
 
 /// Profilo JSON del contratto, valido per la KB minima.
@@ -25,8 +27,9 @@ Map<String, Object?> testProfileJson({
   List<String> equipment = const ['barbell', 'rack', 'bench'],
   int sessionDurationMin = 60,
   List<Map<String, Object?>> knownLoads = const [],
+  List<String>? emphasis,
 }) => {
-  'schemaVersion': '1.0',
+  'schemaVersion': emphasis == null ? '1.0' : '1.2',
   'goal': goal,
   'gym': {
     'type': 'full',
@@ -38,4 +41,5 @@ Map<String, Object?> testProfileJson({
   'sessionDurationMin': sessionDurationMin,
   'experience': 'over_2_years',
   'knownLoads': knownLoads,
+  if (emphasis != null) 'emphasis': emphasis,
 };

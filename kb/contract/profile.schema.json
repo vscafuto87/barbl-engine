@@ -18,7 +18,8 @@
     "schemaVersion": {
       "enum": [
         "1.0",
-        "1.1"
+        "1.1",
+        "1.2"
       ]
     },
     "goal": {
@@ -128,6 +129,19 @@
           }
         }
       }
+    },
+    "emphasis": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "glutes_hamstrings",
+          "shoulders",
+          "arms"
+        ]
+      },
+      "uniqueItems": true,
+      "maxItems": 2,
+      "description": "Facoltativo: fino a due distretti da privilegiare. Assente equivale a lista vuota. Ammesso con ogni schemaVersion; il modello scrive 1.2 solo quando non è vuoto."
     }
   }
 }

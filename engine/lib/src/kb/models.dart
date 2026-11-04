@@ -8,6 +8,9 @@ const Set<String> supportedFocuses = {'upper_body', 'legs', 'full_body'};
 const String regionUpper = 'upper';
 const String regionLower = 'lower';
 
+/// Regola che il motore cita negli esercizi aggiunti per enfasi.
+const String emphasisRuleId = 'EMPHASIS';
+
 /// Esercizio della KB.
 class KbExercise {
   const KbExercise({
@@ -180,6 +183,58 @@ class KbTemplate {
   final List<String> goals;
   final Map<String, String> defaultSchedule;
   final List<KbSession> sessions;
+}
+
+/// Posto di un'enfasi in un template: la seduta e lo slot da aggiungere in
+/// coda.
+class KbEmphasisPlacement {
+  const KbEmphasisPlacement({required this.session, required this.slot});
+
+  factory KbEmphasisPlacement.fromJson(Map<String, Object?> json, String path) {
+    return KbEmphasisPlacement(
+      session: stringAt(json, 'session', path),
+      slot: KbSlot.fromJson(mapAt(json, 'slot', path), '$path.slot'),
+    );
+  }
+
+  final String session;
+  final KbSlot slot;
+}
+
+/// Lavoro mirato su un distretto (`emphasis` del profilo): per id di template
+/// i posti, nell'ordine della KB. Un template senza voce non cambia.
+class KbEmphasis {
+  const KbEmphasis({
+    required this.id,
+    required this.muscles,
+    required this.placements,
+  });
+
+  factory KbEmphasis.fromJson(Map<String, Object?> json, String path) {
+    final raw = mapAt(json, 'placements', path);
+    final placements = <String, List<KbEmphasisPlacement>>{};
+    for (final e in raw.entries) {
+      final tpath = '$path.placements.${e.key}';
+      final list = asList(e.value, tpath);
+      placements[e.key] = [
+        for (var i = 0; i < list.length; i++)
+          KbEmphasisPlacement.fromJson(asMap(list[i], '$tpath[$i]'), '$tpath[$i]'),
+      ];
+    }
+    return KbEmphasis(
+      id: stringAt(json, 'id', path),
+      muscles: stringsAt(json, 'muscles', path),
+      placements: placements,
+    );
+  }
+
+  final String id;
+
+  /// Muscoli del distretto.
+  final List<String> muscles;
+
+  /// Id di template -> posti.
+  final Map<String, List<KbEmphasisPlacement>> placements;
 }
 
 /// Prescrizione di un ruolo: serie, ripetizioni e recuperi.

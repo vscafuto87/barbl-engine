@@ -7,6 +7,7 @@ import 'package:yaml/yaml.dart';
 import '../generate/generate_plan.dart';
 import '../generate/result.dart';
 import '../kb/knowledge_base.dart';
+import '../kb/models.dart' show emphasisRuleId;
 import 'bundle_builder.dart';
 
 /// Esito di un caso d'oro.
@@ -269,6 +270,58 @@ void _checkWeeklySets(
   }
 }
 
+/// Esercizi aggiunti per enfasi (con la regola `EMPHASIS`), per seduta e in
+/// ordine: devono coincidere con `expect.emphasisExercises`; senza la chiave
+/// il piano non ne deve avere.
+void _checkEmphasisExercises(
+  Map<String, Object?> plan,
+  Map<String, Object?> expect,
+  List<String> failures,
+) {
+  final actual = <String, List<String>>{};
+  for (final s in plan['sessions'] as List) {
+    final session = s as Map;
+    for (final b in session['blocks'] as List) {
+      for (final e in (b as Map)['exercises'] as List) {
+        final m = e as Map;
+        if ((m['rules'] as List).contains(emphasisRuleId)) {
+          actual
+              .putIfAbsent(session['id'] as String, () => <String>[])
+              .add(m['exerciseId'] as String);
+        }
+      }
+    }
+  }
+  final raw = expect['emphasisExercises'];
+  if (raw == null) {
+    if (actual.isNotEmpty) {
+      failures.add('emphasisExercises: atteso nessuno, ottenuto $actual');
+    }
+    return;
+  }
+  if (raw is! Map) {
+    failures.add('expect.emphasisExercises: forma non valida');
+    return;
+  }
+  final wanted = <String, List<String>>{};
+  for (final e in raw.entries) {
+    final list = e.value;
+    if (list is! List) {
+      failures.add('expect.emphasisExercises.${e.key}: forma non valida');
+      return;
+    }
+    wanted[e.key.toString()] = [for (final x in list) x.toString()];
+  }
+  final sessions = {...actual.keys, ...wanted.keys}.toList()..sort();
+  for (final id in sessions) {
+    final a = (actual[id] ?? const <String>[]).join(',');
+    final w = (wanted[id] ?? const <String>[]).join(',');
+    if (a != w) {
+      failures.add('emphasisExercises.$id: atteso [$w], ottenuto [$a]');
+    }
+  }
+}
+
 const Set<String> _knownKeys = {
   'split',
   'sessions',
@@ -276,6 +329,7 @@ const Set<String> _knownKeys = {
   'mesocycle',
   'initialLoad',
   'weeklySetsAtLeast',
+  'emphasisExercises',
   'validAgainst',
 };
 
@@ -321,6 +375,7 @@ EvalCase _runCase(File file, Directory kbDir, KnowledgeBase kb) {
     _checkMesocycle(plan, expectRaw, failures);
     _checkInitialLoad(plan, expectRaw, failures);
     _checkWeeklySets(plan, expectRaw, kb, failures);
+    _checkEmphasisExercises(plan, expectRaw, failures);
     final schemaPath = expectRaw['validAgainst'];
     if (schemaPath is String) {
       final schemaFile = File('${kbDir.path}/$schemaPath');

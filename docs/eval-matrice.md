@@ -8,6 +8,8 @@
 
 Il motore non cambia: la matrice misura, non corregge.
 
+In più c'è la **matrice dell'enfasi** (432 profili): stessi giorni, durate, obiettivi e palestre, un solo livello (`6_months_2_years`, l'enfasi non dipende dai carichi noti) e quattro varianti di `emphasis` (profilo `1.2`): `glutes_hamstrings`, `shoulders`, `arms` e la coppia `glutes_hamstrings` + `arms`. La variante «nessuna» è la matrice di base.
+
 ## Cosa verifica
 
 Per ogni profilo, `generatePlan` non lancia e dà o un rifiuto `NotCovered` (motivo di `NotCoveredReason`, dettaglio non vuoto) o un piano che:
@@ -21,6 +23,12 @@ Per ogni profilo, `generatePlan` non lancia e dà o un rifiuto `NotCovered` (mot
 7. per gli obiettivi `muscle_gain` e `both`, raggiunge per petto, dorso, quadricipiti, bicipiti e tricipiti la soglia di serie frazionarie settimanali di `parameters/belowBand` (`bandMin`, alimentata da `P-VOL-MIN-10`); a 5 giorni anche per spalle, femorali e glutei (`_extraVolumeMusclesByDays`); i deficit noti sono in `_knownDeficits` (oggi i polpacci, `C-CALVES-BAND`). Per `strength` la soglia non si controlla: è dell'ipertrofia, per la forza il volume utile è molto più basso (`P-VOL-DOSE-STR`) e il principale a 3 serie porta petto, dorso e quadricipiti a 9 (`C-STRENGTH-VOLUME`);
 8. propone la serie di prova solo se le ripetizioni minime dell'esercizio più il RIR più alto delle settimane di carico restano entro `maxRepsPlusRir` di `parameters/trialLoad`;
 9. è identico, come JSON, generandolo due volte dallo stesso profilo.
+
+Per i profili con enfasi valgono le stesse proprietà, più:
+
+10. la copertura è la stessa del profilo senza enfasi (stesso esito, stesso motivo di rifiuto);
+11. le serie frazionarie settimanali di ogni muscolo del distretto (`muscles` di `kb/emphasis/<id>.yaml`) non sono sotto quelle del piano senza enfasi;
+12. in ogni seduta gli esercizi con la regola `EMPHASIS` non superano i posti delle enfasi del profilo, e un posto non applicato si spiega con la durata: la seduta, con le serie di uno slot complementare in più, supererebbe `sessionDurationMin`.
 
 Un test a parte confronta la copertura con la mappa esplicita `_expectedCoverage` (giorni, obiettivo, durata → `covered` o motivo) e stampa la tabella. Se la KB cambia la copertura, il test fallisce finché la mappa non si aggiorna di proposito.
 
@@ -46,6 +54,18 @@ Uguale per ogni palestra e livello (nessun rifiuto per attrezzatura: i template 
 
 Totali (324 profili): 216 `covered`, 72 `duration`, 36 `goal`. Nessun `days` (dalla KB 0.6.0 c'è il template a 5 giorni `ppl_ul_5d`, solo per massa ed entrambi) e nessun `equipment`. Il 5 giorni copre anche i 45 minuti perché le sue sedute hanno al massimo 15 serie; 3 e 4 giorni a 45 minuti restano non coperti per durata, per scelta: in sedute da 15 serie non c'è spazio per il volume minimo con tre o quattro sedute.
 
+## Conteggi dell'enfasi
+
+Il test `conteggi dell'enfasi` stampa e confronta con `_expectedEmphasis` i posti applicati sul totale dei posti per template e durata (profili coperti, tutte le palestre e gli obiettivi coperti, quattro varianti):
+
+| Template | 45 min | 60 min | 75 min | 90 min |
+| --- | --- | --- | --- | --- |
+| `full_body_3d` | non coperto | 42/60 | 81/90 | 90/90 |
+| `upper_lower_4d` | non coperto | 24/60 | 72/90 | 90/90 |
+| `ppl_ul_5d` | 0/48 | 48/48 | 48/48 | 48/48 |
+
+Dei 288 profili coperti con enfasi, 219 hanno tutti i posti applicati, 27 alcuni e 42 nessuno, sempre per durata: i 24 a 5 giorni da 45 minuti (sedute già a 13 e 15 serie), i 12 a 4 giorni da 60 minuti con spalle o braccia (le sedute Upper hanno 19 serie) e i 6 di forza a 4 giorni da 75 minuti con spalle o braccia (Upper a 18 serie da 4 minuti). Nella palestra a soli manubri ogni posto ha un esercizio disponibile.
+
 ## Osservazioni sul volume (fuori dalle proprietà controllate)
 
 Calcolate sui piani generati (serie frazionarie settimanali), non fanno fallire il test:
@@ -58,4 +78,4 @@ Calcolate sui piani generati (serie frazionarie settimanali), non fanno fallire 
 
 ## Casi `skip`
 
-Nessuno: i 324 profili rispettano le proprietà (verificato dalla CI).
+Nessuno: i 324 profili e i 432 con enfasi rispettano le proprietà (verificato dalla CI).

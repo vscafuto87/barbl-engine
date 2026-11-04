@@ -1,6 +1,7 @@
 import '../contract/profile.dart';
 import '../kb/knowledge_base.dart';
 import '../kb/models.dart';
+import 'apply_emphasis.dart';
 import 'assemble_plan.dart';
 import 'assign_loads.dart';
 import 'choose_exercises.dart';
@@ -26,7 +27,17 @@ GenerationResult generatePlan(
   if (chosen is Rejected<List<ChosenSession>>) return chosen.reason;
   final chosenSessions = (chosen as Ok<List<ChosenSession>>).value;
 
-  final prescribed = prescribe(chosenSessions, profile, kb);
+  final prescription = selectPrescription(profile, kb);
+  if (prescription is Rejected<KbPrescription>) return prescription.reason;
+  final withEmphasis = applyEmphasis(
+    chosenSessions,
+    selected,
+    profile,
+    (prescription as Ok<KbPrescription>).value,
+    kb,
+  );
+
+  final prescribed = prescribe(withEmphasis, profile, kb);
   if (prescribed is Rejected<List<PrescribedSession>>) return prescribed.reason;
   final sessions = (prescribed as Ok<List<PrescribedSession>>).value;
 

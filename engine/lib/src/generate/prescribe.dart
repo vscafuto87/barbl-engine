@@ -16,6 +16,7 @@ class PrescribedExercise {
     required this.warmup,
     required this.rirFollowsMesocycle,
     required this.askLoad,
+    this.fromEmphasis = false,
   });
 
   final KbExercise exercise;
@@ -29,6 +30,9 @@ class PrescribedExercise {
   final bool warmup;
   final bool rirFollowsMesocycle;
   final bool askLoad;
+
+  /// Vero per gli esercizi aggiunti dall'enfasi del profilo.
+  final bool fromEmphasis;
 }
 
 /// Blocco con la prescrizione applicata.
@@ -79,6 +83,25 @@ int _restFor(String focus, KbRole role, KbExercise exercise, KnowledgeBase kb) {
   throw StateError('unsupported focus: $focus');
 }
 
+/// La prima prescrizione (per `id`) che vale per l'obiettivo del profilo.
+Result<KbPrescription> selectPrescription(Profile profile, KnowledgeBase kb) {
+  final ordered = [...kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id));
+  for (final p in ordered) {
+    if (p.appliesTo.contains(profile.goal)) return Ok(p);
+  }
+  return Rejected(
+    NotCovered(
+      NotCoveredReason.goal,
+      'no prescription for goal=${profile.goal}',
+    ),
+  );
+}
+
+/// Durata stimata di una seduta con [totalSets] serie: è la stima con cui
+/// [prescribe] controlla il limite del profilo (limite incluso).
+int estimatedMinutes(int totalSets, KbPrescription prescription) =>
+    totalSets * prescription.minutesPerSet;
+
 /// Passo 3: serie, ripetizioni e recuperi dalla prescrizione dell'obiettivo,
 /// poi controllo della durata (limite incluso). Il motore non toglie serie.
 Result<List<PrescribedSession>> prescribe(
@@ -86,22 +109,9 @@ Result<List<PrescribedSession>> prescribe(
   Profile profile,
   KnowledgeBase kb,
 ) {
-  final ordered = [...kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id));
-  KbPrescription? prescription;
-  for (final p in ordered) {
-    if (p.appliesTo.contains(profile.goal)) {
-      prescription = p;
-      break;
-    }
-  }
-  if (prescription == null) {
-    return Rejected(
-      NotCovered(
-        NotCoveredReason.goal,
-        'no prescription for goal=${profile.goal}',
-      ),
-    );
-  }
+  final selected = selectPrescription(profile, kb);
+  if (selected is Rejected<KbPrescription>) return Rejected(selected.reason);
+  final prescription = (selected as Ok<KbPrescription>).value;
 
   final sessions = <PrescribedSession>[];
   for (final cs in chosen) {
@@ -145,6 +155,7 @@ Result<List<PrescribedSession>> prescribe(
             warmup: role.warmup,
             rirFollowsMesocycle: role.rirFollowsMesocycle,
             askLoad: slot.askLoad,
+            fromEmphasis: chosenSlot.fromEmphasis,
           ),
         );
       }
@@ -157,7 +168,7 @@ Result<List<PrescribedSession>> prescribe(
         ),
       );
     }
-    final minutes = totalSets * prescription.minutesPerSet;
+    final minutes = estimatedMinutes(totalSets, prescription);
     if (minutes > profile.sessionDurationMin) {
       return Rejected(
         NotCovered(

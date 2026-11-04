@@ -69,6 +69,36 @@ void main() {
   bool mentions(EvalCase c, String word) =>
       c.failures.any((m) => m.contains(word));
 
+  test('il caso d\'oro 05 (enfasi) passa sulla KB vera', () {
+    final c = runEval(Directory('../kb')).firstWhere((c) => c.id == 'golden-05');
+    expect(c.failures, isEmpty);
+  });
+
+  test('emphasisExercises sbagliato o mancante fa fallire', () {
+    EvalCase run05(String Function(String) edit) {
+      final tmp = Directory.systemTemp.createTempSync('eval_copy');
+      addTearDown(() => tmp.deleteSync(recursive: true));
+      copyDir(Directory('../kb'), tmp);
+      final f = File(
+        '${tmp.path}/golden/05-intermediate-5d-60min-emphasis.yaml',
+      );
+      f.writeAsStringSync(edit(f.readAsStringSync()));
+      return runEval(tmp).firstWhere((c) => c.id == 'golden-05');
+    }
+
+    final wrong = run05(
+      (t) => replaceOnce(t, '- dumbbell_curl', '- barbell_curl'),
+    );
+    expect(wrong.passed, isFalse);
+    expect(mentions(wrong, 'emphasisExercises.pull'), isTrue);
+
+    final missing = run05(
+      (t) => replaceSection(t, '  emphasisExercises:', '  weeklySetsAtLeast:', ''),
+    );
+    expect(missing.passed, isFalse);
+    expect(mentions(missing, 'emphasisExercises'), isTrue);
+  });
+
   test('una chiave sconosciuta in expect fa fallire', () {
     final c = editedCase((t) => replaceOnce(t, 'expect:\n', 'expect:\n  bogus: 1\n'));
     expect(c.passed, isFalse);

@@ -1,7 +1,8 @@
 /// Eval a matrice: ogni profilo valido dell'enum dello schema del profilo
 /// (3 giorni x 4 durate x 3 obiettivi x 3 palestre x 3 livelli = 324) con la KB
 /// vera dà o un piano che rispetta le proprietà attese o un rifiuto motivato,
-/// mai un'eccezione. Vedi `docs/eval-matrice.md`.
+/// mai un'eccezione. In più la dimensione enfasi (4 varianti per un livello:
+/// 432 profili). Vedi `docs/eval-matrice.md`.
 library;
 
 import 'dart:convert';
@@ -117,16 +118,41 @@ const Map<(int, String, int), String> _expectedCoverage = {
   (5, 'both', 90): 'covered',
 };
 
+/// Varianti di `emphasis` della matrice dell'enfasi (la variante «nessuna» è
+/// la matrice di base): ciascuna delle tre e la coppia glutei e braccia.
+const List<List<String>> _emphasisVariants = [
+  ['glutes_hamstrings'],
+  ['shoulders'],
+  ['arms'],
+  ['glutes_hamstrings', 'arms'],
+];
+
+/// Unico livello della matrice dell'enfasi: l'enfasi non dipende dal livello.
+const String _emphasisExperience = '6_months_2_years';
+
 class _Combo {
-  _Combo(this.days, this.duration, this.goal, this.gym, this.experience);
+  _Combo(
+    this.days,
+    this.duration,
+    this.goal,
+    this.gym,
+    this.experience, [
+    this.emphasis = const [],
+  ]);
 
   final int days;
   final int duration;
   final String goal;
   final String gym;
   final String experience;
+  final List<String> emphasis;
 
-  String get key => '${days}d-$goal-${duration}min-$gym-$experience';
+  String get key =>
+      '${days}d-$goal-${duration}min-$gym-$experience'
+      '${emphasis.isEmpty ? '' : '-${emphasis.join('+')}'}';
+
+  /// Lo stesso profilo senza enfasi.
+  _Combo get base => _Combo(days, duration, goal, gym, experience);
 
   Map<String, double> get knownKg => {
     for (final l in _knownLoadsByExperience[experience]!)
@@ -143,6 +169,15 @@ final List<_Combo> _combos = [
           for (final x in _experiences) _Combo(d, dur, g, gym, x),
 ];
 
+final List<_Combo> _emphasisCombos = [
+  for (final d in _days)
+    for (final dur in _durations)
+      for (final g in _goals)
+        for (final gym in _gymTypes)
+          for (final e in _emphasisVariants)
+            _Combo(d, dur, g, gym, _emphasisExperience, e),
+];
+
 late KnowledgeBase _kb;
 late Map<String, List<String>> _equipmentByGym;
 late num _bandMin;
@@ -153,7 +188,7 @@ final File _planSchema = File('../kb/contract/plan.schema.json');
 final Map<String, Object> _outcomes = {};
 
 Map<String, Object?> _profileJson(_Combo c) => {
-  'schemaVersion': '1.0',
+  'schemaVersion': c.emphasis.isEmpty ? '1.0' : '1.2',
   'goal': c.goal,
   'gym': {
     'type': c.gym,
@@ -168,6 +203,7 @@ Map<String, Object?> _profileJson(_Combo c) => {
     for (final l in _knownLoadsByExperience[c.experience]!)
       Map<String, Object?>.of(l),
   ],
+  if (c.emphasis.isNotEmpty) 'emphasis': c.emphasis,
 };
 
 Object _generate(_Combo c) {
@@ -322,6 +358,140 @@ Map<String, double> _weeklySets(Map<String, Object?> plan) {
   return totals;
 }
 
+/// Id del template di un piano (`id` = template e tipo di palestra).
+String _templateOf(_Combo c, Map<String, Object?> plan) {
+  final id = plan['id']! as String;
+  return id.substring(0, id.length - c.gym.length - 1);
+}
+
+/// Esercizi aggiunti per enfasi (regola `EMPHASIS`) per seduta.
+Map<String, int> _emphasisCounts(Map<String, Object?> plan) {
+  final out = <String, int>{};
+  for (final s in plan['sessions']! as List<Object?>) {
+    final m = s! as Map<String, Object?>;
+    for (final b in m['blocks']! as List<Object?>) {
+      for (final e
+          in (b! as Map<String, Object?>)['exercises']! as List<Object?>) {
+        final rules = (e! as Map<String, Object?>)['rules']! as List<Object?>;
+        if (rules.contains(emphasisRuleId)) {
+          out.update(m['id']! as String, (n) => n + 1, ifAbsent: () => 1);
+        }
+      }
+    }
+  }
+  return out;
+}
+
+/// Posti delle enfasi del profilo nel template, per seduta.
+Map<String, int> _placementCounts(_Combo c, String template) {
+  final out = <String, int>{};
+  for (final e in c.emphasis) {
+    for (final p in _kb.emphases[e]!.placements[template] ?? const []) {
+      out.update(p.session, (n) => n + 1, ifAbsent: () => 1);
+    }
+  }
+  return out;
+}
+
+/// Violazioni proprie dell'enfasi: volume del distretto non sotto il piano
+/// senza enfasi; esercizi aggiunti non oltre i posti; un posto non applicato
+/// solo se la seduta non ha spazio per le sue serie (durata).
+List<String> _emphasisViolations(
+  _Combo c,
+  Map<String, Object?> plan,
+  Map<String, Object?> basePlan,
+) {
+  final out = <String>[];
+  final withEmphasis = _weeklySets(plan);
+  final withoutEmphasis = _weeklySets(basePlan);
+  for (final e in c.emphasis) {
+    for (final m in _kb.emphases[e]!.muscles) {
+      if ((withEmphasis[m] ?? 0) + 1e-9 < (withoutEmphasis[m] ?? 0)) {
+        out.add('enfasi $e, $m: ${withEmphasis[m]} serie sotto le ${withoutEmphasis[m]} '
+            'senza enfasi');
+      }
+    }
+  }
+  final template = _templateOf(c, plan);
+  final placed = _placementCounts(c, template);
+  final added = _emphasisCounts(plan);
+  final prescription = _prescriptionOf(c.goal);
+  final slotMinutes =
+      prescription.roles['accessory']!.sets * prescription.minutesPerSet;
+  for (final s in plan['sessions']! as List<Object?>) {
+    final m = s! as Map<String, Object?>;
+    final id = m['id']! as String;
+    final want = placed[id] ?? 0;
+    final got = added[id] ?? 0;
+    if (got > want) out.add('seduta $id: $got esercizi di enfasi, posti $want');
+    final minutes = m['estimatedDurationMin']! as num;
+    if (got < want && minutes + slotMinutes <= c.duration) {
+      out.add('seduta $id: ${want - got} posti non applicati con $minutes '
+          'min su ${c.duration}: la durata non lo spiega');
+    }
+  }
+  return out;
+}
+
+KbPrescription _prescriptionOf(String goal) =>
+    ([..._kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id)))
+        .firstWhere((p) => p.appliesTo.contains(goal));
+
+/// Posti applicati e posti totali dell'enfasi per «template durata», sui
+/// profili coperti della matrice dell'enfasi. Va cambiata solo di proposito,
+/// insieme alla KB (`kb/emphasis/`, template o prescrizioni).
+const Map<String, (int, int)> _expectedEmphasis = {
+  'full_body_3d 60': (42, 60),
+  'full_body_3d 75': (81, 90),
+  'full_body_3d 90': (90, 90),
+  'ppl_ul_5d 45': (0, 48),
+  'ppl_ul_5d 60': (48, 48),
+  'ppl_ul_5d 75': (48, 48),
+  'ppl_ul_5d 90': (48, 48),
+  'upper_lower_4d 60': (24, 60),
+  'upper_lower_4d 75': (72, 90),
+  'upper_lower_4d 90': (90, 90),
+};
+
+/// Conteggi dell'enfasi: posti applicati e totali per «template durata», e
+/// profili coperti con tutti, alcuni o nessun posto applicato.
+({Map<String, (int, int)> byKey, int all, int some, int none})
+_emphasisStats() {
+  final byKey = <String, (int, int)>{};
+  var all = 0, some = 0, none = 0;
+  for (final c in _emphasisCombos) {
+    final outcome = _outcomes[c.key];
+    if (outcome is! Generated) continue;
+    final template = _templateOf(c, outcome.plan);
+    final k = '$template ${c.duration}';
+    final a = _emphasisCounts(outcome.plan).values.fold(0, (x, y) => x + y);
+    final t = _placementCounts(c, template).values.fold(0, (x, y) => x + y);
+    final prev = byKey[k] ?? (0, 0);
+    byKey[k] = (prev.$1 + a, prev.$2 + t);
+    if (a == t) {
+      all++;
+    } else if (a == 0) {
+      none++;
+    } else {
+      some++;
+    }
+  }
+  return (byKey: byKey, all: all, some: some, none: none);
+}
+
+String _emphasisReport() {
+  final stats = _emphasisStats();
+  final keys = stats.byKey.keys.toList()..sort();
+  return [
+    'Enfasi (${_emphasisCombos.length} profili, livello $_emphasisExperience):',
+    for (final k in keys)
+      '  ${k.padRight(20)} posti applicati '
+          '${stats.byKey[k]!.$1}/${stats.byKey[k]!.$2}',
+    '  profili coperti: ${stats.all} con tutti i posti, ${stats.some} con '
+        'alcuni, ${stats.none} con nessuno (durata)',
+  ].join('\n');
+}
+
 String _coverageTable() {
   final lines = <String>[];
   final counts = <String, int>{};
@@ -369,7 +539,7 @@ void main() {
         _kb.parameterGroups['trialLoad']!.engineConstraints['maxRepsPlusRir']!
             as num;
 
-    for (final c in _combos) {
+    for (final c in [..._combos, ..._emphasisCombos]) {
       _outcomes[c.key] = _generate(c);
     }
   });
@@ -404,6 +574,54 @@ void main() {
         skip: _skipped[c.key],
       );
     }
+  });
+
+  test('la matrice dell\'enfasi ha 432 profili', () {
+    expect(_emphasisCombos, hasLength(432));
+    expect(_emphasisCombos.map((c) => c.key).toSet(), hasLength(432));
+    expect(
+      _emphasisCombos.map((c) => c.key).toSet().intersection(
+        _combos.map((c) => c.key).toSet(),
+      ),
+      isEmpty,
+    );
+  });
+
+  group('profili con enfasi', () {
+    for (final c in _emphasisCombos) {
+      test(c.key, () {
+        final outcome = _outcomes[c.key]!;
+        expect(outcome, isNot(isA<String>()), reason: '$outcome');
+        expect(outcome, isNot(isA<InvalidProfile>()));
+        // L'enfasi non cambia la copertura.
+        final base = _outcomes[c.base.key]!;
+        expect(_label(outcome), _label(base));
+        if (outcome is NotCovered) {
+          expect(outcome.reason, (base as NotCovered).reason);
+          return;
+        }
+        final plan = (outcome as Generated).plan;
+        final violations = [
+          ..._planViolations(c, plan),
+          ..._emphasisViolations(c, plan, (base as Generated).plan),
+        ];
+        expect(violations, isEmpty, reason: violations.join('\n'));
+
+        final again = generatePlan(_profileJson(c), _kb);
+        expect(again, isA<Generated>());
+        expect(jsonEncode((again as Generated).plan), jsonEncode(plan));
+      });
+    }
+  });
+
+  test('conteggi dell\'enfasi', () {
+    // ignore: avoid_print
+    print(_emphasisReport());
+    final stats = _emphasisStats();
+    expect(stats.byKey, _expectedEmphasis);
+    expect(stats.all + stats.some + stats.none,
+        _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length);
+    expect((stats.all, stats.some, stats.none), (219, 27, 42));
   });
 
   test('la copertura coincide con la mappa attesa', () {

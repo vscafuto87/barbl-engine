@@ -1,0 +1,11 @@
+ruleId: EMPHASIS
+key: emphasis.added
+level: session
+text:
+  it: Hai chiesto di dare più spazio a questo distretto, quindi aggiungo questo esercizio in fondo alla
+    seduta. Lo faccio solo quando la seduta resta nel tempo che hai scelto.
+  en: You asked to give this area more room, so I add this exercise at the end of the session. I only
+    do it when the session stays within the time you chose.
+principles:
+- P-EMPHASIS
+- P-VOL-DOSE-HYP

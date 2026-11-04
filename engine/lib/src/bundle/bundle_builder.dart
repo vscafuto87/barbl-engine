@@ -184,6 +184,10 @@ BundleResult buildBundle(Directory kbDir, {String? kbCommit}) {
   );
   final parameterDocs = _readDir(kbDir, 'parameters', errors, recursive: false);
   final rationaleDocs = _readDir(kbDir, 'rationales', errors, recursive: false);
+  // Le enfasi sono facoltative: senza la cartella il pacchetto non ne ha.
+  final emphasisDocs = Directory('${kbDir.path}/emphasis').existsSync()
+      ? _readDir(kbDir, 'emphasis', errors, recursive: false)
+      : <_Doc>[];
 
   final sources = _index(sourceDocs, 'id', errors);
   final principles = _index(principleDocs, 'id', errors);
@@ -192,6 +196,7 @@ BundleResult buildBundle(Directory kbDir, {String? kbCommit}) {
   final prescriptions = _index(prescriptionDocs, 'id', errors);
   final parameters = _index(parameterDocs, 'group', errors);
   final rationales = _index(rationaleDocs, 'ruleId', errors);
+  final emphasis = _index(emphasisDocs, 'id', errors);
 
   final muscleIds = _ids(muscles);
   final patternIds = _ids(patterns);
@@ -303,6 +308,64 @@ BundleResult buildBundle(Directory kbDir, {String? kbCommit}) {
     }
   }
 
+  // Enfasi: template, sedute, pattern, ruoli, candidati e principi esistono.
+  final sessionsByTemplate = <String, Set<String>>{
+    for (final d in templateDocs)
+      if (d.data['id'] is String)
+        d.data['id'] as String: {
+          for (final s in _asListOrEmpty(d.data['sessions']))
+            if (_asMapOrNull(s)?['id'] is String)
+              _asMapOrNull(s)!['id'] as String,
+        },
+  };
+  for (final d in emphasisDocs) {
+    final eid = d.data['id'];
+    final ectx = '${d.path}: enfasi $eid';
+    final placements = _asMapOrNull(d.data['placements']);
+    for (final e in (placements ?? <String, Object?>{}).entries) {
+      final sessions = sessionsByTemplate[e.key];
+      if (sessions == null) {
+        errors.add('$ectx: template ${e.key} non esiste');
+        continue;
+      }
+      for (final p in _asListOrEmpty(e.value)) {
+        final pm = _asMapOrNull(p);
+        if (pm == null) continue;
+        final sid = pm['session'];
+        if (sid is! String || !sessions.contains(sid)) {
+          errors.add('$ectx: template ${e.key}, seduta $sid non esiste');
+          continue;
+        }
+        final sl = _asMapOrNull(pm['slot']);
+        if (sl == null) {
+          errors.add('$ectx: template ${e.key}, seduta $sid senza slot');
+          continue;
+        }
+        final pattern = sl['pattern'];
+        if (pattern is String && !patternIds.contains(pattern)) {
+          errors.add(
+            '$ectx: seduta $sid, pattern $pattern non esiste in '
+            'vocab/patterns.yaml',
+          );
+        }
+        final role = sl['role'];
+        if (role is String && !roleIds.contains(role)) {
+          errors.add('$ectx: seduta $sid, ruolo $role senza prescrizione');
+        }
+        for (final c in _stringList(sl['candidates'])) {
+          if (!exercises.containsKey(c)) {
+            errors.add('$ectx: seduta $sid, candidato $c non è un esercizio');
+          }
+        }
+      }
+    }
+    for (final p in _stringList(d.data['principles'])) {
+      if (!principles.containsKey(p)) {
+        errors.add('$ectx, principio $p non esiste');
+      }
+    }
+  }
+
   // Prescrizioni.
   for (final d in prescriptionDocs) {
     for (final p in _stringList(d.data['principles'])) {
@@ -359,6 +422,7 @@ BundleResult buildBundle(Directory kbDir, {String? kbCommit}) {
 
   final json = <String, Object?>{
     'bundleFormat': 1,
+    'emphasis': emphasis,
     'equipment': _sortedMap(<String, Object?>{
       'gymTypes': gymTypes,
       'plan': planEquipment,

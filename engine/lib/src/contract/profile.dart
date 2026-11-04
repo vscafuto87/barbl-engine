@@ -5,7 +5,7 @@ library;
 // Costanti di formato del contratto, copiate dallo schema del profilo.
 // Non sono numeri di dominio: si aggiornano solo insieme allo schema.
 // ---------------------------------------------------------------------------
-const Set<String> _profileSchemaVersions = {'1.0', '1.1'};
+const Set<String> _profileSchemaVersions = {'1.0', '1.1', '1.2'};
 const Set<String> _equipmentValues = {
   'barbell',
   'rack',
@@ -24,6 +24,8 @@ const Set<String> _experienceValues = {
   '6_months_2_years',
   'over_2_years',
 };
+const Set<String> _emphasisValues = {'glutes_hamstrings', 'shoulders', 'arms'};
+const int _emphasisMaxItems = 2;
 const double _defaultBarKg = 20;
 const List<double> _defaultPlatesKg = <double>[25, 20, 15, 10, 5, 2.5, 1.25];
 
@@ -36,6 +38,7 @@ const Set<String> _topKeys = {
   'experience',
   'knownLoads',
 };
+const Set<String> _optionalTopKeys = {'emphasis'};
 const Set<String> _gymKeys = {'type', 'equipment', 'barKg', 'platesKg'};
 const Set<String> _knownLoadKeys = {'exerciseId', 'kg', 'reps'};
 
@@ -51,6 +54,7 @@ class Profile {
     required this.sessionDurationMin,
     required this.experience,
     required this.knownLoads,
+    this.emphasis = const [],
   });
 
   final String goal;
@@ -64,6 +68,10 @@ class Profile {
 
   /// `exerciseId` -> kg; `null` = «Non lo so».
   final Map<String, double?> knownLoads;
+
+  /// Distretti da privilegiare, nell'ordine del profilo (al massimo due);
+  /// vuota = nessuna enfasi.
+  final List<String> emphasis;
 }
 
 sealed class ProfileRead {
@@ -110,7 +118,7 @@ int? _asInt(Object? v) {
 /// Legge il profilo raccogliendo tutti gli errori. Non lancia mai.
 ProfileRead readProfile(Map<String, Object?> json) {
   final errors = <String>[];
-  _checkKeys(json, _topKeys, '', errors);
+  _checkKeys(json, {..._topKeys, ..._optionalTopKeys}, '', errors);
 
   for (final key in _topKeys) {
     if (!json.containsKey(key)) {
@@ -120,7 +128,7 @@ ProfileRead readProfile(Map<String, Object?> json) {
 
   if (json.containsKey('schemaVersion') &&
       !_profileSchemaVersions.contains(json['schemaVersion'])) {
-    errors.add('schemaVersion: deve essere "1.0" o "1.1", '
+    errors.add('schemaVersion: deve essere "1.0", "1.1" o "1.2", '
         'trovato ${_describe(json['schemaVersion'])}');
   }
 
@@ -283,6 +291,31 @@ ProfileRead readProfile(Map<String, Object?> json) {
     }
   }
 
+  final emphasis = <String>[];
+  if (json.containsKey('emphasis')) {
+    final v = json['emphasis'];
+    if (v is! List) {
+      errors.add('emphasis: deve essere una lista');
+    } else {
+      for (var i = 0; i < v.length; i++) {
+        final item = v[i];
+        if (item is String && _emphasisValues.contains(item)) {
+          if (emphasis.contains(item)) {
+            errors.add('emphasis[$i]: duplicato ($item)');
+          } else {
+            emphasis.add(item);
+          }
+        } else {
+          errors.add('emphasis[$i]: valore non ammesso (${_describe(item)})');
+        }
+      }
+      if (v.length > _emphasisMaxItems) {
+        errors.add('emphasis: al massimo $_emphasisMaxItems valori, '
+            'trovati ${v.length}');
+      }
+    }
+  }
+
   if (errors.isNotEmpty) return ProfileErrors(List.unmodifiable(errors));
 
   return ProfileOk(Profile(
@@ -295,5 +328,6 @@ ProfileRead readProfile(Map<String, Object?> json) {
     sessionDurationMin: sessionDurationMin!,
     experience: experience!,
     knownLoads: Map.unmodifiable(knownLoads),
+    emphasis: List.unmodifiable(emphasis),
   ));
 }

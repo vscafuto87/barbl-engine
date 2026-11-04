@@ -1,0 +1,63 @@
+id: shoulders
+name:
+  it: Spalle
+  en: Shoulders
+muscles:
+- shoulders
+placements:
+  full_body_3d:
+  - session: full_a
+    slot:
+      pattern: lateral_raise
+      role: accessory
+      candidates:
+      - cable_lateral_raise
+      - dumbbell_lateral_raise
+  - session: full_c
+    slot:
+      pattern: rear_delt_fly
+      role: accessory
+      candidates:
+      - cable_rear_delt_fly
+      - dumbbell_rear_delt_fly
+  upper_lower_4d:
+  - session: upper_a
+    slot:
+      pattern: lateral_raise
+      role: accessory
+      candidates:
+      - cable_lateral_raise
+      - dumbbell_lateral_raise
+  - session: upper_b
+    slot:
+      pattern: rear_delt_fly
+      role: accessory
+      candidates:
+      - cable_rear_delt_fly
+      - dumbbell_rear_delt_fly
+  ppl_ul_5d:
+  - session: push
+    slot:
+      pattern: lateral_raise
+      role: accessory
+      candidates:
+      - dumbbell_lateral_raise
+      - cable_lateral_raise
+  - session: upper
+    slot:
+      pattern: rear_delt_fly
+      role: accessory
+      candidates:
+      - dumbbell_rear_delt_fly
+      - cable_rear_delt_fly
+principles:
+- P-EMPHASIS
+- P-VOL-DOSE-HYP
+provisional: true
+notes:
+  it: 'Alzate laterali e alzate per il deltoide posteriore nelle sedute della parte alta che non hanno
+    già quel movimento (Full B ha la spinta verticale e resta com''è). Nel template a 5 giorni Upper ha
+    già le alzate laterali e Pull quelle posteriori: si aggiungono le laterali a Push e le posteriori a
+    Upper, con i manubri per primi così nella palestra completa l''esercizio non ripete quello dell''altra
+    seduta. Il vocabolario
+    dei muscoli non distingue i capi del deltoide: tutto conta sulle spalle.'

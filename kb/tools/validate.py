@@ -116,6 +116,7 @@ def main() -> int:
     prescriptions = load_dir(r, "prescriptions", "prescription", "id")
     parameters = load_dir(r, "parameters", "parameter", "group")
     rationales = load_dir(r, "rationales", "rationale", "ruleId")
+    emphases = load_dir(r, "emphasis", "emphasis", "id")
     conflicts_doc = load_yaml(ROOT / "conflicts.yaml")
     check_schema(r, load_schema("conflicts"), conflicts_doc, "conflicts.yaml")
     conflicts = {c["id"]: c for c in conflicts_doc.get("conflicts", [])}
@@ -232,6 +233,61 @@ def main() -> int:
                         if not any(c in exercises and available(exercises[c], gym) for c in slot["candidates"]):
                             r.error(where, f"{sess['id']}, slot {slot['pattern']}: nessun candidato per la palestra '{gt}'")
 
+    # Enfasi (M1-M2 del piano dell'enfasi): un file per valore di `emphasis` del profilo, al massimo
+    # due sedute per template e uno slot per seduta, slot complementari con candidati per ogni palestra.
+    emphasis_enum = profile_schema["properties"].get("emphasis", {}).get("items", {}).get("enum", [])
+    if set(emphases) != set(emphasis_enum):
+        r.error("emphasis/", f"serve un file per ogni valore di emphasis del profilo {sorted(emphasis_enum)}, trovati {sorted(emphases)}")
+    for k, em in emphases.items():
+        where = em["_file"]
+        if Path(where).stem != k:
+            r.error(where, f"il nome del file deve essere '{k}.yaml'")
+        for m in em["muscles"]:
+            if m not in muscles:
+                r.error(where, f"muscolo inesistente '{m}'")
+        for pid in em["principles"]:
+            if pid not in principles:
+                r.error(where, f"principio inesistente '{pid}'")
+            elif not em["provisional"] and principles[pid]["status"] != "confirmed":
+                r.error(where, f"non provvisoria ma il principio '{pid}' non è confermato")
+        for tid, placements in em["placements"].items():
+            if tid not in templates:
+                r.error(where, f"template inesistente '{tid}'")
+                continue
+            t = templates[tid]
+            sessions_by_id = {sess["id"]: sess for sess in t["sessions"]}
+            roles_needed = [p for p in prescriptions.values() if set(p["appliesTo"]) & set(t["goals"])]
+            seen: set[str] = set()
+            for pl in placements:
+                sid = pl["session"]
+                ctx = f"{tid}.{sid}"
+                if sid not in sessions_by_id:
+                    r.error(where, f"{tid}: seduta inesistente '{sid}'")
+                    continue
+                if sid in seen:
+                    r.error(where, f"{ctx}: al massimo uno slot per seduta")
+                seen.add(sid)
+                slot = pl["slot"]
+                if slot["pattern"] not in patterns:
+                    r.error(where, f"{ctx}: pattern inesistente '{slot['pattern']}'")
+                for c in slot["candidates"]:
+                    if c not in exercises:
+                        r.error(where, f"{ctx}: candidato inesistente '{c}'")
+                first = exercises.get(slot["candidates"][0])
+                if first:
+                    if first["pattern"] != slot["pattern"]:
+                        r.error(where, f"{ctx}: il primo candidato deve avere il pattern dello slot")
+                    if first["muscles"]["primary"] not in em["muscles"]:
+                        r.error(where, f"{ctx}: il primo candidato non allena come primario un muscolo del distretto")
+                for gt, gym in gym_types.items():
+                    if not any(c in exercises and available(exercises[c], gym) for c in slot["candidates"]):
+                        r.error(where, f"{ctx}, slot {slot['pattern']}: nessun candidato per la palestra '{gt}'")
+                for pr in roles_needed:
+                    if slot["role"] not in pr["roles"]:
+                        r.error(where, f"{ctx}: ruolo '{slot['role']}' assente dalla prescrizione '{pr['id']}'")
+    if emphases and "EMPHASIS" not in rationales:
+        r.error("rationales/", "manca la motivazione 'EMPHASIS' degli esercizi aggiunti per enfasi")
+
     # Parametri e contratto
     for group, spec in contract_groups.items():
         if group not in parameters:
@@ -324,7 +380,7 @@ def main() -> int:
                 r.error("conflicts.yaml", f"{k}: principio inesistente '{b}'")
 
     # Casi d'oro
-    check_golden(r, principles, exercises, templates, prescriptions, parameters, muscles, set_weights, gym_types, patterns)
+    check_golden(r, principles, exercises, templates, prescriptions, parameters, muscles, set_weights, gym_types, patterns, emphases)
 
     # Testi copiati
     if args.sources_md:
@@ -336,7 +392,8 @@ def main() -> int:
         print(e)
     counts = (
         f"{len(sources)} fonti, {len(principles)} principi, {len(exercises)} esercizi, "
-        f"{len(templates)} template, {len(parameters)} gruppi di parametri, {len(rationales)} motivazioni"
+        f"{len(templates)} template, {len(parameters)} gruppi di parametri, {len(rationales)} motivazioni, "
+        f"{len(emphases)} enfasi"
     )
     if r.errors:
         print(f"\n{len(r.errors)} errori, {len(r.warnings)} avvisi ({counts})")
@@ -345,7 +402,7 @@ def main() -> int:
     return 0
 
 
-def check_golden(r, principles, exercises, templates, prescriptions, parameters, muscles, set_weights, gym_types, patterns):
+def check_golden(r, principles, exercises, templates, prescriptions, parameters, muscles, set_weights, gym_types, patterns, emphases):
     golden_validator = load_schema("golden")
     for gp in sorted((ROOT / "golden").glob("*.yaml")):
         g = load_yaml(gp)
@@ -387,23 +444,60 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
         weekly: dict[str, float] = {k: 0.0 for k in muscles}
         max_rir = max(w["rirTarget"] for w in weeks if w["rirTarget"] is not None)
         max_minutes = profile["sessionDurationMin"]
+        per_set = pr["timeBudget"]["minutesPerSet"]
+
+        def pick_for(slot):
+            return next((exercises[c] for c in slot["candidates"] if c in exercises and set(exercises[c]["requires"]) <= set(gym)), None)
+
+        def add_volume(pick, sets):
+            weekly[pick["muscles"]["primary"]] += sets * set_weights["primary"]
+            for sec in pick["muscles"]["secondary"]:
+                weekly[sec] += sets * set_weights["secondary"]
+
+        session_sets: dict[str, int] = {}
         for sess in t["sessions"]:
             sets_in_session = 0
             for block in sess["blocks"]:
                 for slot in block["slots"]:
-                    pick = next((exercises[c] for c in slot["candidates"] if c in exercises and set(exercises[c]["requires"]) <= set(gym)), None)
+                    pick = pick_for(slot)
                     if not pick:
                         r.error(where, f"{sess['id']}: nessun esercizio disponibile per lo slot {slot['pattern']}")
                         continue
                     role = pr["roles"][slot["role"]]
                     chosen[pick["id"]] = {"role": slot["role"], "reps": slot.get("repsOverride", role["reps"])}
                     sets_in_session += role["sets"]
-                    weekly[pick["muscles"]["primary"]] += role["sets"] * set_weights["primary"]
-                    for sec in pick["muscles"]["secondary"]:
-                        weekly[sec] += role["sets"] * set_weights["secondary"]
-            minutes = sets_in_session * pr["timeBudget"]["minutesPerSet"]
+                    add_volume(pick, role["sets"])
+            session_sets[sess["id"]] = sets_in_session
+        # Enfasi, come il motore: in ordine di profilo e di placement, uno slot entra solo se la seduta
+        # resta entro la durata (M3); altrimenti si salta.
+        applied: dict[str, list[str]] = {}  # seduta -> esercizi aggiunti per enfasi, in ordine
+        for em_id in profile.get("emphasis", []):
+            em = emphases.get(em_id)
+            if not em:
+                r.error(where, f"enfasi senza file '{em_id}'")
+                continue
+            for pl in em["placements"].get(t["id"], []):
+                pick = pick_for(pl["slot"])
+                if not pick or pl["session"] not in session_sets:
+                    continue
+                sets = pr["roles"][pl["slot"]["role"]]["sets"]
+                if (session_sets[pl["session"]] + sets) * per_set > max_minutes:
+                    continue
+                session_sets[pl["session"]] += sets
+                add_volume(pick, sets)
+                chosen.setdefault(pick["id"], {"role": pl["slot"]["role"], "reps": pr["roles"][pl["slot"]["role"]]["reps"]})
+                applied.setdefault(pl["session"], []).append(pick["id"])
+        for sid, sets_in_session in session_sets.items():
+            minutes = sets_in_session * per_set
             if minutes > max_minutes:
-                r.error(where, f"{sess['id']}: circa {minutes} minuti, oltre i {max_minutes} del profilo")
+                r.error(where, f"{sid}: circa {minutes} minuti, oltre i {max_minutes} del profilo")
+        want_applied = exp.get("emphasisExercises")
+        if want_applied is not None:
+            want = {k: list(v) for k, v in want_applied.items()}
+            if applied != want:
+                r.error(where, f"esercizi aggiunti per enfasi {applied} invece di {want}")
+        elif applied:
+            r.error(where, f"esercizi aggiunti per enfasi {applied} senza emphasisExercises in expect")
         ws = exp.get("weeklySetsAtLeast", {})
         if ws:
             if ws.get("counting") != "fractional":

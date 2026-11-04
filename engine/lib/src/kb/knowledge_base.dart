@@ -17,6 +17,7 @@ class KnowledgeBase {
     required this.principles,
     required this.sources,
     required this.patternRegions,
+    required this.emphases,
   });
 
   /// Formato del pacchetto che questa versione del motore sa leggere.
@@ -66,6 +67,19 @@ class KnowledgeBase {
       patternRegions[stringAt(p, 'id', path)] = stringAt(p, 'region', path);
     }
 
+    // `emphasis` è facoltativo: un pacchetto senza la chiave non ha enfasi.
+    final emphasisRaw = json['emphasis'] == null
+        ? const <String, Object?>{}
+        : mapAt(json, 'emphasis', root);
+    final emphasisIds = emphasisRaw.keys.toList()..sort();
+    final emphases = <String, KbEmphasis>{
+      for (final id in emphasisIds)
+        id: KbEmphasis.fromJson(
+          asMap(emphasisRaw[id], 'emphasis.$id'),
+          'emphasis.$id',
+        ),
+    };
+
     final kb = KnowledgeBase._(
       rulesVersion: stringAt(json, 'rulesVersion', root),
       kbCommit: stringOrNull(json, 'kbCommit', root),
@@ -79,6 +93,7 @@ class KnowledgeBase {
       principles: collection('principles', KbPrinciple.fromJson),
       sources: collection('sources', KbSource.fromJson),
       patternRegions: patternRegions,
+      emphases: emphases,
     );
     _checkInvariants(kb);
     return kb;
@@ -131,6 +146,7 @@ class KnowledgeBase {
         }
       }
     }
+    _checkEmphases(kb);
     final meso = kb.parameterGroups['mesocycle'];
     if (meso == null) {
       throw KbFormatException('parameters.mesocycle: gruppo mancante');
@@ -166,6 +182,52 @@ class KnowledgeBase {
     }
   }
 
+  /// Enfasi: le sedute esistono, al massimo un posto per seduta, e nelle
+  /// sedute full body ogni candidato ha una regione; serve la motivazione.
+  static void _checkEmphases(KnowledgeBase kb) {
+    if (kb.emphases.isEmpty) return;
+    if (!kb.rationales.any((r) => r.ruleId == emphasisRuleId)) {
+      throw KbFormatException(
+        'rationales.$emphasisRuleId: manca ma esistono enfasi',
+      );
+    }
+    final templates = {for (final t in kb.templates) t.id: t};
+    for (final em in kb.emphases.values) {
+      for (final e in em.placements.entries) {
+        final t = templates[e.key];
+        if (t == null) {
+          throw KbFormatException(
+            'emphasis.${em.id}.placements.${e.key}: template inesistente',
+          );
+        }
+        final sessions = {for (final s in t.sessions) s.id: s};
+        final seen = <String>{};
+        for (final p in e.value) {
+          final path = 'emphasis.${em.id}.placements.${e.key}.${p.session}';
+          final session = sessions[p.session];
+          if (session == null) {
+            throw KbFormatException('$path: seduta inesistente');
+          }
+          if (!seen.add(p.session)) {
+            throw KbFormatException('$path: più di un posto nella seduta');
+          }
+          if (session.focus != 'full_body') continue;
+          for (final id in p.slot.candidates) {
+            final ex = kb.exercises[id];
+            if (ex == null) continue;
+            final region = kb.patternRegions[ex.pattern];
+            if (region != regionUpper && region != regionLower) {
+              throw KbFormatException(
+                '$path: il pattern ${ex.pattern} di $id non ha una regione '
+                '($regionUpper o $regionLower) in patterns',
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+
   final String rulesVersion;
   final String? kbCommit;
   final double primaryWeight;
@@ -180,4 +242,7 @@ class KnowledgeBase {
 
   /// Regione (`upper` o `lower`) di ogni pattern di movimento.
   final Map<String, String> patternRegions;
+
+  /// Enfasi per id (valore di `emphasis` del profilo).
+  final Map<String, KbEmphasis> emphases;
 }

@@ -90,11 +90,100 @@ void main() {
         'gym.equipment[7]: valore non ammesso (flux_capacitor)');
   });
 
-  test('schemaVersion 1.0 e 1.1 sono validi', () {
-    for (final v in ['1.0', '1.1']) {
+  test('schemaVersion 1.0, 1.1 e 1.2 sono validi', () {
+    for (final v in ['1.0', '1.1', '1.2']) {
       final m = example()..['schemaVersion'] = v;
       expect(readProfile(m), isA<ProfileOk>(), reason: v);
     }
+  });
+
+  group('emphasis (profilo 1.2)', () {
+    test('assente vale lista vuota', () {
+      final p = (readProfile(example()) as ProfileOk).profile;
+      expect(p.emphasis, isEmpty);
+    });
+
+    test('lista vuota vale lista vuota', () {
+      final m = example()..['emphasis'] = <Object?>[];
+      final p = (readProfile(m) as ProfileOk).profile;
+      expect(p.emphasis, isEmpty);
+    });
+
+    test('si legge nell\'ordine del profilo, con ogni schemaVersion', () {
+      for (final v in ['1.0', '1.1', '1.2']) {
+        final m = example()
+          ..['schemaVersion'] = v
+          ..['emphasis'] = ['arms', 'glutes_hamstrings'];
+        final r = readProfile(m);
+        expect(r, isA<ProfileOk>(), reason: v);
+        expect((r as ProfileOk).profile.emphasis,
+            ['arms', 'glutes_hamstrings']);
+      }
+    });
+
+    test('un valore fuori enum è un errore con percorso', () {
+      final m = example()..['emphasis'] = ['shoulders', 'calves'];
+      final r = readProfile(m);
+      expect(r, isA<ProfileErrors>());
+      expect((r as ProfileErrors).errors.single,
+          'emphasis[1]: valore non ammesso (calves)');
+    });
+
+    test('un valore non stringa è un errore', () {
+      final m = example()..['emphasis'] = [3];
+      final r = readProfile(m);
+      expect(r, isA<ProfileErrors>());
+      expect((r as ProfileErrors).errors.single, startsWith('emphasis[0]'));
+    });
+
+    test('un duplicato è un errore', () {
+      final m = example()..['emphasis'] = ['arms', 'arms'];
+      final r = readProfile(m);
+      expect(r, isA<ProfileErrors>());
+      expect((r as ProfileErrors).errors.single, 'emphasis[1]: duplicato (arms)');
+    });
+
+    test('più di due valori sono un errore', () {
+      final m = example()
+        ..['emphasis'] = ['arms', 'shoulders', 'glutes_hamstrings'];
+      final r = readProfile(m);
+      expect(r, isA<ProfileErrors>());
+      expect((r as ProfileErrors).errors.single, startsWith('emphasis:'));
+    });
+
+    test('un valore che non è una lista è un errore', () {
+      final m = example()..['emphasis'] = 'arms';
+      final r = readProfile(m);
+      expect(r, isA<ProfileErrors>());
+      expect((r as ProfileErrors).errors.single,
+          'emphasis: deve essere una lista');
+    });
+
+    test('le costanti coincidono con lo schema del profilo', () {
+      var file = File('../kb/contract/profile.schema.json');
+      if (!file.existsSync()) file = File('kb/contract/profile.schema.json');
+      final schema = jsonDecode(file.readAsStringSync()) as Map;
+      final props = schema['properties'] as Map;
+      final versions = (props['schemaVersion'] as Map)['enum'] as List;
+      for (final v in versions) {
+        final m = example()..['schemaVersion'] = v;
+        expect(readProfile(m), isA<ProfileOk>(), reason: '$v');
+      }
+      final emphasis = props['emphasis'] as Map;
+      final values = (emphasis['items'] as Map)['enum'] as List;
+      for (final v in values) {
+        final m = example()..['emphasis'] = [v];
+        expect(readProfile(m), isA<ProfileOk>(), reason: '$v');
+      }
+      final max = emphasis['maxItems'] as int;
+      final tooMany = [
+        for (var i = 0; i <= max; i++) values[i % values.length],
+      ];
+      final m = example()..['emphasis'] = tooMany;
+      expect(readProfile(m), isA<ProfileErrors>());
+      final ok = example()..['emphasis'] = values.take(max).toList();
+      expect(readProfile(ok), isA<ProfileOk>());
+    });
   });
 
   test('raccoglie tutti gli errori e non lancia con valori null', () {

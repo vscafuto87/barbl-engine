@@ -286,6 +286,15 @@ void main() {
     );
   });
 
+  test('un piano senza enfasi non ha la motivazione EMPHASIS', () {
+    final p = plan(profile());
+    final ruleIds = [
+      for (final r in p['rationales']! as List) (r as Map)['ruleId'],
+    ];
+    expect(ruleIds, isNot(contains('EMPHASIS')));
+    expect(ruleIds, hasLength(kb.rationales.length - 1));
+  });
+
   test('un profilo senza gym è non valido', () {
     expect(generatePlan(profile(noGym: true), kb), isA<InvalidProfile>());
   });

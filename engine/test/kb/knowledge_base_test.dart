@@ -193,6 +193,53 @@ void main() {
         }
       });
 
+      test('un pacchetto senza emphasis non ha enfasi', () {
+        expect(KnowledgeBase.fromJson(minimalBundle()).emphases, isEmpty);
+      });
+
+      test('legge le enfasi con i posti in ordine', () {
+        final kb = KnowledgeBase.fromJson(minimalBundle(
+          emphasis: {'glutes_hamstrings': testEmphasis()},
+        ));
+        final em = kb.emphases['glutes_hamstrings']!;
+        expect(em.muscles, ['quadriceps']);
+        final p = em.placements['t1']!.single;
+        expect(p.session, 'lower_a');
+        expect(p.slot.pattern, 'squat');
+        expect(p.slot.role, 'main');
+        expect(p.slot.candidates, ['squat']);
+        expect(p.slot.askLoad, isFalse);
+      });
+
+      test('un\'enfasi senza la motivazione EMPHASIS è rifiutata', () {
+        final json = minimalBundle(
+          emphasis: {'glutes_hamstrings': testEmphasis()},
+        );
+        (json['rationales'] as Map).remove('EMPHASIS');
+        expect(() => KnowledgeBase.fromJson(json), rejects('EMPHASIS'));
+      });
+
+      test('un posto in una seduta inesistente è rifiutato', () {
+        final json = minimalBundle(emphasis: {
+          'glutes_hamstrings': testEmphasis(sessions: ['ghost']),
+        });
+        expect(() => KnowledgeBase.fromJson(json), rejects('ghost'));
+      });
+
+      test('un posto in un template inesistente è rifiutato', () {
+        final json = minimalBundle(emphasis: {
+          'glutes_hamstrings': testEmphasis(template: 'nope'),
+        });
+        expect(() => KnowledgeBase.fromJson(json), rejects('nope'));
+      });
+
+      test('due posti nella stessa seduta sono rifiutati', () {
+        final json = minimalBundle(emphasis: {
+          'glutes_hamstrings': testEmphasis(sessions: ['lower_a', 'lower_a']),
+        });
+        expect(() => KnowledgeBase.fromJson(json), rejects('lower_a'));
+      });
+
       test('trialLoad senza la motivazione TRIAL-LOAD è rifiutato', () {
         final json = minimalBundle();
         (json['parameters'] as Map)['trialLoad'] = {
