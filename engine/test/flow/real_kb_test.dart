@@ -146,6 +146,57 @@ void main() {
         NotCoveredReason.duration);
   });
 
+  test('5 giorni a 45 minuti: piano completo in ogni palestra', () {
+    for (final goal in ['muscle_gain', 'both']) {
+      for (final gym in [
+        ('full', <String>[
+          'barbell',
+          'rack',
+          'bench',
+          'dumbbells',
+          'machines',
+          'cables',
+          'smith_machine',
+        ]),
+        ('home', ['barbell', 'rack', 'bench', 'dumbbells']),
+        ('dumbbells', ['dumbbells', 'bench']),
+      ]) {
+        final p = plan(profile(
+          daysPerWeek: 5,
+          goal: goal,
+          sessionDurationMin: 45,
+          gymType: gym.$1,
+          equipment: gym.$2,
+        ));
+        expect(p['split'], 'push_pull_legs');
+        final sessions = (p['sessions']! as List).cast<Map>();
+        expect(sessions, hasLength(5));
+        for (final s in sessions) {
+          expect(s['estimatedDurationMin'] as num, lessThanOrEqualTo(45),
+              reason: '${gym.$1} ${s['id']}');
+          final exercises = [
+            for (final b in s['blocks'] as List) ...(b as Map)['exercises'] as List,
+          ];
+          expect(exercises, isNotEmpty, reason: '${gym.$1} ${s['id']}');
+        }
+        expect((p['schedule']! as List), hasLength(5));
+      }
+    }
+  });
+
+  test('3 e 4 giorni a 45 minuti: ancora rifiuto per durata', () {
+    for (final days in [3, 4]) {
+      for (final goal in ['muscle_gain', 'both']) {
+        final r = notCovered(profile(
+          daysPerWeek: days,
+          goal: goal,
+          sessionDurationMin: 45,
+        ));
+        expect(r.reason, NotCoveredReason.duration, reason: '$days $goal');
+      }
+    }
+  });
+
   test('forza a 45 e 60 minuti: rifiuto per durata, non un\'eccezione', () {
     for (final days in [3, 4]) {
       for (final minutes in [45, 60]) {

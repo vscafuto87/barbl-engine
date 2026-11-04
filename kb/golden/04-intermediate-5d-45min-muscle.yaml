@@ -1,0 +1,46 @@
+id: golden-04
+name:
+  it: Intermedio, 5 giorni da 45 minuti, massa, palestra completa
+profile: golden/profile-5d-45min.json
+expect:
+  split: push_pull_legs
+  sessions: 5
+  scheduleDays:
+  - mon
+  - tue
+  - thu
+  - fri
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      3: 2
+  initialLoad:
+    barbell_bench_press:
+      kg: 85
+      source: profile
+    barbell_row:
+      kg: null
+      source: manual
+    squat:
+      kg: null
+      source: trial_set
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      shoulders: 10
+      quadriceps: 10
+      hamstrings: 10
+      glutes: 10
+      biceps: 10
+      triceps: 10
+  validAgainst: contract/plan.schema.json
+origin:
+  it: Caso di Barbl, non del contratto dell'app. Profilo 1.1 con 5 giorni da 45 minuti, la durata più
+    breve, coperta perché ogni seduta del template ppl_ul_5d ha al massimo 15 serie (3 minuti per serie).
+    La panca ha il carico noto; lo squat, senza carico, riceve la serie di prova; il rematore con
+    bilanciere ha askLoad ma la KB non ammette la prova (carico a mano). I polpacci non sono controllati
+    (6 serie frazionarie, C-CALVES-BAND).

@@ -53,6 +53,13 @@ const List<String> _volumeMuscles = [
   'triceps',
 ];
 
+/// Muscoli controllati in più per giorni a settimana: il template a 5 giorni
+/// porta anche spalle, femorali e glutei alla soglia (Task 2 del piano del
+/// template a 5 giorni); a 3 e 4 giorni restano sotto e non sono controllati.
+const Map<int, List<String>> _extraVolumeMusclesByDays = {
+  5: ['shoulders', 'hamstrings', 'glutes'],
+};
+
 /// Obiettivi per cui si controlla la soglia di volume.
 const Set<String> _bandGoals = {'muscle_gain', 'both'};
 
@@ -60,7 +67,7 @@ const Set<String> _bandGoals = {'muscle_gain', 'both'};
 /// controllati; ogni voce va tolta quando il conflitto si chiude.
 const Map<String, String> _knownDeficits = {
   // Un solo esercizio da 3 serie a settimana nel template a 4 giorni, nessuno
-  // slot in quello a 3 giorni.
+  // slot in quello a 3 giorni, due esercizi (6 serie) in quello a 5 giorni.
   'calves': 'C-CALVES-BAND',
 };
 
@@ -288,7 +295,10 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
 
   final totals = _weeklySets(plan);
   if (!_bandGoals.contains(c.goal)) return out;
-  for (final muscle in _volumeMuscles) {
+  for (final muscle in [
+    ..._volumeMuscles,
+    ...?_extraVolumeMusclesByDays[c.days],
+  ]) {
     final sets = totals[muscle] ?? 0;
     if (sets + 1e-9 < _bandMin) {
       out.add('volume $muscle: $sets serie frazionarie sotto la soglia $_bandMin');
