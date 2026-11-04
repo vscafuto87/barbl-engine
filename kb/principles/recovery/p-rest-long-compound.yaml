@@ -1,0 +1,32 @@
+id: P-REST-LONG-COMPOUND
+topic: recovery
+statement:
+  it: 'Sui multiarticolari con pesi liberi conviene recuperare almeno 2-3 minuti tra le serie, così il
+    carico si mantiene da una serie all''altra; dopo 3 minuti o più la forza resta quasi intatta per
+    alcune serie. Sui monoarticolari e sui muscoli piccoli bastano recuperi più brevi, intorno a un
+    minuto e mezzo.'
+  en: 'On multi-joint free-weight lifts it pays to rest at least 2-3 minutes between sets, so the load
+    holds from one set to the next; with 3 minutes or more strength stays nearly intact for a few sets.
+    Single-joint lifts and small muscles need shorter rests, around a minute and a half.'
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- prescriptions
+sources:
+- id: schoenfeld-hypertrophy-2e
+  pages:
+  - 120
+  - 121
+  access: full_text
+- id: helms-pyramid-training-v2
+  pages:
+  - 176
+  - 177
+  - 179
+  - 180
+  - 184
+  access: full_text
+conflicts:
+- with: conflicts.yaml#C-REST-STRENGTH
+  status: open

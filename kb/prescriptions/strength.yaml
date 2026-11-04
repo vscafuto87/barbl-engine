@@ -1,0 +1,76 @@
+id: strength
+appliesTo:
+- strength
+roles:
+  main:
+    sets: 3
+    reps:
+      min: 3
+      max: 5
+    restSeconds:
+      upper: 180
+      lower: 240
+    rirFollowsMesocycle: true
+    warmup: true
+  secondary:
+    sets: 3
+    reps:
+      min: 4
+      max: 6
+    restSeconds:
+      upper: 150
+      lower: 180
+    rirFollowsMesocycle: true
+    warmup: false
+  accessory:
+    sets: 3
+    reps:
+      min: 8
+      max: 12
+    restSeconds:
+      upper: 90
+      lower: 90
+    rirFollowsMesocycle: true
+    warmup: false
+supersetRestSeconds: 120
+timeBudget:
+  minutesPerSet: 4
+provisional: true
+principles:
+- P-STRENGTH-PRESCRIPTION
+- P-STRENGTH-REP-ZONE
+- P-RIR-STR
+- P-RIR-ACCURACY
+- P-VOL-DOSE-STR
+- P-SETS-MIN-2
+- P-REST-NEUTRAL
+- P-REST-LONG-COMPOUND
+- P-REST-MAIN-STR
+- P-WARMUP-HEAVY
+- P-TIME-PER-SET-STR
+notes:
+  it: 'Valori provvisori, con il principio di ogni numero. Principale 3 × 3-5: le serie da 3-5 ripetizioni
+    stanno intorno all''80-85% del massimale (P-STRENGTH-REP-ZONE) e quindi sopra la soglia dell''80%
+    (P-STRENGTH-PRESCRIPTION, che indica 2-3 serie per seduta: si prende 3). Secondari 3 × 4-6: restano
+    nella zona pesante da 1 a 6 ripetizioni, per avvicinare la quota di due terzi-tre quarti del volume
+    pesante (P-STRENGTH-REP-ZONE); 3 serie come il ruolo di massa (P-SETS-MIN-2). Complementari 3 ×
+    8-12: sono la quota a carico moderato da 6 a 15 ripetizioni (P-STRENGTH-REP-ZONE), con il tetto a
+    12 per P-RIR-ACCURACY; 3 serie tengono bicipiti e tricipiti sopra la fascia di volume dei template (petto, dorso e quadricipiti
+    scendono a 9 serie frazionarie per il principale a 3 serie, vedi C-STRENGTH-VOLUME).
+    Il RIR segue il mesociclo: per la forza conta più il carico della vicinanza al cedimento (P-RIR-STR).
+    Recuperi: principale 180 s in alto e 240 s in basso (P-REST-MAIN-STR, scelta di design sopra il
+    minimo di P-REST-LONG-COMPOUND), secondari 150 s in alto (almeno 2:30 sui multiarticolari, P-REST-LONG-COMPOUND)
+    e 180 s in basso (P-REST-MAIN-STR), complementari 90 s (almeno un minuto e mezzo sui muscoli piccoli,
+    P-REST-LONG-COMPOUND), superset 120 s (coppie di antagonisti con circa 2 minuti tra le serie,
+    P-REST-LONG-COMPOUND). P-REST-NEUTRAL dice che per la forza i dati non distinguono i recuperi: conflitto
+    aperto C-REST-STRENGTH. Riscaldamento sul principale (P-WARMUP-HEAVY). Serie di prova: ripetizioni
+    minime del principale (3) più il RIR più alto del mesociclo (4, scarico) fa 7, sotto maxRepsPlusRir
+    = 10 di parameters/trialLoad; per i secondari 4 + 4 = 8, e 6 + 4 = 10 per la military press con
+    repsOverride 6-8. Durata (P-TIME-PER-SET-STR): una serie costa il recupero più circa un minuto per esecuzione e quota
+    di riscaldamento: principale 4 minuti in alto e 5 in basso, secondari 3,5 in alto e 4 in basso, complementari
+    2,5. Medie pesate per seduta: Upper A (3 × 4 + 9 × 3,5 + 6 × 2,5) / 18 = 3,25; Lower A (3 × 5 + 9 ×
+    2,5) / 12 = 3,1; Lower B (3 × 5 + 6 × 4 + 3 × 2,5) / 12 = 3,9. La più alta è 3,9: si arrotonda a 4
+    (il motore vuole un intero; i superset accorciano un po'' la stima). Le sedute dei due template hanno da 12 a 18 serie, cioè da 48 a 72
+    minuti: con 60 minuti Upper A, Upper B e Full B non stanno, quindi la forza è coperta da 75 minuti
+    in su. I template restano quelli della massa: il volume settimanale è molto sopra le circa 5 serie
+    di P-VOL-DOSE-STR e la quota pesante resta sotto i due terzi (C-STRENGTH-VOLUME).'

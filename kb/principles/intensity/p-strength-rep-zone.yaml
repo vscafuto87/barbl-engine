@@ -1,0 +1,25 @@
+id: P-STRENGTH-REP-ZONE
+topic: intensity
+statement:
+  it: 'Per la forza la maggior parte del lavoro, circa due terzi o tre quarti delle serie, va fatta con
+    carichi pesanti da 1 a 6 ripetizioni; il resto con carichi moderati da 6 a 15. Le serie da 3-5
+    ripetizioni corrispondono più o meno all''80-85% del massimale. Fare tutto il volume con carichi
+    molto pesanti allunga le sedute e pesa di più su articolazioni e motivazione.'
+  en: 'For strength most of the work, about two thirds to three quarters of the sets, should use heavy
+    loads of 1 to 6 reps; the rest moderate loads of 6 to 15. Sets of 3-5 reps sit at roughly 80-85%
+    of 1RM. Doing all the volume with very heavy loads makes sessions longer and is harder on joints
+    and motivation.'
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- prescriptions
+sources:
+- id: helms-pyramid-training-v2
+  pages:
+  - 47
+  - 49
+  - 75
+  access: full_text
+  note: Raccomandazione di partenza dell'autore, ricavata da meta-analisi e studi che cita; pagine del
+    PDF.
