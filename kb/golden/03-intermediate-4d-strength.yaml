@@ -1,0 +1,45 @@
+id: golden-03
+name:
+  it: Intermedio, 4 giorni da 75 minuti, forza, palestra completa
+profile: golden/profile-4d-strength.json
+expect:
+  split: upper_lower
+  sessions: 4
+  scheduleDays:
+  - mon
+  - wed
+  - thu
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      3: 2
+  initialLoad:
+    barbell_bench_press:
+      kg: 90
+      source: profile
+    dumbbell_row:
+      kg: null
+      source: manual
+    military_press:
+      kg: null
+      source: trial_set
+    squat:
+      kg: null
+      source: trial_set
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      back: 10
+      quadriceps: 10
+      biceps: 10
+      triceps: 10
+  validAgainst: contract/plan.schema.json
+origin:
+  it: Caso di Barbl, non del contratto dell'app. Profilo 1.1 con obiettivo forza e 75 minuti, la durata
+    più breve coperta dalla prescrizione strength (4 minuti per serie, sedute fino a 18 serie). La panca
+    ha il carico noto; military press e squat, senza carico, ricevono la serie di prova perché ripetizioni
+    minime più RIR massimo restano entro maxRepsPlusRir; il rematore con manubri ha il carico a mano.
+    Il petto non è tra i volumi controllati, perché con 3 serie sul principale scende a 9 serie frazionarie
+    (C-STRENGTH-VOLUME).

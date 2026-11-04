@@ -41,6 +41,10 @@ const Map<String, List<Map<String, Object?>>> _knownLoadsByExperience = {
 };
 
 /// Muscoli per cui la soglia di volume è una proprietà (stessi del caso d'oro).
+/// Vale per gli obiettivi di [_bandGoals]: la fascia di `belowBand` è
+/// dell'ipertrofia (`P-VOL-MIN-10`); per la forza il volume utile è molto più
+/// basso (`P-VOL-DOSE-STR`) e il principale a 3 serie porta petto, dorso e
+/// quadricipiti a 9 (`C-STRENGTH-VOLUME`).
 const List<String> _volumeMuscles = [
   'chest',
   'back',
@@ -48,6 +52,9 @@ const List<String> _volumeMuscles = [
   'biceps',
   'triceps',
 ];
+
+/// Obiettivi per cui si controlla la soglia di volume.
+const Set<String> _bandGoals = {'muscle_gain', 'both'};
 
 /// Muscoli in deficit noto, con il conflitto che li spiega. Non sono
 /// controllati; ogni voce va tolta quando il conflitto si chiude.
@@ -69,10 +76,10 @@ const Map<(int, String, int), String> _expectedCoverage = {
   (3, 'muscle_gain', 60): 'covered',
   (3, 'muscle_gain', 75): 'covered',
   (3, 'muscle_gain', 90): 'covered',
-  (3, 'strength', 45): 'goal',
-  (3, 'strength', 60): 'goal',
-  (3, 'strength', 75): 'goal',
-  (3, 'strength', 90): 'goal',
+  (3, 'strength', 45): 'duration',
+  (3, 'strength', 60): 'duration',
+  (3, 'strength', 75): 'covered',
+  (3, 'strength', 90): 'covered',
   (3, 'both', 45): 'duration',
   (3, 'both', 60): 'covered',
   (3, 'both', 75): 'covered',
@@ -81,10 +88,10 @@ const Map<(int, String, int), String> _expectedCoverage = {
   (4, 'muscle_gain', 60): 'covered',
   (4, 'muscle_gain', 75): 'covered',
   (4, 'muscle_gain', 90): 'covered',
-  (4, 'strength', 45): 'goal',
-  (4, 'strength', 60): 'goal',
-  (4, 'strength', 75): 'goal',
-  (4, 'strength', 90): 'goal',
+  (4, 'strength', 45): 'duration',
+  (4, 'strength', 60): 'duration',
+  (4, 'strength', 75): 'covered',
+  (4, 'strength', 90): 'covered',
   (4, 'both', 45): 'duration',
   (4, 'both', 60): 'covered',
   (4, 'both', 75): 'covered',
@@ -132,6 +139,7 @@ final List<_Combo> _combos = [
 late KnowledgeBase _kb;
 late Map<String, List<String>> _equipmentByGym;
 late num _bandMin;
+late num _trialLimit;
 final File _planSchema = File('../kb/contract/plan.schema.json');
 
 /// Esito di un profilo: il risultato oppure l'errore lanciato.
@@ -255,7 +263,31 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
     }
   }
 
+  // Serie di prova solo se ripetizioni minime + RIR più alto delle settimane
+  // di carico restano entro `maxRepsPlusRir` (stessa regola del motore).
+  final weeks = [
+    for (final w
+        in (plan['mesocycle']! as Map<String, Object?>)['weeks']!
+            as List<Object?>)
+      w! as Map<String, Object?>,
+  ];
+  final loadRirs = [
+    for (final w in weeks)
+      if (w['type'] == 'load') w['rirTarget']! as num,
+  ];
+  final maxLoadRir = loadRirs.reduce((a, b) => a > b ? a : b);
+  for (final e in _exercisesOf(plan)) {
+    final load = e['initialLoad']! as Map<String, Object?>;
+    if (load['source'] != 'trial_set') continue;
+    final repsMin = (e['reps']! as Map<String, Object?>)['min']! as num;
+    if (repsMin + maxLoadRir > _trialLimit) {
+      out.add('${e['exerciseId']}: prova con $repsMin + $maxLoadRir oltre '
+          '$_trialLimit');
+    }
+  }
+
   final totals = _weeklySets(plan);
+  if (!_bandGoals.contains(c.goal)) return out;
   for (final muscle in _volumeMuscles) {
     final sets = totals[muscle] ?? 0;
     if (sets + 1e-9 < _bandMin) {
@@ -323,6 +355,9 @@ void main() {
     final band = _kb.parameterGroups['belowBand']!;
     expect(band.principles, contains('P-VOL-MIN-10'));
     _bandMin = band.values['bandMin']! as num;
+    _trialLimit =
+        _kb.parameterGroups['trialLoad']!.engineConstraints['maxRepsPlusRir']!
+            as num;
 
     for (final c in _combos) {
       _outcomes[c.key] = _generate(c);

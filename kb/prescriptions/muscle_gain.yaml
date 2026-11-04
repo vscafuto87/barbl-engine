@@ -46,4 +46,4 @@ principles:
 notes:
   it: 'Valori provvisori ripresi dal piano fisso (panca 4 serie, recuperi 2:30 e 3:00, superset 2:00,
     isolamenti 1:30). Le ripetizioni dei complementari si fermano a 12 per il principio P-RIR-ACCURACY.
-    L''obiettivo strength non ha ancora prescrizioni proprie: usa queste solo se il profilo dice both.'
+    Valgono per massa ed entrambi (both); l''obiettivo strength ha la sua prescrizione (strength.yaml).'
