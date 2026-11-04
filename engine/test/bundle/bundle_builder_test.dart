@@ -68,13 +68,13 @@ void main() {
     );
   });
 
-  test('un focus full_body è un errore', () {
+  test('un focus sconosciuto è un errore', () {
     final dir = kbCopy();
     final f = File('${dir.path}/templates/upper_lower_4d.yaml');
     f.writeAsStringSync(
       f.readAsStringSync().replaceFirst(
         'focus: upper_body',
-        'focus: full_body',
+        'focus: neck',
       ),
     );
     final result = buildBundle(dir);

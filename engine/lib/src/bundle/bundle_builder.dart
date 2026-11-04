@@ -255,10 +255,10 @@ BundleResult buildBundle(Directory kbDir, {String? kbCommit}) {
       final sid = s['id'];
       final sctx = '${d.path}: template $tid, seduta $sid';
       final focus = s['focus'];
-      if (focus != 'upper_body' && focus != 'legs') {
+      if (focus != 'upper_body' && focus != 'legs' && focus != 'full_body') {
         errors.add(
           '$sctx: focus $focus: focus senza colonna di recupero '
-          '(ammessi upper_body e legs)',
+          '(ammessi upper_body, legs e full_body)',
         );
       }
       for (final block in _asListOrEmpty(s['blocks'])) {
