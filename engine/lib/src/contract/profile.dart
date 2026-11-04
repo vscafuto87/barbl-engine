@@ -5,7 +5,16 @@ library;
 // Costanti di formato del contratto, copiate dallo schema del profilo.
 // Non sono numeri di dominio: si aggiornano solo insieme allo schema.
 // ---------------------------------------------------------------------------
-const String _profileSchemaVersion = '1.0';
+const Set<String> _profileSchemaVersions = {'1.0', '1.1'};
+const Set<String> _equipmentValues = {
+  'barbell',
+  'rack',
+  'bench',
+  'dumbbells',
+  'machines',
+  'cables',
+  'smith_machine',
+};
 const Set<String> _goalValues = {'muscle_gain', 'strength', 'both'};
 const Set<String> _gymTypeValues = {'full', 'home', 'dumbbells'};
 const Set<int> _daysPerWeekValues = {3, 4, 5};
@@ -110,8 +119,8 @@ ProfileRead readProfile(Map<String, Object?> json) {
   }
 
   if (json.containsKey('schemaVersion') &&
-      json['schemaVersion'] != _profileSchemaVersion) {
-    errors.add('schemaVersion: deve essere "$_profileSchemaVersion", '
+      !_profileSchemaVersions.contains(json['schemaVersion'])) {
+    errors.add('schemaVersion: deve essere "1.0" o "1.1", '
         'trovato ${_describe(json['schemaVersion'])}');
   }
 
@@ -154,8 +163,11 @@ ProfileRead readProfile(Map<String, Object?> json) {
         } else {
           for (var i = 0; i < v.length; i++) {
             final item = v[i];
-            if (item is String) {
+            if (item is String && _equipmentValues.contains(item)) {
               equipment.add(item);
+            } else if (item is String) {
+              errors.add(
+                  'gym.equipment[$i]: valore non ammesso (${_describe(item)})');
             } else {
               errors.add('gym.equipment[$i]: deve essere una stringa');
             }
