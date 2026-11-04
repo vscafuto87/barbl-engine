@@ -6,11 +6,13 @@ import 'prescribe.dart';
 enum LoadSource {
   profile,
   estimate,
+  manual,
   trialSet;
 
   String get json => switch (this) {
     LoadSource.profile => 'profile',
     LoadSource.estimate => 'estimate',
+    LoadSource.manual => 'manual',
     LoadSource.trialSet => 'trial_set',
   };
 }
@@ -77,8 +79,8 @@ Map<String, InitialLoad> assignLoads(
         if (existing != null) {
           // Un'occorrenza precedente può aver già deciso la prova: la
           // prima assegnazione vale, salvo che questa sia una prova e la
-          // precedente una stima.
-          if (existing.source != LoadSource.estimate) continue;
+          // precedente un carico manuale.
+          if (existing.source != LoadSource.manual) continue;
         }
         final trial =
             pe.askLoad &&
@@ -88,7 +90,7 @@ Map<String, InitialLoad> assignLoads(
             pe.repsMin + maxRir <= limit;
         result[id] = trial
             ? InitialLoad(null, LoadSource.trialSet)
-            : InitialLoad(null, LoadSource.estimate);
+            : InitialLoad(null, LoadSource.manual);
       }
     }
   }

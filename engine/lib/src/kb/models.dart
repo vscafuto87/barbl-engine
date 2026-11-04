@@ -8,6 +8,7 @@ class KbExercise {
   const KbExercise({
     required this.id,
     required this.nameIt,
+    required this.nameEn,
     required this.equipment,
     required this.requires,
     required this.pattern,
@@ -23,6 +24,7 @@ class KbExercise {
     return KbExercise(
       id: stringAt(json, 'id', path),
       nameIt: stringAt(mapAt(json, 'name', path), 'it', '$path.name'),
+      nameEn: stringAt(mapAt(json, 'name', path), 'en', '$path.name'),
       equipment: stringAt(json, 'equipment', path),
       requires: stringsAt(json, 'requires', path),
       pattern: stringAt(json, 'pattern', path),
@@ -35,6 +37,7 @@ class KbExercise {
 
   final String id;
   final String nameIt;
+  final String nameEn;
   final String equipment;
   final List<String> requires;
   final String pattern;

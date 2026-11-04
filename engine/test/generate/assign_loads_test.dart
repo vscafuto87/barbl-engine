@@ -118,7 +118,7 @@ void main() {
     expect(r['squat']!.source.json, 'trial_set');
   });
 
-  test('reps.min 8: 8+3 > 10, stima', () {
+  test('reps.min 8: 8+3 > 10, manuale', () {
     final kb = _kb();
     final r = assignLoads(
       [_session(kb, 'squat', repsMin: 8)],
@@ -126,16 +126,16 @@ void main() {
       kb,
     );
     expect(r['squat']!.kg, isNull);
-    expect(r['squat']!.source, LoadSource.estimate);
+    expect(r['squat']!.source, LoadSource.manual);
   });
 
-  test('askLoad con whenLoadUnknown manual: stima', () {
+  test('askLoad con whenLoadUnknown manual: manuale', () {
     final kb = _kb();
     final r = assignLoads([_session(kb, 'curl')], _profile({}), kb);
-    expect(r['curl']!.source, LoadSource.estimate);
+    expect(r['curl']!.source, LoadSource.manual);
   });
 
-  test('senza askLoad e senza voce: stima', () {
+  test('senza askLoad e senza voce: manuale', () {
     final kb = _kb();
     final r = assignLoads(
       [_session(kb, 'squat', askLoad: false)],
@@ -143,7 +143,7 @@ void main() {
       kb,
     );
     expect(r['squat']!.kg, isNull);
-    expect(r['squat']!.source, LoadSource.estimate);
+    expect(r['squat']!.source, LoadSource.manual);
   });
 
   test('voce per esercizio non nel piano: ignorata', () {
@@ -168,9 +168,9 @@ void main() {
     expect(r['squat']!.source, LoadSource.trialSet);
   });
 
-  test('gruppo trialLoad assente: stima', () {
+  test('gruppo trialLoad assente: manuale', () {
     final kb = _kb(withTrial: false);
     final r = assignLoads([_session(kb, 'squat')], _profile({}), kb);
-    expect(r['squat']!.source, LoadSource.estimate);
+    expect(r['squat']!.source, LoadSource.manual);
   });
 }

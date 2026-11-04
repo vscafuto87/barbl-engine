@@ -81,12 +81,20 @@ void main() {
     }
   });
 
-  test('un\'attrezzatura sconosciuta resta nell\'insieme', () {
+  test('un\'attrezzatura fuori enum è un errore con indice', () {
     final m = example();
     (gymOf(m)['equipment'] as List).add('flux_capacitor');
     final r = readProfile(m);
-    expect(r, isA<ProfileOk>());
-    expect((r as ProfileOk).profile.equipment, contains('flux_capacitor'));
+    expect(r, isA<ProfileErrors>());
+    expect((r as ProfileErrors).errors.single,
+        'gym.equipment[7]: valore non ammesso (flux_capacitor)');
+  });
+
+  test('schemaVersion 1.0 e 1.1 sono validi', () {
+    for (final v in ['1.0', '1.1']) {
+      final m = example()..['schemaVersion'] = v;
+      expect(readProfile(m), isA<ProfileOk>(), reason: v);
+    }
   });
 
   test('raccoglie tutti gli errori e non lancia con valori null', () {

@@ -10,7 +10,7 @@ import 'prescribe.dart';
 import 'rationales.dart';
 
 // Costanti di formato del contratto del piano.
-const String _planSchemaVersion = '2.0';
+const String _planSchemaVersion = '3.0';
 const String _trialRuleId = 'TRIAL-LOAD';
 const List<String> _weekDays = [
   'mon',
@@ -42,7 +42,7 @@ Map<String, Object?> _exercise(
   }
   return {
     'exerciseId': ex.id,
-    'name': ex.nameIt,
+    'name': {'it': ex.nameIt, 'en': ex.nameEn},
     'equipment': ex.equipment,
     'muscles': [ex.primaryMuscle, ...ex.secondaryMuscles],
     'sets': pe.sets,
@@ -53,6 +53,7 @@ Map<String, Object?> _exercise(
     'initialLoad': {'kg': load.kg, 'source': load.source.json},
     if (ex.stepKg != null) 'stepKg': ex.stepKg,
     'rules': rules,
+    if (pe.askLoad) 'askLoad': true,
   };
 }
 

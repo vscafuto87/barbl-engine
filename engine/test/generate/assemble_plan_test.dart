@@ -86,7 +86,7 @@ void main() {
       'rationales',
       'parameters',
     ]);
-    expect(plan['schemaVersion'], '2.0');
+    expect(plan['schemaVersion'], '3.0');
     expect(plan['id'], 't1-full');
     expect(plan['generatedBy'], {
       'engine': 'barbl-engine 0.1.0',
@@ -128,6 +128,7 @@ void main() {
       'initialLoad',
       'stepKg',
       'rules',
+      'askLoad',
     ]);
     expect(e['muscles'], ['quadriceps', 'glutes']);
     expect(e['reps'], {'min': 6, 'max': 8});
@@ -135,6 +136,22 @@ void main() {
     expect(e['initialLoad'], {'kg': null, 'source': 'trial_set'});
     expect(e['stepKg'], 2.5);
     expect(e['rules'], ['A-RULE', 'PROG-DOUBLE', 'TRIAL-LOAD']);
+    expect(e['name'], {'it': 'Squat', 'en': 'Squat'});
+    expect(e['askLoad'], true);
+  });
+
+  test('askLoad assente quando lo slot non lo chiede', () {
+    final b = _bundle();
+    final tpl = (b['templates']! as Map<String, Object?>)['t1']!
+        as Map<String, Object?>;
+    final block = (((tpl['sessions']! as List).first
+            as Map<String, Object?>)['blocks']! as List)
+        .first as Map<String, Object?>;
+    final slot = (block['slots']! as List).first as Map<String, Object?>;
+    slot.remove('askLoad');
+    final e = _firstExercise(_plan(KnowledgeBase.fromJson(b)));
+    expect(e.containsKey('askLoad'), isFalse);
+    expect(e['initialLoad'], {'kg': null, 'source': 'manual'});
   });
 
   test('stepKg omesso quando la KB non lo ha; niente TRIAL-LOAD senza prova', () {
