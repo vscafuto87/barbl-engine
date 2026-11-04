@@ -3,11 +3,13 @@ topic: recovery
 statement:
   it: 'Per l''obiettivo forza l''esercizio principale ha 3 minuti di recupero nella parte alta e 4 in
     quella bassa, i secondari 2:30 in alto e 3:00 in basso. Le fonti indicano solo un minimo (almeno
-    2-3 minuti sui multiarticolari pesanti): i valori esatti, e il minuto in più per squat e stacchi,
+    2-3 minuti sui multiarticolari pesanti; la revisione sistematica di Grgic 2018 chiede più di 2 minuti
+    a chi è allenato): i valori esatti, e il minuto in più per squat e stacchi,
     sono una scelta di design di Barbl, non il risultato di uno studio.'
   en: 'For the strength goal the main lift gets 3 minutes of rest on upper-body days and 4 on lower-body
     days, secondary lifts 2:30 upper and 3:00 lower. Sources give only a minimum (at least 2-3 minutes
-    on heavy multi-joint lifts): the exact values, and the extra minute for squats and deadlifts, are a
+    on heavy multi-joint lifts; the 2018 Grgic systematic review asks for more than 2 minutes in trained
+    people): the exact values, and the extra minute for squats and deadlifts, are a
     Barbl design choice, not a study finding.'
 evidence: design
 status: provisional
@@ -17,6 +19,8 @@ feeds:
 sources:
 - id: barbl-design
   access: full_text
+- id: grgic-2018-rest-strength
+  access: abstract_only
 conflicts:
 - with: conflicts.yaml#C-REST-STRENGTH
   status: open
