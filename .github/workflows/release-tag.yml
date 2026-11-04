@@ -1,0 +1,19 @@
+name: Tag di rilascio
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  tag-matches-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Il tag coincide con kb/VERSION e con una voce del changelog
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          version="$(tr -d '[:space:]' < kb/VERSION)"
+          if [ "$tag" != "$version" ]; then
+            echo "Il tag $GITHUB_REF_NAME non coincide con kb/VERSION ($version)"; exit 1
+          fi
+          grep -q "^## $version " CHANGELOG.md || { echo "CHANGELOG.md non ha la voce $version"; exit 1; }
