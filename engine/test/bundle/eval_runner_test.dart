@@ -117,7 +117,7 @@ void main() {
         t, 'counting: fractional', 'counting: fractional\n    extra: 1'));
     expect(mentions(a, 'extra'), isTrue);
     final b = editedCase((t) => replaceOnce(
-        t, 'kg: 80\n', 'kg: 80\n      weird: 1\n'));
+        t, 'kg: 77.5\n', 'kg: 77.5\n      weird: 1\n'));
     expect(mentions(b, 'weird'), isTrue);
   });
 
@@ -138,7 +138,7 @@ void main() {
   });
 
   test('un carico iniziale diverso fa fallire', () {
-    final c = editedCase((t) => replaceOnce(t, 'kg: 80\n', 'kg: 81\n'));
+    final c = editedCase((t) => replaceOnce(t, 'kg: 77.5\n', 'kg: 78\n'));
     expect(c.passed, isFalse);
     expect(mentions(c, 'barbell_bench_press'), isTrue);
   });

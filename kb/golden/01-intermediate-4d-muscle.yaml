@@ -17,14 +17,14 @@ expect:
       3: 2
   initialLoad:
     barbell_bench_press:
-      kg: 80
-      source: profile
+      kg: 77.5
+      source: estimate
     dumbbell_row:
-      kg: 32
-      source: profile
+      kg: 30
+      source: estimate
     military_press:
-      kg: 47.5
-      source: profile
+      kg: 45
+      source: estimate
     squat:
       kg: null
       source: trial_set
