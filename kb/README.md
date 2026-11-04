@@ -29,6 +29,8 @@ Il volume per muscolo si conta in modo frazionario (`kb/vocab/muscles.yaml`, `se
 - **Casi d'oro**: il caso 01 del contratto e il caso 02 (3 giorni, principiante, `golden/profile-3d.json`) passano il controllo statico del validatore (serie frazionarie, durata, carichi iniziali) e il controllo del motore (`eval`).
 - **Template a 3 giorni**: lo split full body è una scelta di design (principio `P-SPLIT-FULL-BODY-3D`), non ripresa da una fonte. I polpacci non hanno uno slot (vedi `C-CALVES-BAND`). Con la palestra a soli manubri alcuni slot ripetono lo stesso esercizio in sedute diverse.
 
+La matrice di 324 profili che controlla copertura e proprietà dei piani generati è descritta in `docs/eval-matrice.md`.
+
 ## Comandi
 
 ```bash
