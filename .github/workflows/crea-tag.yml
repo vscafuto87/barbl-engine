@@ -1,0 +1,60 @@
+name: Crea tag
+
+# Crea il tag di rilascio vX.Y.Z su un commit, con i controlli della CI.
+# Si lancia a mano (Actions > Crea tag > Run workflow) o dal tool di GitHub.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag da creare, per esempio v0.7.0"
+        required: true
+        type: string
+      sha:
+        description: "Commit da etichettare (vuoto = testa di main)"
+        required: false
+        default: ""
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  crea-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Controlli e creazione del tag
+        env:
+          TAG: ${{ inputs.tag }}
+          SHA: ${{ inputs.sha }}
+        run: |
+          set -euo pipefail
+          case "$TAG" in
+            v[0-9]*.[0-9]*.[0-9]*) ;;
+            *) echo "Il tag deve avere la forma vX.Y.Z"; exit 1 ;;
+          esac
+          if ! printf '%s' "$TAG" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Il tag deve avere la forma vX.Y.Z"; exit 1
+          fi
+          target="${SHA:-$(git rev-parse origin/main)}"
+          target="$(git rev-parse --verify "${target}^{commit}")"
+          if ! git merge-base --is-ancestor "$target" origin/main; then
+            echo "Il commit $target non è su main"; exit 1
+          fi
+          if git rev-parse -q --verify "refs/tags/$TAG" >/dev/null; then
+            echo "Il tag $TAG esiste già"; exit 1
+          fi
+          version="$(git show "$target:kb/VERSION" | tr -d '[:space:]')"
+          if [ "v$version" != "$TAG" ]; then
+            echo "kb/VERSION al commit $target vale $version, non $TAG"; exit 1
+          fi
+          grep -q "^## $version " CHANGELOG.md || { echo "CHANGELOG.md di main non ha la voce $version"; exit 1; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$TAG" "$target" -m "KB $version"
+          git push origin "refs/tags/$TAG"
+          echo "Creato $TAG su $target"
