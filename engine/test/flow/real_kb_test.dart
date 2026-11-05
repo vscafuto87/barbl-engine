@@ -213,30 +213,42 @@ void main() {
     }
   });
 
-  test('le sedute a 45 e 60 minuti stanno nella durata e non restano vuote',
-      () {
-    for (final days in [3, 4]) {
-      for (final goal in ['muscle_gain', 'strength']) {
-        for (final minutes in [45, 60]) {
-          final p = plan(
-            profile(daysPerWeek: days, goal: goal, sessionDurationMin: minutes),
-          );
-          for (final s in p['sessions']! as List) {
-            final m = s as Map;
-            expect(m['estimatedDurationMin'] as num, lessThanOrEqualTo(minutes),
-                reason: '$days $goal $minutes ${m['id']}');
-            // Si tolgono slot, non si svuota la seduta.
-            final count = [
-              for (final b in m['blocks'] as List)
-                ...(b as Map)['exercises'] as List,
-            ].length;
-            expect(count, greaterThanOrEqualTo(3),
-                reason: '$days $goal $minutes ${m['id']}');
+  test(
+    'le sedute a 45 e 60 minuti stanno nella durata e non restano vuote',
+    () {
+      for (final days in [3, 4]) {
+        for (final goal in ['muscle_gain', 'strength']) {
+          for (final minutes in [45, 60]) {
+            final p = plan(
+              profile(
+                daysPerWeek: days,
+                goal: goal,
+                sessionDurationMin: minutes,
+              ),
+            );
+            for (final s in p['sessions']! as List) {
+              final m = s as Map;
+              expect(
+                m['estimatedDurationMin'] as num,
+                lessThanOrEqualTo(minutes),
+                reason: '$days $goal $minutes ${m['id']}',
+              );
+              // Si tolgono slot, non si svuota la seduta.
+              final count = [
+                for (final b in m['blocks'] as List)
+                  ...(b as Map)['exercises'] as List,
+              ].length;
+              expect(
+                count,
+                greaterThanOrEqualTo(3),
+                reason: '$days $goal $minutes ${m['id']}',
+              );
+            }
           }
         }
       }
-    }
-  });
+    },
+  );
 
   test(
     'forza a 3 e 4 giorni da 75 minuti: piano completo in ogni palestra',
@@ -468,6 +480,19 @@ void main() {
         expect(ids(seeded(7)), ids(seeded(7)));
       },
     );
+
+    test('P-MUSCLE-LENGTH: con ogni seme niente pushdown né calf seduto se ci sono alternative allungate', () {
+      for (var i = 0; i < 40; i++) {
+        final p = plan(
+          profile(goal: 'muscle_gain')
+            ..['variantSeed'] = i
+            ..['schemaVersion'] = '1.3',
+        );
+        final used = ids(p);
+        expect(used, isNot(contains('cable_triceps_pushdown')));
+        expect(used, isNot(contains('seated_calf_raise')));
+      }
+    });
 
     test('per la forza il seme cambia solo l\'isolamento', () {
       Set<String> mainIds(Map<String, Object?> p) => {

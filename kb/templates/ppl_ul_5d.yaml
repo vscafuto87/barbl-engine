@@ -50,10 +50,12 @@ sessions:
     slots:
     - pattern: elbow_extension
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
-      - cable_triceps_pushdown
+      - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
+      - barbell_overhead_triceps_extension
+      - cable_triceps_pushdown
       - barbell_skull_crusher
 - id: pull
   name:
@@ -84,11 +86,12 @@ sessions:
     slots:
     - pattern: rear_delt_fly
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - cable_rear_delt_fly
       - dumbbell_rear_delt_fly
       - reverse_pec_deck
+      - incline_bench_rear_delt_fly
   - type: single
     slots:
     - pattern: elbow_flexion
@@ -126,18 +129,22 @@ sessions:
     slots:
     - pattern: lunge
       role: secondary
-      equivalent: 2
+      equivalent: 3
       candidates:
       - bulgarian_split_squat
       - dumbbell_walking_lunge
+      - dumbbell_reverse_lunge
+      - dumbbell_step_up
   - type: single
     slots:
     - pattern: calf_raise
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - standing_calf_raise
       - dumbbell_calf_raise
+      - leg_press_calf_raise
+      - smith_machine_calf_raise
       - seated_calf_raise
 - id: upper
   name:
@@ -218,10 +225,12 @@ sessions:
     slots:
     - pattern: hip_extension
       role: secondary
-      equivalent: 2
+      equivalent: 3
       candidates:
       - barbell_hip_thrust
       - dumbbell_hip_thrust
+      - barbell_glute_bridge
+      - cable_pull_through
   - type: single
     slots:
     - pattern: knee_flexion
@@ -236,10 +245,12 @@ sessions:
     slots:
     - pattern: calf_raise
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - dumbbell_calf_raise
       - standing_calf_raise
+      - leg_press_calf_raise
+      - smith_machine_calf_raise
       - seated_calf_raise
 principles:
 - P-SPLIT-PPL-UL-5D

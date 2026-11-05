@@ -1,0 +1,19 @@
+id: dumbbell_reverse_lunge
+name:
+  it: Affondi indietro con manubri
+  en: Dumbbell reverse lunge
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: lunge
+mechanics: compound
+muscles:
+  primary: quadriceps
+  secondary: 
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- bulgarian_split_squat
+- dumbbell_walking_lunge

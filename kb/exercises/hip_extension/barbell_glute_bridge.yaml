@@ -1,0 +1,19 @@
+id: barbell_glute_bridge
+name:
+  it: Ponte per i glutei con bilanciere
+  en: Barbell glute bridge
+equipment: barbell
+requires:
+- barbell
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary: 
+  - hamstrings
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_hip_thrust
+- dumbbell_hip_thrust

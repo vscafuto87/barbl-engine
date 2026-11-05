@@ -1,0 +1,18 @@
+id: barbell_overhead_triceps_extension
+name:
+  it: Estensioni sopra la testa con bilanciere
+  en: Barbell overhead triceps extension
+equipment: barbell
+requires:
+- barbell
+pattern: elbow_extension
+mechanics: isolation
+muscles:
+  primary: triceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- overhead_cable_triceps_extension
+- dumbbell_overhead_triceps_extension
