@@ -1,0 +1,20 @@
+id: dumbbell_arnold_press
+name:
+  it: Arnold press con manubri
+  en: Dumbbell Arnold press
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: vertical_push
+mechanics: compound
+muscles:
+  primary: shoulders
+  secondary: 
+  - triceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- seated_dumbbell_shoulder_press
+- machine_shoulder_press

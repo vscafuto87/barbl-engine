@@ -1,0 +1,19 @@
+id: dumbbell_preacher_curl
+name:
+  it: Curl alla panca Scott con manubrio
+  en: Dumbbell preacher curl
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: elbow_flexion
+mechanics: isolation
+muscles:
+  primary: biceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- incline_dumbbell_curl
+- dumbbell_curl

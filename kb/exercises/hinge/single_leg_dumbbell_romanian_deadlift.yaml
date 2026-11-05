@@ -1,0 +1,19 @@
+id: single_leg_dumbbell_romanian_deadlift
+name:
+  it: Stacco rumeno a una gamba con manubrio
+  en: Single-leg dumbbell Romanian deadlift
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: hinge
+mechanics: compound
+muscles:
+  primary: hamstrings
+  secondary: 
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_romanian_deadlift
+- seated_leg_curl
