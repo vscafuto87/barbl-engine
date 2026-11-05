@@ -2,6 +2,13 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.18.0 — 2026-11-05
+
+- Tre enfasi nuove nel profilo (`emphasis`): `quadriceps`, `chest`, `back`, accanto a `glutes_hamstrings`, `shoulders` e `arms`; sempre al massimo due, stesse regole di durata. Posti: quadricipiti con la leg extension (Full A e Full C, Lower B, Gambe e Lower; senza macchine un affondo o uno squat con manubrio), petto con le croci (Full A e Full C, Upper A, Push e Upper), schiena con una trazione verticale o un rematore (Full A e Full C, Upper A e Upper B, Pull e Upper).
+- L'enfasi non ripete più un esercizio già presente nella seduta: prende il primo candidato disponibile che la seduta non ha, e se non ce n'è nessuno salta il posto. Corregge il limite noto della 0.7.0 (con i soli manubri l'esercizio aggiunto ripeteva quello della seduta); a 4 e 5 giorni con i soli manubri l'enfasi schiena non trova esercizi nuovi e non aggiunge nulla. Ai curl dell'enfasi braccia si aggiungono il curl a martello e quello su panca inclinata come riserve.
+- Principio `P-SEX-RESPONSE` (Roberts 2020, Refalo 2025, solo abstract; Schoenfeld p. 173): a parità di programma la crescita relativa è simile tra i sessi, quindi stesse regole per tutti e nessuna domanda sul sesso; le differenze di obiettivo passano dall'enfasi. Conflitto aperto `C-SEX-FATIGUE` (Nuckols 2026: le donne recuperano di più tra le serie, non tra le sedute), da rivedere con il coach.
+- Matrice dell'enfasi da 432 a 756 profili (sette varianti). Nessun numero nuovo.
+
 ## 0.17.0 — 2026-11-05
 
 - Terza tornata (manubri e casa), con letture degli studi: 3 esercizi nuovi (curl alla panca Scott con manubrio, stacco rumeno a una gamba con manubrio, Arnold press). Estesi `P-MUSCLE-LENGTH` (Maeo 2021: leg curl da seduto più dei ischiocrurali che da prono; Pedrosa 2023: curl nel tratto allungato) e nuovo `P-PUSH-UP-LOW-LOAD` (Kikuchi 2017). Di conseguenza il leg curl da seduto precede quello da prono (che passa in coda, dopo lo stacco rumeno a una gamba) e i curl allungati (panca inclinata, Scott) entrano per primi nei candidati dei bicipiti (`equivalent` 4); l'Arnold press è intercambiabile con la panca da seduto nelle spalle. Lo stacco rumeno a una gamba e l'Arnold press non hanno uno studio diretto: valgono per la varietà (`P-EXERCISE-VARIATION`). Principi provvisori, nessun numero nuovo, nessuno split nuovo.

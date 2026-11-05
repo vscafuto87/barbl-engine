@@ -34,7 +34,14 @@ void main() {
     expect(kb.templates, hasLength(3));
     expect(kb.parameterGroups, hasLength(10));
     expect(kb.rationales, hasLength(12));
-    expect(kb.emphases.keys, ['arms', 'glutes_hamstrings', 'shoulders']);
+    expect(kb.emphases.keys, [
+      'arms',
+      'back',
+      'chest',
+      'glutes_hamstrings',
+      'quadriceps',
+      'shoulders',
+    ]);
     for (final em in kb.emphases.values) {
       expect(
         em.placements.keys,

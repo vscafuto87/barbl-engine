@@ -105,3 +105,16 @@ conflicts:
       sotto le 10 serie frazionarie settimanali di P-VOL-MIN-10. Il tempo per serie (3 minuti) è provvisorio.
   resolution:
     it: 'Chiuso da Vincenzo il 5 novembre 2026: con sedute corte si toglie prima l''isolamento poi i complementari (P-TIME-TRIM), meglio di rifiutare il profilo. L''app segnala il volume sotto fascia e suggerisce di allungare la durata. Il tempo per serie resta provvisorio.'
+- id: C-SEX-FATIGUE
+  status: open
+  date: '2026-11-05'
+  between:
+  - P-SEX-RESPONSE
+  - nuckols-2026-sex-fatigue
+  summary:
+    it: Nuckols 2026 trova che le donne allenate completano molte più ripetizioni in serie ravvicinate
+      perché recuperano di più tra una serie e l'altra, mentre il recupero nei giorni successivi è uguale;
+      alcuni autori della KB (Israetel, Nippard) ne traggono più ripetizioni o volume per le donne.
+  resolution:
+    it: 'Aperto: una sola prova sperimentale, sulla panca. Il motore resta con le stesse regole per tutti
+      (P-SEX-RESPONSE); da rivedere con il coach e con nuovi studi prima di qualsiasi parametro per sesso.'
