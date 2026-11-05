@@ -2,7 +2,7 @@
 /// (3 giorni x 4 durate x 3 obiettivi x 3 palestre x 3 livelli = 324) con la KB
 /// vera dà o un piano che rispetta le proprietà attese o un rifiuto motivato,
 /// mai un'eccezione. In più la dimensione enfasi (4 varianti per un livello:
-/// 432 profili). Vedi `docs/eval-matrice.md`.
+/// 756 profili). Vedi `docs/eval-matrice.md`.
 library;
 
 import 'dart:convert';
@@ -119,11 +119,14 @@ const Map<(int, String, int), String> _expectedCoverage = {
 };
 
 /// Varianti di `emphasis` della matrice dell'enfasi (la variante «nessuna» è
-/// la matrice di base): ciascuna delle tre e la coppia glutei e braccia.
+/// la matrice di base): ciascuna delle sei e la coppia glutei e braccia.
 const List<List<String>> _emphasisVariants = [
   ['glutes_hamstrings'],
   ['shoulders'],
   ['arms'],
+  ['quadriceps'],
+  ['chest'],
+  ['back'],
   ['glutes_hamstrings', 'arms'],
 ];
 
@@ -281,8 +284,9 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
       out.add('$id: richiede ${missing.join(', ')}, assente dalla palestra');
     }
     for (final rule in e['rules']! as List<Object?>) {
-      if (!ruleIds.contains(rule))
+      if (!ruleIds.contains(rule)) {
         out.add('$id: regola $rule senza motivazione');
+      }
     }
     final name = e['name'];
     if (name is! Map ||
@@ -476,7 +480,27 @@ List<String> _emphasisViolations(
     final got = added[id] ?? 0;
     if (got > want) out.add('seduta $id: $got esercizi di enfasi, posti $want');
     final minutes = m['estimatedDurationMin']! as num;
-    if (got < want && minutes + slotMinutes <= c.duration) {
+    // Un posto i cui candidati disponibili sono già tutti nella seduta non si
+    // applica: l'enfasi non ripete un esercizio.
+    final inSession = {
+      for (final b in m['blocks']! as List<Object?>)
+        for (final e in (b! as Map)['exercises']! as List<Object?>)
+          (e! as Map)['exerciseId']! as String,
+    };
+    final equipment = ((_profileJson(c)['gym']! as Map)['equipment']! as List)
+        .cast<String>();
+    var blocked = 0;
+    for (final e in c.emphasis) {
+      for (final pl in _kb.emphases[e]!.placements[template] ?? const []) {
+        if (pl.session != id) continue;
+        final available = [
+          for (final x in pl.slot.candidates)
+            if (_kb.exercises[x]!.requires.every(equipment.contains)) x,
+        ];
+        if (available.every(inSession.contains)) blocked++;
+      }
+    }
+    if (got < want - blocked && minutes + slotMinutes <= c.duration) {
       out.add(
         'seduta $id: ${want - got} posti non applicati con $minutes '
         'min su ${c.duration}: la durata non lo spiega',
@@ -495,18 +519,18 @@ KbPrescription _prescriptionOf(String goal) =>
 /// profili coperti della matrice dell'enfasi. Va cambiata solo di proposito,
 /// insieme alla KB (`kb/emphasis/`, template o prescrizioni).
 const Map<String, (int, int)> _expectedEmphasis = {
-  'full_body_3d 45': (0, 90),
-  'full_body_3d 60': (42, 90),
-  'full_body_3d 75': (81, 90),
-  'full_body_3d 90': (90, 90),
-  'upper_lower_4d 45': (0, 90),
-  'upper_lower_4d 60': (30, 90),
-  'upper_lower_4d 75': (72, 90),
-  'upper_lower_4d 90': (90, 90),
-  'ppl_ul_5d 45': (0, 72),
-  'ppl_ul_5d 60': (63, 72),
-  'ppl_ul_5d 75': (72, 72),
-  'ppl_ul_5d 90': (72, 72),
+  'full_body_3d 45': (0, 144),
+  'full_body_3d 60': (78, 144),
+  'full_body_3d 75': (135, 144),
+  'full_body_3d 90': (144, 144),
+  'upper_lower_4d 45': (0, 126),
+  'upper_lower_4d 60': (36, 126),
+  'upper_lower_4d 75': (87, 126),
+  'upper_lower_4d 90': (108, 126),
+  'ppl_ul_5d 45': (0, 126),
+  'ppl_ul_5d 60': (101, 126),
+  'ppl_ul_5d 75': (123, 126),
+  'ppl_ul_5d 90': (117, 126),
 };
 
 /// Conteggi dell'enfasi: posti applicati e totali per «template durata», e
@@ -629,9 +653,9 @@ void main() {
     }
   });
 
-  test('la matrice dell\'enfasi ha 432 profili', () {
-    expect(_emphasisCombos, hasLength(432));
-    expect(_emphasisCombos.map((c) => c.key).toSet(), hasLength(432));
+  test('la matrice dell\'enfasi ha 756 profili', () {
+    expect(_emphasisCombos, hasLength(756));
+    expect(_emphasisCombos.map((c) => c.key).toSet(), hasLength(756));
     expect(
       _emphasisCombos
           .map((c) => c.key)
@@ -677,7 +701,7 @@ void main() {
       stats.all + stats.some + stats.none,
       _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length,
     );
-    expect((stats.all, stats.some, stats.none), (246, 42, 144));
+    expect((stats.all, stats.some, stats.none), (412, 66, 278));
   });
 
   test('la copertura coincide con la mappa attesa', () {

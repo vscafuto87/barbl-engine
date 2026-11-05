@@ -1,0 +1,24 @@
+id: P-SEX-RESPONSE
+topic: volume
+statement:
+  it: 'A parità di programma, donne e uomini guadagnano massa muscolare in proporzione simile e la forza
+    degli arti inferiori cresce allo stesso modo; gli uomini guadagnano un po'' di più in assoluto, soprattutto
+    nella parte alta. Per questo il motore usa le stesse regole di volume, intensità e progressione per
+    tutti e non chiede il sesso: le differenze di obiettivo si esprimono con l''enfasi scelta dalla persona.'
+  en: 'On the same program, women and men gain muscle in similar proportion and lower-body strength rises
+    alike; men gain a little more in absolute terms, mostly in the upper body. So the engine uses the same
+    volume, intensity and progression rules for everyone and does not ask for sex: differences in goals
+    are expressed through the emphasis the person picks.'
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- emphasis
+sources:
+- id: roberts-2020-sex-differences
+  access: abstract_only
+- id: refalo-2025-sex-hypertrophy
+  access: abstract_only
+- id: schoenfeld-hypertrophy-2e
+  pages: [173]
+  access: full_text

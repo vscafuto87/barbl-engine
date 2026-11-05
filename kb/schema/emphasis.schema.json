@@ -17,6 +17,9 @@
     "id": {
       "enum": [
         "glutes_hamstrings",
+        "quadriceps",
+        "chest",
+        "back",
         "shoulders",
         "arms"
       ]

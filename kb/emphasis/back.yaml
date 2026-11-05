@@ -1,0 +1,65 @@
+id: back
+name:
+  it: Schiena
+  en: Back
+muscles:
+- back
+placements:
+  full_body_3d:
+  - session: full_a
+    slot:
+      pattern: vertical_pull
+      role: accessory
+      candidates:
+      - lat_pulldown
+      - neutral_grip_pulldown
+      - chest_supported_dumbbell_row
+  - session: full_c
+    slot:
+      pattern: vertical_pull
+      role: accessory
+      candidates:
+      - neutral_grip_pulldown
+      - lat_pulldown
+      - dumbbell_row
+  upper_lower_4d:
+  - session: upper_a
+    slot:
+      pattern: horizontal_pull
+      role: accessory
+      candidates:
+      - seated_cable_row
+      - machine_row
+      - chest_supported_dumbbell_row
+  - session: upper_b
+    slot:
+      pattern: horizontal_pull
+      role: accessory
+      candidates:
+      - machine_row
+      - seated_cable_row
+      - dumbbell_row
+  ppl_ul_5d:
+  - session: pull
+    slot:
+      pattern: horizontal_pull
+      role: accessory
+      candidates:
+      - seated_cable_row
+      - machine_row
+      - chest_supported_dumbbell_row
+  - session: upper
+    slot:
+      pattern: vertical_pull
+      role: accessory
+      candidates:
+      - lat_pulldown
+      - neutral_grip_pulldown
+      - dumbbell_row
+principles:
+- P-EMPHASIS
+- P-VOL-DOSE-HYP
+- P-SEX-RESPONSE
+provisional: true
+notes:
+  it: 'Una trazione in più nelle sedute della parte alta: la verticale dove la seduta ha solo la orizzontale (Full A, Full C, Upper del template a 5 giorni), una rematore a cavo o macchina altrove. Senza cavi né macchine si ricade su un rematore con manubri.'

@@ -177,7 +177,7 @@ void main() {
   test('palestra a soli manubri: ogni posto ha un esercizio disponibile', () {
     final templateByDays = {for (final t in kb.templates) t.daysPerWeek: t.id};
     for (final days in [3, 4, 5]) {
-      for (final emphasis in ['glutes_hamstrings', 'shoulders', 'arms']) {
+      for (final emphasis in kb.emphases.keys) {
         final p = plan(
           profile(
             days: days,
@@ -190,12 +190,24 @@ void main() {
         final placements =
             kb.emphases[emphasis]!.placements[templateByDays[days]]!;
         final added = emphasisExercises(p);
+        // Eccezioni: con i soli manubri la seduta ha già tutti gli esercizi
+        // disponibili del posto, e l'enfasi non li ripete.
+        final skipped =
+            const {
+              '4 arms': {'upper_b'},
+              '4 back': {'upper_a', 'upper_b'},
+              '5 back': {'pull', 'upper'},
+            }['$days $emphasis'] ??
+            const <String>{};
         expect(
           added.values.expand((e) => e),
-          hasLength(placements.length),
+          hasLength(placements.length - skipped.length),
           reason: '$days $emphasis',
         );
-        expect(added.keys.toSet(), {for (final pl in placements) pl.session});
+        expect(added.keys.toSet(), {
+          for (final pl in placements)
+            if (!skipped.contains(pl.session)) pl.session,
+        });
         for (final id in added.values.expand((e) => e)) {
           expect(
             kb.exercises[id]!.requires.every(_dumbbells.contains),
@@ -230,5 +242,52 @@ void main() {
       }
       expect((s['estimatedDurationMin']) as num, lessThanOrEqualTo(90));
     }
+  });
+
+  test('l\'enfasi non ripete un esercizio della seduta', () {
+    const gyms = {
+      'full': _full,
+      'home': ['barbell', 'rack', 'bench', 'dumbbells'],
+      'dumbbells': _dumbbells,
+    };
+    final dup = <String>[];
+    for (final days in [3, 4, 5]) {
+      for (final gym in gyms.entries) {
+        for (final emphasis in kb.emphases.keys) {
+          for (final seed in [null, 1, 2, 3]) {
+            final json = profile(
+              days: days,
+              minutes: 90,
+              gymType: gym.key,
+              equipment: gym.value,
+              emphasis: [emphasis],
+            );
+            if (seed != null) {
+              json['schemaVersion'] = '1.3';
+              json['variantSeed'] = seed;
+            }
+            final p = plan(json);
+            for (final s in p['sessions']! as List) {
+              final all = <String>[];
+              final added = <String>[];
+              for (final b in (s as Map)['blocks'] as List) {
+                for (final e in (b as Map)['exercises'] as List) {
+                  final ex = e as Map;
+                  final id = ex['exerciseId'] as String;
+                  all.add(id);
+                  if ((ex['rules'] as List).contains('EMPHASIS')) added.add(id);
+                }
+              }
+              if (added.any((id) => all.where((x) => x == id).length > 1)) {
+                dup.add(
+                  '$days, ${gym.key}, $emphasis, $seed, ${s['id']}: $all',
+                );
+              }
+            }
+          }
+        }
+      }
+    }
+    expect(dup, isEmpty, reason: dup.join('\n'));
   });
 }

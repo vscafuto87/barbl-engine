@@ -1,0 +1,57 @@
+id: chest
+name:
+  it: Petto
+  en: Chest
+muscles:
+- chest
+placements:
+  full_body_3d:
+  - session: full_a
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - cable_fly
+      - pec_deck_fly
+      - dumbbell_fly
+  - session: full_c
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - pec_deck_fly
+      - cable_fly
+      - dumbbell_fly
+  upper_lower_4d:
+  - session: upper_a
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - cable_fly
+      - pec_deck_fly
+      - dumbbell_fly
+  ppl_ul_5d:
+  - session: push
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - cable_fly
+      - pec_deck_fly
+      - dumbbell_fly
+  - session: upper
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - pec_deck_fly
+      - cable_fly
+      - dumbbell_fly
+principles:
+- P-EMPHASIS
+- P-VOL-DOSE-HYP
+- P-SEX-RESPONSE
+provisional: true
+notes:
+  it: 'Croci nelle sedute con una spinta orizzontale che non hanno già un isolamento del petto. Nel template a 4 giorni Upper B ha già le croci: si aggiunge solo Upper A. Con soli manubri vale la croce con manubri.'
