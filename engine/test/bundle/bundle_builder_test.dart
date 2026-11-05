@@ -29,15 +29,17 @@ void main() {
     final result = buildBundle(Directory('../kb'));
     expect(result.errors, isEmpty);
     final kb = KnowledgeBase.fromJson(result.json);
-    expect(kb.rulesVersion, '0.14.0');
-    expect(kb.exercises, hasLength(51));
+    expect(kb.rulesVersion, '0.15.0');
+    expect(kb.exercises, hasLength(59));
     expect(kb.templates, hasLength(3));
     expect(kb.parameterGroups, hasLength(10));
     expect(kb.rationales, hasLength(12));
     expect(kb.emphases.keys, ['arms', 'glutes_hamstrings', 'shoulders']);
     for (final em in kb.emphases.values) {
-      expect(em.placements.keys,
-          containsAll(['full_body_3d', 'upper_lower_4d', 'ppl_ul_5d']));
+      expect(
+        em.placements.keys,
+        containsAll(['full_body_3d', 'upper_lower_4d', 'ppl_ul_5d']),
+      );
     }
   });
 
@@ -68,7 +70,8 @@ void main() {
     final result = buildBundle(dir);
     expect(
       result.errors.where(
-        (e) => e.contains('emphasis/shoulders.yaml') &&
+        (e) =>
+            e.contains('emphasis/shoulders.yaml') &&
             e.contains('nonexistent_ex'),
       ),
       isNotEmpty,
@@ -111,10 +114,7 @@ void main() {
     final dir = kbCopy();
     final f = File('${dir.path}/templates/upper_lower_4d.yaml');
     f.writeAsStringSync(
-      f.readAsStringSync().replaceFirst(
-        'focus: upper_body',
-        'focus: neck',
-      ),
+      f.readAsStringSync().replaceFirst('focus: upper_body', 'focus: neck'),
     );
     final result = buildBundle(dir);
     expect(

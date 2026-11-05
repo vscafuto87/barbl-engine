@@ -1,0 +1,19 @@
+id: cable_pull_through
+name:
+  it: Pull-through ai cavi
+  en: Cable pull-through
+equipment: cable
+requires:
+- cables
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary: 
+  - hamstrings
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_hip_thrust
+- dumbbell_hip_thrust

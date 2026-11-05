@@ -1,0 +1,17 @@
+id: P-GLUTE-EXERCISE-EQUIVALENCE
+topic: structure
+statement:
+  it: 'Per i glutei, a volume pari, hip thrust e squat hanno dato una crescita simile in 9 settimane (la crescita del quadricipite è stata maggiore con lo squat). Per questo nei
+    template i vari esercizi di estensione d''anca (hip thrust con bilanciere o manubrio, ponte, pull-through) e gli affondi sono
+    candidati intercambiabili. Lo studio è su 34 persone non allenate e il confronto con gli affondi e il pull-through non è diretto: principio provvisorio.'
+  en: 'For the glutes, at equal volume, hip thrust and squat gave similar growth over 9 weeks (quadriceps growth was greater with the squat). So in the templates the
+    hip-extension exercises (barbell or dumbbell hip thrust, bridge, pull-through) and lunges are interchangeable candidates. The study had 34 untrained people and
+    the comparison with lunges and the pull-through is indirect: the principle stays provisional.'
+evidence: low
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: plotkin-2023-hip-thrust-squat
+  access: abstract_only

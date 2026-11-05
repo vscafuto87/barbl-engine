@@ -57,10 +57,12 @@ sessions:
     slots:
     - pattern: elbow_extension
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
-      - cable_triceps_pushdown
+      - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
+      - barbell_overhead_triceps_extension
+      - cable_triceps_pushdown
       - barbell_skull_crusher
 - id: full_b
   name:
@@ -100,10 +102,12 @@ sessions:
     slots:
     - pattern: lunge
       role: secondary
-      equivalent: 2
+      equivalent: 3
       candidates:
       - bulgarian_split_squat
       - dumbbell_walking_lunge
+      - dumbbell_reverse_lunge
+      - dumbbell_step_up
   - type: single
     slots:
     - pattern: knee_flexion
@@ -161,10 +165,12 @@ sessions:
     slots:
     - pattern: elbow_extension
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
+      - barbell_overhead_triceps_extension
+      - cable_triceps_pushdown
       - barbell_skull_crusher
   - type: single
     slots:

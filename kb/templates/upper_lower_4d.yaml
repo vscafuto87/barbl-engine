@@ -65,10 +65,12 @@ sessions:
     slots:
     - pattern: elbow_extension
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
+      - barbell_overhead_triceps_extension
+      - cable_triceps_pushdown
       - barbell_skull_crusher
     - pattern: elbow_flexion
       role: accessory
@@ -114,10 +116,12 @@ sessions:
     slots:
     - pattern: calf_raise
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - standing_calf_raise
       - dumbbell_calf_raise
+      - leg_press_calf_raise
+      - smith_machine_calf_raise
       - seated_calf_raise
 - id: upper_b
   name:
@@ -175,10 +179,12 @@ sessions:
       - barbell_curl
     - pattern: elbow_extension
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
-      - cable_triceps_pushdown
+      - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
+      - barbell_overhead_triceps_extension
+      - cable_triceps_pushdown
       - barbell_skull_crusher
 - id: lower_b
   name:
@@ -207,10 +213,12 @@ sessions:
     slots:
     - pattern: lunge
       role: secondary
-      equivalent: 2
+      equivalent: 3
       candidates:
       - bulgarian_split_squat
       - dumbbell_walking_lunge
+      - dumbbell_reverse_lunge
+      - dumbbell_step_up
   - type: single
     slots:
     - pattern: knee_flexion

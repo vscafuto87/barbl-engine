@@ -1,0 +1,20 @@
+id: dumbbell_step_up
+name:
+  it: Step-up con manubri
+  en: Dumbbell step-up
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: lunge
+mechanics: compound
+muscles:
+  primary: quadriceps
+  secondary: 
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- bulgarian_split_squat
+- dumbbell_walking_lunge

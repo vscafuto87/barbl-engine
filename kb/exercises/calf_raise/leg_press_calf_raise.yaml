@@ -1,0 +1,18 @@
+id: leg_press_calf_raise
+name:
+  it: Calf raise alla leg press
+  en: Leg press calf raise
+equipment: machine
+requires:
+- machines
+pattern: calf_raise
+mechanics: isolation
+muscles:
+  primary: calves
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- standing_calf_raise
+- dumbbell_calf_raise

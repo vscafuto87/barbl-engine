@@ -1,0 +1,18 @@
+id: smith_machine_calf_raise
+name:
+  it: Calf raise al multipower
+  en: Smith machine calf raise
+equipment: smith_machine
+requires:
+- smith_machine
+pattern: calf_raise
+mechanics: isolation
+muscles:
+  primary: calves
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- standing_calf_raise
+- dumbbell_calf_raise
