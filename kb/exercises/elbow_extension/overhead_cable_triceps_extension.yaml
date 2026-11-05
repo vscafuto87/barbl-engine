@@ -16,3 +16,58 @@ loading:
 substitutes:
 - dumbbell_overhead_triceps_extension
 - cable_triceps_pushdown
+technique:
+  setup:
+  - it: Metti la puleggia in basso e attacca una barra dritta o EZ.
+    en: Set the pulley low and attach a straight or EZ bar.
+  - it: Impugna la barra con le mani sopra e portala dietro la testa.
+    en: Grab the bar overhand and hold it behind your head.
+  - it: Dai le spalle ai pesi, un piede avanti e uno indietro.
+    en: Face away from the stack, one foot forward and one back.
+  - it: Inclinati un po' in avanti, gomiti in alto e in linea con la testa.
+    en: Lean slightly forward, elbows up and in line with your head.
+  - it: Controlla che il cavo sia già teso in basso.
+    en: Check the cable is already tight at the bottom.
+  cues:
+  - it: 'Muovi solo i gomiti: spingi la barra dritta in alto.'
+    en: 'Move only at the elbows: press the bar straight up.'
+  - it: Gomiti in alto e vicini alla testa.
+    en: Elbows up and close to your head.
+  - it: Torna piano sentendo l'allungamento.
+    en: Return slowly and feel the stretch.
+  mistakes:
+  - what:
+      it: I gomiti si aprono ai lati.
+      en: Your elbows flare out to the sides.
+    fix:
+      it: Tienili vicini alla testa e rivolti in alto.
+      en: Keep them close to your head, pointing up.
+  - what:
+      it: La schiena si inarca e il busto si sporge troppo.
+      en: Your back arches and your torso leans too far.
+    fix:
+      it: Stringi glutei e addome e inclinati poco.
+      en: Squeeze your glutes and abs and lean only slightly.
+  - what:
+      it: Il cavo perde tensione in basso.
+      en: The cable goes slack at the bottom.
+    fix:
+      it: Fai un passo avanti finché il cavo è teso.
+      en: Step forward until the cable is tight.
+  - what:
+      it: Scendi troppo in fretta e il peso ti tira.
+      en: You lower too fast and the weight pulls you.
+    fix:
+      it: Torna piano e riduci il carico.
+      en: Return slowly and lower the load.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 220
+    - 221
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

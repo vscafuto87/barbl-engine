@@ -16,3 +16,54 @@ loading:
 substitutes:
 - dumbbell_curl
 - cable_curl
+technique:
+  setup:
+  - it: Stai in piedi con i piedi a larghezza spalle, ginocchia appena piegate.
+    en: Stand feet shoulder-width apart with knees slightly bent.
+  - it: Impugna il bilanciere con presa supina, larga come le spalle.
+    en: Grip the bar underhand, shoulder-width apart.
+  - it: Tieni i gomiti ai fianchi e le braccia tese.
+    en: Keep your elbows at your sides with arms straight.
+  - it: Stringi gli addominali, petto alto e polsi dritti.
+    en: Brace your core, chest up, wrists straight.
+  cues:
+  - it: Porta il bilanciere in alto con un arco, gomiti fermi.
+    en: Curl the bar up in an arc with your elbows still.
+  - it: Spingi con il mignolo e l'anulare.
+    en: Press through your pinky and ring fingers.
+  mistakes:
+  - what:
+      it: Ondeggi col busto e spingi con i fianchi per sollevare.
+      en: You swing your torso and thrust your hips to lift.
+    fix:
+      it: Riduci il peso e tieni piedi e busto fermi.
+      en: Lower the weight and keep your feet and torso still.
+  - what:
+      it: I gomiti scivolano in avanti e le spalle fanno il lavoro.
+      en: Your elbows drift forward and your shoulders take over.
+    fix:
+      it: Tieni i gomiti vicini ai fianchi.
+      en: Keep your elbows close to your sides.
+  - what:
+      it: Polsi piegati all'indietro o in avanti sotto il peso.
+      en: Your wrists bend back or forward under the load.
+    fix:
+      it: Tieni i polsi dritti e la presa morbida.
+      en: Keep your wrists straight and your grip loose.
+  - what:
+      it: Non distendi le braccia in basso e fai mezze ripetizioni.
+      en: You don't straighten your arms at the bottom and do half reps.
+    fix:
+      it: Scendi fino ad avere le braccia tese a ogni ripetizione.
+      en: Lower until your arms are straight on every rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 212
+    - 213
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

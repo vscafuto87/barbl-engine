@@ -15,3 +15,54 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - standing_calf_raise
+technique:
+  setup:
+  - it: Prendi un manubrio per mano e stai in piedi, con le braccia lungo i fianchi.
+    en: Hold a dumbbell in each hand and stand with your arms at your sides.
+  - it: Metti la parte anteriore dei piedi su un gradino o un disco.
+    en: Place the balls of your feet on a step or a plate.
+  - it: Lascia i talloni fuori dal bordo, per poterli abbassare.
+    en: Leave your heels off the edge so they can drop.
+  - it: Appoggiati con una mano a un sostegno per restare in equilibrio.
+    en: Hold a support with one hand to stay balanced.
+  cues:
+  - it: Scendi con i talloni e senti l'allungamento.
+    en: Drop your heels and feel the stretch.
+  - it: Spingi verso il soffitto, poi scendi piano.
+    en: Push toward the ceiling, then lower slowly.
+  mistakes:
+  - what:
+      it: Il tallone sale poco e senti poco allungamento in basso.
+      en: Your heel rises little and you feel almost no stretch at the bottom.
+    fix:
+      it: Scendi più in basso e fermati un secondo nell'allungamento.
+      en: Lower further and pause for a second in the stretch.
+  - what:
+      it: Rimbalzi in basso e usi lo slancio per risalire.
+      en: You bounce at the bottom and use momentum to come up.
+    fix:
+      it: Fai una pausa in basso e sali in modo fluido.
+      en: Pause at the bottom and rise smoothly.
+  - what:
+      it: Pieghi le ginocchia per aiutarti a spingere.
+      en: You bend your knees to help push.
+    fix:
+      it: Tieni le gambe ferme e muovi solo le caviglie.
+      en: Keep your legs still and move only your ankles.
+  - what:
+      it: Ti sbilanci e ondeggi in avanti e indietro.
+      en: You wobble forward and backward.
+    fix:
+      it: Tieni lo sguardo fisso e appoggiati a un sostegno.
+      en: Fix your gaze and lean on a support.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 151
+    - 152
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

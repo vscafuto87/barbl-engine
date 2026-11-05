@@ -17,3 +17,58 @@ loading:
 substitutes:
 - lat_pulldown
 - seated_cable_row
+technique:
+  setup:
+  - it: Aggancia al cavo alto una maniglia a V.
+    en: Attach a V-handle to the high cable.
+  - it: Impugna la maniglia con i palmi uno di fronte all'altro.
+    en: Grip the handle with your palms facing each other.
+  - it: Siediti con le cosce ben bloccate sotto i cuscinetti.
+    en: Sit with your thighs locked firmly under the pads.
+  - it: Allunga le braccia e senti la schiena stirarsi.
+    en: Extend your arms and feel your back stretch.
+  - it: Inarca appena la schiena e alza il petto.
+    en: Arch your back slightly and lift your chest.
+  cues:
+  - it: Porta i gomiti giù e vicini ai fianchi.
+    en: Drive your elbows down and in toward your sides.
+  - it: Vai incontro alla maniglia con il petto.
+    en: Meet the handle with your chest.
+  - it: Risali piano, braccia ben tese.
+    en: Return slowly until your arms are straight.
+  mistakes:
+  - what:
+      it: Ti butti all'indietro e tiri con lo slancio.
+      en: You lean back far and yank with momentum.
+    fix:
+      it: Riduci il peso e inclinati solo un po'.
+      en: Lower the weight and lean back only a little.
+  - what:
+      it: Tiri con le braccia e senti poco la schiena.
+      en: You pull with your arms and feel little in your back.
+    fix:
+      it: Pensa a portare i gomiti verso il basso, non la maniglia.
+      en: Think about moving your elbows down, not the handle.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders rise toward your ears.
+    fix:
+      it: Abbassa le spalle prima di ogni ripetizione.
+      en: Drop your shoulders before every rep.
+  - what:
+      it: Non risali del tutto e perdi lo stiramento in alto.
+      en: You don't rise fully and lose the stretch at the top.
+    fix:
+      it: Lascia salire la maniglia finché le braccia sono tese.
+      en: Let the handle rise until your arms are straight.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 159
+    - 160
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

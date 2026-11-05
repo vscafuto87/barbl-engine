@@ -18,3 +18,58 @@ loading:
 substitutes:
 - military_press
 - machine_shoulder_press
+technique:
+  setup:
+  - it: Siediti sulla panca con i manubri sulle cosce, vicino alle ginocchia.
+    en: Sit at the end of the bench, dumbbells resting on your thighs.
+  - it: Aiutati con le ginocchia e porta un manubrio alla volta alle spalle.
+    en: Push each dumbbell up with a knee, one at a time, to shoulder height.
+  - it: Gomiti dove ti senti più comodo, sotto i manubri.
+    en: Place your elbows where they feel comfortable, under the dumbbells.
+  - it: Schiena appoggiata, piedi ben piantati a terra.
+    en: Back against the pad, feet planted firmly.
+  - it: Inspira e stringi i glutei prima di spingere.
+    en: Breathe in and squeeze your glutes before pressing.
+  cues:
+  - it: Spingi i manubri in alto e un po' verso l'interno.
+    en: Press the dumbbells up and slightly inward.
+  - it: In alto mani, gomiti e spalle sono in linea.
+    en: At the top your hands, elbows and shoulders line up.
+  - it: Scendi piano lungo lo stesso percorso.
+    en: Lower slowly along the same path.
+  mistakes:
+  - what:
+      it: La schiena si stacca dallo schienale e si inarca.
+      en: Your back leaves the pad and arches.
+    fix:
+      it: Appoggia la schiena e riduci il carico.
+      en: Keep your back on the pad and lower the load.
+  - what:
+      it: I manubri vanno troppo avanti rispetto alle spalle.
+      en: The dumbbells drift too far in front of your shoulders.
+    fix:
+      it: Tienili sopra le spalle, con gomiti sotto i polsi.
+      en: Keep them over your shoulders, elbows under your wrists.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders shrug up toward your ears.
+    fix:
+      it: Abbassa le spalle e spingi con calma.
+      en: Drop your shoulders and press with control.
+  - what:
+      it: I manubri si scontrano in alto.
+      en: The dumbbells bang together at the top.
+    fix:
+      it: Spingi in linea sopra le spalle, senza farli toccare.
+      en: Press in line over your shoulders without letting them touch.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 201
+    - 202
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

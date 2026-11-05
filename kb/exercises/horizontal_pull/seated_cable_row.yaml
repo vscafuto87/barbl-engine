@@ -17,3 +17,49 @@ loading:
 substitutes:
 - chest_supported_dumbbell_row
 - dumbbell_row
+technique:
+  setup:
+  - it: Siediti con i piedi sulla pedana e le ginocchia leggermente piegate.
+    en: Sit with your feet on the platform and your knees slightly bent.
+  - it: Afferra la maniglia e siediti dritto, petto in fuori.
+    en: Grab the handle and sit tall with your chest up.
+  - it: Allunga le braccia in avanti e senti le scapole aprirsi.
+    en: Reach your arms forward and feel your shoulder blades spread.
+  - it: Torna dritto prima di iniziare, senza lasciarti tirare in avanti.
+    en: Sit upright before you start, without being pulled forward.
+  cues:
+  - it: Porta i gomiti indietro, lungo i fianchi.
+    en: Pull your elbows back along your sides.
+  - it: Siediti alto, busto fermo.
+    en: Sit tall and keep your torso still.
+  mistakes:
+  - what:
+      it: Dondoli avanti e indietro con tutto il busto.
+      en: You rock your whole torso back and forth.
+    fix:
+      it: Riduci il peso e muovi solo le braccia, busto fermo.
+      en: Lower the weight and move only your arms, torso still.
+  - what:
+      it: La schiena si arrotonda quando allunghi le braccia.
+      en: Your back rounds when you reach forward.
+    fix:
+      it: Tieni il petto aperto e allunga solo fin dove la schiena resta dritta.
+      en: Keep your chest open and reach only as far as your back stays flat.
+  - what:
+      it: Le spalle salgono verso le orecchie mentre tiri.
+      en: Your shoulders rise toward your ears as you pull.
+    fix:
+      it: Abbassa le spalle e pensa a tirare con i gomiti.
+      en: Drop your shoulders and think about pulling with your elbows.
+  - what:
+      it: Tiri la maniglia verso il petto invece che verso la pancia.
+      en: You pull the handle to your chest instead of your belly.
+    fix:
+      it: Portala all'ombelico, con i gomiti vicini ai fianchi.
+      en: Bring it to your belly button, elbows close to your sides.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

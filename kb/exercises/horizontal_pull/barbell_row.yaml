@@ -17,3 +17,64 @@ loading:
 substitutes:
 - dumbbell_row
 - seated_cable_row
+technique:
+  setup:
+  - it: Metti il bilanciere a metà coscia, all'altezza dello stacco.
+    en: Set the bar at mid-thigh height, like a deadlift.
+  - it: Impugna con presa prona, un po' più larga delle spalle.
+    en: Grip it overhand, a little wider than your shoulders.
+  - it: Solleva il bilanciere e fai due o tre passi indietro.
+    en: Unrack the bar and walk back a few steps.
+  - it: Piega le ginocchia appena e inclina il busto di circa 45 gradi.
+    en: Soften your knees and tilt your torso about 45 degrees.
+  - it: Tieni la schiena piatta e le braccia tese verso il basso.
+    en: Keep your back flat and your arms hanging straight down.
+  cues:
+  - it: Porta il bilanciere verso l'ombelico.
+    en: Pull the bar toward your belly button.
+  - it: Gomiti a 45 gradi dal busto.
+    en: Elbows about 45 degrees from your torso.
+  - it: Busto fermo, come un tavolo.
+    en: Hold your torso still, like a tabletop.
+  mistakes:
+  - what:
+      it: 'Ti aiuti con lo slancio del busto: il bilanciere sale con una spinta.'
+      en: You swing your torso to heave the bar up.
+    fix:
+      it: Riduci il peso e tieni il busto fermo a ogni ripetizione.
+      en: Lower the weight and keep your torso still every rep.
+  - what:
+      it: La schiena si arrotonda mentre tiri.
+      en: Your back rounds as you pull.
+    fix:
+      it: Guarda un punto a terra davanti a te e tieni il petto aperto.
+      en: Look at a spot on the floor ahead and keep your chest open.
+  - what:
+      it: Tiri il bilanciere verso il petto invece che verso la pancia.
+      en: You pull the bar to your chest instead of your belly.
+    fix:
+      it: Porta il bilanciere alla parte alta dell'addome.
+      en: Bring the bar to your upper stomach.
+  - what:
+      it: Ti alzi a ogni ripetizione e perdi l'inclinazione.
+      en: You stand up each rep and lose your lean.
+    fix:
+      it: Resta inclinato di circa 45 gradi per tutta la serie.
+      en: Hold your lean at about 45 degrees for the whole set.
+  - what:
+      it: I gomiti si aprono troppo e le spalle si alzano verso le orecchie.
+      en: Your elbows flare wide and your shoulders creep up.
+    fix:
+      it: Tieni i gomiti più vicini al busto e le spalle basse.
+      en: Keep your elbows closer to your body and your shoulders down.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 161
+    - 162
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

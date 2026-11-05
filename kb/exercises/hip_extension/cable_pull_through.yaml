@@ -17,3 +17,49 @@ loading:
 substitutes:
 - barbell_hip_thrust
 - dumbbell_hip_thrust
+technique:
+  setup:
+  - it: Regola la puleggia in basso e aggancia la corda.
+    en: Set the cable pulley low and attach the rope.
+  - it: Dai le spalle alla macchina e passa la corda tra le gambe.
+    en: Face away from the machine and pass the rope between your legs.
+  - it: Fai due passi avanti finché il cavo è teso.
+    en: Take two steps forward until the cable is taut.
+  - it: Piedi larghi come le spalle, ginocchia appena piegate.
+    en: Feet shoulder-width apart, knees slightly bent.
+  cues:
+  - it: Porta i fianchi indietro, come per chiudere una porta.
+    en: Push your hips back, as if closing a door.
+  - it: Spingi i fianchi in avanti e stringi i glutei.
+    en: Drive your hips forward and squeeze your glutes.
+  mistakes:
+  - what:
+      it: Pieghi molto le ginocchia e fai uno squat.
+      en: You bend your knees a lot and it becomes a squat.
+    fix:
+      it: Tieni le ginocchia appena piegate e spingi i fianchi indietro.
+      en: Keep a slight knee bend and push your hips back.
+  - what:
+      it: La schiena si arrotonda mentre scendi.
+      en: Your back rounds as you lower.
+    fix:
+      it: Tieni il petto alto e la schiena dritta.
+      en: Keep your chest up and your back flat.
+  - what:
+      it: Tiri la corda con le braccia.
+      en: You pull the rope with your arms.
+    fix:
+      it: Tieni le braccia tese e muovi solo i fianchi.
+      en: Keep your arms straight and move only your hips.
+  - what:
+      it: In alto ti inarchi all'indietro.
+      en: At the top you lean back and arch.
+    fix:
+      it: Fermati in piedi dritto e stringi i glutei.
+      en: Stop standing tall and squeeze your glutes.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

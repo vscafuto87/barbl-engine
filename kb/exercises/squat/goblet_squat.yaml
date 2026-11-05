@@ -17,3 +17,54 @@ loading:
 substitutes:
 - bulgarian_split_squat
 - leg_press
+technique:
+  setup:
+  - it: Tieni un manubrio in verticale, con i palmi sotto la testa superiore.
+    en: Hold a dumbbell upright, palms under its top head.
+  - it: Portalo davanti al petto, appena sotto il mento.
+    en: Hold it against your chest, right under your chin.
+  - it: Stai in piedi con i piedi un po' più larghi delle spalle.
+    en: Stand with your feet a little wider than your shoulders.
+  - it: Punte un po' in fuori.
+    en: Toes pointed slightly out.
+  cues:
+  - it: Porta i fianchi indietro e scendi tra le gambe.
+    en: Sit your hips back and down between your legs.
+  - it: Petto alto e mento su per tutta la serie.
+    en: Chest up and chin up for the whole set.
+  mistakes:
+  - what:
+      it: I talloni si sollevano da terra.
+      en: Your heels lift off the floor.
+    fix:
+      it: Spingi i talloni a terra e porta i fianchi più indietro.
+      en: Press your heels down and sit your hips further back.
+  - what:
+      it: Le ginocchia cadono verso l'interno.
+      en: Your knees cave inward.
+    fix:
+      it: Spingi le ginocchia verso le punte dei piedi.
+      en: Push your knees out toward your toes.
+  - what:
+      it: Il manubrio si allontana dal petto e ti tira in avanti.
+      en: The dumbbell drifts from your chest and pulls you forward.
+    fix:
+      it: Tienilo vicino al petto con i gomiti sotto.
+      en: Keep it close to your chest with your elbows below.
+  - what:
+      it: Scendi poco e le ripetizioni sono corte.
+      en: You squat shallow and the reps are short.
+    fix:
+      it: Scendi finché controlli la schiena dritta.
+      en: Go down as far as you can with a flat back.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 116
+    - 117
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

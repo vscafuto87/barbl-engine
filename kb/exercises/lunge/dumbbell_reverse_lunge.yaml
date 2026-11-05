@@ -17,3 +17,55 @@ loading:
 substitutes:
 - bulgarian_split_squat
 - dumbbell_walking_lunge
+technique:
+  setup:
+  - it: Tieni un manubrio per mano, con le braccia lungo i fianchi.
+    en: Hold a dumbbell in each hand with your arms at your sides.
+  - it: Stai in piedi con i piedi larghi come i fianchi.
+    en: Stand with your feet hip-width apart.
+  - it: Tieni il petto alto e lo sguardo avanti.
+    en: Keep your chest up and eyes forward.
+  - it: Fai un passo indietro con una gamba.
+    en: Take a step back with one leg.
+  cues:
+  - it: Scendi dritto, con il busto eretto.
+    en: Lower straight down with your torso upright.
+  - it: Spingi il pavimento con il piede davanti.
+    en: Push the floor away with your front foot.
+  mistakes:
+  - what:
+      it: Il ginocchio davanti cade verso l'interno.
+      en: Your front knee caves inward.
+    fix:
+      it: Spingi il ginocchio verso le punte dei piedi.
+      en: Push your knee out toward your toes.
+  - what:
+      it: Perdi l'equilibrio e barcolli.
+      en: You lose balance and wobble.
+    fix:
+      it: Allarga un po' i piedi e fissa un punto davanti a te.
+      en: Widen your feet a little and fix your eyes on a spot ahead.
+  - what:
+      it: Il passo indietro è troppo corto e il ginocchio va oltre la punta.
+      en: Your step back is too short and your knee drifts past your toes.
+    fix:
+      it: Allunga il passo finché lo stinco davanti resta quasi verticale.
+      en: Step back further until your front shin is nearly vertical.
+  - what:
+      it: Ti spingi con il piede dietro.
+      en: You push off the back foot.
+    fix:
+      it: Spingi con il piede davanti e tieni il peso lì.
+      en: Push through your front foot and keep your weight there.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 118
+    - 119
+    - 120
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

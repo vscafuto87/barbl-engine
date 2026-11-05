@@ -16,3 +16,49 @@ loading:
 substitutes:
 - dumbbell_romanian_deadlift
 - romanian_deadlift
+technique:
+  setup:
+  - it: Sdraiati a pancia in giù sulla macchina.
+    en: Lie face down on the machine.
+  - it: Regola il cuscino sulle caviglie, appena sopra i talloni.
+    en: Set the ankle pad just above your heels.
+  - it: Allinea le ginocchia al bordo della panca.
+    en: Line up your knees with the edge of the bench.
+  - it: Punte dritte o nella direzione più comoda.
+    en: Toes straight or wherever feels best.
+  - it: Afferra le maniglie per restare fermo.
+    en: Hold the handles to stay in place.
+  cues:
+  - it: Porta i talloni verso i glutei.
+    en: Bring your heels toward your glutes.
+  - it: Scendi piano fino in basso.
+    en: Lower slowly all the way down.
+  mistakes:
+  - what:
+      it: I fianchi si alzano dalla panca mentre pieghi.
+      en: Your hips lift off the bench as you curl.
+    fix:
+      it: Riduci il peso e premi i fianchi sulla panca.
+      en: Use less weight and press your hips into the bench.
+  - what:
+      it: Lanci il peso e poi lo lasci cadere.
+      en: You swing the weight and then let it drop.
+    fix:
+      it: Sali e scendi in modo fluido, controllando la discesa.
+      en: Curl smoothly and control the way down.
+  - what:
+      it: Non scendi del tutto e perdi l'allungamento.
+      en: You don't lower fully and lose the stretch.
+    fix:
+      it: Scendi fino a gambe quasi tese a ogni ripetizione.
+      en: Lower until your legs are nearly straight every rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 145
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -16,3 +16,51 @@ loading:
 substitutes:
 - cable_lateral_raise
 - dumbbell_lateral_raise
+technique:
+  setup:
+  - it: 'Regola il sedile: le spalle sono all''altezza dei perni dei bracci.'
+    en: Adjust the seat so your shoulders line up with the arm pivots.
+  - it: Siediti con schiena appoggiata e petto in fuori.
+    en: Sit with your back on the pad and chest up.
+  - it: Appoggia gli avambracci sui cuscinetti o afferra le maniglie.
+    en: Rest your forearms on the pads or hold the handles.
+  - it: Piedi a terra, ben fermi.
+    en: Plant your feet flat on the floor.
+  cues:
+  - it: Spingi i gomiti verso l'esterno.
+    en: Push your elbows out to the sides.
+  - it: Sali fino all'altezza delle spalle.
+    en: Lift up to shoulder height.
+  - it: Scendi piano senza far appoggiare i pesi.
+    en: Lower slowly without letting the weights rest.
+  mistakes:
+  - what:
+      it: Il sedile è troppo alto o basso e il movimento è scomodo.
+      en: The seat is too high or low and the motion feels awkward.
+    fix:
+      it: Allinea le spalle ai perni dei bracci.
+      en: Line your shoulders up with the arm pivots.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders shrug up toward your ears.
+    fix:
+      it: Abbassa le spalle e spingi con i gomiti.
+      en: Drop your shoulders and push with your elbows.
+  - what:
+      it: Il busto si sposta in avanti per aiutarti.
+      en: Your torso leans forward to help.
+    fix:
+      it: Tieni la schiena appoggiata e riduci il carico.
+      en: Keep your back on the pad and lower the load.
+  - what:
+      it: Il peso ricade di colpo.
+      en: The weight drops back fast.
+    fix:
+      it: Controlla la discesa e non appoggiare i pesi.
+      en: Control the way down and don't rest the stack.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

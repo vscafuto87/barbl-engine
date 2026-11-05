@@ -17,3 +17,58 @@ loading:
 substitutes:
 - seated_cable_row
 - chest_supported_dumbbell_row
+technique:
+  setup:
+  - it: Regola il sedile in modo che il petto tocchi l'imbottitura.
+    en: Adjust the seat so your chest rests on the pad.
+  - it: Appoggia i piedi saldi sulla pedana.
+    en: Plant your feet firmly on the footplate.
+  - it: Afferra le maniglie, con le braccia che arrivano senza piegare le spalle.
+    en: Grab the handles so you reach them without rounding your shoulders.
+  - it: Scegli maniglie orizzontali per la parte alta della schiena.
+    en: Pick horizontal handles for your upper back.
+  - it: Lascia che le braccia si distendano e senti le scapole aprirsi.
+    en: Let your arms extend and feel your shoulder blades spread.
+  cues:
+  - it: Spingi i gomiti indietro, oltre la schiena.
+    en: Drive your elbows back behind you.
+  - it: Petto contro l'imbottitura per tutta la serie.
+    en: Chest against the pad for the whole set.
+  - it: Scendi piano, braccia ben tese.
+    en: Lower slowly until your arms are straight.
+  mistakes:
+  - what:
+      it: Il petto si stacca dall'imbottitura e ti butti all'indietro.
+      en: Your chest leaves the pad and you lean back.
+    fix:
+      it: Abbassa il peso e resta appoggiato al cuscino.
+      en: Lower the weight and stay against the pad.
+  - what:
+      it: Le spalle salgono verso le orecchie mentre tiri.
+      en: Your shoulders rise toward your ears as you pull.
+    fix:
+      it: Tieni le spalle basse e tira con i gomiti.
+      en: Keep your shoulders down and pull with your elbows.
+  - what:
+      it: Fai ripetizioni corte e non distendi le braccia.
+      en: You do short reps and never straighten your arms.
+    fix:
+      it: Allunga le braccia fino in fondo a ogni ripetizione.
+      en: Fully extend your arms on every rep.
+  - what:
+      it: Il sedile è troppo alto o basso e le maniglie sono scomode.
+      en: The seat is too high or low and the handles feel awkward.
+    fix:
+      it: Regola il sedile finché le maniglie sono all'altezza del petto.
+      en: Adjust the seat until the handles sit at chest height.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 166
+    - 167
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

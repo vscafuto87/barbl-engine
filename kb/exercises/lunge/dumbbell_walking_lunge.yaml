@@ -16,3 +16,55 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - bulgarian_split_squat
+technique:
+  setup:
+  - it: Tieni un manubrio per mano, con le braccia lungo i fianchi.
+    en: Hold a dumbbell in each hand with your arms at your sides.
+  - it: Libera un corridoio di spazio davanti a te.
+    en: Clear a lane of space in front of you.
+  - it: Stai in piedi con il petto alto e lo sguardo avanti.
+    en: Stand tall with your chest up and eyes forward.
+  - it: Fai un passo avanti lungo, in una posizione divaricata.
+    en: Take a long step forward into a split stance.
+  cues:
+  - it: Scendi dritto, con il busto eretto.
+    en: Lower straight down with your torso upright.
+  - it: Spingi con il tallone del piede davanti.
+    en: Push through the heel of your front foot.
+  mistakes:
+  - what:
+      it: Il ginocchio davanti cade verso l'interno.
+      en: Your front knee caves inward.
+    fix:
+      it: Spingi il ginocchio verso le punte dei piedi.
+      en: Push your knee out toward your toes.
+  - what:
+      it: Perdi l'equilibrio e barcolli.
+      en: You lose balance and wobble.
+    fix:
+      it: Allarga un po' i piedi e fissa un punto davanti a te.
+      en: Widen your feet a little and fix your eyes on a spot ahead.
+  - what:
+      it: Il passo è troppo corto e il tallone davanti si stacca.
+      en: Your step is too short and your front heel lifts.
+    fix:
+      it: Allunga il passo e tieni il piede davanti ben appoggiato.
+      en: Take a longer step and keep your front foot planted.
+  - what:
+      it: Il busto si piega in avanti mentre cammini.
+      en: Your torso leans forward as you walk.
+    fix:
+      it: Guarda avanti e tieni il petto alto.
+      en: Look ahead and keep your chest up.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 118
+    - 119
+    - 120
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -16,3 +16,55 @@ loading:
 substitutes:
 - goblet_squat
 - bulgarian_split_squat
+technique:
+  setup:
+  - it: Siediti e appoggia la schiena allo schienale.
+    en: Sit and rest your back against the pad.
+  - it: 'Regola il sedile: le ginocchia sono in linea con l''asse della macchina.'
+    en: Adjust the seat so your knees line up with the machine's pivot.
+  - it: Regola il cuscino sulle caviglie, appena sopra i piedi.
+    en: Set the ankle pad just above your feet.
+  - it: Punte nella direzione più comoda, di solito dritte o appena in fuori.
+    en: Point your toes where it feels best, usually straight or slightly out.
+  - it: Afferra le maniglie ai lati.
+    en: Hold the side handles.
+  cues:
+  - it: Estendi le ginocchia e stringi in alto.
+    en: Straighten your knees and squeeze at the top.
+  - it: Scendi piano senza far toccare i pesi.
+    en: Lower slowly without letting the weights touch.
+  mistakes:
+  - what:
+      it: Lanci il peso con la schiena e i fianchi sollevati.
+      en: You swing the weight, with your back and hips lifting.
+    fix:
+      it: Riduci il peso e tieni i fianchi fermi sul sedile.
+      en: Use less weight and keep your hips down on the seat.
+  - what:
+      it: Il peso cade giù in fretta.
+      en: The weight drops quickly.
+    fix:
+      it: Scendi in due o tre secondi, sempre controllato.
+      en: Lower over two or three seconds, always in control.
+  - what:
+      it: Ripetizioni corte, senza allungare bene in basso.
+      en: Short reps without a good stretch at the bottom.
+    fix:
+      it: Regola il sedile e scendi fino in fondo.
+      en: Adjust the seat and go all the way down.
+  - what:
+      it: Il cuscino preme sul collo del piede.
+      en: The pad presses on the top of your foot.
+    fix:
+      it: Spostalo sugli stinchi, appena sopra i piedi.
+      en: Move it to your shins, just above your feet.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 123
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

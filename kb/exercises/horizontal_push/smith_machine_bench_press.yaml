@@ -19,3 +19,53 @@ loading:
 substitutes:
 - barbell_bench_press
 - dumbbell_bench_press
+technique:
+  setup:
+  - it: Metti la panca al centro del multipower, con gli occhi sotto il bilanciere.
+    en: Place the bench in the middle of the machine, eyes under the bar.
+  - it: Piedi a terra, talloni giù, stinchi quasi verticali.
+    en: Feet flat, heels down, shins roughly vertical.
+  - it: Impugna il bilanciere un po' più largo delle spalle, polsi dritti.
+    en: Grip the bar a little wider than your shoulders, wrists straight.
+  - it: Stringi le scapole e portale verso il basso, petto in fuori.
+    en: Pull your shoulder blades together and down, chest up.
+  - it: Ruota il bilanciere per sganciarlo e tieni le braccia tese.
+    en: Twist the bar to unhook it and hold your arms straight.
+  cues:
+  - it: Spingi il bilanciere lontano dal petto.
+    en: Push the bar away from your chest.
+  - it: Piedi piantati, come se spingessi il pavimento.
+    en: Feet planted, as if pushing the floor away.
+  - it: Scendi piano fino a sfiorare il petto.
+    en: Lower slowly until the bar just touches your chest.
+  mistakes:
+  - what:
+      it: La panca è troppo avanti o indietro e il bilanciere cade male.
+      en: The bench is too far forward or back and the bar path feels off.
+    fix:
+      it: Sposta la panca finché il bilanciere scende sulla parte bassa del petto.
+      en: Shift the bench until the bar lands on your lower chest.
+  - what:
+      it: I piedi sono troppo avanti e il bacino scivola.
+      en: Your feet are too far forward and your hips slide.
+    fix:
+      it: Porta i piedi sotto le ginocchia e spingi con i talloni.
+      en: Bring your feet under your knees and push through your heels.
+  - what:
+      it: Il bilanciere rimbalza sul petto.
+      en: The bar bounces off your chest.
+    fix:
+      it: Scendi controllato e tocca il petto senza sprofondarci.
+      en: Lower under control and touch your chest without sinking into it.
+  - what:
+      it: Dimentichi di sganciare le sicure e il bilanciere si blocca.
+      en: You forget the safety hooks and the bar jams.
+    fix:
+      it: Prima di ogni serie controlla dove sganciare e dove agganciare.
+      en: Before each set, check where to unhook and where to rehook.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

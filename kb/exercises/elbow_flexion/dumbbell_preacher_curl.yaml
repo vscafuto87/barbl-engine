@@ -17,3 +17,53 @@ loading:
 substitutes:
 - incline_dumbbell_curl
 - dumbbell_curl
+technique:
+  setup:
+  - it: Regola la panca Scott in modo che l'ascella tocchi il bordo.
+    en: Adjust the preacher bench so your armpit meets the top.
+  - it: Appoggia il braccio sull'imbottitura, gomito ben a contatto.
+    en: Rest your arm on the pad, elbow pressed against it.
+  - it: Prendi il manubrio con presa supina.
+    en: Hold the dumbbell with an underhand grip.
+  - it: Allunga il braccio fino in fondo e senti lo stiramento.
+    en: Extend your arm fully and feel the stretch.
+  cues:
+  - it: Gomito incollato all'imbottitura.
+    en: Keep your elbow glued to the pad.
+  - it: Scendi piano fino ad avere il braccio disteso.
+    en: Lower slowly until your arm is straight.
+  mistakes:
+  - what:
+      it: Il gomito si stacca dall'imbottitura quando sali.
+      en: Your elbow lifts off the pad as you curl.
+    fix:
+      it: Riduci il peso e tieni il gomito appoggiato.
+      en: Lower the weight and keep your elbow on the pad.
+  - what:
+      it: Non distendi il braccio in basso per paura dello stiramento.
+      en: You stop short at the bottom and skip the stretch.
+    fix:
+      it: Scendi piano fino in fondo, braccio disteso.
+      en: Lower slowly all the way until your arm is straight.
+  - what:
+      it: Ti sollevi con il busto per aiutarti.
+      en: You lift your torso to help the curl.
+    fix:
+      it: Resta fermo con il petto contro la panca.
+      en: Stay still with your chest against the bench.
+  - what:
+      it: Lasci cadere il manubrio in basso.
+      en: You drop the dumbbell at the bottom.
+    fix:
+      it: Controlla la discesa in circa due secondi.
+      en: Control the lowering for about two seconds.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 217
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

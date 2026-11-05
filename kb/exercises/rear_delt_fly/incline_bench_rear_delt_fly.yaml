@@ -17,3 +17,55 @@ loading:
 substitutes:
 - dumbbell_rear_delt_fly
 - cable_rear_delt_fly
+technique:
+  setup:
+  - it: Regola la panca a un'inclinazione moderata e prendi due manubri.
+    en: Set the bench to a moderate incline and grab two dumbbells.
+  - it: Sdraiati a pancia in giù con il petto sull'imbottitura.
+    en: Lie face down with your chest on the pad.
+  - it: Appoggia i piedi a terra, ben saldi.
+    en: Plant your feet firmly on the floor.
+  - it: Lascia i manubri appesi sotto le spalle, palmi uno di fronte all'altro.
+    en: Let the dumbbells hang under your shoulders, palms facing each other.
+  - it: Porta le scapole indietro e in basso.
+    en: Draw your shoulder blades back and down.
+  cues:
+  - it: Apri le braccia come ali, verso i lati.
+    en: Open your arms like wings, out to the sides.
+  - it: Petto fermo sulla panca.
+    en: Keep your chest still on the bench.
+  mistakes:
+  - what:
+      it: Sollevi il petto dalla panca per aiutarti.
+      en: You lift your chest off the bench to help.
+    fix:
+      it: Riduci il peso e resta appoggiato.
+      en: Lower the weight and stay on the pad.
+  - what:
+      it: Pieghi i gomiti e tiri i manubri come in un rematore.
+      en: You bend your elbows and row the dumbbells.
+    fix:
+      it: Tieni le braccia quasi tese e muovile verso i lati.
+      en: Keep your arms nearly straight and move them out to the sides.
+  - what:
+      it: Alzi i manubri più in alto delle spalle.
+      en: You raise the dumbbells above shoulder height.
+    fix:
+      it: Fermati quando le braccia sono parallele al pavimento.
+      en: Stop at shoulder height, arms level with the floor.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders rise toward your ears.
+    fix:
+      it: Abbassa le spalle e muovi le braccia, non le spalle.
+      en: Drop your shoulders and move your arms, not your shrugs.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 208
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

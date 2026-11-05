@@ -15,3 +15,53 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - cable_rear_delt_fly
+technique:
+  setup:
+  - it: Prendi due manubri e stai in piedi con i piedi a larghezza anche.
+    en: Hold two dumbbells and stand with feet hip-width apart.
+  - it: Piega le ginocchia appena e inclina il busto quasi parallelo al pavimento.
+    en: Soften your knees and tilt your torso near parallel to the floor.
+  - it: Lascia i manubri appesi sotto le spalle, palmi uno di fronte all'altro.
+    en: Let the dumbbells hang under your shoulders, palms facing each other.
+  - it: Porta le scapole indietro e in basso.
+    en: Draw your shoulder blades back and down.
+  cues:
+  - it: Apri le braccia come ali, verso i lati.
+    en: Open your arms like wings, out to the sides.
+  - it: Braccia quasi tese, gomiti fermi.
+    en: Arms nearly straight, elbows fixed.
+  mistakes:
+  - what:
+      it: Sollevi il busto a ogni ripetizione per aiutarti.
+      en: You rise up each rep to help the lift.
+    fix:
+      it: Riduci il peso e tieni il busto fermo.
+      en: Lower the weight and hold your torso still.
+  - what:
+      it: Pieghi i gomiti e tiri i manubri come in un rematore.
+      en: You bend your elbows and row the dumbbells.
+    fix:
+      it: Tieni le braccia quasi tese e muovile verso i lati.
+      en: Keep your arms nearly straight and move them out to the sides.
+  - what:
+      it: Sali oltre l'altezza delle spalle con le braccia.
+      en: Your arms rise above shoulder height.
+    fix:
+      it: Fermati quando le braccia sono parallele al pavimento.
+      en: Stop at shoulder height, arms level with the floor.
+  - what:
+      it: Fai rimbalzare i manubri in basso.
+      en: You bounce the dumbbells at the bottom.
+    fix:
+      it: Fermati un attimo in basso prima di ogni ripetizione.
+      en: Pause briefly at the bottom of every rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 208
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

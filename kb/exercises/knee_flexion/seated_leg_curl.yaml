@@ -16,3 +16,49 @@ loading:
 substitutes:
 - leg_curl
 - dumbbell_romanian_deadlift
+technique:
+  setup:
+  - it: Siediti con la schiena ben appoggiata.
+    en: Sit with your back flat against the pad.
+  - it: Regola il cuscino sulle caviglie, appena sopra i talloni.
+    en: Set the ankle pad just above your heels.
+  - it: Abbassa il cuscino superiore sulle cosce, appena sopra le ginocchia.
+    en: Lower the top pad onto your thighs, just above your knees.
+  - it: Controlla che non ci sia spazio tra cuscino e cosce.
+    en: Check there is no gap between the pad and your thighs.
+  - it: Punte dritte o appena in fuori.
+    en: Toes straight or slightly out.
+  cues:
+  - it: Porta i talloni sotto di te.
+    en: Pull your heels down and back under you.
+  - it: Risali piano fino ad allungare le cosce.
+    en: Rise slowly until your legs are stretched.
+  mistakes:
+  - what:
+      it: Il sedere si solleva dal sedile.
+      en: Your hips lift off the seat.
+    fix:
+      it: Riduci il peso e tieni il cuscino fermo sulle cosce.
+      en: Use less weight and keep the pad firm on your thighs.
+  - what:
+      it: Lanci il peso e poi lo lasci cadere.
+      en: You swing the weight and then let it drop.
+    fix:
+      it: Scendi e sali in modo fluido, controllando il ritorno.
+      en: Curl smoothly and control the return.
+  - what:
+      it: Non risali del tutto e perdi l'allungamento.
+      en: You don't come back fully and lose the stretch.
+    fix:
+      it: Torna fino in alto a gambe quasi tese a ogni ripetizione.
+      en: Return to nearly straight legs every rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 146
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -2,6 +2,10 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.19.0 — 2026-11-05
+
+- Schede tecniche: ogni esercizio ha un blocco `technique` (da 3 a 5 passi di setup, da 1 a 3 cue brevi con focus esterno, da 3 a 5 errori comuni con la correzione), in italiano e inglese, scritti con parole nostre. Fonte principale *The Muscle Ladder* di Nippard (pp. 110-242, nuova fonte `nippard-muscle-ladder`); gli errori comuni senza pagina citano `barbl-design`. Tutte le schede sono provvisorie, da rivedere con il coach. Il validatore richiede la scheda per ogni esercizio; il motore la legge (`KbExercise.technique`) e la mette nel pacchetto. I piani generati non cambiano.
+
 ## 0.18.0 — 2026-11-05
 
 - Tre enfasi nuove nel profilo (`emphasis`): `quadriceps`, `chest`, `back`, accanto a `glutes_hamstrings`, `shoulders` e `arms`; sempre al massimo due, stesse regole di durata. Posti: quadricipiti con la leg extension (Full A e Full C, Lower B, Gambe e Lower; senza macchine un affondo o uno squat con manubrio), petto con le croci (Full A e Full C, Upper A, Push e Upper), schiena con una trazione verticale o un rematore (Full A e Full C, Upper A e Upper B, Pull e Upper).

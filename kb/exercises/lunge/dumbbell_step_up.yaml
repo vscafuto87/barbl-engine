@@ -18,3 +18,55 @@ loading:
 substitutes:
 - bulgarian_split_squat
 - dumbbell_walking_lunge
+technique:
+  setup:
+  - it: Tieni un manubrio per mano, con le braccia lungo i fianchi.
+    en: Hold a dumbbell in each hand with your arms at your sides.
+  - it: Scegli una panca o un box che arrivi sotto il ginocchio.
+    en: Pick a bench or box that comes to knee height or lower.
+  - it: Metti un piede intero sul box.
+    en: Place one whole foot on the box.
+  - it: Tieni il petto alto e lo sguardo avanti.
+    en: Keep your chest up and eyes forward.
+  cues:
+  - it: Spingi il box con il piede davanti per salire.
+    en: Push through the box with your front foot to rise.
+  - it: Scendi piano e senza lasciarti cadere.
+    en: Lower slowly without dropping.
+  mistakes:
+  - what:
+      it: Spingi con la gamba che resta a terra.
+      en: You push with the leg left on the floor.
+    fix:
+      it: Appoggia a terra solo la punta e spingi con la gamba sul box.
+      en: Barely touch the floor and push with the leg on the box.
+  - what:
+      it: Il ginocchio cade verso l'interno.
+      en: Your knee caves inward.
+    fix:
+      it: Spingi il ginocchio verso le punte dei piedi.
+      en: Push your knee out toward your toes.
+  - what:
+      it: Il box è troppo alto e il busto si piega in avanti.
+      en: The box is too high and your torso leans forward.
+    fix:
+      it: Usa un box più basso e tieni il petto alto.
+      en: Use a lower box and keep your chest up.
+  - what:
+      it: Ti lasci cadere in discesa.
+      en: You drop down on the way back.
+    fix:
+      it: Scendi in due o tre secondi, sempre controllato.
+      en: Lower over two or three seconds, in control.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 118
+    - 119
+    - 120
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

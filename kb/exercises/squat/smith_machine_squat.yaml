@@ -17,3 +17,56 @@ loading:
 substitutes:
 - squat
 - leg_press
+technique:
+  setup:
+  - it: Regola il bilanciere all'altezza delle ascelle.
+    en: Set the bar at armpit height.
+  - it: Mettiti sotto e appoggialo sulla parte alta della schiena.
+    en: Duck under and rest it on your upper back.
+  - it: Metti i piedi leggermente davanti al bilanciere.
+    en: Place your feet slightly in front of the bar.
+  - it: Piedi larghi come le spalle o poco più, punte un po' in fuori.
+    en: Feet shoulder-width or a bit wider, toes slightly out.
+  - it: Stendi le gambe e ruota il bilanciere per sganciarlo.
+    en: Stand and rotate the bar to unhook it.
+  cues:
+  - it: Scendi tra le gambe, con il petto alto.
+    en: Sit down between your legs with your chest up.
+  - it: Spingi il pavimento con tutto il piede.
+    en: Push the floor away with your whole foot.
+  mistakes:
+  - what:
+      it: I talloni si sollevano da terra.
+      en: Your heels lift off the floor.
+    fix:
+      it: Sposta i piedi un po' più avanti e spingi i talloni a terra.
+      en: Move your feet a bit forward and press your heels down.
+  - what:
+      it: Le ginocchia cadono verso l'interno.
+      en: Your knees cave inward.
+    fix:
+      it: Spingi le ginocchia verso le punte dei piedi.
+      en: Push your knees out toward your toes.
+  - what:
+      it: 'Piedi sotto il bilanciere: le ginocchia vanno troppo avanti.'
+      en: 'Feet under the bar: your knees go too far forward.'
+    fix:
+      it: Avanza i piedi e siediti all'indietro.
+      en: Step your feet forward and sit back.
+  - what:
+      it: In basso la schiena si arrotonda.
+      en: At the bottom your lower back rounds.
+    fix:
+      it: Scendi meno e tieni il petto alto.
+      en: Don't go as deep and keep your chest up.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 110
+    - 111
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

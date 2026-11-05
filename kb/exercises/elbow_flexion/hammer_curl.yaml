@@ -16,3 +16,53 @@ loading:
 substitutes:
 - dumbbell_curl
 - cable_curl
+technique:
+  setup:
+  - it: Stai in piedi con i piedi a larghezza spalle, ginocchia appena piegate.
+    en: Stand feet shoulder-width apart with knees slightly bent.
+  - it: Prendi due manubri con i palmi uno di fronte all'altro.
+    en: Hold two dumbbells with your palms facing each other.
+  - it: Avvolgi il pollice attorno al manubrio, presa salda.
+    en: Wrap your thumb around the dumbbell for a firm grip.
+  - it: Tieni i gomiti ai fianchi e le braccia tese.
+    en: Keep your elbows at your sides with arms straight.
+  cues:
+  - it: Porta i manubri verso le spalle, polsi dritti.
+    en: Curl the dumbbells toward your shoulders, wrists straight.
+  - it: Gomiti fermi ai fianchi.
+    en: Elbows still at your sides.
+  mistakes:
+  - what:
+      it: Ondeggi col busto per sollevare i manubri.
+      en: You swing your torso to lift the dumbbells.
+    fix:
+      it: Riduci il peso e tieni il busto fermo.
+      en: Lower the weight and keep your torso still.
+  - what:
+      it: Il pollice resta fuori dalla presa e i polsi cedono.
+      en: Your thumb stays loose and your wrists give way.
+    fix:
+      it: Avvolgi bene il pollice e tieni il polso dritto.
+      en: Wrap your thumb tight and keep your wrist straight.
+  - what:
+      it: I gomiti vanno avanti e le spalle sollevano il peso.
+      en: Your elbows drift forward and your shoulders lift the weight.
+    fix:
+      it: Tieni i gomiti vicini ai fianchi.
+      en: Keep your elbows close to your sides.
+  - what:
+      it: Scendi a metà e non distendi le braccia.
+      en: You stop halfway down and never straighten your arms.
+    fix:
+      it: Scendi finché le braccia sono tese, poi sali.
+      en: Lower until your arms are straight, then curl.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 215
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

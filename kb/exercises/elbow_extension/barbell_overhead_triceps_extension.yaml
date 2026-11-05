@@ -16,3 +16,58 @@ loading:
 substitutes:
 - overhead_cable_triceps_extension
 - dumbbell_overhead_triceps_extension
+technique:
+  setup:
+  - it: Siediti con lo schienale dritto e il bilanciere sulle cosce.
+    en: Sit with the backrest upright and the bar on your thighs.
+  - it: Impugna il bilanciere con le mani poco più strette delle spalle.
+    en: Grip the bar with your hands slightly narrower than your shoulders.
+  - it: Porta il bilanciere sopra la testa, braccia tese.
+    en: Press the bar overhead with straight arms.
+  - it: Piedi a terra, glutei e schiena appoggiati.
+    en: Feet flat, hips and back on the seat.
+  - it: Piega i gomiti e porta il bilanciere dietro la testa.
+    en: Bend your elbows and lower the bar behind your head.
+  cues:
+  - it: Muovi solo gli avambracci, i gomiti restano fermi.
+    en: Move only your forearms; your elbows stay still.
+  - it: Gomiti puntati in alto, vicini alla testa.
+    en: Elbows pointing up, close to your head.
+  - it: Senti un buon allungamento in basso, poi stendi.
+    en: Feel a good stretch at the bottom, then extend.
+  mistakes:
+  - what:
+      it: I gomiti si aprono ai lati.
+      en: Your elbows flare out to the sides.
+    fix:
+      it: Tienili vicini alla testa e rivolti in alto.
+      en: Keep them close to your head, pointing up.
+  - what:
+      it: La schiena si inarca per spingere.
+      en: Your lower back arches to push.
+    fix:
+      it: Stringi glutei e addome e riduci il carico.
+      en: Squeeze your glutes and abs and lower the load.
+  - what:
+      it: Scendi poco e perdi l'allungamento.
+      en: You lower only a little and lose the stretch.
+    fix:
+      it: Scendi finché senti il tricipite allungarsi.
+      en: Lower until you feel your triceps stretch.
+  - what:
+      it: Il bilanciere va troppo indietro e la spalla tira.
+      en: The bar drifts too far back and your shoulder strains.
+    fix:
+      it: Tieni il bilanciere sopra la testa, senza forzare.
+      en: Keep the bar over your head without forcing it.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 220
+    - 221
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

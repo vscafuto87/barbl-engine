@@ -16,3 +16,47 @@ loading:
 substitutes:
 - dumbbell_curl
 - barbell_curl
+technique:
+  setup:
+  - it: Aggancia una maniglia al cavo basso.
+    en: Attach a handle to the low cable.
+  - it: Voltati di spalle al blocco pesi e afferra la maniglia.
+    en: Face away from the stack and grab the handle.
+  - it: Fai qualche passo avanti e mettiti in posizione stabile.
+    en: Take a few steps forward and find a stable stance.
+  - it: Porta il braccio un po' dietro al busto, con la gamba opposta avanti.
+    en: Place your arm slightly behind your torso, opposite leg forward.
+  cues:
+  - it: Porta la maniglia verso la spalla, gomito fermo.
+    en: Curl the handle toward your shoulder, elbow still.
+  - it: Scendi piano, braccio ben disteso.
+    en: Lower slowly until your arm is fully stretched.
+  mistakes:
+  - what:
+      it: Ti inclini all'indietro per tirare il cavo.
+      en: You lean back to pull the cable.
+    fix:
+      it: Riduci il peso e resta in piedi dritto.
+      en: Lower the weight and stand upright.
+  - what:
+      it: Il gomito va avanti e il lavoro passa alle spalle.
+      en: Your elbow drifts forward and your shoulder takes over.
+    fix:
+      it: Tieni il gomito fermo vicino al fianco.
+      en: Keep your elbow still and close to your side.
+  - what:
+      it: Lasci cadere il peso e perdi tensione in basso.
+      en: You drop the weight and lose tension at the bottom.
+    fix:
+      it: Controlla la discesa finché il braccio è disteso.
+      en: Control the lowering until your arm is straight.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 216
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

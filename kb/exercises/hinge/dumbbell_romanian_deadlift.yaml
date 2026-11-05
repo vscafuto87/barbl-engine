@@ -16,3 +16,49 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - romanian_deadlift
+technique:
+  setup:
+  - it: Tieni un manubrio per mano, davanti alle cosce.
+    en: Hold a dumbbell in each hand in front of your thighs.
+  - it: Stai in piedi con i piedi larghi come le spalle.
+    en: Stand with your feet shoulder-width apart.
+  - it: Piega appena le ginocchia e mantieni la schiena dritta.
+    en: Bend your knees slightly and keep your back flat.
+  - it: Tieni le spalle indietro e il petto alto.
+    en: Keep your shoulders back and your chest up.
+  cues:
+  - it: Porta i fianchi indietro e fai scorrere i manubri lungo le gambe.
+    en: Push your hips back and slide the dumbbells down your legs.
+  - it: Spingi i fianchi in avanti per risalire.
+    en: Drive your hips forward to stand.
+  mistakes:
+  - what:
+      it: La schiena si arrotonda mentre scendi.
+      en: Your back rounds as you lower.
+    fix:
+      it: Scendi meno e tieni il petto alto e la schiena dritta.
+      en: Don't go as low and keep your chest up and back flat.
+  - what:
+      it: I manubri si allontanano dalle gambe.
+      en: The dumbbells drift away from your legs.
+    fix:
+      it: Falli scorrere lungo le cosce e gli stinchi.
+      en: Slide them along your thighs and shins.
+  - what:
+      it: Pieghi molto le ginocchia e fai uno squat.
+      en: You bend your knees a lot and it becomes a squat.
+    fix:
+      it: Tieni le ginocchia appena piegate e spingi i fianchi indietro.
+      en: Keep a slight knee bend and push your hips back.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 141
+    - 142
+    - 143
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

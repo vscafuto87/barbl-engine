@@ -25,6 +25,7 @@ class KbExercise {
     required this.stepKg,
     required this.whenLoadUnknown,
     this.substitutes = const [],
+    this.technique,
   });
 
   factory KbExercise.fromJson(Map<String, Object?> json, String path) {
@@ -42,8 +43,17 @@ class KbExercise {
       stepKg: doubleOrNull(loading, 'stepKg', '$path.loading'),
       whenLoadUnknown: stringAt(loading, 'whenLoadUnknown', '$path.loading'),
       substitutes: stringsOrEmpty(json, 'substitutes', path),
+      technique: json['technique'] == null
+          ? null
+          : KbTechnique.fromJson(
+              mapAt(json, 'technique', path),
+              '$path.technique',
+            ),
     );
   }
+
+  /// Scheda tecnica (setup, cue, errori comuni); nulla se la KB non la ha.
+  final KbTechnique? technique;
 
   final String id;
   final String nameIt;
@@ -60,6 +70,88 @@ class KbExercise {
   /// Passo di carico in kg; nullo per gli esercizi a corpo libero.
   final double? stepKg;
   final String whenLoadUnknown;
+}
+
+/// Testo per l'utente in italiano e inglese.
+class KbText {
+  const KbText({required this.it, required this.en});
+
+  factory KbText.fromJson(Map<String, Object?> json, String path) =>
+      KbText(it: stringAt(json, 'it', path), en: stringAt(json, 'en', path));
+
+  final String it;
+  final String en;
+}
+
+/// Errore comune di esecuzione: cosa succede e come si corregge.
+class KbMistake {
+  const KbMistake({required this.what, required this.fix});
+
+  factory KbMistake.fromJson(Map<String, Object?> json, String path) =>
+      KbMistake(
+        what: KbText.fromJson(mapAt(json, 'what', path), '$path.what'),
+        fix: KbText.fromJson(mapAt(json, 'fix', path), '$path.fix'),
+      );
+
+  final KbText what;
+  final KbText fix;
+}
+
+/// Scheda tecnica di un esercizio (`technique` in `kb/exercises/`).
+class KbTechnique {
+  const KbTechnique({
+    required this.setup,
+    required this.cues,
+    required this.mistakes,
+    required this.sourceIds,
+    required this.confirmed,
+  });
+
+  factory KbTechnique.fromJson(Map<String, Object?> json, String path) {
+    List<KbText> texts(String key) {
+      final l = listAt(json, key, path);
+      return [
+        for (var i = 0; i < l.length; i++)
+          KbText.fromJson(asMap(l[i], '$path.$key[$i]'), '$path.$key[$i]'),
+      ];
+    }
+
+    final mistakes = listAt(json, 'mistakes', path);
+    final sources = listAt(json, 'sources', path);
+    return KbTechnique(
+      setup: texts('setup'),
+      cues: texts('cues'),
+      mistakes: [
+        for (var i = 0; i < mistakes.length; i++)
+          KbMistake.fromJson(
+            asMap(mistakes[i], '$path.mistakes[$i]'),
+            '$path.mistakes[$i]',
+          ),
+      ],
+      sourceIds: [
+        for (var i = 0; i < sources.length; i++)
+          stringAt(
+            asMap(sources[i], '$path.sources[$i]'),
+            'id',
+            '$path.sources[$i]',
+          ),
+      ],
+      confirmed: stringAt(json, 'status', path) == 'confirmed',
+    );
+  }
+
+  /// Passi di setup, nell'ordine in cui si fanno.
+  final List<KbText> setup;
+
+  /// Frasi brevi da ricordare durante la serie.
+  final List<KbText> cues;
+  final List<KbMistake> mistakes;
+
+  /// Fonti della scheda (id di `kb/sources/`).
+  final List<String> sourceIds;
+
+  /// Vero solo se la scheda è stata rivista da un coach.
+  final bool confirmed;
 }
 
 /// Slot di un blocco: un pattern, un ruolo e i candidati in ordine di preferenza.
@@ -118,7 +210,10 @@ class KbBlock {
       label: stringOrNull(json, 'label', path),
       slots: [
         for (var i = 0; i < slots.length; i++)
-          KbSlot.fromJson(asMap(slots[i], '$path.slots[$i]'), '$path.slots[$i]'),
+          KbSlot.fromJson(
+            asMap(slots[i], '$path.slots[$i]'),
+            '$path.slots[$i]',
+          ),
       ],
     );
   }
@@ -233,7 +328,10 @@ class KbEmphasis {
       final list = asList(e.value, tpath);
       placements[e.key] = [
         for (var i = 0; i < list.length; i++)
-          KbEmphasisPlacement.fromJson(asMap(list[i], '$tpath[$i]'), '$tpath[$i]'),
+          KbEmphasisPlacement.fromJson(
+            asMap(list[i], '$tpath[$i]'),
+            '$tpath[$i]',
+          ),
       ];
     }
     return KbEmphasis(

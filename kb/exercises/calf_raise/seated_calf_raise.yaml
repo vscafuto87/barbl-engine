@@ -16,3 +16,55 @@ loading:
 substitutes:
 - standing_calf_raise
 - dumbbell_calf_raise
+technique:
+  setup:
+  - it: 'Regola i cuscini dei ginocchi: devono premere bene sulle gambe.'
+    en: Adjust the knee pads so they press firmly on your legs.
+  - it: Siediti con i cuscini appena sopra le ginocchia.
+    en: Sit with the pads just above your knees.
+  - it: Appoggia la parte anteriore dei piedi sulla pedana.
+    en: Put the front part of your feet on the footpad.
+  - it: Sali sulle punte e sgancia il peso.
+    en: Rise onto your toes and release the weight.
+  - it: Abbassa i talloni fino a sentire un bel allungamento.
+    en: Lower your heels until you feel a good stretch.
+  cues:
+  - it: Spingi la pedana mantenendo i ginocchi premuti contro i cuscini.
+    en: Press the footpad while keeping your knees against the pads.
+  - it: Fermati un secondo in basso, poi alza i talloni al massimo.
+    en: Pause a second at the bottom, then raise your heels as far as possible.
+  mistakes:
+  - what:
+      it: Il tallone sale poco e senti poco allungamento in basso.
+      en: Your heel rises little and you feel almost no stretch at the bottom.
+    fix:
+      it: Scendi più in basso e fermati un secondo nell'allungamento.
+      en: Lower further and pause for a second in the stretch.
+  - what:
+      it: Rimbalzi in basso e usi lo slancio per risalire.
+      en: You bounce at the bottom and use momentum to come up.
+    fix:
+      it: Fai una pausa in basso e sali in modo fluido.
+      en: Pause at the bottom and rise smoothly.
+  - what:
+      it: Le ripetizioni sono veloci e corte, con troppo peso.
+      en: Your reps are fast and short with too much weight.
+    fix:
+      it: Riduci il peso e fai tutta la corsa, in alto e in basso.
+      en: Lower the weight and use the full range, top and bottom.
+  - what:
+      it: Le ginocchia si staccano dai cuscini mentre sali.
+      en: Your knees lift away from the pads as you rise.
+    fix:
+      it: Premi i ginocchi contro i cuscini per tutta la ripetizione.
+      en: Keep your knees pressed into the pads the whole rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 153
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

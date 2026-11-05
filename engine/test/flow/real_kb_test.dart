@@ -95,6 +95,16 @@ void main() {
     kb = KnowledgeBase.fromJson(built.json);
   });
 
+  test('ogni esercizio della KB ha la scheda tecnica', () {
+    for (final e in kb.exercises.values) {
+      final t = e.technique;
+      expect(t, isNotNull, reason: e.id);
+      expect(t!.setup.length, inInclusiveRange(3, 5), reason: e.id);
+      expect(t.mistakes.length, inInclusiveRange(3, 5), reason: e.id);
+      expect(t.sourceIds, isNotEmpty, reason: e.id);
+    }
+  });
+
   test('i casi d\'oro passano', () {
     final cases = runEval(Directory('../kb'));
     expect(

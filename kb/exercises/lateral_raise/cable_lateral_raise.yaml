@@ -15,3 +15,58 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_lateral_raise
+technique:
+  setup:
+  - it: Metti la puleggia all'altezza del polso e attacca una maniglia.
+    en: Set the pulley at wrist height and attach a handle.
+  - it: Mettiti di fianco ai pesi, in piedi e stabile.
+    en: Stand sideways to the stack, steady on your feet.
+  - it: Afferra la maniglia con la mano lontana, davanti ai fianchi.
+    en: Hold the handle with the far hand, in front of your hips.
+  - it: Braccio quasi teso, leggermente piegato al gomito.
+    en: Arm nearly straight, with a slight bend at the elbow.
+  - it: Stringi i glutei e tieni il petto alto.
+    en: Squeeze your glutes and keep your chest up.
+  cues:
+  - it: Tira il gomito verso l'esterno, non la mano.
+    en: Lead with your elbow, not your hand.
+  - it: Sali fino all'altezza della spalla.
+    en: Lift up to shoulder height.
+  - it: Mantieni il cavo sempre teso.
+    en: Keep the cable tight at all times.
+  mistakes:
+  - what:
+      it: Il busto si piega di lato per alzare il peso.
+      en: Your torso leans sideways to lift the weight.
+    fix:
+      it: Riduci il carico e tieni il busto fermo.
+      en: Lower the load and keep your torso still.
+  - what:
+      it: Sollevi la spalla verso l'orecchio.
+      en: You shrug your shoulder toward your ear.
+    fix:
+      it: Tieni la spalla bassa e alza il gomito.
+      en: Keep your shoulder down and raise your elbow.
+  - what:
+      it: Il gomito si piega molto e diventa un curl.
+      en: Your elbow bends a lot and it turns into a curl.
+    fix:
+      it: Mantieni lo stesso angolo del gomito per tutta la corsa.
+      en: Hold the same elbow angle through the whole range.
+  - what:
+      it: Il peso torna giù di colpo.
+      en: The weight drops back fast.
+    fix:
+      it: Scendi piano, tenendo tensione sul cavo.
+      en: Lower slowly, keeping tension on the cable.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 205
+    - 206
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

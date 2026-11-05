@@ -15,3 +15,58 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_fly
+technique:
+  setup:
+  - it: Regola le pulegge all'altezza del petto e afferra le maniglie.
+    en: Set the pulleys at chest height and take the handles.
+  - it: Mettiti in mezzo ai due cavi e fai uno o due passi avanti.
+    en: Stand between the stacks and step forward once or twice.
+  - it: Una gamba avanti e una indietro, piedi ben piantati.
+    en: One foot forward, one back, both feet planted.
+  - it: Braccia aperte ai lati con i gomiti leggermente piegati.
+    en: Arms out to the sides with slightly bent elbows.
+  - it: Stringi le scapole indietro e in basso, petto in fuori.
+    en: Pull your shoulder blades back and down, chest up.
+  cues:
+  - it: Abbraccia un albero grande.
+    en: Hug a big tree.
+  - it: Gomiti sempre un po' piegati, mai tesi.
+    en: Keep a soft bend in your elbows, never locked.
+  - it: Senti il cavo teso dall'inizio alla fine.
+    en: Keep the cable tight from start to finish.
+  mistakes:
+  - what:
+      it: I gomiti si piegano e si tendono a ogni ripetizione.
+      en: Your elbows bend and straighten each rep, turning it into a press.
+    fix:
+      it: Blocca la piega dei gomiti e muovi solo le spalle.
+      en: Lock in the elbow bend and move only at the shoulders.
+  - what:
+      it: Il peso è troppo alto e il busto dondola.
+      en: The weight is too heavy and your torso swings.
+    fix:
+      it: Riduci il carico e tieni il busto fermo.
+      en: Lower the load and keep your torso still.
+  - what:
+      it: Le spalle vanno in avanti verso le mani.
+      en: Your shoulders roll forward toward your hands.
+    fix:
+      it: Tieni le scapole indietro e in basso per tutta la serie.
+      en: Keep your shoulder blades back and down all set.
+  - what:
+      it: Il cavo perde tensione a fine corsa.
+      en: The cable goes slack at the start.
+    fix:
+      it: Fai un passo avanti per sentire tensione fin dall'inizio.
+      en: Step forward so you feel tension from the start.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 191
+    - 192
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null
