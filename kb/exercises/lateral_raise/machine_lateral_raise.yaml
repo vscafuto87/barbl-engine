@@ -1,0 +1,18 @@
+id: machine_lateral_raise
+name:
+  it: Alzate laterali alla macchina
+  en: Machine lateral raise
+equipment: machine
+requires:
+- machines
+pattern: lateral_raise
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_lateral_raise
+- dumbbell_lateral_raise

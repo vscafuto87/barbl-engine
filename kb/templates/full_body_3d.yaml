@@ -81,8 +81,10 @@ sessions:
     slots:
     - pattern: vertical_pull
       role: secondary
+      equivalent: 2
       candidates:
       - lat_pulldown
+      - neutral_grip_pulldown
       - chest_supported_dumbbell_row
       - dumbbell_row
   - type: single
@@ -106,17 +108,20 @@ sessions:
     slots:
     - pattern: knee_flexion
       role: accessory
+      equivalent: 2
       candidates:
       - leg_curl
+      - seated_leg_curl
       - dumbbell_romanian_deadlift
   - type: single
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - dumbbell_curl
       - cable_curl
+      - hammer_curl
       - barbell_curl
 - id: full_c
   name:
@@ -146,8 +151,10 @@ sessions:
     slots:
     - pattern: squat
       role: secondary
+      equivalent: 2
       candidates:
       - leg_press
+      - hack_squat
       - smith_machine_squat
       - goblet_squat
   - type: single
@@ -163,10 +170,11 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - cable_curl
       - dumbbell_curl
+      - hammer_curl
       - barbell_curl
 principles:
 - P-SPLIT-FULL-BODY-3D

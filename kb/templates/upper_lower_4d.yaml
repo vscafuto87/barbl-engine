@@ -55,8 +55,10 @@ sessions:
     slots:
     - pattern: vertical_pull
       role: secondary
+      equivalent: 2
       candidates:
       - lat_pulldown
+      - neutral_grip_pulldown
       - chest_supported_dumbbell_row
   - type: superset
     label: B
@@ -70,10 +72,11 @@ sessions:
       - barbell_skull_crusher
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - dumbbell_curl
       - cable_curl
+      - hammer_curl
       - barbell_curl
 - id: lower_a
   name:
@@ -94,8 +97,10 @@ sessions:
     slots:
     - pattern: knee_flexion
       role: accessory
+      equivalent: 2
       candidates:
       - leg_curl
+      - seated_leg_curl
       - dumbbell_romanian_deadlift
   - type: single
     slots:
@@ -109,10 +114,11 @@ sessions:
     slots:
     - pattern: calf_raise
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - standing_calf_raise
       - dumbbell_calf_raise
+      - seated_calf_raise
 - id: upper_b
   name:
     it: Upper B
@@ -141,27 +147,31 @@ sessions:
     slots:
     - pattern: vertical_pull
       role: secondary
+      equivalent: 2
       candidates:
       - lat_pulldown
+      - neutral_grip_pulldown
       - dumbbell_row
   - type: single
     slots:
     - pattern: chest_isolation
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - cable_fly
       - dumbbell_fly
+      - pec_deck_fly
       - push_up
   - type: superset
     label: A
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - cable_curl
       - dumbbell_curl
+      - hammer_curl
       - barbell_curl
     - pattern: elbow_extension
       role: accessory
@@ -187,8 +197,10 @@ sessions:
     slots:
     - pattern: squat
       role: secondary
+      equivalent: 2
       candidates:
       - leg_press
+      - hack_squat
       - goblet_squat
       - smith_machine_squat
   - type: single
@@ -203,8 +215,10 @@ sessions:
     slots:
     - pattern: knee_flexion
       role: accessory
+      equivalent: 2
       candidates:
       - leg_curl
+      - seated_leg_curl
       - dumbbell_romanian_deadlift
 principles:
 - P-FREQ-MIN-2

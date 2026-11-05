@@ -1,0 +1,18 @@
+id: seated_leg_curl
+name:
+  it: Leg curl da seduto
+  en: Seated leg curl
+equipment: machine
+requires:
+- machines
+pattern: knee_flexion
+mechanics: isolation
+muscles:
+  primary: hamstrings
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- leg_curl
+- dumbbell_romanian_deadlift

@@ -1,0 +1,19 @@
+id: hack_squat
+name:
+  it: Hack squat
+  en: Hack squat
+equipment: machine
+requires:
+- machines
+pattern: squat
+mechanics: compound
+muscles:
+  primary: quadriceps
+  secondary:
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- leg_press
+- smith_machine_squat
