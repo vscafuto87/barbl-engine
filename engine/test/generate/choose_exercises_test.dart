@@ -82,6 +82,7 @@ void _expectNoEquipment(Result<List<ChosenSession>> r) {
 }
 
 void main() {
+  _stableHashTests();
   group('chooseExercises', () {
     test('sceglie il primo candidato disponibile', () {
       expect(_firstId(_choose({'barbell', 'rack', 'bench'})), 'squat');
@@ -103,6 +104,16 @@ void main() {
 
     test('un valore sconosciuto accanto a quelli buoni è ignorato', () {
       expect(_firstId(_choose({'barbell', 'rack', 'jetpack'})), 'squat');
+    });
+  });
+}
+
+
+void _stableHashTests() {
+  group('stableHash', () {
+    test('FNV-1a a 32 bit, valore noto', () {
+      expect(stableHash('a'), 0xe40c292c);
+      expect(stableHash(''), 0x811c9dc5);
     });
   });
 }

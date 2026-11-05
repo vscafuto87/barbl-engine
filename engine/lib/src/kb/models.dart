@@ -70,6 +70,7 @@ class KbSlot {
     required this.candidates,
     required this.askLoad,
     required this.repsOverride,
+    this.equivalent = 1,
   });
 
   factory KbSlot.fromJson(Map<String, Object?> json, String path) {
@@ -88,8 +89,16 @@ class KbSlot {
       candidates: stringsAt(json, 'candidates', path),
       askLoad: boolOr(json, 'askLoad', path, false),
       repsOverride: repsOverride,
+      equivalent: json['equivalent'] == null
+          ? 1
+          : intAt(json, 'equivalent', path),
     );
   }
+
+  /// Quanti dei primi candidati disponibili sono intercambiabili: tra questi
+  /// il motore ne assegna uno in modo deterministico (vedi `chooseExercises`).
+  /// 1 = vale il primo disponibile.
+  final int equivalent;
 
   final String pattern;
   final String role;
