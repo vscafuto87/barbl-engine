@@ -25,7 +25,7 @@ conflicts:
     it: 'Decisione di Vincenzo: il motore usa subito i pesi (vocab/muscles.yaml, setWeights); la regola
       8 e il contratto cambieranno in un secondo momento.'
 - id: C-RIR-BY-ROLE
-  status: open
+  status: resolved
   date: '2026-10-30'
   between:
   - P-RIR-HYP
@@ -34,9 +34,9 @@ conflicts:
     it: Robinson suggerisce che il cedimento conti di più con carichi leggeri; ACSM dice che non ci sono
       prove per fissare RIR esatti.
   resolution:
-    it: 'Nessuna modifica: un RIR diverso per tipo di esercizio resta un''ipotesi da rivalutare.'
+    it: 'Chiuso da Vincenzo il 5 novembre 2026: nessuna modifica. Un RIR diverso per tipo di esercizio non ha una fonte di livello alto (ACSM, tier 1, dice che non ci sono prove per RIR esatti; Robinson 2024 da solo non basta).'
 - id: C-CALVES-BAND
-  status: open
+  status: resolved
   date: '2026-10-30'
   between:
   - templates/upper_lower_4d
@@ -47,9 +47,9 @@ conflicts:
       principio; in quello a 5 giorni due esercizi da 3 serie (6), perché con sedute di al massimo 15 serie
       non c'è spazio per un terzo e un quarto.
   resolution:
-    it: 'Da decidere con il coach: un secondo esercizio o un''eccezione dichiarata per i polpacci.'
+    it: 'Chiuso da Vincenzo il 5 novembre 2026: secondo esercizio per i polpacci nella seconda seduta di gambe del template a 4 giorni (6 serie a settimana, come a 5 giorni) ed eccezione dichiarata sotto le 10 serie: la soglia di P-VOL-MIN-10 vale per i muscoli grandi.'
 - id: C-REST-STRENGTH
-  status: open
+  status: resolved
   date: '2026-11-04'
   between:
   - P-REST-NEUTRAL
@@ -62,13 +62,9 @@ conflicts:
       (tier 2, solo abstract) concilia le due letture. Per la forza bastano 60-120 secondi a chi non è allenato,
       mentre chi è allenato ha bisogno di più di 2 minuti.
   resolution:
-    it: 'Decisione provvisoria: recuperi lunghi sui multiarticolari pesanti (prescriptions/strength.yaml),
-      perché servono a ripetere il carico pesante delle serie successive, che è ciò che conta per la forza
-      (P-RIR-STR, P-STRENGTH-REP-ZONE); il dato ACSM riguarda l''esito finale, non il carico mantenuto nella
-      seduta. I valori esatti sono di design (P-REST-MAIN-STR). Da rivedere con il coach: se i recuperi si
-      accorciano, scende anche il tempo per serie (P-TIME-PER-SET-STR) e la forza può coprire i 60 minuti.'
+    it: 'Chiuso da Vincenzo il 5 novembre 2026: si mantengono i recuperi lunghi sui multiarticolari pesanti (3-4 minuti sul principale). La revisione di Grgic 2018 (abstract riletto, testo completo non disponibile) li concilia con l''ACSM: per chi è allenato servono più di 2 minuti. Costo accettato: tempo per serie più alto e taglio delle sedute di forza a 60 minuti.'
 - id: C-STRENGTH-VOLUME
-  status: open
+  status: resolved
   date: '2026-11-04'
   between:
   - P-VOL-DOSE-STR
@@ -82,11 +78,7 @@ conflicts:
       dell'ipertrofia); e con molti complementari la quota di serie da 1-6 ripetizioni resta intorno alla
       metà, sotto i due terzi-tre quarti di Helms.
   resolution:
-    it: 'Decisione provvisoria: per la forza si usano gli stessi template della massa con la prescrizione
-      strength, senza togliere o aggiungere slot. Il volume in eccesso rispetto a P-VOL-DOSE-STR è accettato
-      (Helms indica comunque 5-12 serie e più per la forza); la fascia di belowBand non è un obiettivo della
-      forza e l''eval a matrice non la controlla per questo obiettivo. Template propri per la forza (meno
-      complementari, più serie pesanti) restano da decidere con il coach.'
+    it: 'Chiuso da Vincenzo il 5 novembre 2026: la forza usa gli stessi template della massa con la prescrizione strength. Il volume in più rispetto a P-VOL-DOSE-STR è accettato (scelta di design) e la fascia di belowBand non è un obiettivo della forza. Template propri per la forza: solo se il coach li chiede.'
 - id: C-LOAD-RATIO-EXERCISES
   status: deferred
   date: '2026-11-05'
@@ -101,7 +93,7 @@ conflicts:
     it: 'Nessuna conversione: i carichi delle alternative restano a mano (`manual`), o con la serie di
       prova dove l''app la prevede. Da rivalutare se esce una fonte di livello 1-3.'
 - id: C-TIME-VOLUME
-  status: open
+  status: resolved
   date: '2026-11-05'
   between:
   - P-TIME-TRIM
@@ -112,6 +104,4 @@ conflicts:
       motore toglie prima gli isolamenti e poi i complementari. Così braccia e altri muscoli finiscono
       sotto le 10 serie frazionarie settimanali di P-VOL-MIN-10. Il tempo per serie (3 minuti) è provvisorio.
   resolution:
-    it: 'Decisione provvisoria: meglio un piano più corto con meno volume che un rifiuto. Da rivedere
-      con il coach: una distribuzione diversa delle serie per le sedute corte (ad esempio meno serie sui
-      principali) e un tempo per serie più fedele.'
+    it: 'Chiuso da Vincenzo il 5 novembre 2026: con sedute corte si toglie prima l''isolamento poi i complementari (P-TIME-TRIM), meglio di rifiutare il profilo. L''app segnala il volume sotto fascia e suggerisce di allungare la durata. Il tempo per serie resta provvisorio.'
