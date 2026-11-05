@@ -19,7 +19,8 @@
       "enum": [
         "1.0",
         "1.1",
-        "1.2"
+        "1.2",
+        "1.3"
       ]
     },
     "goal": {
@@ -142,6 +143,12 @@
       "uniqueItems": true,
       "maxItems": 2,
       "description": "Facoltativo: fino a due distretti da privilegiare. Assente equivale a lista vuota. Ammesso con ogni schemaVersion; il modello scrive 1.2 solo quando non è vuoto."
+    },
+    "variantSeed": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2147483647,
+      "description": "Facoltativo: seme per scegliere un altro piano valido a parità di profilo. Assente = scelta deterministica del motore. Ammesso con ogni schemaVersion; il modello scrive 1.3 solo quando è presente."
     }
   }
 }

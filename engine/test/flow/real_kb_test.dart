@@ -77,6 +77,17 @@ Set<String> askLoadExercises(Map<String, Object?> p) {
   return out;
 }
 
+const _compoundPatterns = {
+  'horizontal_push',
+  'horizontal_pull',
+  'vertical_push',
+  'vertical_pull',
+  'squat',
+  'hinge',
+  'lunge',
+  'hip_extension',
+};
+
 void main() {
   setUpAll(() {
     final built = buildBundle(Directory('../kb'));
@@ -433,11 +444,60 @@ void main() {
             (e as Map)['exerciseId'] as String,
     };
 
-    test('stesso profilo, stesso piano; i carichi noti non cambiano gli esercizi',
-        () {
-      final a = plan(profile());
-      expect(plan(profile()), a);
-      expect(ids(plan(profile(noKnownLoads: true))), ids(a));
+    test(
+      'stesso profilo, stesso piano; i carichi noti non cambiano gli esercizi',
+      () {
+        final a = plan(profile());
+        expect(plan(profile()), a);
+        expect(ids(plan(profile(noKnownLoads: true))), ids(a));
+      },
+    );
+
+    test(
+      'il seme dà piani diversi e validi; lo stesso seme lo stesso piano',
+      () {
+        Map<String, Object?> seeded(int seed, {String goal = 'muscle_gain'}) =>
+            plan(
+              profile(goal: goal)
+                ..['variantSeed'] = seed
+                ..['schemaVersion'] = '1.3',
+            );
+        final plans = {
+          for (var i = 0; i < 12; i++) ids(seeded(i)).toList().join(','),
+        };
+        expect(plans.length, greaterThan(4));
+        expect(ids(seeded(7)), ids(seeded(7)));
+      },
+    );
+
+    test('per la forza il seme cambia solo l\'isolamento', () {
+      Set<String> mainIds(Map<String, Object?> p) => {
+        for (final s in p['sessions']! as List)
+          for (final b in (s as Map)['blocks'] as List)
+            for (final e in (b as Map)['exercises'] as List)
+              if (_compoundPatterns.contains(
+                kb.exercises[(e as Map)['exerciseId']]!.pattern,
+              ))
+                e['exerciseId'] as String,
+      };
+      final base = mainIds(
+        plan(profile(goal: 'strength', sessionDurationMin: 75)),
+      );
+      for (var i = 0; i < 8; i++) {
+        final p = plan(
+          profile(goal: 'strength', sessionDurationMin: 75)
+            ..['variantSeed'] = i
+            ..['schemaVersion'] = '1.3',
+        );
+        expect(mainIds(p), base);
+      }
+    });
+
+    test('un seme non valido è rifiutato', () {
+      for (final bad in <Object>[-1, 2147483648, 1.5, '3']) {
+        final result = generatePlan(profile()..['variantSeed'] = bad, kb);
+        expect(result, isA<InvalidProfile>());
+      }
     });
 
     test('profili diversi possono avere esercizi di isolamento diversi', () {

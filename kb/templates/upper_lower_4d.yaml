@@ -32,6 +32,7 @@ sessions:
     slots:
     - pattern: horizontal_pull
       role: secondary
+      equivalent: 2
       askLoad: true
       candidates:
       - dumbbell_row
@@ -122,6 +123,7 @@ sessions:
     slots:
     - pattern: horizontal_push
       role: main
+      equivalent: 2
       candidates:
       - incline_dumbbell_press
       - machine_chest_press
@@ -130,6 +132,7 @@ sessions:
     slots:
     - pattern: horizontal_pull
       role: secondary
+      equivalent: 2
       candidates:
       - seated_cable_row
       - chest_supported_dumbbell_row
@@ -192,6 +195,7 @@ sessions:
     slots:
     - pattern: lunge
       role: secondary
+      equivalent: 2
       candidates:
       - bulgarian_split_squat
       - dumbbell_walking_lunge

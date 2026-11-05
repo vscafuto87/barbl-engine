@@ -1,0 +1,19 @@
+id: P-STRENGTH-SPECIFICITY
+topic: structure
+statement:
+  it: 'Per la forza gli esercizi principali e secondari restano quelli dichiarati dal template, senza
+    alternative equivalenti scelte a rotazione: la forza in un movimento migliora soprattutto allenando
+    quel movimento. La varietà tra piani si ottiene sull''isolamento; per la massa vale anche sugli esercizi
+    secondari, dove esercizi diversi per lo stesso muscolo sono intercambiabili.'
+  en: 'For strength, main and secondary exercises stay those declared by the template, with no equivalent
+    alternatives picked in rotation: strength in a movement improves mostly by training that movement.
+    Variety between plans comes from isolation work; for muscle gain it also applies to secondary exercises,
+    where different exercises for the same muscle are interchangeable.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: barbl-design
+  access: full_text
