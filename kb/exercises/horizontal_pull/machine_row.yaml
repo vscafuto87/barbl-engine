@@ -1,0 +1,19 @@
+id: machine_row
+name:
+  it: Rematore alla macchina
+  en: Machine row
+equipment: machine
+requires:
+- machines
+pattern: horizontal_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- seated_cable_row
+- chest_supported_dumbbell_row

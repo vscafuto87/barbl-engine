@@ -1,0 +1,18 @@
+id: reverse_pec_deck
+name:
+  it: Pec deck inverso
+  en: Reverse pec deck
+equipment: machine
+requires:
+- machines
+pattern: rear_delt_fly
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_rear_delt_fly
+- dumbbell_rear_delt_fly

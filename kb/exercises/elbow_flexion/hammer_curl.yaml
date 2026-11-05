@@ -1,0 +1,18 @@
+id: hammer_curl
+name:
+  it: Curl a martello
+  en: Hammer curl
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: elbow_flexion
+mechanics: isolation
+muscles:
+  primary: biceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_curl
+- cable_curl

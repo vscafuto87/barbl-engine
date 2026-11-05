@@ -74,26 +74,30 @@ sessions:
     slots:
     - pattern: vertical_pull
       role: secondary
+      equivalent: 2
       candidates:
       - lat_pulldown
+      - neutral_grip_pulldown
       - dumbbell_row
       - chest_supported_dumbbell_row
   - type: single
     slots:
     - pattern: rear_delt_fly
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - cable_rear_delt_fly
       - dumbbell_rear_delt_fly
+      - reverse_pec_deck
   - type: single
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - cable_curl
       - dumbbell_curl
+      - hammer_curl
       - barbell_curl
 - id: legs
   name:
@@ -130,10 +134,11 @@ sessions:
     slots:
     - pattern: calf_raise
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - standing_calf_raise
       - dumbbell_calf_raise
+      - seated_calf_raise
 - id: upper
   name:
     it: Upper
@@ -170,18 +175,20 @@ sessions:
     slots:
     - pattern: lateral_raise
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - cable_lateral_raise
       - dumbbell_lateral_raise
+      - machine_lateral_raise
   - type: single
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - dumbbell_curl
       - cable_curl
+      - hammer_curl
       - barbell_curl
 - id: lower
   name:
@@ -193,8 +200,10 @@ sessions:
     slots:
     - pattern: squat
       role: secondary
+      equivalent: 2
       candidates:
       - leg_press
+      - hack_squat
       - goblet_squat
       - smith_machine_squat
   - type: single
@@ -217,18 +226,21 @@ sessions:
     slots:
     - pattern: knee_flexion
       role: accessory
+      equivalent: 2
       candidates:
       - leg_curl
+      - seated_leg_curl
       - romanian_deadlift
       - dumbbell_romanian_deadlift
   - type: single
     slots:
     - pattern: calf_raise
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - dumbbell_calf_raise
       - standing_calf_raise
+      - seated_calf_raise
 principles:
 - P-SPLIT-PPL-UL-5D
 - P-FREQ-MIN-2
