@@ -2,6 +2,10 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.18.0 — 2026-11-05
+
+- Schede tecniche: ogni esercizio ha un blocco `technique` (da 3 a 5 passi di setup, da 1 a 3 cue brevi con focus esterno, da 3 a 5 errori comuni con la correzione), in italiano e inglese, scritti con parole nostre. Fonte principale *The Muscle Ladder* di Nippard (pp. 110-242, nuova fonte `nippard-muscle-ladder`); gli errori comuni senza pagina citano `barbl-design`. Tutte le schede sono provvisorie, da rivedere con il coach. Il validatore richiede la scheda per ogni esercizio; il motore la legge (`KbExercise.technique`) e la mette nel pacchetto. I piani generati non cambiano.
+
 ## 0.17.0 — 2026-11-05
 
 - Terza tornata (manubri e casa), con letture degli studi: 3 esercizi nuovi (curl alla panca Scott con manubrio, stacco rumeno a una gamba con manubrio, Arnold press). Estesi `P-MUSCLE-LENGTH` (Maeo 2021: leg curl da seduto più dei ischiocrurali che da prono; Pedrosa 2023: curl nel tratto allungato) e nuovo `P-PUSH-UP-LOW-LOAD` (Kikuchi 2017). Di conseguenza il leg curl da seduto precede quello da prono (che passa in coda, dopo lo stacco rumeno a una gamba) e i curl allungati (panca inclinata, Scott) entrano per primi nei candidati dei bicipiti (`equivalent` 4); l'Arnold press è intercambiabile con la panca da seduto nelle spalle. Lo stacco rumeno a una gamba e l'Arnold press non hanno uno studio diretto: valgono per la varietà (`P-EXERCISE-VARIATION`). Principi provvisori, nessun numero nuovo, nessuno split nuovo.

@@ -18,3 +18,58 @@ loading:
 substitutes:
 - seated_dumbbell_shoulder_press
 - machine_shoulder_press
+technique:
+  setup:
+  - it: Siediti con lo schienale dritto e i manubri sulle cosce.
+    en: Sit with the backrest upright and the dumbbells on your thighs.
+  - it: Solleva i manubri uno alla volta fino al petto.
+    en: Lift the dumbbells to your chest one at a time.
+  - it: Palmi verso di te, gomiti davanti al petto.
+    en: Palms facing you, elbows in front of your chest.
+  - it: Piedi a terra, glutei e schiena appoggiati.
+    en: Feet flat, hips and back on the seat.
+  - it: Stringi i glutei e inspira prima di partire.
+    en: Squeeze your glutes and take a breath before starting.
+  cues:
+  - it: Ruota i palmi mentre spingi in alto.
+    en: Turn your palms as you press up.
+  - it: Spingi i manubri dritti sopra la testa.
+    en: Press the dumbbells straight overhead.
+  - it: Scendi piano e ruota i palmi indietro.
+    en: Lower slowly and turn your palms back.
+  mistakes:
+  - what:
+      it: La rotazione è veloce e il peso dondola.
+      en: You rotate fast and the weights swing.
+    fix:
+      it: Ruota piano e sincronizza rotazione e spinta.
+      en: Rotate slowly and match the turn to the press.
+  - what:
+      it: La schiena si inarca per spingere.
+      en: Your back arches to push the weight.
+    fix:
+      it: Appoggia la schiena e riduci il carico.
+      en: Keep your back on the pad and lower the load.
+  - what:
+      it: I manubri scendono troppo e la spalla tira.
+      en: The dumbbells drop too low and your shoulder feels strained.
+    fix:
+      it: Scendi fino al petto senza forzare.
+      en: Lower to chest level without forcing it.
+  - what:
+      it: I gomiti vanno troppo indietro.
+      en: Your elbows drift too far back.
+    fix:
+      it: Tieni i gomiti davanti al corpo all'inizio.
+      en: Keep your elbows in front of your body at the start.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 199
+    - 201
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -17,3 +17,54 @@ loading:
 substitutes:
 - dumbbell_curl
 - cable_curl
+technique:
+  setup:
+  - it: Regola la panca a un'inclinazione moderata e prendi due manubri.
+    en: Set the bench to a moderate incline and grab two dumbbells.
+  - it: Siediti con la schiena e la testa ben appoggiate.
+    en: Sit with your back and head resting on the bench.
+  - it: Lascia le braccia appese dietro il busto, palmi in avanti.
+    en: Let your arms hang behind your torso, palms forward.
+  - it: Senti lo stiramento davanti alla parte alta del braccio.
+    en: Feel the stretch in the front of your upper arm.
+  cues:
+  - it: Parte alta della schiena incollata alla panca.
+    en: Keep your upper back glued to the bench.
+  - it: Porta i manubri in alto, spalle ferme.
+    en: Curl the dumbbells up with your shoulders still.
+  mistakes:
+  - what:
+      it: Le spalle vanno in avanti mentre sali.
+      en: Your shoulders roll forward as you curl.
+    fix:
+      it: Tieni la schiena sulla panca e i gomiti indietro.
+      en: Keep your back on the bench and your elbows back.
+  - what:
+      it: Ondeggi col busto per sollevare i manubri.
+      en: You swing your torso to lift the dumbbells.
+    fix:
+      it: Riduci il peso e resta appoggiato.
+      en: Lower the weight and stay supported.
+  - what:
+      it: Non distendi le braccia in basso e perdi lo stiramento.
+      en: You don't straighten your arms and lose the stretch.
+    fix:
+      it: Scendi piano finché le braccia sono distese.
+      en: Lower slowly until your arms are fully straight.
+  - what:
+      it: Il peso è troppo alto e lo lasci cadere in basso.
+      en: The weight is too heavy and you drop it at the bottom.
+    fix:
+      it: Usa meno peso e controlla la discesa.
+      en: Use less weight and control the lowering.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 214
+    - 215
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

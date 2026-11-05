@@ -16,3 +16,58 @@ loading:
 substitutes:
 - overhead_cable_triceps_extension
 - dumbbell_overhead_triceps_extension
+technique:
+  setup:
+  - it: Regola la puleggia all'altezza degli occhi o appena sopra.
+    en: Set the pulley at eye level or just above.
+  - it: Afferra l'attacco con le mani sopra, poi fai un passo indietro.
+    en: Grab the attachment overhand and step back.
+  - it: Piedi larghi tra anche e spalle, busto un po' inclinato in avanti.
+    en: Feet between hip and shoulder width, torso leaning slightly forward.
+  - it: Porta le mani all'altezza del mento, avambracci contro i bicipiti.
+    en: Bring your hands to chin height, forearms against your biceps.
+  - it: Gomiti vicini ai fianchi, cavo già teso.
+    en: Elbows close to your sides, cable already tight.
+  cues:
+  - it: Premi verso il basso muovendo solo i gomiti.
+    en: Press down moving only at the elbows.
+  - it: Gomiti fermi ai fianchi.
+    en: Keep your elbows pinned to your sides.
+  - it: Risali piano tenendo il cavo teso.
+    en: Return slowly, keeping the cable tight.
+  mistakes:
+  - what:
+      it: I gomiti si spostano in avanti e indietro.
+      en: Your elbows swing forward and back.
+    fix:
+      it: Fissa i gomiti ai fianchi per tutta la serie.
+      en: Pin your elbows to your sides all set.
+  - what:
+      it: Ti sporgi con il busto per spingere.
+      en: You lean your body over to push.
+    fix:
+      it: Riduci il carico e tieni il busto quasi fermo.
+      en: Lower the load and keep your torso nearly still.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders shrug toward your ears.
+    fix:
+      it: Abbassa le spalle e spingi solo con le braccia.
+      en: Drop your shoulders and push only with your arms.
+  - what:
+      it: Risali troppo e perdi tensione sul cavo.
+      en: You rise too far and lose tension on the cable.
+    fix:
+      it: Fermati con gli avambracci a contatto dei bicipiti.
+      en: Stop with your forearms touching your biceps.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 221
+    - 222
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

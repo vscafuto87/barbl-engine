@@ -17,3 +17,56 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_hip_thrust
+technique:
+  setup:
+  - it: Appoggia il bilanciere a terra davanti a una panca bassa, fissata a un muro.
+    en: Put the bar on the floor in front of a low bench, anchored to a wall.
+  - it: Avvolgi un cuscino attorno al bilanciere per proteggere le ossa del bacino.
+    en: Wrap a pad around the bar to cushion your hip bones.
+  - it: Scivola sotto il bilanciere e portalo sul bacino.
+    en: Slide under the bar and roll it onto your hips.
+  - it: Piedi larghi come i fianchi, punte appena in fuori.
+    en: Feet hip-width apart, toes slightly out.
+  - it: Tieni il mento verso il petto e le mani sul bilanciere.
+    en: Keep your chin tucked and your hands on the bar.
+  cues:
+  - it: Spingi i piedi nel pavimento e porta i fianchi verso il soffitto.
+    en: Push your feet into the floor and drive your hips toward the ceiling.
+  - it: In alto resta dritto dal petto alle ginocchia.
+    en: At the top, stay straight from chest to knees.
+  mistakes:
+  - what:
+      it: In alto la schiena si inarca troppo.
+      en: At the top your lower back arches too much.
+    fix:
+      it: Stringi i glutei e porta il mento verso il petto.
+      en: Squeeze your glutes and tuck your chin toward your chest.
+  - what:
+      it: In alto gli stinchi non sono verticali.
+      en: At the top your shins are not vertical.
+    fix:
+      it: Sposta i piedi avanti o indietro finché lo diventano.
+      en: Move your feet forward or back until they are.
+  - what:
+      it: Rimbalzi in basso e usi lo slancio.
+      en: You bounce at the bottom and use momentum.
+    fix:
+      it: Fermati in basso, ripartisci e spingi in modo controllato.
+      en: Stop at the bottom, reset and push under control.
+  - what:
+      it: Il bilanciere ti fa male sul bacino.
+      en: The bar hurts your hips.
+    fix:
+      it: Metti un cuscino spesso e prova una posizione più comoda.
+      en: Add a thick pad and try a more comfortable spot.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 133
+    - 134
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

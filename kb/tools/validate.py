@@ -184,6 +184,15 @@ def main() -> int:
                 r.error(where, f"sostituto inesistente '{s}'")
             elif s == k:
                 r.error(where, "un esercizio non può sostituire se stesso")
+        tech = e.get("technique")
+        if tech is None:
+            r.error(where, "manca la scheda tecnica (technique)")
+        else:
+            for s in tech["sources"]:
+                if s["id"] not in sources:
+                    r.error(where, f"technique: fonte inesistente '{s['id']}'")
+            if tech["status"] == "confirmed" and not tech["reviewedBy"]:
+                r.error(where, "technique: una scheda confermata richiede reviewedBy")
         if e["loading"]["whenLoadUnknown"] == "trial_set" and e["equipment"] != "barbell":
             r.error(where, "la serie di prova vale solo per i bilancieri (decisione A4 dell'app)")
 

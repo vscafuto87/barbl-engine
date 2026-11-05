@@ -16,3 +16,53 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_overhead_triceps_extension
+technique:
+  setup:
+  - it: Sdraiati sulla panca con il bilanciere EZ in mano, presa stretta.
+    en: Lie on the bench holding the bar with a narrow grip.
+  - it: Portalo sopra il petto con le braccia tese.
+    en: Hold it over your chest with straight arms.
+  - it: Piedi a terra, testa e schiena appoggiate.
+    en: Feet flat, head and back on the bench.
+  - it: Gomiti puntati al soffitto, vicini tra loro.
+    en: Elbows pointing at the ceiling, close together.
+  - it: Piega solo i gomiti e porta il bilanciere verso la fronte.
+    en: Bend only your elbows and lower the bar toward your forehead.
+  cues:
+  - it: Solo i gomiti si muovono, le spalle restano ferme.
+    en: Only your elbows move; your shoulders stay still.
+  - it: Gomiti puntati al soffitto per tutta la serie.
+    en: Elbows pointing at the ceiling all set.
+  - it: Stendi le braccia senza bloccare i gomiti con forza.
+    en: Extend your arms without snapping your elbows.
+  mistakes:
+  - what:
+      it: I gomiti si aprono ai lati.
+      en: Your elbows flare out to the sides.
+    fix:
+      it: Tienili vicini e rivolti al soffitto.
+      en: Keep them close, pointing at the ceiling.
+  - what:
+      it: Le spalle si muovono e diventa una spinta.
+      en: Your shoulders move and it turns into a press.
+    fix:
+      it: Blocca la parte alta del braccio e piega solo i gomiti.
+      en: Lock your upper arms and bend only the elbows.
+  - what:
+      it: Il bilanciere scende troppo veloce verso la testa.
+      en: The bar drops too fast toward your head.
+    fix:
+      it: Scendi piano e riduci il carico.
+      en: Lower slowly and reduce the load.
+  - what:
+      it: I polsi si piegano e senti fastidio ai gomiti.
+      en: Your wrists bend and your elbows feel sore.
+    fix:
+      it: Usa una presa comoda e tieni i polsi dritti.
+      en: Use a comfortable grip and keep your wrists straight.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

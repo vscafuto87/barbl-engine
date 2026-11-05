@@ -19,3 +19,57 @@ substitutes:
 - seated_cable_row
 - chest_supported_dumbbell_row
 - barbell_row
+technique:
+  setup:
+  - it: Appoggia una mano e il ginocchio dello stesso lato su una panca piatta.
+    en: Plant one hand and the same-side knee on a flat bench.
+  - it: Tieni il piede libero a terra, ben saldo.
+    en: Keep your other foot flat on the floor.
+  - it: Prendi un manubrio da terra con la mano libera.
+    en: Pick up a dumbbell from the floor with your free hand.
+  - it: Lascia il manubrio un po' avanti, con il braccio teso.
+    en: Let the dumbbell hang slightly forward with your arm straight.
+  - it: Tieni la schiena piatta e il busto quasi parallelo al pavimento.
+    en: Keep your back flat and your torso close to parallel to the floor.
+  cues:
+  - it: Tira il manubrio verso il fianco, come avviando un tosaerba.
+    en: Pull the dumbbell toward your hip, like starting a lawnmower.
+  - it: Gomito vicino al corpo.
+    en: Keep your elbow close to your body.
+  - it: Busto fermo, solo il braccio si muove.
+    en: Torso still, only your arm moves.
+  mistakes:
+  - what:
+      it: Il busto ruota e si apre verso il soffitto.
+      en: Your torso twists open toward the ceiling.
+    fix:
+      it: Riduci il peso e tieni le spalle parallele alla panca.
+      en: Lower the weight and keep your shoulders parallel to the bench.
+  - what:
+      it: Tiri il manubrio dritto verso la spalla.
+      en: You pull the dumbbell straight up to your shoulder.
+    fix:
+      it: Portalo verso il fianco, in diagonale all'indietro.
+      en: Pull it toward your hip, on a diagonal back.
+  - what:
+      it: Il gomito sale molto oltre la schiena e ti serve slancio.
+      en: Your elbow rises far past your back and you need momentum.
+    fix:
+      it: Usa meno peso e fermati quando il gomito è piegato circa a 90 gradi.
+      en: Use less weight and stop when your elbow is bent about 90 degrees.
+  - what:
+      it: Non scendi abbastanza e perdi lo stiramento in basso.
+      en: You don't lower enough and lose the stretch at the bottom.
+    fix:
+      it: Allunga il braccio fino in fondo a ogni ripetizione.
+      en: Fully extend your arm at the bottom of every rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 165
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

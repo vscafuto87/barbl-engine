@@ -16,3 +16,58 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - cable_fly
+technique:
+  setup:
+  - it: Sdraiati sulla panca con i manubri sopra le spalle.
+    en: Lie back on the bench and hold the dumbbells above your shoulders.
+  - it: Palmi uno verso l'altro, gomiti leggermente piegati.
+    en: Palms facing each other, elbows slightly bent.
+  - it: Piedi a terra, larghi come le spalle.
+    en: Feet flat, shoulder-width apart.
+  - it: Stringi le scapole indietro e in basso.
+    en: Pull your shoulder blades back and down.
+  - it: Testa, schiena alta e glutei restano appoggiati.
+    en: Keep your head, upper back and hips on the bench.
+  cues:
+  - it: Apri le braccia come per abbracciare un albero.
+    en: Open your arms as if hugging a big tree.
+  - it: Gomiti sempre un po' piegati.
+    en: Keep your elbows slightly bent.
+  - it: Risali dal punto di massimo allungamento.
+    en: Reverse from the deepest stretch.
+  mistakes:
+  - what:
+      it: I gomiti si piegano e diventa una spinta.
+      en: Your elbows bend more and it turns into a press.
+    fix:
+      it: Mantieni la stessa piega dei gomiti dall'inizio alla fine.
+      en: Hold the same elbow bend from start to finish.
+  - what:
+      it: Scendi troppo e senti la spalla tirare.
+      en: You go too deep and your shoulder feels strained.
+    fix:
+      it: Fermati appena senti un buon allungamento del petto.
+      en: Stop as soon as you feel a good chest stretch.
+  - what:
+      it: I manubri sono troppo pesanti e non controlli la discesa.
+      en: The dumbbells are too heavy and you can't control the descent.
+    fix:
+      it: Scegli un peso con cui scendi piano e in controllo.
+      en: Pick a weight you can lower slowly and under control.
+  - what:
+      it: Glutei e schiena si staccano dalla panca.
+      en: Your hips and back lift off the bench.
+    fix:
+      it: Tieni il corpo fermo e i piedi nel pavimento.
+      en: Keep your body still and your feet in the floor.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 189
+    - 190
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

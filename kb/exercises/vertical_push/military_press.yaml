@@ -18,3 +18,58 @@ loading:
 substitutes:
 - seated_dumbbell_shoulder_press
 - machine_shoulder_press
+technique:
+  setup:
+  - it: Regola i supporti del rack all'altezza delle ascelle.
+    en: Set the rack supports at armpit height.
+  - it: Impugna il bilanciere un po' più largo delle spalle, sopra i gomiti.
+    en: Grip the bar slightly wider than your shoulders, over your elbows.
+  - it: Stacca il bilanciere e fai due o tre passi indietro.
+    en: Unrack the bar and step back a few paces.
+  - it: Piedi larghi come le spalle, punte un po' in fuori.
+    en: Feet shoulder-width apart, toes slightly out.
+  - it: Bilanciere sulla parte alta del petto, glutei contratti, petto in fuori.
+    en: Bar on your upper chest, glutes tight, chest up.
+  cues:
+  - it: Spingi il bilanciere dritto sopra la testa.
+    en: Press the bar straight up over your head.
+  - it: 'Ginocchia e anche ferme: niente spinta con le gambe.'
+    en: 'Knees and hips still: no push from your legs.'
+  - it: In alto il bilanciere è sopra spalle, bacino e metà piede.
+    en: At the top the bar stacks over shoulders, hips and mid-foot.
+  mistakes:
+  - what:
+      it: La schiena si inarca molto all'indietro.
+      en: Your lower back arches far backward.
+    fix:
+      it: Stringi glutei e addome e riduci il carico.
+      en: Squeeze your glutes and abs and lower the load.
+  - what:
+      it: Le gambe aiutano a spingere il bilanciere.
+      en: Your legs help drive the bar.
+    fix:
+      it: Tieni ginocchia e anche bloccate per tutta la serie.
+      en: Keep your knees and hips locked all set.
+  - what:
+      it: Il bilanciere gira attorno al viso.
+      en: The bar swings around your face.
+    fix:
+      it: Inclina un po' la testa all'indietro, poi rimettila in linea.
+      en: Tilt your head back a bit, then bring it back in line.
+  - what:
+      it: Non ti fermi in basso e il bilanciere rimbalza sul petto.
+      en: You don't pause at the bottom and the bar bounces off your chest.
+    fix:
+      it: Fermati in basso, respira, poi spingi di nuovo.
+      en: Pause at the bottom, breathe, then press again.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 197
+    - 198
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

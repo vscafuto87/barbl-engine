@@ -20,3 +20,58 @@ substitutes:
 - barbell_bench_press
 - machine_chest_press
 - push_up
+technique:
+  setup:
+  - it: Siediti sulla panca con i manubri sulle cosce, vicino alle ginocchia.
+    en: Sit at the end of the bench, dumbbells resting on your thighs.
+  - it: Sdraiati e spingi i manubri in alto con le gambe, sopra le spalle.
+    en: Lie back and swing the dumbbells up above your shoulders with a leg push.
+  - it: Piedi a terra, un po' più larghi delle spalle, stinchi verticali.
+    en: Feet flat, a bit wider than your shoulders, shins vertical.
+  - it: Stringi le scapole e portale verso il basso, petto in fuori.
+    en: Pull your shoulder blades together and down, chest up.
+  - it: Testa, schiena alta e glutei restano appoggiati alla panca.
+    en: Keep your head, upper back and hips on the bench.
+  cues:
+  - it: Spingi i manubri in alto e un po' verso il viso.
+    en: Press the dumbbells up and slightly toward your face.
+  - it: Avambracci verticali, come due colonne.
+    en: Forearms vertical, like two pillars.
+  - it: Spingi il pavimento con i talloni.
+    en: Push the floor away with your heels.
+  mistakes:
+  - what:
+      it: I manubri scendono troppo e senti la spalla tirare.
+      en: The dumbbells go too low and your shoulder feels strained.
+    fix:
+      it: Fermati quando le mani sono all'altezza della parte bassa del petto.
+      en: Stop when your hands are level with your lower chest.
+  - what:
+      it: I polsi si piegano e i manubri ballano.
+      en: Your wrists bend and the dumbbells wobble.
+    fix:
+      it: Tieni il polso sopra l'avambraccio e stringi forte i manubri.
+      en: Keep each wrist stacked over your forearm and grip the dumbbells firmly.
+  - what:
+      it: Glutei e schiena si staccano dalla panca durante la spinta.
+      en: Your hips and back lift off the bench during the press.
+    fix:
+      it: Tieni il corpo fermo e spingi i piedi nel pavimento.
+      en: Keep your body still and drive your feet into the floor.
+  - what:
+      it: I manubri si scontrano in alto e perdi tensione.
+      en: The dumbbells clang together at the top and you lose tension.
+    fix:
+      it: Fermati con le braccia tese sopra le spalle, senza far toccare i manubri.
+      en: Stop with arms straight over your shoulders, without letting the dumbbells touch.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 184
+    - 185
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

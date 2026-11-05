@@ -17,3 +17,54 @@ loading:
 substitutes:
 - dumbbell_romanian_deadlift
 - seated_leg_curl
+technique:
+  setup:
+  - it: Tieni un manubrio nella mano opposta alla gamba d'appoggio.
+    en: Hold a dumbbell in the hand opposite your standing leg.
+  - it: Stai su una gamba con il ginocchio appena piegato.
+    en: Stand on one leg with a slight knee bend.
+  - it: Fissa un punto sul pavimento davanti a te per restare in equilibrio.
+    en: Fix your eyes on a spot on the floor ahead to stay balanced.
+  - it: Tieni la schiena dritta e il petto alto.
+    en: Keep your back flat and your chest up.
+  cues:
+  - it: Porta la gamba libera indietro mentre scendi.
+    en: Reach your free leg back as you lower.
+  - it: Tieni i fianchi paralleli al pavimento.
+    en: Keep your hips level with the floor.
+  mistakes:
+  - what:
+      it: Il bacino ruota e si apre da un lato.
+      en: Your hips rotate and open to one side.
+    fix:
+      it: Tieni le punte dei piedi rivolte verso il pavimento.
+      en: Keep your toes pointing down at the floor.
+  - what:
+      it: Perdi l'equilibrio e barcolli.
+      en: You lose balance and wobble.
+    fix:
+      it: Riduci il peso e fissa un punto davanti a te.
+      en: Use less weight and fix your eyes on a spot ahead.
+  - what:
+      it: La schiena si arrotonda mentre scendi.
+      en: Your back rounds as you lower.
+    fix:
+      it: Scendi meno e tieni il petto alto e la schiena dritta.
+      en: Don't go as low and keep your chest up and back flat.
+  - what:
+      it: Il manubrio si allontana dalla gamba.
+      en: The dumbbell drifts away from your leg.
+    fix:
+      it: Fallo scorrere vicino alla gamba d'appoggio.
+      en: Slide it close to your standing leg.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 141
+    - 142
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

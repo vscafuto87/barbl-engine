@@ -13,8 +13,8 @@ void main() {
       expect(kb.secondaryWeight, 0.5);
       expect(kb.exercises['squat']!.stepKg, 2.5);
       expect(kb.exercises['squat']!.secondaryMuscles, ['glutes']);
-      final slot = kb
-          .templates.single.sessions.single.blocks.single.slots.single;
+      final slot =
+          kb.templates.single.sessions.single.blocks.single.slots.single;
       expect(slot.askLoad, true);
       expect(slot.repsOverride, isNull);
       expect(kb.prescriptions.single.roles['main']!.restLower, 180);
@@ -27,9 +27,53 @@ void main() {
       expect(kb.sources['s1']!.tier, 1);
     });
 
+    test('legge la scheda tecnica di un esercizio, se c\'è', () {
+      final json = minimalBundle();
+      final squat = Map<String, Object?>.from(
+        (json['exercises']! as Map)['squat'] as Map,
+      );
+      squat['technique'] = {
+        'setup': [
+          {'it': 'Piedi larghi', 'en': 'Feet wide'},
+        ],
+        'cues': [
+          {'it': 'Spingi il pavimento', 'en': 'Push the floor'},
+        ],
+        'mistakes': [
+          {
+            'what': {'it': 'Talloni su', 'en': 'Heels up'},
+            'fix': {'it': 'Talloni giù', 'en': 'Heels down'},
+          },
+        ],
+        'sources': [
+          {'id': 's1', 'access': 'full_text'},
+        ],
+        'status': 'provisional',
+        'reviewedBy': null,
+      };
+      json['exercises'] = <String, Object?>{
+        ...(json['exercises']! as Map).cast<String, Object?>(),
+        'squat': squat,
+      };
+      final kb = KnowledgeBase.fromJson(json);
+      final t = kb.exercises['squat']!.technique!;
+      expect(t.setup.single.it, 'Piedi larghi');
+      expect(t.cues.single.en, 'Push the floor');
+      expect(t.mistakes.single.fix.it, 'Talloni giù');
+      expect(t.sourceIds, ['s1']);
+      expect(t.confirmed, isFalse);
+      expect(
+        KnowledgeBase.fromJson(minimalBundle()).exercises['squat']!.technique,
+        isNull,
+      );
+    });
+
     test('bundleFormat diverso da 1 lancia KbFormatException', () {
       final json = minimalBundle()..['bundleFormat'] = 2;
-      expect(() => KnowledgeBase.fromJson(json), throwsA(isA<KbFormatException>()));
+      expect(
+        () => KnowledgeBase.fromJson(json),
+        throwsA(isA<KbFormatException>()),
+      );
     });
 
     test('una chiave mancante lancia con il nome della chiave', () {
@@ -78,7 +122,8 @@ void main() {
       final slot = ((blocks.single as Map)['slots'] as List).single as Map;
       slot['repsOverride'] = {'min': 6, 'max': 8};
       final kb = KnowledgeBase.fromJson(json);
-      final read = kb.templates.single.sessions.single.blocks.single.slots.single;
+      final read =
+          kb.templates.single.sessions.single.blocks.single.slots.single;
       expect(read.repsOverride, (min: 6, max: 8));
       expect(read.askLoad, true);
     });
@@ -198,9 +243,9 @@ void main() {
       });
 
       test('legge le enfasi con i posti in ordine', () {
-        final kb = KnowledgeBase.fromJson(minimalBundle(
-          emphasis: {'glutes_hamstrings': testEmphasis()},
-        ));
+        final kb = KnowledgeBase.fromJson(
+          minimalBundle(emphasis: {'glutes_hamstrings': testEmphasis()}),
+        );
         final em = kb.emphases['glutes_hamstrings']!;
         expect(em.muscles, ['quadriceps']);
         final p = em.placements['t1']!.single;
@@ -220,23 +265,27 @@ void main() {
       });
 
       test('un posto in una seduta inesistente è rifiutato', () {
-        final json = minimalBundle(emphasis: {
-          'glutes_hamstrings': testEmphasis(sessions: ['ghost']),
-        });
+        final json = minimalBundle(
+          emphasis: {
+            'glutes_hamstrings': testEmphasis(sessions: ['ghost']),
+          },
+        );
         expect(() => KnowledgeBase.fromJson(json), rejects('ghost'));
       });
 
       test('un posto in un template inesistente è rifiutato', () {
-        final json = minimalBundle(emphasis: {
-          'glutes_hamstrings': testEmphasis(template: 'nope'),
-        });
+        final json = minimalBundle(
+          emphasis: {'glutes_hamstrings': testEmphasis(template: 'nope')},
+        );
         expect(() => KnowledgeBase.fromJson(json), rejects('nope'));
       });
 
       test('due posti nella stessa seduta sono rifiutati', () {
-        final json = minimalBundle(emphasis: {
-          'glutes_hamstrings': testEmphasis(sessions: ['lower_a', 'lower_a']),
-        });
+        final json = minimalBundle(
+          emphasis: {
+            'glutes_hamstrings': testEmphasis(sessions: ['lower_a', 'lower_a']),
+          },
+        );
         expect(() => KnowledgeBase.fromJson(json), rejects('lower_a'));
       });
 

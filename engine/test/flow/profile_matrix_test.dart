@@ -281,7 +281,8 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
       out.add('$id: richiede ${missing.join(', ')}, assente dalla palestra');
     }
     for (final rule in e['rules']! as List<Object?>) {
-      if (!ruleIds.contains(rule)) out.add('$id: regola $rule senza motivazione');
+      if (!ruleIds.contains(rule))
+        out.add('$id: regola $rule senza motivazione');
     }
     final name = e['name'];
     if (name is! Map ||
@@ -315,8 +316,10 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
             kg <= 0 ||
             kg > e1rm ||
             (step != null && (kg / step) % 1 != 0)) {
-          out.add('$id: carico noto ${known[id]} x $reps ma initialLoad '
-              '$kg/$source');
+          out.add(
+            '$id: carico noto ${known[id]} x $reps ma initialLoad '
+            '$kg/$source',
+          );
         }
       }
     } else if (kg != null) {
@@ -325,7 +328,9 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
       out.add('$id: kg nullo con source $source');
     }
     if (source == 'trial_set' && kbExercise.whenLoadUnknown != 'trial_set') {
-      out.add('$id: prova non ammessa dalla KB (${kbExercise.whenLoadUnknown})');
+      out.add(
+        '$id: prova non ammessa dalla KB (${kbExercise.whenLoadUnknown})',
+      );
     }
     if (e['askLoad'] == true && source == null) {
       out.add('$id: askLoad senza source');
@@ -350,8 +355,10 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
     if (load['source'] != 'trial_set') continue;
     final repsMin = (e['reps']! as Map<String, Object?>)['min']! as num;
     if (repsMin + maxLoadRir > _trialLimit) {
-      out.add('${e['exerciseId']}: prova con $repsMin + $maxLoadRir oltre '
-          '$_trialLimit');
+      out.add(
+        '${e['exerciseId']}: prova con $repsMin + $maxLoadRir oltre '
+        '$_trialLimit',
+      );
     }
   }
 
@@ -366,7 +373,9 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
   ]) {
     final sets = totals[muscle] ?? 0;
     if (sets + 1e-9 < _bandMin) {
-      out.add('volume $muscle: $sets serie frazionarie sotto la soglia $_bandMin');
+      out.add(
+        'volume $muscle: $sets serie frazionarie sotto la soglia $_bandMin',
+      );
     }
   }
   return out;
@@ -447,8 +456,10 @@ List<String> _emphasisViolations(
   for (final e in c.emphasis) {
     for (final m in _kb.emphases[e]!.muscles) {
       if ((withEmphasis[m] ?? 0) + 1e-9 < (withoutEmphasis[m] ?? 0)) {
-        out.add('enfasi $e, $m: ${withEmphasis[m]} serie sotto le ${withoutEmphasis[m]} '
-            'senza enfasi');
+        out.add(
+          'enfasi $e, $m: ${withEmphasis[m]} serie sotto le ${withoutEmphasis[m]} '
+          'senza enfasi',
+        );
       }
     }
   }
@@ -466,16 +477,19 @@ List<String> _emphasisViolations(
     if (got > want) out.add('seduta $id: $got esercizi di enfasi, posti $want');
     final minutes = m['estimatedDurationMin']! as num;
     if (got < want && minutes + slotMinutes <= c.duration) {
-      out.add('seduta $id: ${want - got} posti non applicati con $minutes '
-          'min su ${c.duration}: la durata non lo spiega');
+      out.add(
+        'seduta $id: ${want - got} posti non applicati con $minutes '
+        'min su ${c.duration}: la durata non lo spiega',
+      );
     }
   }
   return out;
 }
 
 KbPrescription _prescriptionOf(String goal) =>
-    ([..._kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id)))
-        .firstWhere((p) => p.appliesTo.contains(goal));
+    ([..._kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id))).firstWhere(
+      (p) => p.appliesTo.contains(goal),
+    );
 
 /// Posti applicati e posti totali dell'enfasi per «template durata», sui
 /// profili coperti della matrice dell'enfasi. Va cambiata solo di proposito,
@@ -551,8 +565,8 @@ String _coverageTable() {
     }
   }
   lines.add('Totali per esito:');
-  for (final e in (counts.entries.toList()
-    ..sort((a, b) => a.key.compareTo(b.key)))) {
+  for (final e
+      in (counts.entries.toList()..sort((a, b) => a.key.compareTo(b.key)))) {
     lines.add('  ${e.key.padRight(10)} ${e.value}');
   }
   return lines.join('\n');
@@ -564,8 +578,9 @@ void main() {
     expect(built.errors, isEmpty);
     _kb = KnowledgeBase.fromJson(built.json);
 
-    final vocab = loadYaml(File('../kb/vocab/equipment.yaml').readAsStringSync())
-        as YamlMap;
+    final vocab = loadYaml(
+      File('../kb/vocab/equipment.yaml').readAsStringSync(),
+    ) as YamlMap;
     final gymTypes = vocab['gymTypes'] as YamlMap;
     _equipmentByGym = {
       for (final e in gymTypes.entries)
@@ -593,28 +608,24 @@ void main() {
 
   group('profili', () {
     for (final c in _combos) {
-      test(
-        c.key,
-        () {
-          final outcome = _outcomes[c.key]!;
-          expect(outcome, isNot(isA<String>()), reason: '$outcome');
-          expect(outcome, isNot(isA<InvalidProfile>()));
-          if (outcome is NotCovered) {
-            expect(outcome.detail.trim(), isNotEmpty);
-            expect(NotCoveredReason.values, contains(outcome.reason));
-            return;
-          }
-          final plan = (outcome as Generated).plan;
-          final violations = _planViolations(c, plan);
-          expect(violations, isEmpty, reason: violations.join('\n'));
+      test(c.key, () {
+        final outcome = _outcomes[c.key]!;
+        expect(outcome, isNot(isA<String>()), reason: '$outcome');
+        expect(outcome, isNot(isA<InvalidProfile>()));
+        if (outcome is NotCovered) {
+          expect(outcome.detail.trim(), isNotEmpty);
+          expect(NotCoveredReason.values, contains(outcome.reason));
+          return;
+        }
+        final plan = (outcome as Generated).plan;
+        final violations = _planViolations(c, plan);
+        expect(violations, isEmpty, reason: violations.join('\n'));
 
-          // Determinismo: stesso profilo (costruito da capo), stesso JSON.
-          final again = generatePlan(_profileJson(c), _kb);
-          expect(again, isA<Generated>());
-          expect(jsonEncode((again as Generated).plan), jsonEncode(plan));
-        },
-        skip: _skipped[c.key],
-      );
+        // Determinismo: stesso profilo (costruito da capo), stesso JSON.
+        final again = generatePlan(_profileJson(c), _kb);
+        expect(again, isA<Generated>());
+        expect(jsonEncode((again as Generated).plan), jsonEncode(plan));
+      }, skip: _skipped[c.key]);
     }
   });
 
@@ -622,9 +633,10 @@ void main() {
     expect(_emphasisCombos, hasLength(432));
     expect(_emphasisCombos.map((c) => c.key).toSet(), hasLength(432));
     expect(
-      _emphasisCombos.map((c) => c.key).toSet().intersection(
-        _combos.map((c) => c.key).toSet(),
-      ),
+      _emphasisCombos
+          .map((c) => c.key)
+          .toSet()
+          .intersection(_combos.map((c) => c.key).toSet()),
       isEmpty,
     );
   });
@@ -661,8 +673,10 @@ void main() {
     print(_emphasisReport());
     final stats = _emphasisStats();
     expect(stats.byKey, _expectedEmphasis);
-    expect(stats.all + stats.some + stats.none,
-        _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length);
+    expect(
+      stats.all + stats.some + stats.none,
+      _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length,
+    );
     expect((stats.all, stats.some, stats.none), (246, 42, 144));
   });
 
@@ -677,7 +691,10 @@ void main() {
         diffs.add('${c.key}: atteso $expected, ottenuto $actual');
       }
     }
-    expect(_expectedCoverage, hasLength(_days.length * _goals.length * _durations.length));
+    expect(
+      _expectedCoverage,
+      hasLength(_days.length * _goals.length * _durations.length),
+    );
     expect(diffs, isEmpty, reason: diffs.join('\n'));
   });
 

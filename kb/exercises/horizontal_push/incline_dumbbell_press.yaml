@@ -19,3 +19,58 @@ loading:
 substitutes:
 - dumbbell_bench_press
 - machine_chest_press
+technique:
+  setup:
+  - it: Regola la panca con uno schienale poco inclinato.
+    en: Set the bench to a low incline.
+  - it: Siediti con i manubri sulle cosce e lasciati andare all'indietro.
+    en: Sit with the dumbbells on your thighs and lean back.
+  - it: Spingi i manubri in alto con le gambe, sopra le spalle.
+    en: Swing the dumbbells up above your shoulders with a leg push.
+  - it: Piedi a terra, stinchi verticali, glutei appoggiati.
+    en: Feet flat, shins vertical, hips on the seat.
+  - it: Stringi le scapole e portale verso il basso, petto in fuori.
+    en: Pull your shoulder blades together and down, chest up.
+  cues:
+  - it: Spingi i manubri in alto e un po' verso il viso.
+    en: Press the dumbbells up and slightly toward your face.
+  - it: Avambracci verticali per tutta la corsa.
+    en: Keep your forearms vertical the whole way.
+  - it: Scendi piano, poi spingi forte.
+    en: Lower slowly, then press hard.
+  mistakes:
+  - what:
+      it: 'Panca troppo inclinata: lavorano soprattutto le spalle.'
+      en: The bench is too steep and your shoulders do most of the work.
+    fix:
+      it: Abbassa lo schienale a un'inclinazione leggera.
+      en: Lower the backrest to a slight incline.
+  - what:
+      it: Le spalle si alzano verso le orecchie.
+      en: Your shoulders creep up toward your ears.
+    fix:
+      it: Riporta le scapole indietro e in basso prima di ogni ripetizione.
+      en: Pull your shoulder blades back and down before each rep.
+  - what:
+      it: I manubri scendono troppo e senti la spalla tirare.
+      en: The dumbbells go too low and your shoulder feels strained.
+    fix:
+      it: Fermati quando le mani sono all'altezza del petto.
+      en: Stop when your hands reach chest level.
+  - what:
+      it: Schiena molto inarcata, glutei staccati dalla panca.
+      en: Your back arches hard and your hips lift off the seat.
+    fix:
+      it: Appoggia bene i glutei e spingi i piedi nel pavimento.
+      en: Keep your hips down and drive your feet into the floor.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 184
+    - 185
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

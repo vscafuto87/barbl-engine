@@ -17,3 +17,54 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - barbell_hip_thrust
+technique:
+  setup:
+  - it: Siediti a terra con la parte alta della schiena contro una panca bassa.
+    en: Sit on the floor with your upper back against a low bench.
+  - it: Appoggia un manubrio sul bacino e tienilo con le due mani.
+    en: Rest a dumbbell on your hips and hold it with both hands.
+  - it: Piedi larghi come i fianchi, punte appena in fuori.
+    en: Feet hip-width apart, toes slightly out.
+  - it: Tieni il mento verso il petto.
+    en: Keep your chin tucked toward your chest.
+  cues:
+  - it: Spingi i piedi nel pavimento e porta i fianchi verso il soffitto.
+    en: Push your feet into the floor and drive your hips toward the ceiling.
+  - it: In alto resta dritto dal petto alle ginocchia.
+    en: At the top, stay straight from chest to knees.
+  mistakes:
+  - what:
+      it: In alto la schiena si inarca troppo.
+      en: At the top your lower back arches too much.
+    fix:
+      it: Stringi i glutei e porta il mento verso il petto.
+      en: Squeeze your glutes and tuck your chin toward your chest.
+  - what:
+      it: In alto gli stinchi non sono verticali.
+      en: At the top your shins are not vertical.
+    fix:
+      it: Sposta i piedi avanti o indietro finché lo diventano.
+      en: Move your feet forward or back until they are.
+  - what:
+      it: Rimbalzi in basso e usi lo slancio.
+      en: You bounce at the bottom and use momentum.
+    fix:
+      it: Fermati in basso, ripartisci e spingi in modo controllato.
+      en: Stop at the bottom, reset and push under control.
+  - what:
+      it: Il manubrio scivola verso la pancia.
+      en: The dumbbell slides toward your belly.
+    fix:
+      it: Tienilo con due mani sulla piega dei fianchi.
+      en: Hold it with both hands on your hip crease.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 133
+    - 134
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

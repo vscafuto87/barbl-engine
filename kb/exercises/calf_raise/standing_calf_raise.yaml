@@ -15,3 +15,54 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_calf_raise
+technique:
+  setup:
+  - it: 'Regola l''altezza dei cuscini: devi piegare un po'' le ginocchia per entrare.'
+    en: Set the pad height so you bend your knees slightly to get under.
+  - it: Appoggia le spalle sotto i cuscini e la parte anteriore dei piedi sulla pedana.
+    en: Set your shoulders under the pads and your forefoot on the platform.
+  - it: Stendi le ginocchia e sali in piedi per sganciare il peso.
+    en: Straighten your knees and stand up to lift the weight off.
+  - it: Abbassa i talloni fino a sentire un bel allungamento.
+    en: Lower your heels until you feel a good stretch.
+  cues:
+  - it: Spingi la pedana con la parte anteriore del piede.
+    en: Press the footplate with the ball of your foot.
+  - it: Fermati un secondo in basso, poi sali.
+    en: Pause a second at the bottom, then rise.
+  mistakes:
+  - what:
+      it: Il tallone sale poco e senti poco allungamento in basso.
+      en: Your heel rises little and you feel almost no stretch at the bottom.
+    fix:
+      it: Scendi più in basso e fermati un secondo nell'allungamento.
+      en: Lower further and pause for a second in the stretch.
+  - what:
+      it: Rimbalzi in basso e usi lo slancio per risalire.
+      en: You bounce at the bottom and use momentum to come up.
+    fix:
+      it: Fai una pausa in basso e sali in modo fluido.
+      en: Pause at the bottom and rise smoothly.
+  - what:
+      it: Pieghi le ginocchia per aiutarti a spingere.
+      en: You bend your knees to help push.
+    fix:
+      it: Tieni le gambe ferme e muovi solo le caviglie.
+      en: Keep your legs still and move only your ankles.
+  - what:
+      it: Sollevi le spalle o muovi i fianchi per spingere.
+      en: You shrug your shoulders or move your hips to push.
+    fix:
+      it: Tieni il busto fermo e spingi solo con il piede.
+      en: Keep your torso still and push only with your feet.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 151
+    - 152
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

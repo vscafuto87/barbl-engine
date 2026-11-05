@@ -15,3 +15,55 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_bench_press
+technique:
+  setup:
+  - it: Mani a terra, appena fuori dalle spalle, dita aperte.
+    en: Place your palms flat on the floor, a little wider than your shoulders.
+  - it: Braccia tese, peso su mani e punte dei piedi.
+    en: Arms straight, weight on your hands and toes.
+  - it: 'Ruota le mani come per avvitarle nel pavimento: le scapole si stabilizzano.'
+    en: Twist your hands as if screwing them into the floor to set your shoulder blades.
+  - it: 'Stringi glutei e addome: il corpo è una linea dal collo alle caviglie.'
+    en: Squeeze your glutes and abs so your body is a line from neck to ankles.
+  cues:
+  - it: Il corpo è una tavola dritta.
+    en: Your body is one straight plank.
+  - it: Spingi il pavimento lontano da te.
+    en: Push the floor away from you.
+  - it: Petto quasi a terra, poi risali forte.
+    en: Chest almost to the floor, then drive up.
+  mistakes:
+  - what:
+      it: Il bacino cede e la schiena si inarca.
+      en: Your hips sag and your lower back arches.
+    fix:
+      it: Stringi glutei e addome per tutta la serie.
+      en: Squeeze your glutes and abs for the whole set.
+  - what:
+      it: Il bacino si alza verso l'alto.
+      en: Your hips pike up toward the ceiling.
+    fix:
+      it: Allinea il corpo dalla testa alle caviglie.
+      en: Line your body up from head to ankles.
+  - what:
+      it: Scendi solo di pochi centimetri.
+      en: You only dip a few inches.
+    fix:
+      it: Scendi finché il petto è appena sopra il pavimento.
+      en: Lower yourself until your chest almost touches the floor.
+  - what:
+      it: I gomiti si aprono a T e la spalla tira.
+      en: Your elbows flare into a T and your shoulder feels strained.
+    fix:
+      it: Porta i gomiti più vicini al busto, a circa 45 gradi.
+      en: Bring your elbows closer to your body, about 45 degrees.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 194
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

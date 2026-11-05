@@ -16,3 +16,54 @@ loading:
 substitutes:
 - standing_calf_raise
 - dumbbell_calf_raise
+technique:
+  setup:
+  - it: Siediti alla leg press con schiena e bacino ben appoggiati.
+    en: Sit in the leg press with your back and hips flat against the pad.
+  - it: Sgancia le sicure con le gambe quasi tese.
+    en: Release the safety catches with your legs nearly straight.
+  - it: Metti la parte anteriore dei piedi sul bordo basso della pedana.
+    en: Place the balls of your feet on the lower edge of the platform.
+  - it: Lascia i talloni fuori dal bordo, per poterli abbassare.
+    en: Leave your heels off the edge so they can drop.
+  cues:
+  - it: Spingi la pedana con la parte anteriore del piede.
+    en: Press the platform with the ball of your foot.
+  - it: Fermati un secondo in basso, poi sali.
+    en: Pause a second at the bottom, then rise.
+  mistakes:
+  - what:
+      it: Il tallone sale poco e senti poco allungamento in basso.
+      en: Your heel rises little and you feel almost no stretch at the bottom.
+    fix:
+      it: Scendi più in basso e fermati un secondo nell'allungamento.
+      en: Lower further and pause for a second in the stretch.
+  - what:
+      it: Rimbalzi in basso e usi lo slancio per risalire.
+      en: You bounce at the bottom and use momentum to come up.
+    fix:
+      it: Fai una pausa in basso e sali in modo fluido.
+      en: Pause at the bottom and rise smoothly.
+  - what:
+      it: Pieghi le ginocchia e fai una piccola leg press.
+      en: You bend your knees and turn it into a small leg press.
+    fix:
+      it: Tieni le ginocchia quasi tese e muovi solo le caviglie.
+      en: Keep your knees nearly straight and move only your ankles.
+  - what:
+      it: I piedi scivolano via dalla pedana in basso.
+      en: Your feet slide off the platform at the bottom.
+    fix:
+      it: Riduci il peso e tieni i piedi ben appoggiati.
+      en: Lower the weight and keep your feet firmly planted.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 151
+    - 152
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

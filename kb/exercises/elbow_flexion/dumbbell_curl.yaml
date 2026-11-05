@@ -16,3 +16,54 @@ loading:
 substitutes:
 - cable_curl
 - barbell_curl
+technique:
+  setup:
+  - it: Stai in piedi con i piedi a larghezza spalle, ginocchia appena piegate.
+    en: Stand feet shoulder-width apart with knees slightly bent.
+  - it: Prendi due manubri con i palmi rivolti in avanti.
+    en: Hold two dumbbells with palms facing forward.
+  - it: Tieni i gomiti ai fianchi e le braccia tese.
+    en: Keep your elbows at your sides with arms straight.
+  - it: Stringi gli addominali e tieni la presa morbida.
+    en: Brace your core and keep a relaxed grip.
+  cues:
+  - it: Spingi il mignolo contro il manubrio mentre sali.
+    en: Press your pinky into the dumbbell as you curl.
+  - it: Gomiti fermi, solo l'avambraccio si muove.
+    en: Elbows still, only your forearm moves.
+  mistakes:
+  - what:
+      it: Ondeggi col busto per sollevare i manubri.
+      en: You swing your torso to lift the dumbbells.
+    fix:
+      it: Riduci il peso e tieni il busto fermo.
+      en: Lower the weight and keep your torso still.
+  - what:
+      it: I gomiti vanno avanti e le spalle si sollevano.
+      en: Your elbows drift forward and your shoulders rise.
+    fix:
+      it: Tieni i gomiti vicini ai fianchi.
+      en: Keep your elbows close to your sides.
+  - what:
+      it: Stringi i manubri troppo forte e senti l'avambraccio bruciare.
+      en: You grip too hard and your forearms burn first.
+    fix:
+      it: Allenta la presa e spingi con il mignolo.
+      en: Loosen your grip and press with your pinky.
+  - what:
+      it: Scendi a metà e non distendi le braccia.
+      en: You stop halfway down and never straighten your arms.
+    fix:
+      it: Scendi finché le braccia sono tese, poi sali.
+      en: Lower until your arms are straight, then curl.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 213
+    - 214
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

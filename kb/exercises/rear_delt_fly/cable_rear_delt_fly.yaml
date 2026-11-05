@@ -15,3 +15,49 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_rear_delt_fly
+technique:
+  setup:
+  - it: Regola le due pulegge all'altezza delle spalle.
+    en: Set both pulleys at shoulder height.
+  - it: Afferra con la mano destra il cavo sinistro e viceversa.
+    en: Grab the left cable with your right hand and the right with your left.
+  - it: Fai un passo indietro, ginocchia appena piegate.
+    en: Step back with your knees slightly bent.
+  - it: Tieni le braccia tese davanti al petto, con i cavi incrociati.
+    en: Hold your arms straight in front of your chest, cables crossed.
+  cues:
+  - it: Apri le braccia come per fare un grande cerchio.
+    en: Sweep your arms out as if drawing a big arc.
+  - it: Gomiti appena piegati e fermi.
+    en: Keep your elbows softly bent and fixed.
+  mistakes:
+  - what:
+      it: 'Pieghi e stendi i gomiti: sembra un rematore.'
+      en: You bend and straighten your elbows, like a row.
+    fix:
+      it: Blocca i gomiti con una leggera piegatura e muovi le spalle.
+      en: Lock a slight bend in your elbows and move from your shoulders.
+  - what:
+      it: Usi lo slancio del busto per portare i cavi indietro.
+      en: You swing your torso to move the cables back.
+    fix:
+      it: Riduci il peso e tieni il busto fermo.
+      en: Lower the weight and keep your torso still.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders rise toward your ears.
+    fix:
+      it: Abbassa le spalle prima di iniziare ogni ripetizione.
+      en: Drop your shoulders before every rep.
+  - what:
+      it: Vai troppo indietro oltre il busto e perdi tensione.
+      en: You go far past your torso and lose tension.
+    fix:
+      it: Fermati quando le braccia sono in linea con il busto.
+      en: Stop once your arms line up with your torso.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -16,3 +16,57 @@ loading:
 substitutes:
 - cable_fly
 - dumbbell_fly
+technique:
+  setup:
+  - it: 'Regola il sedile: le braccia partono quasi parallele al pavimento.'
+    en: Adjust the seat so your arms start roughly parallel to the floor.
+  - it: Regola la partenza per sentire un buon allungamento del petto.
+    en: Set the start position for a good chest stretch.
+  - it: Siediti con schiena e testa appoggiate allo schienale.
+    en: Sit with your back and head against the pad.
+  - it: Afferra le maniglie con i gomiti leggermente piegati.
+    en: Hold the handles with slightly bent elbows.
+  - it: Stringi le scapole indietro e in basso, petto in fuori.
+    en: Pull your shoulder blades back and down, chest up.
+  cues:
+  - it: Porta le maniglie una verso l'altra.
+    en: Bring the handles toward each other.
+  - it: Gomiti sempre un po' piegati.
+    en: Keep a slight bend in your elbows.
+  - it: Torna indietro piano fino all'allungamento.
+    en: Return slowly until you feel the stretch.
+  mistakes:
+  - what:
+      it: Il sedile è troppo alto o basso e le spalle tirano.
+      en: The seat is too high or low and your shoulders feel strained.
+    fix:
+      it: Regola il sedile finché le braccia sono parallele al pavimento.
+      en: Adjust the seat until your arms are parallel to the floor.
+  - what:
+      it: Le spalle si alzano verso le orecchie.
+      en: Your shoulders rise toward your ears.
+    fix:
+      it: Abbassa le spalle e stringi le scapole.
+      en: Drop your shoulders and pinch your shoulder blades.
+  - what:
+      it: Il peso torna indietro di scatto.
+      en: The weight snaps back.
+    fix:
+      it: Controlla il ritorno e fermati prima che il peso si appoggi.
+      en: Control the return and stop before the stack rests.
+  - what:
+      it: Il busto si spinge in avanti per muovere il peso.
+      en: Your torso lurches forward to move the weight.
+    fix:
+      it: Riduci il carico e tieni la schiena appoggiata.
+      en: Lower the load and keep your back on the pad.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 193
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

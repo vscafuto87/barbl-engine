@@ -16,3 +16,64 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - seated_cable_row
+technique:
+  setup:
+  - it: Aggancia la barra dritta al cavo alto.
+    en: Attach a straight bar to the high cable.
+  - it: Impugna la barra con presa prona, un po' più larga delle spalle.
+    en: Grip the bar overhand, a little wider than your shoulders.
+  - it: Siediti con le cosce ben bloccate sotto i cuscinetti.
+    en: Sit with your thighs locked firmly under the pads.
+  - it: Allunga le braccia e senti la schiena stirarsi.
+    en: Extend your arms and feel your back stretch.
+  - it: Inarca appena la parte alta della schiena e alza il petto.
+    en: Arch your upper back slightly and lift your chest.
+  cues:
+  - it: Porta i gomiti verso i fianchi.
+    en: Drive your elbows down toward your hips.
+  - it: Vai incontro alla barra con il petto.
+    en: Meet the bar with your chest.
+  - it: Risali piano, braccia ben tese.
+    en: Return slowly until your arms are straight.
+  mistakes:
+  - what:
+      it: Ti butti all'indietro e tiri la barra con lo slancio.
+      en: You lean back far and yank the bar down with momentum.
+    fix:
+      it: Riduci il peso e inclinati solo un po', senza dondolare.
+      en: Lower the weight and lean back only slightly, without swinging.
+  - what:
+      it: Tiri la barra dietro la testa.
+      en: You pull the bar behind your head.
+    fix:
+      it: Portala davanti, fino alla parte alta del petto.
+      en: Bring it down in front, to your upper chest.
+  - what:
+      it: Le spalle salgono verso le orecchie e le braccia fanno tutto.
+      en: Your shoulders rise and your arms do all the work.
+    fix:
+      it: Abbassa le spalle e pensa a spingere i gomiti verso il basso.
+      en: Drop your shoulders and think of pushing your elbows down.
+  - what:
+      it: Risali con le braccia solo a metà e perdi lo stiramento.
+      en: You let the bar rise only halfway and lose the stretch.
+    fix:
+      it: Lascia salire la barra finché le braccia sono tese.
+      en: Let the bar rise until your arms are straight.
+  - what:
+      it: Le cosce non sono bloccate e il corpo si solleva dal sedile.
+      en: Your thighs aren't locked and your body lifts off the seat.
+    fix:
+      it: Regola i cuscinetti in modo che non ci sia spazio sulle cosce.
+      en: Adjust the pads so there is no gap over your thighs.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 159
+    - 160
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -71,9 +71,9 @@ Map<String, List<String>> emphasisExercises(Map<String, Object?> p) {
       for (final e in (b as Map)['exercises'] as List) {
         final ex = e as Map;
         if ((ex['rules'] as List).contains('EMPHASIS')) {
-          out.putIfAbsent(m['id'] as String, () => []).add(
-            ex['exerciseId'] as String,
-          );
+          out
+              .putIfAbsent(m['id'] as String, () => [])
+              .add(ex['exerciseId'] as String);
         }
       }
     }
@@ -143,8 +143,10 @@ void main() {
     ]) {
       final p = plan(profile(minutes: 45, emphasis: emphasis));
       for (final s in p['sessions']! as List) {
-        expect((s as Map)['estimatedDurationMin'] as num,
-            lessThanOrEqualTo(45));
+        expect(
+          (s as Map)['estimatedDurationMin'] as num,
+          lessThanOrEqualTo(45),
+        );
       }
       expect(emphasisExercises(p), isEmpty, reason: '$emphasis');
       final ruleIds = [
@@ -173,18 +175,18 @@ void main() {
   });
 
   test('palestra a soli manubri: ogni posto ha un esercizio disponibile', () {
-    final templateByDays = {
-      for (final t in kb.templates) t.daysPerWeek: t.id,
-    };
+    final templateByDays = {for (final t in kb.templates) t.daysPerWeek: t.id};
     for (final days in [3, 4, 5]) {
       for (final emphasis in ['glutes_hamstrings', 'shoulders', 'arms']) {
-        final p = plan(profile(
-          days: days,
-          minutes: 90,
-          gymType: 'dumbbells',
-          equipment: _dumbbells,
-          emphasis: [emphasis],
-        ));
+        final p = plan(
+          profile(
+            days: days,
+            minutes: 90,
+            gymType: 'dumbbells',
+            equipment: _dumbbells,
+            emphasis: [emphasis],
+          ),
+        );
         final placements =
             kb.emphases[emphasis]!.placements[templateByDays[days]]!;
         final added = emphasisExercises(p);
@@ -206,12 +208,9 @@ void main() {
   });
 
   test('forza: l\'enfasi usa la prescrizione dell\'obiettivo', () {
-    final p = plan(profile(
-      days: 4,
-      minutes: 90,
-      goal: 'strength',
-      emphasis: ['arms'],
-    ));
+    final p = plan(
+      profile(days: 4, minutes: 90, goal: 'strength', emphasis: ['arms']),
+    );
     expect(emphasisExercises(p), {
       'upper_a': ['cable_curl'],
       'upper_b': ['overhead_cable_triceps_extension'],

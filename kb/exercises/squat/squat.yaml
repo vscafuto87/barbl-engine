@@ -19,3 +19,62 @@ substitutes:
 - leg_press
 - goblet_squat
 - smith_machine_squat
+technique:
+  setup:
+  - it: Metti il bilanciere nel rack all'altezza delle ascelle.
+    en: Set the bar in the rack at armpit height.
+  - it: Impugna il bilanciere appena fuori dalle spalle.
+    en: Grip the bar just outside your shoulders.
+  - it: Mettiti sotto e appoggialo sulla parte alta della schiena.
+    en: Duck under and rest it on your upper back.
+  - it: Stendi le gambe, sgancia il bilanciere e fai due o tre passi indietro.
+    en: Stand to unrack, then take two or three steps back.
+  - it: Piedi più larghi delle spalle, punte un po' in fuori.
+    en: Feet wider than your shoulders, toes slightly out.
+  cues:
+  - it: Porta i fianchi indietro e scendi tra le gambe.
+    en: Sit your hips back and down between your legs.
+  - it: Tieni il bilanciere sopra metà piede.
+    en: Keep the bar above your mid-foot.
+  mistakes:
+  - what:
+      it: I talloni si sollevano da terra.
+      en: Your heels lift off the floor.
+    fix:
+      it: Spingi i talloni a terra e porta i fianchi più indietro.
+      en: Press your heels down and sit your hips further back.
+  - what:
+      it: Le ginocchia cadono verso l'interno.
+      en: Your knees cave inward.
+    fix:
+      it: Spingi le ginocchia verso le punte dei piedi.
+      en: Push your knees out toward your toes.
+  - what:
+      it: In basso la schiena si arrotonda molto.
+      en: At the bottom your lower back rounds a lot.
+    fix:
+      it: Scendi meno e tieni il petto alto.
+      en: Don't go as deep and keep your chest up.
+  - what:
+      it: Il busto cade in avanti e il bilanciere si sposta.
+      en: Your torso tips forward and the bar shifts.
+    fix:
+      it: Guarda avanti e spingi la schiena contro il bilanciere.
+      en: Look ahead and press your back into the bar.
+  - what:
+      it: Fai solo mezze ripetizioni.
+      en: You only do half reps.
+    fix:
+      it: Riduci il peso e scendi finché controlli il movimento.
+      en: Lower the weight and go as deep as you can control.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 110
+    - 111
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

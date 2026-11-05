@@ -18,3 +18,53 @@ loading:
 substitutes:
 - dumbbell_bench_press
 - barbell_bench_press
+technique:
+  setup:
+  - it: 'Regola il sedile: le maniglie sono all''altezza del centro del petto.'
+    en: Adjust the seat so the handles are at mid-chest height.
+  - it: Siediti con schiena e testa appoggiate allo schienale.
+    en: Sit with your back and head against the pad.
+  - it: Piedi a terra, ben fermi.
+    en: Plant your feet flat on the floor.
+  - it: Afferra le maniglie con i polsi dritti.
+    en: Grab the handles with straight wrists.
+  - it: Stringi le scapole indietro e in basso contro lo schienale.
+    en: Pull your shoulder blades back and down against the pad.
+  cues:
+  - it: Spingi le maniglie lontano dal petto.
+    en: Push the handles away from your chest.
+  - it: Spalle basse, lontane dalle orecchie.
+    en: Keep your shoulders down, away from your ears.
+  - it: Torna indietro piano, senza far sbattere i pesi.
+    en: Return slowly, without letting the weights slam.
+  mistakes:
+  - what:
+      it: Il sedile è troppo basso e senti le spalle sotto sforzo.
+      en: The seat is too low and your shoulders feel strained.
+    fix:
+      it: Alza il sedile finché le maniglie sono a metà petto.
+      en: Raise the seat until the handles sit at mid-chest.
+  - what:
+      it: Le spalle si alzano e la schiena si stacca dallo schienale.
+      en: Your shoulders rise and your back leaves the pad.
+    fix:
+      it: Stringi le scapole e tieni la schiena appoggiata.
+      en: Pinch your shoulder blades and keep your back on the pad.
+  - what:
+      it: Il peso rimbalza in basso e la serie sembra più facile.
+      en: The weight bounces at the bottom and the set feels easier.
+    fix:
+      it: Controlla la discesa e fermati un attimo prima di spingere.
+      en: Control the way down and pause briefly before pressing.
+  - what:
+      it: Spingi fino a bloccare i gomiti con forza.
+      en: You slam your elbows into lockout.
+    fix:
+      it: Fermati con le braccia quasi tese e tieni il movimento fluido.
+      en: Stop with arms nearly straight and keep the motion smooth.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

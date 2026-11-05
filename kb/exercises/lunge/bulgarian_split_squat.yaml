@@ -18,3 +18,55 @@ loading:
 substitutes:
 - dumbbell_walking_lunge
 - goblet_squat
+technique:
+  setup:
+  - it: Tieni un manubrio per mano, oppure uno solo contro il petto.
+    en: Hold a dumbbell in each hand, or one against your chest.
+  - it: Metti il collo del piede dietro su una panca.
+    en: Rest the top of your back foot on a bench.
+  - it: Fai un passo avanti, abbastanza lontano da tenere lo stinco quasi verticale.
+    en: Step forward far enough to keep your front shin nearly vertical.
+  - it: Tieni il petto alto e lo sguardo avanti.
+    en: Keep your chest up and eyes forward.
+  cues:
+  - it: Scendi dritto, come lungo una colonna.
+    en: Lower straight down, as if along a pole.
+  - it: Spingi il pavimento con il piede davanti.
+    en: Push the floor away with your front foot.
+  mistakes:
+  - what:
+      it: Il ginocchio davanti cade verso l'interno.
+      en: Your front knee caves inward.
+    fix:
+      it: Spingi il ginocchio verso le punte dei piedi.
+      en: Push your knee out toward your toes.
+  - what:
+      it: Perdi l'equilibrio e barcolli.
+      en: You lose balance and wobble.
+    fix:
+      it: Allarga un po' i piedi e fissa un punto davanti a te.
+      en: Widen your feet a little and fix your eyes on a spot ahead.
+  - what:
+      it: Il piede davanti è troppo vicino e il ginocchio va avanti.
+      en: Your front foot is too close and your knee drifts forward.
+    fix:
+      it: Allontana il piede dalla panca di qualche centimetro.
+      en: Move your front foot a few inches farther from the bench.
+  - what:
+      it: Ti spingi con la gamba dietro.
+      en: You push with the back leg.
+    fix:
+      it: Appoggia il piede dietro solo per l'equilibrio.
+      en: Use the back foot only for balance.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 118
+    - 119
+    - 120
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

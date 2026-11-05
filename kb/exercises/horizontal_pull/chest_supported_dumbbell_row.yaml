@@ -18,3 +18,58 @@ loading:
 substitutes:
 - dumbbell_row
 - seated_cable_row
+technique:
+  setup:
+  - it: Regola la panca a un'inclinazione moderata e prendi due manubri.
+    en: Set the bench to a moderate incline and grab two dumbbells.
+  - it: Sdraiati a pancia in giù con il petto sull'imbottitura.
+    en: Lie face down with your chest on the pad.
+  - it: Appoggia i piedi a terra, ben saldi.
+    en: Plant your feet firmly on the floor.
+  - it: Lascia i manubri appesi con le braccia tese, palmi verso di te.
+    en: Let the dumbbells hang with straight arms, palms facing each other.
+  - it: Respira e senti le scapole aprirsi in basso.
+    en: Breathe in and feel your shoulder blades spread apart at the bottom.
+  cues:
+  - it: Porta i gomiti indietro e in alto, verso il soffitto.
+    en: Drive your elbows back and up toward the ceiling.
+  - it: Petto incollato alla panca.
+    en: Keep your chest glued to the bench.
+  - it: Stringi le scapole in alto, poi scendi piano.
+    en: Squeeze your shoulder blades at the top, then lower slowly.
+  mistakes:
+  - what:
+      it: Il petto si stacca dalla panca a ogni ripetizione.
+      en: Your chest lifts off the bench each rep.
+    fix:
+      it: Abbassa il peso e tieni il petto sull'imbottitura.
+      en: Lower the weight and keep your chest on the pad.
+  - what:
+      it: Tiri con le braccia e le spalle salgono verso le orecchie.
+      en: You pull with your arms and your shoulders shrug up.
+    fix:
+      it: Pensa a spingere i gomiti indietro, non a sollevare le mani.
+      en: Think about pushing your elbows back, not lifting your hands.
+  - what:
+      it: Lasci cadere i manubri e non senti lo stiramento in basso.
+      en: You drop the dumbbells and skip the stretch at the bottom.
+    fix:
+      it: Scendi piano fino ad avere le braccia tese.
+      en: Lower slowly until your arms are straight.
+  - what:
+      it: La panca troppo ripida ti fa sollevare i manubri verso le spalle.
+      en: A bench that is too steep makes you lift toward your shoulders.
+    fix:
+      it: Abbassa l'inclinazione e porta i manubri verso i fianchi.
+      en: Lower the incline and pull the dumbbells toward your hips.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 166
+    - 167
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

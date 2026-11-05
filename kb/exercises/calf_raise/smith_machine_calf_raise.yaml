@@ -16,3 +16,56 @@ loading:
 substitutes:
 - standing_calf_raise
 - dumbbell_calf_raise
+technique:
+  setup:
+  - it: Metti un gradino o un disco sotto il multipower.
+    en: Place a step or plate under the Smith machine bar.
+  - it: Mettiti sotto il bilanciere, con le spalle ben appoggiate.
+    en: Get under the bar with it resting on your shoulders.
+  - it: Appoggia la parte anteriore dei piedi sul gradino, talloni fuori.
+    en: Put the balls of your feet on the step, heels off.
+  - it: Stendi le ginocchia e ruota il bilanciere per sganciarlo.
+    en: Straighten your knees and rotate the bar to unhook it.
+  - it: Abbassa i talloni fino a sentire un bel allungamento.
+    en: Lower your heels until you feel a good stretch.
+  cues:
+  - it: Spingi il pavimento con la parte anteriore del piede.
+    en: Push the floor away with the ball of your foot.
+  - it: Fermati un secondo in basso, poi sali.
+    en: Pause a second at the bottom, then rise.
+  mistakes:
+  - what:
+      it: Il tallone sale poco e senti poco allungamento in basso.
+      en: Your heel rises little and you feel almost no stretch at the bottom.
+    fix:
+      it: Scendi più in basso e fermati un secondo nell'allungamento.
+      en: Lower further and pause for a second in the stretch.
+  - what:
+      it: Rimbalzi in basso e usi lo slancio per risalire.
+      en: You bounce at the bottom and use momentum to come up.
+    fix:
+      it: Fai una pausa in basso e sali in modo fluido.
+      en: Pause at the bottom and rise smoothly.
+  - what:
+      it: Pieghi le ginocchia per aiutarti a spingere.
+      en: You bend your knees to help push.
+    fix:
+      it: Tieni le gambe ferme e muovi solo le caviglie.
+      en: Keep your legs still and move only your ankles.
+  - what:
+      it: Il peso ti spinge in avanti e ti sbilanci.
+      en: The weight pushes you forward and you lose balance.
+    fix:
+      it: Tieni i piedi sotto il bilanciere e il busto dritto.
+      en: Keep your feet under the bar and your torso upright.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 151
+    - 152
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

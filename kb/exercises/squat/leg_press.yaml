@@ -17,3 +17,55 @@ loading:
 substitutes:
 - squat
 - goblet_squat
+technique:
+  setup:
+  - it: Siediti con schiena e bacino ben appoggiati allo schienale.
+    en: Sit with your back and hips flat against the pad.
+  - it: Piedi sulla pedana larghi come le spalle, punte un po' in fuori.
+    en: Feet on the platform shoulder-width apart, toes slightly out.
+  - it: Spingi la pedana in alto e sblocca le sicure.
+    en: Push the platform up and release the safety catches.
+  - it: Afferra le maniglie ai lati per restare fermo.
+    en: Hold the side handles to stay in place.
+  cues:
+  - it: Spingi la pedana con tutto il piede, talloni compresi.
+    en: Drive the platform with your whole foot, heels included.
+  - it: Ginocchia nella direzione delle punte.
+    en: Knees in line with your toes.
+  mistakes:
+  - what:
+      it: In basso il bacino si stacca e la schiena si arrotonda.
+      en: At the bottom your hips lift off and your lower back rounds.
+    fix:
+      it: Scendi solo finché il bacino resta appoggiato.
+      en: Go only as deep as your hips stay on the pad.
+  - what:
+      it: Talloni che si sollevano dalla pedana.
+      en: Heels lifting off the platform.
+    fix:
+      it: Alza un po' i piedi sulla pedana e spingi dai talloni.
+      en: Move your feet a bit higher and push through your heels.
+  - what:
+      it: Ginocchia che cadono verso l’interno nella spinta.
+      en: Knees caving inward as you push.
+    fix:
+      it: Spingi le ginocchia verso le punte dei piedi.
+      en: Push your knees out toward your toes.
+  - what:
+      it: Ripetizioni corte, di pochi centimetri, con molto peso.
+      en: Short reps of a few inches with a heavy load.
+    fix:
+      it: Togli peso e scendi fino a dove controlli il movimento.
+      en: Reduce the load and go as deep as you can control.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 120
+    - 121
+    - 122
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -15,3 +15,56 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - cable_lateral_raise
+technique:
+  setup:
+  - it: Stai in piedi con un manubrio per mano, lungo i fianchi.
+    en: Stand holding a dumbbell at each side.
+  - it: Piedi larghi come le spalle, ginocchia sciolte.
+    en: Feet shoulder-width apart, knees soft.
+  - it: Stringi i glutei e tieni il petto alto.
+    en: Squeeze your glutes and keep your chest up.
+  - it: Gomiti appena piegati, palmi verso il corpo.
+    en: Elbows slightly bent, palms facing your body.
+  cues:
+  - it: Versa l'acqua da due brocche ai lati.
+    en: Pour water out of two jugs to your sides.
+  - it: Alza i gomiti, non le mani.
+    en: Lift your elbows, not your hands.
+  - it: Fermati all'altezza delle spalle.
+    en: Stop at shoulder height.
+  mistakes:
+  - what:
+      it: Dondoli con il busto per alzare i manubri.
+      en: You swing your torso to lift the dumbbells.
+    fix:
+      it: Riduci il carico e tieni busto e gambe fermi.
+      en: Lower the weight and keep your torso and legs still.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders rise toward your ears.
+    fix:
+      it: Abbassa le spalle e alza i gomiti.
+      en: Drop your shoulders and raise your elbows.
+  - what:
+      it: Alzi i manubri troppo sopra le spalle.
+      en: You lift the dumbbells well above shoulder height.
+    fix:
+      it: Fermati all'altezza delle spalle e scendi piano.
+      en: Stop at shoulder height and lower slowly.
+  - what:
+      it: Lasci cadere i manubri e perdi controllo.
+      en: You let the dumbbells drop and lose control.
+    fix:
+      it: Scendi piano e fermati prima di ripartire.
+      en: Lower slowly and pause before the next rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 203
+    - 204
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

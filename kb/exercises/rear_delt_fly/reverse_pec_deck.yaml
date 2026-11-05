@@ -16,3 +16,53 @@ loading:
 substitutes:
 - cable_rear_delt_fly
 - dumbbell_rear_delt_fly
+technique:
+  setup:
+  - it: Regola il sedile in modo che le maniglie siano all'altezza delle spalle.
+    en: Adjust the seat so the handles sit at shoulder height.
+  - it: Siediti rivolto verso lo schienale, con il petto appoggiato.
+    en: Sit facing the pad with your chest supported.
+  - it: Afferra le maniglie con presa prona o con i pollici in alto.
+    en: Grab the handles overhand or with thumbs up.
+  - it: Siediti dritto, spalle basse e petto alto.
+    en: Sit tall with your shoulders down and chest up.
+  cues:
+  - it: Apri le braccia in un grande arco.
+    en: Sweep your arms out in a wide arc.
+  - it: Spalle basse, lontane dalle orecchie.
+    en: Keep your shoulders down, away from your ears.
+  mistakes:
+  - what:
+      it: Le spalle salgono verso le orecchie mentre apri le braccia.
+      en: Your shoulders rise toward your ears as you open.
+    fix:
+      it: Abbassa le spalle e porta le braccia in un arco largo.
+      en: Drop your shoulders and sweep your arms in a wide arc.
+  - what:
+      it: Pieghi molto i gomiti e tiri come in un rematore.
+      en: You bend your elbows a lot and row instead.
+    fix:
+      it: Tieni i gomiti appena piegati e muovi le braccia di lato.
+      en: Keep your elbows softly bent and move your arms out wide.
+  - what:
+      it: Ti butti in avanti e indietro per muovere il peso.
+      en: You rock forward and back to move the weight.
+    fix:
+      it: Riduci il peso e tieni il petto appoggiato.
+      en: Lower the weight and keep your chest on the pad.
+  - what:
+      it: Rimbalzi in apertura senza controllo.
+      en: You bounce at the end without control.
+    fix:
+      it: Torna indietro piano, con il peso sotto controllo.
+      en: Return slowly with the weight under control.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 209
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

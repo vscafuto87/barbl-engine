@@ -17,3 +17,53 @@ loading:
 substitutes:
 - seated_dumbbell_shoulder_press
 - military_press
+technique:
+  setup:
+  - it: 'Regola il sedile: le maniglie sono all''altezza delle spalle.'
+    en: Adjust the seat so the handles are at shoulder height.
+  - it: Siediti con schiena e testa appoggiate allo schienale.
+    en: Sit with your back and head against the pad.
+  - it: Piedi a terra, ben fermi.
+    en: Plant your feet flat on the floor.
+  - it: Afferra le maniglie con i polsi dritti.
+    en: Grab the handles with straight wrists.
+  - it: Stringi i glutei e inspira prima di spingere.
+    en: Squeeze your glutes and breathe in before pressing.
+  cues:
+  - it: Spingi le maniglie dritte verso il soffitto.
+    en: Push the handles straight toward the ceiling.
+  - it: Spalle basse, lontane dalle orecchie.
+    en: Keep your shoulders down, away from your ears.
+  - it: Torna giù piano lungo lo stesso percorso.
+    en: Lower slowly along the same path.
+  mistakes:
+  - what:
+      it: Il sedile è troppo basso e le spalle tirano in partenza.
+      en: The seat is too low and your shoulders strain at the start.
+    fix:
+      it: Alza il sedile finché le maniglie sono all'altezza delle spalle.
+      en: Raise the seat until the handles are at shoulder height.
+  - what:
+      it: La schiena si inarca e si stacca dallo schienale.
+      en: Your back arches and leaves the pad.
+    fix:
+      it: Stringi i glutei e tieni la schiena appoggiata.
+      en: Squeeze your glutes and keep your back on the pad.
+  - what:
+      it: Le spalle si alzano verso le orecchie.
+      en: Your shoulders shrug toward your ears.
+    fix:
+      it: Abbassa le spalle e spingi in alto con calma.
+      en: Drop your shoulders and press up calmly.
+  - what:
+      it: Il peso rimbalza in basso.
+      en: The weight bounces at the bottom.
+    fix:
+      it: Controlla la discesa e fermati un attimo.
+      en: Control the descent and pause briefly.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

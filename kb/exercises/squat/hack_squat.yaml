@@ -17,3 +17,55 @@ loading:
 substitutes:
 - leg_press
 - smith_machine_squat
+technique:
+  setup:
+  - it: Appoggia schiena e spalle ai cuscini della macchina.
+    en: Rest your back and shoulders on the machine pads.
+  - it: Metti i piedi sulla pedana larghi come le spalle, punte un po' in fuori.
+    en: Place your feet shoulder-width on the platform, toes slightly out.
+  - it: Afferra le maniglie e sgancia le sicure.
+    en: Grab the handles and release the safety catches.
+  - it: Stendi le gambe senza bloccare le ginocchia.
+    en: Straighten your legs without locking your knees.
+  cues:
+  - it: Spingi la pedana con tutto il piede, talloni compresi.
+    en: Drive the platform with your whole foot, heels included.
+  - it: Ginocchia nella direzione delle punte.
+    en: Knees in line with your toes.
+  mistakes:
+  - what:
+      it: I talloni si sollevano dalla pedana.
+      en: Your heels lift off the platform.
+    fix:
+      it: Sposta i piedi un po' più in alto e spingi i talloni.
+      en: Move your feet a bit higher and push through your heels.
+  - what:
+      it: Le ginocchia cadono verso l'interno.
+      en: Your knees cave inward.
+    fix:
+      it: Spingi le ginocchia verso le punte dei piedi.
+      en: Push your knees out toward your toes.
+  - what:
+      it: In basso il bacino si stacca dal cuscino.
+      en: At the bottom your hips lift off the pad.
+    fix:
+      it: Scendi solo finché bacino e schiena restano appoggiati.
+      en: Go only as deep as your hips and back stay on the pad.
+  - what:
+      it: Ripetizioni corte, di pochi centimetri, con molto peso.
+      en: Short reps of a few inches with heavy weight.
+    fix:
+      it: Riduci il peso e scendi fino a dove controlli.
+      en: Lower the weight and go as deep as you control.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 120
+    - 121
+    - 122
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

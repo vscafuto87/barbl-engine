@@ -102,6 +102,173 @@
     },
     "sources": {
       "type": "array"
+    },
+    "technique": {
+      "description": "Scheda tecnica: setup, cue ed errori comuni, scritti con parole nostre, con fonte.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "setup",
+        "cues",
+        "mistakes",
+        "sources",
+        "status",
+        "reviewedBy"
+      ],
+      "properties": {
+        "setup": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": [
+              "it",
+              "en"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "it": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "en": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              }
+            }
+          }
+        },
+        "cues": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "it",
+              "en"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "it": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "en": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              }
+            }
+          }
+        },
+        "mistakes": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": [
+              "what",
+              "fix"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "what": {
+                "type": "object",
+                "required": [
+                  "it",
+                  "en"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "it": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "en": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  }
+                }
+              },
+              "fix": {
+                "type": "object",
+                "required": [
+                  "it",
+                  "en"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "it": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "en": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "access"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9_-]*$"
+              },
+              "pages": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "access": {
+                "enum": [
+                  "full_text",
+                  "full_text_preprint",
+                  "abstract_only",
+                  "summary"
+                ]
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "status": {
+          "enum": [
+            "provisional",
+            "confirmed"
+          ]
+        },
+        "reviewedBy": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
     }
   }
 }

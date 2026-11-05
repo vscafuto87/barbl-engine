@@ -21,3 +21,65 @@ substitutes:
 - dumbbell_bench_press
 - machine_chest_press
 - smith_machine_bench_press
+technique:
+  setup:
+  - it: Sdraiati sulla panca con gli occhi proprio sotto il bilanciere.
+    en: Lie on the bench with your eyes right under the bar.
+  - it: Piedi a terra, talloni giù, stinchi quasi verticali.
+    en: Feet flat, heels down, shins roughly vertical.
+  - it: Impugna il bilanciere un po' più largo delle spalle, polsi dritti.
+    en: Grip the bar a little wider than your shoulders, wrists straight.
+  - it: 'Stringi le scapole e portale verso il basso: il petto si alza un poco.'
+    en: Pull your shoulder blades together and down so your chest lifts a little.
+  - it: Stacca il bilanciere a braccia tese e portalo sopra le spalle.
+    en: Unrack with straight arms and bring the bar over your shoulders.
+  cues:
+  - it: Spingi il bilanciere lontano dal petto.
+    en: Push the bar away from your chest.
+  - it: Gomiti a 45 gradi, non aperti a T.
+    en: Elbows at 45 degrees, not flared into a T.
+  - it: Piedi piantati, come se spingessi il pavimento.
+    en: Feet planted, as if pushing the floor away.
+  mistakes:
+  - what:
+      it: Il bilanciere rimbalza sul petto e la serie sembra più facile.
+      en: The bar bounces off your chest and the set feels easier.
+    fix:
+      it: Scendi controllato e tocca il petto senza spingerlo giù.
+      en: Lower under control and touch your chest without sinking into it.
+  - what:
+      it: 'Gomiti aperti a 90 gradi: senti fastidio alla spalla.'
+      en: 'Elbows flared to 90 degrees: your shoulder feels uncomfortable.'
+    fix:
+      it: Porta i gomiti più vicini al busto, a circa 45 gradi.
+      en: Bring your elbows closer to your body, about 45 degrees.
+  - what:
+      it: Glutei che si staccano dalla panca nella spinta.
+      en: Your hips lift off the bench as you press.
+    fix:
+      it: Tieni testa, schiena alta, glutei e piedi fermi per tutta la serie.
+      en: Keep head, upper back, hips and feet still for the whole set.
+  - what:
+      it: Polsi piegati all’indietro sotto il peso.
+      en: Wrists bent back under the load.
+    fix:
+      it: Tieni il bilanciere sopra l’avambraccio, alla base del palmo.
+      en: Keep the bar over your forearm, at the base of your palm.
+  - what:
+      it: Il bilanciere scende sul collo o troppo in basso sulla pancia.
+      en: The bar comes down toward your neck or too low on your belly.
+    fix:
+      it: Tocca la parte bassa del petto e risali un po' verso il viso.
+      en: Touch the lower chest and press slightly back toward your face.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 173
+    - 174
+    - 175
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -16,3 +16,57 @@ loading:
   whenLoadUnknown: trial_set
 substitutes:
 - dumbbell_romanian_deadlift
+technique:
+  setup:
+  - it: Posiziona il bilanciere all'altezza di metà coscia, per esempio nel rack.
+    en: Set the bar at mid-thigh height, for example in a rack.
+  - it: Impugna il bilanciere appena fuori dalle cosce.
+    en: Grip the bar just outside your thighs.
+  - it: Stai in piedi con il bilanciere contro le cosce, indietreggia di due passi.
+    en: Stand tall with the bar against your thighs and step back two steps.
+  - it: Piedi larghi come le spalle, punte in avanti o appena in fuori.
+    en: Feet shoulder-width apart, toes forward or slightly out.
+  cues:
+  - it: Porta i fianchi indietro, come per chiudere una porta.
+    en: Push your hips back, as if closing a door.
+  - it: Tieni il bilanciere vicino alle gambe.
+    en: Keep the bar close to your legs.
+  - it: Spingi i fianchi in avanti per risalire.
+    en: Drive your hips forward to stand.
+  mistakes:
+  - what:
+      it: La schiena si arrotonda mentre scendi.
+      en: Your back rounds as you lower.
+    fix:
+      it: Scendi meno e tieni il petto alto e la schiena dritta.
+      en: Don't go as low and keep your chest up and back flat.
+  - what:
+      it: Il bilanciere si allontana dalle gambe.
+      en: The bar drifts away from your legs.
+    fix:
+      it: Fallo scorrere lungo le cosce e gli stinchi.
+      en: Slide it along your thighs and shins.
+  - what:
+      it: Pieghi molto le ginocchia e fai uno squat.
+      en: You bend your knees a lot and it becomes a squat.
+    fix:
+      it: Tieni le ginocchia appena piegate e spingi i fianchi indietro.
+      en: Keep a slight knee bend and push your hips back.
+  - what:
+      it: Scendi oltre dove senti l'allungamento dietro le cosce.
+      en: You go past the point where you feel the back-of-thigh stretch.
+    fix:
+      it: Fermati quando la schiena sta per perdere la posizione.
+      en: Stop when your back is about to lose its position.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 141
+    - 142
+    - 143
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null
