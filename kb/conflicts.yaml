@@ -100,3 +100,18 @@ conflicts:
   resolution:
     it: 'Nessuna conversione: i carichi delle alternative restano a mano (`manual`), o con la serie di
       prova dove l''app la prevede. Da rivalutare se esce una fonte di livello 1-3.'
+- id: C-TIME-VOLUME
+  status: open
+  date: '2026-11-05'
+  between:
+  - P-TIME-TRIM
+  - P-VOL-MIN-10
+  - P-TIME-PER-SET
+  summary:
+    it: Con 45 minuti a 3 e 4 giorni (e 60 minuti per la forza) le sedute dei template non ci stanno, e il
+      motore toglie prima gli isolamenti e poi i complementari. Così braccia e altri muscoli finiscono
+      sotto le 10 serie frazionarie settimanali di P-VOL-MIN-10. Il tempo per serie (3 minuti) è provvisorio.
+  resolution:
+    it: 'Decisione provvisoria: meglio un piano più corto con meno volume che un rifiuto. Da rivedere
+      con il coach: una distribuzione diversa delle serie per le sedute corte (ad esempio meno serie sui
+      principali) e un tempo per serie più fedele.'

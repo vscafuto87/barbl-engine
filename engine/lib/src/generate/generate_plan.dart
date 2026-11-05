@@ -5,6 +5,7 @@ import 'apply_emphasis.dart';
 import 'assemble_plan.dart';
 import 'assign_loads.dart';
 import 'choose_exercises.dart';
+import 'fit_to_duration.dart';
 import 'prescribe.dart';
 import 'result.dart';
 import 'select_template.dart';
@@ -29,11 +30,13 @@ GenerationResult generatePlan(
 
   final prescription = selectPrescription(profile, kb);
   if (prescription is Rejected<KbPrescription>) return prescription.reason;
+  final chosenPrescription = (prescription as Ok<KbPrescription>).value;
+  final fitted = fitToDuration(chosenSessions, profile, chosenPrescription);
   final withEmphasis = applyEmphasis(
-    chosenSessions,
+    fitted,
     selected,
     profile,
-    (prescription as Ok<KbPrescription>).value,
+    chosenPrescription,
     kb,
   );
 

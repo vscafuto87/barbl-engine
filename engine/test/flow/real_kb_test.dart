@@ -149,19 +149,20 @@ void main() {
     expect(encoded, hasLength(3));
   });
 
-  test('obiettivo e durata non coperti', () {
-    // Il template a 5 giorni è solo per massa ed entrambi.
+  test('forza a 5 giorni e 45 minuti a 3 e 4 giorni: ora coperti', () {
+    for (final p in [
+      profile(daysPerWeek: 5, goal: 'strength'),
+      profile(daysPerWeek: 3, sessionDurationMin: 45),
+      profile(sessionDurationMin: 45),
+    ]) {
+      expect(plan(p)['schemaVersion'], '3.0');
+    }
+  });
+
+  test('una palestra senza attrezzi adatti resta non coperta', () {
     expect(
-      notCovered(profile(daysPerWeek: 5, goal: 'strength')).reason,
-      NotCoveredReason.goal,
-    );
-    expect(
-      notCovered(profile(daysPerWeek: 3, sessionDurationMin: 45)).reason,
-      NotCoveredReason.duration,
-    );
-    expect(
-      notCovered(profile(sessionDurationMin: 45)).reason,
-      NotCoveredReason.duration,
+      notCovered(profile(equipment: ['cables'])).reason,
+      NotCoveredReason.equipment,
     );
   });
 
@@ -212,29 +213,27 @@ void main() {
     }
   });
 
-  test('3 e 4 giorni a 45 minuti: ancora rifiuto per durata', () {
+  test('le sedute a 45 e 60 minuti stanno nella durata e non restano vuote',
+      () {
     for (final days in [3, 4]) {
-      for (final goal in ['muscle_gain', 'both']) {
-        final r = notCovered(
-          profile(daysPerWeek: days, goal: goal, sessionDurationMin: 45),
-        );
-        expect(r.reason, NotCoveredReason.duration, reason: '$days $goal');
-      }
-    }
-  });
-
-  test('forza a 45 e 60 minuti: rifiuto per durata, non un\'eccezione', () {
-    for (final days in [3, 4]) {
-      for (final minutes in [45, 60]) {
-        final r = notCovered(
-          profile(
-            daysPerWeek: days,
-            goal: 'strength',
-            sessionDurationMin: minutes,
-          ),
-        );
-        expect(r.reason, NotCoveredReason.duration, reason: '$days $minutes');
-        expect(r.detail, isNotEmpty);
+      for (final goal in ['muscle_gain', 'strength']) {
+        for (final minutes in [45, 60]) {
+          final p = plan(
+            profile(daysPerWeek: days, goal: goal, sessionDurationMin: minutes),
+          );
+          for (final s in p['sessions']! as List) {
+            final m = s as Map;
+            expect(m['estimatedDurationMin'] as num, lessThanOrEqualTo(minutes),
+                reason: '$days $goal $minutes ${m['id']}');
+            // Si tolgono slot, non si svuota la seduta.
+            final count = [
+              for (final b in m['blocks'] as List)
+                ...(b as Map)['exercises'] as List,
+            ].length;
+            expect(count, greaterThanOrEqualTo(3),
+                reason: '$days $goal $minutes ${m['id']}');
+          }
+        }
       }
     }
   });

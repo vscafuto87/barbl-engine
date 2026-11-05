@@ -1,0 +1,19 @@
+id: P-TIME-TRIM
+topic: structure
+statement:
+  it: 'Se una seduta non sta nel tempo dichiarato dalla persona, si tolgono slot invece di rifiutare il
+    profilo: prima gli isolamenti, poi i complementari, sempre l''ultimo della seduta; gli esercizi principali
+    restano. Con meno tempo il volume settimanale di alcuni muscoli può scendere sotto la soglia: è un
+    compromesso dichiarato (C-TIME-VOLUME), non una dimenticanza.'
+  en: 'When a session does not fit the time the person declared, slots are dropped instead of refusing
+    the profile: isolation exercises first, then secondary ones, always the last in the session; main
+    exercises stay. With less time the weekly volume of some muscles can fall below the threshold: it
+    is a declared trade-off (C-TIME-VOLUME), not an oversight.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: barbl-design
+  access: full_text
