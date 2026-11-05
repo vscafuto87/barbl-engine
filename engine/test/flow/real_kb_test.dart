@@ -425,6 +425,41 @@ void main() {
     },
   );
 
+  group('varietà dei piani', () {
+    Set<String> ids(Map<String, Object?> p) => {
+      for (final s in p['sessions']! as List)
+        for (final b in (s as Map)['blocks'] as List)
+          for (final e in (b as Map)['exercises'] as List)
+            (e as Map)['exerciseId'] as String,
+    };
+
+    test('stesso profilo, stesso piano; i carichi noti non cambiano gli esercizi',
+        () {
+      final a = plan(profile());
+      expect(plan(profile()), a);
+      expect(ids(plan(profile(noKnownLoads: true))), ids(a));
+    });
+
+    test('profili diversi possono avere esercizi di isolamento diversi', () {
+      final seen = <String>{};
+      for (final level in const [
+        'under_6_months',
+        '6_months_2_years',
+        'over_2_years',
+      ]) {
+        for (final days in const [3, 4, 5]) {
+          final json = profile(daysPerWeek: days, goal: 'muscle_gain')
+            ..['experience'] = level;
+          seen.add(ids(plan(json)).toList().join(','));
+        }
+      }
+      expect(seen.length, greaterThan(3));
+      // Dentro un piano gli esercizi restano quelli del pool dichiarato.
+      final all = ids(plan(profile()));
+      expect(all.where(kb.exercises.containsKey).length, all.length);
+    });
+  });
+
   test('engineVersion coincide con la versione di pubspec.yaml', () {
     final text = File('pubspec.yaml').readAsStringSync();
     final match = RegExp(

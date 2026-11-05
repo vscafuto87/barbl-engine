@@ -55,10 +55,11 @@ sessions:
     slots:
     - pattern: elbow_extension
       role: accessory
+      equivalent: 2
       candidates:
       - cable_triceps_pushdown
-      - barbell_skull_crusher
       - dumbbell_overhead_triceps_extension
+      - barbell_skull_crusher
 - id: full_b
   name:
     it: Full body B
@@ -107,6 +108,7 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
+      equivalent: 2
       candidates:
       - dumbbell_curl
       - cable_curl
@@ -146,6 +148,7 @@ sessions:
     slots:
     - pattern: elbow_extension
       role: accessory
+      equivalent: 2
       candidates:
       - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
@@ -154,10 +157,11 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
+      equivalent: 2
       candidates:
       - cable_curl
-      - barbell_curl
       - dumbbell_curl
+      - barbell_curl
 principles:
 - P-SPLIT-FULL-BODY-3D
 - P-FREQ-MIN-2

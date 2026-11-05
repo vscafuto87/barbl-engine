@@ -138,6 +138,10 @@
                           "type": "string"
                         }
                       },
+                      "equivalent": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
                       "askLoad": {
                         "type": "boolean"
                       },

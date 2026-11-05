@@ -62,12 +62,14 @@ sessions:
     slots:
     - pattern: elbow_extension
       role: accessory
+      equivalent: 2
       candidates:
       - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
       - barbell_skull_crusher
     - pattern: elbow_flexion
       role: accessory
+      equivalent: 2
       candidates:
       - dumbbell_curl
       - cable_curl
@@ -106,6 +108,7 @@ sessions:
     slots:
     - pattern: calf_raise
       role: accessory
+      equivalent: 2
       candidates:
       - standing_calf_raise
       - dumbbell_calf_raise
@@ -142,6 +145,7 @@ sessions:
     slots:
     - pattern: chest_isolation
       role: accessory
+      equivalent: 2
       candidates:
       - cable_fly
       - dumbbell_fly
@@ -151,12 +155,14 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
+      equivalent: 2
       candidates:
       - cable_curl
       - dumbbell_curl
       - barbell_curl
     - pattern: elbow_extension
       role: accessory
+      equivalent: 2
       candidates:
       - cable_triceps_pushdown
       - dumbbell_overhead_triceps_extension

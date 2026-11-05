@@ -87,3 +87,16 @@ conflicts:
       (Helms indica comunque 5-12 serie e più per la forza); la fascia di belowBand non è un obiettivo della
       forza e l''eval a matrice non la controlla per questo obiettivo. Template propri per la forza (meno
       complementari, più serie pesanti) restano da decidere con il coach.'
+- id: C-LOAD-RATIO-EXERCISES
+  status: deferred
+  date: '2026-11-05'
+  between:
+  - P-KNOWN-LOAD-RIR
+  summary:
+    it: Per i sostituti (e per le alternative) non esiste un rapporto di carico tra esercizi con una fonte
+      attendibile. Uno studio su 56 uomini lega il massimale con manubri a quello con bilanciere con una
+      regressione (pendenza circa 0,7, errore medio circa 6,5 kg), non con un rapporto fisso; gli altri
+      valori che circolano non hanno fonte.
+  resolution:
+    it: 'Nessuna conversione: i carichi delle alternative restano a mano (`manual`), o con la serie di
+      prova dove l''app la prevede. Da rivalutare se esce una fonte di livello 1-3.'
