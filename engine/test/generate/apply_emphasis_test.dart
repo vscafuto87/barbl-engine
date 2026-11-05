@@ -77,8 +77,13 @@ KnowledgeBase _kb({Map<String, Object?>? emphasis}) => KnowledgeBase.fromJson(
     exercises: {
       'squat': _exercise('squat', 'squat', ['barbell', 'rack']),
       'goblet': _exercise('goblet', 'squat', ['dumbbells']),
+      'front_squat': _exercise('front_squat', 'squat', ['barbell', 'rack']),
       'bench': _exercise('bench', 'horizontal_push', ['barbell', 'bench']),
       'fly': _exercise('fly', 'horizontal_push', ['cables']),
+      'incline': _exercise('incline', 'horizontal_push', [
+        'dumbbells',
+        'bench',
+      ]),
     },
     templates: {
       't1': {
@@ -106,14 +111,14 @@ KnowledgeBase _kb({Map<String, Object?>? emphasis}) => KnowledgeBase.fromJson(
         emphasis ??
         {
           'glutes_hamstrings': _emphasis('glutes_hamstrings', [
-            _placement('lower_a', 'squat', ['goblet', 'squat']),
+            _placement('lower_a', 'squat', ['goblet', 'front_squat']),
           ]),
           'shoulders': _emphasis('shoulders', [
             _placement('upper_a', 'horizontal_push', ['fly', 'bench']),
-            _placement('lower_a', 'squat', ['squat']),
+            _placement('lower_a', 'squat', ['front_squat']),
           ]),
           'arms': _emphasis('arms', [
-            _placement('upper_a', 'horizontal_push', ['bench']),
+            _placement('upper_a', 'horizontal_push', ['incline']),
           ]),
         },
   ),
@@ -140,8 +145,7 @@ const Set<String> _allEquipment = {
   );
   final template = kb.templates.single;
   final base =
-      (chooseExercises(template, profile, kb) as Ok<List<ChosenSession>>)
-          .value;
+      (chooseExercises(template, profile, kb) as Ok<List<ChosenSession>>).value;
   final prescription =
       (selectPrescription(profile, kb) as Ok<KbPrescription>).value;
   return (
@@ -191,19 +195,47 @@ void main() {
       emphasis: ['glutes_hamstrings'],
       equipment: {'barbell', 'rack', 'bench'},
     );
-    expect(_added(r.result)['lower_a'], ['squat']);
+    expect(_added(r.result)['lower_a'], ['front_squat']);
+  });
+
+  test('non ripete un esercizio che la seduta ha già', () {
+    final kb = _kb(
+      emphasis: {
+        'arms': _emphasis('arms', [
+          _placement('lower_a', 'squat', ['squat', 'front_squat']),
+        ]),
+        'shoulders': _emphasis('shoulders', [
+          _placement('lower_a', 'squat', ['squat']),
+        ]),
+      },
+    );
+    final r = _run(kb, emphasis: ['arms', 'shoulders'], minutes: 90);
+    // `squat` è già in lower_a: arms prende il successivo, shoulders si salta.
+    expect(_added(r.result), {
+      'lower_a': ['front_squat'],
+      'upper_a': <String>[],
+    });
   });
 
   test('uno slot senza candidati disponibili si salta', () {
-    final kb = _kb(emphasis: {
-      'arms': _emphasis('arms', [
-        _placement('upper_a', 'horizontal_push', ['fly']),
-        _placement('lower_a', 'squat', ['goblet']),
-      ]),
-    });
-    final r = _run(kb, emphasis: ['arms'], equipment: {'barbell', 'rack', 'bench', 'dumbbells'});
+    final kb = _kb(
+      emphasis: {
+        'arms': _emphasis('arms', [
+          _placement('upper_a', 'horizontal_push', ['fly']),
+          _placement('lower_a', 'squat', ['goblet']),
+        ]),
+      },
+    );
+    final r = _run(
+      kb,
+      emphasis: ['arms'],
+      equipment: {'barbell', 'rack', 'bench', 'dumbbells'},
+    );
     // Senza cavi `fly` non è disponibile; il goblet di lower_a sì.
-    expect(_added(r.result), {'lower_a': ['goblet'], 'upper_a': <String>[]});
+    expect(_added(r.result), {
+      'lower_a': ['goblet'],
+      'upper_a': <String>[],
+    });
   });
 
   test('salta lo slot che porterebbe la seduta oltre la durata', () {
@@ -218,17 +250,17 @@ void main() {
     // Con 35 minuti nella seduta upper_a entra un solo slot: il primo.
     final a = _run(_kb(), emphasis: ['shoulders', 'arms'], minutes: 35);
     expect(_added(a.result), {
-      'lower_a': ['squat'],
+      'lower_a': ['front_squat'],
       'upper_a': ['fly'],
     });
     final b = _run(_kb(), emphasis: ['arms', 'shoulders'], minutes: 35);
     expect(_added(b.result), {
-      'lower_a': ['squat'],
-      'upper_a': ['bench'],
+      'lower_a': ['front_squat'],
+      'upper_a': ['incline'],
     });
     // Con 50 minuti entrano entrambi, nello stesso ordine.
     final c = _run(_kb(), emphasis: ['arms', 'shoulders'], minutes: 50);
-    expect(_added(c.result)['upper_a'], ['bench', 'fly']);
+    expect(_added(c.result)['upper_a'], ['incline', 'fly']);
     // Lo stesso profilo dà sempre lo stesso esito.
     final again = _run(_kb(), emphasis: ['arms', 'shoulders'], minutes: 50);
     expect(_added(again.result), _added(c.result));
@@ -237,7 +269,7 @@ void main() {
   test('al massimo uno slot per seduta e per enfasi', () {
     final r = _run(_kb(), emphasis: ['shoulders'], minutes: 90);
     expect(_added(r.result), {
-      'lower_a': ['squat'],
+      'lower_a': ['front_squat'],
       'upper_a': ['fly'],
     });
   });
@@ -249,21 +281,27 @@ void main() {
   });
 
   test('un\'enfasi assente dalla KB si ignora', () {
-    final kb = _kb(emphasis: {
-      'arms': _emphasis('arms', [
-        _placement('upper_a', 'horizontal_push', ['bench']),
-      ]),
-    });
+    final kb = _kb(
+      emphasis: {
+        'arms': _emphasis('arms', [
+          _placement('upper_a', 'horizontal_push', ['bench']),
+        ]),
+      },
+    );
     final r = _run(kb, emphasis: ['shoulders']);
     expect(r.result, same(r.base));
   });
 
   test('un ruolo assente dalla prescrizione si salta', () {
-    final kb = _kb(emphasis: {
-      'arms': _emphasis('arms', [
-        _placement('upper_a', 'horizontal_push', ['bench'], role: 'secondary'),
-      ]),
-    });
+    final kb = _kb(
+      emphasis: {
+        'arms': _emphasis('arms', [
+          _placement('upper_a', 'horizontal_push', [
+            'bench',
+          ], role: 'secondary'),
+        ]),
+      },
+    );
     final r = _run(kb, emphasis: ['arms']);
     expect(r.result, same(r.base));
   });
@@ -294,29 +332,35 @@ void main() {
         (r! as Map)['ruleId'],
     ];
 
-    test('EMPHASIS solo sugli esercizi aggiunti e la motivazione nel piano', () {
-      final p = plan(_kb(), ['glutes_hamstrings']);
-      final all = exercises(p);
-      expect(all.map((e) => e['exerciseId']), ['squat', 'goblet', 'bench']);
-      for (final e in all) {
-        final rules = e['rules']! as List<Object?>;
-        expect(rules.contains('EMPHASIS'), e['exerciseId'] == 'goblet',
-            reason: '${e['exerciseId']}');
-        expect(rules, contains('PROG-DOUBLE'));
-      }
-      final goblet = all[1];
-      expect(goblet['sets'], 3);
-      expect(goblet.containsKey('askLoad'), isFalse);
-      expect(goblet['restSeconds'], 120);
-      expect(ruleIds(p), contains('EMPHASIS'));
-      final emphasisRationale = (p['rationales']! as List<Object?>)
-          .cast<Map>()
-          .singleWhere((r) => r['ruleId'] == 'EMPHASIS');
-      expect(emphasisRationale['level'], 'session');
-      // Durata con le serie aggiunte: (4 + 3) × 5.
-      final lower = (p['sessions']! as List<Object?>).first! as Map;
-      expect(lower['estimatedDurationMin'], 35);
-    });
+    test(
+      'EMPHASIS solo sugli esercizi aggiunti e la motivazione nel piano',
+      () {
+        final p = plan(_kb(), ['glutes_hamstrings']);
+        final all = exercises(p);
+        expect(all.map((e) => e['exerciseId']), ['squat', 'goblet', 'bench']);
+        for (final e in all) {
+          final rules = e['rules']! as List<Object?>;
+          expect(
+            rules.contains('EMPHASIS'),
+            e['exerciseId'] == 'goblet',
+            reason: '${e['exerciseId']}',
+          );
+          expect(rules, contains('PROG-DOUBLE'));
+        }
+        final goblet = all[1];
+        expect(goblet['sets'], 3);
+        expect(goblet.containsKey('askLoad'), isFalse);
+        expect(goblet['restSeconds'], 120);
+        expect(ruleIds(p), contains('EMPHASIS'));
+        final emphasisRationale = (p['rationales']! as List<Object?>)
+            .cast<Map>()
+            .singleWhere((r) => r['ruleId'] == 'EMPHASIS');
+        expect(emphasisRationale['level'], 'session');
+        // Durata con le serie aggiunte: (4 + 3) × 5.
+        final lower = (p['sessions']! as List<Object?>).first! as Map;
+        expect(lower['estimatedDurationMin'], 35);
+      },
+    );
 
     test('senza enfasi applicata la motivazione EMPHASIS non c\'è', () {
       final none = plan(_kb(), null);

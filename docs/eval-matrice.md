@@ -8,7 +8,7 @@
 
 Il motore non cambia: la matrice misura, non corregge.
 
-In più c'è la **matrice dell'enfasi** (432 profili): stessi giorni, durate, obiettivi e palestre, un solo livello (`6_months_2_years`, l'enfasi non dipende dai carichi noti) e quattro varianti di `emphasis` (profilo `1.2`): `glutes_hamstrings`, `shoulders`, `arms` e la coppia `glutes_hamstrings` + `arms`. La variante «nessuna» è la matrice di base.
+In più c'è la **matrice dell'enfasi** (756 profili): stessi giorni, durate, obiettivi e palestre, un solo livello (`6_months_2_years`, l'enfasi non dipende dai carichi noti) e sette varianti di `emphasis` (profilo `1.2`): `glutes_hamstrings`, `shoulders`, `arms`, `quadriceps`, `chest`, `back` e la coppia `glutes_hamstrings` + `arms`. La variante «nessuna» è la matrice di base.
 
 ## Cosa verifica
 
@@ -78,4 +78,4 @@ Calcolate sui piani generati (serie frazionarie settimanali), non fanno fallire 
 
 ## Casi `skip`
 
-Nessuno: i 324 profili e i 432 con enfasi rispettano le proprietà (verificato dalla CI).
+Nessuno: i 324 profili e i 756 con enfasi rispettano le proprietà (verificato dalla CI).

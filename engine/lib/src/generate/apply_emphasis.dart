@@ -49,7 +49,22 @@ List<ChosenSession> applyEmphasis(
       if (current == null) continue;
       final role = prescription.roles[placement.slot.role];
       if (role == null) continue;
-      final exercise = firstAvailable(placement.slot, profile, kb);
+      // Il primo candidato disponibile che la seduta non ha già (anche da
+      // un'enfasi precedente): l'enfasi non ripete un esercizio.
+      final used = <String>{
+        for (final block in sessions[i].blocks)
+          for (final slot in block.slots) slot.exercise.id,
+        for (final block in added[i] ?? const <ChosenBlock>[])
+          for (final slot in block.slots) slot.exercise.id,
+      };
+      KbExercise? exercise;
+      for (final candidate
+          in availableCandidates(placement.slot, profile, kb)) {
+        if (!used.contains(candidate.id)) {
+          exercise = candidate;
+          break;
+        }
+      }
       if (exercise == null) continue;
       final total = current + role.sets;
       if (estimatedMinutes(total, prescription) > profile.sessionDurationMin) {

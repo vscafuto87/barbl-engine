@@ -24,7 +24,14 @@ const Set<String> _experienceValues = {
   '6_months_2_years',
   'over_2_years',
 };
-const Set<String> _emphasisValues = {'glutes_hamstrings', 'shoulders', 'arms'};
+const Set<String> _emphasisValues = {
+  'glutes_hamstrings',
+  'quadriceps',
+  'chest',
+  'back',
+  'shoulders',
+  'arms',
+};
 const int _emphasisMaxItems = 2;
 const double _defaultBarKg = 20;
 const List<double> _defaultPlatesKg = <double>[25, 20, 15, 10, 5, 2.5, 1.25];

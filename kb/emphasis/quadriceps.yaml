@@ -1,0 +1,58 @@
+id: quadriceps
+name:
+  it: Quadricipiti
+  en: Quadriceps
+muscles:
+- quadriceps
+placements:
+  full_body_3d:
+  - session: full_a
+    slot:
+      pattern: knee_extension
+      role: accessory
+      candidates:
+      - leg_extension
+      - dumbbell_step_up
+      - bulgarian_split_squat
+  - session: full_c
+    slot:
+      pattern: knee_extension
+      role: accessory
+      candidates:
+      - leg_extension
+      - bulgarian_split_squat
+      - dumbbell_step_up
+  upper_lower_4d:
+  - session: lower_b
+    slot:
+      pattern: knee_extension
+      role: accessory
+      candidates:
+      - leg_extension
+      - dumbbell_step_up
+      - dumbbell_reverse_lunge
+  ppl_ul_5d:
+  - session: legs
+    slot:
+      pattern: knee_extension
+      role: accessory
+      candidates:
+      - leg_extension
+      - goblet_squat
+      - dumbbell_step_up
+      - dumbbell_reverse_lunge
+  - session: lower
+    slot:
+      pattern: knee_extension
+      role: accessory
+      candidates:
+      - leg_extension
+      - bulgarian_split_squat
+      - dumbbell_step_up
+principles:
+- P-EMPHASIS
+- P-VOL-DOSE-HYP
+- P-SEX-RESPONSE
+provisional: true
+notes:
+  it: 'Leg extension nelle sedute della parte bassa che non l''hanno già (Lower A del template a 4 giorni la ha: si aggiunge solo Lower B). Senza macchine si ricade su un affondo o su uno squat con manubrio, scelto diverso dall''affondo già presente nella seduta.'

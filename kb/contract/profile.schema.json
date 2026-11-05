@@ -136,6 +136,9 @@
       "items": {
         "enum": [
           "glutes_hamstrings",
+          "quadriceps",
+          "chest",
+          "back",
           "shoulders",
           "arms"
         ]
