@@ -4,6 +4,7 @@ daysPerWeek: 5
 goals:
 - muscle_gain
 - both
+- strength
 defaultSchedule:
   mon: upper
   tue: lower

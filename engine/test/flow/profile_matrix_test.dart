@@ -80,27 +80,27 @@ const Map<String, String> _skipped = {};
 /// `NotCoveredReason`. Vale per ogni palestra e livello. Va cambiata solo di
 /// proposito, insieme alla KB.
 const Map<(int, String, int), String> _expectedCoverage = {
-  (3, 'muscle_gain', 45): 'duration',
+  (3, 'muscle_gain', 45): 'covered',
   (3, 'muscle_gain', 60): 'covered',
   (3, 'muscle_gain', 75): 'covered',
   (3, 'muscle_gain', 90): 'covered',
-  (3, 'strength', 45): 'duration',
-  (3, 'strength', 60): 'duration',
+  (3, 'strength', 45): 'covered',
+  (3, 'strength', 60): 'covered',
   (3, 'strength', 75): 'covered',
   (3, 'strength', 90): 'covered',
-  (3, 'both', 45): 'duration',
+  (3, 'both', 45): 'covered',
   (3, 'both', 60): 'covered',
   (3, 'both', 75): 'covered',
   (3, 'both', 90): 'covered',
-  (4, 'muscle_gain', 45): 'duration',
+  (4, 'muscle_gain', 45): 'covered',
   (4, 'muscle_gain', 60): 'covered',
   (4, 'muscle_gain', 75): 'covered',
   (4, 'muscle_gain', 90): 'covered',
-  (4, 'strength', 45): 'duration',
-  (4, 'strength', 60): 'duration',
+  (4, 'strength', 45): 'covered',
+  (4, 'strength', 60): 'covered',
   (4, 'strength', 75): 'covered',
   (4, 'strength', 90): 'covered',
-  (4, 'both', 45): 'duration',
+  (4, 'both', 45): 'covered',
   (4, 'both', 60): 'covered',
   (4, 'both', 75): 'covered',
   (4, 'both', 90): 'covered',
@@ -108,10 +108,10 @@ const Map<(int, String, int), String> _expectedCoverage = {
   (5, 'muscle_gain', 60): 'covered',
   (5, 'muscle_gain', 75): 'covered',
   (5, 'muscle_gain', 90): 'covered',
-  (5, 'strength', 45): 'goal',
-  (5, 'strength', 60): 'goal',
-  (5, 'strength', 75): 'goal',
-  (5, 'strength', 90): 'goal',
+  (5, 'strength', 45): 'covered',
+  (5, 'strength', 60): 'covered',
+  (5, 'strength', 75): 'covered',
+  (5, 'strength', 90): 'covered',
   (5, 'both', 45): 'covered',
   (5, 'both', 60): 'covered',
   (5, 'both', 75): 'covered',
@@ -357,6 +357,9 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
 
   final totals = _weeklySets(plan);
   if (!_bandGoals.contains(c.goal)) return out;
+  // Una seduta accorciata per la durata (P-TIME-TRIM) può lasciare un muscolo
+  // sotto la soglia: il compromesso è dichiarato in C-TIME-VOLUME.
+  if (_trimmed(c, plan)) return out;
   for (final muscle in [
     ..._volumeMuscles,
     ...?_extraVolumeMusclesByDays[c.days],
@@ -367,6 +370,17 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
     }
   }
   return out;
+}
+
+/// Vero se il motore ha tolto slot per far stare le sedute nella durata: il
+/// piano ha meno esercizi dello stesso profilo con la durata massima.
+bool _trimmed(_Combo c, Map<String, Object?> plan) {
+  final now = _generate(c.base);
+  final long = _generate(
+    _Combo(c.days, _durations.last, c.goal, c.gym, c.experience),
+  );
+  if (now is! Generated || long is! Generated) return false;
+  return _exercisesOf(now.plan).length < _exercisesOf(long.plan).length;
 }
 
 /// Serie frazionarie settimanali per muscolo (primario 1, secondari 0,5 dalla KB).
@@ -467,16 +481,18 @@ KbPrescription _prescriptionOf(String goal) =>
 /// profili coperti della matrice dell'enfasi. Va cambiata solo di proposito,
 /// insieme alla KB (`kb/emphasis/`, template o prescrizioni).
 const Map<String, (int, int)> _expectedEmphasis = {
-  'full_body_3d 60': (42, 60),
+  'full_body_3d 45': (0, 90),
+  'full_body_3d 60': (42, 90),
   'full_body_3d 75': (81, 90),
   'full_body_3d 90': (90, 90),
-  'ppl_ul_5d 45': (0, 48),
-  'ppl_ul_5d 60': (48, 48),
-  'ppl_ul_5d 75': (48, 48),
-  'ppl_ul_5d 90': (48, 48),
-  'upper_lower_4d 60': (24, 60),
+  'upper_lower_4d 45': (0, 90),
+  'upper_lower_4d 60': (36, 90),
   'upper_lower_4d 75': (72, 90),
   'upper_lower_4d 90': (90, 90),
+  'ppl_ul_5d 45': (0, 72),
+  'ppl_ul_5d 60': (63, 72),
+  'ppl_ul_5d 75': (72, 72),
+  'ppl_ul_5d 90': (72, 72),
 };
 
 /// Conteggi dell'enfasi: posti applicati e totali per «template durata», e
@@ -647,7 +663,7 @@ void main() {
     expect(stats.byKey, _expectedEmphasis);
     expect(stats.all + stats.some + stats.none,
         _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length);
-    expect((stats.all, stats.some, stats.none), (219, 27, 42));
+    expect((stats.all, stats.some, stats.none), (249, 39, 144));
   });
 
   test('la copertura coincide con la mappa attesa', () {

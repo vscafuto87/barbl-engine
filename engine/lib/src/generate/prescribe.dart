@@ -103,7 +103,8 @@ int estimatedMinutes(int totalSets, KbPrescription prescription) =>
     totalSets * prescription.minutesPerSet;
 
 /// Passo 3: serie, ripetizioni e recuperi dalla prescrizione dell'obiettivo,
-/// poi controllo della durata (limite incluso). Il motore non toglie serie.
+/// poi controllo della durata (limite incluso). Le serie non si toccano: gli
+/// slot in eccesso li ha già tolti `fitToDuration`.
 Result<List<PrescribedSession>> prescribe(
   List<ChosenSession> chosen,
   Profile profile,

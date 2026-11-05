@@ -46,15 +46,17 @@ void main() {
   });
 
   test('un profilo non coperto esce con 2 e il motivo su stderr', () {
-    // Il template a 5 giorni è solo per massa ed entrambi: la forza a 5 giorni
-    // resta non coperta per obiettivo.
+    // Una palestra con soli cavi non ha gli attrezzi dei template.
     final profile = writeProfile(
-      (j) => {...j, 'daysPerWeek': 5, 'goal': 'strength'},
+      (j) => {
+        ...j,
+        'gym': {...(j['gym']! as Map<String, Object?>), 'equipment': ['cables']},
+      },
     );
     final r = runCli(['generate', '--profile', profile, '--kb', '../kb']);
     expect(r.code, 2);
     expect(r.out, isEmpty);
-    expect(r.err, contains('(goal)'));
+    expect(r.err, contains('(equipment)'));
   });
 
   test('un profilo non valido esce con 2', () {
