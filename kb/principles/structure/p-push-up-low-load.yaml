@@ -1,0 +1,17 @@
+id: P-PUSH-UP-LOW-LOAD
+topic: structure
+statement:
+  it: 'Con carichi leggeri portati vicino al cedimento, i piegamenti sulle braccia (adattati con le ginocchia a terra per pareggiare il carico) hanno dato una crescita del pettorale e dei tricipiti
+    simile alla panca piana in 8 settimane. Per questo i piegamenti sono un candidato intercambiabile con la panca nella spinta orizzontale per chi non ha attrezzi. Lo studio è su 18 uomini; il confronto vale
+    per carichi leggeri, non per carichi pesanti: principio provvisorio.'
+  en: 'With light loads taken close to failure, push-ups (adapted with the knees on the floor to match the load) produced chest and triceps growth similar to the flat bench press over 8 weeks. So push-ups
+    are an interchangeable candidate for the bench press in the horizontal push for people without equipment. The study had 18 men; the comparison holds for light loads, not heavy ones: the principle stays
+    provisional.'
+evidence: low
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: kikuchi-2017-push-up
+  access: abstract_only

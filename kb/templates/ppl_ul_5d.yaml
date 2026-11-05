@@ -41,9 +41,10 @@ sessions:
     slots:
     - pattern: vertical_push
       role: secondary
-      equivalent: 2
+      equivalent: 3
       candidates:
       - seated_dumbbell_shoulder_press
+      - dumbbell_arnold_press
       - machine_shoulder_press
       - military_press
   - type: single
@@ -96,8 +97,10 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
+      - incline_dumbbell_curl
+      - dumbbell_preacher_curl
       - cable_curl
       - dumbbell_curl
       - hammer_curl
@@ -191,10 +194,12 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
-      - dumbbell_curl
+      - incline_dumbbell_curl
+      - dumbbell_preacher_curl
       - cable_curl
+      - dumbbell_curl
       - hammer_curl
       - barbell_curl
 - id: lower
@@ -237,8 +242,9 @@ sessions:
       role: accessory
       equivalent: 2
       candidates:
-      - leg_curl
       - seated_leg_curl
+      - single_leg_dumbbell_romanian_deadlift
+      - leg_curl
       - romanian_deadlift
       - dumbbell_romanian_deadlift
   - type: single

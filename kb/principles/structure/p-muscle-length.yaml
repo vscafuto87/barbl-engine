@@ -3,15 +3,17 @@ topic: structure
 statement:
   it: 'Tra esercizi che allenano lo stesso muscolo, quelli che lo caricano da allungato non sono equivalenti agli altri: per i tricipiti le estensioni sopra la testa
     hanno dato più crescita dei pushdown (circa 1,4-1,5 volte, con carichi più leggeri) e per i polpacci il calf raise in piedi, a ginocchio esteso, ha dato più
-    crescita dei gastrocnemi rispetto a quello da seduto (il soleo è cresciuto uguale). Una revisione conclude che il muscolo cresce di più quando la
+    crescita dei gastrocnemi rispetto a quello da seduto (il soleo è cresciuto uguale). Per gli ischiocrurali il leg curl da seduto (anca flessa, muscolo più allungato) ha dato più crescita di quello da prono (circa 14% contro 9%) e per i bicipiti il curl alla panca Scott, nell''ultimo tratto allungato
+    del movimento, ha dato più crescita distale e più forza del curl nel tratto finale. Una revisione conclude che il muscolo cresce di più quando la
     coppia esterna è alta in posizione allungata. Per questo tra i candidati intercambiabili entrano per primi gli esercizi che allungano il
-    muscolo, e quelli che lo accorciano restano in fondo alla lista, usati solo quando manca l''attrezzatura. Sono due studi su soggetti non
+    muscolo, e quelli che lo accorciano restano in fondo alla lista, usati solo quando manca l''attrezzatura. Sono studi su soggetti non
     allenati, con campioni piccoli: il principio resta provvisorio.'
   en: 'Among exercises for the same muscle, those that load it in a lengthened position are not equivalent to the others: for the triceps, overhead
     extensions produced more growth than pushdowns (about 1.4-1.5 times, with lighter loads), and for the calves the standing, knee-extended calf
-    raise grew the gastrocnemius more than the seated one (the soleus grew the same). A review concludes that muscle grows more when external
+    raise grew the gastrocnemius more than the seated one (the soleus grew the same). For the hamstrings, the seated leg curl (hip flexed, muscle more lengthened) produced more growth than the prone one (about 14% versus 9%), and for the biceps the preacher curl trained in the lengthened part
+    of the range produced more distal growth and more strength than the shortened part. A review concludes that muscle grows more when external
     torque is high at long muscle lengths. So lengthening exercises come first among the interchangeable candidates, and the shortened-position
-    ones stay at the end of the list, used only when equipment is missing. Both studies are in untrained people with small samples: the principle
+    ones stay at the end of the list, used only when equipment is missing. These studies are in untrained people with small samples: the principle
     stays provisional.'
 evidence: low
 status: provisional
@@ -23,5 +25,9 @@ sources:
   access: abstract_only
 - id: kinoshita-2023-calf-raise
   access: full_text
+- id: maeo-2021-hamstrings-muscle-length
+  access: abstract_only
+- id: pedrosa-2023-arm-curl-rom
+  access: abstract_only
 - id: pedrosa-2026-muscle-length-review
   access: abstract_only
