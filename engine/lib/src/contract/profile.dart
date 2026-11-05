@@ -5,7 +5,7 @@ library;
 // Costanti di formato del contratto, copiate dallo schema del profilo.
 // Non sono numeri di dominio: si aggiornano solo insieme allo schema.
 // ---------------------------------------------------------------------------
-const Set<String> _profileSchemaVersions = {'1.0', '1.1', '1.2'};
+const Set<String> _profileSchemaVersions = {'1.0', '1.1', '1.2', '1.3'};
 const Set<String> _equipmentValues = {
   'barbell',
   'rack',
@@ -38,7 +38,8 @@ const Set<String> _topKeys = {
   'experience',
   'knownLoads',
 };
-const Set<String> _optionalTopKeys = {'emphasis'};
+const Set<String> _optionalTopKeys = {'emphasis', 'variantSeed'};
+const int _variantSeedMax = 2147483647;
 const Set<String> _gymKeys = {'type', 'equipment', 'barKg', 'platesKg'};
 const Set<String> _knownLoadKeys = {'exerciseId', 'kg', 'reps'};
 
@@ -56,6 +57,7 @@ class Profile {
     required this.knownLoads,
     this.knownReps = const {},
     this.emphasis = const [],
+    this.variantSeed,
   });
 
   final String goal;
@@ -77,6 +79,10 @@ class Profile {
   /// Distretti da privilegiare, nell'ordine del profilo (al massimo due);
   /// vuota = nessuna enfasi.
   final List<String> emphasis;
+
+  /// Seme facoltativo: a parità di profilo sceglie un altro piano valido.
+  /// Assente = scelta deterministica dal solo profilo.
+  final int? variantSeed;
 }
 
 sealed class ProfileRead {
@@ -133,7 +139,7 @@ ProfileRead readProfile(Map<String, Object?> json) {
 
   if (json.containsKey('schemaVersion') &&
       !_profileSchemaVersions.contains(json['schemaVersion'])) {
-    errors.add('schemaVersion: deve essere "1.0", "1.1" o "1.2", '
+    errors.add('schemaVersion: deve essere "1.0", "1.1", "1.2" o "1.3", '
         'trovato ${_describe(json['schemaVersion'])}');
   }
 
@@ -328,6 +334,17 @@ ProfileRead readProfile(Map<String, Object?> json) {
     }
   }
 
+  int? variantSeed;
+  if (json.containsKey('variantSeed')) {
+    final v = json['variantSeed'];
+    if (v is int && v >= 0 && v <= _variantSeedMax) {
+      variantSeed = v;
+    } else {
+      errors.add('variantSeed: deve essere un intero tra 0 e '
+          '$_variantSeedMax, trovato ${_describe(v)}');
+    }
+  }
+
   if (errors.isNotEmpty) return ProfileErrors(List.unmodifiable(errors));
 
   return ProfileOk(Profile(
@@ -342,5 +359,6 @@ ProfileRead readProfile(Map<String, Object?> json) {
     knownLoads: Map.unmodifiable(knownLoads),
     knownReps: Map.unmodifiable(knownReps),
     emphasis: List.unmodifiable(emphasis),
+    variantSeed: variantSeed,
   ));
 }

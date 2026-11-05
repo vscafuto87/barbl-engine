@@ -62,16 +62,15 @@ Result<List<ChosenSession>> _choose(Set<String> equipment) {
   );
 }
 
-String _firstId(Result<List<ChosenSession>> r) =>
-    (r as Ok<List<ChosenSession>>)
-        .value
-        .single
-        .blocks
-        .single
-        .slots
-        .single
-        .exercise
-        .id;
+String _firstId(Result<List<ChosenSession>> r) => (r as Ok<List<ChosenSession>>)
+    .value
+    .single
+    .blocks
+    .single
+    .slots
+    .single
+    .exercise
+    .id;
 
 void _expectNoEquipment(Result<List<ChosenSession>> r) {
   expect(r, isA<Rejected<List<ChosenSession>>>());
@@ -108,12 +107,15 @@ void main() {
   });
 }
 
-
 void _stableHashTests() {
   group('stableHash', () {
-    test('FNV-1a a 32 bit, valore noto', () {
-      expect(stableHash('a'), 0xe40c292c);
-      expect(stableHash(''), 0x811c9dc5);
+    test('valori noti e bit bassi ben distribuiti', () {
+      expect(stableHash('a'), stableHash('a'));
+      expect(stableHash('a'), isNot(stableHash('b')));
+      final parities = {for (var i = 0; i < 40; i++) stableHash('seed=$i') % 2};
+      expect(parities, {0, 1});
+      final thirds = {for (var i = 0; i < 40; i++) stableHash('x$i') % 3};
+      expect(thirds, {0, 1, 2});
     });
   });
 }

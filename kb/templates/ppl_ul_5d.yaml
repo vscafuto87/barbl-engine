@@ -31,6 +31,7 @@ sessions:
     slots:
     - pattern: horizontal_push
       role: secondary
+      equivalent: 2
       candidates:
       - incline_dumbbell_press
       - machine_chest_press
@@ -39,6 +40,7 @@ sessions:
     slots:
     - pattern: vertical_push
       role: secondary
+      equivalent: 2
       candidates:
       - seated_dumbbell_shoulder_press
       - machine_shoulder_press
@@ -111,6 +113,7 @@ sessions:
     slots:
     - pattern: hinge
       role: secondary
+      equivalent: 2
       candidates:
       - romanian_deadlift
       - dumbbell_romanian_deadlift
@@ -118,6 +121,7 @@ sessions:
     slots:
     - pattern: lunge
       role: secondary
+      equivalent: 2
       candidates:
       - bulgarian_split_squat
       - dumbbell_walking_lunge
@@ -139,6 +143,7 @@ sessions:
     slots:
     - pattern: horizontal_push
       role: secondary
+      equivalent: 2
       candidates:
       - machine_chest_press
       - dumbbell_bench_press
@@ -147,6 +152,7 @@ sessions:
     slots:
     - pattern: horizontal_pull
       role: secondary
+      equivalent: 2
       candidates:
       - seated_cable_row
       - chest_supported_dumbbell_row
@@ -194,6 +200,7 @@ sessions:
     slots:
     - pattern: hinge
       role: secondary
+      equivalent: 2
       candidates:
       - dumbbell_romanian_deadlift
       - romanian_deadlift
@@ -201,6 +208,7 @@ sessions:
     slots:
     - pattern: hip_extension
       role: secondary
+      equivalent: 2
       candidates:
       - barbell_hip_thrust
       - dumbbell_hip_thrust

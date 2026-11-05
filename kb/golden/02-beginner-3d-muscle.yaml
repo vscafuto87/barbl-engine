@@ -21,9 +21,6 @@ expect:
     squat:
       kg: null
       source: trial_set
-    dumbbell_row:
-      kg: null
-      source: manual
     barbell_row:
       kg: null
       source: manual
