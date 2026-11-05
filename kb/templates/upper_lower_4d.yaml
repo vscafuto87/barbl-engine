@@ -228,6 +228,17 @@ sessions:
       - leg_curl
       - seated_leg_curl
       - dumbbell_romanian_deadlift
+  - type: single
+    slots:
+    - pattern: calf_raise
+      role: accessory
+      equivalent: 4
+      candidates:
+      - dumbbell_calf_raise
+      - standing_calf_raise
+      - leg_press_calf_raise
+      - smith_machine_calf_raise
+      - seated_calf_raise
 principles:
 - P-FREQ-MIN-2
 - P-FREQ-HYP-NEUTRAL

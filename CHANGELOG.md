@@ -2,6 +2,10 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.16.0 — 2026-11-05
+
+- Chiusi i cinque conflitti aperti (decisioni di Vincenzo): C-RIR-BY-ROLE, C-REST-STRENGTH, C-STRENGTH-VOLUME e C-TIME-VOLUME senza cambi al motore (scelte di design accettate); C-CALVES-BAND con un secondo esercizio per i polpacci in Lower B del template a 4 giorni (6 serie a settimana, come a 5 giorni) e l'eccezione dichiarata sotto le 10 serie. I piani a 4 giorni cambiano (uno slot in più, tolto per primo nelle sedute corte). Nessun numero nuovo.
+
 ## 0.15.0 — 2026-11-05
 
 - Seconda tornata di catalogo, con letture degli studi: 8 esercizi nuovi (calf raise alla leg press e al multipower, estensioni sopra la testa con bilanciere, ponte per i glutei, pull-through ai cavi, affondi indietro, step-up, alzate posteriori su panca inclinata). Principio `P-MUSCLE-LENGTH` (Maeo 2023: tricipiti più cresciuti con le estensioni sopra la testa che con i pushdown; Kinoshita 2023, testo completo: gastrocnemi più cresciuti con il calf raise in piedi che da seduto; revisione di Pedrosa 2026): i candidati che allungano il muscolo vanno per primi e il pushdown e il calf seduto restano in coda, fuori dal gruppo intercambiabile. **Correzione della 0.14.0**, che aveva messo il calf seduto tra i candidati intercambiabili. Principio `P-GLUTE-EXERCISE-EQUIVALENCE` (Plotkin 2023: hip thrust e squat danno una crescita dei glutei simile): hip thrust, ponte, pull-through e affondi sono candidati intercambiabili. Tutti i principi sono provvisori. Nessun numero nuovo, nessuno split nuovo.
