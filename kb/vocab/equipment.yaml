@@ -10,11 +10,13 @@ profileEquipment:
   - { id: machines,      name: { it: Macchine,        en: Machines } }
   - { id: cables,        name: { it: Cavi,            en: Cables } }
   - { id: smith_machine, name: { it: Multipower,      en: Smith machine } }
+  - { id: pull_up_bar,   name: { it: Sbarra per trazioni, en: Pull-up bar } }
+  - { id: dip_station,   name: { it: Parallele,       en: Dip station } }
 
 # Attrezzatura proposta per tipo di palestra: copia di `equipmentForGymType` dell'app,
 # usata dal validatore per controllare che ogni slot sia coperto in ogni palestra.
 gymTypes:
-  full:      [barbell, rack, bench, dumbbells, machines, cables, smith_machine]
+  full:      [barbell, rack, bench, dumbbells, machines, cables, smith_machine, pull_up_bar, dip_station]
   home:      [barbell, rack, bench, dumbbells]
   dumbbells: [dumbbells, bench]
 

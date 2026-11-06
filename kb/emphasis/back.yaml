@@ -16,6 +16,8 @@ placements:
       - single_arm_lat_pulldown
       - underhand_lat_pulldown
       - machine_pulldown
+      - pull_up
+      - chin_up
       - chest_supported_dumbbell_row
   - session: full_c
     slot:
@@ -27,6 +29,8 @@ placements:
       - single_arm_lat_pulldown
       - underhand_lat_pulldown
       - machine_pulldown
+      - pull_up
+      - chin_up
       - dumbbell_row
   upper_lower_4d:
   - session: upper_a
@@ -73,6 +77,8 @@ placements:
       - single_arm_lat_pulldown
       - underhand_lat_pulldown
       - machine_pulldown
+      - pull_up
+      - chin_up
       - dumbbell_row
 principles:
 - P-EMPHASIS

@@ -2,6 +2,12 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.21.0 — 2026-11-06
+
+- Attrezzatura nuova nel profilo: `pull_up_bar` (sbarra per trazioni) e `dip_station` (parallele), nel vocabolario e nella copia dello schema del profilo (stessa `schemaVersion`: si aggiungono solo due valori all'enum). La palestra completa le ha già; a casa e con i soli manubri l'onboarding dell'app le chiede.
+- 3 esercizi nuovi a corpo libero (da 90 a 93): trazioni alla sbarra, trazioni presa supina, dip alle parallele (*The Muscle Ladder* pp. 154-155, 158, 187-188). Sono candidati in coda alle trazioni verticali e alle spinte orizzontali, fuori dal gruppo intercambiabile, perché non tutti riescono a farle con il proprio peso fin da subito: escono dove mancano lat machine e macchine (casa con la sbarra) e restano tra le alternative di «Sostituisci» in palestra. Scheda tecnica provvisoria.
+- Corretto il test del pacchetto, che nella 0.20.0 si aspettava ancora la versione 0.19.0.
+
 ## 0.20.0 — 2026-11-06
 
 - Quarta tornata di catalogo: 28 esercizi nuovi, nessun attrezzo nuovo (da 62 a 90). Dorsali: lat machine a un braccio, presa supina e alla macchina. Femorali e stacchi: leg curl in piedi e con manubrio, good morning, stacco a gambe tese. Quadricipiti: front squat, split squat al multipower, sissy squat. Petto: panca inclinata con bilanciere, chest press inclinata, croci su panca inclinata, croci ai cavi dal basso. Spalle: lento in piedi con manubri, landmine press, alzate laterali su panca inclinata, face pull. Rematori: con bilanciere su panca inclinata, al cavo a un braccio, inverso. Braccia: spider curl, curl al cavo da dietro, french press con manubri, kickback al cavo. Glutei: hip thrust a una gamba, slanci al cavo, iperestensioni a 45 gradi. Ognuno ha muscoli, sostituti e scheda tecnica provvisoria (*The Muscle Ladder*, nuova fonte `nippard-ultimate-exercise-guide` per good morning, front squat e curl al cavo da dietro, `barbl-design` dove non c'è una pagina dedicata). I sostituti degli esercizi esistenti includono i nuovi, quindi «Sostituisci» ne offre di più.

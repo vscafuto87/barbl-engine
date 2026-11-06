@@ -19,6 +19,7 @@ substitutes:
 - dumbbell_bench_press
 - barbell_bench_press
 - incline_machine_press
+- dip
 technique:
   setup:
   - it: 'Regola il sedile: le maniglie sono all''altezza del centro del petto.'

@@ -20,6 +20,7 @@ substitutes:
 - single_arm_lat_pulldown
 - underhand_lat_pulldown
 - machine_pulldown
+- pull_up
 technique:
   setup:
   - it: Aggancia al cavo alto una maniglia a V.

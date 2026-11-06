@@ -55,10 +55,12 @@
               "dumbbells",
               "machines",
               "cables",
-              "smith_machine"
+              "smith_machine",
+              "pull_up_bar",
+              "dip_station"
             ]
           },
-          "description": "Attrezzatura disponibile: uno o più dei sette valori dell'enum"
+          "description": "Attrezzatura disponibile: uno o più dei nove valori dell'enum"
         },
         "barKg": {
           "type": "number",

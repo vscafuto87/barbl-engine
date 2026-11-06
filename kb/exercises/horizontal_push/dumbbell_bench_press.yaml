@@ -20,6 +20,7 @@ substitutes:
 - barbell_bench_press
 - machine_chest_press
 - push_up
+- dip
 technique:
   setup:
   - it: Siediti sulla panca con i manubri sulle cosce, vicino alle ginocchia.

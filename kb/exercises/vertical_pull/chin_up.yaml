@@ -1,0 +1,63 @@
+id: chin_up
+name:
+  it: Trazioni presa supina
+  en: Chin-up
+equipment: bodyweight
+requires:
+- pull_up_bar
+pattern: vertical_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- underhand_lat_pulldown
+- pull_up
+- lat_pulldown
+technique:
+  setup:
+  - it: Prendi la sbarra con i palmi verso di te, mani alla larghezza delle spalle.
+    en: Grab the bar palms facing you, hands shoulder-width apart.
+  - it: Appenditi a braccia tese.
+    en: Hang with straight arms.
+  - it: Contrai addome e glutei per non dondolare.
+    en: Brace your abs and glutes so you do not swing.
+  cues:
+  - it: Tira il petto verso la sbarra, gomiti verso i fianchi.
+    en: Pull your chest to the bar, elbows toward your sides.
+  - it: Scendi lento fino alle braccia tese.
+    en: Lower slowly to straight arms.
+  mistakes:
+  - what:
+      it: Usi lo slancio delle gambe per salire.
+      en: You kick your legs to get up.
+    fix:
+      it: Parti da fermo con il corpo dritto.
+      en: Start from a dead hang with your body straight.
+  - what:
+      it: Fai solo la parte alta del movimento.
+      en: You only do the top part of the movement.
+    fix:
+      it: Torna sempre a braccia tese in basso.
+      en: Always return to straight arms at the bottom.
+  - what:
+      it: Le spalle salgono verso le orecchie in basso.
+      en: Your shoulders creep up to your ears at the bottom.
+    fix:
+      it: Prima di tirare abbassa un po' le spalle.
+      en: Pull your shoulders down a little before each rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 154
+    - 155
+    - 158
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null
