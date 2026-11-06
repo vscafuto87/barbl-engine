@@ -1,0 +1,62 @@
+id: pull_up
+name:
+  it: Trazioni alla sbarra
+  en: Pull-up
+equipment: bodyweight
+requires:
+- pull_up_bar
+pattern: vertical_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- lat_pulldown
+- chin_up
+- neutral_grip_pulldown
+technique:
+  setup:
+  - it: Prendi la sbarra con i palmi in avanti, mani poco più larghe delle spalle.
+    en: Grab the bar palms forward, hands a bit wider than your shoulders.
+  - it: Appenditi a braccia tese e lascia allungare la schiena.
+    en: Hang with straight arms and let your back stretch.
+  - it: Gambe dritte o incrociate dietro, come ti viene più comodo.
+    en: Legs straight or crossed behind you, whichever is more comfortable.
+  cues:
+  - it: Petto verso la sbarra, tira i gomiti verso i fianchi.
+    en: Chest toward the bar, drive your elbows down to your sides.
+  - it: Scendi lento fino alle braccia tese.
+    en: Lower slowly to straight arms.
+  mistakes:
+  - what:
+      it: Dondoli e usi lo slancio delle gambe.
+      en: You swing and use leg momentum.
+    fix:
+      it: Fermati un attimo in basso e riparti da fermo.
+      en: Pause briefly at the bottom and start from a dead stop.
+  - what:
+      it: Ti fermi a metà e non torni a braccia tese.
+      en: You stop halfway and never return to straight arms.
+    fix:
+      it: Scendi fino in fondo a ogni ripetizione.
+      en: Go all the way down on every rep.
+  - what:
+      it: Allunghi il collo per portare il mento sopra la sbarra.
+      en: You crane your neck to get your chin over the bar.
+    fix:
+      it: 'Testa neutra: conta il petto che sale, non il mento.'
+      en: 'Head neutral: the chest rising is what counts, not the chin.'
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 154
+    - 155
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

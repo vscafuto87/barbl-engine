@@ -18,6 +18,7 @@ substitutes:
 - lat_pulldown
 - neutral_grip_pulldown
 - single_arm_lat_pulldown
+- chin_up
 technique:
   setup:
   - it: Siediti con le cosce bloccate sotto il cuscino.

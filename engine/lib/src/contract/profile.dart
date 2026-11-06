@@ -14,6 +14,8 @@ const Set<String> _equipmentValues = {
   'machines',
   'cables',
   'smith_machine',
+  'pull_up_bar',
+  'dip_station',
 };
 const Set<String> _goalValues = {'muscle_gain', 'strength', 'both'};
 const Set<String> _gymTypeValues = {'full', 'home', 'dumbbells'};

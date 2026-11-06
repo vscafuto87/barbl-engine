@@ -1,0 +1,63 @@
+id: dip
+name:
+  it: Dip alle parallele
+  en: Dip
+equipment: bodyweight
+requires:
+- dip_station
+pattern: horizontal_push
+mechanics: compound
+muscles:
+  primary: chest
+  secondary:
+  - triceps
+  - front_delts
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- push_up
+- dumbbell_bench_press
+- machine_chest_press
+technique:
+  setup:
+  - it: Prendi le parallele con una presa comoda, poco più larga delle spalle.
+    en: Grab the bars with a comfortable grip, a bit wider than your shoulders.
+  - it: Sali a braccia tese, perpendicolari al pavimento.
+    en: Lift yourself up with straight arms, perpendicular to the floor.
+  - it: Gambe dritte o incrociate, busto appena inclinato in avanti.
+    en: Legs straight or crossed, torso leaning slightly forward.
+  cues:
+  - it: Scendi finché senti allungare il petto.
+    en: Lower until you feel your chest stretch.
+  - it: Spingi in alto fino alle braccia tese.
+    en: Press back up to straight arms.
+  mistakes:
+  - what:
+      it: Scendi troppo e senti fastidio alla spalla.
+      en: You go too deep and your shoulder feels uncomfortable.
+    fix:
+      it: Fermati quando il petto è allungato, senza dolore.
+      en: Stop once your chest is stretched, without pain.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders shrug up toward your ears.
+    fix:
+      it: Spalle basse e lontane dalle orecchie.
+      en: Keep your shoulders down, away from your ears.
+  - what:
+      it: Scendi di colpo e rimbalzi.
+      en: You drop fast and bounce.
+    fix:
+      it: Scendi in due secondi circa e riparti senza rimbalzo.
+      en: Lower over about two seconds and press without bouncing.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 187
+    - 188
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

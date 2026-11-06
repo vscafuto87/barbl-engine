@@ -28,6 +28,7 @@ sessions:
       - push_up
       - incline_barbell_bench_press
       - incline_machine_press
+      - dip
   - type: single
     slots:
     - pattern: horizontal_pull
@@ -91,6 +92,7 @@ sessions:
       - incline_barbell_bench_press
       - incline_machine_press
       - push_up
+      - dip
   - type: single
     slots:
     - pattern: vertical_pull
@@ -102,6 +104,8 @@ sessions:
       - single_arm_lat_pulldown
       - underhand_lat_pulldown
       - machine_pulldown
+      - pull_up
+      - chin_up
       - chest_supported_dumbbell_row
       - dumbbell_row
   - type: single
@@ -182,6 +186,7 @@ sessions:
       - incline_barbell_bench_press
       - incline_machine_press
       - push_up
+      - dip
   - type: single
     slots:
     - pattern: squat
