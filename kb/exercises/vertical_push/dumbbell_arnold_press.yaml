@@ -18,6 +18,7 @@ loading:
 substitutes:
 - seated_dumbbell_shoulder_press
 - machine_shoulder_press
+- standing_dumbbell_shoulder_press
 technique:
   setup:
   - it: Siediti con lo schienale dritto e i manubri sulle cosce.

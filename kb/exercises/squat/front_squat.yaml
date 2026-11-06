@@ -1,0 +1,68 @@
+id: front_squat
+name:
+  it: Front squat
+  en: Front squat
+equipment: barbell
+requires:
+- barbell
+- rack
+pattern: squat
+mechanics: compound
+muscles:
+  primary: quadriceps
+  secondary:
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- squat
+- goblet_squat
+- hack_squat
+technique:
+  setup:
+  - it: Metti il bilanciere nel rack all'altezza delle ascelle.
+    en: Set the bar in the rack at about armpit height.
+  - it: Appoggialo sulla parte alta del petto, gomiti alti e avanti.
+    en: Rest it on your upper chest with your elbows high and forward.
+  - it: Esci dal rack, piedi alla larghezza delle spalle.
+    en: Step out with your feet shoulder-width apart.
+  cues:
+  - it: Busto alto, scendi tra le ginocchia.
+    en: Chest tall, sit down between your knees.
+  - it: Gomiti alti per tutta la ripetizione.
+    en: Elbows high through the whole rep.
+  mistakes:
+  - what:
+      it: I gomiti cadono e il bilanciere scivola in avanti.
+      en: Your elbows drop and the bar rolls forward.
+    fix:
+      it: Spingi i gomiti in alto, soprattutto in risalita.
+      en: Drive your elbows up, especially on the way up.
+  - what:
+      it: Il busto si piega in avanti in buca.
+      en: Your torso tips forward in the hole.
+    fix:
+      it: Scendi meno o rialza un po' i talloni.
+      en: Go less deep or raise your heels slightly.
+  - what:
+      it: I polsi fanno male nella presa.
+      en: Your wrists hurt in the rack position.
+    fix:
+      it: Tieni la barra con due dita o a braccia incrociate.
+      en: Hold the bar with two fingers or with crossed arms.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 113
+    - 114
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 18
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

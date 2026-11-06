@@ -194,7 +194,6 @@ void main() {
         // disponibili del posto, e l'enfasi non li ripete.
         final skipped =
             const {
-              '4 arms': {'upper_b'},
               '4 back': {'upper_a', 'upper_b'},
               '5 back': {'pull', 'upper'},
             }['$days $emphasis'] ??

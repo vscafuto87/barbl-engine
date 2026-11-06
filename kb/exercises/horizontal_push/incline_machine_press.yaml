@@ -1,0 +1,64 @@
+id: incline_machine_press
+name:
+  it: Chest press inclinata
+  en: Incline machine press
+equipment: machine
+requires:
+- machines
+pattern: horizontal_push
+mechanics: compound
+muscles:
+  primary: chest
+  secondary:
+  - front_delts
+  - triceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- machine_chest_press
+- incline_dumbbell_press
+- incline_barbell_bench_press
+technique:
+  setup:
+  - it: Regola il sedile così che le maniglie siano all'altezza della parte alta del petto.
+    en: Set the seat so the handles line up with your upper chest.
+  - it: Schiena contro lo schienale, scapole indietro.
+    en: Back against the pad, shoulder blades pulled back.
+  - it: Prendi le maniglie con i polsi dritti.
+    en: Grab the handles with straight wrists.
+  cues:
+  - it: Spingi in avanti e in alto senza bloccare di colpo i gomiti.
+    en: Press forward and up without snapping your elbows locked.
+  - it: Torna lento finché il petto si allunga.
+    en: Return slowly until your chest stretches.
+  mistakes:
+  - what:
+      it: Il sedile è troppo basso e lavorano le spalle.
+      en: The seat is too low and your shoulders take over.
+    fix:
+      it: Alza il sedile fino alla parte alta del petto.
+      en: Raise the seat to upper-chest height.
+  - what:
+      it: Le spalle si staccano dallo schienale.
+      en: Your shoulders come off the pad.
+    fix:
+      it: Tieni le scapole contro lo schienale.
+      en: Keep your shoulder blades on the pad.
+  - what:
+      it: Fai solo metà movimento.
+      en: You only do half the movement.
+    fix:
+      it: Torna indietro finché senti allungare il petto.
+      en: Come back until you feel your chest stretch.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 181
+    - 182
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

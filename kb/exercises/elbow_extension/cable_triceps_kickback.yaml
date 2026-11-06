@@ -1,0 +1,62 @@
+id: cable_triceps_kickback
+name:
+  it: Kickback al cavo
+  en: Cable triceps kickback
+equipment: cable
+requires:
+- cables
+pattern: elbow_extension
+mechanics: isolation
+muscles:
+  primary: triceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_triceps_pushdown
+- overhead_cable_triceps_extension
+- lying_dumbbell_triceps_extension
+technique:
+  setup:
+  - it: Metti la carrucola nella posizione più bassa.
+    en: Set the pulley to its lowest position.
+  - it: Prendi la maniglia, appoggia l'altra mano sul ginocchio e piegati in avanti.
+    en: Grab the handle, brace your other hand on your knee and hinge forward.
+  - it: Braccio vicino al fianco, gomito piegato.
+    en: Upper arm by your side, elbow bent.
+  cues:
+  - it: Distendi il braccio indietro muovendo solo il gomito.
+    en: Straighten your arm back, moving only at the elbow.
+  - it: Fermati un attimo a braccio teso.
+    en: Pause briefly with the arm straight.
+  mistakes:
+  - what:
+      it: Il braccio oscilla avanti e indietro.
+      en: Your upper arm swings back and forth.
+    fix:
+      it: Tieni il braccio fermo vicino al fianco.
+      en: Keep your upper arm still by your side.
+  - what:
+      it: Non arrivi a distendere del tutto.
+      en: You do not reach full extension.
+    fix:
+      it: Riduci il carico e chiudi il gomito.
+      en: Lower the load and lock the elbow out.
+  - what:
+      it: Il busto si rialza durante la serie.
+      en: Your torso rises during the set.
+    fix:
+      it: Resta piegato con la schiena dritta.
+      en: Stay hinged with a flat back.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 223
+    - 224
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

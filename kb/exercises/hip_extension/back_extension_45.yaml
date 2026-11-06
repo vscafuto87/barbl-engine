@@ -1,0 +1,63 @@
+id: back_extension_45
+name:
+  it: Iperestensioni a 45 gradi
+  en: 45-degree back extension
+equipment: machine
+requires:
+- machines
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary:
+  - hamstrings
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_hip_thrust
+- cable_pull_through
+- dumbbell_hip_thrust
+technique:
+  setup:
+  - it: Regola il cuscino così che arrivi alla parte alta delle cosce.
+    en: Set the pad so it sits at the top of your thighs.
+  - it: Talloni contro la pedana, caviglie sotto il rullo.
+    en: Heels against the footplate, ankles under the roller.
+  - it: Braccia incrociate sul petto o un disco tra le mani.
+    en: Arms crossed on your chest or a plate in your hands.
+  cues:
+  - it: Scendi piegando le anche, schiena dritta.
+    en: Lower by bending at the hips, back flat.
+  - it: Risali stringendo i glutei finché il corpo è in linea.
+    en: Rise by squeezing your glutes until your body is in line.
+  mistakes:
+  - what:
+      it: Il cuscino è troppo alto e le anche non si piegano.
+      en: The pad is too high and your hips cannot bend.
+    fix:
+      it: Abbassalo sotto l'anca.
+      en: Lower it below your hip crease.
+  - what:
+      it: In alto inarchi molto la schiena.
+      en: You arch hard at the top.
+    fix:
+      it: Fermati con il corpo in linea retta.
+      en: Stop with your body in a straight line.
+  - what:
+      it: Arrotondi la schiena in basso.
+      en: You round your back at the bottom.
+    fix:
+      it: Scendi solo finché la schiena resta dritta.
+      en: Go down only as far as your back stays flat.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 135
+    - 136
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

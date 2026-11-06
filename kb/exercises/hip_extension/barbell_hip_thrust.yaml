@@ -17,6 +17,9 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_hip_thrust
+- single_leg_hip_thrust
+- cable_glute_kickback
+- back_extension_45
 technique:
   setup:
   - it: Appoggia il bilanciere a terra davanti a una panca bassa, fissata a un muro.

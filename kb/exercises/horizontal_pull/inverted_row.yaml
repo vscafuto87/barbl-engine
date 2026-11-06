@@ -1,0 +1,58 @@
+id: inverted_row
+name:
+  it: Rematore inverso
+  en: Inverted row
+equipment: bodyweight
+requires:
+- barbell
+- rack
+pattern: horizontal_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- barbell_row
+- dumbbell_row
+- chest_supported_dumbbell_row
+technique:
+  setup:
+  - it: Metti il bilanciere nel rack all'altezza dei fianchi.
+    en: Set the bar in the rack at about hip height.
+  - it: Sdraiati sotto e prendilo poco più largo delle spalle.
+    en: Lie under it and grab it a bit wider than your shoulders.
+  - it: Talloni a terra, corpo dritto dalle spalle ai piedi.
+    en: Heels on the floor, body straight from shoulders to feet.
+  cues:
+  - it: Tira il petto verso la barra.
+    en: Pull your chest to the bar.
+  - it: Scendi lento fino alle braccia tese.
+    en: Lower slowly to straight arms.
+  mistakes:
+  - what:
+      it: Il bacino cade e il corpo si piega.
+      en: Your hips sag and your body bends.
+    fix:
+      it: 'Stringi glutei e addome: corpo a tavola.'
+      en: 'Squeeze glutes and abs: body like a plank.'
+  - what:
+      it: Arrivi solo a metà.
+      en: You only get halfway up.
+    fix:
+      it: Alza la barra o piega le ginocchia per arrivare al petto.
+      en: Raise the bar or bend your knees to reach your chest.
+  - what:
+      it: Tiri con il collo in avanti.
+      en: You reach forward with your neck.
+    fix:
+      it: Testa in linea con il corpo.
+      en: Keep your head in line with your body.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: 'Scheda dalla pratica di coaching, senza una pagina di libro dedicata: da rivedere con il coach.'
+  status: provisional
+  reviewedBy: null

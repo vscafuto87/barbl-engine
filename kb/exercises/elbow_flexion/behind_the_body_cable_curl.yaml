@@ -1,0 +1,66 @@
+id: behind_the_body_cable_curl
+name:
+  it: Curl al cavo da dietro
+  en: Behind-the-body cable curl
+equipment: cable
+requires:
+- cables
+pattern: elbow_flexion
+mechanics: isolation
+muscles:
+  primary: biceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- incline_dumbbell_curl
+- cable_curl
+- dumbbell_curl
+technique:
+  setup:
+  - it: Metti la carrucola in basso con una maniglia singola.
+    en: Set the pulley low with a single handle.
+  - it: Dai le spalle al cavo e fai un passo avanti.
+    en: Turn your back to the cable and step forward.
+  - it: Lascia il braccio teso un po' dietro il corpo.
+    en: Let your arm hang straight, slightly behind your body.
+  cues:
+  - it: Piega il gomito portando la mano verso la spalla.
+    en: Bend your elbow and bring your hand toward your shoulder.
+  - it: Gomito fermo dietro il fianco.
+    en: Elbow still, behind your hip.
+  mistakes:
+  - what:
+      it: Il gomito va avanti e perdi l'allungamento.
+      en: Your elbow drifts forward and you lose the stretch.
+    fix:
+      it: Tienilo indietro per tutta la ripetizione.
+      en: Keep it back through the whole rep.
+  - what:
+      it: Ti sbilanci in avanti a ogni ripetizione.
+      en: You lurch forward on every rep.
+    fix:
+      it: Allarga il passo e contrai l'addome.
+      en: Widen your stance and brace your abs.
+  - what:
+      it: Non distendi il braccio in basso.
+      en: You do not straighten your arm at the bottom.
+    fix:
+      it: Scendi fino al braccio teso.
+      en: Lower to a straight arm.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 215
+    - 216
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 9
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

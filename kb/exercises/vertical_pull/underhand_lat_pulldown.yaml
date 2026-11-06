@@ -1,0 +1,64 @@
+id: underhand_lat_pulldown
+name:
+  it: Lat machine presa supina
+  en: Underhand lat pulldown
+equipment: cable
+requires:
+- cables
+pattern: vertical_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- lat_pulldown
+- neutral_grip_pulldown
+- single_arm_lat_pulldown
+technique:
+  setup:
+  - it: Siediti con le cosce bloccate sotto il cuscino.
+    en: Sit with your thighs locked under the pad.
+  - it: Prendi la barra con i palmi verso di te, mani alla larghezza delle spalle.
+    en: Grab the bar palms facing you, hands shoulder-width apart.
+  - it: Parti con le braccia tese e il petto alto.
+    en: Start with straight arms and your chest up.
+  cues:
+  - it: Porta la barra verso la parte alta del petto.
+    en: Bring the bar toward your upper chest.
+  - it: Gomiti giù e vicini al corpo.
+    en: Elbows down and close to your body.
+  mistakes:
+  - what:
+      it: Ti butti indietro e tiri con il peso del corpo.
+      en: You lean far back and pull with your body weight.
+    fix:
+      it: Resta quasi verticale, con una leggera inclinazione.
+      en: Stay nearly upright with only a slight lean.
+  - what:
+      it: Tiri solo con le braccia e senti poco la schiena.
+      en: You pull only with your arms and barely feel your back.
+    fix:
+      it: Pensa a portare i gomiti verso i fianchi.
+      en: Think of driving your elbows toward your hips.
+  - what:
+      it: Lasci salire la barra di colpo.
+      en: You let the bar shoot back up.
+    fix:
+      it: Accompagna la risalita fino alle braccia tese.
+      en: Control the way up until your arms are straight.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 158
+    - 159
+    - 160
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

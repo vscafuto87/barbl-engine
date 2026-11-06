@@ -18,6 +18,8 @@ loading:
 substitutes:
 - military_press
 - machine_shoulder_press
+- standing_dumbbell_shoulder_press
+- landmine_press
 technique:
   setup:
   - it: Siediti sulla panca con i manubri sulle cosce, vicino alle ginocchia.

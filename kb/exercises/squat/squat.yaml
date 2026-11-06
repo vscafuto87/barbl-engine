@@ -19,6 +19,7 @@ substitutes:
 - leg_press
 - goblet_squat
 - smith_machine_squat
+- front_squat
 technique:
   setup:
   - it: Metti il bilanciere nel rack all'altezza delle ascelle.

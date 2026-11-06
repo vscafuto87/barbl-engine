@@ -16,6 +16,8 @@ loading:
 substitutes:
 - leg_curl
 - dumbbell_romanian_deadlift
+- standing_leg_curl
+- dumbbell_leg_curl
 technique:
   setup:
   - it: Siediti con la schiena ben appoggiata.

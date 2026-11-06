@@ -16,6 +16,8 @@ loading:
 substitutes:
 - overhead_cable_triceps_extension
 - dumbbell_overhead_triceps_extension
+- lying_dumbbell_triceps_extension
+- cable_triceps_kickback
 technique:
   setup:
   - it: Regola la puleggia all'altezza degli occhi o appena sopra.

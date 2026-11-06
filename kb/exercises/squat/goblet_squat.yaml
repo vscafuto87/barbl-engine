@@ -17,6 +17,7 @@ loading:
 substitutes:
 - bulgarian_split_squat
 - leg_press
+- front_squat
 technique:
   setup:
   - it: Tieni un manubrio in verticale, con i palmi sotto la testa superiore.

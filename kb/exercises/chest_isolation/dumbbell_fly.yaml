@@ -16,6 +16,7 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - cable_fly
+- incline_dumbbell_fly
 technique:
   setup:
   - it: Sdraiati sulla panca con i manubri sopra le spalle.

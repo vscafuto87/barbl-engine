@@ -1,0 +1,63 @@
+id: single_arm_lat_pulldown
+name:
+  it: Lat machine a un braccio
+  en: Single-arm lat pulldown
+equipment: cable
+requires:
+- cables
+pattern: vertical_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- lat_pulldown
+- neutral_grip_pulldown
+- underhand_lat_pulldown
+technique:
+  setup:
+  - it: Siediti alla lat machine con le cosce bloccate sotto il cuscino.
+    en: Sit at the pulldown station with your thighs locked under the pad.
+  - it: Aggancia una maniglia singola e prendila con una mano.
+    en: Attach a single handle and grab it with one hand.
+  - it: Lascia salire il braccio finché senti allungare il fianco.
+    en: Let the arm rise until you feel your side stretch.
+  cues:
+  - it: Tira il gomito verso il fianco, non dietro la schiena.
+    en: Pull your elbow toward your hip, not behind your back.
+  - it: Busto fermo, risali lento fino al braccio teso.
+    en: Torso still, go back up slowly to a straight arm.
+  mistakes:
+  - what:
+      it: Ruoti il busto per tirare più peso.
+      en: You twist your torso to move more weight.
+    fix:
+      it: Riduci il carico e tieni le spalle rivolte avanti.
+      en: Lower the load and keep your shoulders facing forward.
+  - what:
+      it: La spalla resta alta vicino all'orecchio.
+      en: Your shoulder stays shrugged up by your ear.
+    fix:
+      it: Abbassa prima la spalla, poi piega il gomito.
+      en: Drop your shoulder first, then bend the elbow.
+  - what:
+      it: Non torni mai al braccio teso.
+      en: You never return to a straight arm.
+    fix:
+      it: Risali finché il dorsale si allunga del tutto.
+      en: Go up until the lat is fully stretched.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 159
+    - 160
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

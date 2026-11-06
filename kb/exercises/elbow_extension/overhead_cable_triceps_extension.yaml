@@ -16,6 +16,7 @@ loading:
 substitutes:
 - dumbbell_overhead_triceps_extension
 - cable_triceps_pushdown
+- cable_triceps_kickback
 technique:
   setup:
   - it: Metti la puleggia in basso e attacca una barra dritta o EZ.

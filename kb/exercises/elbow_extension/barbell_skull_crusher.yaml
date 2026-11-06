@@ -16,6 +16,7 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_overhead_triceps_extension
+- lying_dumbbell_triceps_extension
 technique:
   setup:
   - it: Sdraiati sulla panca con il bilanciere EZ in mano, presa stretta.

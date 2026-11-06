@@ -17,6 +17,8 @@ loading:
 substitutes:
 - dumbbell_row
 - seated_cable_row
+- incline_bench_barbell_row
+- inverted_row
 technique:
   setup:
   - it: Metti il bilanciere a metà coscia, all'altezza dello stacco.

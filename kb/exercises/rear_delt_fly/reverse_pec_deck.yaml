@@ -16,6 +16,7 @@ loading:
 substitutes:
 - cable_rear_delt_fly
 - dumbbell_rear_delt_fly
+- face_pull
 technique:
   setup:
   - it: Regola il sedile in modo che le maniglie siano all'altezza delle spalle.

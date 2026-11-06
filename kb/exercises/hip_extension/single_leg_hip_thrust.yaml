@@ -1,0 +1,62 @@
+id: single_leg_hip_thrust
+name:
+  it: Hip thrust a una gamba
+  en: Single-leg hip thrust
+equipment: bodyweight
+requires:
+- bench
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary:
+  - hamstrings
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_hip_thrust
+- barbell_hip_thrust
+- barbell_glute_bridge
+technique:
+  setup:
+  - it: Appoggia la parte alta della schiena sul bordo della panca.
+    en: Rest your upper back on the edge of the bench.
+  - it: Un piede a terra sotto il ginocchio, l'altra gamba sollevata.
+    en: One foot flat under your knee, the other leg lifted.
+  - it: Mento verso il petto.
+    en: Chin tucked toward your chest.
+  cues:
+  - it: Spingi con il tallone e alza il bacino.
+    en: Drive through your heel and lift your hips.
+  - it: In alto stringi il gluteo, poi scendi lento.
+    en: Squeeze your glute at the top, then lower slowly.
+  mistakes:
+  - what:
+      it: Il bacino si inclina da un lato.
+      en: Your hips tilt to one side.
+    fix:
+      it: Tieni il bacino dritto, anche alla stessa altezza.
+      en: Keep your hips level.
+  - what:
+      it: Inarchi la schiena in alto.
+      en: You arch your lower back at the top.
+    fix:
+      it: Fermati quando il busto è in linea con la coscia.
+      en: Stop when your torso lines up with your thigh.
+  - what:
+      it: Spingi con la punta del piede.
+      en: You push through your toes.
+    fix:
+      it: Il peso sta sul tallone.
+      en: Keep the weight on your heel.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 133
+    - 134
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

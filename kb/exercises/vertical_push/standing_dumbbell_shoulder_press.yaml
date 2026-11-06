@@ -1,0 +1,63 @@
+id: standing_dumbbell_shoulder_press
+name:
+  it: Lento in piedi con manubri
+  en: Standing dumbbell shoulder press
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: vertical_push
+mechanics: compound
+muscles:
+  primary: shoulders
+  secondary:
+  - triceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- seated_dumbbell_shoulder_press
+- military_press
+- dumbbell_arnold_press
+technique:
+  setup:
+  - it: Stai in piedi con i piedi alla larghezza delle anche.
+    en: Stand with your feet hip-width apart.
+  - it: Porta i manubri all'altezza delle spalle, gomiti un po' avanti.
+    en: Bring the dumbbells to shoulder height, elbows slightly forward.
+  - it: Contrai addome e glutei.
+    en: Brace your abs and glutes.
+  cues:
+  - it: Spingi in alto finché le braccia sono quasi tese.
+    en: Press up until your arms are nearly straight.
+  - it: Scendi lento fino alle spalle.
+    en: Lower slowly back to your shoulders.
+  mistakes:
+  - what:
+      it: Inarchi la schiena per spingere.
+      en: You arch your back to press.
+    fix:
+      it: Stringi i glutei e tieni le costole basse.
+      en: Squeeze your glutes and keep your ribs down.
+  - what:
+      it: Ti aiuti con un piegamento delle gambe.
+      en: You dip your knees to help.
+    fix:
+      it: 'Gambe ferme: la spinta viene solo dalle braccia.'
+      en: 'Legs still: the drive comes only from your arms.'
+  - what:
+      it: Scendi solo a metà.
+      en: You only come halfway down.
+    fix:
+      it: Porta i manubri fino all'altezza delle spalle.
+      en: Bring the dumbbells all the way to shoulder height.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 201
+    - 202
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

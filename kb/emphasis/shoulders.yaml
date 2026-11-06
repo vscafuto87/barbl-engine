@@ -13,6 +13,7 @@ placements:
       candidates:
       - cable_lateral_raise
       - dumbbell_lateral_raise
+      - lying_incline_lateral_raise
   - session: full_c
     slot:
       pattern: rear_delt_fly
@@ -20,6 +21,7 @@ placements:
       candidates:
       - cable_rear_delt_fly
       - dumbbell_rear_delt_fly
+      - face_pull
   upper_lower_4d:
   - session: upper_a
     slot:
@@ -28,6 +30,7 @@ placements:
       candidates:
       - cable_lateral_raise
       - dumbbell_lateral_raise
+      - lying_incline_lateral_raise
   - session: upper_b
     slot:
       pattern: rear_delt_fly
@@ -35,6 +38,7 @@ placements:
       candidates:
       - cable_rear_delt_fly
       - dumbbell_rear_delt_fly
+      - face_pull
   ppl_ul_5d:
   - session: push
     slot:
@@ -43,6 +47,7 @@ placements:
       candidates:
       - dumbbell_lateral_raise
       - cable_lateral_raise
+      - lying_incline_lateral_raise
   - session: upper
     slot:
       pattern: rear_delt_fly
@@ -50,6 +55,7 @@ placements:
       candidates:
       - dumbbell_rear_delt_fly
       - cable_rear_delt_fly
+      - face_pull
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

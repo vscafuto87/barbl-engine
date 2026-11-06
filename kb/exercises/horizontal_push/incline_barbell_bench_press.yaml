@@ -1,0 +1,66 @@
+id: incline_barbell_bench_press
+name:
+  it: Panca inclinata con bilanciere
+  en: Incline barbell bench press
+equipment: barbell
+requires:
+- barbell
+- bench
+- rack
+pattern: horizontal_push
+mechanics: compound
+muscles:
+  primary: chest
+  secondary:
+  - front_delts
+  - triceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- incline_dumbbell_press
+- barbell_bench_press
+- incline_machine_press
+technique:
+  setup:
+  - it: Inclina lo schienale di circa 30-45 gradi.
+    en: Set the backrest to roughly 30 to 45 degrees.
+  - it: Sdraiati con gli occhi sotto la barra e i piedi ben piantati.
+    en: Lie with your eyes under the bar and your feet planted.
+  - it: Prendi la barra poco più larga delle spalle, scapole indietro.
+    en: Grip just wider than your shoulders, shoulder blades pulled back.
+  cues:
+  - it: Porta la barra alla parte alta del petto.
+    en: Lower the bar to your upper chest.
+  - it: Spingi in alto e un po' indietro, sopra le spalle.
+    en: Press up and slightly back, over your shoulders.
+  mistakes:
+  - what:
+      it: Lo schienale è troppo dritto e lavorano soprattutto le spalle.
+      en: The backrest is too upright and your shoulders do most of the work.
+    fix:
+      it: Abbassa l'inclinazione verso i 30 gradi.
+      en: Lower the incline toward 30 degrees.
+  - what:
+      it: Stacchi il bacino dalla panca per spingere.
+      en: You lift your hips off the bench to press.
+    fix:
+      it: Glutei sempre appoggiati.
+      en: Keep your glutes on the bench.
+  - what:
+      it: Fai rimbalzare la barra sul petto.
+      en: You bounce the bar off your chest.
+    fix:
+      it: Tocca piano e riparti.
+      en: Touch lightly and press.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 181
+    - 182
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

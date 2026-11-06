@@ -18,6 +18,7 @@ loading:
 substitutes:
 - dumbbell_walking_lunge
 - goblet_squat
+- smith_machine_split_squat
 technique:
   setup:
   - it: Tieni un manubrio per mano, oppure uno solo contro il petto.

@@ -16,6 +16,8 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - romanian_deadlift
+- good_morning
+- stiff_leg_deadlift
 technique:
   setup:
   - it: Tieni un manubrio per mano, davanti alle cosce.

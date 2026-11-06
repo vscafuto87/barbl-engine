@@ -27,6 +27,8 @@ sessions:
       - dumbbell_bench_press
       - machine_chest_press
       - push_up
+      - incline_barbell_bench_press
+      - incline_machine_press
   - type: superset
     label: A
     slots:
@@ -38,6 +40,9 @@ sessions:
       - dumbbell_row
       - seated_cable_row
       - barbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
     - pattern: vertical_push
       role: secondary
       askLoad: true
@@ -45,6 +50,8 @@ sessions:
       - military_press
       - seated_dumbbell_shoulder_press
       - machine_shoulder_press
+      - standing_dumbbell_shoulder_press
+      - landmine_press
       repsOverride:
         min: 6
         max: 8
@@ -55,33 +62,40 @@ sessions:
     slots:
     - pattern: vertical_pull
       role: secondary
-      equivalent: 2
+      equivalent: 4
       candidates:
       - lat_pulldown
       - neutral_grip_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
       - chest_supported_dumbbell_row
   - type: superset
     label: B
     slots:
     - pattern: elbow_extension
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
       - barbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
       - cable_triceps_pushdown
       - barbell_skull_crusher
+      - cable_triceps_kickback
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 4
+      equivalent: 5
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
       - cable_curl
       - dumbbell_curl
+      - behind_the_body_cable_curl
       - hammer_curl
       - barbell_curl
+      - spider_curl
 - id: lower_a
   name:
     it: Lower A
@@ -97,13 +111,16 @@ sessions:
       - squat
       - leg_press
       - goblet_squat
+      - front_squat
   - type: single
     slots:
     - pattern: knee_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - seated_leg_curl
+      - standing_leg_curl
+      - dumbbell_leg_curl
       - single_leg_dumbbell_romanian_deadlift
       - leg_curl
       - dumbbell_romanian_deadlift
@@ -113,6 +130,7 @@ sessions:
       role: accessory
       candidates:
       - leg_extension
+      - sissy_squat
       - bulgarian_split_squat
       - goblet_squat
   - type: single
@@ -141,56 +159,70 @@ sessions:
       - incline_dumbbell_press
       - machine_chest_press
       - push_up
+      - incline_barbell_bench_press
+      - incline_machine_press
   - type: single
     slots:
     - pattern: horizontal_pull
       role: secondary
-      equivalent: 2
+      equivalent: 4
       candidates:
       - seated_cable_row
       - chest_supported_dumbbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
       - barbell_row
+      - inverted_row
   - type: single
     slots:
     - pattern: vertical_pull
       role: secondary
-      equivalent: 2
+      equivalent: 4
       candidates:
       - lat_pulldown
       - neutral_grip_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
       - dumbbell_row
   - type: single
     slots:
     - pattern: chest_isolation
       role: accessory
-      equivalent: 3
+      equivalent: 5
       candidates:
       - cable_fly
       - dumbbell_fly
       - pec_deck_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
       - push_up
   - type: superset
     label: A
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 4
+      equivalent: 5
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
       - cable_curl
       - dumbbell_curl
+      - behind_the_body_cable_curl
       - hammer_curl
       - barbell_curl
+      - spider_curl
     - pattern: elbow_extension
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
       - barbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
       - cable_triceps_pushdown
       - barbell_skull_crusher
+      - cable_triceps_kickback
 - id: lower_b
   name:
     it: Lower B
@@ -204,33 +236,39 @@ sessions:
       candidates:
       - romanian_deadlift
       - dumbbell_romanian_deadlift
+      - good_morning
+      - stiff_leg_deadlift
   - type: single
     slots:
     - pattern: squat
       role: secondary
-      equivalent: 2
+      equivalent: 3
       candidates:
       - leg_press
       - hack_squat
+      - front_squat
       - goblet_squat
       - smith_machine_squat
   - type: single
     slots:
     - pattern: lunge
       role: secondary
-      equivalent: 3
+      equivalent: 4
       candidates:
       - bulgarian_split_squat
       - dumbbell_walking_lunge
       - dumbbell_reverse_lunge
+      - smith_machine_split_squat
       - dumbbell_step_up
   - type: single
     slots:
     - pattern: knee_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - seated_leg_curl
+      - standing_leg_curl
+      - dumbbell_leg_curl
       - single_leg_dumbbell_romanian_deadlift
       - leg_curl
       - dumbbell_romanian_deadlift
