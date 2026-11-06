@@ -17,6 +17,8 @@ loading:
 substitutes:
 - barbell_hip_thrust
 - dumbbell_hip_thrust
+- cable_glute_kickback
+- back_extension_45
 technique:
   setup:
   - it: Regola la puleggia in basso e aggancia la corda.

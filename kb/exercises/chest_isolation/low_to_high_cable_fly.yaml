@@ -1,0 +1,62 @@
+id: low_to_high_cable_fly
+name:
+  it: Croci ai cavi dal basso
+  en: Low-to-high cable fly
+equipment: cable
+requires:
+- cables
+pattern: chest_isolation
+mechanics: isolation
+muscles:
+  primary: chest
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_fly
+- incline_dumbbell_fly
+- pec_deck_fly
+technique:
+  setup:
+  - it: Metti le carrucole nella posizione più bassa.
+    en: Set both pulleys to the lowest position.
+  - it: Prendi le maniglie e fai un passo avanti, un piede davanti all'altro.
+    en: Grab the handles and step forward in a split stance.
+  - it: Braccia in basso e ai lati, gomiti appena piegati.
+    en: Arms low and out to the sides, elbows slightly bent.
+  cues:
+  - it: Porta le mani in alto e verso il centro, all'altezza del mento.
+    en: Sweep your hands up and in to chin height.
+  - it: Torna lento finché il petto si allunga.
+    en: Return slowly until your chest stretches.
+  mistakes:
+  - what:
+      it: Tiri con le braccia piegando molto i gomiti.
+      en: You pull with your arms, bending your elbows a lot.
+    fix:
+      it: Gomiti fissi, muovi solo dalla spalla.
+      en: Elbows fixed, move only from the shoulder.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders shrug up toward your ears.
+    fix:
+      it: Spalle basse e petto alto.
+      en: Shoulders down, chest up.
+  - what:
+      it: Il busto oscilla a ogni ripetizione.
+      en: Your torso rocks on every rep.
+    fix:
+      it: Stabilizzati con il passo e riduci il carico.
+      en: Brace with your stance and lower the load.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 191
+    - 192
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

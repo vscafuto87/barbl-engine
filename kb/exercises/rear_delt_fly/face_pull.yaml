@@ -1,0 +1,62 @@
+id: face_pull
+name:
+  it: Face pull
+  en: Face pull
+equipment: cable
+requires:
+- cables
+pattern: rear_delt_fly
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary:
+  - back
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_rear_delt_fly
+- reverse_pec_deck
+- dumbbell_rear_delt_fly
+technique:
+  setup:
+  - it: Metti la carrucola all'altezza della fronte e aggancia la corda.
+    en: Set the pulley at forehead height and attach a rope.
+  - it: Prendi la corda con i pollici verso di te e fai un passo indietro.
+    en: Grab the rope thumbs toward you and step back.
+  - it: Braccia tese davanti, busto fermo.
+    en: Arms straight in front, torso still.
+  cues:
+  - it: Tira la corda verso il viso aprendo le mani ai lati.
+    en: Pull the rope toward your face, spreading your hands apart.
+  - it: Gomiti alti, all'altezza delle spalle.
+    en: Elbows high, level with your shoulders.
+  mistakes:
+  - what:
+      it: Ti butti indietro con il busto.
+      en: You lean back with your torso.
+    fix:
+      it: Riduci il carico e resta dritto.
+      en: Lower the load and stay upright.
+  - what:
+      it: I gomiti scendono e diventa un rematore.
+      en: Your elbows drop and it becomes a row.
+    fix:
+      it: Tieni i gomiti all'altezza delle spalle.
+      en: Keep your elbows at shoulder height.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders shrug up.
+    fix:
+      it: Spalle basse prima di tirare.
+      en: Set your shoulders down before you pull.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 210
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

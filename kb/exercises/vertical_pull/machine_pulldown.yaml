@@ -1,0 +1,63 @@
+id: machine_pulldown
+name:
+  it: Lat machine alla macchina
+  en: Machine pulldown
+equipment: machine
+requires:
+- machines
+pattern: vertical_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- lat_pulldown
+- neutral_grip_pulldown
+- single_arm_lat_pulldown
+technique:
+  setup:
+  - it: Regola il sedile così che le maniglie siano appena raggiungibili a braccia tese.
+    en: Set the seat so the handles are just reachable with straight arms.
+  - it: Blocca le cosce sotto il cuscino.
+    en: Lock your thighs under the pad.
+  - it: Prendi le maniglie con la presa indicata dalla macchina.
+    en: Grab the handles with the grip the machine is built for.
+  cues:
+  - it: Tira i gomiti verso i fianchi.
+    en: Pull your elbows toward your hips.
+  - it: Petto alto, risali lento.
+    en: Chest up, return slowly.
+  mistakes:
+  - what:
+      it: Il sedile è troppo alto e le braccia non si distendono.
+      en: The seat is too high and your arms never straighten.
+    fix:
+      it: Abbassa il sedile finché parti a braccia tese.
+      en: Lower the seat until you start with straight arms.
+  - what:
+      it: Le spalle salgono verso le orecchie a ogni ripetizione.
+      en: Your shoulders creep up to your ears on every rep.
+    fix:
+      it: Spalle basse prima di tirare.
+      en: Set your shoulders down before you pull.
+  - what:
+      it: Rimbalzi in basso per ripartire.
+      en: You bounce at the bottom to get going.
+    fix:
+      it: Fai una breve pausa con i gomiti ai fianchi.
+      en: Pause briefly with your elbows at your sides.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 159
+    - 160
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

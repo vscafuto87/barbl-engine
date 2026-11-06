@@ -19,6 +19,8 @@ loading:
 substitutes:
 - dumbbell_bench_press
 - machine_chest_press
+- incline_barbell_bench_press
+- incline_machine_press
 technique:
   setup:
   - it: Regola la panca con uno schienale poco inclinato.

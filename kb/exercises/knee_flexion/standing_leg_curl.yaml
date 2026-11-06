@@ -1,0 +1,62 @@
+id: standing_leg_curl
+name:
+  it: Leg curl in piedi
+  en: Standing leg curl
+equipment: machine
+requires:
+- machines
+pattern: knee_flexion
+mechanics: isolation
+muscles:
+  primary: hamstrings
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- seated_leg_curl
+- leg_curl
+- dumbbell_leg_curl
+technique:
+  setup:
+  - it: Regola il rullo appena sopra il tallone.
+    en: Set the roller just above your heel.
+  - it: Allinea il ginocchio all'asse della macchina.
+    en: Line your knee up with the machine's pivot.
+  - it: Appoggia le mani e tieni il busto fermo.
+    en: Hold the handles and keep your torso still.
+  cues:
+  - it: Porta il tallone verso il gluteo.
+    en: Bring your heel toward your glute.
+  - it: Scendi lento fino alla gamba tesa.
+    en: Lower slowly to a straight leg.
+  mistakes:
+  - what:
+      it: Spingi l'anca in avanti per aiutarti.
+      en: You push your hip forward to help.
+    fix:
+      it: Bacino contro il cuscino per tutta la serie.
+      en: Keep your hips against the pad the whole set.
+  - what:
+      it: Il rullo scivola sul polpaccio.
+      en: The roller slides up your calf.
+    fix:
+      it: Riposizionalo sopra il tallone.
+      en: Set it back above your heel.
+  - what:
+      it: Lasci cadere il peso in discesa.
+      en: You let the weight drop on the way down.
+    fix:
+      it: Controlla la discesa per due secondi circa.
+      en: Control the lowering for about two seconds.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 145
+    - 146
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -1,0 +1,57 @@
+id: cable_glute_kickback
+name:
+  it: Slanci al cavo
+  en: Cable glute kickback
+equipment: cable
+requires:
+- cables
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_pull_through
+- dumbbell_hip_thrust
+- barbell_hip_thrust
+technique:
+  setup:
+  - it: Metti la carrucola in basso e aggancia la cavigliera.
+    en: Set the pulley low and attach an ankle strap.
+  - it: Allaccia la cavigliera e mettiti di fronte al cavo.
+    en: Strap it on and face the cable.
+  - it: Tieniti alla macchina e piega un po' il busto in avanti.
+    en: Hold the machine and lean slightly forward.
+  cues:
+  - it: Porta la gamba indietro spingendo con il gluteo.
+    en: Drive your leg back, pushing with your glute.
+  - it: Torna lento fino a sotto il bacino.
+    en: Return slowly to under your hips.
+  mistakes:
+  - what:
+      it: Inarchi la schiena per portare la gamba più in alto.
+      en: You arch your back to lift the leg higher.
+    fix:
+      it: Fermati quando la schiena inizia a inarcarsi.
+      en: Stop when your back starts to arch.
+  - what:
+      it: Ruoti il bacino verso l'esterno.
+      en: You rotate your hips outward.
+    fix:
+      it: Bacino rivolto verso la macchina.
+      en: Keep your hips square to the machine.
+  - what:
+      it: Slanci la gamba di scatto.
+      en: You swing your leg with momentum.
+    fix:
+      it: Movimento lento, con una pausa dietro.
+      en: Move slowly with a pause at the back.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: 'Scheda dalla pratica di coaching, senza una pagina di libro dedicata: da rivedere con il coach.'
+  status: provisional
+  reviewedBy: null

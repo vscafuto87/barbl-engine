@@ -1,0 +1,62 @@
+id: dumbbell_leg_curl
+name:
+  it: Leg curl con manubrio
+  en: Dumbbell leg curl
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: knee_flexion
+mechanics: isolation
+muscles:
+  primary: hamstrings
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- leg_curl
+- seated_leg_curl
+- standing_leg_curl
+technique:
+  setup:
+  - it: Sdraiati a pancia in giù sulla panca, ginocchia appena oltre il bordo.
+    en: Lie face down on the bench with your knees just past the edge.
+  - it: Fatti passare o prendi un manubrio tra i piedi, stretto in verticale.
+    en: Have someone hand you, or pick up, a dumbbell held upright between your feet.
+  - it: Afferra la panca con le mani.
+    en: Hold on to the bench with your hands.
+  cues:
+  - it: Piedi a martello, stringi il manubrio.
+    en: Feet flexed, squeeze the dumbbell.
+  - it: Sali fino a gambe verticali, scendi lento.
+    en: Curl until your shins are vertical, lower slowly.
+  mistakes:
+  - what:
+      it: Il manubrio scivola tra i piedi.
+      en: The dumbbell slips between your feet.
+    fix:
+      it: Usa un carico leggero e tieni i piedi a martello.
+      en: Use a light load and keep your feet flexed.
+  - what:
+      it: Inarchi la schiena per salire.
+      en: You arch your back to lift.
+    fix:
+      it: Bacino premuto sulla panca.
+      en: Press your hips into the bench.
+  - what:
+      it: Superi la verticale e il carico non lavora più.
+      en: You go past vertical where the load stops working.
+    fix:
+      it: Fermati con le gambe verticali.
+      en: Stop when your shins are vertical.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 145
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

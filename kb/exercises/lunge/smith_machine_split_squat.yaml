@@ -1,0 +1,63 @@
+id: smith_machine_split_squat
+name:
+  it: Split squat al multipower
+  en: Smith machine split squat
+equipment: smith_machine
+requires:
+- smith_machine
+pattern: lunge
+mechanics: compound
+muscles:
+  primary: quadriceps
+  secondary:
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- bulgarian_split_squat
+- dumbbell_reverse_lunge
+- dumbbell_walking_lunge
+technique:
+  setup:
+  - it: Metti il bilanciere del multipower sulle spalle.
+    en: Put the Smith machine bar across your shoulders.
+  - it: 'Fai un passo lungo: un piede avanti, l''altro dietro sulla punta.'
+    en: 'Take a long stance: one foot forward, the other back on its toes.'
+  - it: Sblocca la barra e trova l'equilibrio.
+    en: Unlock the bar and find your balance.
+  cues:
+  - it: Scendi in verticale finché il ginocchio dietro sfiora terra.
+    en: Drop straight down until your back knee nearly touches the floor.
+  - it: Spingi con il piede davanti.
+    en: Drive up through your front foot.
+  mistakes:
+  - what:
+      it: Il passo è troppo corto e il ginocchio davanti va molto avanti.
+      en: Your stance is too short and your front knee shoots forward.
+    fix:
+      it: Allunga il passo finché scendi comodo.
+      en: Lengthen the stance until you can drop comfortably.
+  - what:
+      it: Spingi con la gamba dietro.
+      en: You push with the back leg.
+    fix:
+      it: Il peso sta sul piede davanti.
+      en: Keep your weight on the front foot.
+  - what:
+      it: Non arrivi in basso.
+      en: You do not go deep.
+    fix:
+      it: Scendi fino a sfiorare terra con il ginocchio.
+      en: Lower until your knee nearly touches the floor.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 118
+    - 119
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

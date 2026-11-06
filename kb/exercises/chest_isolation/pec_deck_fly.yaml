@@ -16,6 +16,7 @@ loading:
 substitutes:
 - cable_fly
 - dumbbell_fly
+- low_to_high_cable_fly
 technique:
   setup:
   - it: 'Regola il sedile: le braccia partono quasi parallele al pavimento.'

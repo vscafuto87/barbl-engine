@@ -13,6 +13,9 @@ placements:
       candidates:
       - lat_pulldown
       - neutral_grip_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
       - chest_supported_dumbbell_row
   - session: full_c
     slot:
@@ -21,6 +24,9 @@ placements:
       candidates:
       - neutral_grip_pulldown
       - lat_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
       - dumbbell_row
   upper_lower_4d:
   - session: upper_a
@@ -31,6 +37,9 @@ placements:
       - seated_cable_row
       - machine_row
       - chest_supported_dumbbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
   - session: upper_b
     slot:
       pattern: horizontal_pull
@@ -39,6 +48,9 @@ placements:
       - machine_row
       - seated_cable_row
       - dumbbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
   ppl_ul_5d:
   - session: pull
     slot:
@@ -48,6 +60,9 @@ placements:
       - seated_cable_row
       - machine_row
       - chest_supported_dumbbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
   - session: upper
     slot:
       pattern: vertical_pull
@@ -55,6 +70,9 @@ placements:
       candidates:
       - lat_pulldown
       - neutral_grip_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
       - dumbbell_row
 principles:
 - P-EMPHASIS

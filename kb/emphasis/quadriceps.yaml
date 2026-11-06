@@ -12,6 +12,7 @@ placements:
       role: accessory
       candidates:
       - leg_extension
+      - sissy_squat
       - dumbbell_step_up
       - bulgarian_split_squat
   - session: full_c
@@ -20,6 +21,7 @@ placements:
       role: accessory
       candidates:
       - leg_extension
+      - sissy_squat
       - bulgarian_split_squat
       - dumbbell_step_up
   upper_lower_4d:
@@ -29,6 +31,7 @@ placements:
       role: accessory
       candidates:
       - leg_extension
+      - sissy_squat
       - dumbbell_step_up
       - dumbbell_reverse_lunge
   ppl_ul_5d:
@@ -38,6 +41,7 @@ placements:
       role: accessory
       candidates:
       - leg_extension
+      - sissy_squat
       - goblet_squat
       - dumbbell_step_up
       - dumbbell_reverse_lunge
@@ -47,6 +51,7 @@ placements:
       role: accessory
       candidates:
       - leg_extension
+      - sissy_squat
       - bulgarian_split_squat
       - dumbbell_step_up
 principles:

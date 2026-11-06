@@ -1,0 +1,64 @@
+id: incline_bench_barbell_row
+name:
+  it: Rematore con bilanciere su panca inclinata
+  en: Incline bench barbell row
+equipment: barbell
+requires:
+- barbell
+- bench
+pattern: horizontal_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- chest_supported_dumbbell_row
+- barbell_row
+- dumbbell_row
+technique:
+  setup:
+  - it: Inclina lo schienale di circa 30-45 gradi.
+    en: Set the backrest to about 30 to 45 degrees.
+  - it: Sdraiati a pancia in giù con il petto sullo schienale.
+    en: Lie face down with your chest on the backrest.
+  - it: Fatti passare o prendi da terra il bilanciere con presa poco più larga delle spalle.
+    en: Have someone hand you, or pick up, the bar with a grip a bit wider than your shoulders.
+  cues:
+  - it: Tira la barra verso la parte bassa del petto.
+    en: Row the bar toward your lower chest.
+  - it: Scendi fino alle braccia tese.
+    en: Lower to straight arms.
+  mistakes:
+  - what:
+      it: Il petto si stacca dalla panca.
+      en: Your chest lifts off the bench.
+    fix:
+      it: 'Petto sempre appoggiato: il carico lo muovono le braccia.'
+      en: 'Keep your chest down: your arms move the load.'
+  - what:
+      it: Tiri con le mani e il polso si piega.
+      en: You pull with your hands and your wrists bend.
+    fix:
+      it: Pensa a portare indietro i gomiti.
+      en: Think of driving your elbows back.
+  - what:
+      it: Non distendi le braccia in basso.
+      en: You never straighten your arms at the bottom.
+    fix:
+      it: Lascia allungare la schiena prima di ripartire.
+      en: Let your back stretch before the next rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 166
+    - 167
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

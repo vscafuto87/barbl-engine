@@ -1,0 +1,58 @@
+id: landmine_press
+name:
+  it: Landmine press
+  en: Landmine press
+equipment: barbell
+requires:
+- barbell
+pattern: vertical_push
+mechanics: compound
+muscles:
+  primary: shoulders
+  secondary:
+  - triceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- standing_dumbbell_shoulder_press
+- military_press
+- seated_dumbbell_shoulder_press
+technique:
+  setup:
+  - it: Infila un'estremità del bilanciere in un angolo o in un attacco a terra.
+    en: Wedge one end of the barbell into a corner or a floor attachment.
+  - it: Carica l'altra estremità e portala alla spalla con una mano.
+    en: Load the other end and bring it to your shoulder with one hand.
+  - it: Piedi sfalsati, busto appena inclinato in avanti.
+    en: Staggered stance, torso leaning slightly forward.
+  cues:
+  - it: Spingi in alto e in avanti seguendo l'arco della barra.
+    en: Press up and forward along the bar's arc.
+  - it: Torna lento fino alla spalla.
+    en: Lower slowly back to your shoulder.
+  mistakes:
+  - what:
+      it: Ruoti il busto per spingere.
+      en: You twist your torso to press.
+    fix:
+      it: Addome contratto e spalle rivolte avanti.
+      en: Brace your abs and keep your shoulders square.
+  - what:
+      it: Il gomito si apre di lato.
+      en: Your elbow flares out to the side.
+    fix:
+      it: Tienilo un po' avanti, verso il centro.
+      en: Keep it slightly forward, toward your midline.
+  - what:
+      it: L'estremità a terra scivola.
+      en: The end on the floor slides.
+    fix:
+      it: Bloccala bene in un angolo o con un attacco.
+      en: Secure it in a corner or an attachment.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: 'Scheda dalla pratica di coaching, senza una pagina di libro dedicata: da rivedere con il coach.'
+  status: provisional
+  reviewedBy: null

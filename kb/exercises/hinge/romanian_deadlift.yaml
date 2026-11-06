@@ -16,6 +16,8 @@ loading:
   whenLoadUnknown: trial_set
 substitutes:
 - dumbbell_romanian_deadlift
+- good_morning
+- stiff_leg_deadlift
 technique:
   setup:
   - it: Posiziona il bilanciere all'altezza di metà coscia, per esempio nel rack.

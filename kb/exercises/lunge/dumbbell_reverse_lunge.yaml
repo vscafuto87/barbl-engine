@@ -17,6 +17,7 @@ loading:
 substitutes:
 - bulgarian_split_squat
 - dumbbell_walking_lunge
+- smith_machine_split_squat
 technique:
   setup:
   - it: Tieni un manubrio per mano, con le braccia lungo i fianchi.

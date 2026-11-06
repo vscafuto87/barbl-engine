@@ -15,6 +15,8 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_fly
+- incline_dumbbell_fly
+- low_to_high_cable_fly
 technique:
   setup:
   - it: Regola le pulegge all'altezza del petto e afferra le maniglie.

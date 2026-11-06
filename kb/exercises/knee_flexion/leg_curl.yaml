@@ -16,6 +16,8 @@ loading:
 substitutes:
 - dumbbell_romanian_deadlift
 - romanian_deadlift
+- standing_leg_curl
+- dumbbell_leg_curl
 technique:
   setup:
   - it: Sdraiati a pancia in giù sulla macchina.

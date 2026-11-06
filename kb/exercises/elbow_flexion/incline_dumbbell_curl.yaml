@@ -17,6 +17,7 @@ loading:
 substitutes:
 - dumbbell_curl
 - cable_curl
+- behind_the_body_cable_curl
 technique:
   setup:
   - it: Regola la panca a un'inclinazione moderata e prendi due manubri.

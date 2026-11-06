@@ -1,0 +1,58 @@
+id: single_arm_cable_row
+name:
+  it: Rematore al cavo a un braccio
+  en: Single-arm cable row
+equipment: cable
+requires:
+- cables
+pattern: horizontal_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- seated_cable_row
+- dumbbell_row
+- machine_row
+technique:
+  setup:
+  - it: Metti la carrucola all'altezza del petto o un po' sotto, con una maniglia singola.
+    en: Set the pulley at chest height or slightly below with a single handle.
+  - it: Siediti o stai in piedi di fronte al cavo, piedi ben piantati.
+    en: Sit or stand facing the cable with your feet planted.
+  - it: Parti con il braccio teso e la spalla allungata in avanti.
+    en: Start with your arm straight and your shoulder reaching forward.
+  cues:
+  - it: Porta il gomito indietro, vicino al fianco.
+    en: Drive your elbow back, close to your side.
+  - it: Torna lento lasciando allungare la schiena.
+    en: Return slowly, letting your back stretch.
+  mistakes:
+  - what:
+      it: Ruoti molto il busto per tirare.
+      en: You twist your torso a lot to pull.
+    fix:
+      it: Una leggera rotazione va bene, il resto lo fa il braccio.
+      en: A slight turn is fine; the arm does the rest.
+  - what:
+      it: Il gomito si apre lontano dal corpo.
+      en: Your elbow flares away from your body.
+    fix:
+      it: Tienilo vicino al fianco.
+      en: Keep it close to your side.
+  - what:
+      it: Non torni mai al braccio teso.
+      en: You never return to a straight arm.
+    fix:
+      it: Distendi del tutto a ogni ripetizione.
+      en: Straighten fully on every rep.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: 'Scheda dalla pratica di coaching, senza una pagina di libro dedicata: da rivedere con il coach.'
+  status: provisional
+  reviewedBy: null

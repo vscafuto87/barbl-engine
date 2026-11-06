@@ -1,0 +1,58 @@
+id: lying_dumbbell_triceps_extension
+name:
+  it: French press con manubri
+  en: Lying dumbbell triceps extension
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: elbow_extension
+mechanics: isolation
+muscles:
+  primary: triceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_skull_crusher
+- dumbbell_overhead_triceps_extension
+- cable_triceps_pushdown
+technique:
+  setup:
+  - it: Sdraiati sulla panca con i piedi a terra.
+    en: Lie on the bench with your feet on the floor.
+  - it: Tieni i manubri sopra le spalle, palmi uno verso l'altro.
+    en: Hold the dumbbells over your shoulders, palms facing.
+  - it: Inclina appena le braccia verso la testa.
+    en: Tilt your upper arms slightly toward your head.
+  cues:
+  - it: Piega i gomiti e porta i manubri ai lati della testa.
+    en: Bend your elbows and lower the dumbbells beside your head.
+  - it: Distendi le braccia senza muovere i gomiti.
+    en: Straighten your arms without moving your elbows.
+  mistakes:
+  - what:
+      it: I gomiti si aprono verso l'esterno.
+      en: Your elbows flare out.
+    fix:
+      it: Tienili puntati in alto e vicini.
+      en: Keep them pointing up and close together.
+  - what:
+      it: Muovi le spalle e diventa una distensione.
+      en: You move your shoulders and it turns into a press.
+    fix:
+      it: Muovi solo i gomiti.
+      en: Move only at the elbows.
+  - what:
+      it: Scendi poco e il tricipite si allunga poco.
+      en: You barely go down and the triceps barely stretches.
+    fix:
+      it: Scendi finché i manubri arrivano accanto alla testa.
+      en: Lower until the dumbbells reach beside your head.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: 'Scheda dalla pratica di coaching, senza una pagina di libro dedicata: da rivedere con il coach.'
+  status: provisional
+  reviewedBy: null

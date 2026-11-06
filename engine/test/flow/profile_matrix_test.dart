@@ -525,12 +525,12 @@ const Map<String, (int, int)> _expectedEmphasis = {
   'full_body_3d 90': (144, 144),
   'upper_lower_4d 45': (0, 126),
   'upper_lower_4d 60': (36, 126),
-  'upper_lower_4d 75': (87, 126),
-  'upper_lower_4d 90': (108, 126),
+  'upper_lower_4d 75': (95, 126),
+  'upper_lower_4d 90': (120, 126),
   'ppl_ul_5d 45': (0, 126),
-  'ppl_ul_5d 60': (101, 126),
-  'ppl_ul_5d 75': (123, 126),
-  'ppl_ul_5d 90': (117, 126),
+  'ppl_ul_5d 60': (103, 126),
+  'ppl_ul_5d 75': (121, 126),
+  'ppl_ul_5d 90': (121, 126),
 };
 
 /// Conteggi dell'enfasi: posti applicati e totali per «template durata», e
@@ -701,7 +701,7 @@ void main() {
       stats.all + stats.some + stats.none,
       _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length,
     );
-    expect((stats.all, stats.some, stats.none), (412, 66, 278));
+    expect((stats.all, stats.some, stats.none), (429, 56, 271));
   });
 
   test('la copertura coincide con la mappa attesa', () {

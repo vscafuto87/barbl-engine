@@ -1,0 +1,63 @@
+id: stiff_leg_deadlift
+name:
+  it: Stacco a gambe tese
+  en: Stiff-leg deadlift
+equipment: barbell
+requires:
+- barbell
+pattern: hinge
+mechanics: compound
+muscles:
+  primary: hamstrings
+  secondary:
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- romanian_deadlift
+- good_morning
+- dumbbell_romanian_deadlift
+technique:
+  setup:
+  - it: Parti con il bilanciere a terra, piedi alla larghezza delle anche.
+    en: Start with the bar on the floor, feet hip-width.
+  - it: Prendi la barra appena fuori dalle gambe.
+    en: Grab the bar just outside your legs.
+  - it: Ginocchia quasi tese, schiena dritta.
+    en: Knees nearly straight, back flat.
+  cues:
+  - it: Sali spingendo il bacino avanti, barra vicina alle gambe.
+    en: Stand up by driving your hips forward, bar close to your legs.
+  - it: A ogni ripetizione torna a toccare terra senza rimbalzare.
+    en: Touch the floor on every rep without bouncing.
+  mistakes:
+  - what:
+      it: Arrotondi la schiena per arrivare a terra.
+      en: You round your back to reach the floor.
+    fix:
+      it: Se non arrivi con la schiena dritta, appoggia i dischi su un rialzo.
+      en: If you cannot reach with a flat back, set the plates on a raised surface.
+  - what:
+      it: La barra si allontana dalle gambe.
+      en: The bar drifts away from your legs.
+    fix:
+      it: Tienila a contatto con le cosce.
+      en: Keep it brushing your thighs.
+  - what:
+      it: Rimbalzi sul pavimento.
+      en: You bounce off the floor.
+    fix:
+      it: Appoggia, fermati un attimo e riparti.
+      en: Set it down, pause briefly, then go again.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 141
+    - 142
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

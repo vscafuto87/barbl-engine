@@ -16,6 +16,8 @@ loading:
 substitutes:
 - dumbbell_curl
 - barbell_curl
+- spider_curl
+- behind_the_body_cable_curl
 technique:
   setup:
   - it: Aggancia una maniglia al cavo basso.

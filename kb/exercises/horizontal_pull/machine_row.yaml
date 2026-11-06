@@ -17,6 +17,7 @@ loading:
 substitutes:
 - seated_cable_row
 - chest_supported_dumbbell_row
+- single_arm_cable_row
 technique:
   setup:
   - it: Regola il sedile in modo che il petto tocchi l'imbottitura.

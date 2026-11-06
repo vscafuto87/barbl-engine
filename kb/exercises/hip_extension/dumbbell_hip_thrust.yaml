@@ -17,6 +17,9 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - barbell_hip_thrust
+- single_leg_hip_thrust
+- cable_glute_kickback
+- back_extension_45
 technique:
   setup:
   - it: Siediti a terra con la parte alta della schiena contro una panca bassa.

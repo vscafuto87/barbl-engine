@@ -30,7 +30,7 @@ void main() {
     expect(result.errors, isEmpty);
     final kb = KnowledgeBase.fromJson(result.json);
     expect(kb.rulesVersion, '0.19.0');
-    expect(kb.exercises, hasLength(62));
+    expect(kb.exercises, hasLength(90));
     expect(kb.templates, hasLength(3));
     expect(kb.parameterGroups, hasLength(10));
     expect(kb.rationales, hasLength(12));

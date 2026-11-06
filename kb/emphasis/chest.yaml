@@ -14,6 +14,8 @@ placements:
       - cable_fly
       - pec_deck_fly
       - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
   - session: full_c
     slot:
       pattern: chest_isolation
@@ -22,6 +24,8 @@ placements:
       - pec_deck_fly
       - cable_fly
       - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
   upper_lower_4d:
   - session: upper_a
     slot:
@@ -31,6 +35,8 @@ placements:
       - cable_fly
       - pec_deck_fly
       - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
   ppl_ul_5d:
   - session: push
     slot:
@@ -40,6 +46,8 @@ placements:
       - cable_fly
       - pec_deck_fly
       - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
   - session: upper
     slot:
       pattern: chest_isolation
@@ -48,6 +56,8 @@ placements:
       - pec_deck_fly
       - cable_fly
       - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

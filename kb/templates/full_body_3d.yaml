@@ -26,6 +26,8 @@ sessions:
       - dumbbell_bench_press
       - machine_chest_press
       - push_up
+      - incline_barbell_bench_press
+      - incline_machine_press
   - type: single
     slots:
     - pattern: horizontal_pull
@@ -36,6 +38,9 @@ sessions:
       - dumbbell_row
       - seated_cable_row
       - barbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
   - type: single
     slots:
     - pattern: squat
@@ -45,25 +50,30 @@ sessions:
       - squat
       - leg_press
       - goblet_squat
+      - front_squat
   - type: single
     slots:
     - pattern: hinge
       role: secondary
-      equivalent: 2
+      equivalent: 4
       candidates:
       - romanian_deadlift
       - dumbbell_romanian_deadlift
+      - good_morning
+      - stiff_leg_deadlift
   - type: single
     slots:
     - pattern: elbow_extension
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
       - barbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
       - cable_triceps_pushdown
       - barbell_skull_crusher
+      - cable_triceps_kickback
 - id: full_b
   name:
     it: Full body B
@@ -74,48 +84,58 @@ sessions:
     slots:
     - pattern: horizontal_push
       role: secondary
-      equivalent: 2
+      equivalent: 4
       candidates:
       - incline_dumbbell_press
       - machine_chest_press
+      - incline_barbell_bench_press
+      - incline_machine_press
       - push_up
   - type: single
     slots:
     - pattern: vertical_pull
       role: secondary
-      equivalent: 2
+      equivalent: 4
       candidates:
       - lat_pulldown
       - neutral_grip_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
       - chest_supported_dumbbell_row
       - dumbbell_row
   - type: single
     slots:
     - pattern: vertical_push
       role: secondary
-      equivalent: 3
+      equivalent: 5
       candidates:
       - seated_dumbbell_shoulder_press
       - dumbbell_arnold_press
       - machine_shoulder_press
+      - standing_dumbbell_shoulder_press
+      - landmine_press
       - military_press
   - type: single
     slots:
     - pattern: lunge
       role: secondary
-      equivalent: 3
+      equivalent: 4
       candidates:
       - bulgarian_split_squat
       - dumbbell_walking_lunge
       - dumbbell_reverse_lunge
+      - smith_machine_split_squat
       - dumbbell_step_up
   - type: single
     slots:
     - pattern: knee_flexion
       role: accessory
-      equivalent: 2
+      equivalent: 3
       candidates:
       - seated_leg_curl
+      - standing_leg_curl
+      - dumbbell_leg_curl
       - single_leg_dumbbell_romanian_deadlift
       - leg_curl
       - dumbbell_romanian_deadlift
@@ -123,14 +143,16 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 4
+      equivalent: 5
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
       - cable_curl
       - dumbbell_curl
+      - behind_the_body_cable_curl
       - hammer_curl
       - barbell_curl
+      - spider_curl
 - id: full_c
   name:
     it: Full body C
@@ -146,48 +168,58 @@ sessions:
       - barbell_row
       - chest_supported_dumbbell_row
       - seated_cable_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
   - type: single
     slots:
     - pattern: horizontal_push
       role: secondary
-      equivalent: 2
+      equivalent: 4
       candidates:
       - machine_chest_press
       - dumbbell_bench_press
+      - incline_barbell_bench_press
+      - incline_machine_press
       - push_up
   - type: single
     slots:
     - pattern: squat
       role: secondary
-      equivalent: 2
+      equivalent: 3
       candidates:
       - leg_press
       - hack_squat
+      - front_squat
       - smith_machine_squat
       - goblet_squat
   - type: single
     slots:
     - pattern: elbow_extension
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - overhead_cable_triceps_extension
       - dumbbell_overhead_triceps_extension
       - barbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
       - cable_triceps_pushdown
       - barbell_skull_crusher
+      - cable_triceps_kickback
   - type: single
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 4
+      equivalent: 5
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
       - cable_curl
       - dumbbell_curl
+      - behind_the_body_cable_curl
       - hammer_curl
       - barbell_curl
+      - spider_curl
 principles:
 - P-SPLIT-FULL-BODY-3D
 - P-FREQ-MIN-2

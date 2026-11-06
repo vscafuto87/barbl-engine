@@ -1,0 +1,53 @@
+id: sissy_squat
+name:
+  it: Sissy squat
+  en: Sissy squat
+equipment: bodyweight
+requires: []
+pattern: knee_extension
+mechanics: isolation
+muscles:
+  primary: quadriceps
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- leg_extension
+technique:
+  setup:
+  - it: Mettiti vicino a un appoggio stabile e tienilo con una mano.
+    en: Stand next to something sturdy and hold it with one hand.
+  - it: Piedi alla larghezza delle anche, sali sulle punte.
+    en: Feet hip-width, rise onto the balls of your feet.
+  - it: Contrai glutei e addome prima di scendere.
+    en: Squeeze your glutes and brace your abs before you lower.
+  cues:
+  - it: Porta le ginocchia avanti e il busto indietro in linea con le cosce.
+    en: Push your knees forward and lean back in line with your thighs.
+  - it: Scendi finché le ginocchia sono ben piegate, poi risali.
+    en: Lower until your knees are deeply bent, then rise.
+  mistakes:
+  - what:
+      it: Pieghi le anche e diventa uno squat normale.
+      en: You bend at the hips and it becomes a normal squat.
+    fix:
+      it: Spalle, anche e ginocchia restano in una linea.
+      en: Keep shoulders, hips and knees in one line.
+  - what:
+      it: Scendi troppo e senti fastidio al ginocchio.
+      en: You go too deep and your knee feels uncomfortable.
+    fix:
+      it: Riduci la profondità a un punto senza fastidio.
+      en: Reduce the depth to a pain-free range.
+  - what:
+      it: Lasci la presa e perdi l'equilibrio.
+      en: You let go and lose your balance.
+    fix:
+      it: Tieni sempre una mano sull'appoggio.
+      en: Always keep one hand on the support.
+  sources:
+  - id: barbl-design
+    access: summary
+    note: 'Scheda dalla pratica di coaching, senza una pagina di libro dedicata: da rivedere con il coach.'
+  status: provisional
+  reviewedBy: null

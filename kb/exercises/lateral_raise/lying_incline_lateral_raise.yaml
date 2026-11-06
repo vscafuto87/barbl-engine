@@ -1,0 +1,63 @@
+id: lying_incline_lateral_raise
+name:
+  it: Alzate laterali su panca inclinata
+  en: Incline lying lateral raise
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: lateral_raise
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_lateral_raise
+- cable_lateral_raise
+- machine_lateral_raise
+technique:
+  setup:
+  - it: Inclina lo schienale di circa 30-45 gradi.
+    en: Set the backrest to about 30 to 45 degrees.
+  - it: Sdraiati su un fianco contro lo schienale, con il manubrio nella mano in alto.
+    en: Lie on your side against the backrest, dumbbell in your top hand.
+  - it: Braccio teso davanti alle cosce, gomito appena piegato.
+    en: Arm hanging in front of your thighs, elbow slightly bent.
+  cues:
+  - it: Alza il braccio di lato fino a sopra la spalla.
+    en: Raise your arm out to the side to just above shoulder level.
+  - it: Scendi lento fino in basso.
+    en: Lower slowly all the way down.
+  mistakes:
+  - what:
+      it: Usi un carico troppo alto e il busto si muove.
+      en: You use too much weight and your torso moves.
+    fix:
+      it: 'Scegli un carico leggero: qui pesa di più in basso.'
+      en: 'Pick a light load: it is hardest at the bottom.'
+  - what:
+      it: Il gomito resta indietro e lavora la spalla posteriore.
+      en: Your elbow drifts back and the rear shoulder takes over.
+    fix:
+      it: Muovi il braccio sul piano del corpo, un po' in avanti.
+      en: Move the arm in line with your body, slightly forward.
+  - what:
+      it: Fermi il movimento a metà.
+      en: You stop halfway.
+    fix:
+      it: Sali fino a superare la linea della spalla.
+      en: Rise until you pass shoulder level.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 203
+    - 204
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

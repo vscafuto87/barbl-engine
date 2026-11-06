@@ -1,0 +1,63 @@
+id: incline_dumbbell_fly
+name:
+  it: Croci su panca inclinata
+  en: Incline dumbbell fly
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: chest_isolation
+mechanics: isolation
+muscles:
+  primary: chest
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_fly
+- cable_fly
+- low_to_high_cable_fly
+technique:
+  setup:
+  - it: Inclina lo schienale di circa 30 gradi.
+    en: Set the backrest to about 30 degrees.
+  - it: Sdraiati con i manubri sopra il petto, palmi uno verso l'altro.
+    en: Lie back with the dumbbells over your chest, palms facing.
+  - it: Piega appena i gomiti e tienili così.
+    en: Bend your elbows slightly and keep them there.
+  cues:
+  - it: Apri le braccia ad arco finché senti allungare il petto.
+    en: Open your arms in an arc until your chest stretches.
+  - it: Richiudi come per abbracciare un albero.
+    en: Bring them back as if hugging a tree.
+  mistakes:
+  - what:
+      it: Pieghi molto i gomiti e diventa una distensione.
+      en: You bend your elbows a lot and it turns into a press.
+    fix:
+      it: Angolo dei gomiti fisso per tutta la ripetizione.
+      en: Keep the elbow angle fixed through the rep.
+  - what:
+      it: Scendi troppo e senti la spalla, non il petto.
+      en: You go too low and feel it in your shoulder, not your chest.
+    fix:
+      it: Fermati quando il petto è allungato.
+      en: Stop once your chest is stretched.
+  - what:
+      it: Batti i manubri in alto.
+      en: You clang the dumbbells at the top.
+    fix:
+      it: Fermati poco prima che si tocchino.
+      en: Stop just before they touch.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 189
+    - 190
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null
