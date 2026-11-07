@@ -41,6 +41,34 @@ void main() {
     expect(p.platesKg, [25, 20, 15, 10, 5, 2.5, 1.25]);
   });
 
+  test('senza dumbbellsKg la serie è assente', () {
+    final m = example();
+    gymOf(m).remove('dumbbellsKg');
+    final p = (readProfile(m) as ProfileOk).profile;
+    expect(p.dumbbellsKg, isNull);
+  });
+
+  test('profilo 1.4: dumbbellsKg si legge ordinato e senza doppioni', () {
+    final m = example()..['schemaVersion'] = '1.4';
+    gymOf(m)['dumbbellsKg'] = [5, 2.5, 5, 7.5];
+    final p = (readProfile(m) as ProfileOk).profile;
+    expect(p.dumbbellsKg, [2.5, 5, 7.5]);
+  });
+
+  test('dumbbellsKg vuota, non numerica o non positiva è un errore', () {
+    for (final bad in <Object?>[
+      [],
+      'x',
+      [0],
+      [-2],
+      ['a'],
+    ]) {
+      final m = example()..['schemaVersion'] = '1.4';
+      gymOf(m)['dumbbellsKg'] = bad;
+      expect(readProfile(m), isA<ProfileErrors>(), reason: '$bad');
+    }
+  });
+
   test('goal sconosciuto è un errore', () {
     final m = example()..['goal'] = 'bulk';
     expect(readProfile(m), isA<ProfileErrors>());
@@ -66,14 +94,14 @@ void main() {
   test('kg 0, kg negativo e exerciseId doppio sono errori', () {
     for (final loads in [
       [
-        {'exerciseId': 'squat', 'kg': 0}
+        {'exerciseId': 'squat', 'kg': 0},
       ],
       [
-        {'exerciseId': 'squat', 'kg': -5}
+        {'exerciseId': 'squat', 'kg': -5},
       ],
       [
         {'exerciseId': 'squat', 'kg': 60},
-        {'exerciseId': 'squat', 'kg': 70}
+        {'exerciseId': 'squat', 'kg': 70},
       ],
     ]) {
       final m = example()..['knownLoads'] = loads;
@@ -86,8 +114,10 @@ void main() {
     (gymOf(m)['equipment'] as List).add('flux_capacitor');
     final r = readProfile(m);
     expect(r, isA<ProfileErrors>());
-    expect((r as ProfileErrors).errors.single,
-        'gym.equipment[7]: valore non ammesso (flux_capacitor)');
+    expect(
+      (r as ProfileErrors).errors.single,
+      'gym.equipment[7]: valore non ammesso (flux_capacitor)',
+    );
   });
 
   test('schemaVersion 1.0, 1.1 e 1.2 sono validi', () {
@@ -116,8 +146,10 @@ void main() {
           ..['emphasis'] = ['arms', 'glutes_hamstrings'];
         final r = readProfile(m);
         expect(r, isA<ProfileOk>(), reason: v);
-        expect((r as ProfileOk).profile.emphasis,
-            ['arms', 'glutes_hamstrings']);
+        expect((r as ProfileOk).profile.emphasis, [
+          'arms',
+          'glutes_hamstrings',
+        ]);
       }
     });
 
@@ -125,8 +157,10 @@ void main() {
       final m = example()..['emphasis'] = ['shoulders', 'calves'];
       final r = readProfile(m);
       expect(r, isA<ProfileErrors>());
-      expect((r as ProfileErrors).errors.single,
-          'emphasis[1]: valore non ammesso (calves)');
+      expect(
+        (r as ProfileErrors).errors.single,
+        'emphasis[1]: valore non ammesso (calves)',
+      );
     });
 
     test('un valore non stringa è un errore', () {
@@ -140,7 +174,10 @@ void main() {
       final m = example()..['emphasis'] = ['arms', 'arms'];
       final r = readProfile(m);
       expect(r, isA<ProfileErrors>());
-      expect((r as ProfileErrors).errors.single, 'emphasis[1]: duplicato (arms)');
+      expect(
+        (r as ProfileErrors).errors.single,
+        'emphasis[1]: duplicato (arms)',
+      );
     });
 
     test('più di due valori sono un errore', () {
@@ -155,8 +192,10 @@ void main() {
       final m = example()..['emphasis'] = 'arms';
       final r = readProfile(m);
       expect(r, isA<ProfileErrors>());
-      expect((r as ProfileErrors).errors.single,
-          'emphasis: deve essere una lista');
+      expect(
+        (r as ProfileErrors).errors.single,
+        'emphasis: deve essere una lista',
+      );
     });
 
     test('le costanti coincidono con lo schema del profilo', () {

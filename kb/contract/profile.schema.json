@@ -20,7 +20,8 @@
         "1.0",
         "1.1",
         "1.2",
-        "1.3"
+        "1.3",
+        "1.4"
       ]
     },
     "goal": {
@@ -80,6 +81,42 @@
             2.5,
             1.25
           ]
+        },
+        "dumbbellsKg": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "minItems": 1,
+          "default": [
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            16,
+            18,
+            20,
+            22,
+            24,
+            26,
+            28,
+            30,
+            32,
+            34,
+            36,
+            38,
+            40,
+            42,
+            44,
+            46,
+            48,
+            50
+          ],
+          "description": "Manubri della palestra, kg di un manubrio (profilo 1.4). Assente = ogni 2 kg da 2 a 50. Un passo di un esercizio con manubri è il manubrio successivo di questa serie."
         }
       }
     },

@@ -89,13 +89,26 @@ double? _convertedKg({
   required PrescribedExercise pe,
   required _Conversion? conversion,
   required int? targetRir,
+  required List<double>? dumbbellsKg,
 }) {
-  final step = pe.exercise.stepKg;
+  final series = pe.exercise.equipment == 'dumbbell' ? dumbbellsKg : null;
+  final isDumbbell = series != null;
+  // Per i manubri la serie del profilo fa da passo: si arrotonda al manubrio
+  // più vicino per difetto; se nessun manubrio basta, il carico non si converte.
+  // Senza serie nel profilo vale il `stepKg` dell'esercizio, come prima.
+  final step = isDumbbell ? 1.0 : pe.exercise.stepKg;
   if (conversion == null || targetRir == null || step == null || step <= 0) {
     return null;
   }
   final e1rm = kg * (1 + (reps + conversion.assumedRir) / conversion.divisor);
   final work = e1rm / (1 + (pe.repsMin + targetRir) / conversion.divisor);
+  if (isDumbbell) {
+    double? best;
+    for (final d in series) {
+      if (d <= work + 1e-9 && (best == null || d > best)) best = d;
+    }
+    return best;
+  }
   return (work / step).floorToDouble() * step;
 }
 
@@ -130,6 +143,7 @@ Map<String, InitialLoad> assignLoads(
                   pe: pe,
                   conversion: conversion,
                   targetRir: firstRir,
+                  dumbbellsKg: profile.dumbbellsKg,
                 );
           result[id] = converted == null || converted <= 0
               ? InitialLoad(known, LoadSource.profile)

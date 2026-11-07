@@ -5,7 +5,7 @@ library;
 // Costanti di formato del contratto, copiate dallo schema del profilo.
 // Non sono numeri di dominio: si aggiornano solo insieme allo schema.
 // ---------------------------------------------------------------------------
-const Set<String> _profileSchemaVersions = {'1.0', '1.1', '1.2', '1.3'};
+const Set<String> _profileSchemaVersions = {'1.0', '1.1', '1.2', '1.3', '1.4'};
 const Set<String> _equipmentValues = {
   'barbell',
   'rack',
@@ -38,6 +38,7 @@ const int _emphasisMaxItems = 2;
 const double _defaultBarKg = 20;
 const List<double> _defaultPlatesKg = <double>[25, 20, 15, 10, 5, 2.5, 1.25];
 
+
 const Set<String> _topKeys = {
   'schemaVersion',
   'goal',
@@ -49,7 +50,13 @@ const Set<String> _topKeys = {
 };
 const Set<String> _optionalTopKeys = {'emphasis', 'variantSeed'};
 const int _variantSeedMax = 2147483647;
-const Set<String> _gymKeys = {'type', 'equipment', 'barKg', 'platesKg'};
+const Set<String> _gymKeys = {
+  'type',
+  'equipment',
+  'barKg',
+  'platesKg',
+  'dumbbellsKg',
+};
 const Set<String> _knownLoadKeys = {'exerciseId', 'kg', 'reps'};
 
 /// Profilo dell'utente, già validato.
@@ -60,6 +67,7 @@ class Profile {
     required this.equipment,
     required this.barKg,
     required this.platesKg,
+    this.dumbbellsKg,
     required this.daysPerWeek,
     required this.sessionDurationMin,
     required this.experience,
@@ -74,6 +82,11 @@ class Profile {
   final Set<String> equipment;
   final double barKg;
   final List<double> platesKg;
+
+  /// Serie dei manubri (kg di un manubrio), crescente. Assente (`null`) =
+  /// il profilo non la dichiara: i carichi dei manubri si arrotondano al
+  /// `stepKg` dell'esercizio, come prima del profilo 1.4.
+  final List<double>? dumbbellsKg;
   final int daysPerWeek;
   final int sessionDurationMin;
   final String experience;
@@ -114,12 +127,15 @@ String _join(String path, String key) => path.isEmpty ? key : '$path.$key';
 
 String _describe(Object? value) => value == null ? 'null' : '$value';
 
-void _checkKeys(Map<Object?, Object?> map, Set<String> allowed, String path,
-    List<String> errors) {
+void _checkKeys(
+  Map<Object?, Object?> map,
+  Set<String> allowed,
+  String path,
+  List<String> errors,
+) {
   for (final key in map.keys) {
     if (key is! String || !allowed.contains(key)) {
-      errors.add(
-          '${_join(path, '$key')}: campo sconosciuto');
+      errors.add('${_join(path, '$key')}: campo sconosciuto');
     }
   }
 }
@@ -148,8 +164,10 @@ ProfileRead readProfile(Map<String, Object?> json) {
 
   if (json.containsKey('schemaVersion') &&
       !_profileSchemaVersions.contains(json['schemaVersion'])) {
-    errors.add('schemaVersion: deve essere "1.0", "1.1", "1.2" o "1.3", '
-        'trovato ${_describe(json['schemaVersion'])}');
+    errors.add(
+      'schemaVersion: deve essere "1.0", "1.1", "1.2", "1.3" o "1.4", '
+      'trovato ${_describe(json['schemaVersion'])}',
+    );
   }
 
   String? goal;
@@ -166,6 +184,7 @@ ProfileRead readProfile(Map<String, Object?> json) {
   final equipment = <String>{};
   double barKg = _defaultBarKg;
   List<double> platesKg = _defaultPlatesKg;
+  List<double>? dumbbellsKg;
   if (json.containsKey('gym')) {
     final gym = json['gym'];
     if (gym is! Map) {
@@ -195,7 +214,8 @@ ProfileRead readProfile(Map<String, Object?> json) {
               equipment.add(item);
             } else if (item is String) {
               errors.add(
-                  'gym.equipment[$i]: valore non ammesso (${_describe(item)})');
+                'gym.equipment[$i]: valore non ammesso (${_describe(item)})',
+              );
             } else {
               errors.add('gym.equipment[$i]: deve essere una stringa');
             }
@@ -227,6 +247,25 @@ ProfileRead readProfile(Map<String, Object?> json) {
           platesKg = plates;
         }
       }
+      if (gym.containsKey('dumbbellsKg')) {
+        final v = gym['dumbbellsKg'];
+        if (v is! List) {
+          errors.add('gym.dumbbellsKg: deve essere una lista di numeri');
+        } else if (v.isEmpty) {
+          errors.add('gym.dumbbellsKg: deve avere almeno un elemento');
+        } else {
+          final series = <double>[];
+          for (var i = 0; i < v.length; i++) {
+            final item = v[i];
+            if (_isFiniteNum(item) && (item as num) > 0) {
+              series.add(item.toDouble());
+            } else {
+              errors.add('gym.dumbbellsKg[$i]: deve essere un numero positivo');
+            }
+          }
+          dumbbellsKg = (series.toSet().toList()..sort());
+        }
+      }
     }
   }
 
@@ -237,7 +276,8 @@ ProfileRead readProfile(Map<String, Object?> json) {
       daysPerWeek = v;
     } else {
       errors.add(
-          'daysPerWeek: valore non ammesso (${_describe(json['daysPerWeek'])})');
+        'daysPerWeek: valore non ammesso (${_describe(json['daysPerWeek'])})',
+      );
     }
   }
 
@@ -247,8 +287,10 @@ ProfileRead readProfile(Map<String, Object?> json) {
     if (v != null && _sessionDurationValues.contains(v)) {
       sessionDurationMin = v;
     } else {
-      errors.add('sessionDurationMin: valore non ammesso '
-          '(${_describe(json['sessionDurationMin'])})');
+      errors.add(
+        'sessionDurationMin: valore non ammesso '
+        '(${_describe(json['sessionDurationMin'])})',
+      );
     }
   }
 
@@ -337,8 +379,10 @@ ProfileRead readProfile(Map<String, Object?> json) {
         }
       }
       if (v.length > _emphasisMaxItems) {
-        errors.add('emphasis: al massimo $_emphasisMaxItems valori, '
-            'trovati ${v.length}');
+        errors.add(
+          'emphasis: al massimo $_emphasisMaxItems valori, '
+          'trovati ${v.length}',
+        );
       }
     }
   }
@@ -349,25 +393,30 @@ ProfileRead readProfile(Map<String, Object?> json) {
     if (v is int && v >= 0 && v <= _variantSeedMax) {
       variantSeed = v;
     } else {
-      errors.add('variantSeed: deve essere un intero tra 0 e '
-          '$_variantSeedMax, trovato ${_describe(v)}');
+      errors.add(
+        'variantSeed: deve essere un intero tra 0 e '
+        '$_variantSeedMax, trovato ${_describe(v)}',
+      );
     }
   }
 
   if (errors.isNotEmpty) return ProfileErrors(List.unmodifiable(errors));
 
-  return ProfileOk(Profile(
-    goal: goal!,
-    gymType: gymType!,
-    equipment: Set.unmodifiable(equipment),
-    barKg: barKg,
-    platesKg: List.unmodifiable(platesKg),
-    daysPerWeek: daysPerWeek!,
-    sessionDurationMin: sessionDurationMin!,
-    experience: experience!,
-    knownLoads: Map.unmodifiable(knownLoads),
-    knownReps: Map.unmodifiable(knownReps),
-    emphasis: List.unmodifiable(emphasis),
-    variantSeed: variantSeed,
-  ));
+  return ProfileOk(
+    Profile(
+      goal: goal!,
+      gymType: gymType!,
+      equipment: Set.unmodifiable(equipment),
+      barKg: barKg,
+      platesKg: List.unmodifiable(platesKg),
+      dumbbellsKg: dumbbellsKg == null ? null : List.unmodifiable(dumbbellsKg),
+      daysPerWeek: daysPerWeek!,
+      sessionDurationMin: sessionDurationMin!,
+      experience: experience!,
+      knownLoads: Map.unmodifiable(knownLoads),
+      knownReps: Map.unmodifiable(knownReps),
+      emphasis: List.unmodifiable(emphasis),
+      variantSeed: variantSeed,
+    ),
+  );
 }
