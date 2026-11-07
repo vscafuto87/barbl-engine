@@ -218,6 +218,20 @@ Map<String, Object?> _profileJson(_Combo c) => {
   if (c.emphasis.isNotEmpty) 'emphasis': c.emphasis,
 };
 
+/// Serie dei manubri provate dalla matrice del profilo 1.4.
+const Map<String, List<double>> _dumbbellSeries = {
+  'ogni 2 kg': [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50],
+  'ogni 2,5 kg': [2.5, 5, 7.5, 10, 12.5, 15, 17.5, 20, 22.5, 25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5, 50],
+  'mista': [2, 3, 4, 5, 6, 8, 10, 12.5, 15, 17.5, 20, 22.5, 25, 30, 35, 40, 50],
+};
+
+Map<String, Object?> _profileJson14(_Combo c, List<double> series) {
+  final json = _profileJson(c.base);
+  json['schemaVersion'] = '1.4';
+  (json['gym']! as Map<String, Object?>)['dumbbellsKg'] = series;
+  return json;
+}
+
 Object _generate(_Combo c) {
   try {
     return generatePlan(_profileJson(c), _kb);
@@ -246,7 +260,11 @@ Iterable<Map<String, Object?>> _exercisesOf(Map<String, Object?> plan) sync* {
 
 /// Violazioni delle proprietà di un piano generato per [c]; vuota se rispetta
 /// tutto.
-List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
+List<String> _planViolations(
+  _Combo c,
+  Map<String, Object?> plan, {
+  List<double>? dumbbellsKg,
+}) {
   final out = <String>[];
 
   for (final e in planSchemaErrors(plan, _planSchema)) {
@@ -312,14 +330,17 @@ List<String> _planViolations(_Combo c, Map<String, Object?> plan) {
         }
       } else {
         // Carico con ripetizioni: convertito. Mai oltre il massimale stimato
-        // di quella serie, multiplo del passo, mai nullo.
-        final step = kbExercise.stepKg;
+        // di quella serie, mai nullo; multiplo del passo, o un manubrio della
+        // serie del profilo (1.4) per i manubri.
+        final series = kbExercise.equipment == 'dumbbell' ? dumbbellsKg : null;
+        final step = series == null ? kbExercise.stepKg : null;
         final e1rm = known[id]! * (1 + reps / _epleyDivisor);
         if (source != 'estimate' ||
             kg == null ||
             kg <= 0 ||
             kg > e1rm ||
-            (step != null && (kg / step) % 1 != 0)) {
+            (step != null && (kg / step) % 1 != 0) ||
+            (series != null && !series.contains(kg.toDouble()))) {
           out.add(
             '$id: carico noto ${known[id]} x $reps ma initialLoad '
             '$kg/$source',
@@ -688,6 +709,52 @@ void main() {
         final again = generatePlan(_profileJson(c), _kb);
         expect(again, isA<Generated>());
         expect(jsonEncode((again as Generated).plan), jsonEncode(plan));
+      });
+    }
+  });
+
+  group('profilo 1.4: serie dei manubri', () {
+    for (final entry in _dumbbellSeries.entries) {
+      test('serie ${entry.key}: ogni profilo, carichi sulla serie', () {
+        final bad = <String>[];
+        for (final c in _combos) {
+          final base = _outcomes[c.key]!;
+          final outcome = generatePlan(_profileJson14(c, entry.value), _kb);
+          if (_label(outcome) != _label(base)) {
+            bad.add('${c.key}: copertura ${_label(outcome)} invece di '
+                '${_label(base)}');
+            continue;
+          }
+          if (outcome is! Generated) continue;
+          final plan = outcome.plan;
+          bad.addAll(
+            _planViolations(c, plan, dumbbellsKg: entry.value)
+                .map((v) => '${c.key}: $v'),
+          );
+          // La serie cambia solo i carichi stimati dei manubri: tutto il
+          // resto del piano è quello del profilo senza serie.
+          Map<String, Object?> withoutDumbbellEstimates(
+            Map<String, Object?> p,
+          ) {
+            final copy =
+                jsonDecode(jsonEncode(p)) as Map<String, Object?>;
+            for (final e in _exercisesOf(copy)) {
+              if (e['equipment'] == 'dumbbell') {
+                (e['initialLoad']! as Map<String, Object?>)['kg'] = null;
+              }
+            }
+            return copy;
+          }
+
+          final without = withoutDumbbellEstimates(
+            (base as Generated).plan,
+          );
+          if (jsonEncode(withoutDumbbellEstimates(plan)) !=
+              jsonEncode(without)) {
+            bad.add('${c.key}: il piano cambia oltre ai carichi dei manubri');
+          }
+        }
+        expect(bad, isEmpty, reason: bad.take(10).join('\n'));
       });
     }
   });
