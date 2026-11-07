@@ -2,6 +2,11 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.22.0 — 2026-11-07
+
+- Profilo `1.4`: il motore legge `gym.dumbbellsKg` (serie dei manubri, kg di un manubrio, almeno uno e tutti positivi; ordinata e senza doppioni; assente = il motore non la usa) e accetta `schemaVersion` `1.4`. I profili `1.0`–`1.3` si leggono come prima.
+- Carichi iniziali dei manubri: la stima da un carico noto con ripetizioni (`source: estimate`) si arrotonda per difetto al manubrio della serie (prima al `stepKg` dell'esercizio; senza `dumbbellsKg` nel profilo resta il `stepKg`, quindi i profili `1.0`–`1.3` danno gli stessi piani); se nessun manubrio della serie basta, vale il carico noto com'è (`source: profile`). Per i manubri la serie fa da passo: `stepKg` del piano resta quello della KB e l'app lo ignora. Copia dello schema del profilo aggiornata (commit `0733c48` dell'app).
+
 ## 0.21.0 — 2026-11-06
 
 - Attrezzatura nuova nel profilo: `pull_up_bar` (sbarra per trazioni) e `dip_station` (parallele), nel vocabolario e nella copia dello schema del profilo (stessa `schemaVersion`: si aggiungono solo due valori all'enum). La palestra completa le ha già; a casa e con i soli manubri l'onboarding dell'app le chiede.

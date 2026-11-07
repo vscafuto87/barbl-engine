@@ -25,6 +25,11 @@ KnowledgeBase _kb({
     exercises: {
       'squat': _exercise('squat', 'trial_set'),
       'curl': _exercise('curl', 'manual'),
+      'db_press': {
+        ..._exercise('db_press', 'manual'),
+        'equipment': 'dumbbell',
+        'requires': ['dumbbells'],
+      },
     },
   );
   final params = b['parameters']! as Map<String, Object?>;
@@ -91,9 +96,13 @@ PrescribedSession _session(
   ],
 );
 
-Profile _profile(Map<String, double?> known, {Map<String, int> reps = const {}}) =>
-    Profile(
+Profile _profile(
+  Map<String, double?> known, {
+  Map<String, int> reps = const {},
+  List<double>? dumbbells,
+}) => Profile(
   knownReps: reps,
+  dumbbellsKg: dumbbells,
   goal: 'muscle_gain',
   gymType: 'full',
   equipment: const {'barbell'},
@@ -155,11 +164,7 @@ void main() {
 
   test('voce per esercizio non nel piano: ignorata', () {
     final kb = _kb();
-    final r = assignLoads(
-      [_session(kb, 'squat')],
-      _profile({'curl': 15}),
-      kb,
-    );
+    final r = assignLoads([_session(kb, 'squat')], _profile({'curl': 15}), kb);
     expect(r.containsKey('curl'), isFalse);
     expect(r.keys, ['squat']);
   });
@@ -181,26 +186,72 @@ void main() {
     expect(r['squat']!.source, LoadSource.manual);
   });
 
-  test('carico con ripetizioni: Epley e poi carico al RIR della settimana 1', () {
-    final kb = _kb();
-    final r = assignLoads(
-      [_session(kb, 'squat')],
-      _profile({'squat': 80}, reps: {'squat': 8}),
-      kb,
-    );
-    // 80 x 8 -> e1RM 101,3; a 6 ripetizioni e RIR 3 -> 77,95; passo 2,5.
-    expect(r['squat']!.kg, 77.5);
-    expect(r['squat']!.source, LoadSource.estimate);
-    expect(r['squat']!.source.json, 'estimate');
+  test(
+    'carico con ripetizioni: Epley e poi carico al RIR della settimana 1',
+    () {
+      final kb = _kb();
+      final r = assignLoads(
+        [_session(kb, 'squat')],
+        _profile({'squat': 80}, reps: {'squat': 8}),
+        kb,
+      );
+      // 80 x 8 -> e1RM 101,3; a 6 ripetizioni e RIR 3 -> 77,95; passo 2,5.
+      expect(r['squat']!.kg, 77.5);
+      expect(r['squat']!.source, LoadSource.estimate);
+      expect(r['squat']!.source.json, 'estimate');
+    },
+  );
+
+  group('manubri: la stima si arrotonda alla serie, per difetto', () {
+    // 16 x 8 -> e1RM 20,27; a 6 ripetizioni e RIR 3 -> 15,6.
+    double? kgFor(List<double> series) {
+      final kb = _kb();
+      final r = assignLoads(
+        [_session(kb, 'db_press')],
+        _profile({'db_press': 16}, reps: {'db_press': 8}, dumbbells: series),
+        kb,
+      );
+      expect(r['db_press']!.source, LoadSource.estimate);
+      return r['db_press']!.kg;
+    }
+
+    test('serie ogni 2 kg', () {
+      expect(kgFor([for (var k = 2.0; k <= 50; k += 2) k]), 14);
+    });
+
+    test('serie ogni 2,5 kg', () {
+      expect(kgFor([for (var k = 2.5; k <= 50; k += 2.5) k]), 15);
+    });
+
+    test('serie mista', () {
+      expect(kgFor([2, 4, 6, 8, 10, 12.5, 15, 20]), 15);
+    });
+
+    test('senza serie nel profilo: passo dell\'esercizio, come prima', () {
+      final kb = _kb();
+      final r = assignLoads(
+        [_session(kb, 'db_press')],
+        _profile({'db_press': 16}, reps: {'db_press': 8}),
+        kb,
+      );
+      expect(r['db_press']!.kg, 15);
+    });
+
+    test('nessun manubrio abbastanza leggero: vale il carico noto', () {
+      final kb = _kb();
+      final r = assignLoads(
+        [_session(kb, 'db_press')],
+        _profile({'db_press': 16}, reps: {'db_press': 8}, dumbbells: [20, 24]),
+        kb,
+      );
+      expect(r['db_press']!.kg, 16);
+      expect(r['db_press']!.source, LoadSource.profile);
+    });
   });
 
   test('carico senza ripetizioni: vale com\'è', () {
     final kb = _kb();
-    final r = assignLoads(
-      [_session(kb, 'squat')],
-      _profile({'squat': 80}),
-      kb,
-    );
+    final r = assignLoads([_session(kb, 'squat')], _profile({'squat': 80}), kb);
     expect(r['squat']!.kg, 80);
     expect(r['squat']!.source, LoadSource.profile);
   });
