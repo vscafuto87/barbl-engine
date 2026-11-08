@@ -7,11 +7,7 @@ import 'package:test/test.dart';
 import '../support/minimal_bundle.dart';
 import '../support/profiles.dart';
 
-Map<String, Object?> _role(
-  int sets, {
-  int upper = 150,
-  int lower = 180,
-}) => {
+Map<String, Object?> _role(int sets, {int upper = 150, int lower = 180}) => {
   'sets': sets,
   'reps': {'min': 6, 'max': 8},
   'restSeconds': {'upper': upper, 'lower': lower},
@@ -62,12 +58,7 @@ ChosenSession _session(
       ),
   ];
   return ChosenSession(
-    KbSession(
-      id: 'lower_a',
-      nameIt: 'Lower A',
-      focus: focus,
-      blocks: const [],
-    ),
+    KbSession(id: 'lower_a', nameIt: 'Lower A', focus: focus, blocks: const []),
     [ChosenBlock(blockType, null, slots)],
   );
 }
@@ -148,11 +139,7 @@ void main() {
   test('durata uguale al limite: Ok', () {
     final kb = _kb(mainSets: 19);
     final sessions = _ok(
-      prescribe(
-        [_session(kb)],
-        testProfile(sessionDurationMin: 57),
-        kb,
-      ),
+      prescribe([_session(kb)], testProfile(sessionDurationMin: 57), kb),
     );
     expect(sessions.single.estimatedDurationMin, 57);
   });
@@ -160,11 +147,7 @@ void main() {
   test('durata oltre il limite di un minuto: Rejected duration', () {
     final kb = _kb(mainSets: 19);
     final reason = _rejected(
-      prescribe(
-        [_session(kb)],
-        testProfile(sessionDurationMin: 56),
-        kb,
-      ),
+      prescribe([_session(kb)], testProfile(sessionDurationMin: 56), kb),
     );
     expect(reason.reason, NotCoveredReason.duration);
     expect(
@@ -208,7 +191,13 @@ void main() {
   test('ruolo assente nella prescrizione: Rejected goal', () {
     final kb = _kb();
     final reason = _rejected(
-      prescribe([_session(kb, roles: const ['secondary'])], testProfile(), kb),
+      prescribe(
+        [
+          _session(kb, roles: const ['secondary']),
+        ],
+        testProfile(),
+        kb,
+      ),
     );
     expect(reason.reason, NotCoveredReason.goal);
     expect(

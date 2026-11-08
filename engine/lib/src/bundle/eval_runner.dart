@@ -53,9 +53,7 @@ void _checkSplit(
   List<String> failures,
 ) {
   if (expect.containsKey('split') && plan['split'] != expect['split']) {
-    failures.add(
-      'split: atteso ${expect['split']}, ottenuto ${plan['split']}',
-    );
+    failures.add('split: atteso ${expect['split']}, ottenuto ${plan['split']}');
   }
   if (expect.containsKey('sessions')) {
     final actual = (plan['sessions'] as List).length;
@@ -173,7 +171,9 @@ void _checkInitialLoad(
         final m = e as Map;
         final initial = m['initialLoad'];
         if (initial is Map) {
-          byId.putIfAbsent(m['exerciseId'] as String, () => <Map>[]).add(initial);
+          byId
+              .putIfAbsent(m['exerciseId'] as String, () => <Map>[])
+              .add(initial);
         }
       }
     }
@@ -185,7 +185,12 @@ void _checkInitialLoad(
       failures.add('expect.initialLoad.$id: forma non valida');
       continue;
     }
-    _unknownKeys(want, const {'kg', 'source'}, 'expect.initialLoad.$id', failures);
+    _unknownKeys(
+      want,
+      const {'kg', 'source'},
+      'expect.initialLoad.$id',
+      failures,
+    );
     if (!want.containsKey('kg') || !want.containsKey('source')) {
       failures.add('expect.initialLoad.$id: servono kg e source');
       continue;
@@ -349,7 +354,8 @@ EvalCase _runCase(File file, Directory kbDir, KnowledgeBase kb) {
       return EvalCase(id, <String>['profile o expect mancanti']);
     }
     for (final k in expectRaw.keys) {
-      if (!_knownKeys.contains(k)) failures.add('expect.$k: chiave non gestita');
+      if (!_knownKeys.contains(k))
+        failures.add('expect.$k: chiave non gestita');
     }
     final profileFile = File('${kbDir.path}/$profilePath');
     if (!profileFile.existsSync()) {
@@ -365,9 +371,7 @@ EvalCase _runCase(File file, Directory kbDir, KnowledgeBase kb) {
       return EvalCase(id, failures);
     }
     if (result is NotCovered) {
-      failures.add(
-        'non coperto (${result.reason.name}): ${result.detail}',
-      );
+      failures.add('non coperto (${result.reason.name}): ${result.detail}');
       return EvalCase(id, failures);
     }
     final plan = (result as Generated).plan;
@@ -404,11 +408,15 @@ List<EvalCase> runEval(Directory kbDir) {
   try {
     kb = KnowledgeBase.fromJson(built.json);
   } catch (e) {
-    return <EvalCase>[EvalCase('bundle', <String>['pacchetto illeggibile: $e'])];
+    return <EvalCase>[
+      EvalCase('bundle', <String>['pacchetto illeggibile: $e']),
+    ];
   }
   final goldenDir = Directory('${kbDir.path}/golden');
   if (!goldenDir.existsSync()) {
-    return <EvalCase>[EvalCase('golden', <String>['cartella golden mancante'])];
+    return <EvalCase>[
+      EvalCase('golden', <String>['cartella golden mancante']),
+    ];
   }
   final files = <File>[
     for (final e in goldenDir.listSync(followLinks: false))

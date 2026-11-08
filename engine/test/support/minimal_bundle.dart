@@ -38,66 +38,72 @@ Map<String, Object?> minimalBundle({
       ],
     },
   },
-  'exercises': exercises ?? {
-    'squat': {
-      'id': 'squat',
-      'name': {'it': 'Squat', 'en': 'Squat'},
-      'equipment': 'barbell',
-      'requires': ['barbell', 'rack'],
-      'pattern': 'squat',
-      'muscles': {
-        'primary': 'quadriceps',
-        'secondary': ['glutes'],
+  'exercises':
+      exercises ??
+      {
+        'squat': {
+          'id': 'squat',
+          'name': {'it': 'Squat', 'en': 'Squat'},
+          'equipment': 'barbell',
+          'requires': ['barbell', 'rack'],
+          'pattern': 'squat',
+          'muscles': {
+            'primary': 'quadriceps',
+            'secondary': ['glutes'],
+          },
+          'loading': {'stepKg': 2.5, 'whenLoadUnknown': 'trial_set'},
+        },
       },
-      'loading': {'stepKg': 2.5, 'whenLoadUnknown': 'trial_set'},
-    },
-  },
-  'templates': templates ?? {
-    't1': {
-      'id': 't1',
-      'split': 'upper_lower',
-      'daysPerWeek': 4,
-      'goals': ['muscle_gain'],
-      'defaultSchedule': {'mon': 'lower_a'},
-      'sessions': [
-        {
-          'id': 'lower_a',
-          'name': {'it': 'Lower A', 'en': 'Lower A'},
-          'focus': 'legs',
-          'blocks': [
+  'templates':
+      templates ??
+      {
+        't1': {
+          'id': 't1',
+          'split': 'upper_lower',
+          'daysPerWeek': 4,
+          'goals': ['muscle_gain'],
+          'defaultSchedule': {'mon': 'lower_a'},
+          'sessions': [
             {
-              'type': 'single',
-              'slots': [
+              'id': 'lower_a',
+              'name': {'it': 'Lower A', 'en': 'Lower A'},
+              'focus': 'legs',
+              'blocks': [
                 {
-                  'pattern': 'squat',
-                  'role': 'main',
-                  'askLoad': true,
-                  'candidates': ['squat'],
+                  'type': 'single',
+                  'slots': [
+                    {
+                      'pattern': 'squat',
+                      'role': 'main',
+                      'askLoad': true,
+                      'candidates': ['squat'],
+                    },
+                  ],
                 },
               ],
             },
           ],
         },
-      ],
-    },
-  },
-  'prescriptions': prescriptions ?? {
-    'muscle_gain': {
-      'id': 'muscle_gain',
-      'appliesTo': ['muscle_gain'],
-      'roles': {
-        'main': {
-          'sets': 4,
-          'reps': {'min': 6, 'max': 8},
-          'restSeconds': {'upper': 150, 'lower': 180},
-          'rirFollowsMesocycle': true,
-          'warmup': true,
+      },
+  'prescriptions':
+      prescriptions ??
+      {
+        'muscle_gain': {
+          'id': 'muscle_gain',
+          'appliesTo': ['muscle_gain'],
+          'roles': {
+            'main': {
+              'sets': 4,
+              'reps': {'min': 6, 'max': 8},
+              'restSeconds': {'upper': 150, 'lower': 180},
+              'rirFollowsMesocycle': true,
+              'warmup': true,
+            },
+          },
+          'supersetRestSeconds': 120,
+          'timeBudget': {'minutesPerSet': 3},
         },
       },
-      'supersetRestSeconds': 120,
-      'timeBudget': {'minutesPerSet': 3},
-    },
-  },
   'parameters': {
     'progression': {
       'group': 'progression',
@@ -162,11 +168,7 @@ Map<String, Object?> testEmphasis({
       for (final s in sessions)
         {
           'session': s,
-          'slot': {
-            'pattern': pattern,
-            'role': role,
-            'candidates': candidates,
-          },
+          'slot': {'pattern': pattern, 'role': role, 'candidates': candidates},
         },
     ],
   },

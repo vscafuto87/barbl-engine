@@ -18,10 +18,11 @@ Object? deepCopy(Object? v) {
 
 /// Blocco `parameters` del piano: un oggetto per gruppo con `target: parameters`.
 Map<String, Object?> buildParameters(KnowledgeBase kb) {
-  final groups = kb.parameterGroups.values
-      .where((g) => g.target == _parametersTarget)
-      .toList()
-    ..sort((a, b) => a.group.compareTo(b.group));
+  final groups =
+      kb.parameterGroups.values
+          .where((g) => g.target == _parametersTarget)
+          .toList()
+        ..sort((a, b) => a.group.compareTo(b.group));
   return {
     for (final g in groups)
       g.group: <String, Object?>{

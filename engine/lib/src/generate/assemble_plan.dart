@@ -22,6 +22,31 @@ const List<String> _weekDays = [
   'sun',
 ];
 
+/// Il calendario del piano. Senza `weekdays` nel profilo vale quello
+/// predefinito del template. Con i giorni scelti le sedute del template, nel
+/// loro ordine di settimana, vanno ai giorni scelti, anch'essi in ordine di
+/// settimana: la prima seduta al primo giorno, e così via. I giorni non
+/// cambiano quali sedute ci sono né la loro prescrizione.
+List<Map<String, Object?>> _schedule(KbTemplate template, Profile profile) {
+  final sessionIds = [
+    for (final day in _weekDays)
+      if (template.defaultSchedule.containsKey(day))
+        template.defaultSchedule[day]!,
+  ];
+  final days =
+      profile.weekdays.isNotEmpty &&
+          profile.weekdays.length == sessionIds.length
+      ? profile.weekdays
+      : [
+          for (final day in _weekDays)
+            if (template.defaultSchedule.containsKey(day)) day,
+        ];
+  return [
+    for (var i = 0; i < sessionIds.length; i++)
+      {'day': days[i], 'sessionId': sessionIds[i]},
+  ];
+}
+
 /// Le alternative di [ex] per «Sostituisci»: i suoi sostituti nell'ordine
 /// della KB, solo se eseguibili con l'attrezzatura del profilo e non già
 /// presenti nella stessa seduta. Il carico non si converte (nessun rapporto
@@ -161,11 +186,7 @@ Map<String, Object?> assemblePlan({
     'goal': profile.goal,
     'split': template.split,
     'mesocycle': buildMesocycle(kb),
-    'schedule': [
-      for (final day in _weekDays)
-        if (template.defaultSchedule.containsKey(day))
-          {'day': day, 'sessionId': template.defaultSchedule[day]},
-    ],
+    'schedule': _schedule(template, profile),
     'sessions': sessionsJson,
     'rationales': rationales,
     'parameters': buildParameters(kb),

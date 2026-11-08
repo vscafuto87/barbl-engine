@@ -21,7 +21,8 @@
         "1.1",
         "1.2",
         "1.3",
-        "1.4"
+        "1.4",
+        "1.5"
       ]
     },
     "goal": {
@@ -185,6 +186,24 @@
       "uniqueItems": true,
       "maxItems": 2,
       "description": "Facoltativo: fino a due distretti da privilegiare. Assente equivale a lista vuota. Ammesso con ogni schemaVersion; il modello scrive 1.2 solo quando non è vuoto."
+    },
+    "weekdays": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "mon",
+          "tue",
+          "wed",
+          "thu",
+          "fri",
+          "sat",
+          "sun"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 3,
+      "maxItems": 5,
+      "description": "Facoltativo: i giorni della settimana in cui l'utente si allena. Se presente ha tanti elementi quanti daysPerWeek (controllo del lettore, lo schema non lo esprime). Assente = il motore usa il calendario predefinito del template. Ammesso con ogni schemaVersion; il modello scrive 1.5 solo quando è presente."
     },
     "variantSeed": {
       "type": "integer",

@@ -5,7 +5,14 @@ library;
 // Costanti di formato del contratto, copiate dallo schema del profilo.
 // Non sono numeri di dominio: si aggiornano solo insieme allo schema.
 // ---------------------------------------------------------------------------
-const Set<String> _profileSchemaVersions = {'1.0', '1.1', '1.2', '1.3', '1.4'};
+const Set<String> _profileSchemaVersions = {
+  '1.0',
+  '1.1',
+  '1.2',
+  '1.3',
+  '1.4',
+  '1.5',
+};
 const Set<String> _equipmentValues = {
   'barbell',
   'rack',
@@ -35,9 +42,17 @@ const Set<String> _emphasisValues = {
   'arms',
 };
 const int _emphasisMaxItems = 2;
+const List<String> _weekdayValues = [
+  'mon',
+  'tue',
+  'wed',
+  'thu',
+  'fri',
+  'sat',
+  'sun',
+];
 const double _defaultBarKg = 20;
 const List<double> _defaultPlatesKg = <double>[25, 20, 15, 10, 5, 2.5, 1.25];
-
 
 const Set<String> _topKeys = {
   'schemaVersion',
@@ -48,7 +63,7 @@ const Set<String> _topKeys = {
   'experience',
   'knownLoads',
 };
-const Set<String> _optionalTopKeys = {'emphasis', 'variantSeed'};
+const Set<String> _optionalTopKeys = {'emphasis', 'variantSeed', 'weekdays'};
 const int _variantSeedMax = 2147483647;
 const Set<String> _gymKeys = {
   'type',
@@ -75,6 +90,7 @@ class Profile {
     this.knownReps = const {},
     this.emphasis = const [],
     this.variantSeed,
+    this.weekdays = const [],
   });
 
   final String goal;
@@ -105,6 +121,11 @@ class Profile {
   /// Seme facoltativo: a parità di profilo sceglie un altro piano valido.
   /// Assente = scelta deterministica dal solo profilo.
   final int? variantSeed;
+
+  /// Giorni scelti dall'utente, in ordine di settimana (tanti quanti
+  /// `daysPerWeek`); vuota = il motore usa il calendario predefinito del
+  /// template.
+  final List<String> weekdays;
 }
 
 sealed class ProfileRead {
@@ -165,7 +186,7 @@ ProfileRead readProfile(Map<String, Object?> json) {
   if (json.containsKey('schemaVersion') &&
       !_profileSchemaVersions.contains(json['schemaVersion'])) {
     errors.add(
-      'schemaVersion: deve essere "1.0", "1.1", "1.2", "1.3" o "1.4", '
+      'schemaVersion: deve essere "1.0", "1.1", "1.2", "1.3", "1.4" o "1.5", '
       'trovato ${_describe(json['schemaVersion'])}',
     );
   }
@@ -400,6 +421,36 @@ ProfileRead readProfile(Map<String, Object?> json) {
     }
   }
 
+  final weekdays = <String>[];
+  if (json.containsKey('weekdays')) {
+    final v = json['weekdays'];
+    if (v is! List) {
+      errors.add('weekdays: deve essere una lista');
+    } else {
+      final chosen = <String>{};
+      for (var i = 0; i < v.length; i++) {
+        final item = v[i];
+        if (item is String && _weekdayValues.contains(item)) {
+          if (!chosen.add(item)) {
+            errors.add('weekdays[$i]: duplicato ($item)');
+          }
+        } else {
+          errors.add('weekdays[$i]: valore non ammesso (${_describe(item)})');
+        }
+      }
+      if (daysPerWeek != null && v.length != daysPerWeek) {
+        errors.add(
+          'weekdays: deve avere $daysPerWeek valori (daysPerWeek), '
+          'trovati ${v.length}',
+        );
+      }
+      weekdays.addAll([
+        for (final d in _weekdayValues)
+          if (chosen.contains(d)) d,
+      ]);
+    }
+  }
+
   if (errors.isNotEmpty) return ProfileErrors(List.unmodifiable(errors));
 
   return ProfileOk(
@@ -417,6 +468,7 @@ ProfileRead readProfile(Map<String, Object?> json) {
       knownReps: Map.unmodifiable(knownReps),
       emphasis: List.unmodifiable(emphasis),
       variantSeed: variantSeed,
+      weekdays: List.unmodifiable(weekdays),
     ),
   );
 }

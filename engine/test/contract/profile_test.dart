@@ -235,4 +235,43 @@ void main() {
     expect(r, isA<ProfileErrors>());
     expect((r as ProfileErrors).errors.length, greaterThanOrEqualTo(4));
   });
+
+  group('weekdays (profilo 1.5)', () {
+    test('assente vale lista vuota', () {
+      final p = (readProfile(example()) as ProfileOk).profile;
+      expect(p.weekdays, isEmpty);
+    });
+
+    test(
+      'si legge in ordine di settimana, qualunque sia l\'ordine scritto',
+      () {
+        final m = example()
+          ..['schemaVersion'] = '1.5'
+          ..['weekdays'] = ['sat', 'mon', 'thu', 'tue'];
+        final r = readProfile(m);
+        expect(r, isA<ProfileOk>());
+        expect((r as ProfileOk).profile.weekdays, ['mon', 'tue', 'thu', 'sat']);
+      },
+    );
+
+    test('un numero di giorni diverso da daysPerWeek è un errore', () {
+      final m = example()..['weekdays'] = ['mon', 'wed', 'fri'];
+      final r = readProfile(m);
+      expect(r, isA<ProfileErrors>());
+      expect((r as ProfileErrors).errors.single, startsWith('weekdays:'));
+    });
+
+    test('doppioni e valori fuori enum sono errori con percorso', () {
+      final dup = example()..['weekdays'] = ['mon', 'mon', 'wed', 'fri'];
+      expect(
+        (readProfile(dup) as ProfileErrors).errors,
+        contains('weekdays[1]: duplicato (mon)'),
+      );
+      final bad = example()..['weekdays'] = ['mon', 'wed', 'fri', 'funday'];
+      expect(
+        (readProfile(bad) as ProfileErrors).errors.first,
+        startsWith('weekdays[3]: valore non ammesso'),
+      );
+    });
+  });
 }

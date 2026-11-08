@@ -4,8 +4,14 @@ import 'package:test/test.dart';
 
 import '../support/minimal_bundle.dart';
 
-Map<String, Object?> _source(String id, int tier, {String use = 'public',
-    String type = 'meta_analysis', String? url, String reference = 'Rif'}) => {
+Map<String, Object?> _source(
+  String id,
+  int tier, {
+  String use = 'public',
+  String type = 'meta_analysis',
+  String? url,
+  String reference = 'Rif',
+}) => {
   'id': id,
   'type': type,
   'tier': tier,
@@ -15,7 +21,8 @@ Map<String, Object?> _source(String id, int tier, {String use = 'public',
   if (url != null) 'url': url,
 };
 
-Map<String, Object?> _rationale(String ruleId, {
+Map<String, Object?> _rationale(
+  String ruleId, {
   List<String>? principles,
   String? sourcesFrom,
   Map<String, Object?>? values,
@@ -88,14 +95,24 @@ void main() {
   final list = buildRationales(_kb());
 
   test('tutte le motivazioni, ordinate per ruleId', () {
-    expect(list.map((r) => r['ruleId']).toList(),
-        ['A-FIRST', 'M-NONE', 'N-EMPTY', 'Z-LAST']);
+    expect(list.map((r) => r['ruleId']).toList(), [
+      'A-FIRST',
+      'M-NONE',
+      'N-EMPTY',
+      'Z-LAST',
+    ]);
   });
 
   test('chiavi, values e testi', () {
     final r = _byRule(list, 'A-FIRST');
-    expect(r.keys.toList(),
-        ['ruleId', 'level', 'key', 'values', 'text', 'sources']);
+    expect(r.keys.toList(), [
+      'ruleId',
+      'level',
+      'key',
+      'values',
+      'text',
+      'sources',
+    ]);
     expect(r['level'], 'set');
     expect(r['key'], 'k.A-FIRST');
     expect(r['values'], {'n': 3});

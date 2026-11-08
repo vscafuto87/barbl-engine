@@ -76,8 +76,9 @@ void main() {
 
   test('durata non coperta', () {
     final b = _bundle();
-    final presc = (b['prescriptions']! as Map<String, Object?>)['muscle_gain']!
-        as Map<String, Object?>;
+    final presc =
+        (b['prescriptions']! as Map<String, Object?>)['muscle_gain']!
+            as Map<String, Object?>;
     presc['timeBudget'] = {'minutesPerSet': 12};
     final r = generatePlan(
       testProfileJson(sessionDurationMin: 45),

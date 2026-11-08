@@ -58,11 +58,7 @@ List<String> _stringList(Object? v) => [
 ];
 
 /// Legge un file YAML; in caso di errore lo registra e restituisce null.
-Map<String, Object?>? _readYaml(
-  Directory kb,
-  File file,
-  List<String> errors,
-) {
+Map<String, Object?>? _readYaml(Directory kb, File file, List<String> errors) {
   final rel = _relative(kb, file);
   try {
     final parsed = loadYaml(file.readAsStringSync());
@@ -117,9 +113,7 @@ Map<String, Object?> _index(
       continue;
     }
     if (out.containsKey(id)) {
-      errors.add(
-        '${d.path}: $keyField $id già definito in ${origin[id]}',
-      );
+      errors.add('${d.path}: $keyField $id già definito in ${origin[id]}');
       continue;
     }
     out[id] = d.data;

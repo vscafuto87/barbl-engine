@@ -23,7 +23,8 @@ Uso:
   barbl_engine generate --profile <file> [--bundle <file> | --kb <cartella>]
   barbl_engine eval [--kb <cartella>]''';
 
-CliOutcome _fail(int code, String message) => CliOutcome(code, '', '$message\n');
+CliOutcome _fail(int code, String message) =>
+    CliOutcome(code, '', '$message\n');
 
 CliOutcome _usageError(String message) =>
     CliOutcome(64, '', '$message\n$cliUsage\n');
@@ -148,10 +149,7 @@ CliOutcome _generate(Map<String, String> options) {
     case InvalidProfile(:final errors):
       return _fail(2, 'Profilo non valido:\n  ${errors.join('\n  ')}');
     case NotCovered(:final reason, :final detail):
-      return _fail(
-        2,
-        'Profilo non coperto dalla KB (${reason.name}): $detail',
-      );
+      return _fail(2, 'Profilo non coperto dalla KB (${reason.name}): $detail');
   }
 }
 
