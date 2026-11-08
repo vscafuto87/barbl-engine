@@ -220,8 +220,55 @@ Map<String, Object?> _profileJson(_Combo c) => {
 
 /// Serie dei manubri provate dalla matrice del profilo 1.4.
 const Map<String, List<double>> _dumbbellSeries = {
-  'ogni 2 kg': [2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50],
-  'ogni 2,5 kg': [2.5, 5, 7.5, 10, 12.5, 15, 17.5, 20, 22.5, 25, 27.5, 30, 32.5, 35, 37.5, 40, 42.5, 45, 47.5, 50],
+  'ogni 2 kg': [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32,
+    34,
+    36,
+    38,
+    40,
+    42,
+    44,
+    46,
+    48,
+    50,
+  ],
+  'ogni 2,5 kg': [
+    2.5,
+    5,
+    7.5,
+    10,
+    12.5,
+    15,
+    17.5,
+    20,
+    22.5,
+    25,
+    27.5,
+    30,
+    32.5,
+    35,
+    37.5,
+    40,
+    42.5,
+    45,
+    47.5,
+    50,
+  ],
   'mista': [2, 3, 4, 5, 6, 8, 10, 12.5, 15, 17.5, 20, 22.5, 25, 30, 35, 40, 50],
 };
 
@@ -721,23 +768,27 @@ void main() {
           final base = _outcomes[c.key]!;
           final outcome = generatePlan(_profileJson14(c, entry.value), _kb);
           if (_label(outcome) != _label(base)) {
-            bad.add('${c.key}: copertura ${_label(outcome)} invece di '
-                '${_label(base)}');
+            bad.add(
+              '${c.key}: copertura ${_label(outcome)} invece di '
+              '${_label(base)}',
+            );
             continue;
           }
           if (outcome is! Generated) continue;
           final plan = outcome.plan;
           bad.addAll(
-            _planViolations(c, plan, dumbbellsKg: entry.value)
-                .map((v) => '${c.key}: $v'),
+            _planViolations(
+              c,
+              plan,
+              dumbbellsKg: entry.value,
+            ).map((v) => '${c.key}: $v'),
           );
           // La serie cambia solo i carichi stimati dei manubri: tutto il
           // resto del piano è quello del profilo senza serie.
           Map<String, Object?> withoutDumbbellEstimates(
             Map<String, Object?> p,
           ) {
-            final copy =
-                jsonDecode(jsonEncode(p)) as Map<String, Object?>;
+            final copy = jsonDecode(jsonEncode(p)) as Map<String, Object?>;
             for (final e in _exercisesOf(copy)) {
               if (e['equipment'] == 'dumbbell') {
                 (e['initialLoad']! as Map<String, Object?>)['kg'] = null;
@@ -746,9 +797,7 @@ void main() {
             return copy;
           }
 
-          final without = withoutDumbbellEstimates(
-            (base as Generated).plan,
-          );
+          final without = withoutDumbbellEstimates((base as Generated).plan);
           if (jsonEncode(withoutDumbbellEstimates(plan)) !=
               jsonEncode(without)) {
             bad.add('${c.key}: il piano cambia oltre ai carichi dei manubri');

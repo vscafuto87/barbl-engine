@@ -2,6 +2,10 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.23.0 — 2026-11-08
+
+- Profilo `1.5`: il motore legge `weekdays` (facoltativo, i giorni della settimana in cui l'utente si allena: valori `mon`…`sun` senza doppioni, tanti quanti `daysPerWeek`, altrimenti profilo non valido) e accetta `schemaVersion` `1.5`. Con `weekdays` le sedute del template, nel loro ordine di settimana, vanno ai giorni scelti, in ordine di settimana; senza, vale `defaultSchedule` come prima. Le sedute, gli esercizi e le prescrizioni non cambiano, quindi un profilo senza `weekdays` (o con gli stessi giorni del calendario predefinito) dà lo stesso piano di prima. Il recupero tra due sedute ravvicinate non è controllato dal motore: lo segnala l'app (parametri `move.minRestHours` del piano). Copia dello schema del profilo aggiornata (ramo `claude/adoring-shannon-n9ddhm` dell'app).
+
 ## 0.22.0 — 2026-11-07
 
 - Profilo `1.4`: il motore legge `gym.dumbbellsKg` (serie dei manubri, kg di un manubrio, almeno uno e tutti positivi; ordinata e senza doppioni; assente = il motore non la usa) e accetta `schemaVersion` `1.4`. I profili `1.0`–`1.3` si leggono come prima.

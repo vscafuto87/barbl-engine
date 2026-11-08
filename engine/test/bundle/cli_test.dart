@@ -50,7 +50,10 @@ void main() {
     final profile = writeProfile(
       (j) => {
         ...j,
-        'gym': {...(j['gym']! as Map<String, Object?>), 'equipment': ['cables']},
+        'gym': {
+          ...(j['gym']! as Map<String, Object?>),
+          'equipment': ['cables'],
+        },
       },
     );
     final r = runCli(['generate', '--profile', profile, '--kb', '../kb']);
@@ -75,7 +78,13 @@ void main() {
     expect(r.code, 2);
     expect(r.err, isNotEmpty);
     final wrong = File('${dir.path}/wrong.json')..writeAsStringSync('{"a":1}');
-    final r2 = runCli(['generate', '--profile', profile, '--bundle', wrong.path]);
+    final r2 = runCli([
+      'generate',
+      '--profile',
+      profile,
+      '--bundle',
+      wrong.path,
+    ]);
     expect(r2.code, 2);
   });
 

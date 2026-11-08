@@ -52,10 +52,10 @@ Map<String, Object?> _bundle() {
 Map<String, Object?> _plan(KnowledgeBase kb, {Profile? profile}) {
   final p = profile ?? testProfile();
   final template = (selectTemplate(p, kb) as Ok<KbTemplate>).value;
-  final chosen = (chooseExercises(template, p, kb) as Ok<List<ChosenSession>>)
-      .value;
-  final sessions = (prescribe(chosen, p, kb) as Ok<List<PrescribedSession>>)
-      .value;
+  final chosen =
+      (chooseExercises(template, p, kb) as Ok<List<ChosenSession>>).value;
+  final sessions =
+      (prescribe(chosen, p, kb) as Ok<List<PrescribedSession>>).value;
   return assemblePlan(
     template: template,
     profile: p,
@@ -108,8 +108,13 @@ void main() {
   test('seduta, blocco ed esercizio', () {
     final plan = _plan(KnowledgeBase.fromJson(_bundle()));
     final s = (plan['sessions']! as List).first as Map<String, Object?>;
-    expect(s.keys.toList(),
-        ['id', 'name', 'focus', 'estimatedDurationMin', 'blocks']);
+    expect(s.keys.toList(), [
+      'id',
+      'name',
+      'focus',
+      'estimatedDurationMin',
+      'blocks',
+    ]);
     expect(s['name'], 'Lower A');
     expect(s['estimatedDurationMin'], 12);
     final b = (s['blocks']! as List).first as Map<String, Object?>;
@@ -142,11 +147,14 @@ void main() {
 
   test('askLoad assente quando lo slot non lo chiede', () {
     final b = _bundle();
-    final tpl = (b['templates']! as Map<String, Object?>)['t1']!
-        as Map<String, Object?>;
-    final block = (((tpl['sessions']! as List).first
-            as Map<String, Object?>)['blocks']! as List)
-        .first as Map<String, Object?>;
+    final tpl =
+        (b['templates']! as Map<String, Object?>)['t1']!
+            as Map<String, Object?>;
+    final block =
+        (((tpl['sessions']! as List).first as Map<String, Object?>)['blocks']!
+                    as List)
+                .first
+            as Map<String, Object?>;
     final slot = (block['slots']! as List).first as Map<String, Object?>;
     slot.remove('askLoad');
     final e = _firstExercise(_plan(KnowledgeBase.fromJson(b)));
@@ -154,15 +162,19 @@ void main() {
     expect(e['initialLoad'], {'kg': null, 'source': 'manual'});
   });
 
-  test('stepKg omesso quando la KB non lo ha; niente TRIAL-LOAD senza prova', () {
-    final b = _bundle();
-    final ex = (b['exercises']! as Map<String, Object?>)['squat']!
-        as Map<String, Object?>;
-    ex['loading'] = {'whenLoadUnknown': 'manual'};
-    final e = _firstExercise(_plan(KnowledgeBase.fromJson(b)));
-    expect(e.containsKey('stepKg'), isFalse);
-    expect(e['rules'], ['A-RULE', 'PROG-DOUBLE']);
-  });
+  test(
+    'stepKg omesso quando la KB non lo ha; niente TRIAL-LOAD senza prova',
+    () {
+      final b = _bundle();
+      final ex =
+          (b['exercises']! as Map<String, Object?>)['squat']!
+              as Map<String, Object?>;
+      ex['loading'] = {'whenLoadUnknown': 'manual'};
+      final e = _firstExercise(_plan(KnowledgeBase.fromJson(b)));
+      expect(e.containsKey('stepKg'), isFalse);
+      expect(e['rules'], ['A-RULE', 'PROG-DOUBLE']);
+    },
+  );
 
   test('carico del profilo', () {
     final kb = KnowledgeBase.fromJson(_bundle());
@@ -182,54 +194,64 @@ void main() {
     expect(e['rules'], ['A-RULE', 'PROG-DOUBLE']);
   });
 
-  test('superset: label, restSeconds del blocco, restSeconds nullo negli esercizi',
-      () {
-    final b = _bundle();
-    final tpl = ((b['templates']! as Map<String, Object?>)['t1']!
-        as Map<String, Object?>);
-    final sessions = tpl['sessions']! as List;
-    final block = ((sessions.first as Map<String, Object?>)['blocks']! as List)
-        .first as Map<String, Object?>;
-    block['type'] = 'superset';
-    block['label'] = 'A';
-    final kb = KnowledgeBase.fromJson(b);
-    final s = (_plan(kb)['sessions']! as List).first as Map<String, Object?>;
-    final blk = (s['blocks']! as List).first as Map<String, Object?>;
-    expect(blk.keys.toList(), ['type', 'label', 'restSeconds', 'exercises']);
-    expect(blk['label'], 'A');
-    expect(blk['restSeconds'], 120);
-    expect((blk['exercises']! as List).first['restSeconds'], isNull);
-  });
+  test(
+    'superset: label, restSeconds del blocco, restSeconds nullo negli esercizi',
+    () {
+      final b = _bundle();
+      final tpl =
+          ((b['templates']! as Map<String, Object?>)['t1']!
+              as Map<String, Object?>);
+      final sessions = tpl['sessions']! as List;
+      final block =
+          ((sessions.first as Map<String, Object?>)['blocks']! as List).first
+              as Map<String, Object?>;
+      block['type'] = 'superset';
+      block['label'] = 'A';
+      final kb = KnowledgeBase.fromJson(b);
+      final s = (_plan(kb)['sessions']! as List).first as Map<String, Object?>;
+      final blk = (s['blocks']! as List).first as Map<String, Object?>;
+      expect(blk.keys.toList(), ['type', 'label', 'restSeconds', 'exercises']);
+      expect(blk['label'], 'A');
+      expect(blk['restSeconds'], 120);
+      expect((blk['exercises']! as List).first['restSeconds'], isNull);
+    },
+  );
 
-  test('parameters: appiattiti, provisional, ruleId in fondo, niente mesocycle',
-      () {
-    final b = _bundle();
-    (b['parameters']! as Map<String, Object?>)['trialLoad'] = {
-      'group': 'trialLoad',
-      'target': 'parameters',
-      'values': {'x': 1},
-      'provisional': false,
-      'ruleId': 'TRIAL-LOAD',
-      'engineConstraints': {'maxRepsPlusRir': 10},
-      'principles': ['P-1'],
-    };
-    final params =
-        _plan(KnowledgeBase.fromJson(b))['parameters']! as Map<String, Object?>;
-    expect(params.keys.toList(), ['progression', 'tired', 'trialLoad']);
-    expect(params['progression'], {
-      'stepKg': 2.5,
-      'provisional': true,
-      'ruleId': 'PROG-DOUBLE',
-    });
-    expect((params['progression']! as Map).keys.toList(),
-        ['stepKg', 'provisional', 'ruleId']);
-    expect(params['tired'], {'loadPct': -5, 'provisional': true});
-    expect(params['trialLoad'], {
-      'x': 1,
-      'provisional': false,
-      'ruleId': 'TRIAL-LOAD',
-    });
-  });
+  test(
+    'parameters: appiattiti, provisional, ruleId in fondo, niente mesocycle',
+    () {
+      final b = _bundle();
+      (b['parameters']! as Map<String, Object?>)['trialLoad'] = {
+        'group': 'trialLoad',
+        'target': 'parameters',
+        'values': {'x': 1},
+        'provisional': false,
+        'ruleId': 'TRIAL-LOAD',
+        'engineConstraints': {'maxRepsPlusRir': 10},
+        'principles': ['P-1'],
+      };
+      final params =
+          _plan(KnowledgeBase.fromJson(b))['parameters']!
+              as Map<String, Object?>;
+      expect(params.keys.toList(), ['progression', 'tired', 'trialLoad']);
+      expect(params['progression'], {
+        'stepKg': 2.5,
+        'provisional': true,
+        'ruleId': 'PROG-DOUBLE',
+      });
+      expect((params['progression']! as Map).keys.toList(), [
+        'stepKg',
+        'provisional',
+        'ruleId',
+      ]);
+      expect(params['tired'], {'loadPct': -5, 'provisional': true});
+      expect(params['trialLoad'], {
+        'x': 1,
+        'provisional': false,
+        'ruleId': 'TRIAL-LOAD',
+      });
+    },
+  );
 
   test('rationales nel piano e piano codificabile in JSON', () {
     final plan = _plan(KnowledgeBase.fromJson(_bundle()));
@@ -255,7 +277,8 @@ void main() {
     (params['progression']! as Map<String, Object?>)['stepKg'] = 999;
     final rationales = plan['rationales']! as List;
     ((rationales.first as Map<String, Object?>)['values']!
-        as Map<String, Object?>)['injected'] = 1;
+            as Map<String, Object?>)['injected'] =
+        1;
     ((plan['mesocycle']! as Map<String, Object?>)['weeks']! as List).clear();
     expect(jsonEncode(_plan(kb)), before);
   });

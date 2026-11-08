@@ -58,8 +58,11 @@ List<ChosenSession> applyEmphasis(
           for (final slot in block.slots) slot.exercise.id,
       };
       KbExercise? exercise;
-      for (final candidate
-          in availableCandidates(placement.slot, profile, kb)) {
+      for (final candidate in availableCandidates(
+        placement.slot,
+        profile,
+        kb,
+      )) {
         if (!used.contains(candidate.id)) {
           exercise = candidate;
           break;
@@ -71,11 +74,13 @@ List<ChosenSession> applyEmphasis(
         continue;
       }
       sets[i] = total;
-      added.putIfAbsent(i, () => <ChosenBlock>[]).add(
-        ChosenBlock('single', null, [
-          ChosenSlot(placement.slot, exercise, fromEmphasis: true),
-        ]),
-      );
+      added
+          .putIfAbsent(i, () => <ChosenBlock>[])
+          .add(
+            ChosenBlock('single', null, [
+              ChosenSlot(placement.slot, exercise, fromEmphasis: true),
+            ]),
+          );
     }
   }
   if (added.isEmpty) return sessions;

@@ -64,7 +64,8 @@ List<Map<String, Object?>> _publicSources(KbRationale r, KnowledgeBase kb) {
 
 /// Una voce per motivazione della KB, ordinate per `ruleId`.
 List<Map<String, Object?>> buildRationales(KnowledgeBase kb) {
-  final ordered = [...kb.rationales]..sort((a, b) => a.ruleId.compareTo(b.ruleId));
+  final ordered = [...kb.rationales]
+    ..sort((a, b) => a.ruleId.compareTo(b.ruleId));
   return [
     for (final r in ordered)
       {

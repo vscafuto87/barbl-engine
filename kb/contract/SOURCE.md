@@ -7,3 +7,5 @@ Dalla KB 0.21.0 lo schema del profilo ha anche `pull_up_bar` e `dip_station` in 
 Non si modificano qui. Quando il contratto cambia nell'app, si ricopiano e si aggiorna questo file. Il validatore li usa per controllare che `parameters/` abbia tutti i campi richiesti dal piano e che i valori di `equipment` e `split` esistano.
 
 Dalla KB 0.22.0 la copia del profilo è quella del commit `0733c48` dell'app (7 novembre 2026): `schemaVersion` `1.4` e `gym.dumbbellsKg` facoltativo. Il piano è invariato.
+
+Dalla KB 0.23.0 la copia del profilo ha `schemaVersion` `1.5` e `weekdays` facoltativo (giorni scelti dall'utente). Origine: ramo `claude/adoring-shannon-n9ddhm` dell'app, da aggiornare con il commit del merge. Il piano è invariato.

@@ -51,9 +51,7 @@ class KnowledgeBase {
     ) {
       final m = mapAt(json, key, root);
       final ids = m.keys.toList()..sort();
-      return [
-        for (final id in ids) read(asMap(m[id], '$key.$id'), '$key.$id'),
-      ];
+      return [for (final id in ids) read(asMap(m[id], '$key.$id'), '$key.$id')];
     }
 
     final rationaleMap = collection('rationales', KbRationale.fromJson);

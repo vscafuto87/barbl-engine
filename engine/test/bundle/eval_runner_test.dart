@@ -44,7 +44,10 @@ void main() {
   const goldenName = 'golden/01-intermediate-4d-muscle.yaml';
 
   /// Copia della KB con il caso d'oro 01 modificato da [edit].
-  EvalCase editedCase(String Function(String) edit, {void Function(Directory)? also}) {
+  EvalCase editedCase(
+    String Function(String) edit, {
+    void Function(Directory)? also,
+  }) {
     final tmp = Directory.systemTemp.createTempSync('eval_copy');
     addTearDown(() => tmp.deleteSync(recursive: true));
     copyDir(Directory('../kb'), tmp);
@@ -70,7 +73,8 @@ void main() {
       c.failures.any((m) => m.contains(word));
 
   test('il caso d\'oro 05 (enfasi) passa sulla KB vera', () {
-    final c = runEval(Directory('../kb')).firstWhere((c) => c.id == 'golden-05');
+    final c = runEval(Directory('../kb'))
+        .firstWhere((c) => c.id == 'golden-05');
     expect(c.failures, isEmpty);
   });
 
@@ -93,47 +97,82 @@ void main() {
     expect(mentions(wrong, 'emphasisExercises.pull'), isTrue);
 
     final missing = run05(
-      (t) => replaceSection(t, '  emphasisExercises:', '  weeklySetsAtLeast:', ''),
+      (t) =>
+          replaceSection(t, '  emphasisExercises:', '  weeklySetsAtLeast:', ''),
     );
     expect(missing.passed, isFalse);
     expect(mentions(missing, 'emphasisExercises'), isTrue);
   });
 
   test('una chiave sconosciuta in expect fa fallire', () {
-    final c = editedCase((t) => replaceOnce(t, 'expect:\n', 'expect:\n  bogus: 1\n'));
+    final c = editedCase(
+      (t) => replaceOnce(t, 'expect:\n', 'expect:\n  bogus: 1\n'),
+    );
     expect(c.passed, isFalse);
     expect(mentions(c, 'bogus'), isTrue);
   });
 
   test('una chiave sconosciuta dentro mesocycle fa fallire', () {
-    final c = editedCase((t) => replaceOnce(
-        t, 'lastWeekType: deload', 'lastWeekType: deload\n    lastWeekTyp: x'));
+    final c = editedCase(
+      (t) => replaceOnce(
+        t,
+        'lastWeekType: deload',
+        'lastWeekType: deload\n    lastWeekTyp: x',
+      ),
+    );
     expect(c.passed, isFalse);
     expect(mentions(c, 'lastWeekTyp'), isTrue);
   });
 
-  test('una chiave sconosciuta dentro weeklySetsAtLeast e initialLoad fa fallire', () {
-    final a = editedCase((t) => replaceOnce(
-        t, 'counting: fractional', 'counting: fractional\n    extra: 1'));
-    expect(mentions(a, 'extra'), isTrue);
-    final b = editedCase((t) => replaceOnce(
-        t, 'kg: 77.5\n', 'kg: 77.5\n      weird: 1\n'));
-    expect(mentions(b, 'weird'), isTrue);
-  });
+  test(
+    'una chiave sconosciuta dentro weeklySetsAtLeast e initialLoad fa fallire',
+    () {
+      final a = editedCase(
+        (t) => replaceOnce(
+          t,
+          'counting: fractional',
+          'counting: fractional\n    extra: 1',
+        ),
+      );
+      expect(mentions(a, 'extra'), isTrue);
+      final b = editedCase(
+        (t) => replaceOnce(t, 'kg: 77.5\n', 'kg: 77.5\n      weird: 1\n'),
+      );
+      expect(mentions(b, 'weird'), isTrue);
+    },
+  );
 
   test('un initialLoad malformato fa fallire', () {
-    final c = editedCase((t) =>
-        replaceSection(t, '  initialLoad:', '  weeklySetsAtLeast:', '  initialLoad: nope\n'));
+    final c = editedCase(
+      (t) => replaceSection(
+        t,
+        '  initialLoad:',
+        '  weeklySetsAtLeast:',
+        '  initialLoad: nope\n',
+      ),
+    );
     expect(c.passed, isFalse);
     expect(mentions(c, 'initialLoad'), isTrue);
   });
 
   test('mesocycle e weeklySetsAtLeast malformati fanno fallire', () {
-    final a = editedCase((t) =>
-        replaceSection(t, '  mesocycle:', '  initialLoad:', '  mesocycle: 5\n'));
+    final a = editedCase(
+      (t) => replaceSection(
+        t,
+        '  mesocycle:',
+        '  initialLoad:',
+        '  mesocycle: 5\n',
+      ),
+    );
     expect(mentions(a, 'mesocycle'), isTrue);
-    final b = editedCase((t) => replaceSection(
-        t, '  weeklySetsAtLeast:', '  validAgainst:', '  weeklySetsAtLeast: 3\n'));
+    final b = editedCase(
+      (t) => replaceSection(
+        t,
+        '  weeklySetsAtLeast:',
+        '  validAgainst:',
+        '  weeklySetsAtLeast: 3\n',
+      ),
+    );
     expect(mentions(b, 'weeklySetsAtLeast'), isTrue);
   });
 
@@ -151,8 +190,11 @@ void main() {
 
   test('un validAgainst che non passa fa fallire', () {
     final c = editedCase(
-      (t) => replaceOnce(t, 'validAgainst: contract/plan.schema.json',
-          'validAgainst: contract/impossible.schema.json'),
+      (t) => replaceOnce(
+        t,
+        'validAgainst: contract/plan.schema.json',
+        'validAgainst: contract/impossible.schema.json',
+      ),
       also: (dir) => File('${dir.path}/contract/impossible.schema.json')
           .writeAsStringSync('{"type":"object","required":["nonexistent"]}'),
     );
@@ -183,8 +225,10 @@ void main() {
     final schema = File('../kb/contract/plan.schema.json');
     expect(planSchemaErrors(plan, schema), isEmpty);
     final copy = jsonDecode(jsonEncode(plan)) as Map<String, Object?>;
-    final firstExercise = ((((copy['sessions']! as List).first
-            as Map)['blocks'] as List).first as Map)['exercises'] as List;
+    final firstExercise =
+        ((((copy['sessions']! as List).first as Map)['blocks'] as List).first
+                as Map)['exercises']
+            as List;
     (firstExercise.first as Map)['equipment'] = 'kettlebell';
     expect(planSchemaErrors(copy, schema), isNotEmpty);
     final copy2 = jsonDecode(jsonEncode(plan)) as Map<String, Object?>;
