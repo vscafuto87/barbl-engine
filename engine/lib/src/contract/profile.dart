@@ -42,6 +42,12 @@ const Set<String> _emphasisValues = {
   'arms',
 };
 const int _emphasisMaxItems = 2;
+
+/// Valori di `emphasis` ammessi dallo schema del profilo.
+const Set<String> emphasisValues = _emphasisValues;
+
+/// Quanti distretti al massimo ammette `emphasis` nello schema del profilo.
+const int emphasisMaxItems = _emphasisMaxItems;
 const List<String> _weekdayValues = [
   'mon',
   'tue',
@@ -126,6 +132,24 @@ class Profile {
   /// `daysPerWeek`); vuota = il motore usa il calendario predefinito del
   /// template.
   final List<String> weekdays;
+
+  /// Lo stesso profilo con `emphasis` sostituita (per provare una scelta).
+  Profile withEmphasis(List<String> emphasis) => Profile(
+    goal: goal,
+    gymType: gymType,
+    equipment: equipment,
+    barKg: barKg,
+    platesKg: platesKg,
+    dumbbellsKg: dumbbellsKg,
+    daysPerWeek: daysPerWeek,
+    sessionDurationMin: sessionDurationMin,
+    experience: experience,
+    knownLoads: knownLoads,
+    knownReps: knownReps,
+    emphasis: emphasis,
+    variantSeed: variantSeed,
+    weekdays: weekdays,
+  );
 }
 
 sealed class ProfileRead {

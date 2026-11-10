@@ -43,4 +43,54 @@ void main() {
     expect(Directory('lib').existsSync(), isTrue);
     expect(importViolations(Directory('lib')), isEmpty);
   });
+
+  numbersTests();
+}
+
+/// Letterali numerici del codice di [file], senza commenti e stringhe.
+List<String> numericLiterals(String source) {
+  final noComments = source
+      .split('\n')
+      .map((l) => l.replaceFirst(RegExp(r'//.*$'), ''))
+      .join('\n');
+  final noStrings = noComments.replaceAll(
+    RegExp(
+      r"'(?:[^'\\]|\\.)*'|"
+      r'"(?:[^"\\]|\\.)*"',
+    ),
+    "''",
+  );
+  return [
+    for (final m in RegExp(
+      r'(?<![\w.$])\d+(?:\.\d+)?(?![\w])',
+    ).allMatches(noStrings))
+      m.group(0)!,
+  ];
+}
+
+void numbersTests() {
+  test('suggestEmphasis non ha numeri di dominio nel codice', () {
+    // Ammessi: 0 e 1 (confronti, indici), e i quattro gradi di confidenza
+    // (formato dell'analisi) in photo_types.dart. Soglie, tetti, rapporti e
+    // distretti stanno in kb/parameters/photoEmphasis.yaml.
+    const generic = {'0', '1'};
+    const confidenceRanks = {'0', '1', '2', '3'};
+    final dir = Directory('lib/src/suggest');
+    expect(dir.existsSync(), isTrue);
+    for (final f in dir.listSync().whereType<File>()) {
+      if (!f.path.endsWith('.dart')) continue;
+      final allowed = f.path.endsWith('photo_types.dart')
+          ? confidenceRanks
+          : generic;
+      final found = numericLiterals(f.readAsStringSync());
+      expect(found.where((n) => !allowed.contains(n)), isEmpty, reason: f.path);
+    }
+  });
+
+  test('numericLiterals trova i numeri e ignora commenti e stringhe', () {
+    expect(
+      numericLiterals("final a = 3; // 5\nfinal b = '7';\nfinal c = 2.5;"),
+      ['3', '2.5'],
+    );
+  });
 }

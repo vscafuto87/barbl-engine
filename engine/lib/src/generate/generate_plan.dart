@@ -18,8 +18,11 @@ GenerationResult generatePlan(
 ) {
   final read = readProfile(profileJson);
   if (read is ProfileErrors) return InvalidProfile(read.errors);
-  final profile = (read as ProfileOk).profile;
+  return generatePlanForProfile((read as ProfileOk).profile, kb);
+}
 
+/// Come [generatePlan] per un profilo già letto.
+GenerationResult generatePlanForProfile(Profile profile, KnowledgeBase kb) {
   final template = selectTemplate(profile, kb);
   if (template is Rejected<KbTemplate>) return template.reason;
   final selected = (template as Ok<KbTemplate>).value;
