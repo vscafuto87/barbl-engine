@@ -18,7 +18,8 @@
     "target": {
       "enum": [
         "parameters",
-        "mesocycle"
+        "mesocycle",
+        "engine"
       ]
     },
     "ruleId": {

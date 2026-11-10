@@ -1,0 +1,9 @@
+ruleId: PHOTO-EMPHASIS-NO-ROOM
+key: photoEmphasis.noRoom
+level: mesocycle
+scope: suggestion
+text:
+  it: 'Nel tempo che hai scelto non c''è spazio per altro lavoro su questo distretto: il piano resta com''è.'
+  en: 'Within the time you chose there is no room for more work on this area: the plan stays as it is.'
+principles:
+- P-PHOTO-EMPHASIS

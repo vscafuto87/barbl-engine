@@ -1,0 +1,26 @@
+id: P-PHOTO-EMPHASIS
+topic: volume
+statement:
+  it: 'Una foto è un segnale debole: può suggerire una priorità per il ciclo successivo, non decide il volume. Un distretto
+    risulta meno in evidenza nelle foto di fine ciclo non dice se la causa sia poco lavoro, poca costanza, posa o luce.
+    Per questo la KB propone di dare più spazio a un distretto (al massimo due, tra quelli che il profilo sa enfatizzare)
+    solo se la lettura delle foto è abbastanza sicura e i dati di allenamento non la contraddicono: il lavoro fatto non
+    era già sopra il previsto, il ciclo è stato fatto abbastanza e il recupero è stato rispettato. L''aggiunta resta dentro
+    un tetto di serie in più a settimana e dentro la durata scelta, e senza queste condizioni la risposta è «nessuna modifica».
+    Quali soglie e quali distretti è una scelta di design di Barbl; che più serie settimanali diano più crescita a un
+    muscolo viene da P-VOL-DOSE-HYP.'
+  en: 'A photo is a weak signal: it can suggest a priority for the next cycle, it does not decide the volume. An area looking
+    less prominent in the end-of-cycle photos does not say whether the cause is little work, low consistency, pose or lighting.
+    So the KB proposes giving more room to an area (at most two, among those the profile can emphasise) only if the reading
+    of the photos is sure enough and the training data do not contradict it: the work done was not already above plan, the
+    cycle was done enough and recovery was respected. The addition stays within a cap of extra weekly sets and within the
+    chosen duration, and without these conditions the answer is "no change". Which thresholds and which areas is a Barbl
+    design choice; that more weekly sets give a muscle more growth comes from P-VOL-DOSE-HYP.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- parameters/photoEmphasis
+sources:
+- id: barbl-design
+  access: full_text

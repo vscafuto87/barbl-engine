@@ -328,6 +328,35 @@ def main() -> int:
                     r.error(where, f"non provvisorio ma il principio '{pid}' non è confermato")
                 if any(c["status"] == "open" for c in pr.get("conflicts", [])):
                     r.error(where, f"non provvisorio ma il principio '{pid}' ha un conflitto aperto")
+    pe = parameters.get("photoEmphasis")
+    if pe:
+        v = pe["values"]
+        emphasis_values = set(profile_schema["properties"]["emphasis"]["items"]["enum"])
+        max_items = profile_schema["properties"]["emphasis"].get("maxItems", 2)
+        analysis_regions = {"shoulders", "chest", "back", "arms", "core", "quadriceps", "hamstrings", "glutes", "calves"}
+        mapped = [x["region"] for x in v.get("regions", [])]
+        if len(set(mapped)) != len(mapped):
+            r.error(pe["_file"], "regions: regione ripetuta")
+        for x in v.get("regions", []):
+            if x["region"] not in analysis_regions:
+                r.error(pe["_file"], f"regions: regione sconosciuta '{x['region']}'")
+            if x["emphasis"] not in emphasis_values:
+                r.error(pe["_file"], f"regions: '{x['emphasis']}' non è un valore di emphasis del profilo")
+        for x in v.get("notEmphasizable", []):
+            if x not in analysis_regions or x in mapped:
+                r.error(pe["_file"], f"notEmphasizable: '{x}' sconosciuta o anche in regions")
+        if v.get("minConfidence") not in ("low", "medium", "high"):
+            r.error(pe["_file"], "minConfidence deve essere low, medium o high")
+        if not isinstance(v.get("maxEmphasis"), int) or not 1 <= v["maxEmphasis"] <= max_items:
+            r.error(pe["_file"], f"maxEmphasis deve essere un intero tra 1 e {max_items}")
+        if not 0 <= v.get("minDoneOverPlanned", -1) <= v.get("maxDoneOverPlanned", -2):
+            r.error(pe["_file"], "minDoneOverPlanned deve essere tra 0 e maxDoneOverPlanned")
+        for k in ("minPlannedWeeklySets", "maxExtraWeeklySets"):
+            if not isinstance(v.get(k), (int, float)) or v[k] < 0:
+                r.error(pe["_file"], f"{k} deve essere un numero non negativo")
+        for rid in ("SUGGEST", "NO-EVIDENCE", "NO-DATA", "DATA-DISAGREES", "NO-ROOM", "MORE-VOLUME"):
+            if f"PHOTO-EMPHASIS-{rid}" not in rationales:
+                r.error("rationales/", f"manca la motivazione 'PHOTO-EMPHASIS-{rid}'")
     meso = parameters.get("mesocycle")
     if meso:
         weeks = meso["values"].get("weeks", [])

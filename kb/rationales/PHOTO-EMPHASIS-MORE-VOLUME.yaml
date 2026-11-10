@@ -1,0 +1,11 @@
+ruleId: PHOTO-EMPHASIS-MORE-VOLUME
+key: photoEmphasis.moreVolume
+level: mesocycle
+scope: suggestion
+text:
+  it: 'Dare più spazio a questo distretto aggiungerebbe più lavoro di quanto una foto da sola giustifichi:
+    il piano resta com''è.'
+  en: 'Giving this area more room would add more work than a photo alone justifies: the plan stays as
+    it is.'
+principles:
+- P-PHOTO-EMPHASIS
