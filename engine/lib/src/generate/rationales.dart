@@ -62,10 +62,17 @@ List<Map<String, Object?>> _publicSources(KbRationale r, KnowledgeBase kb) {
   ];
 }
 
-/// Una voce per motivazione della KB, ordinate per `ruleId`.
-List<Map<String, Object?>> buildRationales(KnowledgeBase kb) {
-  final ordered = [...kb.rationales]
-    ..sort((a, b) => a.ruleId.compareTo(b.ruleId));
+/// Una voce per motivazione della KB, ordinate per `ruleId`. Con [forPlan]
+/// vero (il piano) solo quelle che entrano nei piani; con falso solo quelle di
+/// `scope: suggestion`.
+List<Map<String, Object?>> buildRationales(
+  KnowledgeBase kb, {
+  bool forPlan = true,
+}) {
+  final ordered = [
+    for (final r in kb.rationales)
+      if (r.inPlan == forPlan) r,
+  ]..sort((a, b) => a.ruleId.compareTo(b.ruleId));
   return [
     for (final r in ordered)
       {

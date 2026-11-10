@@ -348,7 +348,12 @@ void main() {
       for (final r in p['rationales']! as List) (r as Map)['ruleId'],
     ];
     expect(ruleIds, isNot(contains('EMPHASIS')));
-    expect(ruleIds, hasLength(kb.rationales.length - 1));
+    // Le motivazioni di `scope: suggestion` non entrano mai in un piano.
+    expect(ruleIds, isNot(contains(startsWith('PHOTO-EMPHASIS'))));
+    expect(
+      ruleIds,
+      hasLength(kb.rationales.where((r) => r.inPlan).length - 1),
+    );
   });
 
   test('un profilo senza gym è non valido', () {

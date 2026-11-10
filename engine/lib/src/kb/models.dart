@@ -468,6 +468,7 @@ class KbRationale {
     required this.sourcesFrom,
     required this.principles,
     required this.everyExercise,
+    this.inPlan = true,
   });
 
   factory KbRationale.fromJson(Map<String, Object?> json, String path) {
@@ -482,8 +483,13 @@ class KbRationale {
       sourcesFrom: stringOrNull(json, 'sourcesFrom', path),
       principles: stringsOrEmpty(json, 'principles', path),
       everyExercise: boolOr(json, 'everyExercise', path, false),
+      inPlan: (stringOrNull(json, 'scope', path) ?? 'plan') != 'suggestion',
     );
   }
+
+  /// Falso per le motivazioni di `scope: suggestion`, che usa solo
+  /// `suggestEmphasis` e non entrano mai in un piano.
+  final bool inPlan;
 
   final String ruleId;
   final String key;

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import '../generate/generate_plan.dart';
+import '../suggest/suggest_emphasis.dart';
 import '../generate/result.dart';
 import '../kb/kb_format_exception.dart';
 import '../kb/knowledge_base.dart';
@@ -21,7 +22,9 @@ const String cliUsage = '''
 Uso:
   barbl_engine bundle --kb <cartella> --out <file> [--kb-commit <sha>]
   barbl_engine generate --profile <file> [--bundle <file> | --kb <cartella>]
-  barbl_engine eval [--kb <cartella>]''';
+  barbl_engine eval [--kb <cartella>]
+  barbl_engine suggest-emphasis [--input <file>] [--bundle <file> | --kb <cartella>]
+    (senza --input legge il JSON da stdin; scrive il JSON del suggerimento)''';
 
 CliOutcome _fail(int code, String message) =>
     CliOutcome(code, '', '$message\n');
@@ -30,7 +33,10 @@ CliOutcome _usageError(String message) =>
     CliOutcome(64, '', '$message\n$cliUsage\n');
 
 /// Esegue un comando della riga di comando senza terminare il processo.
-CliOutcome runCli(List<String> args) {
+///
+/// [readStdin] legge il testo dallo standard input (solo `suggest-emphasis`
+/// senza `--input`); chi chiama lo fornisce, così il comando resta provabile.
+CliOutcome runCli(List<String> args, {String Function()? readStdin}) {
   if (args.isEmpty) return _usageError('Manca il comando');
   final options = <String, String>{};
   final rest = args.sublist(1);
@@ -50,6 +56,8 @@ CliOutcome runCli(List<String> args) {
       return _generate(options);
     case 'eval':
       return _eval(options);
+    case 'suggest-emphasis':
+      return _suggestEmphasis(options, readStdin);
     default:
       return _usageError('Comando sconosciuto: ${args.first}');
   }
@@ -175,4 +183,76 @@ CliOutcome _eval(Map<String, String> options) {
   }
   out.writeln('${cases.length - failed}/${cases.length} casi passati');
   return CliOutcome(failed > 0 ? 1 : 0, out.toString(), '');
+}
+
+CliOutcome _suggestEmphasis(
+  Map<String, String> options,
+  String Function()? readStdin,
+) {
+  final bundlePath = options['bundle'];
+  final kbPath = options['kb'];
+  if ((bundlePath == null) == (kbPath == null)) {
+    return _usageError('Serve esattamente uno tra --bundle e --kb');
+  }
+  final String text;
+  final inputPath = options['input'];
+  if (inputPath != null) {
+    final f = File(inputPath);
+    if (!f.existsSync()) return _fail(1, 'Ingresso non trovato: $inputPath');
+    text = f.readAsStringSync();
+  } else if (readStdin != null) {
+    text = readStdin();
+  } else {
+    return _usageError('Serve --input o l\'ingresso da stdin');
+  }
+  final Object? decoded;
+  try {
+    decoded = jsonDecode(text);
+  } on FormatException catch (e) {
+    return _fail(1, 'Ingresso non leggibile: ${e.message}');
+  }
+  if (decoded is! Map<String, Object?>) {
+    return _fail(1, "L'ingresso deve essere un oggetto JSON");
+  }
+
+  final Map<String, Object?> bundleJson;
+  if (bundlePath != null) {
+    final bundleFile = File(bundlePath);
+    if (!bundleFile.existsSync()) {
+      return _fail(1, 'Pacchetto non trovato: $bundlePath');
+    }
+    final Object? bundle;
+    try {
+      bundle = jsonDecode(bundleFile.readAsStringSync());
+    } on FormatException catch (e) {
+      return _fail(2, 'Pacchetto non leggibile: ${e.message}');
+    }
+    if (bundle is! Map<String, Object?>) {
+      return _fail(2, 'Il pacchetto deve essere un oggetto JSON');
+    }
+    bundleJson = bundle;
+  } else {
+    final kbDir = Directory(kbPath!);
+    if (!kbDir.existsSync()) {
+      return _fail(1, 'Cartella della KB non trovata: $kbPath');
+    }
+    final built = buildBundle(kbDir);
+    if (built.errors.isNotEmpty) return _fail(1, built.errors.join('\n'));
+    bundleJson = built.json;
+  }
+  final KnowledgeBase kb;
+  try {
+    kb = KnowledgeBase.fromJson(bundleJson);
+  } on KbFormatException catch (e) {
+    return _fail(2, 'Pacchetto non valido: ${e.message}');
+  } catch (e) {
+    return _fail(2, 'Pacchetto non valido: $e');
+  }
+
+  final out = suggestEmphasisFromJson(decoded, kb);
+  final text2 = '${const JsonEncoder.withIndent('  ').convert(out)}\n';
+  if (out['result'] == 'invalid') {
+    return CliOutcome(2, text2, 'Ingresso non valido\n');
+  }
+  return CliOutcome(0, text2, '');
 }

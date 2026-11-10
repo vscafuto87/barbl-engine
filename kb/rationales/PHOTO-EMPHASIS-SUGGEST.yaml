@@ -1,0 +1,15 @@
+ruleId: PHOTO-EMPHASIS-SUGGEST
+key: photoEmphasis.suggest
+level: mesocycle
+scope: suggestion
+text:
+  it: 'Dalle foto di questo ciclo, {muscle} risulta meno in evidenza rispetto al resto, con una lettura
+    abbastanza sicura, e i tuoi dati di allenamento non dicono il contrario. Propongo di dargli più spazio
+    nel ciclo successivo. È solo un segnale: la foto non decide il volume.'
+  en: 'In this cycle''s photos, {muscle} looks less prominent than the rest, with a reasonably sure reading,
+    and your training data do not say otherwise. I suggest giving it more room in the next cycle. It is
+    only a signal: the photo does not decide the volume.'
+exampleValues:
+  muscle: Spalle
+principles:
+- P-PHOTO-EMPHASIS

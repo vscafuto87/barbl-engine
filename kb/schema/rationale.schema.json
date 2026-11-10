@@ -57,6 +57,13 @@
       "items": {
         "type": "string"
       }
+    },
+    "scope": {
+      "description": "plan (predefinito): la motivazione entra nei piani. suggestion: la usa solo suggestEmphasis e non entra mai in un piano.",
+      "enum": [
+        "plan",
+        "suggestion"
+      ]
     }
   },
   "oneOf": [

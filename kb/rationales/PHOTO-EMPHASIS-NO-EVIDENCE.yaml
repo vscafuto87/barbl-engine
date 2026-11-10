@@ -1,0 +1,11 @@
+ruleId: PHOTO-EMPHASIS-NO-EVIDENCE
+key: photoEmphasis.noEvidence
+level: mesocycle
+scope: suggestion
+text:
+  it: 'Dalle foto non emerge un distretto su cui dare più spazio con abbastanza sicurezza: il piano resta
+    com''è. Una foto è un segnale debole.'
+  en: 'The photos do not show an area to give more room to with enough certainty: the plan stays as it
+    is. A photo is a weak signal.'
+principles:
+- P-PHOTO-EMPHASIS

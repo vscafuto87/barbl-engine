@@ -123,4 +123,99 @@ void main() {
     expect(runCli([]).code, 64);
     expect(runCli(['boh']).code, 64);
   });
+
+  suggestEmphasisTests();
+}
+
+String _suggestInput({String observation = 'less_prominent'}) => jsonEncode({
+  'profile': jsonDecode(
+    File('../kb/golden/profile-example.json').readAsStringSync(),
+  ),
+  'observations': {
+    'regions': [
+      {
+        'region': 'quadriceps',
+        'observation': observation,
+        'confidence': 'high',
+      },
+    ],
+  },
+  'trainingStats': {
+    'regions': [
+      {'region': 'quadriceps', 'plannedWeeklySets': 10, 'doneWeeklySets': 9},
+    ],
+  },
+});
+
+void suggestEmphasisTests() {
+  group('suggest-emphasis', () {
+    test('legge lo stdin e scrive il suggerimento in JSON', () {
+      final r = runCli([
+        'suggest-emphasis',
+        '--kb',
+        '../kb',
+      ], readStdin: _suggestInput);
+      expect(r.code, 0);
+      expect(r.err, isEmpty);
+      final out = jsonDecode(r.out) as Map<String, Object?>;
+      expect(out['result'], 'suggestion');
+      expect(out['emphasis'], ['quadriceps']);
+    });
+
+    test('con --input legge il file e con --bundle dà lo stesso esito', () {
+      final dir = Directory.systemTemp.createTempSync('cli_suggest');
+      addTearDown(() => dir.deleteSync(recursive: true));
+      final input = File('${dir.path}/in.json')
+        ..writeAsStringSync(_suggestInput());
+      final bundle = '${dir.path}/bundle.json';
+      expect(runCli(['bundle', '--kb', '../kb', '--out', bundle]).code, 0);
+      final a = runCli([
+        'suggest-emphasis',
+        '--input',
+        input.path,
+        '--bundle',
+        bundle,
+      ]);
+      final b = runCli([
+        'suggest-emphasis',
+        '--input',
+        input.path,
+        '--kb',
+        '../kb',
+      ]);
+      expect(a.code, 0);
+      expect(a.out, b.out);
+    });
+
+    test('nessuna modifica esce con 0', () {
+      final r = runCli([
+        'suggest-emphasis',
+        '--kb',
+        '../kb',
+      ], readStdin: () => _suggestInput(observation: 'balanced'));
+      expect(r.code, 0);
+      expect(jsonDecode(r.out)['result'], 'no_change');
+    });
+
+    test('ingresso non valido esce con 2 e gli errori nel JSON', () {
+      final r = runCli([
+        'suggest-emphasis',
+        '--kb',
+        '../kb',
+      ], readStdin: () => '{"profile": 1}');
+      expect(r.code, 2);
+      expect(jsonDecode(r.out)['result'], 'invalid');
+      final bad = runCli([
+        'suggest-emphasis',
+        '--kb',
+        '../kb',
+      ], readStdin: () => 'non json');
+      expect(bad.code, 1);
+    });
+
+    test('serve un ingresso e una KB', () {
+      expect(runCli(['suggest-emphasis', '--kb', '../kb']).code, 64);
+      expect(runCli(['suggest-emphasis'], readStdin: _suggestInput).code, 64);
+    });
+  });
 }

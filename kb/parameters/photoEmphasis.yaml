@@ -1,0 +1,40 @@
+group: photoEmphasis
+# Non è un gruppo del contratto del piano: serve solo a suggestEmphasis e non entra nel blocco `parameters`.
+target: engine
+values:
+  # Confidenza minima dell'analisi delle foto per tenere conto di un'osservazione (low, medium, high).
+  minConfidence: medium
+  # Distretti proposti al massimo (il contratto del profilo ne ammette due).
+  maxEmphasis: 2
+  # Regioni dell'analisi che hanno un valore di `emphasis` del profilo, nell'ordine di spareggio
+  # (a pari confidenza vince la prima).
+  regions:
+  - region: chest
+    emphasis: chest
+  - region: back
+    emphasis: back
+  - region: shoulders
+    emphasis: shoulders
+  - region: arms
+    emphasis: arms
+  - region: quadriceps
+    emphasis: quadriceps
+  - region: glutes
+    emphasis: glutes_hamstrings
+  - region: hamstrings
+    emphasis: glutes_hamstrings
+  # Regioni che l'analisi vede ma che il profilo non sa enfatizzare.
+  notEmphasizable:
+  - core
+  - calves
+  # Serie settimanali previste per il distretto sotto le quali il dato di allenamento non basta per fidarsi.
+  minPlannedWeeklySets: 1
+  # Rapporto tra serie fatte e previste: sotto il minimo il ciclo non è stato fatto abbastanza per dire che
+  # il piano non bastava; sopra il massimo il distretto aveva già più lavoro del previsto.
+  minDoneOverPlanned: 0.5
+  maxDoneOverPlanned: 1.0
+  # Serie in più a settimana che la scelta può aggiungere al piano di partenza (un esercizio complementare).
+  maxExtraWeeklySets: 3
+provisional: true
+principles:
+- P-PHOTO-EMPHASIS

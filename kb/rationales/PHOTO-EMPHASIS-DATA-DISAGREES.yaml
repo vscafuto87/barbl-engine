@@ -1,0 +1,12 @@
+ruleId: PHOTO-EMPHASIS-DATA-DISAGREES
+key: photoEmphasis.dataDisagrees
+level: mesocycle
+scope: suggestion
+text:
+  it: 'Le foto indicano un distretto, ma i tuoi dati di allenamento non lo confermano: il lavoro fatto
+    era già sopra il previsto, il ciclo è stato fatto solo in parte o il recupero non è stato rispettato.
+    Il piano resta com''è.'
+  en: 'The photos point to an area, but your training data do not confirm it: the work done was already
+    above plan, the cycle was only partly done or recovery was not respected. The plan stays as it is.'
+principles:
+- P-PHOTO-EMPHASIS

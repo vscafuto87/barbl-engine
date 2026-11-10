@@ -1,0 +1,11 @@
+ruleId: PHOTO-EMPHASIS-NO-DATA
+key: photoEmphasis.noData
+level: mesocycle
+scope: suggestion
+text:
+  it: 'Le foto indicano un distretto, ma non ho abbastanza dati di allenamento di questo ciclo per confermarlo:
+    il piano resta com''è.'
+  en: 'The photos point to an area, but I do not have enough training data from this cycle to confirm
+    it: the plan stays as it is.'
+principles:
+- P-PHOTO-EMPHASIS
