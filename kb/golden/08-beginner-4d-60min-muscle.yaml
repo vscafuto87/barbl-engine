@@ -1,0 +1,30 @@
+id: golden-08
+name:
+  it: Principiante, 4 giorni da 60 minuti, massa, palestra completa
+profile: golden/profile-4d-beginner.json
+expect:
+  split: upper_lower
+  sessions: 4
+  scheduleDays:
+  - mon
+  - wed
+  - thu
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      3: 2
+      4: 2
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      quadriceps: 10
+      biceps: 10
+      triceps: 10
+  validAgainst: contract/plan.schema.json
+origin:
+  it: Caso di Barbl (KB 0.25.0, P-RIR-BEGINNER). Chi ha meno di sei mesi di esperienza ha il RIR 2 anche
+    nella quarta settimana di carico, dove gli altri hanno RIR 1.

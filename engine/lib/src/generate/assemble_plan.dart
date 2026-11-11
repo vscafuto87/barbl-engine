@@ -12,6 +12,7 @@ import 'rationales.dart';
 // Costanti di formato del contratto del piano.
 const String _planSchemaVersion = '3.0';
 const String _trialRuleId = 'TRIAL-LOAD';
+const Set<String> _onlyWhenCited = {emphasisRuleId, extensionRuleId};
 const List<String> _weekDays = [
   'mon',
   'tue',
@@ -97,6 +98,9 @@ Map<String, Object?> _exercise(
   if (pe.fromEmphasis && !rules.contains(emphasisRuleId)) {
     rules.add(emphasisRuleId);
   }
+  if (pe.fromExtension && !rules.contains(extensionRuleId)) {
+    rules.add(extensionRuleId);
+  }
   return {
     'exerciseId': ex.id,
     'name': {'it': ex.nameIt, 'en': ex.nameEn},
@@ -168,12 +172,14 @@ Map<String, Object?> assemblePlan({
         ],
       },
   ];
-  // La motivazione dell'enfasi entra solo nei piani che la usano, così un
-  // piano senza enfasi resta identico a quello di una KB senza enfasi.
+  // Le motivazioni dell'enfasi e delle estensioni entrano solo nei piani che
+  // le usano, così un piano senza enfasi né estensioni resta identico a quello
+  // di una KB che non le ha.
   final cited = _citedRules(sessionsJson);
   final rationales = [
     for (final r in buildRationales(kb))
-      if (r['ruleId'] != emphasisRuleId || cited.contains(emphasisRuleId)) r,
+      if (!_onlyWhenCited.contains(r['ruleId']) || cited.contains(r['ruleId']))
+        r,
   ];
 
   final plan = <String, Object?>{
@@ -185,7 +191,7 @@ Map<String, Object?> assemblePlan({
     },
     'goal': profile.goal,
     'split': template.split,
-    'mesocycle': buildMesocycle(kb),
+    'mesocycle': buildMesocycle(kb, profile),
     'schedule': _schedule(template, profile),
     'sessions': sessionsJson,
     'rationales': rationales,

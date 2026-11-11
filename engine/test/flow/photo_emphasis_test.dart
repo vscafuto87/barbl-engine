@@ -295,21 +295,33 @@ void main() {
 
   group('(e) volume totale', () {
     test('il tetto di serie in più viene dalla KB', () {
-      // Nel piano di esempio l'enfasi su glutei e femorali aggiunge più
-      // serie di quelle che la KB ammette.
-      final r = _suggest([_obs(PhotoRegion.glutes)]);
-      expect(_noChange(r), 'PHOTO-EMPHASIS-MORE-VOLUME');
-      final ev = (r as NoChange).skipped.single.evidence;
+      // Nel piano a 3 giorni da 90 minuti l'enfasi sul petto aggiunge più
+      // serie di quelle che la KB ammette (le sedute hanno ancora posto dopo
+      // le estensioni).
+      final chest = _suggest(
+        [_obs(PhotoRegion.chest)],
+        profile: 'profile-3d.json',
+        minutes: 90,
+      );
+      expect(_noChange(chest), 'PHOTO-EMPHASIS-MORE-VOLUME');
+      final ev = (chest as NoChange).skipped.single.evidence;
       expect(ev.volumeWithinLimit, isFalse);
       expect(ev.extraWeeklySets, greaterThan(3));
       final roomy = _kbWith({'maxExtraWeeklySets': 100});
       expect(
-        _suggest([_obs(PhotoRegion.glutes)], withKb: roomy),
+        _suggest(
+          [_obs(PhotoRegion.chest)],
+          profile: 'profile-3d.json',
+          minutes: 90,
+          withKb: roomy,
+        ),
         isA<EmphasisSuggestion>(),
       );
       final zero = _kbWith({'maxExtraWeeklySets': 0});
       expect(
-        _noChange(_suggest([_obs(PhotoRegion.quadriceps)], withKb: zero)),
+        _noChange(
+          _suggest([_obs(PhotoRegion.quadriceps)], minutes: 75, withKb: zero),
+        ),
         'PHOTO-EMPHASIS-MORE-VOLUME',
       );
     });

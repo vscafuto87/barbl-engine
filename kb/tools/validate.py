@@ -297,6 +297,40 @@ def main() -> int:
     if emphases and "EMPHASIS" not in rationales:
         r.error("rationales/", "manca la motivazione 'EMPHASIS' degli esercizi aggiunti per enfasi")
 
+    # Estensioni dei template (P-TIME-EXTEND): sedute esistenti, pattern e candidati validi, un candidato
+    # per ogni palestra, ruolo presente in ogni prescrizione del template, e il tetto di volume in belowBand.
+    has_extensions = False
+    for tid, t in templates.items():
+        sessions_by_id = {sess["id"]: sess for sess in t["sessions"]}
+        roles_needed = [p for p in prescriptions.values() if set(p["appliesTo"]) & set(t["goals"])]
+        for i, ex_ in enumerate(t.get("extensions", [])):
+            has_extensions = True
+            ctx = f"{tid}.extensions[{i}]"
+            where = t["_file"]
+            if ex_["session"] not in sessions_by_id:
+                r.error(where, f"{ctx}: seduta inesistente '{ex_['session']}'")
+                continue
+            slot = ex_["slot"]
+            if slot["pattern"] not in patterns:
+                r.error(where, f"{ctx}: pattern inesistente '{slot['pattern']}'")
+            for c in slot["candidates"]:
+                if c not in exercises:
+                    r.error(where, f"{ctx}: candidato inesistente '{c}'")
+            first = exercises.get(slot["candidates"][0])
+            if first and first["pattern"] != slot["pattern"]:
+                r.error(where, f"{ctx}: il primo candidato deve avere il pattern dello slot")
+            for gt, gym in gym_types.items():
+                if not any(c in exercises and available(exercises[c], gym) for c in slot["candidates"]):
+                    r.error(where, f"{ctx}, slot {slot['pattern']}: nessun candidato per la palestra '{gt}'")
+            for pr in roles_needed:
+                if slot["role"] not in pr["roles"]:
+                    r.error(where, f"{ctx}: ruolo '{slot['role']}' assente dalla prescrizione '{pr['id']}'")
+    if has_extensions:
+        if "TIME-EXTEND" not in rationales:
+            r.error("rationales/", "manca la motivazione 'TIME-EXTEND' degli esercizi aggiunti dalle estensioni")
+        if not isinstance(parameters.get("belowBand", {}).get("values", {}).get("bandMax"), (int, float)):
+            r.error("parameters/belowBand.yaml", "manca bandMax, il tetto di volume delle estensioni")
+
     # Parametri e contratto
     for group, spec in contract_groups.items():
         if group not in parameters:
@@ -469,6 +503,13 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
         if exp.get("scheduleDays") and sorted(t["defaultSchedule"]) != sorted(exp["scheduleDays"]):
             r.error(where, f"giorni {sorted(t['defaultSchedule'])} invece di {sorted(exp['scheduleDays'])}")
         weeks = parameters["mesocycle"]["values"]["weeks"]
+        # Le settimane di carico non scendono sotto il RIR minimo del livello di esperienza (P-RIR-BEGINNER).
+        min_rir = parameters["mesocycle"]["values"].get("minRirTargetByExperience", {}).get(profile["experience"])
+        if min_rir is not None:
+            weeks = [
+                dict(w, rirTarget=max(w["rirTarget"], min_rir)) if w["type"] == "load" and w["rirTarget"] is not None else w
+                for w in weeks
+            ]
         m = exp.get("mesocycle", {})
         if m.get("weeks") and len(weeks) != m["weeks"]:
             r.error(where, f"{len(weeks)} settimane invece di {m['weeks']}")
@@ -484,6 +525,9 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
         max_minutes = profile["sessionDurationMin"]
         per_set = pr["timeBudget"]["minutesPerSet"]
 
+        def available(ex, gym_):
+            return set(ex["requires"]) <= set(gym_)
+
         def pick_for(slot):
             return next((exercises[c] for c in slot["candidates"] if c in exercises and set(exercises[c]["requires"]) <= set(gym)), None)
 
@@ -493,7 +537,11 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
                 weekly[sec] += sets * set_weights["secondary"]
 
         session_sets: dict[str, int] = {}
+        session_ids: dict[str, set] = {}
+        session_patterns: dict[str, set] = {}
         for sess in t["sessions"]:
+            session_ids[sess["id"]] = set()
+            session_patterns[sess["id"]] = set()
             sets_in_session = 0
             for block in sess["blocks"]:
                 for slot in block["slots"]:
@@ -505,6 +553,8 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
                     chosen[pick["id"]] = {"role": slot["role"], "reps": slot.get("repsOverride", role["reps"])}
                     sets_in_session += role["sets"]
                     add_volume(pick, role["sets"])
+                    session_ids[sess["id"]].add(pick["id"])
+                    session_patterns[sess["id"]].add(pick["pattern"])
             session_sets[sess["id"]] = sets_in_session
         # Enfasi, come il motore: in ordine di profilo e di placement, uno slot entra solo se la seduta
         # resta entro la durata (M3); altrimenti si salta.
@@ -523,8 +573,50 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
                     continue
                 session_sets[pl["session"]] += sets
                 add_volume(pick, sets)
+                session_ids[pl["session"]].add(pick["id"])
+                session_patterns[pl["session"]].add(pick["pattern"])
                 chosen.setdefault(pick["id"], {"role": pl["slot"]["role"], "reps": pr["roles"][pl["slot"]["role"]]["reps"]})
                 applied.setdefault(pl["session"], []).append(pick["id"])
+        # Estensioni (P-TIME-EXTEND), come il motore ma col primo candidato disponibile: prima quelle dei
+        # distretti scelti, poi nell'ordine della KB; entrano se la seduta resta nel tempo, non ha già il
+        # pattern e nessun muscolo dell'esercizio supera il tetto di belowBand.
+        cap = parameters["belowBand"]["values"]["bandMax"]
+        emphasised = {m for em_id in profile.get("emphasis", []) if em_id in emphases for m in emphases[em_id]["muscles"]}
+
+        def is_emphasised(ext):
+            first = exercises.get(ext["slot"]["candidates"][0])
+            return bool(first) and first["muscles"]["primary"] in emphasised
+
+        extensions = list(t.get("extensions", []))
+        extensions = [e for e in extensions if is_emphasised(e)] + [e for e in extensions if not is_emphasised(e)]
+        used_week = {x for ids in session_ids.values() for x in ids}
+        for ext in extensions:
+            sid, slot = ext["session"], ext["slot"]
+            role = pr["roles"].get(slot["role"])
+            if not role or sid not in session_sets:
+                continue
+            if (session_sets[sid] + role["sets"]) * per_set > max_minutes:
+                continue
+            if slot["pattern"] in session_patterns[sid]:
+                continue
+            pool = [
+                exercises[c] for c in slot["candidates"]
+                if c in exercises and available(exercises[c], gym) and c not in session_ids[sid]
+            ]
+            if not pool:
+                continue
+            pick = next((x for x in pool if x["id"] not in used_week), pool[0])
+            trial = dict(weekly)
+            trial[pick["muscles"]["primary"]] += role["sets"] * set_weights["primary"]
+            for sec in pick["muscles"]["secondary"]:
+                trial[sec] += role["sets"] * set_weights["secondary"]
+            if any(trial[m] > cap for m in [pick["muscles"]["primary"], *pick["muscles"]["secondary"]]):
+                continue
+            weekly.update(trial)
+            session_sets[sid] += role["sets"]
+            session_ids[sid].add(pick["id"])
+            session_patterns[sid].add(pick["pattern"])
+            used_week.add(pick["id"])
         for sid, sets_in_session in session_sets.items():
             minutes = sets_in_session * per_set
             if minutes > max_minutes:

@@ -240,3 +240,102 @@ notes:
     template copre le durate da 60 minuti in su; con 45 minuti il profilo resta non coperto per durata.
     I polpacci non hanno uno slot (vedi C-CALVES-BAND). Con la palestra a soli manubri alcuni slot ripetono lo stesso esercizio in sedute
     diverse, perché il catalogo ne ha pochi per pattern.'
+extensions:
+- session: full_c
+  slot:
+    pattern: calf_raise
+    role: accessory
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - seated_calf_raise
+    equivalent: 4
+- session: full_a
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - machine_lateral_raise
+    equivalent: 3
+- session: full_b
+  slot:
+    pattern: calf_raise
+    role: accessory
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - seated_calf_raise
+    equivalent: 4
+- session: full_b
+  slot:
+    pattern: rear_delt_fly
+    role: accessory
+    candidates:
+    - cable_rear_delt_fly
+    - dumbbell_rear_delt_fly
+    - face_pull
+    - incline_bench_rear_delt_fly
+    - reverse_pec_deck
+    equivalent: 3
+- session: full_a
+  slot:
+    pattern: knee_flexion
+    role: accessory
+    candidates:
+    - seated_leg_curl
+    - standing_leg_curl
+    - dumbbell_leg_curl
+    - single_leg_dumbbell_romanian_deadlift
+    - leg_curl
+    - dumbbell_romanian_deadlift
+    equivalent: 3
+- session: full_c
+  slot:
+    pattern: hip_extension
+    role: accessory
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+    equivalent: 3
+- session: full_a
+  slot:
+    pattern: rear_delt_fly
+    role: accessory
+    candidates:
+    - cable_rear_delt_fly
+    - dumbbell_rear_delt_fly
+    - face_pull
+    - incline_bench_rear_delt_fly
+    - reverse_pec_deck
+    equivalent: 3
+- session: full_c
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - machine_lateral_raise
+    equivalent: 3
+- session: full_b
+  slot:
+    pattern: hip_extension
+    role: accessory
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+    equivalent: 3

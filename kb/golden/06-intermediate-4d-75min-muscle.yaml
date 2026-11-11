@@ -1,0 +1,34 @@
+id: golden-06
+name:
+  it: Intermedio, 4 giorni da 75 minuti, massa, palestra completa
+profile: golden/profile-4d-75min.json
+expect:
+  split: upper_lower
+  sessions: 4
+  scheduleDays:
+  - mon
+  - wed
+  - thu
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      3: 2
+      4: 1
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      quadriceps: 10
+      biceps: 10
+      triceps: 10
+      shoulders: 12
+      glutes: 10
+      calves: 6
+  validAgainst: contract/plan.schema.json
+origin:
+  it: Caso di Barbl (KB 0.25.0). Con 75 minuti le sedute hanno ancora tempo dopo gli slot del template e
+    le estensioni (P-TIME-EXTEND) portano alla fascia di volume le spalle, i glutei e i polpacci, che a 60
+    minuti restano sotto. I minimi sono una soglia di sicurezza, non il valore esatto.

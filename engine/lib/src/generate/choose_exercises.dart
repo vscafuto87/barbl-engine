@@ -5,13 +5,21 @@ import 'result.dart';
 
 /// Slot con l'esercizio scelto.
 class ChosenSlot {
-  ChosenSlot(this.slot, this.exercise, {this.fromEmphasis = false});
+  ChosenSlot(
+    this.slot,
+    this.exercise, {
+    this.fromEmphasis = false,
+    this.fromExtension = false,
+  });
 
   final KbSlot slot;
   final KbExercise exercise;
 
   /// Vero per gli slot aggiunti dall'enfasi del profilo.
   final bool fromEmphasis;
+
+  /// Vero per gli slot aggiunti per usare il tempo che resta (estensioni).
+  final bool fromExtension;
 }
 
 /// Blocco con gli esercizi scelti.
@@ -35,39 +43,59 @@ class ChosenSession {
 /// sono tutte nel profilo, o null. I valori sconosciuti del profilo non
 /// corrispondono a nessuna richiesta e sono ignorati.
 KbExercise? firstAvailable(KbSlot slot, Profile profile, KnowledgeBase kb) {
-  for (final id in slot.candidates) {
-    final exercise = kb.exercises[id];
-    if (exercise == null) continue;
-    if (exercise.requires.every(profile.equipment.contains)) return exercise;
-  }
-  return null;
+  final pool = availableCandidates(slot, profile, kb);
+  return pool.isEmpty ? null : pool.first;
 }
 
-/// Candidati disponibili di [slot], nell'ordine del template.
+/// Candidati disponibili di [slot], nell'ordine del template. Per chi comincia
+/// (`under_6_months`) gli esercizi tecnicamente impegnativi si escludono, a
+/// meno che l'attrezzatura non offra altro: allora restano tutti
+/// (`P-BEGINNER-SIMPLER`).
 List<KbExercise> availableCandidates(
   KbSlot slot,
   Profile profile,
   KnowledgeBase kb,
 ) {
-  return [
+  final pool = [
     for (final id in slot.candidates)
       if (kb.exercises[id] case final exercise?)
         if (exercise.requires.every(profile.equipment.contains)) exercise,
   ];
+  if (profile.experience != experienceBeginner) return pool;
+  final simple = [
+    for (final e in pool)
+      if (!e.technicalDemandHigh) e,
+  ];
+  return simple.isNotEmpty ? simple : pool;
 }
+
+/// Quanti candidati di uno slot sono intercambiabili, secondo l'obiettivo: per
+/// la forza la specificità vince (principale e complementari non si scambiano,
+/// `P-STRENGTH-SPECIFICITY`), l'isolamento sì.
+int equivalentWidth(KbSlot slot, Profile profile, int poolLength) {
+  final allowed = profile.goal == 'strength' && slot.role != 'accessory'
+      ? 1
+      : slot.equivalent;
+  return allowed < poolLength ? allowed : poolLength;
+}
+
+/// Uno dei primi [width] candidati di [pool], scelto in modo deterministico
+/// da [hashKey] (`stableHash`); [pool] non è vuoto.
+KbExercise pickFromPool(List<KbExercise> pool, int width, String hashKey) =>
+    pool[width <= 1 ? 0 : stableHash(hashKey) % width];
 
 /// Chiave stabile del profilo per l'assegnazione della variante. Non include
 /// i carichi noti (l'onboarding genera il piano prima e dopo averli chiesti e
 /// gli esercizi devono restare gli stessi), né l'obiettivo né l'enfasi: chi
 /// cambia obiettivo o enfasi riceve gli stessi esercizi di isolamento, così il
 /// confronto tra piani dello stesso profilo riguarda solo ciò che è cambiato.
-String variantKey(Profile profile) {
+String variantKey(Profile profile, {bool withDuration = true}) {
   final equipment = profile.equipment.toList()..sort();
   return [
     profile.gymType,
     equipment.join(','),
     profile.daysPerWeek,
-    profile.sessionDurationMin,
+    if (withDuration) profile.sessionDurationMin,
     profile.experience,
     if (profile.variantSeed != null) 'seed=${profile.variantSeed}',
   ].join('|');
@@ -109,19 +137,14 @@ Result<List<ChosenSession>> chooseExercises(
         final pool = availableCandidates(slot, profile, kb);
         // Per la forza la specificità vince: gli esercizi principali e
         // secondari non si scambiano (P-STRENGTH-SPECIFICITY); l'isolamento sì.
-        final allowed = profile.goal == 'strength' && slot.role != 'accessory'
-            ? 1
-            : slot.equivalent;
-        final width = allowed < pool.length ? allowed : pool.length;
+        final width = equivalentWidth(slot, profile, pool.length);
         final found = pool.isEmpty
             ? null
-            : pool[width <= 1
-                  ? 0
-                  : stableHash(
-                          '${variantKey(profile)}|${session.id}|'
-                          '$slotIndex',
-                        ) %
-                        width];
+            : pickFromPool(
+                pool,
+                width,
+                '${variantKey(profile)}|${session.id}|$slotIndex',
+              );
         if (found == null) {
           return Rejected(
             NotCovered(

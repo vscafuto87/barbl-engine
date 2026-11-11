@@ -17,6 +17,7 @@ class PrescribedExercise {
     required this.rirFollowsMesocycle,
     required this.askLoad,
     this.fromEmphasis = false,
+    this.fromExtension = false,
   });
 
   final KbExercise exercise;
@@ -33,6 +34,9 @@ class PrescribedExercise {
 
   /// Vero per gli esercizi aggiunti dall'enfasi del profilo.
   final bool fromEmphasis;
+
+  /// Vero per gli esercizi aggiunti per usare il tempo che resta.
+  final bool fromExtension;
 }
 
 /// Blocco con la prescrizione applicata.
@@ -124,6 +128,9 @@ Result<List<PrescribedSession>> prescribe(
     }
     var totalSets = 0;
     final blocks = <PrescribedBlock>[];
+    // Pattern già incontrati nella seduta, per il riscaldamento del primo
+    // multiarticolare di ogni pattern.
+    final seenPatterns = <String>{};
     for (final cb in cs.blocks) {
       final isSuperset = cb.type == 'superset';
       final exercises = <PrescribedExercise>[];
@@ -145,6 +152,13 @@ Result<List<PrescribedSession>> prescribe(
             ? null
             : _restFor(focus, role, chosenSlot.exercise, kb);
         totalSets += role.sets;
+        final firstOfPattern = seenPatterns.add(chosenSlot.exercise.pattern);
+        final warmup = switch (role.warmupMode) {
+          KbWarmupMode.always => true,
+          KbWarmupMode.firstCompoundOfPattern =>
+            firstOfPattern && chosenSlot.exercise.isCompound,
+          KbWarmupMode.never => false,
+        };
         exercises.add(
           PrescribedExercise(
             exercise: chosenSlot.exercise,
@@ -153,10 +167,11 @@ Result<List<PrescribedSession>> prescribe(
             repsMin: override != null ? override.min : role.repsMin,
             repsMax: override != null ? override.max : role.repsMax,
             restSeconds: rest,
-            warmup: role.warmup,
+            warmup: warmup,
             rirFollowsMesocycle: role.rirFollowsMesocycle,
             askLoad: slot.askLoad,
             fromEmphasis: chosenSlot.fromEmphasis,
+            fromExtension: chosenSlot.fromExtension,
           ),
         );
       }

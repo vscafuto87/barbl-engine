@@ -269,6 +269,12 @@
           ]
         }
       }
+    },
+    "technicalDemand": {
+      "description": "high: esercizio tecnicamente impegnativo; chi comincia (under_6_months) lo riceve solo se l'attrezzatura non offre altro (P-BEGINNER-SIMPLER).",
+      "enum": [
+        "high"
+      ]
     }
   }
 }

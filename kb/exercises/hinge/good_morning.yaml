@@ -8,6 +8,7 @@ requires:
 - rack
 pattern: hinge
 mechanics: compound
+technicalDemand: high
 muscles:
   primary: hamstrings
   secondary:

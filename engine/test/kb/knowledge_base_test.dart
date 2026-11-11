@@ -3,6 +3,10 @@ import 'package:test/test.dart';
 
 import '../support/minimal_bundle.dart';
 
+Matcher _rejects(String part) => throwsA(
+  isA<KbFormatException>().having((e) => e.message, 'message', contains(part)),
+);
+
 void main() {
   group('KnowledgeBase.fromJson', () {
     test('legge un pacchetto minimo', () {
@@ -298,6 +302,125 @@ void main() {
           'provisional': true,
         };
         expect(() => KnowledgeBase.fromJson(json), rejects('TRIAL-LOAD'));
+      });
+    });
+
+    group('estensioni', () {
+      Map<String, Object?> bundle({
+        List<Map<String, Object?>>? extensions,
+        bool rationale = true,
+        bool band = true,
+      }) {
+        final json = minimalBundle();
+        final t1 = (json['templates']! as Map)['t1'] as Map<String, Object?>;
+        t1['extensions'] =
+            extensions ??
+            [
+              {
+                'session': 'lower_a',
+                'slot': {
+                  'pattern': 'squat',
+                  'role': 'accessory',
+                  'candidates': ['squat'],
+                },
+              },
+            ];
+        if (rationale) {
+          (json['rationales']! as Map)['TIME-EXTEND'] = {
+            'ruleId': 'TIME-EXTEND',
+            'key': 'time.extended',
+            'level': 'session',
+            'text': {'it': 'Estensione', 'en': 'Extension'},
+            'principles': ['P-1'],
+          };
+        }
+        if (band) {
+          (json['parameters']! as Map)['belowBand'] = {
+            'group': 'belowBand',
+            'target': 'parameters',
+            'values': {'bandMax': 16},
+            'provisional': true,
+          };
+        }
+        return json;
+      }
+
+      test('legge le estensioni in ordine e il tetto di volume', () {
+        final kb = KnowledgeBase.fromJson(bundle());
+        final e = kb.templates.single.extensions.single;
+        expect(e.session, 'lower_a');
+        expect(e.slot.role, 'accessory');
+        expect(kb.weeklyVolumeCap, 16);
+      });
+
+      test('un template senza estensioni non ne ha', () {
+        final kb = KnowledgeBase.fromJson(minimalBundle());
+        expect(kb.templates.single.extensions, isEmpty);
+        expect(kb.weeklyVolumeCap, isNull);
+      });
+
+      test('senza la motivazione TIME-EXTEND è rifiutato', () {
+        expect(
+          () => KnowledgeBase.fromJson(bundle(rationale: false)),
+          _rejects('TIME-EXTEND'),
+        );
+      });
+
+      test('senza il tetto di volume è rifiutato', () {
+        expect(
+          () => KnowledgeBase.fromJson(bundle(band: false)),
+          _rejects('bandMax'),
+        );
+      });
+
+      test('una seduta inesistente è rifiutata', () {
+        expect(
+          () => KnowledgeBase.fromJson(
+            bundle(
+              extensions: [
+                {
+                  'session': 'ghost',
+                  'slot': {
+                    'pattern': 'squat',
+                    'role': 'accessory',
+                    'candidates': ['squat'],
+                  },
+                },
+              ],
+            ),
+          ),
+          _rejects('ghost'),
+        );
+      });
+    });
+
+    group('esercizi e ruoli', () {
+      test('technicalDemand high e mechanics si leggono', () {
+        final json = minimalBundle();
+        final squat = (json['exercises']! as Map)['squat'] as Map;
+        squat['technicalDemand'] = 'high';
+        squat['mechanics'] = 'compound';
+        final ex = KnowledgeBase.fromJson(json).exercises['squat']!;
+        expect(ex.technicalDemandHigh, isTrue);
+        expect(ex.isCompound, isTrue);
+      });
+
+      test(
+        'senza i campi l\'esercizio non è impegnativo né multiarticolare',
+        () {
+          final ex = KnowledgeBase.fromJson(minimalBundle())
+              .exercises['squat']!;
+          expect(ex.technicalDemandHigh, isFalse);
+          expect(ex.isCompound, isFalse);
+        },
+      );
+
+      test('warmup true e false valgono always e never', () {
+        final kb = KnowledgeBase.fromJson(minimalBundle());
+        expect(
+          kb.prescriptions.single.roles['main']!.warmupMode,
+          KbWarmupMode.always,
+        );
       });
     });
   });

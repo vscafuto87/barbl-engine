@@ -327,3 +327,104 @@ notes:
     muscoli non distingue i capi del deltoide. Con la palestra a soli manubri il Lower ripete lo stacco
     rumeno con manubri nello slot dei femorali, perché il catalogo non ha una flessione del ginocchio
     senza macchine.'
+extensions:
+- session: legs
+  slot:
+    pattern: knee_extension
+    role: accessory
+    candidates:
+    - leg_extension
+    - sissy_squat
+    - bulgarian_split_squat
+    - goblet_squat
+- session: push
+  slot:
+    pattern: chest_isolation
+    role: accessory
+    candidates:
+    - cable_fly
+    - dumbbell_fly
+    - pec_deck_fly
+    - incline_dumbbell_fly
+    - low_to_high_cable_fly
+    - push_up
+    equivalent: 5
+- session: upper
+  slot:
+    pattern: vertical_pull
+    role: secondary
+    candidates:
+    - lat_pulldown
+    - neutral_grip_pulldown
+    - single_arm_lat_pulldown
+    - underhand_lat_pulldown
+    - machine_pulldown
+    - pull_up
+    - chin_up
+    - chest_supported_dumbbell_row
+    - dumbbell_row
+    equivalent: 4
+- session: legs
+  slot:
+    pattern: hip_extension
+    role: accessory
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+    equivalent: 3
+- session: lower
+  slot:
+    pattern: knee_extension
+    role: accessory
+    candidates:
+    - leg_extension
+    - sissy_squat
+    - bulgarian_split_squat
+    - goblet_squat
+- session: upper
+  slot:
+    pattern: calf_raise
+    role: accessory
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - seated_calf_raise
+    equivalent: 4
+- session: push
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - machine_lateral_raise
+    equivalent: 3
+- session: legs
+  slot:
+    pattern: knee_flexion
+    role: accessory
+    candidates:
+    - seated_leg_curl
+    - standing_leg_curl
+    - dumbbell_leg_curl
+    - single_leg_dumbbell_romanian_deadlift
+    - leg_curl
+    - dumbbell_romanian_deadlift
+    equivalent: 3
+- session: pull
+  slot:
+    pattern: calf_raise
+    role: accessory
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - seated_calf_raise
+    equivalent: 4

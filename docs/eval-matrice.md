@@ -30,6 +30,14 @@ Per i profili con enfasi valgono le stesse proprietà, più:
 11. le serie frazionarie settimanali di ogni muscolo del distretto (`muscles` di `kb/emphasis/<id>.yaml`) non sono sotto quelle del piano senza enfasi;
 12. in ogni seduta gli esercizi con la regola `EMPHASIS` non superano i posti delle enfasi del profilo, e un posto non applicato si spiega con la durata: la seduta, con le serie di uno slot complementare in più, supererebbe `sessionDurationMin`.
 
+Dalla KB 0.25.0 valgono anche (`engine/test/flow/extensions_test.dart`, tutti i 108 profili di base per ogni livello di durata):
+
+13. nessun muscolo supera `bandMax` di `parameters/belowBand` (16 serie frazionarie a settimana);
+14. con più tempo le serie totali e le estensioni non diminuiscono (le estensioni non dipendono dalla durata, tranne per il tempo che lasciano);
+15. a 60 minuti, massa e palestra completa, le spalle hanno almeno 6 serie frazionarie (3 e 4 giorni) e i polpacci almeno 3 (3 giorni);
+16. un principiante (`under_6_months`) ha RIR 3, 3, 2, 2 e scarico 4, e nessun esercizio con `technicalDemand: high`; gli altri livelli 3, 3, 2, 1 e 4;
+17. la regola `TIME-EXTEND` e la sua motivazione compaiono nel piano solo se almeno un esercizio è un'estensione.
+
 Un test a parte confronta la copertura con la mappa esplicita `_expectedCoverage` (giorni, obiettivo, durata → `covered` o motivo) e stampa la tabella. Se la KB cambia la copertura, il test fallisce finché la mappa non si aggiorna di proposito.
 
 ## Aggiungere una proprietà
@@ -79,3 +87,24 @@ Calcolate sui piani generati (serie frazionarie settimanali), non fanno fallire 
 ## Casi `skip`
 
 Nessuno: i 324 profili e i 756 con enfasi rispettano le proprietà (verificato dalla CI).
+
+## Estensioni e durate (KB 0.25.0)
+
+Prima delle estensioni un piano da 75 o 90 minuti era quello da 60 (al massimo 57 minuti per seduta; a 5 giorni sedute da 39 a 45 minuti con ogni durata). Ora ogni seduta usa il tempo finché le estensioni e il tetto di 16 serie lo permettono. Minuti per seduta, massa e palestra completa:
+
+| Giorni | 45 min | 60 min | 75 min | 90 min |
+| --- | --- | --- | --- | --- |
+| 3 | 42, 45, 39 | 60, 54, 57 | 69, 72, 75 | 78, 81, 75 |
+| 4 | 39 × 4 | 57 × 4 | 75, 57, 75, 66 | 84, 57, 75, 66 |
+| 5 | 39, 39, 39, 45, 45 | 57, 48, 57, 54, 54 | 57, 48, 66, 63, 54 | 57, 48, 66, 63, 54 |
+
+Il 5 giorni ha già volume vicino al tetto (spalle 15, quadricipiti 16 a 60 minuti): da 75 a 90 minuti il piano non cambia, perché gli slot che restano porterebbero un muscolo oltre le 16 serie. Una seduta resta sotto la durata quando le estensioni disponibili sono finite o ogni muscolo che resta è al tetto: è voluto (`P-TIME-EXTEND`).
+
+Serie frazionarie a settimana prima e dopo (massa, palestra completa, intermedio):
+
+| Muscolo | 3 giorni, 60 min | 4 giorni, 60 min |
+| --- | --- | --- |
+| Spalle | 3 → 6 | 3 → 9 |
+| Polpacci | 0 → 3 | 6 → 6 |
+| Glutei | 6,5 → 6,5 | 7 → 10 |
+| Femorali | 6 → 6 | 10 → 11,5 |

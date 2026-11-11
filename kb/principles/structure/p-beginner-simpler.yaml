@@ -1,0 +1,20 @@
+id: P-BEGINNER-SIMPLER
+topic: structure
+statement:
+  it: Chi ha meno di sei mesi di esperienza non riceve gli esercizi tecnicamente più impegnativi (segnati
+    con technicalDemand) tra quelli scelti dal piano, a meno che l'attrezzatura non offra altro; restano
+    tra le alternative di «Sostituisci». Quali esercizi sono segnati è una scelta di design di Barbl, da
+    rivedere con un coach.
+  en: People with less than six months of experience do not get the technically demanding exercises
+    (marked with technicalDemand) among those the plan picks, unless the equipment offers nothing else;
+    they stay among the swap alternatives. Which exercises are marked is a Barbl design choice, to be
+    reviewed with a coach.
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+- emphasis
+sources:
+- id: barbl-design
+  access: full_text

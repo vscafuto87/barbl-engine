@@ -343,7 +343,7 @@ EmphasisSuggestionResult suggestEmphasis(
         skip(c, ruleNoRoom, ev(room: false));
         continue;
       }
-      if (_sameJson(trial, previous)) {
+      if (_sameExercises(trial, previous)) {
         skip(c, ruleNoRoom, ev(room: false));
         continue;
       }
@@ -369,6 +369,23 @@ EmphasisSuggestionResult suggestEmphasis(
   }
   return NoChange(ruleId: skipped.first.ruleId, skipped: skipped);
 }
+
+/// Vero se i due piani hanno le stesse sedute con gli stessi esercizi e le
+/// stesse serie, nello stesso ordine. Le etichette `rules` non contano: un
+/// esercizio che l'enfasi mette al posto di una estensione uguale (stesso
+/// esercizio, stesse serie) non cambia il lavoro del piano.
+bool _sameExercises(Map<String, Object?> a, Map<String, Object?> b) =>
+    _sameJson(_exerciseSignature(a), _exerciseSignature(b));
+
+List<Object?> _exerciseSignature(Map<String, Object?> plan) => [
+  for (final s in plan['sessions']! as List)
+    [
+      (s as Map)['id'],
+      for (final b in s['blocks'] as List)
+        for (final e in (b as Map)['exercises'] as List)
+          [(e as Map)['exerciseId'], e['sets']],
+    ],
+];
 
 bool _sameJson(Object? a, Object? b) {
   if (a is Map && b is Map) {

@@ -105,6 +105,94 @@ void main() {
       expect(_firstId(_choose({'barbell', 'rack', 'jetpack'})), 'squat');
     });
   });
+
+  group('principianti', () {
+    KnowledgeBase kb({bool allHigh = false}) {
+      Map<String, Object?> ex(String id, List<String> requires, bool high) => {
+        ..._exercise(id, requires),
+        if (high) 'technicalDemand': 'high',
+      };
+      return KnowledgeBase.fromJson(
+        minimalBundle(
+          exercises: {
+            'front_squat': ex('front_squat', ['barbell', 'rack'], true),
+            'squat': ex('squat', ['barbell', 'rack'], allHigh),
+            'goblet': ex('goblet', ['dumbbells'], allHigh),
+          },
+          templates: {
+            't1': {
+              'id': 't1',
+              'split': 'upper_lower',
+              'daysPerWeek': 4,
+              'goals': ['muscle_gain'],
+              'defaultSchedule': {'mon': 'lower_a'},
+              'sessions': [
+                {
+                  'id': 'lower_a',
+                  'name': {'it': 'Lower A', 'en': 'Lower A'},
+                  'focus': 'legs',
+                  'blocks': [
+                    {
+                      'type': 'single',
+                      'slots': [
+                        {
+                          'pattern': 'squat',
+                          'role': 'main',
+                          'equivalent': 3,
+                          'candidates': ['front_squat', 'squat', 'goblet'],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          },
+        ),
+      );
+    }
+
+    String pick(KnowledgeBase k, String experience, {String? seed}) {
+      final profile = testProfile(
+        equipment: {'barbell', 'rack', 'dumbbells'},
+        experience: experience,
+      );
+      final r = chooseExercises(k.templates.single, profile, k);
+      return _firstId(r);
+    }
+
+    test('chi comincia non riceve l\'esercizio impegnativo se c\'è altro', () {
+      final k = kb();
+      expect(pick(k, 'under_6_months'), isNot('front_squat'));
+    });
+
+    test('chi non comincia lo riceve come tutti gli altri candidati', () {
+      final k = kb();
+      expect(pick(k, 'over_2_years'), isIn(['front_squat', 'squat', 'goblet']));
+    });
+
+    test('se tutti sono impegnativi restano tutti', () {
+      final k = kb(allHigh: true);
+      expect(
+        pick(k, 'under_6_months'),
+        isIn(['front_squat', 'squat', 'goblet']),
+      );
+    });
+
+    test('l\'ordine dei candidati disponibili tiene gli altri in fila', () {
+      final k = kb();
+      final profile = testProfile(
+        equipment: {'barbell', 'rack', 'dumbbells'},
+        experience: 'under_6_months',
+      );
+      final slot =
+          k.templates.single.sessions.single.blocks.single.slots.single;
+      expect(availableCandidates(slot, profile, k).map((e) => e.id), [
+        'squat',
+        'goblet',
+      ]);
+    });
+  });
 }
 
 void _stableHashTests() {
