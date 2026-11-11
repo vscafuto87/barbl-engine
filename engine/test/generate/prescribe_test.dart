@@ -268,4 +268,130 @@ void main() {
     ];
     expect(rests, [150, 180]);
   });
+
+  group('riscaldamento', () {
+    Map<String, Object?> role(Object warmup) => {
+      'sets': 3,
+      'reps': {'min': 8, 'max': 12},
+      'restSeconds': {'upper': 90, 'lower': 100},
+      'rirFollowsMesocycle': true,
+      'warmup': warmup,
+    };
+
+    KnowledgeBase kbWith(Object main, Object secondary, Object accessory) =>
+        _kb(
+          prescriptions: {
+            'muscle_gain': {
+              'id': 'muscle_gain',
+              'appliesTo': ['muscle_gain'],
+              'roles': {
+                'main': role(main),
+                'secondary': role(secondary),
+                'accessory': role(accessory),
+              },
+              'supersetRestSeconds': 75,
+              'timeBudget': {'minutesPerSet': 1},
+            },
+          },
+        );
+
+    KbExercise exercise(String id, String pattern, String mechanics) {
+      final kb = KnowledgeBase.fromJson(minimalBundle());
+      final base = kb.exercises['squat']!;
+      return KbExercise(
+        id: id,
+        nameIt: id,
+        nameEn: id,
+        equipment: base.equipment,
+        requires: base.requires,
+        pattern: pattern,
+        primaryMuscle: base.primaryMuscle,
+        secondaryMuscles: base.secondaryMuscles,
+        stepKg: base.stepKg,
+        whenLoadUnknown: base.whenLoadUnknown,
+        mechanics: mechanics,
+      );
+    }
+
+    ChosenSession session(List<(String role, KbExercise exercise)> slots) =>
+        ChosenSession(
+          KbSession(
+            id: 'upper_a',
+            nameIt: 'Upper A',
+            focus: 'upper_body',
+            blocks: const [],
+          ),
+          [
+            for (final (role, ex) in slots)
+              ChosenBlock('single', null, [
+                ChosenSlot(
+                  KbSlot(
+                    pattern: ex.pattern,
+                    role: role,
+                    candidates: [ex.id],
+                    askLoad: false,
+                    repsOverride: null,
+                  ),
+                  ex,
+                ),
+              ]),
+          ],
+        );
+
+    List<bool> warmups(KnowledgeBase kb, ChosenSession s) => [
+      for (final b in _ok(prescribe([s], testProfile(), kb)).single.blocks)
+        for (final e in b.exercises) e.warmup,
+    ];
+
+    test(
+      'always e never: i booleani del formato precedente valgono uguale',
+      () {
+        for (final (main, secondary) in [(true, false), ('always', 'never')]) {
+          final kb = kbWith(main, secondary, 'never');
+          final s = session([
+            ('main', exercise('bench', 'horizontal_push', 'compound')),
+            ('secondary', exercise('row', 'horizontal_pull', 'compound')),
+          ]);
+          expect(warmups(kb, s), [true, false]);
+        }
+      },
+    );
+
+    test(
+      'firstCompoundOfPattern: solo il primo multiarticolare del pattern',
+      () {
+        final kb = kbWith('always', 'firstCompoundOfPattern', 'never');
+        final s = session([
+          ('main', exercise('bench', 'horizontal_push', 'compound')),
+          (
+            'secondary',
+            exercise('machine_press', 'horizontal_push', 'compound'),
+          ),
+          ('secondary', exercise('ohp', 'vertical_push', 'compound')),
+          ('secondary', exercise('fly', 'chest_isolation', 'isolation')),
+        ]);
+        // La panca ha già il pattern: la macchina no; il pattern nuovo sì; un
+        // isolamento mai.
+        expect(warmups(kb, s), [true, false, true, false]);
+      },
+    );
+
+    test(
+      'firstCompoundOfPattern senza meccanica nota: nessun riscaldamento',
+      () {
+        final kb = kbWith('always', 'firstCompoundOfPattern', 'never');
+        final base = KnowledgeBase.fromJson(minimalBundle())
+            .exercises['squat']!;
+        final s = session([('secondary', base)]);
+        expect(warmups(kb, s), [false]);
+      },
+    );
+
+    test('un valore sconosciuto è rifiutato dalla lettura della KB', () {
+      expect(
+        () => kbWith('sometimes', 'never', 'never'),
+        throwsA(isA<KbFormatException>()),
+      );
+    });
+  });
 }

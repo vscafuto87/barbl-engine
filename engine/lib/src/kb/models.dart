@@ -1,3 +1,4 @@
+import 'kb_format_exception.dart';
 import 'reader.dart';
 
 /// Focus di seduta che la generazione sa trattare (colonna di recupero).
@@ -10,6 +11,22 @@ const String regionLower = 'lower';
 
 /// Regola che il motore cita negli esercizi aggiunti per enfasi.
 const String emphasisRuleId = 'EMPHASIS';
+
+/// Regola che il motore cita negli esercizi aggiunti per usare il tempo che
+/// resta (estensioni dei template).
+const String extensionRuleId = 'TIME-EXTEND';
+
+/// Valori di `mechanics` e `technicalDemand` degli esercizi (formato della KB).
+const String mechanicsCompound = 'compound';
+const String technicalDemandHighValue = 'high';
+
+/// Gruppo di parametri e campo che dicono il volume massimo per muscolo.
+const String bandGroup = 'belowBand';
+const String bandMaxKey = 'bandMax';
+
+/// Livello di esperienza del profilo a cui si applicano le regole per chi
+/// comincia (formato del contratto del profilo).
+const String experienceBeginner = 'under_6_months';
 
 /// Esercizio della KB.
 class KbExercise {
@@ -26,6 +43,8 @@ class KbExercise {
     required this.whenLoadUnknown,
     this.substitutes = const [],
     this.technique,
+    this.mechanics,
+    this.technicalDemandHigh = false,
   });
 
   factory KbExercise.fromJson(Map<String, Object?> json, String path) {
@@ -43,6 +62,10 @@ class KbExercise {
       stepKg: doubleOrNull(loading, 'stepKg', '$path.loading'),
       whenLoadUnknown: stringAt(loading, 'whenLoadUnknown', '$path.loading'),
       substitutes: stringsOrEmpty(json, 'substitutes', path),
+      mechanics: stringOrNull(json, 'mechanics', path),
+      technicalDemandHigh:
+          stringOrNull(json, 'technicalDemand', path) ==
+          technicalDemandHighValue,
       technique: json['technique'] == null
           ? null
           : KbTechnique.fromJson(
@@ -54,6 +77,15 @@ class KbExercise {
 
   /// Scheda tecnica (setup, cue, errori comuni); nulla se la KB non la ha.
   final KbTechnique? technique;
+
+  /// `compound` o `isolation`; nulla se il pacchetto non lo dice.
+  final String? mechanics;
+
+  /// Vero se l'esercizio è tecnicamente impegnativo: chi comincia lo riceve
+  /// solo se l'attrezzatura non offre altro (`P-BEGINNER-SIMPLER`).
+  final bool technicalDemandHigh;
+
+  bool get isCompound => mechanics == mechanicsCompound;
 
   final String id;
   final String nameIt;
@@ -263,12 +295,23 @@ class KbTemplate {
     required this.goals,
     required this.defaultSchedule,
     required this.sessions,
+    this.extensions = const [],
   });
 
   factory KbTemplate.fromJson(Map<String, Object?> json, String path) {
     final schedule = mapAt(json, 'defaultSchedule', path);
     final sessions = listAt(json, 'sessions', path);
+    final extensions = json['extensions'] == null
+        ? const <Object?>[]
+        : listAt(json, 'extensions', path);
     return KbTemplate(
+      extensions: [
+        for (var i = 0; i < extensions.length; i++)
+          KbEmphasisPlacement.fromJson(
+            asMap(extensions[i], '$path.extensions[$i]'),
+            '$path.extensions[$i]',
+          ),
+      ],
       id: stringAt(json, 'id', path),
       split: stringAt(json, 'split', path),
       daysPerWeek: intAt(json, 'daysPerWeek', path),
@@ -293,10 +336,15 @@ class KbTemplate {
   final List<String> goals;
   final Map<String, String> defaultSchedule;
   final List<KbSession> sessions;
+
+  /// Slot da aggiungere, in ordine di priorità, quando la seduta ha ancora
+  /// tempo e il muscolo ha ancora posto (`extendToDuration`). Stesso formato
+  /// dei posti di un'enfasi: la seduta e lo slot.
+  final List<KbEmphasisPlacement> extensions;
 }
 
-/// Posto di un'enfasi in un template: la seduta e lo slot da aggiungere in
-/// coda.
+/// Posto di un'enfasi (o di un'estensione) in un template: la seduta e lo
+/// slot da aggiungere in coda.
 class KbEmphasisPlacement {
   const KbEmphasisPlacement({required this.session, required this.slot});
 
@@ -350,6 +398,32 @@ class KbEmphasis {
   final Map<String, List<KbEmphasisPlacement>> placements;
 }
 
+/// Quando un esercizio di un ruolo ha il riscaldamento specifico.
+enum KbWarmupMode {
+  /// Sempre (esercizio principale).
+  always,
+
+  /// Solo per il primo esercizio multiarticolare di ogni pattern della seduta.
+  firstCompoundOfPattern,
+
+  /// Mai.
+  never,
+}
+
+KbWarmupMode _warmupModeOf(Object? v, String path) {
+  if (v == null) return KbWarmupMode.never;
+  if (v is bool) return v ? KbWarmupMode.always : KbWarmupMode.never;
+  if (v is String) {
+    for (final m in KbWarmupMode.values) {
+      if (m.name == v) return m;
+    }
+  }
+  throw KbFormatException(
+    '$path: atteso un booleano o uno tra '
+    '${KbWarmupMode.values.map((m) => m.name).join(', ')}',
+  );
+}
+
 /// Prescrizione di un ruolo: serie, ripetizioni e recuperi.
 class KbRole {
   const KbRole({
@@ -359,7 +433,7 @@ class KbRole {
     required this.restUpper,
     required this.restLower,
     required this.rirFollowsMesocycle,
-    required this.warmup,
+    required this.warmupMode,
   });
 
   factory KbRole.fromJson(Map<String, Object?> json, String path) {
@@ -372,7 +446,7 @@ class KbRole {
       restUpper: intAt(rest, 'upper', '$path.restSeconds'),
       restLower: intAt(rest, 'lower', '$path.restSeconds'),
       rirFollowsMesocycle: boolOr(json, 'rirFollowsMesocycle', path, false),
-      warmup: boolOr(json, 'warmup', path, false),
+      warmupMode: _warmupModeOf(json['warmup'], '$path.warmup'),
     );
   }
 
@@ -382,7 +456,7 @@ class KbRole {
   final int restUpper;
   final int restLower;
   final bool rirFollowsMesocycle;
-  final bool warmup;
+  final KbWarmupMode warmupMode;
 }
 
 /// Prescrizione per obiettivo.

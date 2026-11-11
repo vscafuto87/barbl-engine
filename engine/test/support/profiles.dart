@@ -7,6 +7,7 @@ Profile testProfile({
   Set<String> equipment = const {'barbell', 'rack', 'bench'},
   int sessionDurationMin = 60,
   List<String> emphasis = const [],
+  String experience = 'over_2_years',
 }) => Profile(
   goal: goal,
   gymType: 'full',
@@ -15,7 +16,7 @@ Profile testProfile({
   platesKg: const [25, 20, 10, 5, 2.5, 1.25],
   daysPerWeek: daysPerWeek,
   sessionDurationMin: sessionDurationMin,
-  experience: 'over_2_years',
+  experience: experience,
   knownLoads: const {},
   emphasis: emphasis,
 );

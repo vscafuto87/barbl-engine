@@ -350,10 +350,7 @@ void main() {
     expect(ruleIds, isNot(contains('EMPHASIS')));
     // Le motivazioni di `scope: suggestion` non entrano mai in un piano.
     expect(ruleIds, isNot(contains(startsWith('PHOTO-EMPHASIS'))));
-    expect(
-      ruleIds,
-      hasLength(kb.rationales.where((r) => r.inPlan).length - 1),
-    );
+    expect(ruleIds, hasLength(kb.rationales.where((r) => r.inPlan).length - 1));
   });
 
   test('un profilo senza gym è non valido', () {
@@ -514,9 +511,12 @@ void main() {
         for (final s in p['sessions']! as List)
           for (final b in (s as Map)['blocks'] as List)
             for (final e in (b as Map)['exercises'] as List)
-              if (_compoundPatterns.contains(
-                kb.exercises[(e as Map)['exerciseId']]!.pattern,
-              ))
+              // Le estensioni sono di isolamento (anche l'estensione d'anca):
+              // il seme le varia come gli altri isolamenti.
+              if (!((e as Map)['rules']! as List).contains(extensionRuleId) &&
+                  _compoundPatterns.contains(
+                    kb.exercises[e['exerciseId']]!.pattern,
+                  ))
                 e['exerciseId'] as String,
       };
       final base = mainIds(

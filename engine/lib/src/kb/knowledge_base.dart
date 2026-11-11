@@ -145,6 +145,7 @@ class KnowledgeBase {
       }
     }
     _checkEmphases(kb);
+    _checkExtensions(kb);
     final meso = kb.parameterGroups['mesocycle'];
     if (meso == null) {
       throw KbFormatException('parameters.mesocycle: gruppo mancante');
@@ -224,6 +225,54 @@ class KnowledgeBase {
         }
       }
     }
+  }
+
+  /// Estensioni: le sedute esistono, i pattern dei candidati di una seduta full
+  /// body hanno una regione; servono la motivazione e il tetto di volume.
+  static void _checkExtensions(KnowledgeBase kb) {
+    if (kb.templates.every((t) => t.extensions.isEmpty)) return;
+    if (!kb.rationales.any((r) => r.ruleId == extensionRuleId)) {
+      throw KbFormatException(
+        'rationales.$extensionRuleId: manca ma esistono estensioni',
+      );
+    }
+    final band = kb.parameterGroups[bandGroup];
+    if (band == null || band.values[bandMaxKey] is! num) {
+      throw KbFormatException(
+        'parameters.$bandGroup.values.$bandMaxKey: manca ma esistono '
+        'estensioni',
+      );
+    }
+    for (final t in kb.templates) {
+      final sessions = {for (final s in t.sessions) s.id: s};
+      for (var i = 0; i < t.extensions.length; i++) {
+        final e = t.extensions[i];
+        final path = 'templates.${t.id}.extensions[$i]';
+        final session = sessions[e.session];
+        if (session == null) {
+          throw KbFormatException('$path: seduta ${e.session} inesistente');
+        }
+        if (session.focus != 'full_body') continue;
+        for (final id in e.slot.candidates) {
+          final ex = kb.exercises[id];
+          if (ex == null) continue;
+          final region = kb.patternRegions[ex.pattern];
+          if (region != regionUpper && region != regionLower) {
+            throw KbFormatException(
+              '$path: il pattern ${ex.pattern} di $id non ha una regione '
+              '($regionUpper o $regionLower) in patterns',
+            );
+          }
+        }
+      }
+    }
+  }
+
+  /// Tetto di serie settimanali per muscolo oltre cui le estensioni non
+  /// aggiungono lavoro (`parameters/belowBand`, `bandMax`); nullo se manca.
+  double? get weeklyVolumeCap {
+    final v = parameterGroups[bandGroup]?.values[bandMaxKey];
+    return v is num ? v.toDouble() : null;
   }
 
   final String rulesVersion;

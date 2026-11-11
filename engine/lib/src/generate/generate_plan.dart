@@ -5,6 +5,7 @@ import 'apply_emphasis.dart';
 import 'assemble_plan.dart';
 import 'assign_loads.dart';
 import 'choose_exercises.dart';
+import 'extend_to_duration.dart';
 import 'fit_to_duration.dart';
 import 'prescribe.dart';
 import 'result.dart';
@@ -43,7 +44,15 @@ GenerationResult generatePlanForProfile(Profile profile, KnowledgeBase kb) {
     kb,
   );
 
-  final prescribed = prescribe(withEmphasis, profile, kb);
+  final extended = extendToDuration(
+    withEmphasis,
+    selected,
+    profile,
+    chosenPrescription,
+    kb,
+  );
+
+  final prescribed = prescribe(extended, profile, kb);
   if (prescribed is Rejected<List<PrescribedSession>>) return prescribed.reason;
   final sessions = (prescribed as Ok<List<PrescribedSession>>).value;
 

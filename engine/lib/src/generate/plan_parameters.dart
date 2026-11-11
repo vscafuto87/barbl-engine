@@ -1,4 +1,6 @@
+import '../contract/profile.dart';
 import '../kb/knowledge_base.dart';
+import '../kb/models.dart' show KbParameterGroup;
 
 const String _mesocycleGroup = 'mesocycle';
 const String _parametersTarget = 'parameters';
@@ -33,8 +35,20 @@ Map<String, Object?> buildParameters(KnowledgeBase kb) {
   };
 }
 
-/// Blocco `mesocycle` del piano, dal gruppo `mesocycle` della KB.
-Map<String, Object?> buildMesocycle(KnowledgeBase kb) {
+/// RIR minimo delle settimane di carico per il livello di esperienza del
+/// profilo (`minRirTargetByExperience` del gruppo `mesocycle`); nullo se la KB
+/// non ne dà uno.
+int? _minRirFor(KbParameterGroup group, Profile profile) {
+  final byExperience = group.values['minRirTargetByExperience'];
+  if (byExperience is! Map) return null;
+  final v = byExperience[profile.experience];
+  return v is int ? v : null;
+}
+
+/// Blocco `mesocycle` del piano, dal gruppo `mesocycle` della KB. Le settimane
+/// di carico non scendono sotto il RIR minimo del livello di esperienza
+/// (`P-RIR-BEGINNER`); lo scarico non cambia.
+Map<String, Object?> buildMesocycle(KnowledgeBase kb, Profile profile) {
   final group = kb.parameterGroups[_mesocycleGroup];
   if (group == null) {
     throw StateError('KB without parameter group $_mesocycleGroup');
@@ -43,6 +57,15 @@ Map<String, Object?> buildMesocycle(KnowledgeBase kb) {
   if (weeks is! List) {
     throw StateError('KB group $_mesocycleGroup has no weeks list');
   }
+  final minRir = _minRirFor(group, profile);
+  Object? rirOf(Map<Object?, Object?> w) {
+    final rir = w['rirTarget'];
+    if (minRir != null && w['type'] == 'load' && rir is int && rir < minRir) {
+      return minRir;
+    }
+    return rir;
+  }
+
   return {
     'weeks': [
       for (final w in weeks)
@@ -50,7 +73,7 @@ Map<String, Object?> buildMesocycle(KnowledgeBase kb) {
           <String, Object?>{
             'number': w['number'],
             'type': w['type'],
-            'rirTarget': w['rirTarget'],
+            'rirTarget': rirOf(w),
             if (w['note'] != null) 'note': w['note'],
           },
     ],
