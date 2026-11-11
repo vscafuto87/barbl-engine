@@ -8,6 +8,7 @@ requires:
 - rack
 pattern: squat
 mechanics: compound
+technicalDemand: high
 muscles:
   primary: quadriceps
   secondary:

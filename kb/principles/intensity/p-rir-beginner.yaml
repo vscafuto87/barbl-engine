@@ -1,0 +1,23 @@
+id: P-RIR-BEGINNER
+topic: intensity
+statement:
+  it: Per chi ha meno di sei mesi di esperienza il RIR target delle settimane di carico non scende sotto
+    2. Per crescere basta chiudere le serie a 2-3 ripetizioni dal cedimento (P-FAILURE-NOT-REQUIRED) e
+    chi comincia sta ancora imparando la tecnica; il valore è una scelta di design di Barbl. Non si
+    afferma che chi comincia stimi il RIR peggio degli altri (P-RIR-ACCURACY dice che non dipende
+    dall'esperienza).
+  en: For people with less than six months of experience the target RIR of load weeks does not go below
+    2. To grow, finishing sets 2-3 reps from failure is enough (P-FAILURE-NOT-REQUIRED) and beginners
+    are still learning technique; the value is a Barbl design choice. It is not claimed that beginners
+    estimate RIR worse than others (P-RIR-ACCURACY says it does not depend on experience).
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- parameters/mesocycle
+sources:
+- id: barbl-design
+  access: full_text
+conflicts:
+- with: conflicts.yaml#C-RIR-BEGINNER
+  status: resolved

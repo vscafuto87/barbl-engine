@@ -1,0 +1,20 @@
+id: P-WARMUP-SPECIFIC
+topic: warmup
+statement:
+  it: Nell'allenamento con i pesi il riscaldamento che conta è quello specifico, cioè serie dello stesso
+    esercizio a carichi crescenti, e serve di più quando arriva vicino al carico di lavoro; aggiungere
+    un riscaldamento generale (cardio leggero, mobilità) ha un effetto piccolo o incerto sulla prestazione.
+  en: In resistance training the warm-up that matters is the specific one, that is, sets of the same
+    exercise at rising loads, and it helps more when it gets close to the working load; adding a general
+    warm-up (light cardio, mobility) has a small or uncertain effect on performance.
+evidence: low
+status: provisional
+reviewedBy: null
+feeds:
+- prescriptions
+- parameters/warmup
+sources:
+- id: ribeiro-2021-warmup-review
+  access: abstract_only
+- id: sbs-heavier-warmups
+  access: summary

@@ -8,6 +8,7 @@ requires:
 - bench
 pattern: lunge
 mechanics: compound
+technicalDemand: high
 muscles:
   primary: quadriceps
   secondary:

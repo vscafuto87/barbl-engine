@@ -1,0 +1,14 @@
+ruleId: TIME-EXTEND
+key: time.extended
+level: session
+text:
+  it: Questa seduta ha ancora tempo, quindi aggiungo questo esercizio in fondo per un muscolo che nella
+    settimana avrebbe poche serie. Lo faccio solo se la seduta resta nel tempo che hai scelto e il muscolo
+    non supera il volume utile.
+  en: This session still has time, so I add this exercise at the end for a muscle that would get few sets
+    in the week. I only do it when the session stays within the time you chose and the muscle does not go
+    over a useful volume.
+principles:
+- P-TIME-EXTEND
+- P-VOL-MIN-10
+- P-VOL-BAND-CAP

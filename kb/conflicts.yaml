@@ -118,3 +118,18 @@ conflicts:
   resolution:
     it: 'Aperto: una sola prova sperimentale, sulla panca. Il motore resta con le stesse regole per tutti
       (P-SEX-RESPONSE); da rivedere con il coach e con nuovi studi prima di qualsiasi parametro per sesso.'
+- id: C-RIR-BEGINNER
+  status: resolved
+  date: '2026-11-11'
+  between:
+  - P-RIR-HYP
+  - P-RIR-BEGINNER
+  summary:
+    it: P-RIR-HYP dice che l'ipertrofia cresce chiudendo le serie più vicino al cedimento, e il mesociclo
+      arriva a RIR 1 nella quarta settimana; P-FAILURE-NOT-REQUIRED dice che bastano 2-3 ripetizioni dal
+      cedimento. Chi ha meno di sei mesi di esperienza sta ancora imparando la tecnica.
+  resolution:
+    it: 'Chiuso da Vincenzo l''11 novembre 2026: per chi ha meno di sei mesi di esperienza il RIR target
+      delle settimane di carico non scende sotto 2 (3, 3, 2, 2 e poi lo scarico). Costo accettato: un
+      po'' meno vicinanza al cedimento nell''ultima settimana di carico. Valore di design, da rivedere
+      con un coach.'

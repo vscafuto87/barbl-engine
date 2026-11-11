@@ -1,0 +1,32 @@
+id: golden-07
+name:
+  it: Intermedio, 3 giorni da 90 minuti, massa, palestra completa
+profile: golden/profile-3d-90min.json
+expect:
+  split: full_body
+  sessions: 3
+  scheduleDays:
+  - mon
+  - wed
+  - fri
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      3: 2
+      4: 1
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      quadriceps: 10
+      biceps: 10
+      triceps: 10
+      shoulders: 12
+      hamstrings: 10
+      calves: 6
+  validAgainst: contract/plan.schema.json
+origin:
+  it: Caso di Barbl (KB 0.25.0). A 3 giorni le sedute da 60 minuti non hanno spazio per spalle, polpacci e
+    femorali; con 90 minuti le estensioni li portano alla fascia, senza superare il tetto di 16 serie.

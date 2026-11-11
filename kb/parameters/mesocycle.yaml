@@ -17,10 +17,13 @@ values:
   - number: 5
     type: deload
     rirTarget: 4
+  minRirTargetByExperience:
+    under_6_months: 2
 provisional: true
 principles:
 - P-RIR-SEQUENCE
 - P-RIR-HYP
 - P-FAILURE-NOT-REQUIRED
 - P-PERIODIZATION-NEUTRAL
+- P-RIR-BEGINNER
 ruleId: RIR-MESOCYCLE

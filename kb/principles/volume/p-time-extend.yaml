@@ -1,0 +1,23 @@
+id: P-TIME-EXTEND
+topic: volume
+statement:
+  it: 'Se una seduta ha ancora tempo, in coda si aggiungono gli slot di estensione del template, in ordine
+    di priorità, per i muscoli che nella settimana hanno poche serie. Un''estensione entra solo se la
+    seduta resta nel tempo dichiarato, non ripete un pattern già presente e nessun muscolo supera il
+    tetto di serie settimanali di parameters/belowBand. Oltre il tetto non si aggiunge altro lavoro:
+    la seduta può restare più corta del tempo dichiarato. Quali slot e in che ordine è una scelta di
+    design di Barbl; che oltre la fascia i rendimenti calano viene da P-VOL-DIMINISHING.'
+  en: 'If a session still has time, the template''s extension slots are appended at the end, in priority
+    order, for muscles that have few sets in the week. An extension is added only if the session stays
+    within the declared time, does not repeat a pattern already there and no muscle goes over the weekly
+    sets ceiling of parameters/belowBand. Past the ceiling no more work is added: the session can stay
+    shorter than the declared time. Which slots and in what order is a Barbl design choice; that returns
+    diminish beyond the band comes from P-VOL-DIMINISHING.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: barbl-design
+  access: full_text

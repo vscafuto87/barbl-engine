@@ -302,3 +302,102 @@ notes:
   it: Upper A e Lower A partono dal piano fisso dell'app (panca, superset rematore e military, squat,
     leg curl); il resto completa gli slot che nel piano fisso erano da definire. Per ogni slot il motore
     sceglie il primo candidato disponibile nella palestra del profilo.
+extensions:
+- session: lower_a
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - machine_lateral_raise
+    equivalent: 3
+- session: lower_b
+  slot:
+    pattern: rear_delt_fly
+    role: accessory
+    candidates:
+    - cable_rear_delt_fly
+    - dumbbell_rear_delt_fly
+    - face_pull
+    - incline_bench_rear_delt_fly
+    - reverse_pec_deck
+    equivalent: 3
+- session: lower_a
+  slot:
+    pattern: hip_extension
+    role: accessory
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+    equivalent: 3
+- session: upper_a
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - machine_lateral_raise
+    equivalent: 3
+- session: upper_b
+  slot:
+    pattern: rear_delt_fly
+    role: accessory
+    candidates:
+    - cable_rear_delt_fly
+    - dumbbell_rear_delt_fly
+    - face_pull
+    - incline_bench_rear_delt_fly
+    - reverse_pec_deck
+    equivalent: 3
+- session: lower_b
+  slot:
+    pattern: hip_extension
+    role: accessory
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+    equivalent: 3
+- session: upper_a
+  slot:
+    pattern: chest_isolation
+    role: accessory
+    candidates:
+    - cable_fly
+    - dumbbell_fly
+    - pec_deck_fly
+    - incline_dumbbell_fly
+    - low_to_high_cable_fly
+    - push_up
+    equivalent: 5
+- session: upper_a
+  slot:
+    pattern: calf_raise
+    role: accessory
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - seated_calf_raise
+    equivalent: 4
+- session: upper_b
+  slot:
+    pattern: calf_raise
+    role: accessory
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - seated_calf_raise
+    equivalent: 4

@@ -22,7 +22,7 @@ roles:
       upper: 120
       lower: 120
     rirFollowsMesocycle: true
-    warmup: false
+    warmup: firstCompoundOfPattern
   accessory:
     sets: 3
     reps:
