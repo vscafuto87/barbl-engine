@@ -34,7 +34,7 @@ Data: 11 novembre 2026. KB di partenza: 0.24.0. Esito dell'analisi su 216 profil
   - `upper_lower_4d`: Lower A alzate laterali → Lower B deltoide posteriore → Lower A estensione d'anca → Upper A alzate laterali → Upper B deltoide posteriore → Lower B flessione del ginocchio.
   - `full_body_3d`: Full C polpacci → Full A alzate laterali → Full B polpacci → Full C flessione del ginocchio → Full A estensione d'anca → Full B deltoide posteriore.
   - `ppl_ul_5d`: Push alzate laterali → Legs flessione del ginocchio → Upper estensione del gomito → Push isolamento petto → Lower estensione del ginocchio → Pull flessione del gomito.
-- **Motivazione**: nessuna motivazione nuova nel piano in questa fase. L'app mostra le motivazioni di seduta che conosce (stanchezza, regola 8, riscaldamento); una `TIME-EXTEND` richiederebbe lavoro nell'app. Resta aperta.
+- **Motivazione** (scelta di Vincenzo, 11 novembre): gli esercizi aggiunti citano la regola `TIME-EXTEND` (motivazione `level: session`, nuova in `kb/rationales/`), come `EMPHASIS`; la motivazione entra nel piano solo se almeno un esercizio la cita. Che l'app la mostri nella scheda «Seduta» del «Perché questo?» è da verificare nella fase B.
 
 ### D2. Riscaldamento sui multiarticolari (risolve 3)
 
@@ -49,7 +49,7 @@ Data: 11 novembre 2026. KB di partenza: 0.24.0. Esito dell'analisi su 216 profil
 - **RIR minimo**: `parameters/mesocycle.yaml` ha `minRirTargetByExperience: { under_6_months: 2 }`; il motore porta ogni settimana di carico a `max(rirTarget, minimo)` (le settimane di scarico non cambiano). Per un principiante: 3, 3, 2, 2, scarico 4. Il blocco `mesocycle` del piano resta nello stesso formato: nessun cambio di contratto.
   - Principio nuovo `P-RIR-BEGINNER`, `evidence: design`. Motivo: arrivare a 2–3 RIR basta (`P-FAILURE-NOT-REQUIRED`, evidenza alta) e chi è all'inizio sta ancora imparando la tecnica. **Non** si cita una stima del RIR peggiore nei principianti: `P-RIR-ACCURACY` dice che la precisione non dipende dall'esperienza.
   - Conflitto `C-RIR-BEGINNER` in `kb/conflicts.yaml` con `P-RIR-HYP` (più vicino al cedimento, più ipertrofia), chiuso dalla decisione di Vincenzo dell'11 novembre.
-- **Esercizi meno tecnici**: campo facoltativo `technicalDemand: high` negli esercizi (schema e validatore). Per `under_6_months` gli esercizi `high` vanno in fondo all'elenco dei candidati disponibili (ordine stabile) prima della scelta, anche per enfasi ed estensioni. Non sono esclusi: se l'attrezzatura lascia solo quelli, si usano. Le `alternatives` di Sostituisci non cambiano.
+- **Esercizi meno tecnici**: campo facoltativo `technicalDemand: high` negli esercizi (schema e validatore). Per `under_6_months` gli esercizi `high` si escludono dai candidati disponibili prima della scelta, anche per enfasi ed estensioni; se l'attrezzatura lascia solo quelli, restano tutti. (Prima versione: in fondo all'elenco; non bastava, perché con pochi candidati la scelta `equivalent` li includeva comunque.) Le `alternatives` di Sostituisci non cambiano.
   - **Proposta da confermare con Vincenzo**: `front_squat`, `good_morning`, `sissy_squat`, `single_leg_dumbbell_romanian_deadlift`, `bulgarian_split_squat`, `dip`.
   - Principio nuovo `P-BEGINNER-SIMPLER`, `evidence: design`.
 
@@ -68,12 +68,18 @@ Data: 11 novembre 2026. KB di partenza: 0.24.0. Esito dell'analisi su 216 profil
 
 1. Nessuna seduta supera `sessionDurationMin` in nessun profilo.
 2. Nessuna estensione porta un muscolo oltre `bandMax`.
-3. Per ogni template e palestra, il volume a 75 minuti è ≥ quello a 60 su ogni muscolo e > su almeno uno; lo stesso per 90 rispetto a 75, oppure ogni muscolo è al tetto o nessuna estensione resta applicabile (report con il motivo).
+3. Per ogni profilo, con più tempo le serie totali e il numero di estensioni non diminuiscono. Non si chiede lo stesso per ogni singolo muscolo: gli esercizi del template cambiano con la durata (la chiave della variante la contiene), quindi un muscolo può oscillare di 1,5 serie. Le scelte delle estensioni non dipendono dalla durata.
 4. A 60 minuti, massa, palestra completa: spalle ≥ 6 serie frazionarie su 3 e 4 giorni, polpacci ≥ 3 su 3 giorni; Lower A di Upper/Lower ≥ 45 minuti stimati.
 5. Profilo `under_6_months`: nessuna settimana di carico con RIR < 2; nessun esercizio `high` dove l'attrezzatura offre un'alternativa.
 6. Profili di intermedi e avanzati: mesociclo invariato.
 7. Casi d'oro esistenti verdi (aggiornati solo dove cambiano gli esercizi per le estensioni) e casi nuovi: 4 giorni 75 minuti, 3 giorni 90 minuti, principiante 4 giorni 60 minuti.
 8. `dart analyze`, `dart test`, `dart run bin/barbl_engine.dart eval --kb ../kb`, `python3 kb/tools/validate.py` senza errori. La CI di GitHub non parte a novembre: verifica in locale, scritta nella PR.
+
+## Risultati dell'implementazione (11 novembre 2026)
+
+- Priorità delle estensioni di enfasi: le estensioni dei distretti in `emphasis` passano per prime, altrimenti con la seduta piena l'enfasi dava meno lavoro al suo distretto di un piano senza enfasi (la proprietà 11 della matrice dell'enfasi falliva).
+- `suggestEmphasis` confronta i piani per esercizi e serie: con le estensioni, un'enfasi già coperta da un'estensione uguale cambierebbe solo le etichette. I numeri della KB per le foto non cambiano; i test di `photo_emphasis_test.dart` che dipendevano dal piano di esempio usano ora il piano a 3 giorni da 90 minuti.
+- I casi in cui l'enfasi non aggiunge serie ma sposta lavoro tra estensioni (extra 0) sono quelli che con piani pieni prima erano «nessun posto».
 
 ## Fuori da questo lavoro
 
