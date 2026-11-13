@@ -18,6 +18,7 @@ substitutes:
 - chest_supported_dumbbell_row
 - dumbbell_row
 - single_arm_cable_row
+- chest_supported_t_bar_row
 technique:
   setup:
   - it: Siediti con i piedi sulla pedana e le ginocchia leggermente piegate.

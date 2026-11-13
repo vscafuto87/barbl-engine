@@ -1,0 +1,62 @@
+id: dumbbell_pullover
+name:
+  it: Pullover con manubrio
+  en: Dumbbell pullover
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: shoulder_extension
+mechanics: isolation
+muscles:
+  primary: back
+  secondary:
+  - chest
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- straight_arm_lat_pulldown
+- lat_pulldown
+technique:
+  setup:
+  - it: Sdraiati sulla panca, parte alta della schiena appoggiata.
+    en: Lie on the bench with your upper back supported.
+  - it: Tieni un manubrio con due mani sopra il petto, gomiti appena piegati.
+    en: Hold one dumbbell with both hands over your chest, elbows slightly bent.
+  - it: Piedi a terra, bacino stabile.
+    en: Feet on the floor, hips steady.
+  cues:
+  - it: Porta il manubrio dietro la testa finché senti allungare i dorsali.
+    en: Take the dumbbell behind your head until your lats stretch.
+  - it: Riportalo sopra il petto tirando con i gomiti.
+    en: Bring it back over your chest, pulling with your elbows.
+  mistakes:
+  - what:
+      it: Pieghi e distendi i gomiti a ogni ripetizione.
+      en: You bend and straighten your elbows each rep.
+    fix:
+      it: Tieni lo stesso angolo per tutto il movimento.
+      en: Keep the same elbow angle throughout.
+  - what:
+      it: Scendi troppo e la spalla fa male.
+      en: You go too deep and your shoulder hurts.
+    fix:
+      it: Resta nella metà bassa del movimento.
+      en: Stay in the lower half of the range.
+  - what:
+      it: Inarchi la schiena in basso.
+      en: You arch your back at the bottom.
+    fix:
+      it: Costole giù e addome contratto.
+      en: Ribs down and abs braced.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 272
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

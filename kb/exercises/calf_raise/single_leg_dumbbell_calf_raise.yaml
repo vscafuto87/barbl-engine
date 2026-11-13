@@ -1,0 +1,60 @@
+id: single_leg_dumbbell_calf_raise
+name:
+  it: Calf raise a una gamba con manubrio
+  en: Single-leg dumbbell calf raise
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: calf_raise
+mechanics: isolation
+muscles:
+  primary: calves
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_calf_raise
+- standing_calf_raise
+technique:
+  setup:
+  - it: Avampiede su un gradino, tallone nel vuoto.
+    en: Ball of your foot on a step, heel hanging off.
+  - it: Manubrio nella mano dello stesso lato della gamba che lavora.
+    en: Dumbbell in the hand on the same side as the working leg.
+  - it: L'altra mano su un appoggio per l'equilibrio.
+    en: Other hand on a support for balance.
+  cues:
+  - it: Scendi fino a sentire i polpacci allungati e fermati un attimo.
+    en: Lower until your calf is stretched and pause briefly.
+  - it: Sali sulle punte più in alto che puoi.
+    en: Rise onto your toes as high as you can.
+  mistakes:
+  - what:
+      it: Rimbalzi in basso.
+      en: You bounce at the bottom.
+    fix:
+      it: Fermati un secondo con il tallone in basso.
+      en: Hold one second with your heel down.
+  - what:
+      it: Pieghi il ginocchio per aiutarti.
+      en: You bend your knee to help.
+    fix:
+      it: Tieni la gamba quasi tesa.
+      en: Keep your leg nearly straight.
+  - what:
+      it: Ti appoggi troppo con la mano.
+      en: You lean heavily on your hand.
+    fix:
+      it: Usa la mano solo per l'equilibrio.
+      en: Use your hand for balance only.
+  sources:
+  - id: nippard-powerbuilding-2
+    pages:
+    - 77
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

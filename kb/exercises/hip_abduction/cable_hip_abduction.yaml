@@ -1,0 +1,60 @@
+id: cable_hip_abduction
+name:
+  it: Abduzione dell'anca ai cavi
+  en: Cable hip abduction
+equipment: cable
+requires:
+- cables
+pattern: hip_abduction
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- machine_hip_abduction
+technique:
+  setup:
+  - it: Cavo basso con la cavigliera sulla gamba lontana dalla carrucola.
+    en: Low cable, ankle strap on the leg farther from the pulley.
+  - it: Mettiti di fianco al cavo e tieniti a un appoggio.
+    en: Stand side-on to the cable and hold a support.
+  - it: Gamba che lavora davanti all'altra all'inizio.
+    en: Working leg crossed in front of the other at the start.
+  cues:
+  - it: Porta la gamba in fuori di lato, busto dritto.
+    en: Swing your leg out to the side, torso upright.
+  - it: Torna lento fino a incrociare.
+    en: Return slowly until it crosses again.
+  mistakes:
+  - what:
+      it: Ti pieghi di lato per alzare di più.
+      en: You lean sideways to lift higher.
+    fix:
+      it: Busto dritto e meno ampiezza.
+      en: Stay upright with a bit less range.
+  - what:
+      it: Ruoti il piede in fuori.
+      en: You turn your foot out.
+    fix:
+      it: Punta del piede in avanti.
+      en: Keep your toes pointing forward.
+  - what:
+      it: Lanci la gamba.
+      en: You swing your leg.
+    fix:
+      it: Movimento lento e controllato.
+      en: Slow, controlled reps.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 137
+    - 138
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

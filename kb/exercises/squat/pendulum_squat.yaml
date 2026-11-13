@@ -1,0 +1,63 @@
+id: pendulum_squat
+name:
+  it: Pendulum squat
+  en: Pendulum squat
+equipment: machine
+requires:
+- machines
+pattern: squat
+mechanics: compound
+muscles:
+  primary: quadriceps
+  secondary:
+  - glutes
+loading:
+  stepKg: 5
+  whenLoadUnknown: manual
+substitutes:
+- hack_squat
+- leg_press
+- belt_squat
+technique:
+  setup:
+  - it: Schiena contro lo schienale, spalle sotto i cuscinetti.
+    en: Back against the pad, shoulders under the pads.
+  - it: Piedi a metà pedana, alla larghezza delle spalle.
+    en: Feet mid-platform, shoulder-width apart.
+  - it: Sblocca la sicura prima di scendere.
+    en: Release the safety before you go down.
+  cues:
+  - it: Scendi profondo, ginocchia avanti sopra le punte.
+    en: Go deep, knees travelling forward over your toes.
+  - it: Risali spingendo con tutta la pianta del piede.
+    en: Drive up through your whole foot.
+  mistakes:
+  - what:
+      it: Scendi solo a metà.
+      en: You only go halfway down.
+    fix:
+      it: Usa meno peso e cerca tutta l'ampiezza.
+      en: Use less weight and aim for full depth.
+  - what:
+      it: I talloni si staccano dalla pedana.
+      en: Your heels lift off the platform.
+    fix:
+      it: Sposta i piedi un po' più in alto.
+      en: Move your feet slightly higher.
+  - what:
+      it: Blocchi le ginocchia di scatto in alto.
+      en: You snap your knees straight at the top.
+    fix:
+      it: Fermati appena prima della distensione completa.
+      en: Stop just short of full lockout.
+  sources:
+  - id: nippard-min-max
+    pages:
+    - 4
+    - 25
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -22,6 +22,7 @@ substitutes:
 - machine_chest_press
 - smith_machine_bench_press
 - incline_barbell_bench_press
+- close_grip_bench_press
 technique:
   setup:
   - it: Sdraiati sulla panca con gli occhi proprio sotto il bilanciere.

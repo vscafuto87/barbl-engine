@@ -1,0 +1,65 @@
+id: barbell_lunge
+name:
+  it: Affondi con bilanciere
+  en: Barbell lunge
+equipment: barbell
+requires:
+- barbell
+- rack
+pattern: lunge
+mechanics: compound
+technicalDemand: high
+muscles:
+  primary: quadriceps
+  secondary:
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_walking_lunge
+- bulgarian_split_squat
+- dumbbell_reverse_lunge
+technique:
+  setup:
+  - it: Bilanciere sulla parte alta della schiena, come nello squat.
+    en: Bar on your upper back, as for a squat.
+  - it: Esci dal rack, piedi alla larghezza dei fianchi.
+    en: Step out of the rack with your feet hip-width apart.
+  - it: Fai un passo lungo abbastanza da piegare entrambe le ginocchia a 90 gradi.
+    en: Take a step long enough to bend both knees to about 90 degrees.
+  cues:
+  - it: Scendi dritto, il ginocchio dietro sfiora il pavimento.
+    en: Drop straight down until your back knee nearly touches the floor.
+  - it: Spingi con il piede davanti per tornare su.
+    en: Drive through your front foot to come back up.
+  mistakes:
+  - what:
+      it: Perdi l'equilibrio di lato.
+      en: You wobble sideways.
+    fix:
+      it: Tieni i piedi su due binari, non sulla stessa linea.
+      en: Keep your feet on two tracks, not one line.
+  - what:
+      it: Il busto crolla in avanti.
+      en: Your torso falls forward.
+    fix:
+      it: Petto alto e passo un po' più lungo.
+      en: Chest up and a slightly longer step.
+  - what:
+      it: Il ginocchio davanti cade verso l'interno.
+      en: Your front knee caves in.
+    fix:
+      it: Tienilo in linea con le dita del piede.
+      en: Keep it in line with your toes.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 118
+    - 119
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

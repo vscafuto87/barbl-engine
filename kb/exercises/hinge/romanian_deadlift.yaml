@@ -18,6 +18,8 @@ substitutes:
 - dumbbell_romanian_deadlift
 - good_morning
 - stiff_leg_deadlift
+- deadlift
+- sumo_deadlift
 technique:
   setup:
   - it: Posiziona il bilanciere all'altezza di metà coscia, per esempio nel rack.

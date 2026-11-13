@@ -26,11 +26,30 @@ Profile _profile(String name, {int? minutes}) {
 }
 
 /// KB con un altro valore in `photoEmphasis`.
-KnowledgeBase _kbWith(Map<String, Object?> changes) {
+/// Pattern delle estensioni dei distretti piccoli (KB 0.26.0).
+const _smallDistrictPatterns = {
+  'trunk_flexion',
+  'scapular_elevation',
+  'hip_abduction',
+  'hip_adduction',
+  'forearm_isolation',
+};
+
+KnowledgeBase _kbWith(
+  Map<String, Object?> changes, {
+  Set<String> withoutPatterns = const {},
+}) {
   final copy = jsonDecode(jsonEncode(bundleJson)) as Map<String, Object?>;
   final group =
       ((copy['parameters']! as Map)['photoEmphasis']! as Map)['values']! as Map;
   group.addAll(changes);
+  if (withoutPatterns.isNotEmpty) {
+    for (final t in (copy['templates']! as Map).values.cast<Map>()) {
+      (t['extensions'] as List?)?.removeWhere(
+        (e) => withoutPatterns.contains(((e as Map)['slot'] as Map)['pattern']),
+      );
+    }
+  }
   return KnowledgeBase.fromJson(copy);
 }
 
@@ -295,18 +314,6 @@ void main() {
 
   group('(e) volume totale', () {
     test('il tetto di serie in più viene dalla KB', () {
-      // Nel piano a 3 giorni da 90 minuti l'enfasi sul petto aggiunge più
-      // serie di quelle che la KB ammette (le sedute hanno ancora posto dopo
-      // le estensioni).
-      final chest = _suggest(
-        [_obs(PhotoRegion.chest)],
-        profile: 'profile-3d.json',
-        minutes: 90,
-      );
-      expect(_noChange(chest), 'PHOTO-EMPHASIS-MORE-VOLUME');
-      final ev = (chest as NoChange).skipped.single.evidence;
-      expect(ev.volumeWithinLimit, isFalse);
-      expect(ev.extraWeeklySets, greaterThan(3));
       final roomy = _kbWith({'maxExtraWeeklySets': 100});
       expect(
         _suggest(
@@ -317,13 +324,23 @@ void main() {
         ),
         isA<EmphasisSuggestion>(),
       );
-      final zero = _kbWith({'maxExtraWeeklySets': 0});
-      expect(
-        _noChange(
-          _suggest([_obs(PhotoRegion.quadriceps)], minutes: 75, withKb: zero),
-        ),
-        'PHOTO-EMPHASIS-MORE-VOLUME',
+      // Dalla KB 0.26.0 le estensioni dei distretti piccoli (addome, trapezi,
+      // abduttori, adduttori, avambracci) riempiono il tempo che resta: un
+      // esercizio di enfasi prende il loro posto e le serie totali non
+      // crescono. Il tetto si prova senza quelle estensioni e con un valore
+      // nullo.
+      final zero = _kbWith({
+        'maxExtraWeeklySets': 0,
+      }, withoutPatterns: _smallDistrictPatterns);
+      final quads = _suggest(
+        [_obs(PhotoRegion.quadriceps)],
+        minutes: 75,
+        withKb: zero,
       );
+      expect(_noChange(quads), 'PHOTO-EMPHASIS-MORE-VOLUME');
+      final ev = (quads as NoChange).skipped.single.evidence;
+      expect(ev.volumeWithinLimit, isFalse);
+      expect(ev.extraWeeklySets, greaterThan(0));
     });
 
     test(

@@ -1,0 +1,68 @@
+id: deadlift
+name:
+  it: Stacco da terra
+  en: Deadlift
+equipment: barbell
+requires:
+- barbell
+pattern: hinge
+mechanics: compound
+technicalDemand: high
+muscles:
+  primary: hamstrings
+  secondary:
+  - glutes
+  - quadriceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- romanian_deadlift
+- sumo_deadlift
+- good_morning
+technique:
+  setup:
+  - it: Bilanciere a terra sopra la metà del piede, piedi alla larghezza dei fianchi.
+    en: Bar on the floor over mid-foot, feet hip-width apart.
+  - it: Piegati e prendi la barra appena fuori dalle gambe.
+    en: Hinge down and grip the bar just outside your legs.
+  - it: Abbassa i fianchi finché le tibie toccano la barra, schiena neutra.
+    en: Drop your hips until your shins touch the bar, back neutral.
+  cues:
+  - it: Spingi il pavimento lontano, la barra resta attaccata alle gambe.
+    en: Push the floor away and keep the bar against your legs.
+  - it: In alto chiudi con i glutei, senza inarcarti.
+    en: Finish with your glutes at the top, without leaning back.
+  mistakes:
+  - what:
+      it: La schiena si arrotonda quando la barra si stacca.
+      en: Your back rounds as the bar leaves the floor.
+    fix:
+      it: Tendi le braccia e porta il petto in alto prima di tirare.
+      en: Pull the slack out and lift your chest before you pull.
+  - what:
+      it: I fianchi salgono prima delle spalle.
+      en: Your hips shoot up before your shoulders.
+    fix:
+      it: Spingi con le gambe e fai salire fianchi e spalle insieme.
+      en: Drive with your legs so hips and shoulders rise together.
+  - what:
+      it: La barra si allontana dal corpo.
+      en: The bar drifts away from your body.
+    fix:
+      it: Tira i gomiti indietro e sfiora le gambe per tutta la salita.
+      en: Pull your elbows back and graze your legs all the way up.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 125
+    - 126
+    - 127
+    - 128
+    - 129
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

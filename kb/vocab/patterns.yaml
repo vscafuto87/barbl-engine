@@ -21,3 +21,11 @@ patterns:
   - { id: lateral_raise,   region: upper, mechanics: isolation, name: { it: Alzate laterali,    en: Lateral raise } }
   - { id: rear_delt_fly,   region: upper, mechanics: isolation, name: { it: Deltoide posteriore, en: Rear delt fly } }
   - { id: hip_extension,   region: lower, mechanics: isolation, name: { it: Estensione d'anca,  en: Hip extension } }
+  # Dalla KB 0.26.0. L'estensione della spalla a braccia tese (pullover) isola i dorsali; gli
+  # altri sono i pattern dei distretti piccoli (addome, trapezi, abduttori, adduttori, avambracci).
+  - { id: shoulder_extension, region: upper, mechanics: isolation, name: { it: Estensione della spalla, en: Shoulder extension } }
+  - { id: trunk_flexion,      region: upper, mechanics: isolation, name: { it: Flessione del busto,     en: Trunk flexion } }
+  - { id: scapular_elevation, region: upper, mechanics: isolation, name: { it: Elevazione delle scapole, en: Shrug } }
+  - { id: hip_abduction,      region: lower, mechanics: isolation, name: { it: Abduzione dell'anca,     en: Hip abduction } }
+  - { id: hip_adduction,      region: lower, mechanics: isolation, name: { it: Adduzione dell'anca,     en: Hip adduction } }
+  - { id: forearm_isolation,  region: upper, mechanics: isolation, name: { it: Avambracci,              en: Forearms } }

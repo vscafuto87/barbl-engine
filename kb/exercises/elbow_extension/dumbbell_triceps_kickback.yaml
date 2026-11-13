@@ -1,0 +1,66 @@
+id: dumbbell_triceps_kickback
+name:
+  it: Kickback con manubrio
+  en: Dumbbell triceps kickback
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: elbow_extension
+mechanics: isolation
+muscles:
+  primary: triceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_triceps_kickback
+- dumbbell_overhead_triceps_extension
+technique:
+  setup:
+  - it: Mano e ginocchio dello stesso lato sulla panca, busto parallelo al pavimento.
+    en: Hand and knee of one side on the bench, torso parallel to the floor.
+  - it: Manubrio nell'altra mano, braccio lungo il fianco.
+    en: Dumbbell in the other hand, upper arm along your side.
+  - it: Gomito piegato a 90 gradi.
+    en: Elbow bent to 90 degrees.
+  cues:
+  - it: Distendi il gomito portando il manubrio indietro.
+    en: Straighten your elbow, moving the dumbbell back.
+  - it: Il braccio resta fermo, si muove solo l'avambraccio.
+    en: Your upper arm stays still; only the forearm moves.
+  mistakes:
+  - what:
+      it: Il gomito scende mentre spingi.
+      en: Your elbow drops as you extend.
+    fix:
+      it: Tienilo all'altezza del busto o appena sopra.
+      en: Keep it level with your torso or slightly higher.
+  - what:
+      it: Lanci il manubrio.
+      en: You swing the dumbbell.
+    fix:
+      it: Usa un peso più leggero e fermati in alto.
+      en: Use a lighter weight and pause at the top.
+  - what:
+      it: Scendi poco.
+      en: You barely lower it.
+    fix:
+      it: Torna fino a 90 gradi o poco oltre.
+      en: Return to 90 degrees or a bit beyond.
+  sources:
+  - id: nippard-essentials
+    pages:
+    - 22
+    access: full_text
+  - id: nippard-muscle-ladder
+    pages:
+    - 223
+    - 224
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

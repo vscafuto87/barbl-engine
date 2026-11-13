@@ -20,6 +20,7 @@ substitutes:
 - romanian_deadlift
 - stiff_leg_deadlift
 - dumbbell_romanian_deadlift
+- deadlift
 technique:
   setup:
   - it: Prepara il bilanciere nel rack come per lo squat.

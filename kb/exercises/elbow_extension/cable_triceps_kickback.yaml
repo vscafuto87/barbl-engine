@@ -17,6 +17,7 @@ substitutes:
 - cable_triceps_pushdown
 - overhead_cable_triceps_extension
 - lying_dumbbell_triceps_extension
+- dumbbell_triceps_kickback
 technique:
   setup:
   - it: Metti la carrucola nella posizione più bassa.

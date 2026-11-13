@@ -1,0 +1,60 @@
+id: cable_y_raise
+name:
+  it: Y-raise ai cavi
+  en: Cable Y-raise
+equipment: cable
+requires:
+- cables
+pattern: lateral_raise
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_lateral_raise
+- dumbbell_lateral_raise
+technique:
+  setup:
+  - it: 'Due cavi bassi incrociati: prendi la maniglia sinistra con la destra e viceversa.'
+    en: 'Two low cables crossed: left handle in your right hand and vice versa.'
+  - it: Fai un passo indietro, busto appena inclinato in avanti.
+    en: Step back with your torso leaning slightly forward.
+  - it: Braccia davanti alle cosce, gomiti morbidi.
+    en: Arms in front of your thighs, elbows soft.
+  cues:
+  - it: Porta le braccia in alto e in fuori, a forma di Y.
+    en: Raise your arms up and out into a Y shape.
+  - it: Fermati all'altezza delle orecchie e scendi lento.
+    en: Stop around ear height and lower slowly.
+  mistakes:
+  - what:
+      it: Alzi le spalle verso le orecchie.
+      en: You shrug your shoulders up.
+    fix:
+      it: Spalle basse, alza solo le braccia.
+      en: Shoulders down; lift only your arms.
+  - what:
+      it: Ti aiuti con il busto.
+      en: You swing your torso.
+    fix:
+      it: Riduci il peso e resta fermo.
+      en: Use less weight and stay still.
+  - what:
+      it: Braccia troppo dritte davanti.
+      en: Arms raised straight in front.
+    fix:
+      it: Apri le braccia a circa 30 gradi dal corpo.
+      en: Open your arms about 30 degrees out from your body.
+  sources:
+  - id: nippard-mens-shoulder
+    pages:
+    - 12
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -1,0 +1,64 @@
+id: pendlay_row
+name:
+  it: Rematore Pendlay
+  en: Pendlay row
+equipment: barbell
+requires:
+- barbell
+pattern: horizontal_pull
+mechanics: compound
+technicalDemand: high
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_row
+- dumbbell_row
+- chest_supported_t_bar_row
+technique:
+  setup:
+  - it: Bilanciere a terra, piedi alla larghezza dei fianchi sotto la barra.
+    en: Bar on the floor, feet hip-width under it.
+  - it: Busto quasi parallelo al pavimento, schiena neutra.
+    en: Torso nearly parallel to the floor, back neutral.
+  - it: Presa poco più larga delle spalle.
+    en: Grip a little wider than shoulder-width.
+  cues:
+  - it: Tira la barra in modo esplosivo verso la parte bassa del petto.
+    en: Pull the bar explosively to your lower chest.
+  - it: Riappoggiala a terra a ogni ripetizione, busto fermo.
+    en: Set it back on the floor every rep, torso still.
+  mistakes:
+  - what:
+      it: Il busto si alza per tirare.
+      en: Your torso rises to pull.
+    fix:
+      it: Riduci il carico e tieni fermo il busto.
+      en: Use less weight and keep your torso still.
+  - what:
+      it: La schiena si arrotonda.
+      en: Your back rounds.
+    fix:
+      it: Petto in fuori prima di ogni tirata.
+      en: Brace with your chest out before each pull.
+  - what:
+      it: Rimbalzi la barra a terra.
+      en: You bounce the bar off the floor.
+    fix:
+      it: Appoggiala del tutto e riparti da fermo.
+      en: Let it settle and start from a dead stop.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 163
+    - 164
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

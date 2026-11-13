@@ -18,6 +18,8 @@ substitutes:
 - leg_press
 - smith_machine_squat
 - front_squat
+- pendulum_squat
+- belt_squat
 technique:
   setup:
   - it: Appoggia schiena e spalle ai cuscini della macchina.

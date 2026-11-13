@@ -1,0 +1,61 @@
+id: donkey_calf_raise
+name:
+  it: Donkey calf raise
+  en: Donkey calf raise
+equipment: machine
+requires:
+- machines
+pattern: calf_raise
+mechanics: isolation
+muscles:
+  primary: calves
+  secondary: []
+loading:
+  stepKg: 5
+  whenLoadUnknown: manual
+substitutes:
+- standing_calf_raise
+- leg_press_calf_raise
+technique:
+  setup:
+  - it: Busto in avanti con i fianchi piegati, schiena contro il cuscino.
+    en: Hinge forward at the hips with your back under the pad.
+  - it: Avampiedi sulla pedana, talloni nel vuoto.
+    en: Balls of your feet on the platform, heels hanging off.
+  - it: Gambe quasi tese.
+    en: Legs nearly straight.
+  cues:
+  - it: Scendi fino al massimo allungamento e fermati.
+    en: Lower to a full stretch and pause.
+  - it: Spingi in alto sulle punte.
+    en: Press up high onto your toes.
+  mistakes:
+  - what:
+      it: Muovi i fianchi per alzare il carico.
+      en: You move your hips to lift the load.
+    fix:
+      it: Tieni i fianchi fermi, si muovono solo le caviglie.
+      en: Keep your hips still; only your ankles move.
+  - what:
+      it: Ampiezza ridotta in basso.
+      en: Short range at the bottom.
+    fix:
+      it: Usa meno peso e scendi del tutto.
+      en: Use less weight and go all the way down.
+  - what:
+      it: Ginocchia molto piegate.
+      en: Knees bent a lot.
+    fix:
+      it: Distendi le gambe per allenare di più il gastrocnemio.
+      en: Straighten your legs to work the gastrocnemius more.
+  sources:
+  - id: nippard-min-max
+    pages:
+    - 4
+    - 25
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

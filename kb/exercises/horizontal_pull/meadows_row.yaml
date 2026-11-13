@@ -1,0 +1,62 @@
+id: meadows_row
+name:
+  it: Meadows row
+  en: Meadows row
+equipment: barbell
+requires:
+- barbell
+pattern: horizontal_pull
+mechanics: compound
+technicalDemand: high
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_row
+- single_arm_cable_row
+technique:
+  setup:
+  - it: Un'estremità del bilanciere in un angolo o in un landmine, l'altra carica.
+    en: One end of the bar in a corner or landmine, the other loaded.
+  - it: Mettiti di fianco alla barra, piede vicino davanti, busto piegato.
+    en: Stand beside the bar, near foot forward, torso hinged.
+  - it: Prendi la punta della barra con presa prona, avambraccio sul ginocchio libero se serve.
+    en: Grab the end of the bar overhand, resting your free forearm on your knee if needed.
+  cues:
+  - it: Tira il gomito in alto e indietro, lontano dal corpo.
+    en: Drive your elbow up and back, away from your body.
+  - it: Scendi fino ad allungare bene il dorso.
+    en: Lower until your back is well stretched.
+  mistakes:
+  - what:
+      it: Ruoti il busto per sollevare.
+      en: You twist your torso to lift.
+    fix:
+      it: Busto fermo e carico più leggero.
+      en: Keep your torso still and use less weight.
+  - what:
+      it: Ampiezza corta.
+      en: Short range.
+    fix:
+      it: Distendi il braccio del tutto in basso.
+      en: Straighten your arm fully at the bottom.
+  - what:
+      it: Ti alzi con la schiena a ogni ripetizione.
+      en: You stand up with your back each rep.
+    fix:
+      it: Resta piegato per tutta la serie.
+      en: Stay hinged for the whole set.
+  sources:
+  - id: nippard-essentials
+    pages:
+    - 54
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

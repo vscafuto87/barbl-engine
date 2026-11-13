@@ -1,0 +1,61 @@
+id: dumbbell_wrist_curl
+name:
+  it: Flessioni del polso con manubrio
+  en: Dumbbell wrist curl
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: forearm_isolation
+mechanics: isolation
+muscles:
+  primary: forearms
+  secondary: []
+loading:
+  stepKg: 1
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_wrist_extension
+technique:
+  setup:
+  - it: Inginocchiati accanto alla panca o siediti.
+    en: Kneel beside the bench or sit.
+  - it: Avambraccio sulla panca, palmo in alto, polso oltre il bordo.
+    en: Forearm on the bench, palm up, wrist past the edge.
+  - it: Manubrio in mano.
+    en: Dumbbell in hand.
+  cues:
+  - it: Lascia scendere il manubrio fino alle dita, poi richiudi.
+    en: Let the dumbbell roll down to your fingers, then curl it back.
+  - it: Porta il polso in alto più che puoi.
+    en: Curl your wrist up as far as you can.
+  mistakes:
+  - what:
+      it: L'avambraccio si stacca dalla panca.
+      en: Your forearm lifts off the bench.
+    fix:
+      it: Tienilo appoggiato.
+      en: Keep it flat on the bench.
+  - what:
+      it: Muovi il gomito.
+      en: You move your elbow.
+    fix:
+      it: Si muove solo il polso.
+      en: Only your wrist moves.
+  - what:
+      it: Peso troppo alto e ampiezza corta.
+      en: Too heavy, short range.
+    fix:
+      it: Usa un peso con cui fai tutta l'ampiezza.
+      en: Use a weight you can move through the full range.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 225
+    - 226
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

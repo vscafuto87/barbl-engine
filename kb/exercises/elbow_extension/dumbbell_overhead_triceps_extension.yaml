@@ -17,6 +17,7 @@ substitutes:
 - overhead_cable_triceps_extension
 - barbell_skull_crusher
 - lying_dumbbell_triceps_extension
+- dumbbell_triceps_kickback
 technique:
   setup:
   - it: Siediti con lo schienale dritto e tieni un manubrio con due mani.

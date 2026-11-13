@@ -29,6 +29,10 @@ sessions:
       - incline_barbell_bench_press
       - incline_machine_press
       - dip
+      - smith_machine_incline_press
+      - deficit_push_up
+      - dumbbell_floor_press
+      - close_grip_bench_press
   - type: single
     slots:
     - pattern: horizontal_pull
@@ -42,6 +46,9 @@ sessions:
       - incline_bench_barbell_row
       - single_arm_cable_row
       - inverted_row
+      - chest_supported_t_bar_row
+      - pendlay_row
+      - meadows_row
   - type: single
     slots:
     - pattern: squat
@@ -52,16 +59,20 @@ sessions:
       - leg_press
       - goblet_squat
       - front_squat
+      - pendulum_squat
+      - belt_squat
   - type: single
     slots:
     - pattern: hinge
       role: secondary
-      equivalent: 4
+      equivalent: 6
       candidates:
       - romanian_deadlift
       - dumbbell_romanian_deadlift
       - good_morning
       - stiff_leg_deadlift
+      - deadlift
+      - sumo_deadlift
   - type: single
     slots:
     - pattern: elbow_extension
@@ -75,6 +86,7 @@ sessions:
       - cable_triceps_pushdown
       - barbell_skull_crusher
       - cable_triceps_kickback
+      - dumbbell_triceps_kickback
 - id: full_b
   name:
     it: Full body B
@@ -85,14 +97,18 @@ sessions:
     slots:
     - pattern: horizontal_push
       role: secondary
-      equivalent: 4
+      equivalent: 6
       candidates:
       - incline_dumbbell_press
       - machine_chest_press
       - incline_barbell_bench_press
       - incline_machine_press
+      - smith_machine_incline_press
+      - deficit_push_up
       - push_up
       - dip
+      - dumbbell_floor_press
+      - close_grip_bench_press
   - type: single
     slots:
     - pattern: vertical_pull
@@ -112,51 +128,58 @@ sessions:
     slots:
     - pattern: vertical_push
       role: secondary
-      equivalent: 5
+      equivalent: 6
       candidates:
       - seated_dumbbell_shoulder_press
       - dumbbell_arnold_press
       - machine_shoulder_press
       - standing_dumbbell_shoulder_press
       - landmine_press
+      - smith_machine_shoulder_press
       - military_press
   - type: single
     slots:
     - pattern: lunge
       role: secondary
-      equivalent: 4
+      equivalent: 5
       candidates:
       - bulgarian_split_squat
       - dumbbell_walking_lunge
       - dumbbell_reverse_lunge
       - smith_machine_split_squat
+      - barbell_lunge
       - dumbbell_step_up
   - type: single
     slots:
     - pattern: knee_flexion
       role: accessory
-      equivalent: 3
+      equivalent: 4
       candidates:
       - seated_leg_curl
       - standing_leg_curl
       - dumbbell_leg_curl
+      - glute_ham_raise
       - single_leg_dumbbell_romanian_deadlift
       - leg_curl
       - dumbbell_romanian_deadlift
+      - nordic_curl
   - type: single
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 5
+      equivalent: 7
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
       - cable_curl
       - dumbbell_curl
       - behind_the_body_cable_curl
+      - machine_preacher_curl
+      - ez_bar_curl
       - hammer_curl
       - barbell_curl
       - spider_curl
+      - concentration_curl
 - id: full_c
   name:
     it: Full body C
@@ -175,27 +198,36 @@ sessions:
       - incline_bench_barbell_row
       - single_arm_cable_row
       - inverted_row
+      - chest_supported_t_bar_row
+      - pendlay_row
+      - meadows_row
   - type: single
     slots:
     - pattern: horizontal_push
       role: secondary
-      equivalent: 4
+      equivalent: 6
       candidates:
       - machine_chest_press
       - dumbbell_bench_press
       - incline_barbell_bench_press
       - incline_machine_press
+      - smith_machine_incline_press
+      - deficit_push_up
       - push_up
       - dip
+      - dumbbell_floor_press
+      - close_grip_bench_press
   - type: single
     slots:
     - pattern: squat
       role: secondary
-      equivalent: 3
+      equivalent: 5
       candidates:
       - leg_press
       - hack_squat
       - front_squat
+      - pendulum_squat
+      - belt_squat
       - smith_machine_squat
       - goblet_squat
   - type: single
@@ -211,20 +243,24 @@ sessions:
       - cable_triceps_pushdown
       - barbell_skull_crusher
       - cable_triceps_kickback
+      - dumbbell_triceps_kickback
   - type: single
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 5
+      equivalent: 7
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
       - cable_curl
       - dumbbell_curl
       - behind_the_body_cable_curl
+      - machine_preacher_curl
+      - ez_bar_curl
       - hammer_curl
       - barbell_curl
       - spider_curl
+      - concentration_curl
 principles:
 - P-SPLIT-FULL-BODY-3D
 - P-FREQ-MIN-2
@@ -234,45 +270,50 @@ principles:
 - P-RECOVERY-48H
 notes:
   it: 'Struttura scelta da Barbl (principio di design P-SPLIT-FULL-BODY-3D), non ripresa da una fonte.
-    Ogni seduta ha una spinta, una trazione e una gamba; nella settimana petto, dorso, quadricipiti,
-    bicipiti e tricipiti superano le 10 serie frazionarie e hanno tre stimoli. Lunedì, mercoledì e
-    venerdì lasciano almeno 48 ore tra le sedute. Al massimo 18 serie per seduta (circa 54 minuti): il
-    template copre le durate da 60 minuti in su; con 45 minuti il profilo resta non coperto per durata.
-    I polpacci non hanno uno slot (vedi C-CALVES-BAND). Con la palestra a soli manubri alcuni slot ripetono lo stesso esercizio in sedute
-    diverse, perché il catalogo ne ha pochi per pattern.'
+    Ogni seduta ha una spinta, una trazione e una gamba; nella settimana petto, dorso, quadricipiti, bicipiti
+    e tricipiti superano le 10 serie frazionarie e hanno tre stimoli. Lunedì, mercoledì e venerdì lasciano
+    almeno 48 ore tra le sedute. Al massimo 18 serie per seduta (circa 54 minuti): il template copre le
+    durate da 60 minuti in su; con 45 minuti il profilo resta non coperto per durata. I polpacci non hanno
+    uno slot (vedi C-CALVES-BAND). Con la palestra a soli manubri alcuni slot ripetono lo stesso esercizio
+    in sedute diverse, perché il catalogo ne ha pochi per pattern.'
 extensions:
 - session: full_c
   slot:
     pattern: calf_raise
     role: accessory
+    equivalent: 6
     candidates:
     - standing_calf_raise
     - dumbbell_calf_raise
     - leg_press_calf_raise
     - smith_machine_calf_raise
+    - single_leg_dumbbell_calf_raise
+    - donkey_calf_raise
     - seated_calf_raise
-    equivalent: 4
 - session: full_a
   slot:
     pattern: lateral_raise
     role: accessory
+    equivalent: 4
     candidates:
     - cable_lateral_raise
     - dumbbell_lateral_raise
     - lying_incline_lateral_raise
+    - cable_y_raise
     - machine_lateral_raise
-    equivalent: 3
 - session: full_b
   slot:
     pattern: calf_raise
     role: accessory
+    equivalent: 6
     candidates:
     - standing_calf_raise
     - dumbbell_calf_raise
     - leg_press_calf_raise
     - smith_machine_calf_raise
+    - single_leg_dumbbell_calf_raise
+    - donkey_calf_raise
     - seated_calf_raise
-    equivalent: 4
 - session: full_b
   slot:
     pattern: rear_delt_fly
@@ -288,25 +329,29 @@ extensions:
   slot:
     pattern: knee_flexion
     role: accessory
+    equivalent: 4
     candidates:
     - seated_leg_curl
     - standing_leg_curl
     - dumbbell_leg_curl
+    - glute_ham_raise
     - single_leg_dumbbell_romanian_deadlift
     - leg_curl
     - dumbbell_romanian_deadlift
-    equivalent: 3
+    - nordic_curl
 - session: full_c
   slot:
     pattern: hip_extension
     role: accessory
+    equivalent: 5
     candidates:
     - barbell_hip_thrust
     - dumbbell_hip_thrust
+    - machine_hip_thrust
+    - smith_machine_hip_thrust
     - single_leg_hip_thrust
     - back_extension_45
     - cable_glute_kickback
-    equivalent: 3
 - session: full_a
   slot:
     pattern: rear_delt_fly
@@ -322,20 +367,78 @@ extensions:
   slot:
     pattern: lateral_raise
     role: accessory
+    equivalent: 4
     candidates:
     - cable_lateral_raise
     - dumbbell_lateral_raise
     - lying_incline_lateral_raise
+    - cable_y_raise
     - machine_lateral_raise
-    equivalent: 3
 - session: full_b
   slot:
     pattern: hip_extension
     role: accessory
+    equivalent: 5
     candidates:
     - barbell_hip_thrust
     - dumbbell_hip_thrust
+    - machine_hip_thrust
+    - smith_machine_hip_thrust
     - single_leg_hip_thrust
     - back_extension_45
     - cable_glute_kickback
+- session: full_a
+  slot:
+    pattern: trunk_flexion
+    role: accessory
+    candidates:
+    - cable_crunch
+    - machine_crunch
+    - hanging_leg_raise
+    - roman_chair_leg_raise
+    - weighted_crunch
+    equivalent: 4
+- session: full_c
+  slot:
+    pattern: trunk_flexion
+    role: accessory
+    candidates:
+    - cable_crunch
+    - machine_crunch
+    - hanging_leg_raise
+    - roman_chair_leg_raise
+    - weighted_crunch
+    equivalent: 4
+- session: full_b
+  slot:
+    pattern: hip_abduction
+    role: accessory
+    candidates:
+    - machine_hip_abduction
+    - cable_hip_abduction
+    equivalent: 2
+- session: full_c
+  slot:
+    pattern: hip_adduction
+    role: accessory
+    candidates:
+    - machine_hip_adduction
+    - cable_hip_adduction
+    equivalent: 2
+- session: full_b
+  slot:
+    pattern: scapular_elevation
+    role: accessory
+    candidates:
+    - dumbbell_shrug
+    - cable_shrug_in
+    - barbell_shrug
     equivalent: 3
+- session: full_a
+  slot:
+    pattern: forearm_isolation
+    role: accessory
+    candidates:
+    - dumbbell_wrist_curl
+    - dumbbell_wrist_extension
+    equivalent: 2

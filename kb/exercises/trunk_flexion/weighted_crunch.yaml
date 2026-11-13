@@ -1,0 +1,60 @@
+id: weighted_crunch
+name:
+  it: Crunch con manubrio
+  en: Weighted crunch
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: trunk_flexion
+mechanics: isolation
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_crunch
+- machine_crunch
+technique:
+  setup:
+  - it: Sdraiati a terra, ginocchia piegate e piedi appoggiati.
+    en: Lie on the floor, knees bent, feet flat.
+  - it: Tieni un manubrio o un disco contro il petto.
+    en: Hold a dumbbell or plate against your chest.
+  - it: Zona lombare appoggiata.
+    en: Lower back on the floor.
+  cues:
+  - it: Solleva le spalle arrotolando il busto verso il bacino.
+    en: Lift your shoulders by curling your torso toward your pelvis.
+  - it: Scendi lento fino a toccare con le spalle.
+    en: Lower slowly until your shoulders touch down.
+  mistakes:
+  - what:
+      it: Tiri la testa con le mani o con il collo.
+      en: You pull your head with your hands or neck.
+    fix:
+      it: Sguardo in alto e mento leggermente chiuso.
+      en: Eyes up and chin slightly tucked.
+  - what:
+      it: Ti alzi con i flessori dell'anca fino a sederti.
+      en: You sit all the way up with your hip flexors.
+    fix:
+      it: Fermati quando le scapole si staccano.
+      en: Stop once your shoulder blades leave the floor.
+  - what:
+      it: Ripetizioni veloci.
+      en: Fast reps.
+    fix:
+      it: Fermati un attimo in alto.
+      en: Pause briefly at the top.
+  sources:
+  - id: nippard-essentials
+    pages:
+    - 20
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

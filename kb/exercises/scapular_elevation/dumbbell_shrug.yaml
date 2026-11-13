@@ -1,0 +1,61 @@
+id: dumbbell_shrug
+name:
+  it: Scrollate con manubri
+  en: Dumbbell shrug
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: scapular_elevation
+mechanics: isolation
+muscles:
+  primary: traps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_shrug
+- cable_shrug_in
+technique:
+  setup:
+  - it: In piedi o seduto, un manubrio per mano lungo i fianchi.
+    en: Standing or seated, a dumbbell in each hand at your sides.
+  - it: Braccia tese, palmi verso il corpo.
+    en: Arms straight, palms facing you.
+  - it: Busto dritto.
+    en: Torso upright.
+  cues:
+  - it: Alza le spalle verso le orecchie e tieni un attimo.
+    en: Shrug toward your ears and hold briefly.
+  - it: Scendi lento fino in fondo.
+    en: Lower slowly all the way.
+  mistakes:
+  - what:
+      it: Il collo si allunga in avanti.
+      en: Your neck pokes forward.
+    fix:
+      it: Testa dritta, sguardo avanti.
+      en: Head neutral, eyes forward.
+  - what:
+      it: Pieghi i gomiti.
+      en: You bend your elbows.
+    fix:
+      it: Tienili distesi.
+      en: Keep them straight.
+  - what:
+      it: Ripetizioni veloci senza pausa.
+      en: Fast reps without a pause.
+    fix:
+      it: Un secondo di pausa in alto.
+      en: One-second pause at the top.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 229
+    - 230
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

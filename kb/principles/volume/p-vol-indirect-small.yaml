@@ -1,0 +1,27 @@
+id: P-VOL-INDIRECT-SMALL
+topic: volume
+statement:
+  it: Addominali, trapezi, avambracci e adduttori lavorano molto in modo indiretto nei multiarticolari
+    (stacchi, rematori, trazioni, squat e affondi). Il lavoro diretto è facoltativo e può partire da
+    poche serie o da zero, quindi la fascia minima di volume non vale per loro.
+  en: Abs, traps, forearms and adductors get a lot of indirect work from compound lifts (deadlifts,
+    rows, pulls, squats and lunges). Direct work is optional and can start at a few sets or none,
+    so the minimum volume band does not apply to them.
+evidence: low
+status: provisional
+reviewedBy: null
+feeds:
+- parameters/belowBand
+sources:
+- id: nippard-muscle-ladder
+  pages:
+  - 360
+  - 361
+  - 362
+  - 363
+  access: full_text
+- id: helms-pyramid-training-v2
+  pages:
+  - 233
+  - 235
+  access: full_text

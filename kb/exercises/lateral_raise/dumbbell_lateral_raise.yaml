@@ -16,6 +16,7 @@ loading:
 substitutes:
 - cable_lateral_raise
 - lying_incline_lateral_raise
+- cable_y_raise
 technique:
   setup:
   - it: Stai in piedi con un manubrio per mano, lungo i fianchi.

@@ -1,0 +1,62 @@
+id: smith_machine_hip_thrust
+name:
+  it: Hip thrust al multipower
+  en: Smith machine hip thrust
+equipment: smith_machine
+requires:
+- smith_machine
+- bench
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary:
+  - hamstrings
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_hip_thrust
+- machine_hip_thrust
+technique:
+  setup:
+  - it: Panca perpendicolare al multipower, parte alta della schiena sul bordo.
+    en: Bench across the Smith machine, upper back on its edge.
+  - it: Barra sulle anche, con un cuscinetto.
+    en: Bar over your hips, with a pad.
+  - it: Piedi a terra alla larghezza dei fianchi, tibie verticali in alto.
+    en: Feet flat hip-width apart, shins vertical at the top.
+  cues:
+  - it: Spingi con i talloni e chiudi forte con i glutei.
+    en: Drive through your heels and squeeze your glutes hard.
+  - it: Mento verso il petto, costole giù.
+    en: Chin tucked, ribs down.
+  mistakes:
+  - what:
+      it: Inarchi la zona lombare in alto.
+      en: You arch your lower back at the top.
+    fix:
+      it: Fermati quando le anche sono in linea con il busto.
+      en: Stop when your hips line up with your torso.
+  - what:
+      it: 'Piedi troppo lontani: lavorano i femorali.'
+      en: Feet too far out, so your hamstrings take over.
+    fix:
+      it: Avvicina i piedi.
+      en: Bring your feet closer.
+  - what:
+      it: Risalita a strappi.
+      en: Jerky lockout.
+    fix:
+      it: Fermati un secondo in alto.
+      en: Hold the top for one second.
+  sources:
+  - id: nippard-womens-specialization
+    pages:
+    - 33
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

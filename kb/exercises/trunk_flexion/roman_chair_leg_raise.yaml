@@ -1,0 +1,60 @@
+id: roman_chair_leg_raise
+name:
+  it: Leg raise alle parallele
+  en: Roman chair leg raise
+equipment: bodyweight
+requires:
+- dip_station
+pattern: trunk_flexion
+mechanics: isolation
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- hanging_leg_raise
+- cable_crunch
+technique:
+  setup:
+  - it: Avambracci sugli appoggi, schiena contro lo schienale.
+    en: Forearms on the pads, back against the backrest.
+  - it: Spalle basse, gambe libere sotto di te.
+    en: Shoulders down, legs hanging free.
+  - it: Inizia con le ginocchia piegate.
+    en: Start with your knees bent.
+  cues:
+  - it: Porta le ginocchia verso il petto staccando il bacino dallo schienale.
+    en: Bring your knees to your chest, lifting your pelvis off the backrest.
+  - it: Scendi lento fino a gambe distese.
+    en: Lower slowly until your legs hang straight.
+  mistakes:
+  - what:
+      it: Le ginocchia salgono ma il bacino resta fermo.
+      en: Your knees rise but your pelvis stays put.
+    fix:
+      it: Arrotola il bacino in alto.
+      en: Curl your pelvis up at the top.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders creep up to your ears.
+    fix:
+      it: Spingi in basso sugli avambracci.
+      en: Press down through your forearms.
+  - what:
+      it: Lasci cadere le gambe.
+      en: You let your legs drop.
+    fix:
+      it: Controlla la discesa.
+      en: Control the way down.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 240
+    - 241
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

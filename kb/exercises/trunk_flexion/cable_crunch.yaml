@@ -1,0 +1,63 @@
+id: cable_crunch
+name:
+  it: Crunch ai cavi
+  en: Cable crunch
+equipment: cable
+requires:
+- cables
+pattern: trunk_flexion
+mechanics: isolation
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- machine_crunch
+- weighted_crunch
+- hanging_leg_raise
+- roman_chair_leg_raise
+technique:
+  setup:
+  - it: Cavo alto con la corda, inginocchiati davanti alla carrucola.
+    en: High cable with a rope; kneel facing the pulley.
+  - it: Tieni la corda ai lati della testa.
+    en: Hold the rope beside your head.
+  - it: Fianchi alti sopra le ginocchia, busto dritto.
+    en: Hips stacked over your knees, torso upright.
+  cues:
+  - it: Arrotola la colonna portando i gomiti verso le cosce.
+    en: Curl your spine, bringing your elbows toward your thighs.
+  - it: Risali lento fino ad allungare l'addome.
+    en: Come back up slowly until your abs stretch.
+  mistakes:
+  - what:
+      it: Ti siedi sui talloni invece di piegare la colonna.
+      en: You sit back on your heels instead of curling your spine.
+    fix:
+      it: Fianchi fermi, si muove solo il busto.
+      en: Hips still; only your torso moves.
+  - what:
+      it: Tiri con le braccia.
+      en: You pull with your arms.
+    fix:
+      it: Mani ferme accanto alla testa.
+      en: Keep your hands fixed by your head.
+  - what:
+      it: Ampiezza corta in alto.
+      en: Short range at the top.
+    fix:
+      it: Lascia risalire il busto fino a sentire l'allungamento.
+      en: Let your torso rise until you feel a stretch.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 236
+    - 237
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

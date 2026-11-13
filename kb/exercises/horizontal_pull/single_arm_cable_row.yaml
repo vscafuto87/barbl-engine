@@ -18,6 +18,7 @@ substitutes:
 - seated_cable_row
 - dumbbell_row
 - machine_row
+- meadows_row
 technique:
   setup:
   - it: Metti la carrucola all'altezza del petto o un po' sotto, con una maniglia singola.

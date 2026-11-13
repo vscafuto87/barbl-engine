@@ -321,7 +321,10 @@ def main() -> int:
                 r.error(where, f"{ctx}: il primo candidato deve avere il pattern dello slot")
             for gt, gym in gym_types.items():
                 if not any(c in exercises and available(exercises[c], gym) for c in slot["candidates"]):
-                    r.error(where, f"{ctx}, slot {slot['pattern']}: nessun candidato per la palestra '{gt}'")
+                    # Il motore salta in silenzio un'estensione senza candidati (P-TIME-EXTEND): dalla
+                    # KB 0.26.0 è ammesso per i distretti che una palestra non può allenare (abduttori e
+                    # adduttori senza macchine né cavi), ma si segnala.
+                    r.warn(where, f"{ctx}, slot {slot['pattern']}: nessun candidato per la palestra '{gt}', l'estensione si salta")
             for pr in roles_needed:
                 if slot["role"] not in pr["roles"]:
                     r.error(where, f"{ctx}: ruolo '{slot['role']}' assente dalla prescrizione '{pr['id']}'")

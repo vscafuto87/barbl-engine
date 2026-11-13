@@ -12,6 +12,13 @@ muscles:
   - { id: hamstrings,  name: { it: Femorali,         en: Hamstrings },     region: lower }
   - { id: glutes,      name: { it: Glutei,           en: Glutes },         region: lower }
   - { id: calves,      name: { it: Polpacci,         en: Calves },         region: lower }
+  # Dalla KB 0.26.0: distretti piccoli che ricevono molto lavoro indiretto dai multiarticolari
+  # (P-VOL-INDIRECT-SMALL). Hanno esercizi propri, ma la fascia di volume non vale per loro
+  # (parameters/belowBand, excludedMuscles).
+  - { id: abs,         name: { it: Addominali,       en: Abs },            region: upper }
+  - { id: traps,       name: { it: Trapezi,          en: Traps },          region: upper }
+  - { id: forearms,    name: { it: Avambracci,       en: Forearms },       region: upper }
+  - { id: adductors,   name: { it: Adduttori,        en: Adductors },      region: lower }
 
 # Peso di una serie sui muscoli dell'esercizio, per contare il volume in modo frazionario
 # (principio P-VOL-FRACTIONAL). Solo il motore lo usa: nel piano `muscles` resta un elenco

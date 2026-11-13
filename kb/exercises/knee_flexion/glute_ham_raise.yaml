@@ -1,0 +1,63 @@
+id: glute_ham_raise
+name:
+  it: Glute-ham raise
+  en: Glute-ham raise
+equipment: machine
+requires:
+- machines
+pattern: knee_flexion
+mechanics: isolation
+technicalDemand: high
+muscles:
+  primary: hamstrings
+  secondary:
+  - glutes
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- nordic_curl
+- leg_curl
+- seated_leg_curl
+technique:
+  setup:
+  - it: 'Regola la pedana: ginocchia appena dietro il cuscino.'
+    en: Set the footplate so your knees sit just behind the pad.
+  - it: Caviglie bloccate sotto i rulli, piedi contro la pedana.
+    en: Ankles locked under the rollers, feet against the plate.
+  - it: Parti con il busto in verticale e i fianchi distesi.
+    en: Start with your torso upright and hips straight.
+  cues:
+  - it: Scendi in avanti tenendo il corpo dritto.
+    en: Lower forward keeping your body straight.
+  - it: Risali spingendo le punte contro la pedana e tirando con i talloni.
+    en: Come back up by pushing your toes into the plate and pulling with your heels.
+  mistakes:
+  - what:
+      it: Ti pieghi ai fianchi e usi la schiena.
+      en: You bend at the hips and use your lower back.
+    fix:
+      it: Tieni i glutei contratti per tutta la ripetizione.
+      en: Keep your glutes squeezed through the rep.
+  - what:
+      it: Le ginocchia sono troppo indietro sul cuscino.
+      en: Your knees are too far back on the pad.
+    fix:
+      it: Avvicina la pedana finché il cuscino è sotto le cosce.
+      en: Move the footplate so the pad sits under your thighs.
+  - what:
+      it: Scendi poco per paura di non risalire.
+      en: You barely lower for fear of not getting back up.
+    fix:
+      it: Aiutati con le mani a terra nelle prime settimane.
+      en: Help yourself with your hands on the floor for the first weeks.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 148
+    - 149
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

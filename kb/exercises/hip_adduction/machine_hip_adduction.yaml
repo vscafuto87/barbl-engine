@@ -1,0 +1,65 @@
+id: machine_hip_adduction
+name:
+  it: Adduzione dell'anca alla macchina
+  en: Machine hip adduction
+equipment: machine
+requires:
+- machines
+pattern: hip_adduction
+mechanics: isolation
+muscles:
+  primary: adductors
+  secondary: []
+loading:
+  stepKg: 5
+  whenLoadUnknown: manual
+substitutes:
+- cable_hip_adduction
+- copenhagen_adduction
+technique:
+  setup:
+  - it: Siediti con la schiena appoggiata.
+    en: Sit with your back against the pad.
+  - it: Cuscinetti all'interno delle ginocchia, gambe aperte quanto ti è comodo.
+    en: Pads on the inside of your knees, legs as wide as is comfortable.
+  - it: Prendi le maniglie per restare fermo.
+    en: Hold the handles to stay steady.
+  cues:
+  - it: Chiudi le gambe fino a far toccare i cuscinetti.
+    en: Squeeze your legs together until the pads meet.
+  - it: Riapri lento fino a sentire l'interno coscia allungato.
+    en: Open slowly until your inner thighs stretch.
+  mistakes:
+  - what:
+      it: Parti troppo aperto e senti fastidio all'inguine.
+      en: You start too wide and feel it in your groin.
+    fix:
+      it: Riduci l'apertura iniziale.
+      en: Narrow the starting position.
+  - what:
+      it: Chiudi di scatto.
+      en: You slam the pads together.
+    fix:
+      it: Chiudi in modo controllato.
+      en: Close under control.
+  - what:
+      it: Il bacino si stacca dal sedile.
+      en: Your hips lift off the seat.
+    fix:
+      it: Riduci il peso.
+      en: Use less weight.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 139
+    - 140
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 9
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

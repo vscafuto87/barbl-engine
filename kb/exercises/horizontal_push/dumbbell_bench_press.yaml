@@ -21,6 +21,9 @@ substitutes:
 - machine_chest_press
 - push_up
 - dip
+- close_grip_bench_press
+- deficit_push_up
+- dumbbell_floor_press
 technique:
   setup:
   - it: Siediti sulla panca con i manubri sulle cosce, vicino alle ginocchia.

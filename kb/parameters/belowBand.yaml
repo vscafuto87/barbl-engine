@@ -7,9 +7,15 @@ values:
   deficitShare: 0.5
   maxPerExercise: 2
   maxPerSession: 4
+  excludedMuscles:
+  - abs
+  - traps
+  - forearms
+  - adductors
 provisional: true
 principles:
 - P-VOL-MIN-10
 - P-VOL-DIMINISHING
 - P-VOL-BAND-CAP
 - P-VOL-DEFICIT-SHARE
+- P-VOL-INDIRECT-SMALL

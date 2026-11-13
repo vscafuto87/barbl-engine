@@ -1,0 +1,61 @@
+id: copenhagen_adduction
+name:
+  it: Copenhagen adduction
+  en: Copenhagen adduction
+equipment: bodyweight
+requires:
+- bench
+pattern: hip_adduction
+mechanics: isolation
+technicalDemand: high
+muscles:
+  primary: adductors
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- machine_hip_adduction
+- cable_hip_adduction
+technique:
+  setup:
+  - it: Sdraiati su un fianco accanto alla panca, avambraccio a terra sotto la spalla.
+    en: Lie on your side next to the bench, forearm on the floor under your shoulder.
+  - it: 'Appoggia la gamba di sopra sulla panca: ginocchio per la versione facile, caviglia per quella
+      difficile.'
+    en: 'Rest your top leg on the bench: knee for the easier version, ankle for the harder one.'
+  - it: Gamba di sotto libera sotto la panca.
+    en: Bottom leg free under the bench.
+  cues:
+  - it: Solleva il bacino spingendo la gamba di sopra contro la panca.
+    en: Lift your hips by pressing your top leg into the bench.
+  - it: Porta la gamba di sotto a toccare la panca, poi scendi lento.
+    en: Bring the bottom leg up to the bench, then lower slowly.
+  mistakes:
+  - what:
+      it: Il bacino cade all'indietro.
+      en: Your hips sag back.
+    fix:
+      it: Corpo in linea dalla testa ai piedi.
+      en: Body in one line from head to feet.
+  - what:
+      it: Parti dalla caviglia e senti dolore al ginocchio.
+      en: You start from the ankle and feel knee pain.
+    fix:
+      it: Usa la versione con il ginocchio sulla panca.
+      en: Use the knee-on-bench version.
+  - what:
+      it: Trattieni il respiro.
+      en: You hold your breath.
+    fix:
+      it: Respira in modo regolare.
+      en: Keep breathing steadily.
+  sources:
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 9
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

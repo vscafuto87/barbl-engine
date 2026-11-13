@@ -1,0 +1,62 @@
+id: barbell_shrug
+name:
+  it: Scrollate con bilanciere
+  en: Barbell shrug
+equipment: barbell
+requires:
+- barbell
+- rack
+pattern: scapular_elevation
+mechanics: isolation
+muscles:
+  primary: traps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_shrug
+- cable_shrug_in
+technique:
+  setup:
+  - it: Prendi il bilanciere dal rack all'altezza delle cosce.
+    en: Take the bar from the rack at thigh height.
+  - it: Presa poco più larga delle spalle, braccia tese.
+    en: Grip a bit wider than shoulders, arms straight.
+  - it: In piedi dritto, busto appena in avanti.
+    en: Stand tall, leaning very slightly forward.
+  cues:
+  - it: Porta le spalle verso le orecchie e fermati in alto.
+    en: Shrug your shoulders toward your ears and pause at the top.
+  - it: Scendi fino a sentire i trapezi allungati.
+    en: Lower until your traps stretch.
+  mistakes:
+  - what:
+      it: Ruoti le spalle in cerchio.
+      en: You roll your shoulders in circles.
+    fix:
+      it: Su e giù, in linea retta.
+      en: Straight up and down.
+  - what:
+      it: Pieghi i gomiti per tirare.
+      en: You bend your elbows to pull.
+    fix:
+      it: Braccia tese come ganci.
+      en: Arms straight like hooks.
+  - what:
+      it: Ampiezza corta.
+      en: Short range.
+    fix:
+      it: Usa meno peso e muovi del tutto le spalle.
+      en: Use less weight and move your shoulders fully.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 228
+    - 229
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null
