@@ -2,6 +2,11 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.25.1 — 2026-11-13
+
+- Motivazioni `PHOTO-EMPHASIS-SUGGEST` e `PHOTO-EMPHASIS-MORE-VOLUME`: citano anche `P-VOL-DOSE-HYP`, il principio da cui viene la parte «più serie, più crescita» che `P-PHOTO-EMPHASIS` già richiama, così il «Perché?» del suggerimento mostra una fonte pubblica (audit del codice dell'app del 13/11/2026, B6). Le altre motivazioni senza fonte pubblica (`PHOTO-EMPHASIS-NO-*`, `-DATA-DISAGREES`, `EXERCISE-FEEDBACK`) restano scelte di design dichiarate: nessuna fonte inventata.
+- `generatePlan` non cambia per nessun profilo (le motivazioni `scope: suggestion` non entrano nei piani e `EXERCISE-FEEDBACK` è invariata), salvo `rulesVersion`.
+
 ## 0.25.0 — 2026-11-11
 
 - Estensioni dei template (`P-TIME-EXTEND`): nuovo campo `extensions` nei tre template (slot di seduta, pattern, ruolo e candidati, in ordine di priorità) e nuovo passo del motore dopo l'enfasi. Uno slot entra se la seduta resta nella durata, non ha già il pattern e nessun muscolo supera `bandMax` di `parameters/belowBand`; i distretti di `emphasis` passano per primi. Con 75 e 90 minuti il piano usa il tempo in più (prima era quello da 60) e a 60 minuti spalle, deltoide posteriore, polpacci e glutei raggiungono la fascia dove prima restavano a 0-3 serie. Gli esercizi aggiunti citano la regola `TIME-EXTEND` (nuova motivazione, livello `session`); un piano senza estensioni applicate resta senza.
