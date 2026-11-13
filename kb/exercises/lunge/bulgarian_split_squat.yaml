@@ -20,6 +20,7 @@ substitutes:
 - dumbbell_walking_lunge
 - goblet_squat
 - smith_machine_split_squat
+- barbell_lunge
 technique:
   setup:
   - it: Tieni un manubrio per mano, oppure uno solo contro il petto.

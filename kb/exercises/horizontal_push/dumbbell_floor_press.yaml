@@ -1,0 +1,63 @@
+id: dumbbell_floor_press
+name:
+  it: Floor press con manubri
+  en: Dumbbell floor press
+equipment: dumbbell
+requires:
+- dumbbells
+pattern: horizontal_push
+mechanics: compound
+muscles:
+  primary: chest
+  secondary:
+  - triceps
+  - front_delts
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_bench_press
+- push_up
+technique:
+  setup:
+  - it: Sdraiati a terra, ginocchia piegate e piedi appoggiati.
+    en: Lie on the floor, knees bent and feet flat.
+  - it: Manubri sopra il petto, palmi in avanti o uno verso l'altro.
+    en: Dumbbells over your chest, palms forward or facing each other.
+  - it: Scapole strette contro il pavimento.
+    en: Shoulder blades pinched against the floor.
+  cues:
+  - it: Scendi finché i tricipiti toccano piano il pavimento.
+    en: Lower until your upper arms touch the floor lightly.
+  - it: Fermati un attimo e spingi su.
+    en: Pause briefly and press up.
+  mistakes:
+  - what:
+      it: Rimbalzi con i gomiti a terra.
+      en: You bounce your elbows off the floor.
+    fix:
+      it: Appoggiali piano e riparti da fermo.
+      en: Set them down softly and press from a stop.
+  - what:
+      it: Gomiti larghi a 90 gradi.
+      en: Elbows flared to 90 degrees.
+    fix:
+      it: Tienili a circa 45 gradi dal busto.
+      en: Keep them at about 45 degrees from your torso.
+  - what:
+      it: I manubri si scontrano in alto.
+      en: The dumbbells clash at the top.
+    fix:
+      it: Fermati appena prima che si tocchino.
+      en: Stop just before they touch.
+  sources:
+  - id: nippard-upper-lower
+    pages:
+    - 17
+    - 21
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

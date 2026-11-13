@@ -16,6 +16,8 @@ loading:
 substitutes:
 - dumbbell_bench_press
 - dip
+- deficit_push_up
+- dumbbell_floor_press
 technique:
   setup:
   - it: Mani a terra, appena fuori dalle spalle, dita aperte.

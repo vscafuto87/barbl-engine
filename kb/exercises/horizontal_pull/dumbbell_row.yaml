@@ -22,6 +22,8 @@ substitutes:
 - incline_bench_barbell_row
 - single_arm_cable_row
 - inverted_row
+- pendlay_row
+- meadows_row
 technique:
   setup:
   - it: Appoggia una mano e il ginocchio dello stesso lato su una panca piatta.

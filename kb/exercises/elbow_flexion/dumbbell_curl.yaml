@@ -18,6 +18,8 @@ substitutes:
 - barbell_curl
 - spider_curl
 - behind_the_body_cable_curl
+- ez_bar_curl
+- concentration_curl
 technique:
   setup:
   - it: Stai in piedi con i piedi a larghezza spalle, ginocchia appena piegate.

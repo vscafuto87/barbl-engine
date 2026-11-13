@@ -17,6 +17,7 @@ loading:
 substitutes:
 - seated_dumbbell_shoulder_press
 - military_press
+- smith_machine_shoulder_press
 technique:
   setup:
   - it: 'Regola il sedile: le maniglie sono all''altezza delle spalle.'

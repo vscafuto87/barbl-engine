@@ -1,0 +1,62 @@
+id: ez_bar_curl
+name:
+  it: Curl con bilanciere EZ
+  en: EZ-bar curl
+equipment: barbell
+requires:
+- barbell
+pattern: elbow_flexion
+mechanics: isolation
+muscles:
+  primary: biceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_curl
+- dumbbell_curl
+- cable_curl
+technique:
+  setup:
+  - it: In piedi, prendi il bilanciere EZ sulle curve interne o esterne.
+    en: Stand and grip the EZ bar on the inner or outer bends.
+  - it: Gomiti lungo i fianchi, braccia tese.
+    en: Elbows at your sides, arms straight.
+  - it: Piedi alla larghezza dei fianchi, ginocchia morbide.
+    en: Feet hip-width, knees soft.
+  cues:
+  - it: Porta la barra verso le spalle senza spostare i gomiti.
+    en: Curl the bar toward your shoulders without moving your elbows.
+  - it: Scendi fino a braccia tese.
+    en: Lower until your arms are straight.
+  mistakes:
+  - what:
+      it: Dondoli con la schiena.
+      en: You swing with your back.
+    fix:
+      it: Riduci il peso e resta dritto.
+      en: Use less weight and stand tall.
+  - what:
+      it: I gomiti vanno avanti in alto.
+      en: Your elbows drift forward at the top.
+    fix:
+      it: Tienili vicini ai fianchi.
+      en: Keep them pinned to your sides.
+  - what:
+      it: Non distendi del tutto in basso.
+      en: You don't fully straighten at the bottom.
+    fix:
+      it: Scendi a braccia tese a ogni ripetizione.
+      en: Straighten your arms every rep.
+  sources:
+  - id: nippard-arm-hypertrophy
+    pages:
+    - 20
+    - 22
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

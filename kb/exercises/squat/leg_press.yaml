@@ -17,6 +17,8 @@ loading:
 substitutes:
 - squat
 - goblet_squat
+- pendulum_squat
+- belt_squat
 technique:
   setup:
   - it: Siediti con schiena e bacino ben appoggiati allo schienale.

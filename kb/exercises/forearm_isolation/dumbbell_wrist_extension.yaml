@@ -1,0 +1,60 @@
+id: dumbbell_wrist_extension
+name:
+  it: Estensioni del polso con manubrio
+  en: Dumbbell wrist extension
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: forearm_isolation
+mechanics: isolation
+muscles:
+  primary: forearms
+  secondary: []
+loading:
+  stepKg: 1
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_wrist_curl
+technique:
+  setup:
+  - it: Inginocchiati accanto alla panca o siediti.
+    en: Kneel beside the bench or sit.
+  - it: Avambraccio sulla panca, palmo in basso, polso oltre il bordo.
+    en: Forearm on the bench, palm down, wrist past the edge.
+  - it: Manubrio leggero in mano.
+    en: Light dumbbell in hand.
+  cues:
+  - it: Lascia scendere il dorso della mano, poi sollevalo più che puoi.
+    en: Let the back of your hand drop, then lift it as high as you can.
+  - it: Scendi lento.
+    en: Lower slowly.
+  mistakes:
+  - what:
+      it: Peso eccessivo.
+      en: Too heavy.
+    fix:
+      it: 'Gli estensori sono più deboli: parti leggero.'
+      en: 'The extensors are weaker: start light.'
+  - what:
+      it: L'avambraccio si solleva.
+      en: Your forearm lifts.
+    fix:
+      it: Tienilo fermo sulla panca.
+      en: Keep it still on the bench.
+  - what:
+      it: Ampiezza corta.
+      en: Short range.
+    fix:
+      it: Scendi e sali del tutto.
+      en: Go all the way down and up.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 227
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -18,6 +18,8 @@ substitutes:
 - romanian_deadlift
 - standing_leg_curl
 - dumbbell_leg_curl
+- nordic_curl
+- glute_ham_raise
 technique:
   setup:
   - it: Sdraiati a pancia in giù sulla macchina.

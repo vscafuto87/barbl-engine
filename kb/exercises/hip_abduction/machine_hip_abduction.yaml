@@ -1,0 +1,60 @@
+id: machine_hip_abduction
+name:
+  it: Abduzione dell'anca alla macchina
+  en: Machine hip abduction
+equipment: machine
+requires:
+- machines
+pattern: hip_abduction
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary: []
+loading:
+  stepKg: 5
+  whenLoadUnknown: manual
+substitutes:
+- cable_hip_abduction
+technique:
+  setup:
+  - it: Siediti con la schiena appoggiata o inclinata in avanti.
+    en: Sit with your back supported or lean forward.
+  - it: Cuscinetti all'esterno delle ginocchia, gambe chiuse all'inizio.
+    en: Pads on the outside of your knees, legs together at the start.
+  - it: Prendi le maniglie per restare fermo.
+    en: Hold the handles to stay steady.
+  cues:
+  - it: Apri le gambe più che puoi e fermati un attimo.
+    en: Push your legs apart as far as you can and pause.
+  - it: Richiudi lento senza far toccare il pacco pesi.
+    en: Bring them back slowly without letting the stack touch.
+  mistakes:
+  - what:
+      it: Ti dondoli con il busto.
+      en: You rock with your torso.
+    fix:
+      it: Busto fermo, riduci il peso.
+      en: Torso still; use less weight.
+  - what:
+      it: Ampiezza corta.
+      en: Short range.
+    fix:
+      it: Apri del tutto e richiudi fino a gambe quasi unite.
+      en: Open fully and close until your legs nearly touch.
+  - what:
+      it: Le gambe si chiudono di scatto.
+      en: Your legs snap shut.
+    fix:
+      it: Controlla il ritorno.
+      en: Control the return.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 137
+    - 138
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

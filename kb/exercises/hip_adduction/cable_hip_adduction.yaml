@@ -1,0 +1,60 @@
+id: cable_hip_adduction
+name:
+  it: Adduzione dell'anca ai cavi
+  en: Cable hip adduction
+equipment: cable
+requires:
+- cables
+pattern: hip_adduction
+mechanics: isolation
+muscles:
+  primary: adductors
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- machine_hip_adduction
+- copenhagen_adduction
+technique:
+  setup:
+  - it: Cavo basso con la cavigliera sulla gamba vicina alla carrucola.
+    en: Low cable, ankle strap on the leg nearer the pulley.
+  - it: Mettiti di fianco al cavo e tieniti a un appoggio.
+    en: Stand side-on to the cable and hold a support.
+  - it: Fai un passo lontano finché il cavo tira la gamba in fuori.
+    en: Step away until the cable pulls your leg out.
+  cues:
+  - it: Porta la gamba davanti all'altra, incrociando.
+    en: Sweep the leg across in front of the other.
+  - it: Torna lento fino a sentire l'interno coscia allungato.
+    en: Return slowly until your inner thigh stretches.
+  mistakes:
+  - what:
+      it: Ruoti il bacino per aiutarti.
+      en: You twist your hips to help.
+    fix:
+      it: Bacino fermo, rivolto in avanti.
+      en: Hips still and facing forward.
+  - what:
+      it: Lanci la gamba.
+      en: You swing your leg.
+    fix:
+      it: Movimento lento e controllato.
+      en: Slow, controlled reps.
+  - what:
+      it: Ampiezza corta in apertura.
+      en: Short range on the way out.
+    fix:
+      it: Lascia che il cavo apra la gamba del tutto.
+      en: Let the cable take your leg fully out.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 140
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

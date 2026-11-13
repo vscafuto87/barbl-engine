@@ -1,0 +1,62 @@
+id: hanging_leg_raise
+name:
+  it: Leg raise alla sbarra
+  en: Hanging leg raise
+equipment: bodyweight
+requires:
+- pull_up_bar
+pattern: trunk_flexion
+mechanics: isolation
+technicalDemand: high
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- roman_chair_leg_raise
+- cable_crunch
+technique:
+  setup:
+  - it: Appenditi alla sbarra con presa salda, braccia tese.
+    en: Hang from the bar with a firm grip, arms straight.
+  - it: Gambe unite, corpo fermo senza oscillare.
+    en: Legs together, body still without swinging.
+  - it: Se è troppo difficile, piega le ginocchia.
+    en: If it is too hard, bend your knees.
+  cues:
+  - it: Porta le gambe in alto e arrotola il bacino verso il petto.
+    en: Raise your legs and curl your pelvis toward your chest.
+  - it: Scendi lento senza dondolare.
+    en: Lower slowly without swinging.
+  mistakes:
+  - what:
+      it: Dondoli per dare slancio.
+      en: You swing for momentum.
+    fix:
+      it: Fermati in basso finché il corpo è fermo.
+      en: Pause at the bottom until your body is still.
+  - what:
+      it: Alzi le gambe senza arrotolare il bacino.
+      en: You lift your legs without curling your pelvis.
+    fix:
+      it: In alto porta il bacino verso le costole.
+      en: At the top, tilt your pelvis toward your ribs.
+  - what:
+      it: La presa cede prima dell'addome.
+      en: Your grip gives out before your abs.
+    fix:
+      it: Usa le cinghie o la versione alle parallele.
+      en: Use straps or the dip-station version.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 238
+    - 239
+    - 240
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

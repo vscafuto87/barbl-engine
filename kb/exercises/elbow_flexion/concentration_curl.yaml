@@ -1,0 +1,62 @@
+id: concentration_curl
+name:
+  it: Curl di concentrazione
+  en: Concentration curl
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: elbow_flexion
+mechanics: isolation
+muscles:
+  primary: biceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_curl
+- dumbbell_preacher_curl
+technique:
+  setup:
+  - it: Siediti sulla panca a gambe divaricate.
+    en: Sit on the bench with your legs apart.
+  - it: Retro del braccio contro l'interno della coscia.
+    en: Back of your upper arm against your inner thigh.
+  - it: Manubrio in mano a braccio teso, palmo in alto.
+    en: Dumbbell in hand, arm straight, palm up.
+  cues:
+  - it: Porta il manubrio verso la spalla tenendo fermo il braccio.
+    en: Curl the dumbbell toward your shoulder keeping your upper arm still.
+  - it: Scendi fino a distendere il gomito.
+    en: Lower until your elbow is straight.
+  mistakes:
+  - what:
+      it: Il braccio si stacca dalla coscia.
+      en: Your arm leaves your thigh.
+    fix:
+      it: Tienilo appoggiato per tutta la serie.
+      en: Keep it braced the whole set.
+  - what:
+      it: Ruoti il busto per sollevare.
+      en: You twist your torso to lift.
+    fix:
+      it: Busto fermo, riduci il peso.
+      en: Torso still; use less weight.
+  - what:
+      it: Ampiezza corta in basso.
+      en: Short range at the bottom.
+    fix:
+      it: Distendi il braccio a ogni ripetizione.
+      en: Straighten your arm every rep.
+  sources:
+  - id: nippard-arm-hypertrophy
+    pages:
+    - 21
+    - 22
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

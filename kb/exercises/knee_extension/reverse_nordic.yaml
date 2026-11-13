@@ -1,0 +1,64 @@
+id: reverse_nordic
+name:
+  it: Reverse nordic
+  en: Reverse nordic
+equipment: bodyweight
+requires: []
+pattern: knee_extension
+mechanics: isolation
+technicalDemand: high
+muscles:
+  primary: quadriceps
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- leg_extension
+- sissy_squat
+technique:
+  setup:
+  - it: In ginocchio su un tappetino, ginocchia alla larghezza dei fianchi.
+    en: Kneel on a pad, knees hip-width apart.
+  - it: Busto dritto e fianchi distesi, in linea con le cosce.
+    en: Torso upright, hips straight in line with your thighs.
+  - it: Collo dei piedi a terra, punte indietro.
+    en: Tops of your feet on the floor, toes pointing back.
+  cues:
+  - it: Inclinati all'indietro come un blocco unico, dalle ginocchia alla testa.
+    en: Lean back as one piece from knees to head.
+  - it: Torna su spingendo le tibie nel pavimento.
+    en: Come back up by pressing your shins into the floor.
+  mistakes:
+  - what:
+      it: Pieghi i fianchi mentre vai indietro.
+      en: You bend at the hips as you lean back.
+    fix:
+      it: Stringi i glutei e tieni i fianchi dritti.
+      en: Squeeze your glutes and keep your hips straight.
+  - what:
+      it: Vai troppo giù e senti fastidio al ginocchio.
+      en: You go too far and feel it in your knees.
+    fix:
+      it: Scendi solo dove ti senti a tuo agio.
+      en: Lean back only as far as feels comfortable.
+  - what:
+      it: Ti lasci cadere indietro.
+      en: You fall back quickly.
+    fix:
+      it: Scendi in tre secondi.
+      en: Take about three seconds on the way back.
+  sources:
+  - id: nippard-min-max
+    pages:
+    - 4
+    - 27
+    access: full_text
+  - id: nippard-muscle-ladder
+    pages:
+    - 279
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

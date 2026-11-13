@@ -20,6 +20,8 @@ substitutes:
 - single_leg_hip_thrust
 - cable_glute_kickback
 - back_extension_45
+- smith_machine_hip_thrust
+- machine_hip_thrust
 technique:
   setup:
   - it: Appoggia il bilanciere a terra davanti a una panca bassa, fissata a un muro.

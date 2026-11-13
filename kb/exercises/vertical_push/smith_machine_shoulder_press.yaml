@@ -1,0 +1,63 @@
+id: smith_machine_shoulder_press
+name:
+  it: Lento al multipower
+  en: Smith machine shoulder press
+equipment: smith_machine
+requires:
+- smith_machine
+- bench
+pattern: vertical_push
+mechanics: compound
+muscles:
+  primary: shoulders
+  secondary:
+  - triceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- seated_dumbbell_shoulder_press
+- machine_shoulder_press
+- military_press
+technique:
+  setup:
+  - it: Panca con schienale verticale sotto il multipower.
+    en: Upright bench under the Smith machine.
+  - it: La barra deve scendere davanti al viso, all'altezza del mento.
+    en: The bar should come down in front of your face, to chin height.
+  - it: Presa poco più larga delle spalle.
+    en: Grip a little wider than shoulder-width.
+  cues:
+  - it: Scendi fino al mento tenendo tensione sulle spalle.
+    en: Lower to your chin keeping tension on your shoulders.
+  - it: Spingi in alto senza inarcare la schiena.
+    en: Press up without arching your back.
+  mistakes:
+  - what:
+      it: Inarchi la schiena per spingere.
+      en: You arch your back to press.
+    fix:
+      it: Glutei sulla panca e addome contratto.
+      en: Glutes on the seat and abs braced.
+  - what:
+      it: Ampiezza corta.
+      en: Short range.
+    fix:
+      it: Scendi almeno fino al mento.
+      en: Go down to at least chin height.
+  - what:
+      it: Panca troppo avanti o indietro.
+      en: Bench too far forward or back.
+    fix:
+      it: Regola la panca perché la barra passi davanti al viso.
+      en: Set the bench so the bar passes in front of your face.
+  sources:
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 9
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

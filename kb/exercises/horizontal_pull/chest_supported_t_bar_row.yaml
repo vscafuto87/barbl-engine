@@ -1,0 +1,64 @@
+id: chest_supported_t_bar_row
+name:
+  it: Rematore T-bar con appoggio
+  en: Chest-supported T-bar row
+equipment: machine
+requires:
+- machines
+pattern: horizontal_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- machine_row
+- chest_supported_dumbbell_row
+- seated_cable_row
+- pendlay_row
+technique:
+  setup:
+  - it: Petto sul cuscino, piedi ben piantati sulla pedana.
+    en: Chest on the pad, feet planted on the platform.
+  - it: 'Scegli la presa: larga per la parte alta della schiena, stretta per i dorsali.'
+    en: 'Pick a grip: wide for the upper back, narrow for the lats.'
+  - it: Braccia tese e scapole libere di allungarsi in basso.
+    en: Arms straight, shoulder blades free to stretch at the bottom.
+  cues:
+  - it: Tira i gomiti indietro verso i fianchi.
+    en: Drive your elbows back toward your hips.
+  - it: Scendi lento fino ad allungare la schiena.
+    en: Lower slowly until your back is stretched.
+  mistakes:
+  - what:
+      it: Il petto si stacca dal cuscino.
+      en: Your chest leaves the pad.
+    fix:
+      it: Riduci il carico e resta appoggiato.
+      en: Use less weight and stay on the pad.
+  - what:
+      it: Tiri solo con le braccia.
+      en: You pull with your arms only.
+    fix:
+      it: Pensa a portare indietro i gomiti, non le mani.
+      en: Think about moving your elbows back, not your hands.
+  - what:
+      it: Ampiezza corta in basso.
+      en: Short range at the bottom.
+    fix:
+      it: Distendi del tutto le braccia a ogni ripetizione.
+      en: Fully straighten your arms each rep.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 166
+    - 167
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -1,0 +1,62 @@
+id: machine_hip_thrust
+name:
+  it: Hip thrust alla macchina
+  en: Machine hip thrust
+equipment: machine
+requires:
+- machines
+pattern: hip_extension
+mechanics: isolation
+muscles:
+  primary: glutes
+  secondary:
+  - hamstrings
+loading:
+  stepKg: 5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_hip_thrust
+- smith_machine_hip_thrust
+technique:
+  setup:
+  - it: Schiena contro lo schienale, cintura o cuscino sulle anche.
+    en: Back against the backrest, belt or pad over your hips.
+  - it: Piedi sulla pedana alla larghezza dei fianchi.
+    en: Feet on the platform hip-width apart.
+  - it: Regola in modo che in alto le tibie siano verticali.
+    en: Adjust so your shins are vertical at the top.
+  cues:
+  - it: Spingi con i talloni fino ad anche distese.
+    en: Drive through your heels until your hips are straight.
+  - it: Scendi controllando fino a sentire l'allungamento.
+    en: Lower under control until you feel a stretch.
+  mistakes:
+  - what:
+      it: Inarchi la schiena invece di estendere le anche.
+      en: You arch your back instead of extending your hips.
+    fix:
+      it: Costole giù e chiudi con i glutei.
+      en: Ribs down and finish with your glutes.
+  - what:
+      it: Movimento troppo corto.
+      en: Range too short.
+    fix:
+      it: Scendi fino in fondo a ogni ripetizione.
+      en: Go all the way down every rep.
+  - what:
+      it: Spingi sulle punte.
+      en: You push through your toes.
+    fix:
+      it: Porta il peso sui talloni.
+      en: Shift the weight to your heels.
+  sources:
+  - id: nippard-min-max
+    pages:
+    - 4
+    - 22
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

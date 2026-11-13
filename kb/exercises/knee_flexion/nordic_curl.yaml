@@ -1,0 +1,60 @@
+id: nordic_curl
+name:
+  it: Nordic curl
+  en: Nordic ham curl
+equipment: bodyweight
+requires: []
+pattern: knee_flexion
+mechanics: isolation
+technicalDemand: high
+muscles:
+  primary: hamstrings
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- leg_curl
+- seated_leg_curl
+- glute_ham_raise
+technique:
+  setup:
+  - it: In ginocchio su un tappetino, caviglie bloccate sotto un appoggio stabile o da un compagno.
+    en: Kneel on a pad with your ankles locked under a solid support or held by a partner.
+  - it: Busto dritto, fianchi estesi, mani pronte davanti al petto.
+    en: Torso upright, hips straight, hands ready in front of your chest.
+  - it: Se serve, usa un elastico o le mani per aiutarti in basso.
+    en: If needed, use a band or your hands to help at the bottom.
+  cues:
+  - it: Scendi più piano che puoi, corpo dritto dalle ginocchia alla testa.
+    en: Lower as slowly as you can, body straight from knees to head.
+  - it: Risali tirando con i talloni, aiutandoti poco con le mani.
+    en: Pull back up with your heels, using your hands as little as possible.
+  mistakes:
+  - what:
+      it: Pieghi i fianchi per accorciare la leva.
+      en: You bend at the hips to shorten the lever.
+    fix:
+      it: Stringi i glutei e tieni i fianchi distesi.
+      en: Squeeze your glutes and keep your hips straight.
+  - what:
+      it: Cadi di colpo a metà discesa.
+      en: You drop suddenly halfway down.
+    fix:
+      it: Scendi solo fin dove controlli e usa un aiuto.
+      en: Lower only as far as you control and use assistance.
+  - what:
+      it: Le caviglie si sollevano dall'appoggio.
+      en: Your ankles lift off the support.
+    fix:
+      it: Fissa meglio l'appoggio o chiedi a un compagno.
+      en: Secure the anchor better or ask a partner.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 150
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

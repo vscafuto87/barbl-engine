@@ -1,0 +1,60 @@
+id: machine_preacher_curl
+name:
+  it: Curl alla panca Scott a macchina
+  en: Machine preacher curl
+equipment: machine
+requires:
+- machines
+pattern: elbow_flexion
+mechanics: isolation
+muscles:
+  primary: biceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_preacher_curl
+- cable_curl
+technique:
+  setup:
+  - it: 'Regola il sedile: ascelle sul bordo alto del cuscino.'
+    en: Set the seat so your armpits rest on the top of the pad.
+  - it: Braccia distese sul cuscino, gomiti in linea con il perno.
+    en: Arms flat on the pad, elbows lined up with the pivot.
+  - it: Prendi le maniglie con i palmi in alto.
+    en: Grip the handles palms up.
+  cues:
+  - it: Fletti le braccia senza staccarle dal cuscino.
+    en: Curl without lifting your arms off the pad.
+  - it: Scendi lento fino quasi a braccia tese.
+    en: Lower slowly to nearly straight arms.
+  mistakes:
+  - what:
+      it: Sedile troppo basso e spalle sollevate.
+      en: Seat too low, shoulders shrugged.
+    fix:
+      it: Alza il sedile finché le ascelle stanno sul cuscino.
+      en: Raise the seat until your armpits sit on the pad.
+  - what:
+      it: Lasci cadere il peso in basso.
+      en: You let the weight drop at the bottom.
+    fix:
+      it: Controlla la discesa per due o tre secondi.
+      en: Control the descent for two or three seconds.
+  - what:
+      it: Ti alzi dal sedile per finire.
+      en: You rise off the seat to finish.
+    fix:
+      it: Riduci il peso.
+      en: Use less weight.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 217
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

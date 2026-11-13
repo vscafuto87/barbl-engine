@@ -1,0 +1,64 @@
+id: sumo_deadlift
+name:
+  it: Stacco sumo
+  en: Sumo deadlift
+equipment: barbell
+requires:
+- barbell
+pattern: hinge
+mechanics: compound
+technicalDemand: high
+muscles:
+  primary: hamstrings
+  secondary:
+  - glutes
+  - adductors
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- deadlift
+- romanian_deadlift
+technique:
+  setup:
+  - it: Piedi larghi, punte in fuori, barra sopra la metà del piede.
+    en: Wide stance, toes out, bar over mid-foot.
+  - it: Prendi la barra con le mani dentro le gambe, braccia dritte.
+    en: Grip the bar with your hands inside your legs, arms straight.
+  - it: Scendi con i fianchi, busto più dritto che nello stacco classico.
+    en: Sit your hips down with a more upright torso than a conventional pull.
+  cues:
+  - it: Spingi le ginocchia in fuori, sopra le punte.
+    en: Push your knees out over your toes.
+  - it: Allarga il pavimento con i piedi mentre tiri.
+    en: Spread the floor with your feet as you pull.
+  mistakes:
+  - what:
+      it: Le ginocchia cadono verso l'interno.
+      en: Your knees cave inward.
+    fix:
+      it: Riduci l'apertura dei piedi o il carico.
+      en: Narrow your stance a little or use less weight.
+  - what:
+      it: I fianchi partono troppo alti e diventa uno stacco a gambe tese.
+      en: Your hips start too high and it turns into a stiff-leg pull.
+    fix:
+      it: Abbassa i fianchi e tieni il petto alto prima di partire.
+      en: Lower your hips and keep your chest up before you start.
+  - what:
+      it: La barra parte lontana dalle tibie.
+      en: The bar starts away from your shins.
+    fix:
+      it: Avvicina la barra finché tocca le gambe.
+      en: Bring the bar in until it touches your legs.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 130
+    - 131
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

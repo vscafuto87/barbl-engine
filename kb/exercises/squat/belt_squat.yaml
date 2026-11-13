@@ -1,0 +1,68 @@
+id: belt_squat
+name:
+  it: Belt squat
+  en: Belt squat
+equipment: machine
+requires:
+- machines
+pattern: squat
+mechanics: compound
+muscles:
+  primary: quadriceps
+  secondary:
+  - glutes
+  - adductors
+loading:
+  stepKg: 5
+  whenLoadUnknown: manual
+substitutes:
+- hack_squat
+- pendulum_squat
+- leg_press
+technique:
+  setup:
+  - it: Aggancia la cintura in vita, il carico pende tra le gambe.
+    en: Clip the belt around your hips so the load hangs between your legs.
+  - it: Piedi poco più larghi delle spalle, punte appena in fuori.
+    en: Feet a bit wider than shoulders, toes slightly out.
+  - it: Tieni le maniglie solo per l'equilibrio.
+    en: Hold the handles for balance only.
+  cues:
+  - it: Scendi dritto tra le ginocchia, busto alto.
+    en: Sit straight down between your knees, chest up.
+  - it: Spingi il pavimento lontano per risalire.
+    en: Push the floor away to stand up.
+  mistakes:
+  - what:
+      it: Tiri con le braccia sulle maniglie.
+      en: You pull yourself up with the handles.
+    fix:
+      it: Appoggia appena le mani e lascia lavorare le gambe.
+      en: Rest your hands lightly and let your legs work.
+  - what:
+      it: Le ginocchia cadono verso l'interno.
+      en: Your knees cave inward.
+    fix:
+      it: Spingile in fuori sopra le punte.
+      en: Push them out over your toes.
+  - what:
+      it: Ti fermi alto per non perdere l'equilibrio.
+      en: You stop high to keep your balance.
+    fix:
+      it: Allarga un po' i piedi e scendi con calma.
+      en: Widen your stance slightly and lower under control.
+  sources:
+  - id: nippard-min-max
+    pages:
+    - 4
+    - 25
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 34
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

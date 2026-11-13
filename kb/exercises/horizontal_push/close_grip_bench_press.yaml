@@ -1,0 +1,64 @@
+id: close_grip_bench_press
+name:
+  it: Panca presa stretta
+  en: Close-grip bench press
+equipment: barbell
+requires:
+- barbell
+- rack
+- bench
+pattern: horizontal_push
+mechanics: compound
+muscles:
+  primary: chest
+  secondary:
+  - triceps
+  - front_delts
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_bench_press
+- dumbbell_bench_press
+technique:
+  setup:
+  - it: Sdraiati come per la panca piana.
+    en: Lie down as for a regular bench press.
+  - it: Mani alla larghezza delle spalle, non più strette.
+    en: Hands about shoulder-width, no narrower.
+  - it: Scapole indietro, piedi a terra.
+    en: Shoulder blades back, feet flat.
+  cues:
+  - it: Gomiti vicini al busto mentre scendi.
+    en: Keep your elbows close to your body on the way down.
+  - it: Tocca la parte bassa del petto e spingi su.
+    en: Touch your lower chest and press up.
+  mistakes:
+  - what:
+      it: Mani troppo vicine e polsi doloranti.
+      en: Hands too close, so your wrists hurt.
+    fix:
+      it: Allarga la presa fino alle spalle.
+      en: Widen your grip to shoulder-width.
+  - what:
+      it: I gomiti si aprono in fuori.
+      en: Your elbows flare out.
+    fix:
+      it: Tienili a circa 45 gradi o meno dal busto.
+      en: Keep them at about 45 degrees or less from your torso.
+  - what:
+      it: La barra rimbalza sul petto.
+      en: The bar bounces off your chest.
+    fix:
+      it: Scendi controllando e fermati un attimo.
+      en: Lower under control and pause briefly.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 181
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

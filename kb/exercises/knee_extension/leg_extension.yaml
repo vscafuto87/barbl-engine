@@ -17,6 +17,7 @@ substitutes:
 - goblet_squat
 - bulgarian_split_squat
 - sissy_squat
+- reverse_nordic
 technique:
   setup:
   - it: Siediti e appoggia la schiena allo schienale.

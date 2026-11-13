@@ -16,6 +16,7 @@ loading:
 substitutes:
 - dumbbell_curl
 - cable_curl
+- ez_bar_curl
 technique:
   setup:
   - it: Stai in piedi con i piedi a larghezza spalle, ginocchia appena piegate.

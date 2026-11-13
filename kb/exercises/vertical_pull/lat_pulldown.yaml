@@ -21,6 +21,8 @@ substitutes:
 - machine_pulldown
 - pull_up
 - chin_up
+- dumbbell_pullover
+- straight_arm_lat_pulldown
 technique:
   setup:
   - it: Aggancia la barra dritta al cavo alto.

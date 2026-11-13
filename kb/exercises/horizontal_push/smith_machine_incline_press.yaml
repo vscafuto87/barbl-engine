@@ -1,0 +1,64 @@
+id: smith_machine_incline_press
+name:
+  it: Panca inclinata al multipower
+  en: Smith machine incline press
+equipment: smith_machine
+requires:
+- smith_machine
+- bench
+pattern: horizontal_push
+mechanics: compound
+muscles:
+  primary: chest
+  secondary:
+  - front_delts
+  - triceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- incline_barbell_bench_press
+- incline_dumbbell_press
+- incline_machine_press
+technique:
+  setup:
+  - it: Panca inclinata a 30-45 gradi sotto il multipower.
+    en: Bench at 30 to 45 degrees under the Smith machine.
+  - it: La barra deve scendere sulla parte alta del petto.
+    en: The bar should come down to your upper chest.
+  - it: Presa poco più larga delle spalle, scapole indietro.
+    en: Grip a little wider than shoulders, shoulder blades back.
+  cues:
+  - it: Scendi controllando fino a sfiorare il petto.
+    en: Lower under control until the bar brushes your chest.
+  - it: Spingi in alto senza staccare le spalle dalla panca.
+    en: Press up without lifting your shoulders off the bench.
+  mistakes:
+  - what:
+      it: La barra scende sul collo o sulla pancia.
+      en: The bar lands on your neck or belly.
+    fix:
+      it: Sposta la panca finché tocca la parte alta del petto.
+      en: Move the bench until it lands on your upper chest.
+  - what:
+      it: I gomiti si aprono del tutto.
+      en: Your elbows flare fully.
+    fix:
+      it: Tienili un po' sotto la linea delle spalle.
+      en: Keep them a little below shoulder line.
+  - what:
+      it: Blocchi le sicure troppo in alto.
+      en: Safeties set too high.
+    fix:
+      it: Regolale appena sotto il punto più basso.
+      en: Set them just below your lowest point.
+  sources:
+  - id: nippard-essentials
+    pages:
+    - 20
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

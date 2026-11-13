@@ -1,0 +1,60 @@
+id: deficit_push_up
+name:
+  it: Piegamenti con deficit
+  en: Deficit push-up
+equipment: bodyweight
+requires: []
+pattern: horizontal_push
+mechanics: compound
+muscles:
+  primary: chest
+  secondary:
+  - triceps
+  - front_delts
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- push_up
+- dumbbell_bench_press
+technique:
+  setup:
+  - it: Mani su due rialzi stabili, come dischi o manubri esagonali.
+    en: Hands on two stable raises, such as plates or hex dumbbells.
+  - it: Corpo dritto dalla testa ai talloni.
+    en: Body straight from head to heels.
+  - it: Mani poco più larghe delle spalle.
+    en: Hands a little wider than your shoulders.
+  cues:
+  - it: Scendi con il petto sotto il livello delle mani.
+    en: Lower your chest below the level of your hands.
+  - it: Spingi via il pavimento tenendo l'addome contratto.
+    en: Push the floor away with your abs braced.
+  mistakes:
+  - what:
+      it: I fianchi cadono.
+      en: Your hips sag.
+    fix:
+      it: Stringi glutei e addome.
+      en: Squeeze your glutes and abs.
+  - what:
+      it: Non sfrutti il deficit e scendi poco.
+      en: You don't use the deficit and stay high.
+    fix:
+      it: Scendi finché senti allungare il petto.
+      en: Go down until your chest stretches.
+  - what:
+      it: Rialzi instabili.
+      en: Unstable raises.
+    fix:
+      it: Usa appoggi che non si muovono.
+      en: Use supports that don't move.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 195
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

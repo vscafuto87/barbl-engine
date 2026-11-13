@@ -19,6 +19,7 @@ substitutes:
 - machine_chest_press
 - incline_dumbbell_press
 - incline_barbell_bench_press
+- smith_machine_incline_press
 technique:
   setup:
   - it: Regola il sedile così che le maniglie siano all'altezza della parte alta del petto.

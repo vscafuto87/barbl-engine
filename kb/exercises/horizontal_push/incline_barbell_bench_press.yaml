@@ -21,6 +21,7 @@ substitutes:
 - incline_dumbbell_press
 - barbell_bench_press
 - incline_machine_press
+- smith_machine_incline_press
 technique:
   setup:
   - it: Inclina lo schienale di circa 30-45 gradi.

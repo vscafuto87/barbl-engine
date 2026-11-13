@@ -20,6 +20,7 @@ substitutes:
 - machine_shoulder_press
 - standing_dumbbell_shoulder_press
 - landmine_press
+- smith_machine_shoulder_press
 technique:
   setup:
   - it: Siediti sulla panca con i manubri sulle cosce, vicino alle ginocchia.

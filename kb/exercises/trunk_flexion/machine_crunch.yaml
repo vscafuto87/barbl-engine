@@ -1,0 +1,60 @@
+id: machine_crunch
+name:
+  it: Crunch alla macchina
+  en: Machine crunch
+equipment: machine
+requires:
+- machines
+pattern: trunk_flexion
+mechanics: isolation
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  stepKg: 5
+  whenLoadUnknown: manual
+substitutes:
+- cable_crunch
+- weighted_crunch
+technique:
+  setup:
+  - it: 'Regola il sedile: i cuscinetti stanno all''altezza del petto.'
+    en: Set the seat so the pads sit at chest height.
+  - it: Piedi sotto i rulli, schiena contro lo schienale.
+    en: Feet under the rollers, back against the backrest.
+  - it: Prendi le maniglie senza tirarle.
+    en: Hold the handles without pulling on them.
+  cues:
+  - it: Avvicina lo sterno al bacino arrotolando la colonna.
+    en: Bring your breastbone toward your pelvis by curling your spine.
+  - it: Torna su piano.
+    en: Return slowly.
+  mistakes:
+  - what:
+      it: Spingi con le braccia.
+      en: You push with your arms.
+    fix:
+      it: Lascia lavorare l'addome, le mani accompagnano.
+      en: Let your abs work; your hands only guide.
+  - what:
+      it: Movimento a strappi.
+      en: Jerky reps.
+    fix:
+      it: Due secondi in discesa e due in risalita.
+      en: Two seconds down and two up.
+  - what:
+      it: Ampiezza ridotta.
+      en: Short range.
+    fix:
+      it: Torna fino a busto dritto a ogni ripetizione.
+      en: Return to an upright torso every rep.
+  sources:
+  - id: nippard-essentials
+    pages:
+    - 20
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

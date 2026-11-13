@@ -597,7 +597,7 @@ const Map<String, (int, int)> _expectedEmphasis = {
   'upper_lower_4d 90': (120, 126),
   'ppl_ul_5d 45': (0, 126),
   'ppl_ul_5d 60': (103, 126),
-  'ppl_ul_5d 75': (121, 126),
+  'ppl_ul_5d 75': (123, 126),
   'ppl_ul_5d 90': (121, 126),
 };
 
@@ -817,7 +817,7 @@ void main() {
       stats.all + stats.some + stats.none,
       _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length,
     );
-    expect((stats.all, stats.some, stats.none), (429, 56, 271));
+    expect((stats.all, stats.some, stats.none), (431, 54, 271));
   });
 
   test('la copertura coincide con la mappa attesa', () {

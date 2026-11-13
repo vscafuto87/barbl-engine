@@ -1,0 +1,61 @@
+id: straight_arm_lat_pulldown
+name:
+  it: Pulldown a braccia tese
+  en: Straight-arm lat pulldown
+equipment: cable
+requires:
+- cables
+pattern: shoulder_extension
+mechanics: isolation
+muscles:
+  primary: back
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_pullover
+- lat_pulldown
+technique:
+  setup:
+  - it: Cavo alto con una barra o una corda.
+    en: High cable with a bar or rope.
+  - it: Fai un passo indietro e piegati un poco in avanti.
+    en: Step back and lean forward slightly.
+  - it: Braccia tese davanti, gomiti appena piegati.
+    en: Arms out in front, elbows slightly bent.
+  cues:
+  - it: Spingi la barra verso le cosce con le braccia dritte.
+    en: Sweep the bar down to your thighs with straight arms.
+  - it: Lascia salire le braccia fino a sentire i dorsali allungati.
+    en: Let your arms rise until your lats stretch.
+  mistakes:
+  - what:
+      it: Pieghi i gomiti e diventa una spinta in basso.
+      en: You bend your elbows and it turns into a pressdown.
+    fix:
+      it: Tieni le braccia quasi tese per tutta la serie.
+      en: Keep your arms nearly straight the whole set.
+  - what:
+      it: Muovi il busto per portare giù il peso.
+      en: You swing your torso to bring the weight down.
+    fix:
+      it: Busto fermo, si muovono solo le braccia.
+      en: Torso still; only your arms move.
+  - what:
+      it: Ampiezza corta in alto.
+      en: Short range at the top.
+    fix:
+      it: Accompagna le braccia fino sopra la testa.
+      en: Let your arms travel up to head height.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 168
+    - 169
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

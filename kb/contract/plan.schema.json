@@ -359,6 +359,14 @@
             "maxPerExercise": {
               "type": "integer"
             },
+            "excludedMuscles": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true,
+              "description": "Facoltativo (dalla KB 0.26.0): muscoli a cui la fascia non si applica (mai sotto fascia, nessuna serie aggiunta dalla regola 8). Assente = vuoto"
+            },
             "maxPerSession": {
               "type": "integer"
             },

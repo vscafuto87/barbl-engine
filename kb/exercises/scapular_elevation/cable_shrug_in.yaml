@@ -1,0 +1,60 @@
+id: cable_shrug_in
+name:
+  it: Scrollate ai cavi
+  en: Cable shrug-in
+equipment: cable
+requires:
+- cables
+pattern: scapular_elevation
+mechanics: isolation
+muscles:
+  primary: traps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_shrug
+- barbell_shrug
+technique:
+  setup:
+  - it: 'Due cavi bassi: in mezzo, prendi una maniglia per mano.'
+    en: 'Two low cables: stand between them, one handle in each hand.'
+  - it: Braccia tese e un po' aperte, i cavi tirano in fuori.
+    en: Arms straight and slightly out, cables pulling outward.
+  - it: Piedi alla larghezza dei fianchi.
+    en: Feet hip-width apart.
+  cues:
+  - it: Porta le spalle in alto e un poco verso l'interno.
+    en: Shrug your shoulders up and slightly in.
+  - it: Scendi lento fino ad allungare i trapezi.
+    en: Lower slowly until your traps stretch.
+  mistakes:
+  - what:
+      it: Pieghi le braccia.
+      en: You bend your arms.
+    fix:
+      it: Tienile distese per tutta la serie.
+      en: Keep them straight the whole set.
+  - what:
+      it: Ti sbilanci in avanti.
+      en: You tip forward.
+    fix:
+      it: Centra i piedi tra le due carrucole.
+      en: Center your feet between the pulleys.
+  - what:
+      it: Ampiezza corta.
+      en: Short range.
+    fix:
+      it: Lascia scendere del tutto le spalle.
+      en: Let your shoulders drop fully.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 230
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

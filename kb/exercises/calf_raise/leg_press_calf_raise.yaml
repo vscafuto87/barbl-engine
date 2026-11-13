@@ -16,6 +16,7 @@ loading:
 substitutes:
 - standing_calf_raise
 - dumbbell_calf_raise
+- donkey_calf_raise
 technique:
   setup:
   - it: Siediti alla leg press con schiena e bacino ben appoggiati.

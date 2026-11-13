@@ -18,6 +18,8 @@ substitutes:
 - incline_dumbbell_curl
 - dumbbell_curl
 - spider_curl
+- machine_preacher_curl
+- concentration_curl
 technique:
   setup:
   - it: Regola la panca Scott in modo che l'ascella tocchi il bordo.
