@@ -2,6 +2,12 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.30.0 — 2026-11-14
+
+- Finisher degli addominali da 10 a 20 ripetizioni invece di 10–12 (ruolo `core`, massa e forza; scelta di Vincenzo del 14/11/2026). Molti esercizi del finisher sono a corpo libero e progrediscono solo con le ripetizioni.
+- Conflitto nuovo `C-CORE-REPS` (risolto) con il tetto a 12 di P-RIR-ACCURACY, che resta per gli altri ruoli. P-CORE-FINISHER spiega la fascia e cita Schoenfeld (pp. 102 e 105).
+- Cambiano solo le ripetizioni del finisher; serie, recuperi, durata ed esercizi restano uguali.
+
 ## 0.29.0 — 2026-11-14
 
 - Il finisher degli addominali non conta più nella durata della seduta (scelta di Vincenzo del 14/11/2026). Il campo nuovo del ruolo è `countsTowardDuration`: è falso per `core` e vale vero se manca. Prende il posto di `yieldsToExtensions`, che non c'è più. Le serie del finisher restano fuori da tre conti:

@@ -148,3 +148,17 @@ conflicts:
     it: 'Aperto: nessuno studio di allenamento misura la crescita del retto con o senza lavoro diretto.
       Il motore tiene l''addome fuori dalla fascia di volume (P-VOL-INDIRECT-SMALL) e aggiunge comunque
       un finisher facoltativo in due sedute (P-CORE-FINISHER). Da rivedere con il coach.'
+- id: C-CORE-REPS
+  status: resolved
+  date: '2026-11-14'
+  between:
+  - P-RIR-ACCURACY
+  - P-CORE-FINISHER
+  summary:
+    it: P-RIR-ACCURACY tiene le ripetizioni a 12 o meno perché oltre la stima del RIR peggiora; molti
+      esercizi del finisher per l'addome sono a corpo libero, e con 12 ripetizioni restano lontani dal
+      cedimento senza un modo di aggiungere carico.
+  resolution:
+    it: 'Chiuso da Vincenzo il 14 novembre 2026: il ruolo core va da 10 a 20 ripetizioni, così gli esercizi
+      a corpo libero progrediscono con le ripetizioni. Costo accettato: sopra le 12 ripetizioni il RIR
+      si stima peggio. Vale solo per il finisher facoltativo; gli altri ruoli restano con il tetto a 12.'
