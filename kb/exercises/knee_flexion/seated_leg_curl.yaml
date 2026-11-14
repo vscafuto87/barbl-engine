@@ -37,6 +37,8 @@ technique:
     en: Pull your heels down and back under you.
   - it: Risali piano fino ad allungare le cosce.
     en: Rise slowly until your legs are stretched.
+  - it: Se vuoi più allungamento, porta il busto un po' in avanti sopra il cuscino delle cosce.
+    en: For a deeper stretch, lean your torso slightly forward over the thigh pad.
   mistakes:
   - what:
       it: Il sedere si solleva dal sedile.
@@ -60,6 +62,10 @@ technique:
   - id: nippard-muscle-ladder
     pages:
     - 146
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 20
     access: full_text
   - id: barbl-design
     access: summary

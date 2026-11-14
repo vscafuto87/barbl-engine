@@ -60,6 +60,14 @@ technique:
       it: Controlla la discesa e non appoggiare i pesi.
       en: Control the way down and don't rest the stack.
   sources:
+  - id: nippard-essentials
+    pages:
+    - 54
+    access: full_text
+  - id: nippard-min-max
+    pages:
+    - 28
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

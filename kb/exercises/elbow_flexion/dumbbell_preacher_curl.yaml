@@ -65,6 +65,10 @@ technique:
     pages:
     - 217
     access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 9
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

@@ -64,6 +64,14 @@ technique:
       it: Prima di ogni serie controlla dove sganciare e dove agganciare.
       en: Before each set, check where to unhook and where to rehook.
   sources:
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 31
+    access: full_text
+  - id: nippard-min-max
+    pages:
+    - 26
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

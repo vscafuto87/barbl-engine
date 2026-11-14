@@ -51,6 +51,15 @@ technique:
       it: Scendi finché i manubri arrivano accanto alla testa.
       en: Lower until the dumbbells reach beside your head.
   sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 218
+    - 219
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 10
+    access: full_text
   - id: barbl-design
     access: summary
     note: 'Scheda dalla pratica di coaching, senza una pagina di libro dedicata: da rivedere con il coach.'

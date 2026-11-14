@@ -25,15 +25,15 @@ technique:
     en: Hold it over your chest with straight arms.
   - it: Piedi a terra, testa e schiena appoggiate.
     en: Feet flat, head and back on the bench.
-  - it: Gomiti puntati al soffitto, vicini tra loro.
-    en: Elbows pointing at the ceiling, close together.
-  - it: Piega solo i gomiti e porta il bilanciere verso la fronte.
-    en: Bend only your elbows and lower the bar toward your forehead.
+  - it: Braccia un po' inclinate verso la testa, gomiti vicini tra loro.
+    en: Upper arms angled slightly toward your head, elbows close together.
+  - it: Piega solo i gomiti e porta il bilanciere dietro la testa.
+    en: Bend only your elbows and lower the bar behind your head.
   cues:
   - it: Solo i gomiti si muovono, le spalle restano ferme.
     en: Only your elbows move; your shoulders stay still.
-  - it: Gomiti puntati al soffitto per tutta la serie.
-    en: Elbows pointing at the ceiling all set.
+  - it: Le braccia restano con la stessa inclinazione per tutta la serie.
+    en: Keep your upper arms at the same angle all set.
   - it: Stendi le braccia senza bloccare i gomiti con forza.
     en: Extend your arms without snapping your elbows.
   mistakes:
@@ -41,8 +41,8 @@ technique:
       it: I gomiti si aprono ai lati.
       en: Your elbows flare out to the sides.
     fix:
-      it: Tienili vicini e rivolti al soffitto.
-      en: Keep them close, pointing at the ceiling.
+      it: Tienili vicini e rivolti in alto.
+      en: Keep them close and pointing up.
   - what:
       it: Le spalle si muovono e diventa una spinta.
       en: Your shoulders move and it turns into a press.
@@ -62,6 +62,14 @@ technique:
       it: Usa una presa comoda e tieni i polsi dritti.
       en: Use a comfortable grip and keep your wrists straight.
   sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 218
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 10
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

@@ -50,8 +50,8 @@ technique:
       it: La barra si allontana dal corpo.
       en: The bar drifts away from your body.
     fix:
-      it: Tira i gomiti indietro e sfiora le gambe per tutta la salita.
-      en: Pull your elbows back and graze your legs all the way up.
+      it: Attiva i dorsali, spalle verso le tasche, e tieni la barra a contatto con le gambe per tutta la salita.
+      en: Engage your lats, shoulders toward your back pockets, and keep the bar against your legs all the way up.
   sources:
   - id: nippard-muscle-ladder
     pages:
@@ -60,6 +60,10 @@ technique:
     - 127
     - 128
     - 129
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 16
     access: full_text
   - id: barbl-design
     access: summary

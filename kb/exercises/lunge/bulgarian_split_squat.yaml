@@ -50,8 +50,8 @@ technique:
       it: Allarga un po' i piedi e fissa un punto davanti a te.
       en: Widen your feet a little and fix your eyes on a spot ahead.
   - what:
-      it: Il piede davanti è troppo vicino e il ginocchio va avanti.
-      en: Your front foot is too close and your knee drifts forward.
+      it: Il piede davanti è troppo vicino e il tallone si stacca da terra.
+      en: Your front foot is too close and your heel lifts off the floor.
     fix:
       it: Allontana il piede dalla panca di qualche centimetro.
       en: Move your front foot a few inches farther from the bench.
@@ -67,6 +67,10 @@ technique:
     - 118
     - 119
     - 120
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 43
     access: full_text
   - id: barbl-design
     access: summary

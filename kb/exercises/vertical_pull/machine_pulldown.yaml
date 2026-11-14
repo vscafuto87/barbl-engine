@@ -1,6 +1,6 @@
 id: machine_pulldown
 name:
-  it: Lat machine alla macchina
+  it: Pulldown alla macchina
   en: Machine pulldown
 equipment: machine
 requires:
