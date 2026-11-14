@@ -10,7 +10,10 @@ statement:
     di design di Barbl; essendo facoltativo, non conta nella durata stimata della seduta e non toglie
     tempo agli altri esercizi. Allenare l''addome non toglie il grasso della pancia: il grasso localizzato non
     cala allenando il muscolo sotto. Le fonti sconsigliano la flessione ripetuta a chi ha un''ernia del
-    disco; anche per questo uno dei due finisher può essere senza flessione.'
+    disco; anche per questo uno dei due finisher può essere senza flessione. La fascia di ripetizioni
+    è larga, da 10 a 20: molti esercizi per l''addome sono a corpo libero e non si caricano, quindi si
+    progredisce aggiungendo ripetizioni; portate vicino al cedimento, anche le serie lunghe fanno crescere
+    il muscolo quanto quelle corte. Il tetto a 20 è una scelta di design di Barbl.'
   en: 'The rectus abdominis does little work in squats and deadlifts: training it takes bending the spine
     against a load. A small amount of direct work is enough, so the abs close two sessions of the week
     with an optional exercise at the end, as the reference programs do on leg days. The two sessions use
@@ -20,7 +23,10 @@ statement:
     choices; since it is optional, it does not count toward the estimated session length and takes no
     time from the other exercises. Training the abs does not remove belly fat: local fat does not drop by training the muscle
     underneath. The sources advise against repeated spinal flexion for people with a disc herniation;
-    this is one more reason why one of the two finishers can be flexion-free.'
+    this is one more reason why one of the two finishers can be flexion-free. The rep range is wide, from
+    10 to 20: many ab exercises are bodyweight and cannot be loaded, so progress comes from adding reps;
+    taken close to failure, longer sets build muscle as well as shorter ones. The cap at 20 is a Barbl
+    design choice.'
 evidence: low
 status: provisional
 reviewedBy: null
@@ -41,6 +47,8 @@ sources:
   access: full_text
 - id: schoenfeld-hypertrophy-2e
   pages:
+  - 102
+  - 105
   - 199
   access: full_text
 - id: nippard-essentials

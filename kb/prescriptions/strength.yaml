@@ -36,7 +36,7 @@ roles:
     sets: 2
     reps:
       min: 10
-      max: 12
+      max: 20
     restSeconds:
       upper: 90
       lower: 90
@@ -47,6 +47,8 @@ roles:
     # tempo agli altri esercizi e c'è a ogni durata (P-CORE-FINISHER, scelta di
     # Vincenzo del 14/11/2026).
     countsTowardDuration: false
+    # Fascia larga, 10-20, per gli esercizi a corpo libero: eccezione al tetto
+    # di P-RIR-ACCURACY (conflitto C-CORE-REPS, scelta di Vincenzo del 14/11/2026).
     rules:
     - CORE-FINISHER
 supersetRestSeconds: 120
