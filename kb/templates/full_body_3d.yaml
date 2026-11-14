@@ -49,6 +49,7 @@ sessions:
       - chest_supported_t_bar_row
       - pendlay_row
       - meadows_row
+      - elbows_out_cable_row
   - type: single
     slots:
     - pattern: squat
@@ -61,6 +62,7 @@ sessions:
       - front_squat
       - pendulum_squat
       - belt_squat
+      - single_leg_press
   - type: single
     slots:
     - pattern: hinge
@@ -87,6 +89,8 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
+      - jm_press
+      - close_grip_push_up
   - type: single
     slots:
     - pattern: trunk_flexion
@@ -135,6 +139,7 @@ sessions:
       - chin_up
       - chest_supported_dumbbell_row
       - dumbbell_row
+      - neutral_grip_pull_up
   - type: single
     slots:
     - pattern: vertical_push
@@ -164,12 +169,13 @@ sessions:
     slots:
     - pattern: knee_flexion
       role: accessory
-      equivalent: 4
+      equivalent: 5
       candidates:
       - seated_leg_curl
       - standing_leg_curl
       - dumbbell_leg_curl
       - glute_ham_raise
+      - single_leg_curl
       - single_leg_dumbbell_romanian_deadlift
       - leg_curl
       - dumbbell_romanian_deadlift
@@ -178,7 +184,7 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 7
+      equivalent: 8
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
@@ -187,6 +193,7 @@ sessions:
       - behind_the_body_cable_curl
       - machine_preacher_curl
       - ez_bar_curl
+      - ez_bar_preacher_curl
       - hammer_curl
       - barbell_curl
       - spider_curl
@@ -212,6 +219,7 @@ sessions:
       - chest_supported_t_bar_row
       - pendlay_row
       - meadows_row
+      - elbows_out_cable_row
   - type: single
     slots:
     - pattern: horizontal_push
@@ -241,6 +249,7 @@ sessions:
       - belt_squat
       - smith_machine_squat
       - goblet_squat
+      - single_leg_press
   - type: single
     slots:
     - pattern: elbow_extension
@@ -255,11 +264,13 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
+      - jm_press
+      - close_grip_push_up
   - type: single
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 7
+      equivalent: 8
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
@@ -268,6 +279,7 @@ sessions:
       - behind_the_body_cable_curl
       - machine_preacher_curl
       - ez_bar_curl
+      - ez_bar_preacher_curl
       - hammer_curl
       - barbell_curl
       - spider_curl
@@ -316,13 +328,16 @@ extensions:
   slot:
     pattern: lateral_raise
     role: accessory
-    equivalent: 4
+    equivalent: 6
     candidates:
     - cable_lateral_raise
     - dumbbell_lateral_raise
     - lying_incline_lateral_raise
     - cable_y_raise
+    - lean_in_lateral_raise
+    - egyptian_lateral_raise
     - machine_lateral_raise
+    - cable_upright_row
 - session: full_b
   slot:
     pattern: calf_raise
@@ -351,12 +366,13 @@ extensions:
   slot:
     pattern: knee_flexion
     role: accessory
-    equivalent: 4
+    equivalent: 5
     candidates:
     - seated_leg_curl
     - standing_leg_curl
     - dumbbell_leg_curl
     - glute_ham_raise
+    - single_leg_curl
     - single_leg_dumbbell_romanian_deadlift
     - leg_curl
     - dumbbell_romanian_deadlift
@@ -389,13 +405,16 @@ extensions:
   slot:
     pattern: lateral_raise
     role: accessory
-    equivalent: 4
+    equivalent: 6
     candidates:
     - cable_lateral_raise
     - dumbbell_lateral_raise
     - lying_incline_lateral_raise
     - cable_y_raise
+    - lean_in_lateral_raise
+    - egyptian_lateral_raise
     - machine_lateral_raise
+    - cable_upright_row
 - session: full_b
   slot:
     pattern: hip_extension
@@ -433,7 +452,8 @@ extensions:
     - dumbbell_shrug
     - cable_shrug_in
     - barbell_shrug
-    equivalent: 3
+    - machine_shrug
+    equivalent: 4
 - session: full_a
   slot:
     pattern: forearm_isolation
@@ -441,4 +461,5 @@ extensions:
     candidates:
     - dumbbell_wrist_curl
     - dumbbell_wrist_extension
-    equivalent: 2
+    - ez_bar_reverse_curl
+    equivalent: 3

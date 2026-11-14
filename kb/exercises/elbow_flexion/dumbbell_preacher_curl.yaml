@@ -20,6 +20,7 @@ substitutes:
 - spider_curl
 - machine_preacher_curl
 - concentration_curl
+- ez_bar_preacher_curl
 technique:
   setup:
   - it: Regola la panca Scott in modo che l'ascella tocchi il bordo.

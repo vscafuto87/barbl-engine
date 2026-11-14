@@ -1,0 +1,66 @@
+id: ez_bar_preacher_curl
+name:
+  it: Curl alla panca Scott con EZ
+  en: EZ-bar preacher curl
+equipment: barbell
+requires:
+- barbell
+- bench
+pattern: elbow_flexion
+mechanics: isolation
+muscles:
+  primary: biceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_preacher_curl
+- machine_preacher_curl
+- ez_bar_curl
+technique:
+  setup:
+  - it: Regola la panca Scott in modo che le ascelle tocchino il bordo.
+    en: Set the preacher bench so your armpits meet the top.
+  - it: Braccia appoggiate sull'imbottitura, tricipiti ben a contatto.
+    en: Arms on the pad, triceps pressed against it.
+  - it: Prendi la barra EZ sulle impugnature inclinate.
+    en: Hold the EZ bar on the angled grips.
+  cues:
+  - it: Porta la barra in alto senza staccare le braccia.
+    en: Curl the bar up without lifting your arms.
+  - it: Scendi lento fino al bicipite allungato.
+    en: Lower slowly until your biceps stretch.
+  mistakes:
+  - what:
+      it: Le braccia si staccano dall'imbottitura.
+      en: Your arms lift off the pad.
+    fix:
+      it: Tricipiti incollati al cuscinetto.
+      en: Triceps glued to the pad.
+  - what:
+      it: Ti fermi prima del fondo.
+      en: You stop short of the bottom.
+    fix:
+      it: Scendi fino a gomiti quasi tesi.
+      en: Lower until your elbows are almost straight.
+  - what:
+      it: Lasci cadere la barra in basso.
+      en: You drop the bar at the bottom.
+    fix:
+      it: 'La parte bassa è la più delicata: controllala.'
+      en: 'The bottom is the touchiest part: control it.'
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 217
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 8
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

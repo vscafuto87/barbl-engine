@@ -18,6 +18,7 @@ substitutes:
 - dumbbell_lateral_raise
 - cable_lateral_raise
 - machine_lateral_raise
+- lean_in_lateral_raise
 technique:
   setup:
   - it: Inclina lo schienale di circa 30-45 gradi.

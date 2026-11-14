@@ -1,0 +1,73 @@
+id: single_leg_press
+name:
+  it: Leg press a una gamba
+  en: Single-leg leg press
+equipment: machine
+requires:
+- machines
+pattern: squat
+mechanics: compound
+muscles:
+  primary: quadriceps
+  secondary:
+  - glutes
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- leg_press
+- bulgarian_split_squat
+- hack_squat
+technique:
+  setup:
+  - it: Siediti con la schiena e il bacino ben appoggiati.
+    en: Sit with your back and pelvis flat against the pad.
+  - it: Un piede al centro della pedana, l'altro a terra o sul telaio.
+    en: One foot in the middle of the platform, the other on the floor or frame.
+  - it: Piede più alto e largo per i glutei, più basso per i quadricipiti.
+    en: Foot higher and wider for glutes, lower for quads.
+  cues:
+  - it: Scendi piano con il ginocchio in linea con le dita del piede.
+    en: Lower slowly with your knee tracking over your toes.
+  - it: Spingi con tutto il piede senza bloccare il ginocchio in alto.
+    en: Push through your whole foot without locking your knee at the top.
+  - it: Inizia con la gamba più debole.
+    en: Start with your weaker leg.
+  mistakes:
+  - what:
+      it: Il bacino si stacca e la schiena si arrotonda in basso.
+      en: Your pelvis lifts and your back rounds at the bottom.
+    fix:
+      it: Scendi fin dove il bacino resta appoggiato.
+      en: Go only as deep as your pelvis stays on the pad.
+  - what:
+      it: Il ginocchio cade verso l'interno.
+      en: Your knee caves inward.
+    fix:
+      it: Spingi il ginocchio verso l'esterno, in linea con il piede.
+      en: Push your knee out, in line with your foot.
+  - what:
+      it: Usi lo stesso carico della leg press a due gambe.
+      en: You use your two-leg load.
+    fix:
+      it: Parti da poco meno della metà e sali.
+      en: Start a bit under half and build up.
+  sources:
+  - id: nippard-essentials
+    pages:
+    - 37
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 42
+    - 109
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 4
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -1,0 +1,66 @@
+id: cable_upright_row
+name:
+  it: Tirate al mento ai cavi
+  en: Cable upright row
+equipment: cable
+requires:
+- cables
+pattern: lateral_raise
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary:
+  - traps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_lateral_raise
+- machine_lateral_raise
+- dumbbell_lateral_raise
+technique:
+  setup:
+  - it: Cavo basso con la corda, presa prona con i mignoli contro i fermi.
+    en: Low cable with a rope, overhand grip with your pinkies against the stoppers.
+  - it: Corda all'altezza della vita, piedi sfalsati.
+    en: Rope at waist height, feet staggered.
+  - it: Glutei contratti e petto alto.
+    en: Glutes tight, chest up.
+  cues:
+  - it: Solleva i gomiti larghi e alti mentre allarghi la corda.
+    en: Raise your elbows wide and high while spreading the rope.
+  - it: Fermati quando i gomiti arrivano all'altezza delle spalle.
+    en: Stop when your elbows reach shoulder height.
+  mistakes:
+  - what:
+      it: Sali oltre le spalle con le mani sopra la testa.
+      en: You go past shoulder height, hands overhead.
+    fix:
+      it: Fermati con i gomiti alla linea delle spalle.
+      en: Stop with your elbows level with your shoulders.
+  - what:
+      it: Guidi con le mani invece che con i gomiti.
+      en: You lead with your hands, not your elbows.
+    fix:
+      it: I gomiti restano sempre più alti dei polsi.
+      en: Your elbows stay higher than your wrists.
+  - what:
+      it: Ti inarchi all'indietro.
+      en: You lean back.
+    fix:
+      it: Glutei contratti e busto fermo.
+      en: Glutes tight and torso still.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 207
+    access: full_text
+  - id: nippard-mens-shoulder
+    pages:
+    - 8
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

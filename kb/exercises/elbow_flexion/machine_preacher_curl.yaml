@@ -16,6 +16,7 @@ loading:
 substitutes:
 - dumbbell_preacher_curl
 - cable_curl
+- ez_bar_preacher_curl
 technique:
   setup:
   - it: 'Regola il sedile: ascelle sul bordo alto del cuscino.'

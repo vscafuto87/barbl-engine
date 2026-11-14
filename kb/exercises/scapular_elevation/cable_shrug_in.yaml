@@ -16,6 +16,7 @@ loading:
 substitutes:
 - dumbbell_shrug
 - barbell_shrug
+- machine_shrug
 technique:
   setup:
   - it: 'Due cavi bassi: in mezzo, prendi una maniglia per mano.'

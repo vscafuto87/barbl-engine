@@ -1,0 +1,65 @@
+id: close_grip_push_up
+name:
+  it: Piegamenti presa stretta
+  en: Close-grip push-up
+equipment: bodyweight
+requires: []
+pattern: elbow_extension
+mechanics: isolation
+muscles:
+  primary: triceps
+  secondary:
+  - chest
+  - front_delts
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- dip
+- cable_triceps_pushdown
+- push_up
+technique:
+  setup:
+  - it: Mani a terra poco più strette delle spalle.
+    en: Hands on the floor slightly narrower than your shoulders.
+  - it: Corpo in linea dalla testa ai talloni, glutei contratti.
+    en: Body in a line from head to heels, glutes tight.
+  - it: Se è troppo difficile, appoggia le ginocchia.
+    en: If it is too hard, rest on your knees.
+  cues:
+  - it: Scendi con i gomiti vicini ai fianchi.
+    en: Lower with your elbows close to your sides.
+  - it: Spingi fino alle braccia tese.
+    en: Press up to straight arms.
+  mistakes:
+  - what:
+      it: I gomiti si aprono a T.
+      en: Your elbows flare into a T.
+    fix:
+      it: Gomiti che sfiorano il busto.
+      en: Elbows brushing your torso.
+  - what:
+      it: Il bacino cede verso terra.
+      en: Your hips sag toward the floor.
+    fix:
+      it: Stringi glutei e addome.
+      en: Squeeze your glutes and abs.
+  - what:
+      it: Mezze ripetizioni veloci.
+      en: Fast half reps.
+    fix:
+      it: Petto vicino a terra e ritmo controllato.
+      en: Chest near the floor and a controlled pace.
+  sources:
+  - id: nippard-essentials
+    pages:
+    - 22
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 35
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

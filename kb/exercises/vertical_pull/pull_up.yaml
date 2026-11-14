@@ -17,6 +17,7 @@ substitutes:
 - lat_pulldown
 - chin_up
 - neutral_grip_pulldown
+- neutral_grip_pull_up
 technique:
   setup:
   - it: Prendi la sbarra con i palmi in avanti, mani poco più larghe delle spalle.

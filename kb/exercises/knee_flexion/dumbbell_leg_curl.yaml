@@ -18,6 +18,7 @@ substitutes:
 - leg_curl
 - seated_leg_curl
 - standing_leg_curl
+- single_leg_curl
 technique:
   setup:
   - it: Sdraiati a pancia in giù sulla panca, ginocchia appena oltre il bordo.

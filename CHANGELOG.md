@@ -2,6 +2,13 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.28.0 — 2026-11-14
+
+- Catalogo da 140 a 153 esercizi (scelta di Vincenzo del 14/11/2026, «tutti i 13 proposti»), con schede tecniche it/en provvisorie e pagine delle fonti (The Muscle Ladder, The Ultimate Exercise Guide e le note dei programmi di Nippard), scritte con parole nostre.
+- Esercizi nuovi: pullover alla macchina (solo come sostituto, come gli altri pullover), leg press a una gamba, leg curl a una gamba, trazioni presa neutra, rematore ai cavi a gomiti larghi, scrollate alla macchina, alzate laterali con appoggio, alzate laterali Egyptian al cavo, tirate al mento ai cavi, JM press, piegamenti presa stretta (pattern `elbow_extension`, a corpo libero), curl alla panca Scott con EZ, reverse curl con EZ (pattern `forearm_isolation`, primario avambracci).
+- Template: entrano nei gruppi intercambiabili, allargati di al massimo 2, il leg curl a una gamba (leg curl), il rematore a gomiti larghi (rematori secondari senza `askLoad`), le scrollate alla macchina, le alzate con appoggio ed Egyptian, il curl Scott con EZ e il reverse curl (estensione degli avambracci). In coda, fuori dal gruppo: leg press a una gamba, trazioni presa neutra, tirate al mento, JM press (tecnica alta) e piegamenti presa stretta; negli slot principali o con `askLoad` tutti in coda.
+- Sostituti reciproci aggiornati.
+
 ## 0.27.0 — 2026-11-14
 
 - Addominali come finisher facoltativo due volte a settimana (scelta di Vincenzo del 14/11/2026). Le due estensioni `trunk_flexion` dei template diventano due slot fissi di ruolo nuovo `core`, in fondo a Lower A e Lower B (4 giorni), Full body A e C (3 giorni), Lower e Gambe (5 giorni).

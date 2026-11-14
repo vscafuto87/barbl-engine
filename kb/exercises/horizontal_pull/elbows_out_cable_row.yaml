@@ -1,0 +1,66 @@
+id: elbows_out_cable_row
+name:
+  it: Rematore ai cavi a gomiti larghi
+  en: Elbows-out cable row
+equipment: cable
+requires:
+- cables
+pattern: horizontal_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - shoulders
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- seated_cable_row
+- chest_supported_t_bar_row
+- machine_row
+technique:
+  setup:
+  - it: Al cavo basso usa due maniglie singole o una barra larga.
+    en: At the low cable use two single handles or a wide bar.
+  - it: Siediti con i piedi sulla pedana e il busto dritto.
+    en: Sit with your feet on the plate and your torso upright.
+  - it: Presa prona, mani più larghe delle spalle.
+    en: Overhand grip, hands wider than your shoulders.
+  cues:
+  - it: Tira i gomiti indietro e in fuori, a circa 45 gradi dal busto.
+    en: Pull your elbows back and out, about 45 degrees from your torso.
+  - it: Stringi le scapole in fondo e torna lento.
+    en: Squeeze your shoulder blades at the end and return slowly.
+  mistakes:
+  - what:
+      it: Ti butti indietro con il busto.
+      en: You throw your torso back.
+    fix:
+      it: 'Busto fermo: si muovono solo le braccia.'
+      en: 'Torso still: only your arms move.'
+  - what:
+      it: I gomiti scendono vicino ai fianchi.
+      en: Your elbows drop to your sides.
+    fix:
+      it: Tienili alti e larghi, come alla partenza.
+      en: Keep them high and wide, as at the start.
+  - what:
+      it: Le spalle salgono verso le orecchie.
+      en: Your shoulders creep up to your ears.
+    fix:
+      it: Spalle basse mentre tiri.
+      en: Shoulders down while you pull.
+  sources:
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 32
+    access: full_text
+  - id: nippard-mens-shoulder
+    pages:
+    - 8
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

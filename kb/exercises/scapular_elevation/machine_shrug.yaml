@@ -1,0 +1,65 @@
+id: machine_shrug
+name:
+  it: Scrollate alla macchina
+  en: Machine shrug
+equipment: machine
+requires:
+- machines
+pattern: scapular_elevation
+mechanics: isolation
+muscles:
+  primary: traps
+  secondary: []
+loading:
+  stepKg: 5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_shrug
+- dumbbell_shrug
+- cable_shrug_in
+technique:
+  setup:
+  - it: Regola le maniglie o i cuscinetti all'altezza giusta per partire a braccia tese.
+    en: Set the handles or pads so you start with straight arms.
+  - it: In piedi dritto, petto alto.
+    en: Stand tall, chest up.
+  - it: Usa le cinghie se la presa cede prima dei trapezi.
+    en: Use straps if your grip gives out before your traps.
+  cues:
+  - it: Porta le spalle su verso le orecchie, un po' all'interno.
+    en: Shrug your shoulders up toward your ears, slightly inward.
+  - it: Fermati in alto e scendi fino a sentire l'allungamento.
+    en: Pause at the top and lower until you feel a stretch.
+  mistakes:
+  - what:
+      it: Ruoti le spalle in cerchio.
+      en: You roll your shoulders in circles.
+    fix:
+      it: Su e giù, in linea retta.
+      en: Straight up and down.
+  - what:
+      it: Pieghi i gomiti per tirare.
+      en: You bend your elbows to pull.
+    fix:
+      it: Braccia tese come ganci.
+      en: Arms straight like hooks.
+  - what:
+      it: Ampiezza corta con troppo carico.
+      en: Short range with too much load.
+    fix:
+      it: Togli peso e muovi del tutto le spalle.
+      en: Drop weight and move your shoulders fully.
+  sources:
+  - id: nippard-min-max
+    pages:
+    - 26
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 5
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

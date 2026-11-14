@@ -1,0 +1,63 @@
+id: lean_in_lateral_raise
+name:
+  it: Alzate laterali con appoggio
+  en: Lean-in lateral raise
+equipment: dumbbell
+requires:
+- dumbbells
+- bench
+pattern: lateral_raise
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_lateral_raise
+- cable_lateral_raise
+- lying_incline_lateral_raise
+- egyptian_lateral_raise
+technique:
+  setup:
+  - it: Appoggiati di fianco a una panca inclinata, a un rack o a un muro.
+    en: Lean sideways against an incline bench, a rack or a wall.
+  - it: Tieni il manubrio con il braccio lontano dall'appoggio.
+    en: Hold the dumbbell in the arm away from the support.
+  - it: Busto inclinato, braccio libero davanti alla coscia.
+    en: Torso tilted, free arm hanging in front of your thigh.
+  cues:
+  - it: Alza il braccio di lato fino all'altezza della spalla.
+    en: Raise your arm out to the side up to shoulder height.
+  - it: Scendi lento senza appoggiare il manubrio alla gamba.
+    en: Lower slowly without resting the dumbbell on your leg.
+  mistakes:
+  - what:
+      it: In basso il braccio si riposa contro il fianco.
+      en: Your arm rests against your side at the bottom.
+    fix:
+      it: 'Fermati appena prima: la tensione resta.'
+      en: 'Stop just short: keep the tension.'
+  - what:
+      it: Sollevi con uno slancio del busto.
+      en: You swing your torso to lift.
+    fix:
+      it: Busto fermo sull'appoggio.
+      en: Keep your torso still against the support.
+  - what:
+      it: Il polso sale sopra il gomito.
+      en: Your wrist rises above your elbow.
+    fix:
+      it: Guida con il gomito.
+      en: Lead with your elbow.
+  sources:
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 6
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

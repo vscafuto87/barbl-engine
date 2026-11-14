@@ -19,6 +19,7 @@ substitutes:
 - push_up
 - dumbbell_bench_press
 - machine_chest_press
+- close_grip_push_up
 technique:
   setup:
   - it: Prendi le parallele con una presa comoda, poco più larga delle spalle.

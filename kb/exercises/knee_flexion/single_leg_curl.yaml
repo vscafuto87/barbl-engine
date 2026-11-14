@@ -1,0 +1,68 @@
+id: single_leg_curl
+name:
+  it: Leg curl a una gamba
+  en: Single-leg leg curl
+equipment: machine
+requires:
+- machines
+pattern: knee_flexion
+mechanics: isolation
+muscles:
+  primary: hamstrings
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- seated_leg_curl
+- leg_curl
+- dumbbell_leg_curl
+technique:
+  setup:
+  - it: Usa la macchina da seduto o da prono e regola il rullo sopra il tallone.
+    en: Use the seated or lying machine and set the roller just above your heel.
+  - it: Ginocchio allineato con il perno della macchina.
+    en: Knee lined up with the machine's pivot.
+  - it: Lavora con una gamba e lascia ferma l'altra.
+    en: Work one leg and keep the other still.
+  cues:
+  - it: Porta il tallone verso il gluteo e stringi in fondo.
+    en: Bring your heel toward your glutes and squeeze at the end.
+  - it: Torna lento fino alla gamba quasi tesa.
+    en: Return slowly until your leg is nearly straight.
+  - it: Inizia con la gamba più debole.
+    en: Start with your weaker leg.
+  mistakes:
+  - what:
+      it: Il bacino si alza o ruota per aiutare.
+      en: Your hips lift or twist to help.
+    fix:
+      it: 'Bacino fermo sul cuscinetto: usa meno peso.'
+      en: 'Hips still on the pad: use less weight.'
+  - what:
+      it: Lasci cadere il peso in ritorno.
+      en: You let the weight drop on the way back.
+    fix:
+      it: Accompagna il ritorno per due secondi.
+      en: Control the return for two seconds.
+  - what:
+      it: Ampiezza corta.
+      en: Short range.
+    fix:
+      it: Arriva in fondo e torna quasi a gamba tesa.
+      en: Curl all the way and return nearly straight.
+  sources:
+  - id: nippard-powerbuilding-2
+    pages:
+    - 109
+    access: full_text
+  - id: nippard-muscle-ladder
+    pages:
+    - 145
+    - 146
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

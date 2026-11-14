@@ -16,6 +16,7 @@ loading:
 substitutes:
 - dumbbell_pullover
 - lat_pulldown
+- machine_pullover
 technique:
   setup:
   - it: Cavo alto con una barra o una corda.
