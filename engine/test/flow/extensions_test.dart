@@ -161,39 +161,55 @@ void main() {
         _plan(_profile(goal: 'muscle_gain', gym: 'full', days: 3, minutes: 60)),
       );
       expect(four['shoulders'], greaterThanOrEqualTo(6));
-      expect(four['calves'], greaterThanOrEqualTo(3));
-      // A 3 giorni il finisher (`P-CORE-FINISHER`) fa parte della seduta e le
-      // estensioni usano il tempo che resta: le spalle hanno un'estensione in
-      // meno di prima della KB 0.27.0.
-      expect(three['shoulders'], greaterThanOrEqualTo(3));
+      expect(three['shoulders'], greaterThanOrEqualTo(6));
+      expect(three['calves'], greaterThanOrEqualTo(3));
+      // Il finisher facoltativo non toglie tempo alle estensioni
+      // (`countsTowardDuration: false`, `P-CORE-FINISHER`).
+      expect(four['abs'], 4);
       expect(three['abs'], 4);
     });
 
-    test('con yieldsToExtensions il finisher lascia il posto', () {
-      final json = jsonDecode(jsonEncode(kbJson)) as Map<String, Object?>;
-      for (final p in (json['prescriptions']! as Map).values) {
-        final roles = (p as Map)['roles'] as Map;
-        (roles['core'] as Map)['yieldsToExtensions'] = true;
-      }
-      final yielding = KnowledgeBase.fromJson(json);
-      final profile = _profile(
-        goal: 'muscle_gain',
-        gym: 'full',
-        days: 3,
-        minutes: 60,
-      );
-      final plan = (generatePlan(profile, yielding) as Generated).plan;
-      final volume = _volume(plan);
-      expect(volume['shoulders'], greaterThanOrEqualTo(6));
-      expect(volume['abs'] ?? 0, lessThan(4));
-      // Il finisher che resta è sempre l'ultimo della sua seduta.
-      for (final s in plan['sessions']! as List) {
-        final exercises = [
-          for (final b in (s as Map)['blocks'] as List)
-            for (final e in (b as Map)['exercises'] as List) e as Map,
-        ];
-        final optional = exercises.indexWhere((e) => e['optional'] == true);
-        if (optional >= 0) expect(optional, exercises.length - 1);
+    test('il finisher c\'è a ogni durata, ultimo, e non conta nel tempo', () {
+      for (final goal in _goals) {
+        for (final gym in _gyms.keys) {
+          for (final days in const [3, 4, 5]) {
+            for (final minutes in _durations) {
+              final plan = _plan(
+                _profile(goal: goal, gym: gym, days: days, minutes: minutes),
+              );
+              final where = '$goal $gym $days giorni $minutes min';
+              var finishers = 0;
+              for (final s in plan['sessions']! as List) {
+                final exercises = [
+                  for (final b in (s as Map)['blocks'] as List)
+                    for (final e in (b as Map)['exercises'] as List)
+                      (e as Map).cast<String, Object?>(),
+                ];
+                final optional = [
+                  for (var k = 0; k < exercises.length; k++)
+                    if (exercises[k]['optional'] == true) k,
+                ];
+                finishers += optional.length;
+                if (optional.isNotEmpty) {
+                  expect(optional, [exercises.length - 1], reason: where);
+                }
+                // La durata stimata conta solo gli esercizi non facoltativi.
+                final timed = exercises
+                    .where((e) => e['optional'] != true)
+                    .fold<int>(0, (a, e) => a + (e['sets']! as num).toInt());
+                expect(
+                  s['estimatedDurationMin'],
+                  timed *
+                      kb.prescriptions
+                          .firstWhere((p) => p.appliesTo.contains(goal))
+                          .minutesPerSet,
+                  reason: where,
+                );
+              }
+              expect(finishers, 2, reason: where);
+            }
+          }
+        }
       }
     });
 

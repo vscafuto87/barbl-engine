@@ -2,6 +2,18 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.29.0 — 2026-11-14
+
+- Il finisher degli addominali non conta più nella durata della seduta (scelta di Vincenzo del 14/11/2026). Il campo nuovo del ruolo è `countsTowardDuration`: è falso per `core` e vale vero se manca. Prende il posto di `yieldsToExtensions`, che non c'è più. Le serie del finisher restano fuori da tre conti:
+  - `estimatedDurationMin`;
+  - il taglio per il tempo, quindi il finisher non si toglie più;
+  - lo spazio di enfasi ed estensioni.
+- Effetti:
+  - ci sono due finisher a settimana a ogni durata, in tutti i 324 profili, sempre ultimi nella loro seduta;
+  - a 60 minuti le estensioni tornano quelle della 0.26: a 3 giorni spalle a 6 serie e polpacci a 3, a 4 giorni spalle a 9.
+- Estensioni con enfasi: tra i candidati passano per primi quelli che allenano anche un distretto scelto. Così più tempo per le estensioni non dà meno lavoro al distretto chiesto (caso: 5 giorni, forza, 75 minuti, casa, glutei).
+- `P-CORE-FINISHER` dice che il finisher, essendo facoltativo, non conta nella durata. Il validatore lo simula.
+
 ## 0.28.0 — 2026-11-14
 
 - Catalogo da 140 a 153 esercizi (scelta di Vincenzo del 14/11/2026, «tutti i 13 proposti»), con schede tecniche it/en provvisorie e pagine delle fonti (The Muscle Ladder, The Ultimate Exercise Guide e le note dei programmi di Nippard), scritte con parole nostre.
