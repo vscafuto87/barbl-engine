@@ -133,3 +133,18 @@ conflicts:
       delle settimane di carico non scende sotto 2 (3, 3, 2, 2 e poi lo scarico). Costo accettato: un
       po'' meno vicinanza al cedimento nell''ultima settimana di carico. Valore di design, da rivedere
       con un coach.'
+- id: C-ABS-INDIRECT
+  status: open
+  date: '2026-11-14'
+  between:
+  - P-VOL-INDIRECT-SMALL
+  - P-CORE-FINISHER
+  summary:
+    it: P-VOL-INDIRECT-SMALL dice che l'addome riceve molto lavoro indiretto dai multiarticolari, mentre
+      Nippard (The Muscle Ladder, p. 287) riporta dati EMG in cui il retto dell'addome è poco attivo nello
+      squat e nello stacco, che tengono la colonna neutra invece di fletterla. Helms (Pyramid, p. 254)
+      non vede differenze togliendo il lavoro diretto da un programma con molti multiarticolari.
+  resolution:
+    it: 'Aperto: nessuno studio di allenamento misura la crescita del retto con o senza lavoro diretto.
+      Il motore tiene l''addome fuori dalla fascia di volume (P-VOL-INDIRECT-SMALL) e aggiunge comunque
+      un finisher facoltativo in due sedute (P-CORE-FINISHER). Da rivedere con il coach.'

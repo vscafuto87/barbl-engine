@@ -4,12 +4,17 @@ import 'choose_exercises.dart';
 import 'prescribe.dart';
 
 /// Priorità di rimozione per ruolo: il numero più basso si toglie per primo.
-/// I ruoli `main` non si tolgono mai. Sono nomi di ruolo del formato del
+/// I ruoli `main` non si tolgono mai; il finisher facoltativo (`core`) è il
+/// primo a saltare (`P-CORE-FINISHER`). Sono nomi di ruolo del formato del
 /// template, non numeri di dominio.
-const Map<String, int> _removalOrder = {'accessory': 0, 'secondary': 1};
+const Map<String, int> _removalOrder = {
+  'core': 0,
+  'accessory': 1,
+  'secondary': 2,
+};
 
 /// Passo 2b: se una seduta supera `sessionDurationMin` secondo
-/// [estimatedMinutes], toglie slot finché ci sta: prima gli isolamenti, poi i
+/// [estimatedMinutes], toglie slot finché ci sta: prima il finisher facoltativo, poi gli isolamenti, poi i
 /// complementari, sempre l'ultimo della seduta (`P-TIME-TRIM`); gli esercizi
 /// principali restano. Un superset che resta con un solo slot diventa un
 /// blocco singolo; un blocco vuoto sparisce. Se anche così la seduta non ci

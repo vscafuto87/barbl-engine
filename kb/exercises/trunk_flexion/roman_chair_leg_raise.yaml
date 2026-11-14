@@ -14,6 +14,9 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - hanging_leg_raise
+- reverse_crunch
+- barbell_rollout
+- cable_pallof_press
 - cable_crunch
 technique:
   setup:

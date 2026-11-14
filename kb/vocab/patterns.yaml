@@ -29,3 +29,7 @@ patterns:
   - { id: hip_abduction,      region: lower, mechanics: isolation, name: { it: Abduzione dell'anca,     en: Hip abduction } }
   - { id: hip_adduction,      region: lower, mechanics: isolation, name: { it: Adduzione dell'anca,     en: Hip adduction } }
   - { id: forearm_isolation,  region: upper, mechanics: isolation, name: { it: Avambracci,              en: Forearms } }
+  # Dalla KB 0.27.0, per il finisher dell'addome: tenere il busto fermo contro una forza che lo
+  # estende (rollout) o che lo ruota (Pallof press).
+  - { id: trunk_anti_extension, region: upper, mechanics: isolation, name: { it: Anti-estensione del busto, en: Trunk anti-extension } }
+  - { id: trunk_anti_rotation,  region: upper, mechanics: isolation, name: { it: Anti-rotazione del busto,  en: Trunk anti-rotation } }

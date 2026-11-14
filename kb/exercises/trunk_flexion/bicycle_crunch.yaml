@@ -1,0 +1,73 @@
+id: bicycle_crunch
+name:
+  it: Bicycle crunch
+  en: Bicycle crunch
+equipment: bodyweight
+requires: []
+pattern: trunk_flexion
+mechanics: isolation
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- weighted_crunch
+- cable_crunch
+- machine_crunch
+- reverse_crunch
+- cable_pallof_press
+technique:
+  setup:
+  - it: Sdraiati a terra, mani accanto alla testa senza intrecciare le dita.
+    en: Lie on the floor, hands beside your head without lacing your fingers.
+  - it: Spalle staccate da terra e gambe sollevate.
+    en: Shoulders off the floor and legs raised.
+  - it: Zona lombare appoggiata a terra.
+    en: Lower back pressed into the floor.
+  cues:
+  - it: Porta un gomito verso il ginocchio opposto mentre l'altra gamba si allunga.
+    en: Bring one elbow toward the opposite knee while the other leg extends.
+  - it: Ruota dal busto, non dal collo.
+    en: Rotate from your torso, not your neck.
+  - it: Una ripetizione vale un lato; alterna con ritmo controllato.
+    en: One rep is one side; alternate at a controlled pace.
+  mistakes:
+  - what:
+      it: Tiri la testa con le mani.
+      en: You pull your head with your hands.
+    fix:
+      it: Mani appoggiate, il lavoro lo fa il busto.
+      en: Hands just resting; your torso does the work.
+  - what:
+      it: Pedali veloce senza arrotolare la colonna.
+      en: You pedal fast without curling your spine.
+    fix:
+      it: Rallenta e stringi l'addome a ogni lato.
+      en: Slow down and squeeze your abs on each side.
+  - what:
+      it: La zona lombare si stacca da terra.
+      en: Your lower back lifts off the floor.
+    fix:
+      it: Tieni le gambe più alte finché la schiena resta giù.
+      en: Keep your legs higher until your back stays down.
+  sources:
+  - id: nippard-upper-lower
+    pages:
+    - 59
+    - 76
+    access: full_text
+  - id: nippard-womens-specialization
+    pages:
+    - 22
+    - 32
+    access: full_text
+  - id: schoenfeld-hypertrophy-2e
+    pages:
+    - 199
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Posizione e errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

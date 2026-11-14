@@ -434,6 +434,9 @@ class KbRole {
     required this.restLower,
     required this.rirFollowsMesocycle,
     required this.warmupMode,
+    this.optional = false,
+    this.yieldsToExtensions = false,
+    this.ruleIds = const [],
   });
 
   factory KbRole.fromJson(Map<String, Object?> json, String path) {
@@ -447,6 +450,11 @@ class KbRole {
       restLower: intAt(rest, 'lower', '$path.restSeconds'),
       rirFollowsMesocycle: boolOr(json, 'rirFollowsMesocycle', path, false),
       warmupMode: _warmupModeOf(json['warmup'], '$path.warmup'),
+      optional: boolOr(json, 'optional', path, false),
+      yieldsToExtensions: boolOr(json, 'yieldsToExtensions', path, false),
+      ruleIds: json.containsKey('rules')
+          ? stringsAt(json, 'rules', path)
+          : const [],
     );
   }
 
@@ -457,6 +465,16 @@ class KbRole {
   final int restLower;
   final bool rirFollowsMesocycle;
   final KbWarmupMode warmupMode;
+
+  /// Gli esercizi di questo ruolo sono facoltativi (`optional` del piano 3.1).
+  final bool optional;
+
+  /// Un esercizio facoltativo di questo ruolo in coda alla seduta lascia il
+  /// posto a un'estensione che altrimenti non entrerebbe nel tempo.
+  final bool yieldsToExtensions;
+
+  /// Regole che il piano aggiunge agli esercizi di questo ruolo.
+  final List<String> ruleIds;
 }
 
 /// Prescrizione per obiettivo.

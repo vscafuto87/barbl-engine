@@ -243,6 +243,90 @@
               ]
             }
           }
+        },
+        "core": {
+          "type": "object",
+          "required": [
+            "sets",
+            "reps",
+            "restSeconds",
+            "rirFollowsMesocycle",
+            "warmup"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "sets": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "reps": {
+              "type": "object",
+              "required": [
+                "min",
+                "max"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "min": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "restSeconds": {
+              "type": "object",
+              "required": [
+                "upper",
+                "lower"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "upper": {
+                  "type": "integer"
+                },
+                "lower": {
+                  "type": "integer"
+                }
+              }
+            },
+            "rirFollowsMesocycle": {
+              "type": "boolean"
+            },
+            "warmup": {
+              "description": "always: sempre; firstCompoundOfPattern: solo il primo multiarticolare di ogni pattern della seduta; never: mai. I booleani true e false valgono always e never.",
+              "oneOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "enum": [
+                    "always",
+                    "firstCompoundOfPattern",
+                    "never"
+                  ]
+                }
+              ]
+            },
+            "optional": {
+              "type": "boolean",
+              "description": "true = l'esercizio del piano è facoltativo (campo optional del contratto 3.1)."
+            },
+            "yieldsToExtensions": {
+              "type": "boolean",
+              "description": "true = un esercizio facoltativo di questo ruolo in coda alla seduta lascia il posto a un'estensione che altrimenti non entrerebbe nel tempo. Predefinito false."
+            },
+            "rules": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Regole (ruleId) che il piano aggiunge agli esercizi di questo ruolo; ognuna ha la sua motivazione."
+            }
+          }
         }
       }
     },

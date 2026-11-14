@@ -198,6 +198,11 @@
           "default": false,
           "description": "true = l'onboarding chiede il carico noto di questo esercizio. Il motore e il piano fisso lo scrivono solo quando è vero; senza la chiave vale false"
         },
+        "optional": {
+          "type": "boolean",
+          "default": false,
+          "description": "true = esercizio facoltativo (dal contratto 3.1): si può saltare senza lasciare la seduta a metà. Il motore lo scrive solo quando è vero"
+        },
         "alternatives": {
           "type": "array",
           "items": {
@@ -711,7 +716,7 @@
   },
   "properties": {
     "schemaVersion": {
-      "const": "3.0"
+      "enum": ["3.0", "3.1"]
     },
     "id": {
       "type": "string"

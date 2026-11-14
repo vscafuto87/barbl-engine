@@ -1,0 +1,67 @@
+id: decline_sit_up
+name:
+  it: Sit-up su panca declinata con peso
+  en: Weighted decline sit-up
+equipment: dumbbell
+requires:
+- bench
+- dumbbells
+pattern: trunk_flexion
+mechanics: isolation
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- weighted_crunch
+- cable_crunch
+- machine_crunch
+- reverse_crunch
+technique:
+  setup:
+  - it: Panca declinata, piedi bloccati sotto i rulli.
+    en: Decline bench, feet locked under the pads.
+  - it: Tieni un manubrio o un disco contro il petto.
+    en: Hold a dumbbell or a plate against your chest.
+  - it: Senza peso finché non fai tutte le ripetizioni con controllo.
+    en: No weight until you can do every rep with control.
+  cues:
+  - it: Sali arrotolando la colonna, una vertebra alla volta.
+    en: Come up curling your spine, one vertebra at a time.
+  - it: Fermati quando il busto è quasi verticale.
+    en: Stop when your torso is almost upright.
+  - it: Scendi lento finché tutta la schiena tocca la panca.
+    en: Lower slowly until your whole back rests on the pad.
+  mistakes:
+  - what:
+      it: Sali con la schiena dritta tirando con le anche.
+      en: You come up with a straight back, pulling with your hips.
+    fix:
+      it: Arrotola prima le spalle, poi il resto del busto.
+      en: Curl your shoulders first, then the rest of your torso.
+  - what:
+      it: Scendi di colpo e rimbalzi.
+      en: You drop down and bounce.
+    fix:
+      it: Controlla la discesa per due secondi.
+      en: Control the way down for two seconds.
+  - what:
+      it: Tieni il peso lontano dal petto.
+      en: You hold the weight away from your chest.
+    fix:
+      it: Peso stretto contro lo sterno per tutta la serie.
+      en: Weight tight against your sternum for the whole set.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 237
+    - 238
+    - 287
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

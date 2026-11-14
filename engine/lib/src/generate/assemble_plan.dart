@@ -10,7 +10,7 @@ import 'prescribe.dart';
 import 'rationales.dart';
 
 // Costanti di formato del contratto del piano.
-const String _planSchemaVersion = '3.0';
+const String _planSchemaVersion = '3.1';
 const String _trialRuleId = 'TRIAL-LOAD';
 const Set<String> _onlyWhenCited = {emphasisRuleId, extensionRuleId};
 const List<String> _weekDays = [
@@ -101,6 +101,9 @@ Map<String, Object?> _exercise(
   if (pe.fromExtension && !rules.contains(extensionRuleId)) {
     rules.add(extensionRuleId);
   }
+  for (final rule in pe.ruleIds) {
+    if (!rules.contains(rule)) rules.add(rule);
+  }
   return {
     'exerciseId': ex.id,
     'name': {'it': ex.nameIt, 'en': ex.nameEn},
@@ -115,6 +118,7 @@ Map<String, Object?> _exercise(
     if (ex.stepKg != null) 'stepKg': ex.stepKg,
     'rules': rules,
     if (pe.askLoad) 'askLoad': true,
+    if (pe.optional) 'optional': true,
     ..._withAlternatives(_alternatives(ex, inSession, profile, kb)),
   };
 }
@@ -176,9 +180,16 @@ Map<String, Object?> assemblePlan({
   // le usano, così un piano senza enfasi né estensioni resta identico a quello
   // di una KB che non le ha.
   final cited = _citedRules(sessionsJson);
+  // Anche le regole dei ruoli (il finisher dell'addome) entrano solo se un
+  // esercizio le cita.
+  final onlyWhenCited = {
+    ..._onlyWhenCited,
+    for (final p in kb.prescriptions)
+      for (final role in p.roles.values) ...role.ruleIds,
+  };
   final rationales = [
     for (final r in buildRationales(kb))
-      if (!_onlyWhenCited.contains(r['ruleId']) || cited.contains(r['ruleId']))
+      if (!onlyWhenCited.contains(r['ruleId']) || cited.contains(r['ruleId']))
         r,
   ];
 

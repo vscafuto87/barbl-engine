@@ -32,11 +32,28 @@ roles:
       lower: 90
     rirFollowsMesocycle: true
     warmup: false
+  core:
+    sets: 2
+    reps:
+      min: 10
+      max: 12
+    restSeconds:
+      upper: 90
+      lower: 90
+    rirFollowsMesocycle: true
+    warmup: false
+    optional: true
+    # Il finisher fa parte della seduta: le estensioni usano il tempo che
+    # resta dopo di lui (P-CORE-FINISHER).
+    yieldsToExtensions: false
+    rules:
+    - CORE-FINISHER
 supersetRestSeconds: 120
 timeBudget:
   minutesPerSet: 4
 provisional: true
 principles:
+- P-CORE-FINISHER
 - P-STRENGTH-PRESCRIPTION
 - P-STRENGTH-REP-ZONE
 - P-RIR-STR

@@ -1,0 +1,73 @@
+id: barbell_rollout
+name:
+  it: Rollout con bilanciere
+  en: Barbell rollout
+equipment: barbell
+requires:
+- barbell
+pattern: trunk_anti_extension
+mechanics: isolation
+technicalDemand: high
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- reverse_crunch
+- hanging_leg_raise
+- roman_chair_leg_raise
+- cable_pallof_press
+technique:
+  setup:
+  - it: Bilanciere a terra con due dischi tondi, così rotola.
+    en: Barbell on the floor with two round plates so it rolls.
+  - it: In ginocchio su un tappetino, mani sulla barra alla larghezza delle spalle.
+    en: Kneel on a mat, hands on the bar shoulder width apart.
+  - it: Spalle sopra la barra e bacino in retroversione.
+    en: Shoulders over the bar and pelvis tucked under.
+  cues:
+  - it: Stringi glutei e addome prima di partire.
+    en: Squeeze your glutes and abs before you start.
+  - it: Fai rotolare la barra in avanti solo finché la schiena resta piatta.
+    en: Roll the bar forward only as far as your back stays flat.
+  - it: Torna indietro tirando con l'addome, non con le anche.
+    en: Come back by pulling with your abs, not your hips.
+  mistakes:
+  - what:
+      it: La zona lombare si inarca in fondo al movimento.
+      en: Your lower back arches at the end of the movement.
+    fix:
+      it: Accorcia l'escursione e allungala con le settimane.
+      en: Shorten the range and lengthen it over the weeks.
+  - what:
+      it: Spingi i fianchi indietro per tornare.
+      en: You push your hips back to return.
+    fix:
+      it: Busto e cosce restano in linea per tutta la ripetizione.
+      en: Torso and thighs stay in line for the whole rep.
+  - what:
+      it: Braccia piegate durante la discesa.
+      en: Arms bending on the way out.
+    fix:
+      it: Braccia tese, si muove solo la barra.
+      en: Arms straight; only the bar moves.
+  sources:
+  - id: schoenfeld-hypertrophy-2e
+    pages:
+    - 199
+    - 217
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 115
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 35
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Posizione e errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -1,0 +1,64 @@
+id: cable_pallof_press
+name:
+  it: Pallof press al cavo
+  en: Cable Pallof press
+equipment: cable
+requires:
+- cables
+pattern: trunk_anti_rotation
+mechanics: isolation
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- reverse_crunch
+- bicycle_crunch
+- barbell_rollout
+- cable_crunch
+technique:
+  setup:
+  - it: Cavo all'altezza del petto; stai di fianco alla carrucola.
+    en: Cable at chest height; stand side-on to the pulley.
+  - it: Maniglia al centro del petto, piedi alla larghezza delle spalle.
+    en: Handle at the middle of your chest, feet shoulder width apart.
+  - it: Fai un passo laterale finché il cavo è in tensione.
+    en: Take a side step until the cable is under tension.
+  cues:
+  - it: Spingi la maniglia in avanti a braccia tese senza farti girare.
+    en: Press the handle straight out without letting your torso turn.
+  - it: Tieni un secondo, poi riporta la maniglia al petto.
+    en: Hold for a second, then bring the handle back to your chest.
+  - it: Fai tutte le ripetizioni da un lato, poi cambia lato.
+    en: Do all your reps on one side, then switch sides.
+  mistakes:
+  - what:
+      it: Il busto ruota verso la carrucola.
+      en: Your torso rotates toward the pulley.
+    fix:
+      it: Allontanati di meno o scendi di peso.
+      en: Stand a bit closer or lower the weight.
+  - what:
+      it: Spalle alzate verso le orecchie.
+      en: Shoulders creeping up to your ears.
+    fix:
+      it: Spalle basse, la forza viene dal busto.
+      en: Shoulders down; the effort comes from your trunk.
+  - what:
+      it: Ginocchia tese e bacino che si sposta.
+      en: Locked knees and hips drifting.
+    fix:
+      it: Ginocchia morbide, glutei stretti, bacino fermo.
+      en: Soft knees, glutes tight, hips still.
+  sources:
+  - id: nippard-upper-lower
+    pages:
+    - 76
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Posizione e errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

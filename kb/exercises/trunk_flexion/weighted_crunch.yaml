@@ -16,6 +16,9 @@ loading:
 substitutes:
 - cable_crunch
 - machine_crunch
+- decline_sit_up
+- bicycle_crunch
+- reverse_crunch
 technique:
   setup:
   - it: Sdraiati a terra, ginocchia piegate e piedi appoggiati.

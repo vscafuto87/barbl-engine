@@ -16,8 +16,12 @@ loading:
 substitutes:
 - machine_crunch
 - weighted_crunch
+- decline_sit_up
+- bicycle_crunch
 - hanging_leg_raise
 - roman_chair_leg_raise
+- reverse_crunch
+- cable_pallof_press
 technique:
   setup:
   - it: Cavo alto con la corda, inginocchiati davanti alla carrucola.

@@ -369,6 +369,17 @@ BundleResult buildBundle(Directory kbDir, {String? kbCommit}) {
         );
       }
     }
+    final roles = _asMapOrNull(d.data['roles']);
+    for (final entry in roles?.entries ?? const <MapEntry<String, Object?>>[]) {
+      for (final rule in _stringList(_asMapOrNull(entry.value)?['rules'])) {
+        if (!rationales.containsKey(rule)) {
+          errors.add(
+            '${d.path}: prescrizione ${d.data['id']}, ruolo ${entry.key}: '
+            'la regola $rule non ha una motivazione',
+          );
+        }
+      }
+    }
   }
 
   // Gruppi di parametri.

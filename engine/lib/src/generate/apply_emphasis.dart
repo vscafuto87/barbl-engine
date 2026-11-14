@@ -39,6 +39,7 @@ List<ChosenSession> applyEmphasis(
   };
   final sets = [for (final s in sessions) _sessionSets(s, prescription)];
   final added = <int, List<ChosenBlock>>{};
+  final dropTail = <int>{};
   for (final id in profile.emphasis) {
     final placements = kb.emphases[id]?.placements[template.id];
     if (placements == null) continue;
@@ -69,9 +70,20 @@ List<ChosenSession> applyEmphasis(
         }
       }
       if (exercise == null) continue;
-      final total = current + role.sets;
+      var total = current + role.sets;
       if (estimatedMinutes(total, prescription) > profile.sessionDurationMin) {
-        continue;
+        // L'enfasi scelta dalla persona vince sul finisher facoltativo: se
+        // senza il finisher ci sta, il finisher salta (`P-CORE-FINISHER`).
+        final optionalSets = dropTail.contains(i)
+            ? 0
+            : optionalTailSets(sessions[i].blocks, prescription);
+        if (optionalSets == 0 ||
+            estimatedMinutes(total - optionalSets, prescription) >
+                profile.sessionDurationMin) {
+          continue;
+        }
+        total -= optionalSets;
+        dropTail.add(i);
       }
       sets[i] = total;
       added
@@ -88,9 +100,14 @@ List<ChosenSession> applyEmphasis(
     for (var i = 0; i < sessions.length; i++)
       added[i] == null
           ? sessions[i]
-          : ChosenSession(sessions[i].session, [
-              ...sessions[i].blocks,
-              ...added[i]!,
-            ]),
+          : ChosenSession(
+              sessions[i].session,
+              insertBeforeOptionalTail(
+                sessions[i].blocks,
+                added[i]!,
+                prescription,
+                dropTail: dropTail.contains(i),
+              ),
+            ),
   ];
 }

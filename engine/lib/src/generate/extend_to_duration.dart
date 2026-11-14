@@ -10,7 +10,9 @@ import 'weekly_volume.dart';
 /// (un blocco singolo) se:
 ///
 /// 1. la seduta, con le serie in più, resta entro `sessionDurationMin` secondo
-///    [estimatedMinutes];
+///    [estimatedMinutes]; se il ruolo del finisher facoltativo ha
+///    `yieldsToExtensions`, il finisher di quella seduta può lasciare il posto
+///    (`P-CORE-FINISHER`);
 /// 2. la seduta non ha già quel pattern (dal template, dall'enfasi o da
 ///    un'estensione precedente);
 /// 3. dopo l'aggiunta nessun muscolo dell'esercizio supera il tetto di volume
@@ -38,6 +40,7 @@ List<ChosenSession> extendToDuration(
   ];
   final volume = weeklyVolume(sessions, prescription, kb);
   final added = <int, List<ChosenBlock>>{};
+  final dropTail = <int>{};
   final usedInWeek = <String>{
     for (final s in sessions)
       for (final b in s.blocks)
@@ -81,9 +84,28 @@ List<ChosenSession> extendToDuration(
     if (current == null) continue;
     final role = prescription.roles[extension.slot.role];
     if (role == null) continue;
+    // Il finisher facoltativo lascia il posto a un'estensione solo se il suo
+    // ruolo lo dice (`yieldsToExtensions`, `P-CORE-FINISHER`): altrimenti fa
+    // parte della seduta e le estensioni usano il tempo che resta dopo di lui.
+    var dropsTail = false;
     if (estimatedMinutes(current + role.sets, prescription) >
         profile.sessionDurationMin) {
-      continue;
+      final tail = _optionalTail(sessions[i], prescription);
+      final yields =
+          !dropTail.contains(i) &&
+          tail.isNotEmpty &&
+          tail.every(
+            (slot) => prescription.roles[slot.slot.role]!.yieldsToExtensions,
+          );
+      final optionalSets = yields
+          ? optionalTailSets(sessions[i].blocks, prescription)
+          : 0;
+      if (optionalSets == 0 ||
+          estimatedMinutes(current - optionalSets + role.sets, prescription) >
+              profile.sessionDurationMin) {
+        continue;
+      }
+      dropsTail = true;
     }
     if (patternsInSession[i]!.contains(extension.slot.pattern)) continue;
     final pool = [
@@ -106,6 +128,16 @@ List<ChosenSession> extendToDuration(
       '${sessions[i].session.id}|$n',
     );
     final next = Map<String, double>.of(volume);
+    if (dropsTail) {
+      for (final slot in _optionalTail(sessions[i], prescription)) {
+        addSets(
+          next,
+          slot.exercise,
+          -prescription.roles[slot.slot.role]!.sets,
+          kb,
+        );
+      }
+    }
     addSets(next, exercise, role.sets, kb);
     final muscles = [exercise.primaryMuscle, ...exercise.secondaryMuscles];
     if (muscles.any((m) => (next[m] ?? 0) > cap)) continue;
@@ -113,7 +145,15 @@ List<ChosenSession> extendToDuration(
     volume
       ..clear()
       ..addAll(next);
-    totalSets[i] = current + role.sets;
+    if (dropsTail) {
+      dropTail.add(i);
+      totalSets[i] =
+          current -
+          optionalTailSets(sessions[i].blocks, prescription) +
+          role.sets;
+    } else {
+      totalSets[i] = current + role.sets;
+    }
     inSession[i]!.add(exercise.id);
     patternsInSession[i]!.add(exercise.pattern);
     usedInWeek.add(exercise.id);
@@ -130,11 +170,26 @@ List<ChosenSession> extendToDuration(
     for (var i = 0; i < sessions.length; i++)
       added[i] == null
           ? sessions[i]
-          : ChosenSession(sessions[i].session, [
-              ...sessions[i].blocks,
-              ...added[i]!,
-            ]),
+          : ChosenSession(
+              sessions[i].session,
+              insertBeforeOptionalTail(
+                sessions[i].blocks,
+                added[i]!,
+                prescription,
+                dropTail: dropTail.contains(i),
+              ),
+            ),
   ];
+}
+
+/// Esercizi della coda facoltativa di [session].
+List<ChosenSlot> _optionalTail(
+  ChosenSession session,
+  KbPrescription prescription,
+) {
+  final cut =
+      session.blocks.length - optionalTailLength(session.blocks, prescription);
+  return [for (final b in session.blocks.sublist(cut)) ...b.slots];
 }
 
 /// Serie di una seduta con la prescrizione data; null se un ruolo manca (la

@@ -18,6 +18,8 @@ class PrescribedExercise {
     required this.askLoad,
     this.fromEmphasis = false,
     this.fromExtension = false,
+    this.optional = false,
+    this.ruleIds = const [],
   });
 
   final KbExercise exercise;
@@ -37,6 +39,12 @@ class PrescribedExercise {
 
   /// Vero per gli esercizi aggiunti per usare il tempo che resta.
   final bool fromExtension;
+
+  /// Facoltativo per il ruolo (`optional` del piano 3.1).
+  final bool optional;
+
+  /// Regole del ruolo da citare nell'esercizio.
+  final List<String> ruleIds;
 }
 
 /// Blocco con la prescrizione applicata.
@@ -172,6 +180,8 @@ Result<List<PrescribedSession>> prescribe(
             askLoad: slot.askLoad,
             fromEmphasis: chosenSlot.fromEmphasis,
             fromExtension: chosenSlot.fromExtension,
+            optional: role.optional,
+            ruleIds: role.ruleIds,
           ),
         );
       }

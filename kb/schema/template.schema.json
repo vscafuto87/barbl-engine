@@ -128,7 +128,8 @@
                         "enum": [
                           "main",
                           "secondary",
-                          "accessory"
+                          "accessory",
+                          "core"
                         ]
                       },
                       "candidates": {
