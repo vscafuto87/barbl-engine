@@ -1,0 +1,66 @@
+id: ez_bar_reverse_curl
+name:
+  it: Reverse curl con EZ
+  en: EZ-bar reverse curl
+equipment: barbell
+requires:
+- barbell
+pattern: forearm_isolation
+mechanics: isolation
+muscles:
+  primary: forearms
+  secondary:
+  - biceps
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- dumbbell_wrist_extension
+- hammer_curl
+- dumbbell_wrist_curl
+technique:
+  setup:
+  - it: In piedi, prendi la barra EZ con i palmi verso il basso.
+    en: Stand and hold the EZ bar palms down.
+  - it: Mani alla larghezza delle spalle, gomiti vicino ai fianchi.
+    en: Hands shoulder-width, elbows by your sides.
+  - it: Stringi forte la barra con le dita.
+    en: Squeeze the bar hard with your fingers.
+  cues:
+  - it: Porta la barra in alto tenendo i polsi dritti.
+    en: Curl the bar up keeping your wrists straight.
+  - it: Scendi lento fino alle braccia tese.
+    en: Lower slowly to straight arms.
+  mistakes:
+  - what:
+      it: I polsi cedono e si piegano in giù.
+      en: Your wrists give and bend down.
+    fix:
+      it: Polsi in linea con gli avambracci.
+      en: Wrists in line with your forearms.
+  - what:
+      it: Dondoli con il busto.
+      en: You swing your torso.
+    fix:
+      it: 'Usa meno peso: questo esercizio regge carichi bassi.'
+      en: 'Use less weight: this lift takes light loads.'
+  - what:
+      it: I gomiti vanno in avanti.
+      en: Your elbows drift forward.
+    fix:
+      it: Gomiti fermi accanto ai fianchi.
+      en: Elbows fixed by your sides.
+  sources:
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 11
+    access: full_text
+  - id: nippard-muscle-ladder
+    pages:
+    - 274
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

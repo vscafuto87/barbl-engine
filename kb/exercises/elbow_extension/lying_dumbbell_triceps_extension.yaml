@@ -18,6 +18,7 @@ substitutes:
 - barbell_skull_crusher
 - dumbbell_overhead_triceps_extension
 - cable_triceps_pushdown
+- jm_press
 technique:
   setup:
   - it: Sdraiati sulla panca con i piedi a terra.

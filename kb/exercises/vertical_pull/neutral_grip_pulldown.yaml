@@ -21,6 +21,7 @@ substitutes:
 - underhand_lat_pulldown
 - machine_pulldown
 - pull_up
+- neutral_grip_pull_up
 technique:
   setup:
   - it: Aggancia al cavo alto una maniglia a V.

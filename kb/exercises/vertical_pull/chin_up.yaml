@@ -17,6 +17,7 @@ substitutes:
 - underhand_lat_pulldown
 - pull_up
 - lat_pulldown
+- neutral_grip_pull_up
 technique:
   setup:
   - it: Prendi la sbarra con i palmi verso di te, mani alla larghezza delle spalle.

@@ -17,6 +17,9 @@ substitutes:
 - dumbbell_lateral_raise
 - lying_incline_lateral_raise
 - cable_y_raise
+- lean_in_lateral_raise
+- egyptian_lateral_raise
+- cable_upright_row
 technique:
   setup:
   - it: Metti la puleggia all'altezza del polso e attacca una maniglia.

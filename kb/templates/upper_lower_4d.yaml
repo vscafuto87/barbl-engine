@@ -51,6 +51,7 @@ sessions:
       - chest_supported_t_bar_row
       - pendlay_row
       - meadows_row
+      - elbows_out_cable_row
     - pattern: vertical_push
       role: secondary
       askLoad: true
@@ -81,6 +82,7 @@ sessions:
       - pull_up
       - chin_up
       - chest_supported_dumbbell_row
+      - neutral_grip_pull_up
   - type: superset
     label: B
     slots:
@@ -96,9 +98,11 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
+      - jm_press
+      - close_grip_push_up
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 7
+      equivalent: 8
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
@@ -107,6 +111,7 @@ sessions:
       - behind_the_body_cable_curl
       - machine_preacher_curl
       - ez_bar_curl
+      - ez_bar_preacher_curl
       - hammer_curl
       - barbell_curl
       - spider_curl
@@ -129,16 +134,18 @@ sessions:
       - front_squat
       - pendulum_squat
       - belt_squat
+      - single_leg_press
   - type: single
     slots:
     - pattern: knee_flexion
       role: accessory
-      equivalent: 4
+      equivalent: 5
       candidates:
       - seated_leg_curl
       - standing_leg_curl
       - dumbbell_leg_curl
       - glute_ham_raise
+      - single_leg_curl
       - single_leg_dumbbell_romanian_deadlift
       - leg_curl
       - dumbbell_romanian_deadlift
@@ -204,7 +211,7 @@ sessions:
     slots:
     - pattern: horizontal_pull
       role: secondary
-      equivalent: 6
+      equivalent: 7
       candidates:
       - seated_cable_row
       - chest_supported_dumbbell_row
@@ -212,6 +219,7 @@ sessions:
       - single_arm_cable_row
       - chest_supported_t_bar_row
       - pendlay_row
+      - elbows_out_cable_row
       - barbell_row
       - inverted_row
       - meadows_row
@@ -229,6 +237,7 @@ sessions:
       - pull_up
       - chin_up
       - dumbbell_row
+      - neutral_grip_pull_up
   - type: single
     slots:
     - pattern: chest_isolation
@@ -246,7 +255,7 @@ sessions:
     slots:
     - pattern: elbow_flexion
       role: accessory
-      equivalent: 7
+      equivalent: 8
       candidates:
       - incline_dumbbell_curl
       - dumbbell_preacher_curl
@@ -255,6 +264,7 @@ sessions:
       - behind_the_body_cable_curl
       - machine_preacher_curl
       - ez_bar_curl
+      - ez_bar_preacher_curl
       - hammer_curl
       - barbell_curl
       - spider_curl
@@ -271,6 +281,8 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
+      - jm_press
+      - close_grip_push_up
 - id: lower_b
   name:
     it: Lower B
@@ -301,6 +313,7 @@ sessions:
       - belt_squat
       - goblet_squat
       - smith_machine_squat
+      - single_leg_press
   - type: single
     slots:
     - pattern: lunge
@@ -317,12 +330,13 @@ sessions:
     slots:
     - pattern: knee_flexion
       role: accessory
-      equivalent: 4
+      equivalent: 5
       candidates:
       - seated_leg_curl
       - standing_leg_curl
       - dumbbell_leg_curl
       - glute_ham_raise
+      - single_leg_curl
       - single_leg_dumbbell_romanian_deadlift
       - leg_curl
       - dumbbell_romanian_deadlift
@@ -369,13 +383,16 @@ extensions:
   slot:
     pattern: lateral_raise
     role: accessory
-    equivalent: 4
+    equivalent: 6
     candidates:
     - cable_lateral_raise
     - dumbbell_lateral_raise
     - lying_incline_lateral_raise
     - cable_y_raise
+    - lean_in_lateral_raise
+    - egyptian_lateral_raise
     - machine_lateral_raise
+    - cable_upright_row
 - session: lower_b
   slot:
     pattern: rear_delt_fly
@@ -404,13 +421,16 @@ extensions:
   slot:
     pattern: lateral_raise
     role: accessory
-    equivalent: 4
+    equivalent: 6
     candidates:
     - cable_lateral_raise
     - dumbbell_lateral_raise
     - lying_incline_lateral_raise
     - cable_y_raise
+    - lean_in_lateral_raise
+    - egyptian_lateral_raise
     - machine_lateral_raise
+    - cable_upright_row
 - session: upper_b
   slot:
     pattern: rear_delt_fly
@@ -497,7 +517,8 @@ extensions:
     - dumbbell_shrug
     - cable_shrug_in
     - barbell_shrug
-    equivalent: 3
+    - machine_shrug
+    equivalent: 4
 - session: upper_b
   slot:
     pattern: forearm_isolation
@@ -505,4 +526,5 @@ extensions:
     candidates:
     - dumbbell_wrist_curl
     - dumbbell_wrist_extension
-    equivalent: 2
+    - ez_bar_reverse_curl
+    equivalent: 3

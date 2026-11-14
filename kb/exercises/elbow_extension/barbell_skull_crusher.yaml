@@ -17,6 +17,7 @@ loading:
 substitutes:
 - dumbbell_overhead_triceps_extension
 - lying_dumbbell_triceps_extension
+- jm_press
 technique:
   setup:
   - it: Sdraiati sulla panca con il bilanciere EZ in mano, presa stretta.

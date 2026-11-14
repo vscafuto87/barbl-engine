@@ -17,6 +17,7 @@ loading:
 substitutes:
 - dumbbell_shrug
 - cable_shrug_in
+- machine_shrug
 technique:
   setup:
   - it: Prendi il bilanciere dal rack all'altezza delle cosce.

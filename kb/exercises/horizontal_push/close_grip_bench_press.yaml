@@ -20,6 +20,7 @@ loading:
 substitutes:
 - barbell_bench_press
 - dumbbell_bench_press
+- jm_press
 technique:
   setup:
   - it: Sdraiati come per la panca piana.

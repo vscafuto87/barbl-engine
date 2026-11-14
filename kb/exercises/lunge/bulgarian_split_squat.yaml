@@ -21,6 +21,7 @@ substitutes:
 - goblet_squat
 - smith_machine_split_squat
 - barbell_lunge
+- single_leg_press
 technique:
   setup:
   - it: Tieni un manubrio per mano, oppure uno solo contro il petto.

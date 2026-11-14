@@ -20,6 +20,7 @@ substitutes:
 - front_squat
 - pendulum_squat
 - belt_squat
+- single_leg_press
 technique:
   setup:
   - it: Appoggia schiena e spalle ai cuscini della macchina.

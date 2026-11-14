@@ -18,6 +18,7 @@ loading:
 substitutes:
 - straight_arm_lat_pulldown
 - lat_pulldown
+- machine_pullover
 technique:
   setup:
   - it: Sdraiati sulla panca, parte alta della schiena appoggiata.

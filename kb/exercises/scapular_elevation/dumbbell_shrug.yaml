@@ -16,6 +16,7 @@ loading:
 substitutes:
 - barbell_shrug
 - cable_shrug_in
+- machine_shrug
 technique:
   setup:
   - it: In piedi o seduto, un manubrio per mano lungo i fianchi.

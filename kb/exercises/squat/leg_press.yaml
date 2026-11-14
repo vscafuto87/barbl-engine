@@ -19,6 +19,7 @@ substitutes:
 - goblet_squat
 - pendulum_squat
 - belt_squat
+- single_leg_press
 technique:
   setup:
   - it: Siediti con schiena e bacino ben appoggiati allo schienale.

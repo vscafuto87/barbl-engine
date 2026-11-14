@@ -1,0 +1,63 @@
+id: egyptian_lateral_raise
+name:
+  it: Alzate laterali Egyptian al cavo
+  en: Egyptian cable lateral raise
+equipment: cable
+requires:
+- cables
+pattern: lateral_raise
+mechanics: isolation
+muscles:
+  primary: shoulders
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- cable_lateral_raise
+- machine_lateral_raise
+- lean_in_lateral_raise
+technique:
+  setup:
+  - it: Cavo basso con la maniglia singola, mettiti di fianco alla colonna.
+    en: Low cable with a single handle; stand side-on to the stack.
+  - it: Con la mano vicina tieni la colonna e inclinati lontano dal cavo.
+    en: Hold the stack with your near hand and lean away from the cable.
+  - it: Prendi la maniglia con la mano lontana, braccio davanti al corpo.
+    en: Take the handle with your far hand, arm across your body.
+  cues:
+  - it: Alza il braccio di lato fino all'altezza della spalla.
+    en: Raise your arm out to the side up to shoulder height.
+  - it: Pensa a stringere il deltoide laterale.
+    en: Focus on squeezing your side delt.
+  - it: Torna lento oltre la linea del corpo.
+    en: Return slowly past your midline.
+  mistakes:
+  - what:
+      it: Resti dritto invece di inclinarti.
+      en: You stay upright instead of leaning.
+    fix:
+      it: Inclinati con il braccio d'appoggio teso.
+      en: Lean with your support arm straight.
+  - what:
+      it: Tiri con il trapezio e alzi la spalla.
+      en: You pull with your trap and hike your shoulder.
+    fix:
+      it: Spalla bassa, sale solo il braccio.
+      en: Shoulder down; only your arm rises.
+  - what:
+      it: Il busto si muove a ogni ripetizione.
+      en: Your torso moves every rep.
+    fix:
+      it: Tieni fissa l'inclinazione.
+      en: Hold the lean steady.
+  sources:
+  - id: nippard-powerbuilding-2
+    pages:
+    - 40
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

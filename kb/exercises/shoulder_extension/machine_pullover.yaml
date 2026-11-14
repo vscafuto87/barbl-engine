@@ -1,0 +1,65 @@
+id: machine_pullover
+name:
+  it: Pullover alla macchina
+  en: Machine pullover
+equipment: machine
+requires:
+- machines
+pattern: shoulder_extension
+mechanics: isolation
+muscles:
+  primary: back
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- straight_arm_lat_pulldown
+- dumbbell_pullover
+- lat_pulldown
+technique:
+  setup:
+  - it: 'Regola il sedile: le spalle stanno all''altezza del perno della macchina.'
+    en: Set the seat so your shoulders line up with the machine's pivot.
+  - it: Gomiti sui cuscinetti, mani appena appoggiate alla barra.
+    en: Elbows on the pads, hands resting lightly on the bar.
+  - it: Schiena contro lo schienale e cintura stretta se c'è.
+    en: Back against the pad, belt snug if there is one.
+  cues:
+  - it: Spingi i gomiti in basso verso i fianchi.
+    en: Drive your elbows down toward your hips.
+  - it: Risali lento fino a sentire i dorsali allungati.
+    en: Go back up slowly until your lats stretch.
+  mistakes:
+  - what:
+      it: Tiri con le mani e pieghi i gomiti.
+      en: You pull with your hands and bend your elbows.
+    fix:
+      it: 'Mani rilassate: la forza passa dai gomiti.'
+      en: 'Relax your hands: the force goes through your elbows.'
+  - what:
+      it: Il busto si stacca dallo schienale.
+      en: Your torso comes off the backrest.
+    fix:
+      it: Resta seduto ben dritto per tutta la serie.
+      en: Stay seated upright for the whole set.
+  - what:
+      it: Ampiezza corta in alto.
+      en: Short range at the top.
+    fix:
+      it: Lascia salire le braccia fin dove le spalle restano comode.
+      en: Let your arms rise as far as your shoulders stay comfortable.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 272
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 4
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

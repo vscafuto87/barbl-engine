@@ -17,6 +17,7 @@ substitutes:
 - barbell_curl
 - dumbbell_curl
 - cable_curl
+- ez_bar_preacher_curl
 technique:
   setup:
   - it: In piedi, prendi il bilanciere EZ sulle curve interne o esterne.

@@ -16,6 +16,7 @@ loading:
   whenLoadUnknown: manual
 substitutes:
 - dumbbell_wrist_curl
+- ez_bar_reverse_curl
 technique:
   setup:
   - it: Inginocchiati accanto alla panca o siediti.

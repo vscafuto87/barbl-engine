@@ -1,0 +1,69 @@
+id: neutral_grip_pull_up
+name:
+  it: Trazioni presa neutra
+  en: Neutral-grip pull-up
+equipment: bodyweight
+requires:
+- pull_up_bar
+pattern: vertical_pull
+mechanics: compound
+muscles:
+  primary: back
+  secondary:
+  - biceps
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- neutral_grip_pulldown
+- pull_up
+- chin_up
+technique:
+  setup:
+  - it: Prendi le maniglie parallele con i palmi uno verso l'altro.
+    en: Grab the parallel handles, palms facing each other.
+  - it: Appenditi a braccia tese e lascia allungare la schiena.
+    en: Hang with straight arms and let your back stretch.
+  - it: Se ne fai meno di sei, usa un elastico o la macchina assistita.
+    en: If you get fewer than six, use a band or the assisted machine.
+  cues:
+  - it: Porta il petto verso le maniglie spingendo i gomiti in basso.
+    en: Bring your chest to the handles by driving your elbows down.
+  - it: Scendi lento fino alle braccia tese.
+    en: Lower slowly to straight arms.
+  mistakes:
+  - what:
+      it: Dondoli e usi lo slancio delle gambe.
+      en: You swing and use leg momentum.
+    fix:
+      it: Fermati un attimo in basso e riparti da fermo.
+      en: Pause briefly at the bottom and start from a dead stop.
+  - what:
+      it: Ti fermi a metà e non torni a braccia tese.
+      en: You stop halfway and never return to straight arms.
+    fix:
+      it: 'Scendi fino in fondo: l''allungamento conta.'
+      en: 'Go all the way down: the stretch matters.'
+  - what:
+      it: Ne fai tante facili.
+      en: You do lots of easy reps.
+    fix:
+      it: Se superi il range, aggiungi peso con una cintura.
+      en: If you pass the range, add weight with a belt.
+  sources:
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 7
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 58
+    access: full_text
+  - id: nippard-upper-lower
+    pages:
+    - 34
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

@@ -1,0 +1,69 @@
+id: jm_press
+name:
+  it: JM press
+  en: JM press
+equipment: barbell
+requires:
+- barbell
+- bench
+pattern: elbow_extension
+mechanics: isolation
+technicalDemand: high
+muscles:
+  primary: triceps
+  secondary: []
+loading:
+  stepKg: 2.5
+  whenLoadUnknown: manual
+substitutes:
+- barbell_skull_crusher
+- close_grip_bench_press
+- lying_dumbbell_triceps_extension
+technique:
+  setup:
+  - it: Sdraiati sulla panca con il bilanciere sopra il petto, presa alla larghezza delle spalle.
+    en: Lie on the bench with the bar over your chest, shoulder-width grip.
+  - it: Gomiti in avanti, puntati verso i piedi.
+    en: Elbows forward, pointing toward your feet.
+  - it: Inizia con un carico leggero per imparare la traiettoria.
+    en: Start light to learn the bar path.
+  cues:
+  - it: Scendi piegando i gomiti e portando la barra verso il mento.
+    en: Lower by bending your elbows and bringing the bar toward your chin.
+  - it: Gli avambracci finiscono quasi a contatto con i bicipiti.
+    en: Your forearms end up nearly touching your biceps.
+  - it: Spingi indietro fino alle braccia tese.
+    en: Press back up to straight arms.
+  mistakes:
+  - what:
+      it: Diventa una panca stretta con i gomiti che scendono.
+      en: It turns into a close-grip bench with your elbows dropping.
+    fix:
+      it: 'Gomiti fermi in avanti: si piegano, non scendono.'
+      en: 'Elbows stay forward: they bend, they don''t drop.'
+  - what:
+      it: Diventa un french press con la barra dietro la testa.
+      en: It turns into a skull crusher with the bar behind your head.
+    fix:
+      it: La barra scende verso il mento, non dietro.
+      en: The bar goes to your chin, not behind.
+  - what:
+      it: Gomiti che si aprono.
+      en: Elbows flaring.
+    fix:
+      it: Tienili stretti e puntati verso i piedi.
+      en: Keep them tucked, pointing at your feet.
+  sources:
+  - id: nippard-powerbuilding-2
+    pages:
+    - 113
+    access: full_text
+  - id: nippard-upper-lower
+    pages:
+    - 76
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

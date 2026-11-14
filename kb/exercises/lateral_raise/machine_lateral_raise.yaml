@@ -17,6 +17,8 @@ substitutes:
 - cable_lateral_raise
 - dumbbell_lateral_raise
 - lying_incline_lateral_raise
+- egyptian_lateral_raise
+- cable_upright_row
 technique:
   setup:
   - it: 'Regola il sedile: le spalle sono all''altezza dei perni dei bracci.'

@@ -19,6 +19,7 @@ substitutes:
 - chest_supported_dumbbell_row
 - seated_cable_row
 - pendlay_row
+- elbows_out_cable_row
 technique:
   setup:
   - it: Petto sul cuscino, piedi ben piantati sulla pedana.
