@@ -159,7 +159,7 @@ Result<List<PrescribedSession>> prescribe(
         final int? rest = isSuperset
             ? null
             : _restFor(focus, role, chosenSlot.exercise, kb);
-        totalSets += role.sets;
+        totalSets += role.timedSets;
         final firstOfPattern = seenPatterns.add(chosenSlot.exercise.pattern);
         final warmup = switch (role.warmupMode) {
           KbWarmupMode.always => true,

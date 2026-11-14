@@ -44,9 +44,10 @@ roles:
     rirFollowsMesocycle: true
     warmup: false
     optional: true
-    # Il finisher fa parte della seduta: le estensioni usano il tempo che
-    # resta dopo di lui (P-CORE-FINISHER).
-    yieldsToExtensions: false
+    # Il finisher facoltativo non conta nella durata della seduta: non toglie
+    # tempo agli altri esercizi e c'è a ogni durata (P-CORE-FINISHER, scelta di
+    # Vincenzo del 14/11/2026).
+    countsTowardDuration: false
     rules:
     - CORE-FINISHER
 supersetRestSeconds: 120

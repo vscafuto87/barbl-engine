@@ -12,7 +12,7 @@ int? _sessionSets(ChosenSession session, KbPrescription prescription) {
     for (final slot in block.slots) {
       final role = prescription.roles[slot.slot.role];
       if (role == null) return null;
-      total += role.sets;
+      total += role.timedSets;
     }
   }
   return total;
@@ -70,7 +70,7 @@ List<ChosenSession> applyEmphasis(
         }
       }
       if (exercise == null) continue;
-      var total = current + role.sets;
+      var total = current + role.timedSets;
       if (estimatedMinutes(total, prescription) > profile.sessionDurationMin) {
         // L'enfasi scelta dalla persona vince sul finisher facoltativo: se
         // senza il finisher ci sta, il finisher salta (`P-CORE-FINISHER`).

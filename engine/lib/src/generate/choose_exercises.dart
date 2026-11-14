@@ -199,13 +199,13 @@ List<ChosenBlock> insertBeforeOptionalTail(
   ];
 }
 
-/// Serie della coda facoltativa di [blocks].
+/// Serie della coda facoltativa di [blocks] che contano nella durata.
 int optionalTailSets(List<ChosenBlock> blocks, KbPrescription prescription) {
   var total = 0;
   final cut = blocks.length - optionalTailLength(blocks, prescription);
   for (final block in blocks.sublist(cut)) {
     for (final slot in block.slots) {
-      total += prescription.roles[slot.slot.role]?.sets ?? 0;
+      total += prescription.roles[slot.slot.role]?.timedSets ?? 0;
     }
   }
   return total;

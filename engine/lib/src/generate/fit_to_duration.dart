@@ -5,7 +5,8 @@ import 'prescribe.dart';
 
 /// Priorità di rimozione per ruolo: il numero più basso si toglie per primo.
 /// I ruoli `main` non si tolgono mai; il finisher facoltativo (`core`) è il
-/// primo a saltare (`P-CORE-FINISHER`). Sono nomi di ruolo del formato del
+/// primo a saltare se il suo ruolo conta nella durata (con
+/// `countsTowardDuration: false` non si toglie mai, `P-CORE-FINISHER`). Sono nomi di ruolo del formato del
 /// template, non numeri di dominio.
 const Map<String, int> _removalOrder = {
   'core': 0,
@@ -41,7 +42,7 @@ ChosenSession _fit(
       for (final s in b.slots) {
         final role = prescription.roles[s.slot.role];
         if (role == null) return null;
-        sets += role.sets;
+        sets += role.timedSets;
       }
     }
     return sets;
@@ -59,8 +60,13 @@ ChosenSession _fit(
     var bestRank = 1 << 30;
     for (var i = 0; i < blocks.length; i++) {
       for (var j = 0; j < blocks[i].slots.length; j++) {
-        final rank = _removalOrder[blocks[i].slots[j].slot.role];
+        final roleId = blocks[i].slots[j].slot.role;
+        final rank = _removalOrder[roleId];
         if (rank == null) continue;
+        // Uno slot che non conta nella durata non si toglie per il tempo.
+        if (!(prescription.roles[roleId]?.countsTowardDuration ?? true)) {
+          continue;
+        }
         if (rank <= bestRank) {
           bestRank = rank;
           bestBlock = i;

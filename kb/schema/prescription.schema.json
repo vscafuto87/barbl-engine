@@ -315,9 +315,9 @@
               "type": "boolean",
               "description": "true = l'esercizio del piano è facoltativo (campo optional del contratto 3.1)."
             },
-            "yieldsToExtensions": {
+            "countsTowardDuration": {
               "type": "boolean",
-              "description": "true = un esercizio facoltativo di questo ruolo in coda alla seduta lascia il posto a un'estensione che altrimenti non entrerebbe nel tempo. Predefinito false."
+              "description": "false = le serie di questo ruolo non contano nella durata stimata della seduta (estimatedDurationMin, taglio per il tempo, enfasi, estensioni). Predefinito true."
             },
             "rules": {
               "type": "array",

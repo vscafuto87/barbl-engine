@@ -435,7 +435,7 @@ class KbRole {
     required this.rirFollowsMesocycle,
     required this.warmupMode,
     this.optional = false,
-    this.yieldsToExtensions = false,
+    this.countsTowardDuration = true,
     this.ruleIds = const [],
   });
 
@@ -451,7 +451,7 @@ class KbRole {
       rirFollowsMesocycle: boolOr(json, 'rirFollowsMesocycle', path, false),
       warmupMode: _warmupModeOf(json['warmup'], '$path.warmup'),
       optional: boolOr(json, 'optional', path, false),
-      yieldsToExtensions: boolOr(json, 'yieldsToExtensions', path, false),
+      countsTowardDuration: boolOr(json, 'countsTowardDuration', path, true),
       ruleIds: json.containsKey('rules')
           ? stringsAt(json, 'rules', path)
           : const [],
@@ -469,9 +469,13 @@ class KbRole {
   /// Gli esercizi di questo ruolo sono facoltativi (`optional` del piano 3.1).
   final bool optional;
 
-  /// Un esercizio facoltativo di questo ruolo in coda alla seduta lascia il
-  /// posto a un'estensione che altrimenti non entrerebbe nel tempo.
-  final bool yieldsToExtensions;
+  /// Le serie di questo ruolo contano nella durata stimata della seduta. Il
+  /// finisher facoltativo (`P-CORE-FINISHER`) non conta: non toglie tempo agli
+  /// altri esercizi e non entra in `estimatedDurationMin`.
+  final bool countsTowardDuration;
+
+  /// Serie che contano nella durata stimata.
+  int get timedSets => countsTowardDuration ? sets : 0;
 
   /// Regole che il piano aggiunge agli esercizi di questo ruolo.
   final List<String> ruleIds;
