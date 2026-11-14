@@ -540,21 +540,36 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
                 weekly[sec] += sets * set_weights["secondary"]
 
         session_sets: dict[str, int] = {}
+        optional_sets: dict[str, int] = {}  # seduta -> serie del finisher facoltativo
+        optional_picks: dict[str, list] = {}  # seduta -> (esercizio, serie) del finisher
         session_ids: dict[str, set] = {}
         session_patterns: dict[str, set] = {}
         for sess in t["sessions"]:
             session_ids[sess["id"]] = set()
             session_patterns[sess["id"]] = set()
             sets_in_session = 0
+            # Slot facoltativi (ruolo con optional, il finisher di P-CORE-FINISHER): il motore li toglie
+            # per primi quando la seduta non sta nel tempo (fitToDuration). Qui entrano solo se ci stanno.
+            required_sets = sum(
+                pr["roles"][slot["role"]]["sets"]
+                for block in sess["blocks"] for slot in block["slots"]
+                if not pr["roles"][slot["role"]].get("optional")
+            )
             for block in sess["blocks"]:
                 for slot in block["slots"]:
+                    role = pr["roles"][slot["role"]]
+                    if role.get("optional"):
+                        if (required_sets + optional_sets.get(sess["id"], 0) + role["sets"]) * per_set > max_minutes:
+                            continue
                     pick = pick_for(slot)
                     if not pick:
                         r.error(where, f"{sess['id']}: nessun esercizio disponibile per lo slot {slot['pattern']}")
                         continue
-                    role = pr["roles"][slot["role"]]
                     chosen[pick["id"]] = {"role": slot["role"], "reps": slot.get("repsOverride", role["reps"])}
                     sets_in_session += role["sets"]
+                    if role.get("optional"):
+                        optional_sets[sess["id"]] = optional_sets.get(sess["id"], 0) + role["sets"]
+                        optional_picks.setdefault(sess["id"], []).append((pick, role["sets"]))
                     add_volume(pick, role["sets"])
                     session_ids[sess["id"]].add(pick["id"])
                     session_patterns[sess["id"]].add(pick["pattern"])
@@ -573,7 +588,16 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
                     continue
                 sets = pr["roles"][pl["slot"]["role"]]["sets"]
                 if (session_sets[pl["session"]] + sets) * per_set > max_minutes:
-                    continue
+                    # L'enfasi vince sul finisher facoltativo: se senza ci sta, il finisher salta.
+                    tail = optional_sets.get(pl["session"], 0)
+                    if not tail or (session_sets[pl["session"]] - tail + sets) * per_set > max_minutes:
+                        continue
+                    session_sets[pl["session"]] -= tail
+                    optional_sets[pl["session"]] = 0
+                    for opick, osets in optional_picks.pop(pl["session"], []):
+                        add_volume(opick, -osets)
+                        session_ids[pl["session"]].discard(opick["id"])
+                        session_patterns[pl["session"]].discard(opick["pattern"])
                 session_sets[pl["session"]] += sets
                 add_volume(pick, sets)
                 session_ids[pl["session"]].add(pick["id"])

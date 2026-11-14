@@ -165,7 +165,7 @@ void main() {
       profile(daysPerWeek: 3, sessionDurationMin: 45),
       profile(sessionDurationMin: 45),
     ]) {
-      expect(plan(p)['schemaVersion'], '3.0');
+      expect(plan(p)['schemaVersion'], '3.1');
     }
   });
 
@@ -370,7 +370,7 @@ void main() {
     'piano 3.0: i quattro esercizi chiave hanno askLoad e nome {it, en}',
     () {
       final p = plan(profile());
-      expect(p['schemaVersion'], '3.0');
+      expect(p['schemaVersion'], '3.1');
       expect(askLoadExercises(p), {
         'barbell_bench_press',
         'dumbbell_row',

@@ -48,6 +48,18 @@ KnowledgeBase _kbWith(
       (t['extensions'] as List?)?.removeWhere(
         (e) => withoutPatterns.contains(((e as Map)['slot'] as Map)['pattern']),
       );
+      // Dalla KB 0.27.0 l'addome è anche un finisher fisso (ruolo `core`).
+      for (final s in (t['sessions'] as List).cast<Map>()) {
+        final blocks = s['blocks'] as List;
+        for (final b in blocks.cast<Map>()) {
+          (b['slots'] as List).removeWhere(
+            (slot) =>
+                (slot as Map)['role'] == 'core' &&
+                withoutPatterns.contains(slot['pattern']),
+          );
+        }
+        blocks.removeWhere((b) => ((b as Map)['slots'] as List).isEmpty);
+      }
     }
   }
   return KnowledgeBase.fromJson(copy);
@@ -325,10 +337,11 @@ void main() {
         isA<EmphasisSuggestion>(),
       );
       // Dalla KB 0.26.0 le estensioni dei distretti piccoli (addome, trapezi,
-      // abduttori, adduttori, avambracci) riempiono il tempo che resta: un
+      // abduttori, adduttori, avambracci) riempiono il tempo che resta, e
+      // dalla 0.27.0 il finisher dell'addome cede il posto all'enfasi: un
       // esercizio di enfasi prende il loro posto e le serie totali non
-      // crescono. Il tetto si prova senza quelle estensioni e con un valore
-      // nullo.
+      // crescono. Il tetto si prova senza quelle estensioni e senza il
+      // finisher, con un valore nullo.
       final zero = _kbWith({
         'maxExtraWeeklySets': 0,
       }, withoutPatterns: _smallDistrictPatterns);

@@ -2,6 +2,17 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.27.0 — 2026-11-14
+
+- Addominali come finisher facoltativo due volte a settimana (scelta di Vincenzo del 14/11/2026). Le due estensioni `trunk_flexion` dei template diventano due slot fissi di ruolo nuovo `core`, in fondo a Lower A e Lower B (4 giorni), Full body A e C (3 giorni), Lower e Gambe (5 giorni).
+- Due famiglie diverse nella stessa settimana: slot A flessione dall'alto (crunch ai cavi, alla macchina, con manubrio, decline sit-up, bicycle crunch), slot B dal basso o di stabilità (leg raise alla sbarra e alle parallele, reverse crunch, rollout con bilanciere, Pallof press). Il seme sceglie dentro ogni gruppo; i sostituti attraversano le famiglie.
+- Esercizi nuovi (5, da 135 a 140): `reverse_crunch`, `bicycle_crunch`, `decline_sit_up`, `barbell_rollout` (pattern nuovo `trunk_anti_extension`), `cable_pallof_press` (pattern nuovo `trunk_anti_rotation`). Schede tecniche it/en provvisorie.
+- Ruolo `core` nelle prescrizioni: 2 serie da 10–12, RIR del mesociclo, 90 s, nessun riscaldamento, `optional: true` e regola `CORE-FINISHER` (motivazione nuova, livello `session`). Campi nuovi del ruolo: `optional`, `rules`, `yieldsToExtensions`.
+- Principio `P-CORE-FINISHER` (evidenza bassa, provvisorio) con tre fonti nuove (Vispute 2011, meta-analisi 2022 sulla riduzione localizzata, Contreras e Schoenfeld 2011); conflitto aperto `C-ABS-INDIRECT` con `P-VOL-INDIRECT-SMALL`.
+- Motore: piano `schemaVersion` `3.1` con `optional` sull'esercizio (copia del contratto da barbl#126). `fitToDuration` toglie per primo il ruolo `core`; l'enfasi può prendere il posto del finisher; le estensioni usano il tempo che resta dopo di lui (`yieldsToExtensions: false`) e si inseriscono prima del finisher, che resta l'ultimo esercizio.
+- Matrice dei 324 profili: a 45 minuti il finisher resta solo in una seduta a 4 e 5 giorni (18 profili su 27 ciascuno) e mai a 3 giorni; a 60 minuti due finisher in 54 profili su 81, uno in 18, nessuno in 9 (3 giorni); a 75 e 90 minuti sempre due. A 3 giorni e 60 minuti le spalle hanno un'estensione in meno (3 serie invece di 6) e i polpacci nessuna.
+- Il validatore simula il finisher come il motore (entra solo se la seduta resta nel tempo, l'enfasi lo può togliere).
+
 ## 0.26.1 — 2026-11-14
 
 - Revisione delle 135 schede tecniche (richiesta di Vincenzo del 14/11/2026), confrontate con The Muscle Ladder, The Ultimate Exercise Guide e le note dei programmi di Nippard. Restano provvisorie, da rivedere con il coach.

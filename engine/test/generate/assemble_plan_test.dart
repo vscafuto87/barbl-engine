@@ -86,7 +86,7 @@ void main() {
       'rationales',
       'parameters',
     ]);
-    expect(plan['schemaVersion'], '3.0');
+    expect(plan['schemaVersion'], '3.1');
     expect(plan['id'], 't1-full');
     expect(plan['generatedBy'], {
       'engine': 'barbl-engine 0.1.0',

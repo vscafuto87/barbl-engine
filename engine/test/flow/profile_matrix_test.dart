@@ -317,8 +317,8 @@ List<String> _planViolations(
   for (final e in planSchemaErrors(plan, _planSchema)) {
     out.add('schema: $e');
   }
-  if (plan['schemaVersion'] != '3.0') {
-    out.add('schemaVersion ${plan['schemaVersion']} invece di 3.0');
+  if (plan['schemaVersion'] != '3.1') {
+    out.add('schemaVersion ${plan['schemaVersion']} invece di 3.1');
   }
 
   for (final s in plan['sessions']! as List<Object?>) {

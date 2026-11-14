@@ -11,6 +11,7 @@ import 'package:barbl_engine/src/bundle/bundle_builder.dart';
 import 'package:test/test.dart';
 
 late KnowledgeBase kb;
+late Map<String, Object?> kbJson;
 
 const _gyms = <String, List<String>>{
   'full': [
@@ -93,6 +94,7 @@ void main() {
   setUpAll(() {
     final built = buildBundle(Directory('../kb'));
     expect(built.errors, isEmpty);
+    kbJson = built.json;
     kb = KnowledgeBase.fromJson(built.json);
   });
 
@@ -159,8 +161,40 @@ void main() {
         _plan(_profile(goal: 'muscle_gain', gym: 'full', days: 3, minutes: 60)),
       );
       expect(four['shoulders'], greaterThanOrEqualTo(6));
-      expect(three['shoulders'], greaterThanOrEqualTo(6));
-      expect(three['calves'], greaterThanOrEqualTo(3));
+      expect(four['calves'], greaterThanOrEqualTo(3));
+      // A 3 giorni il finisher (`P-CORE-FINISHER`) fa parte della seduta e le
+      // estensioni usano il tempo che resta: le spalle hanno un'estensione in
+      // meno di prima della KB 0.27.0.
+      expect(three['shoulders'], greaterThanOrEqualTo(3));
+      expect(three['abs'], 4);
+    });
+
+    test('con yieldsToExtensions il finisher lascia il posto', () {
+      final json = jsonDecode(jsonEncode(kbJson)) as Map<String, Object?>;
+      for (final p in (json['prescriptions']! as Map).values) {
+        final roles = (p as Map)['roles'] as Map;
+        (roles['core'] as Map)['yieldsToExtensions'] = true;
+      }
+      final yielding = KnowledgeBase.fromJson(json);
+      final profile = _profile(
+        goal: 'muscle_gain',
+        gym: 'full',
+        days: 3,
+        minutes: 60,
+      );
+      final plan = (generatePlan(profile, yielding) as Generated).plan;
+      final volume = _volume(plan);
+      expect(volume['shoulders'], greaterThanOrEqualTo(6));
+      expect(volume['abs'] ?? 0, lessThan(4));
+      // Il finisher che resta è sempre l'ultimo della sua seduta.
+      for (final s in plan['sessions']! as List) {
+        final exercises = [
+          for (final b in (s as Map)['blocks'] as List)
+            for (final e in (b as Map)['exercises'] as List) e as Map,
+        ];
+        final optional = exercises.indexWhere((e) => e['optional'] == true);
+        if (optional >= 0) expect(optional, exercises.length - 1);
+      }
     });
 
     test('le estensioni portano la regola e la motivazione, solo se usate', () {

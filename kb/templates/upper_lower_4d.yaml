@@ -167,6 +167,17 @@ sessions:
       - single_leg_dumbbell_calf_raise
       - donkey_calf_raise
       - seated_calf_raise
+  - type: single
+    slots:
+    - pattern: trunk_flexion
+      role: core
+      equivalent: 5
+      candidates:
+      - cable_crunch
+      - machine_crunch
+      - weighted_crunch
+      - decline_sit_up
+      - bicycle_crunch
 - id: upper_b
   name:
     it: Upper B
@@ -329,6 +340,17 @@ sessions:
       - single_leg_dumbbell_calf_raise
       - donkey_calf_raise
       - seated_calf_raise
+  - type: single
+    slots:
+    - pattern: trunk_flexion
+      role: core
+      equivalent: 5
+      candidates:
+      - hanging_leg_raise
+      - reverse_crunch
+      - roman_chair_leg_raise
+      - barbell_rollout
+      - cable_pallof_press
 principles:
 - P-FREQ-MIN-2
 - P-FREQ-HYP-NEUTRAL
@@ -451,28 +473,6 @@ extensions:
     - single_leg_dumbbell_calf_raise
     - donkey_calf_raise
     - seated_calf_raise
-- session: lower_b
-  slot:
-    pattern: trunk_flexion
-    role: accessory
-    candidates:
-    - cable_crunch
-    - machine_crunch
-    - hanging_leg_raise
-    - roman_chair_leg_raise
-    - weighted_crunch
-    equivalent: 4
-- session: lower_a
-  slot:
-    pattern: trunk_flexion
-    role: accessory
-    candidates:
-    - cable_crunch
-    - machine_crunch
-    - hanging_leg_raise
-    - roman_chair_leg_raise
-    - weighted_crunch
-    equivalent: 4
 - session: lower_a
   slot:
     pattern: hip_abduction

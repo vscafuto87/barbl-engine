@@ -1,0 +1,12 @@
+ruleId: CORE-FINISHER
+key: core.finisher
+level: session
+text:
+  it: L'addome lavora poco negli esercizi multiarticolari, quindi chiudo due sedute della settimana con
+    poche serie dirette, ogni volta di un tipo diverso. È facoltativo, perché un po' di lavoro diretto basta.
+    Allenare l'addome lo rinforza, ma non toglie il grasso della pancia.
+  en: Your abs do little work in compound lifts, so I close two sessions of the week with a few direct sets,
+    a different type each time. It's optional, because a little direct work is enough. Training your abs
+    makes them stronger, but it doesn't remove belly fat.
+principles:
+- P-CORE-FINISHER

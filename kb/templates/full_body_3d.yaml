@@ -87,6 +87,17 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
+  - type: single
+    slots:
+    - pattern: trunk_flexion
+      role: core
+      equivalent: 5
+      candidates:
+      - cable_crunch
+      - machine_crunch
+      - weighted_crunch
+      - decline_sit_up
+      - bicycle_crunch
 - id: full_b
   name:
     it: Full body B
@@ -261,6 +272,17 @@ sessions:
       - barbell_curl
       - spider_curl
       - concentration_curl
+  - type: single
+    slots:
+    - pattern: trunk_flexion
+      role: core
+      equivalent: 5
+      candidates:
+      - hanging_leg_raise
+      - reverse_crunch
+      - roman_chair_leg_raise
+      - barbell_rollout
+      - cable_pallof_press
 principles:
 - P-SPLIT-FULL-BODY-3D
 - P-FREQ-MIN-2
@@ -387,28 +409,6 @@ extensions:
     - single_leg_hip_thrust
     - back_extension_45
     - cable_glute_kickback
-- session: full_a
-  slot:
-    pattern: trunk_flexion
-    role: accessory
-    candidates:
-    - cable_crunch
-    - machine_crunch
-    - hanging_leg_raise
-    - roman_chair_leg_raise
-    - weighted_crunch
-    equivalent: 4
-- session: full_c
-  slot:
-    pattern: trunk_flexion
-    role: accessory
-    candidates:
-    - cable_crunch
-    - machine_crunch
-    - hanging_leg_raise
-    - roman_chair_leg_raise
-    - weighted_crunch
-    equivalent: 4
 - session: full_b
   slot:
     pattern: hip_abduction

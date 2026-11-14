@@ -1,0 +1,72 @@
+id: reverse_crunch
+name:
+  it: Reverse crunch
+  en: Reverse crunch
+equipment: bodyweight
+requires: []
+pattern: trunk_flexion
+mechanics: isolation
+muscles:
+  primary: abs
+  secondary: []
+loading:
+  whenLoadUnknown: manual
+substitutes:
+- hanging_leg_raise
+- roman_chair_leg_raise
+- bicycle_crunch
+- barbell_rollout
+- cable_pallof_press
+- weighted_crunch
+technique:
+  setup:
+  - it: Sdraiati a terra, braccia lungo i fianchi e palmi giù.
+    en: Lie on the floor, arms by your sides, palms down.
+  - it: Ginocchia piegate a 90° e cosce verticali.
+    en: Knees bent at 90° and thighs vertical.
+  - it: Se è troppo facile, tieni le gambe più distese.
+    en: If it's too easy, keep your legs straighter.
+  cues:
+  - it: Arrotola il bacino e porta le ginocchia verso il petto.
+    en: Curl your pelvis and bring your knees toward your chest.
+  - it: Stacca da terra la parte bassa della schiena.
+    en: Lift your lower back off the floor.
+  - it: Scendi lento fino a cosce verticali.
+    en: Lower slowly until your thighs are vertical again.
+  mistakes:
+  - what:
+      it: Lanci le gambe e sfrutti lo slancio.
+      en: You swing your legs and use momentum.
+    fix:
+      it: Fermati un attimo in basso prima di ogni ripetizione.
+      en: Pause briefly at the bottom before each rep.
+  - what:
+      it: Muovi solo le gambe e il bacino resta giù.
+      en: Only your legs move and your pelvis stays down.
+    fix:
+      it: Pensa a portare il bacino verso le costole.
+      en: Think of bringing your pelvis toward your ribs.
+  - what:
+      it: Spingi con le mani a terra per salire.
+      en: You push into the floor with your hands to come up.
+    fix:
+      it: Mani appoggiate, senza fare leva.
+      en: Hands resting, no leverage.
+  sources:
+  - id: nippard-muscle-ladder
+    pages:
+    - 288
+    access: full_text
+  - id: nippard-essentials
+    pages:
+    - 21
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 114
+    access: full_text
+  - id: barbl-design
+    access: summary
+    note: Posizione e errori comuni dalla pratica di coaching, da rivedere con il coach.
+  status: provisional
+  reviewedBy: null

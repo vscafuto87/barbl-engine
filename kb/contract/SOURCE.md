@@ -11,3 +11,5 @@ Dalla KB 0.22.0 la copia del profilo è quella del commit `0733c48` dell'app (7 
 Dalla KB 0.23.0 la copia del profilo ha `schemaVersion` `1.5` e `weekdays` facoltativo (giorni scelti dall'utente). Origine: ramo `claude/adoring-shannon-n9ddhm` dell'app, da aggiornare con il commit del merge. Il piano è invariato.
 
 Dalla KB 0.26.0 la copia del piano ha `parameters.belowBand.excludedMuscles` facoltativo (muscoli a cui la fascia di volume non si applica); `schemaVersion` del piano resta `3.0`. Origine: ramo `claude/project-thread-zcc9ni` dell'app, da aggiornare con il commit del merge.
+
+Dalla KB 0.27.0 la copia del piano ha `schemaVersion` `3.0` o `3.1` e `optional` facoltativo sull'esercizio (finisher dell'addome). Origine: commit `fc14a5b` dell'app (merge di barbl#126, 14 novembre 2026).

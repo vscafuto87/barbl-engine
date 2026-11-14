@@ -73,7 +73,9 @@ List<KbExercise> availableCandidates(
 /// la forza la specificità vince (principale e complementari non si scambiano,
 /// `P-STRENGTH-SPECIFICITY`), l'isolamento sì.
 int equivalentWidth(KbSlot slot, Profile profile, int poolLength) {
-  final allowed = profile.goal == 'strength' && slot.role != 'accessory'
+  final allowed =
+      profile.goal == 'strength' &&
+          (slot.role == 'main' || slot.role == 'secondary')
       ? 1
       : slot.equivalent;
   return allowed < poolLength ? allowed : poolLength;
@@ -161,4 +163,50 @@ Result<List<ChosenSession>> chooseExercises(
     sessions.add(ChosenSession(session, blocks));
   }
   return Ok(sessions);
+}
+
+/// Vero se ogni slot di [block] ha un ruolo facoltativo nella prescrizione
+/// (il finisher dell'addome, `P-CORE-FINISHER`).
+bool isOptionalBlock(ChosenBlock block, KbPrescription prescription) =>
+    block.slots.isNotEmpty &&
+    block.slots.every(
+      (s) => prescription.roles[s.slot.role]?.optional ?? false,
+    );
+
+/// Quanti blocchi in coda a [blocks] sono facoltativi.
+int optionalTailLength(List<ChosenBlock> blocks, KbPrescription prescription) {
+  var n = 0;
+  while (n < blocks.length &&
+      isOptionalBlock(blocks[blocks.length - 1 - n], prescription)) {
+    n++;
+  }
+  return n;
+}
+
+/// I blocchi di [blocks] con [extra] prima della coda facoltativa, così il
+/// finisher resta l'ultimo della seduta. Con [dropTail] la coda si toglie.
+List<ChosenBlock> insertBeforeOptionalTail(
+  List<ChosenBlock> blocks,
+  List<ChosenBlock> extra,
+  KbPrescription prescription, {
+  bool dropTail = false,
+}) {
+  final cut = blocks.length - optionalTailLength(blocks, prescription);
+  return [
+    ...blocks.sublist(0, cut),
+    ...extra,
+    if (!dropTail) ...blocks.sublist(cut),
+  ];
+}
+
+/// Serie della coda facoltativa di [blocks].
+int optionalTailSets(List<ChosenBlock> blocks, KbPrescription prescription) {
+  var total = 0;
+  final cut = blocks.length - optionalTailLength(blocks, prescription);
+  for (final block in blocks.sublist(cut)) {
+    for (final slot in block.slots) {
+      total += prescription.roles[slot.slot.role]?.sets ?? 0;
+    }
+  }
+  return total;
 }

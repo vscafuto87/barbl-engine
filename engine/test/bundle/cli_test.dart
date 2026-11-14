@@ -23,7 +23,7 @@ void main() {
     expect(r.err, isEmpty);
     expect(r.out.startsWith('{\n  "'), isTrue);
     final plan = jsonDecode(r.out) as Map<String, Object?>;
-    expect(plan['schemaVersion'], '3.0');
+    expect(plan['schemaVersion'], '3.1');
   });
 
   test('generate è deterministico anche ricostruendo il pacchetto', () {
