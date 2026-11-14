@@ -48,11 +48,11 @@ technique:
       it: Allarga un po' i piedi e fissa un punto davanti a te.
       en: Widen your feet a little and fix your eyes on a spot ahead.
   - what:
-      it: Il passo indietro è troppo corto e il ginocchio va oltre la punta.
-      en: Your step back is too short and your knee drifts past your toes.
+      it: Il passo indietro è troppo corto e il tallone davanti si stacca da terra.
+      en: Your step back is too short and your front heel lifts off the floor.
     fix:
-      it: Allunga il passo finché lo stinco davanti resta quasi verticale.
-      en: Step back further until your front shin is nearly vertical.
+      it: Allunga il passo finché tutto il piede davanti resta appoggiato.
+      en: Step back further until your whole front foot stays down.
   - what:
       it: Ti spingi con il piede dietro.
       en: You push off the back foot.

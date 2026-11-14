@@ -51,7 +51,15 @@ technique:
   sources:
   - id: nippard-essentials
     pages:
-    - 20
+    - 55
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 42
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 14
     access: full_text
   - id: barbl-design
     access: summary

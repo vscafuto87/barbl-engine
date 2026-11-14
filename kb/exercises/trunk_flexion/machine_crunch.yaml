@@ -51,7 +51,7 @@ technique:
   sources:
   - id: nippard-essentials
     pages:
-    - 20
+    - 39
     access: full_text
   - id: barbl-design
     access: summary

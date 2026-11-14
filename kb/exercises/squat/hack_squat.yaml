@@ -61,11 +61,17 @@ technique:
       it: Riduci il peso e scendi fino a dove controlli.
       en: Lower the weight and go as deep as you control.
   sources:
-  - id: nippard-muscle-ladder
+  - id: nippard-ultimate-exercise-guide
     pages:
-    - 120
-    - 121
-    - 122
+    - 17
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 43
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 32
     access: full_text
   - id: barbl-design
     access: summary

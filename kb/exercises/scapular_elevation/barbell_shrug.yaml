@@ -21,13 +21,13 @@ technique:
   setup:
   - it: Prendi il bilanciere dal rack all'altezza delle cosce.
     en: Take the bar from the rack at thigh height.
-  - it: Presa poco più larga delle spalle, braccia tese.
-    en: Grip a bit wider than shoulders, arms straight.
+  - it: Presa larga, mani ben fuori dalle spalle, braccia tese.
+    en: Wide grip, hands well outside your shoulders, arms straight.
   - it: In piedi dritto, busto appena in avanti.
     en: Stand tall, leaning very slightly forward.
   cues:
-  - it: Porta le spalle verso le orecchie e fermati in alto.
-    en: Shrug your shoulders toward your ears and pause at the top.
+  - it: Porta le spalle in alto e un po' verso l'interno, verso le orecchie, e fermati in alto.
+    en: Shrug up and slightly in, toward your ears, and pause at the top.
   - it: Scendi fino a sentire i trapezi allungati.
     en: Lower until your traps stretch.
   mistakes:
@@ -54,6 +54,10 @@ technique:
     pages:
     - 228
     - 229
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 13
     access: full_text
   - id: barbl-design
     access: summary

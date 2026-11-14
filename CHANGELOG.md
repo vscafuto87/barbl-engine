@@ -2,6 +2,14 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.26.1 — 2026-11-14
+
+- Revisione delle 135 schede tecniche (richiesta di Vincenzo del 14/11/2026), confrontate con The Muscle Ladder, The Ultimate Exercise Guide e le note dei programmi di Nippard. Restano provvisorie, da rivedere con il coach.
+- Correzioni di contenuto: French press con bilanciere con le braccia inclinate verso la testa e il bilanciere dietro la testa (Exercise Guide p. 10); stacco da terra con i dorsali attivi invece dei «gomiti indietro»; rematore con manubrio senza l'immagine del tosaerba, che contraddiceva l'errore sulla rotazione del busto; panca con manubri, piana e inclinata, fino al buon allungamento senza dolore invece di un limite fisso; affondi bulgari, indietro e split squat al multipower: l'errore è il tallone davanti che si stacca, non il ginocchio oltre la punta; pullover con un limite chiaro; leg curl con manubrio, «punte tirate verso le tibie»; scrollate con presa larga e spalle «su e un po' dentro» (Exercise Guide p. 13); leg curl da seduto con il busto in avanti per più allungamento (Exercise Guide p. 20).
+- Fonti: hack squat citava le pagine della leg press del Muscle Ladder (ora Exercise Guide p. 17 e i programmi); crunch alla macchina e con manubrio citavano una pagina senza l'esercizio; aggiunte le pagine dei programmi o della guida a 11 schede che citavano solo la pratica di coaching e ad altre 25 schede.
+- Nome: «Lat machine alla macchina» diventa «Pulldown alla macchina».
+- Refuso «ripartisci» corretto in tre schede. I piani generati non cambiano, salvo `rulesVersion` e il nome italiano del pulldown alla macchina.
+
 ## 0.26.0 — 2026-11-13
 
 - Catalogo da 93 a 135 esercizi (decisione di Vincenzo del 13/11/2026: ampliamento importante, solo esercizi di qualità). Ogni esercizio nuovo ha la scheda tecnica it/en (provvisoria, da rivedere con il coach) e cita pagine dei libri di Nippard (The Muscle Ladder e i programmi, testo riformulato).

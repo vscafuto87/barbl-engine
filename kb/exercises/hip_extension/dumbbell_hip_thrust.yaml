@@ -52,7 +52,7 @@ technique:
       it: Rimbalzi in basso e usi lo slancio.
       en: You bounce at the bottom and use momentum.
     fix:
-      it: Fermati in basso, ripartisci e spingi in modo controllato.
+      it: Fermati in basso, riparti e spingi in modo controllato.
       en: Stop at the bottom, reset and push under control.
   - what:
       it: Il manubrio scivola verso la pancia.

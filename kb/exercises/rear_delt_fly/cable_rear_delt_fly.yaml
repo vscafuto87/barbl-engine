@@ -57,6 +57,14 @@ technique:
       it: Fermati quando le braccia sono in linea con il busto.
       en: Stop once your arms line up with your torso.
   sources:
+  - id: nippard-mens-shoulder
+    pages:
+    - 12
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 40
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

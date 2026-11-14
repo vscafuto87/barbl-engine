@@ -60,6 +60,14 @@ technique:
       it: Portala all'ombelico, con i gomiti vicini ai fianchi.
       en: Bring it to your belly button, elbows close to your sides.
   sources:
+  - id: nippard-essentials
+    pages:
+    - 20
+    access: full_text
+  - id: nippard-powerbuilding-2
+    pages:
+    - 42
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

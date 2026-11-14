@@ -60,6 +60,14 @@ technique:
       it: Fermati in piedi dritto e stringi i glutei.
       en: Stop standing tall and squeeze your glutes.
   sources:
+  - id: nippard-powerbuilding-2
+    pages:
+    - 61
+    access: full_text
+  - id: nippard-upper-lower
+    pages:
+    - 33
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

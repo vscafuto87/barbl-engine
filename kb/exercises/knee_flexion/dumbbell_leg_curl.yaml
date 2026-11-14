@@ -27,8 +27,8 @@ technique:
   - it: Afferra la panca con le mani.
     en: Hold on to the bench with your hands.
   cues:
-  - it: Piedi a martello, stringi il manubrio.
-    en: Feet flexed, squeeze the dumbbell.
+  - it: Punte dei piedi tirate verso le tibie, stringi il manubrio.
+    en: Toes pulled toward your shins, squeeze the dumbbell.
   - it: Sali fino a gambe verticali, scendi lento.
     en: Curl until your shins are vertical, lower slowly.
   mistakes:
@@ -36,8 +36,8 @@ technique:
       it: Il manubrio scivola tra i piedi.
       en: The dumbbell slips between your feet.
     fix:
-      it: Usa un carico leggero e tieni i piedi a martello.
-      en: Use a light load and keep your feet flexed.
+      it: Usa un carico leggero e tieni le punte tirate verso le tibie.
+      en: Use a light load and keep your toes pulled toward your shins.
   - what:
       it: Inarchi la schiena per salire.
       en: You arch your back to lift.

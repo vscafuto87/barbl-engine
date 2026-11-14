@@ -63,6 +63,14 @@ technique:
       it: Controlla la discesa e fermati un attimo.
       en: Control the descent and pause briefly.
   sources:
+  - id: nippard-essentials
+    pages:
+    - 22
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 9
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

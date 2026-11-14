@@ -65,6 +65,18 @@ technique:
       it: Fermati con le braccia quasi tese e tieni il movimento fluido.
       en: Stop with arms nearly straight and keep the motion smooth.
   sources:
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 4
+    access: full_text
+  - id: nippard-pure-bodybuilding-2
+    pages:
+    - 6
+    access: full_text
+  - id: nippard-essentials
+    pages:
+    - 20
+    access: full_text
   - id: barbl-design
     access: summary
     note: Errori comuni dalla pratica di coaching, da rivedere con il coach.

@@ -56,7 +56,7 @@ technique:
       it: Rimbalzi in basso e usi lo slancio.
       en: You bounce at the bottom and use momentum.
     fix:
-      it: Fermati in basso, ripartisci e spingi in modo controllato.
+      it: Fermati in basso, riparti e spingi in modo controllato.
       en: Stop at the bottom, reset and push under control.
   - what:
       it: Il bilanciere ti fa male sul bacino.
@@ -69,6 +69,10 @@ technique:
     pages:
     - 133
     - 134
+    access: full_text
+  - id: nippard-ultimate-exercise-guide
+    pages:
+    - 19
     access: full_text
   - id: barbl-design
     access: summary
