@@ -124,7 +124,7 @@ Tutti i principi nuovi sono `provisional` fino alla revisione del coach.
 
 Il 15 novembre 2026 Vincenzo ha approvato la specifica e le due proposte («Ok»).
 
-1. **Volume**: nel piano e nei conteggi il drop set vale 0 serie in più; un blocco myo-reps (attivazione e mini-serie) vale 1 serie. Il motore conosce così il volume in anticipo.
+1. **Volume**: nel piano (volume settimanale del motore, «M serie» del Piano) il drop set vale 0 serie in più; un blocco myo-reps (attivazione e mini-serie) vale 1 serie. Il motore conosce così il volume in anticipo. Nelle serie registrate le mini-serie myo-reps non contano nel volume (conta l'attivazione); i drop registrati seguono la regola 4 come oggi (scelta nostra: la regola 4 confermata non cambia).
 2. **Regola 1 con il cedimento**: una serie prescritta a cedimento entra nella regola 1 con RIR target 0, quindi conta solo arrivare al massimo delle ripetizioni. Vale anche per la serie di attivazione di drop set e myo-reps. Drop e mini-serie restano fuori dalla regola 1 e dai record. Un RIR maggiore di 0 segnato su una serie prevista a cedimento vale come una serie normale, non come un errore. Prima di `fromWeek` tutto resta come oggi.
 
 Da aggiungere a `docs/logica-progressione.md` come regole confermate.
