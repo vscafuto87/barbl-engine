@@ -1,0 +1,23 @@
+id: P-LOAD-RANGE
+topic: intensity
+statement:
+  it: 'Con serie portate vicino al cedimento, carichi leggeri, moderati e pesanti danno un''ipertrofia
+    simile; la forza massima cresce di più con carichi pesanti. Per la massa le fasce di ripetizioni dei
+    ruoli sono quindi una scelta pratica (tempo, precisione del RIR, fatica), mentre per la forza il
+    lavoro principale resta pesante.'
+  en: 'With sets taken close to failure, light, moderate and heavy loads give similar hypertrophy; maximal
+    strength grows more with heavy loads. For muscle gain the role rep ranges are therefore a practical
+    choice (time, RIR accuracy, fatigue), while for strength the main work stays heavy.'
+evidence: high
+status: provisional
+reviewedBy: null
+feeds:
+- prescriptions
+sources:
+- id: lopez-2021-load-hypertrophy
+  access: abstract_only
+  note: 28 studi; ipertrofia indipendente dal carico, forza migliore con carichi alti.
+- id: currier-2023-rt-prescription
+  access: abstract_only
+  note: Network meta-analisi; ogni combinazione di carico e volume fa crescere il muscolo in modo
+    comparabile; per la forza la combinazione migliore usa carichi alti e più serie.

@@ -1,0 +1,18 @@
+id: P-LATERAL-RAISE-EQUIVALENCE
+topic: structure
+statement:
+  it: 'Per il deltoide laterale, alzate laterali ai cavi e con manubri hanno dato la stessa crescita in
+    8 settimane su persone allenate: nei template sono candidati intercambiabili. Lo studio è uno solo e
+    piccolo: principio provvisorio.'
+  en: 'For the lateral deltoid, cable and dumbbell lateral raises gave the same growth over 8 weeks in
+    trained people: in the templates they are interchangeable candidates. It is a single, small study: the
+    principle stays provisional.'
+evidence: low
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: larsen-2025-lateral-raise
+  access: full_text
+  note: 24 persone allenate, confronto tra braccia; crescita distale e prossimale quasi uguale.

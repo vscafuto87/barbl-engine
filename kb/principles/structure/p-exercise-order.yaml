@@ -1,0 +1,17 @@
+id: P-EXERCISE-ORDER
+topic: structure
+statement:
+  it: 'Un esercizio fatto all''inizio della seduta guadagna più forza di quando è fatto alla fine, mentre
+    la crescita muscolare non dipende in modo apprezzabile dall''ordine. Per questo nei template i
+    multiarticolari principali, quelli di cui si segue il carico, vengono prima degli isolamenti.'
+  en: 'An exercise done early in the session gains more strength than when done at the end, while muscle
+    growth does not depend appreciably on order. So in the templates the main compound lifts, whose load
+    is tracked, come before isolation work.'
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: nunes-2021-exercise-order
+  access: abstract_only
