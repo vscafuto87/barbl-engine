@@ -1,10 +1,12 @@
 id: P-PERIODIZATION-NEUTRAL
 topic: progression
 statement:
-  it: 'Con un sovraccarico progressivo, la periodizzazione non è superiore a un programma non periodizzato:
-    il mesociclo è una scelta di organizzazione.'
-  en: 'With progressive overload, periodization is not superior to non-periodized training: the mesocycle
-    is an organizational choice.'
+  it: 'Con un sovraccarico progressivo e a volume pari, la periodizzazione non dà più ipertrofia di un
+    programma non periodizzato e i modelli lineare e ondulato si equivalgono; per la forza c''è un
+    piccolo vantaggio a favore della periodizzazione. Il mesociclo resta una scelta di organizzazione.'
+  en: 'With progressive overload and equal volume, periodization gives no more hypertrophy than a
+    non-periodized program and linear and undulating models are equivalent; for strength there is a
+    small advantage for periodization. The mesocycle remains an organizational choice.'
 evidence: medium
 status: provisional
 reviewedBy: null
@@ -15,3 +17,7 @@ sources:
   pages:
   - 863
   access: full_text
+- id: moesgaard-2022-periodization
+  access: abstract_only
+  note: 35 studi a volume pari; forza, effetto di circa 0,3 a favore della periodizzazione; ipertrofia
+    senza differenze; ondulato meglio del lineare solo per la forza dei soggetti allenati.

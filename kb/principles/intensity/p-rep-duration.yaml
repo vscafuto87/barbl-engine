@@ -1,0 +1,18 @@
+id: P-REP-DURATION
+topic: intensity
+statement:
+  it: 'Per l''ipertrofia la durata della ripetizione conta poco in un intervallo largo, da circa mezzo
+    secondo a 8 secondi; oltre i 10 secondi i risultati sembrano peggiori. Il piano quindi non prescrive
+    un tempo per ripetizione: basta un movimento controllato, senza rimbalzi e senza rallentare apposta.'
+  en: 'For hypertrophy repetition duration matters little across a wide range, from about half a second to
+    8 seconds; beyond 10 seconds results seem worse. So the plan does not prescribe a tempo: a controlled
+    movement, without bouncing and without deliberately slowing down, is enough.'
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- prescriptions
+sources:
+- id: schoenfeld-2015-rep-duration
+  access: abstract_only
+  note: 8 studi; ripetizioni molto lente (oltre 10 s) con evidenza limitata.

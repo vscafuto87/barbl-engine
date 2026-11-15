@@ -2,6 +2,14 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.30.1 — 2026-11-15
+
+- Ricerca web sulle evidenze 2022–2026 (report in `/mnt/project-files/ricerca-kb/` del progetto): 12 fonti nuove, dati bibliografici verificati su Crossref. I piani generati non cambiano.
+- Principi aggiornati: P-REST-NEUTRAL (Singer 2024: per l'ipertrofia piccolo vantaggio incerto oltre 60 s, nessuna differenza oltre 90 s; i recuperi della KB sono già da 90 s in su), P-PERIODIZATION-NEUTRAL (Moesgaard 2022: piccolo vantaggio per la forza, nessuno per l'ipertrofia), P-DELOAD-REDUCE-VOLUME (Coleman 2024: una settimana di stop non cambia la crescita ma frena un po' la forza delle gambe), P-EXERCISE-VARIATION (Kassiano 2025, curl inclinato e Scott).
+- Principi nuovi, a sostegno di scelte già presenti: P-REP-DURATION (nessun tempo prescritto), P-LOAD-RANGE (Lopez 2021, Currier 2023), P-EXERCISE-ORDER (Nunes 2021), P-MODALITY-EQUIVALENCE (Haugen 2023), P-LATERAL-RAISE-EQUIVALENCE (Larsen 2025), P-LEG-EXTENSION-HIP-ANGLE (Larsen 2024/2025, solo per la scheda tecnica).
+- Conflitto nuovo `C-MUSCLE-LENGTH-REGIONAL` (aperto) tra P-MUSCLE-LENGTH e la meta-analisi di Varovic 2025; l'ordine dei candidati non cambia.
+- Pelland 2026: DOI della versione pubblicata.
+
 ## 0.30.0 — 2026-11-14
 
 - Finisher degli addominali da 10 a 20 ripetizioni invece di 10–12 (ruolo `core`, massa e forza; scelta di Vincenzo del 14/11/2026). Molti esercizi del finisher sono a corpo libero e progrediscono solo con le ripetizioni.

@@ -1,10 +1,14 @@
 id: P-DELOAD-REDUCE-VOLUME
 topic: recovery
 statement:
-  it: Nello scarico si riducono volume e vicinanza al cedimento, mantenendo l'intensità se il volume scende;
-    non c'è una percentuale concordata.
-  en: A deload reduces volume and proximity to failure, keeping intensity if volume drops; there is no
-    agreed percentage.
+  it: 'Nello scarico si riducono volume e vicinanza al cedimento, mantenendo l''intensità se il volume
+    scende; non c''è una percentuale concordata. Un RCT su persone allenate in cui lo scarico era una
+    settimana di stop completo a metà programma non ha cambiato la crescita muscolare ma ha frenato un
+    po'' la forza delle gambe: è un motivo per scaricare riducendo il lavoro invece di fermarsi.'
+  en: 'A deload reduces volume and proximity to failure, keeping intensity if volume drops; there is no
+    agreed percentage. In an RCT on trained people where the deload was a full week off mid-program,
+    muscle growth did not change but lower-body strength gains were slightly blunted: a reason to deload
+    by doing less rather than stopping.'
 evidence: low
 status: provisional
 reviewedBy: null
@@ -13,3 +17,6 @@ feeds:
 sources:
 - id: bell-2023-deload-delphi
   access: full_text
+- id: coleman-2024-deload
+  access: abstract_only
+  note: 39 persone allenate, 9 settimane, una settimana di stop totale a metà contro allenamento continuo.

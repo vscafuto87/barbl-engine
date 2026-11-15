@@ -1,0 +1,19 @@
+id: P-LEG-EXTENSION-HIP-ANGLE
+topic: structure
+statement:
+  it: 'Nella leg extension, con lo schienale reclinato (anca più estesa, retto femorale più allungato) il
+    retto femorale è cresciuto di più che con lo schienale dritto; i vasti sono cresciuti allo stesso
+    modo. È un''indicazione per la scheda tecnica, non per scegliere tra esercizi: uno studio su
+    persone non allenate.'
+  en: 'In the leg extension, with the backrest reclined (hip more extended, rectus femoris more lengthened)
+    the rectus femoris grew more than with the backrest upright; the vasti grew the same. It is a cue for
+    the technique card, not for choosing between exercises: one study in untrained people.'
+evidence: low
+status: provisional
+reviewedBy: null
+feeds:
+- exercises
+sources:
+- id: larsen-2024-leg-extension-hip
+  access: full_text_preprint
+  note: 22 persone non allenate, 10 settimane, anca a 40° contro 90° di flessione.

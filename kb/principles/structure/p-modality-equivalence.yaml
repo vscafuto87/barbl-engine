@@ -1,0 +1,20 @@
+id: P-MODALITY-EQUIVALENCE
+topic: structure
+statement:
+  it: 'Pesi liberi e macchine danno una crescita muscolare simile; la forza invece cresce di più nella
+    modalità con cui ci si allena e la si misura. Per la massa un esercizio alla macchina può prendere il
+    posto di uno con i pesi liberi (e viceversa) quando manca l''attrezzo; per la forza si resta
+    sull''esercizio di cui si vuole aumentare il carico.'
+  en: 'Free weights and machines give similar muscle growth; strength instead improves more in the modality
+    used for training and testing. For muscle gain a machine exercise can replace a free-weight one (and
+    vice versa) when equipment is missing; for strength one stays with the exercise whose load is meant to
+    rise.'
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: haugen-2023-free-weight-machine
+  access: abstract_only
+  note: 13 studi; ipertrofia senza differenze apprezzabili, forza specifica per la modalità del test.

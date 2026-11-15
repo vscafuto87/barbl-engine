@@ -31,3 +31,9 @@ sources:
   access: abstract_only
 - id: pedrosa-2026-muscle-length-review
   access: abstract_only
+- id: varovic-2025-muscle-length-regional
+  access: abstract_only
+  note: 'Meta-analisi di 12 studi: allenarsi a lunghezze maggiori non dà un vantaggio apprezzabile nella crescita delle singole regioni del muscolo (vedi C-MUSCLE-LENGTH-REGIONAL).'
+conflicts:
+- with: C-MUSCLE-LENGTH-REGIONAL
+  status: open
