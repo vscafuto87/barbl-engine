@@ -3,6 +3,10 @@ import '../kb/knowledge_base.dart';
 import '../kb/models.dart';
 import 'choose_exercises.dart';
 import 'result.dart';
+import 'select_template.dart' show pickForExperience;
+
+// Valore dell'obiettivo del profilo (formato del contratto).
+const String _goalStrength = 'strength';
 
 /// Esercizio con la prescrizione applicata.
 class PrescribedExercise {
@@ -20,6 +24,7 @@ class PrescribedExercise {
     this.fromExtension = false,
     this.optional = false,
     this.ruleIds = const [],
+    this.lastSet,
   });
 
   final KbExercise exercise;
@@ -45,6 +50,9 @@ class PrescribedExercise {
 
   /// Regole del ruolo da citare nell'esercizio.
   final List<String> ruleIds;
+
+  /// Tecnica dell'ultima serie (`lastSet` del piano 3.2), nulla se non c'è.
+  final String? lastSet;
 }
 
 /// Blocco con la prescrizione applicata.
@@ -95,12 +103,16 @@ int _restFor(String focus, KbRole role, KbExercise exercise, KnowledgeBase kb) {
   throw StateError('unsupported focus: $focus');
 }
 
-/// La prima prescrizione (per `id`) che vale per l'obiettivo del profilo.
+/// La prima prescrizione (per `id`) che vale per l'obiettivo del profilo,
+/// con la stessa regola dei template per l'esperienza: prima quella che
+/// dichiara l'esperienza del profilo, poi quella senza `experience`.
 Result<KbPrescription> selectPrescription(Profile profile, KnowledgeBase kb) {
-  final ordered = [...kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id));
-  for (final p in ordered) {
-    if (p.appliesTo.contains(profile.goal)) return Ok(p);
-  }
+  final ordered = [
+    for (final p in kb.prescriptions)
+      if (p.appliesTo.contains(profile.goal)) p,
+  ]..sort((a, b) => a.id.compareTo(b.id));
+  final chosen = pickForExperience(ordered, profile, (p) => p.experience);
+  if (chosen != null) return Ok(chosen);
   return Rejected(
     NotCovered(
       NotCoveredReason.goal,
@@ -109,10 +121,51 @@ Result<KbPrescription> selectPrescription(Profile profile, KnowledgeBase kb) {
   );
 }
 
-/// Durata stimata di una seduta con [totalSets] serie: è la stima con cui
-/// [prescribe] controlla il limite del profilo (limite incluso).
-int estimatedMinutes(int totalSets, KbPrescription prescription) =>
-    totalSets * prescription.minutesPerSet;
+/// Durata stimata di una seduta con [totalSets] serie e [techniqueMinutes]
+/// minuti delle tecniche dell'ultima serie: è la stima con cui [prescribe]
+/// controlla il limite del profilo (limite incluso).
+int estimatedMinutes(
+  int totalSets,
+  KbPrescription prescription, [
+  int techniqueMinutes = 0,
+]) => totalSets * prescription.minutesPerSet + techniqueMinutes;
+
+/// Tecnica dell'ultima serie di [slot] con l'esercizio scelto [exercise]:
+/// quella dello slot, tolta se l'esercizio è un multiarticolare pesante
+/// (`heavyCompound`) e, con l'obiettivo forza, se non è il cedimento.
+String? effectiveLastSet(KbSlot slot, KbExercise exercise, Profile profile) {
+  final lastSet = slot.lastSet;
+  if (lastSet == null || exercise.heavyCompound) return null;
+  if (profile.goal == _goalStrength && lastSet != lastSetFailure) return null;
+  return lastSet;
+}
+
+/// Minuti in più della tecnica dell'ultima serie di [slot]
+/// (`timeBudget.techniqueMinutes` della prescrizione; 0 se manca).
+int slotTechniqueMinutes(
+  ChosenSlot slot,
+  Profile profile,
+  KbPrescription prescription,
+) {
+  final lastSet = effectiveLastSet(slot.slot, slot.exercise, profile);
+  if (lastSet == null) return 0;
+  return prescription.techniqueMinutes[lastSet] ?? 0;
+}
+
+/// Minuti delle tecniche dell'ultima serie di tutti gli slot di [blocks].
+int blocksTechniqueMinutes(
+  Iterable<ChosenBlock> blocks,
+  Profile profile,
+  KbPrescription prescription,
+) {
+  var total = 0;
+  for (final b in blocks) {
+    for (final s in b.slots) {
+      total += slotTechniqueMinutes(s, profile, prescription);
+    }
+  }
+  return total;
+}
 
 /// Passo 3: serie, ripetizioni e recuperi dalla prescrizione dell'obiettivo,
 /// poi controllo della durata (limite incluso). Le serie non si toccano: gli
@@ -135,6 +188,7 @@ Result<List<PrescribedSession>> prescribe(
       throw StateError('unsupported focus: $focus');
     }
     var totalSets = 0;
+    var techniqueMinutes = 0;
     final blocks = <PrescribedBlock>[];
     // Pattern già incontrati nella seduta, per il riscaldamento del primo
     // multiarticolare di ogni pattern.
@@ -160,6 +214,11 @@ Result<List<PrescribedSession>> prescribe(
             ? null
             : _restFor(focus, role, chosenSlot.exercise, kb);
         totalSets += role.timedSets;
+        techniqueMinutes += slotTechniqueMinutes(
+          chosenSlot,
+          profile,
+          prescription,
+        );
         final firstOfPattern = seenPatterns.add(chosenSlot.exercise.pattern);
         final warmup = switch (role.warmupMode) {
           KbWarmupMode.always => true,
@@ -182,6 +241,7 @@ Result<List<PrescribedSession>> prescribe(
             fromExtension: chosenSlot.fromExtension,
             optional: role.optional,
             ruleIds: role.ruleIds,
+            lastSet: effectiveLastSet(slot, chosenSlot.exercise, profile),
           ),
         );
       }
@@ -194,7 +254,7 @@ Result<List<PrescribedSession>> prescribe(
         ),
       );
     }
-    final minutes = estimatedMinutes(totalSets, prescription);
+    final minutes = estimatedMinutes(totalSets, prescription, techniqueMinutes);
     if (minutes > profile.sessionDurationMin) {
       return Rejected(
         NotCovered(

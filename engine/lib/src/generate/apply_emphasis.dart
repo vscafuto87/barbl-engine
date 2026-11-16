@@ -38,6 +38,11 @@ List<ChosenSession> applyEmphasis(
     for (var i = 0; i < sessions.length; i++) sessions[i].session.id: i,
   };
   final sets = [for (final s in sessions) _sessionSets(s, prescription)];
+  // Minuti delle tecniche dell'ultima serie di ogni seduta.
+  final extra = [
+    for (final s in sessions)
+      blocksTechniqueMinutes(s.blocks, profile, prescription),
+  ];
   final added = <int, List<ChosenBlock>>{};
   final dropTail = <int>{};
   for (final id in profile.emphasis) {
@@ -71,14 +76,22 @@ List<ChosenSession> applyEmphasis(
       }
       if (exercise == null) continue;
       var total = current + role.timedSets;
-      if (estimatedMinutes(total, prescription) > profile.sessionDurationMin) {
+      final minutes =
+          extra[i] +
+          slotTechniqueMinutes(
+            ChosenSlot(placement.slot, exercise),
+            profile,
+            prescription,
+          );
+      if (estimatedMinutes(total, prescription, minutes) >
+          profile.sessionDurationMin) {
         // L'enfasi scelta dalla persona vince sul finisher facoltativo: se
         // senza il finisher ci sta, il finisher salta (`P-CORE-FINISHER`).
         final optionalSets = dropTail.contains(i)
             ? 0
             : optionalTailSets(sessions[i].blocks, prescription);
         if (optionalSets == 0 ||
-            estimatedMinutes(total - optionalSets, prescription) >
+            estimatedMinutes(total - optionalSets, prescription, minutes) >
                 profile.sessionDurationMin) {
           continue;
         }
@@ -86,6 +99,7 @@ List<ChosenSession> applyEmphasis(
         dropTail.add(i);
       }
       sets[i] = total;
+      extra[i] = minutes;
       added
           .putIfAbsent(i, () => <ChosenBlock>[])
           .add(
