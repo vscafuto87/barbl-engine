@@ -75,6 +75,75 @@ placements:
       - dumbbell_overhead_triceps_extension
       - lying_dumbbell_triceps_extension
       - cable_triceps_kickback
+  advanced_full_body_3d:
+  - session: full_a
+    slot:
+      pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - cable_curl
+      - dumbbell_curl
+      - barbell_curl
+      - hammer_curl
+      - incline_dumbbell_curl
+      - behind_the_body_cable_curl
+      - spider_curl
+  - session: full_b
+    slot:
+      pattern: elbow_extension
+      role: accessory
+      candidates:
+      - cable_triceps_pushdown
+      - dumbbell_overhead_triceps_extension
+      - barbell_skull_crusher
+      - lying_dumbbell_triceps_extension
+      - cable_triceps_kickback
+  advanced_upper_lower_4d:
+  - session: upper_a
+    slot:
+      pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - cable_curl
+      - barbell_curl
+      - dumbbell_curl
+      - hammer_curl
+      - incline_dumbbell_curl
+      - behind_the_body_cable_curl
+      - spider_curl
+  - session: upper_b
+    slot:
+      pattern: elbow_extension
+      role: accessory
+      candidates:
+      - overhead_cable_triceps_extension
+      - barbell_skull_crusher
+      - dumbbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
+      - cable_triceps_kickback
+  advanced_ul_ppl_5d:
+  - session: pull
+    slot:
+      pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - dumbbell_curl
+      - barbell_curl
+      - cable_curl
+      - hammer_curl
+      - incline_dumbbell_curl
+      - behind_the_body_cable_curl
+      - spider_curl
+  - session: upper
+    slot:
+      pattern: elbow_extension
+      role: accessory
+      candidates:
+      - overhead_cable_triceps_extension
+      - barbell_skull_crusher
+      - dumbbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
+      - cable_triceps_kickback
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

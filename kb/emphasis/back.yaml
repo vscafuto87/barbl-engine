@@ -80,6 +80,81 @@ placements:
       - pull_up
       - chin_up
       - dumbbell_row
+  advanced_full_body_3d:
+  - session: full_a
+    slot:
+      pattern: vertical_pull
+      role: accessory
+      candidates:
+      - lat_pulldown
+      - neutral_grip_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
+      - pull_up
+      - chin_up
+      - chest_supported_dumbbell_row
+  - session: full_c
+    slot:
+      pattern: vertical_pull
+      role: accessory
+      candidates:
+      - neutral_grip_pulldown
+      - lat_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
+      - pull_up
+      - chin_up
+      - dumbbell_row
+  advanced_upper_lower_4d:
+  - session: upper_a
+    slot:
+      pattern: horizontal_pull
+      role: accessory
+      candidates:
+      - seated_cable_row
+      - machine_row
+      - chest_supported_dumbbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
+  - session: upper_b
+    slot:
+      pattern: horizontal_pull
+      role: accessory
+      candidates:
+      - machine_row
+      - seated_cable_row
+      - dumbbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
+  advanced_ul_ppl_5d:
+  - session: pull
+    slot:
+      pattern: horizontal_pull
+      role: accessory
+      candidates:
+      - seated_cable_row
+      - machine_row
+      - chest_supported_dumbbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
+  - session: upper
+    slot:
+      pattern: vertical_pull
+      role: accessory
+      candidates:
+      - lat_pulldown
+      - neutral_grip_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
+      - pull_up
+      - chin_up
+      - dumbbell_row
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP
