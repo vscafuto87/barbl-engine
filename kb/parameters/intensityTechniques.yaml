@@ -1,0 +1,25 @@
+group: intensityTechniques
+target: parameters
+values:
+  fromWeek: 3
+  dropLoadReductionPct: 25
+  dropDrops: 1
+  myoActivationReps:
+    min: 10
+    max: 12
+  myoMiniSetReps:
+    min: 3
+    max: 4
+  myoRestSeconds: 5
+  myoMaxMiniSets: 4
+  myoStopWhenRepsBelow: 3
+engineConstraints:
+  # Al più due drop set o myo-reps per seduta (P-ADV-STRUCTURE): li controllano
+  # il validatore e il caricamento del pacchetto.
+  maxTechniquesPerSession: 2
+provisional: true
+principles:
+- P-ADV-FAILURE-PERIODIZED
+- P-DROP-SET
+- P-MYO-REPS
+- P-ADV-STRUCTURE

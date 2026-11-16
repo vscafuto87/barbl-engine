@@ -26,15 +26,16 @@ conflicts:
       8 e il contratto cambieranno in un secondo momento.'
 - id: C-RIR-BY-ROLE
   status: resolved
-  date: '2026-10-30'
+  date: '2026-11-15'
   between:
   - P-RIR-HYP
   - P-FAILURE-NOT-REQUIRED
+  - P-ADV-FAILURE-PERIODIZED
   summary:
     it: Robinson suggerisce che il cedimento conti di più con carichi leggeri; ACSM dice che non ci sono
       prove per fissare RIR esatti.
   resolution:
-    it: 'Chiuso da Vincenzo il 5 novembre 2026: nessuna modifica. Un RIR diverso per tipo di esercizio non ha una fonte di livello alto (ACSM, tier 1, dice che non ci sono prove per RIR esatti; Robinson 2024 da solo non basta).'
+    it: 'Chiuso da Vincenzo il 5 novembre 2026: nessuna modifica. Un RIR diverso per tipo di esercizio non ha una fonte di livello alto (ACSM, tier 1, dice che non ci sono prove per RIR esatti; Robinson 2024 da solo non basta). Riaperto il 15 novembre 2026 per il livello avanzato e richiuso lo stesso giorno con la decisione di Vincenzo, limitata a experience over_2_years: nei piani avanzati i multiarticolari pesanti (heavyCompound) non scendono sotto RIR 1 (minRirHeavyCompoundByExperience) mentre gli altri esercizi seguono la sequenza 2, 1, 1, 0 e possono avere l''ultima serie a cedimento (P-ADV-FAILURE-LAST-SET, P-ADV-FAILURE-PERIODIZED; Schoenfeld pp. 140-141). Per principianti e intermedi resta la decisione del 5 novembre. L''ACSM non è contraddetta: dice che il cedimento non è necessario, non che è dannoso.'
 - id: C-CALVES-BAND
   status: resolved
   date: '2026-10-30'
@@ -179,3 +180,20 @@ conflicts:
       tra i più solidi. L''ordine dei candidati non cambia (non toglie nulla: gli esercizi in
       allungamento restano validi), ma l''evidenza resta bassa. Da rivedere con il coach e quando la
       versione pubblicata sarà letta per intero.'
+- id: C-ADVANCED-FAILURE
+  status: resolved
+  date: '2026-11-15'
+  between:
+  - P-FAILURE-NOT-REQUIRED
+  - P-ADV-FAILURE-LAST-SET
+  - P-RIR-HYP
+  summary:
+    it: L'ACSM (tier 1) dice che il cedimento non serve per forza, ipertrofia e potenza; Schoenfeld (tier
+      4) e Robinson 2024 (tier 2) indicano che avvicinarsi al cedimento aumenta la crescita e che un po' di
+      cedimento ha senso per chi è esperto. Il livello avanzato chiede sedute più dure, con il cedimento.
+  resolution:
+    it: 'Chiuso da Vincenzo il 15 novembre 2026 con la specifica del livello avanzato: cedimento solo
+      sull''ultima serie, solo su esercizi di isolamento e complementari (mai sui multiarticolari pesanti,
+      heavyCompound, né sui principali), solo dalla settimana 3 (intensityTechniques.fromWeek) e mai nello
+      scarico; solo per experience over_2_years. Il cedimento resta una scelta, non un requisito: è coerente
+      con l''ACSM, che lo dice non necessario.'
