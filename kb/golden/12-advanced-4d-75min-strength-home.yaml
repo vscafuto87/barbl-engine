@@ -1,0 +1,34 @@
+id: golden-12
+name:
+  it: Avanzato, 4 giorni da 75 minuti, forza, palestra di casa
+profile: golden/profile-4d-75min-advanced-strength-home.json
+expect:
+  split: upper_lower
+  sessions: 4
+  scheduleDays:
+  - mon
+  - wed
+  - thu
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      1: 2
+      2: 1
+      3: 1
+      4: 0
+      5: 4
+  durationWithinProfile: true
+  supersetsPerSessionAtLeast: 1
+  techniques:
+    atLeast: 3
+    noneOnHeavyCompound: true
+    beforeDeload: true
+  differsWithVariantSeed: 7
+  validAgainst: contract/plan.schema.json
+origin:
+  it: 'Livello avanzato (KB 0.31.0, P-ADV-STRUCTURE). Mesociclo RIR 2, 1, 1, 0 e scarico; tecniche
+    dell''ultima serie dalla settimana 3, mai su un multiarticolare pesante; la durata resta un
+    vincolo. Con la forza restano solo il cedimento sugli isolamenti e la soglia di volume non si
+    controlla (P-VOL-DOSE-STR).'

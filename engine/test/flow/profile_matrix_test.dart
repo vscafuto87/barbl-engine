@@ -317,8 +317,13 @@ List<String> _planViolations(
   for (final e in planSchemaErrors(plan, _planSchema)) {
     out.add('schema: $e');
   }
-  if (plan['schemaVersion'] != '3.1') {
-    out.add('schemaVersion ${plan['schemaVersion']} invece di 3.1');
+  // Il livello avanzato (over_2_years) scrive lastSet o rirFloor: piano 3.2.
+  final wantedVersion = c.experience == _advancedExperience ? '3.2' : '3.1';
+  if (plan['schemaVersion'] != wantedVersion) {
+    out.add('schemaVersion ${plan['schemaVersion']} invece di $wantedVersion');
+  }
+  if (c.experience == _advancedExperience) {
+    out.addAll(_advancedViolations(c, plan));
   }
 
   for (final s in plan['sessions']! as List<Object?>) {
@@ -578,10 +583,77 @@ List<String> _emphasisViolations(
   return out;
 }
 
+/// Prescrizione dell'obiettivo per i livelli senza prescrizione propria (la
+/// matrice dell'enfasi usa `6_months_2_years`).
 KbPrescription _prescriptionOf(String goal) =>
     ([..._kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id))).firstWhere(
-      (p) => p.appliesTo.contains(goal),
+      (p) => p.appliesTo.contains(goal) && p.experience.isEmpty,
     );
+
+/// Livello con i template avanzati (KB 0.31.0).
+const String _advancedExperience = 'over_2_years';
+
+/// Proprietà del livello avanzato: nessuna tecnica dell'ultima serie su un
+/// multiarticolare pesante; drop set e myo-reps solo fuori dai superset e al
+/// più `maxTechniquesPerSession` per seduta; con la forza solo il cedimento;
+/// le tecniche partono prima dello scarico; i multiarticolari pesanti hanno il
+/// RIR minimo; da 60 minuti almeno un superset per seduta.
+List<String> _advancedViolations(_Combo c, Map<String, Object?> plan) {
+  final out = <String>[];
+  final weeks = [
+    for (final w
+        in (plan['mesocycle']! as Map<String, Object?>)['weeks']!
+            as List<Object?>)
+      w! as Map<String, Object?>,
+  ];
+  final lastLoad =
+      weeks.lastWhere((w) => w['type'] == 'load')['number']! as int;
+  final techniques =
+      (plan['parameters']! as Map<String, Object?>)['intensityTechniques']
+          as Map<String, Object?>?;
+  if (techniques != null && (techniques['fromWeek']! as int) > lastLoad) {
+    out.add(
+      'tecniche dalla settimana ${techniques['fromWeek']}, dopo il carico',
+    );
+  }
+  final max = _kb.maxTechniquesPerSession!;
+  for (final s in plan['sessions']! as List<Object?>) {
+    final m = s! as Map<String, Object?>;
+    var extended = 0;
+    var supersets = 0;
+    for (final b in m['blocks']! as List<Object?>) {
+      final block = b! as Map<String, Object?>;
+      if (block['type'] == 'superset') supersets++;
+      for (final e in block['exercises']! as List<Object?>) {
+        final ex = e! as Map<String, Object?>;
+        final id = ex['exerciseId']! as String;
+        final heavy = _kb.exercises[id]!.heavyCompound;
+        final lastSet = ex['lastSet'] as String?;
+        if (heavy && ex['rirFloor'] == null) {
+          out.add('$id: pesante senza rirFloor');
+        }
+        if (lastSet == null) continue;
+        if (heavy) out.add('$id: $lastSet su un multiarticolare pesante');
+        if (c.goal == 'strength' && lastSet != 'failure') {
+          out.add('$id: $lastSet con l\'obiettivo forza');
+        }
+        if (lastSet != 'failure') {
+          extended++;
+          if (block['type'] == 'superset') {
+            out.add('$id: $lastSet in un superset');
+          }
+        }
+      }
+    }
+    if (extended > max) {
+      out.add('seduta ${m['id']}: $extended tecniche, al più $max');
+    }
+    if (c.duration >= 60 && supersets == 0) {
+      out.add('seduta ${m['id']}: nessun superset a ${c.duration} minuti');
+    }
+  }
+  return out;
+}
 
 /// Posti applicati e posti totali dell'enfasi per «template durata», sui
 /// profili coperti della matrice dell'enfasi. Va cambiata solo di proposito,

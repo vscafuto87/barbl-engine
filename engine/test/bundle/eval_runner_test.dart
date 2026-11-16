@@ -78,6 +78,50 @@ void main() {
     expect(c.failures, isEmpty);
   });
 
+  group('proprietà del livello avanzato (golden-09)', () {
+    EvalCase run09(String Function(String) edit) {
+      final tmp = Directory.systemTemp.createTempSync('eval_copy');
+      addTearDown(() => tmp.deleteSync(recursive: true));
+      copyDir(Directory('../kb'), tmp);
+      final f = File('${tmp.path}/golden/09-advanced-4d-60min-muscle.yaml');
+      f.writeAsStringSync(edit(f.readAsStringSync()));
+      return runEval(tmp).firstWhere((c) => c.id == 'golden-09');
+    }
+
+    test('passa sulla KB vera', () {
+      final c = runEval(Directory('../kb'))
+          .firstWhere((c) => c.id == 'golden-09');
+      expect(c.failures, isEmpty);
+    });
+
+    test('troppi superset attesi fa fallire', () {
+      final c = run09(
+        (t) => replaceOnce(
+          t,
+          'supersetsPerSessionAtLeast: 1',
+          'supersetsPerSessionAtLeast: 3',
+        ),
+      );
+      expect(mentions(c, 'supersetsPerSessionAtLeast'), isTrue);
+    });
+
+    test('troppe tecniche attese fa fallire', () {
+      final c = run09((t) => replaceOnce(t, 'atLeast: 3', 'atLeast: 99'));
+      expect(mentions(c, 'techniques.atLeast'), isTrue);
+    });
+
+    test('una chiave sconosciuta in techniques fa fallire', () {
+      final c = run09(
+        (t) => replaceOnce(
+          t,
+          'beforeDeload: true',
+          'beforeDeload: true\n    foo: 1',
+        ),
+      );
+      expect(mentions(c, 'expect.techniques.foo'), isTrue);
+    });
+  });
+
   test('emphasisExercises sbagliato o mancante fa fallire', () {
     EvalCase run05(String Function(String) edit) {
       final tmp = Directory.systemTemp.createTempSync('eval_copy');

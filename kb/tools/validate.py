@@ -507,6 +507,13 @@ def main() -> int:
     return 0
 
 
+def for_experience(items: list[dict], experience: str) -> list[dict]:
+    """Come pickForExperience del motore: gli elementi che dichiarano l'esperienza del profilo
+    (`experience`), altrimenti quelli senza il campo."""
+    declared = [x for x in items if experience in x.get("experience", [])]
+    return declared or [x for x in items if "experience" not in x]
+
+
 def check_golden(r, principles, exercises, templates, prescriptions, parameters, muscles, set_weights, gym_types, patterns, emphases):
     golden_validator = load_schema("golden")
     for gp in sorted((ROOT / "golden").glob("*.yaml")):
@@ -515,15 +522,15 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
         check_schema(r, golden_validator, g, where)
         profile = json.loads((ROOT / g["profile"]).read_text(encoding="utf-8"))
         gym = profile["gym"]["equipment"]
-        matching = [
+        matching = for_experience([
             t for t in templates.values()
             if t["daysPerWeek"] == profile["daysPerWeek"] and profile["goal"] in t["goals"]
-        ]
+        ], profile["experience"])
         if len(matching) != 1:
             r.error(where, f"servono un solo template per il profilo, trovati {len(matching)}")
             continue
         t = matching[0]
-        pres = [p for p in prescriptions.values() if profile["goal"] in p["appliesTo"]]
+        pres = for_experience([p for p in prescriptions.values() if profile["goal"] in p["appliesTo"]], profile["experience"])
         if len(pres) != 1:
             r.error(where, f"servono una sola prescrizione per l'obiettivo, trovate {len(pres)}")
             continue
@@ -535,7 +542,9 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
             r.error(where, f"{len(t['sessions'])} sedute invece di {exp['sessions']}")
         if exp.get("scheduleDays") and sorted(t["defaultSchedule"]) != sorted(exp["scheduleDays"]):
             r.error(where, f"giorni {sorted(t['defaultSchedule'])} invece di {sorted(exp['scheduleDays'])}")
-        weeks = parameters["mesocycle"]["values"]["weeks"]
+        meso_values = parameters["mesocycle"]["values"]
+        # Le settimane dell'esperienza del profilo, se la KB ne ha (weeksByExperience, livello avanzato).
+        weeks = meso_values.get("weeksByExperience", {}).get(profile["experience"], meso_values["weeks"])
         # Le settimane di carico non scendono sotto il RIR minimo del livello di esperienza (P-RIR-BEGINNER).
         min_rir = parameters["mesocycle"]["values"].get("minRirTargetByExperience", {}).get(profile["experience"])
         if min_rir is not None:
@@ -578,10 +587,50 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
         optional_picks: dict[str, list] = {}  # seduta -> (esercizio, serie) del finisher
         session_ids: dict[str, set] = {}
         session_patterns: dict[str, set] = {}
+        technique_minutes = pr["timeBudget"].get("techniqueMinutes", {})
+        session_extra: dict[str, int] = {}  # seduta -> minuti delle tecniche dell'ultima serie
+
+        def last_set_of(slot, pick):
+            # Come effectiveLastSet del motore: niente tecnica su un multiarticolare pesante; con la
+            # forza resta solo il cedimento.
+            last = slot.get("lastSet")
+            if not last or pick.get("heavyCompound"):
+                return None
+            if profile["goal"] == "strength" and last != "failure":
+                return None
+            return last
+
+        removal_rank = {"core": 0, "accessory": 1, "secondary": 2}
         for sess in t["sessions"]:
             session_ids[sess["id"]] = set()
             session_patterns[sess["id"]] = set()
             sets_in_session = 0
+            # Taglio per la durata (fitToDuration del motore, P-TIME-TRIM): si tolgono gli slot del ruolo
+            # più sacrificabile, l'ultimo nella seduta, finché serie e tecniche stanno nel tempo.
+            kept = [slot for block in sess["blocks"] for slot in block["slots"]]
+
+            def minutes_of(slots):
+                total = 0
+                for sl in slots:
+                    total += timed(pr["roles"][sl["role"]]) * per_set
+                    pk = pick_for(sl)
+                    lst = last_set_of(sl, pk) if pk else None
+                    total += technique_minutes.get(lst, 0) if lst else 0
+                return total
+
+            while minutes_of(kept) > max_minutes:
+                best = None
+                for i, sl in enumerate(kept):
+                    rank = removal_rank.get(sl["role"])
+                    if rank is None or not pr["roles"][sl["role"]].get("countsTowardDuration", True):
+                        continue
+                    if best is None or rank <= removal_rank[kept[best]["role"]]:
+                        best = i
+                if best is None:
+                    break
+                kept.pop(best)
+            kept_ids = {id(sl) for sl in kept}
+            extra = 0
             # Slot facoltativi (ruolo con optional, il finisher di P-CORE-FINISHER). Un ruolo con
             # countsTowardDuration falso non conta nel tempo ed entra sempre; altrimenti il motore lo toglie
             # per primo quando la seduta non sta nel tempo (fitToDuration) e qui entra solo se ci sta.
@@ -592,6 +641,8 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
             )
             for block in sess["blocks"]:
                 for slot in block["slots"]:
+                    if id(slot) not in kept_ids:
+                        continue
                     role = pr["roles"][slot["role"]]
                     if role.get("optional"):
                         if (required_sets + optional_sets.get(sess["id"], 0) + timed(role)) * per_set > max_minutes:
@@ -608,7 +659,11 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
                     add_volume(pick, role["sets"])
                     session_ids[sess["id"]].add(pick["id"])
                     session_patterns[sess["id"]].add(pick["pattern"])
+                    lst = last_set_of(slot, pick)
+                    if lst:
+                        extra += technique_minutes.get(lst, 0)
             session_sets[sess["id"]] = sets_in_session
+            session_extra[sess["id"]] = extra
         # Enfasi, come il motore: in ordine di profilo e di placement, uno slot entra solo se la seduta
         # resta entro la durata (M3); altrimenti si salta.
         applied: dict[str, list[str]] = {}  # seduta -> esercizi aggiunti per enfasi, in ordine
@@ -622,10 +677,10 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
                 if not pick or pl["session"] not in session_sets:
                     continue
                 sets = pr["roles"][pl["slot"]["role"]]["sets"]
-                if (session_sets[pl["session"]] + timed(pr["roles"][pl["slot"]["role"]])) * per_set > max_minutes:
+                if (session_sets[pl["session"]] + timed(pr["roles"][pl["slot"]["role"]])) * per_set + session_extra[pl["session"]] > max_minutes:
                     # L'enfasi vince sul finisher facoltativo: se senza ci sta, il finisher salta.
                     tail = optional_sets.get(pl["session"], 0)  # serie del finisher che contano nel tempo
-                    if not tail or (session_sets[pl["session"]] - tail + sets) * per_set > max_minutes:
+                    if not tail or (session_sets[pl["session"]] - tail + sets) * per_set + session_extra[pl["session"]] > max_minutes:
                         continue
                     session_sets[pl["session"]] -= tail
                     optional_sets[pl["session"]] = 0
@@ -657,7 +712,7 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
             role = pr["roles"].get(slot["role"])
             if not role or sid not in session_sets:
                 continue
-            if (session_sets[sid] + timed(role)) * per_set > max_minutes:
+            if (session_sets[sid] + timed(role)) * per_set + session_extra[sid] > max_minutes:
                 continue
             if slot["pattern"] in session_patterns[sid]:
                 continue
@@ -680,7 +735,7 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
             session_patterns[sid].add(pick["pattern"])
             used_week.add(pick["id"])
         for sid, sets_in_session in session_sets.items():
-            minutes = sets_in_session * per_set
+            minutes = sets_in_session * per_set + session_extra[sid]
             if minutes > max_minutes:
                 r.error(where, f"{sid}: circa {minutes} minuti, oltre i {max_minutes} del profilo")
         want_applied = exp.get("emphasisExercises")
