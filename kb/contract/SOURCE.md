@@ -14,4 +14,4 @@ Dalla KB 0.26.0 la copia del piano ha `parameters.belowBand.excludedMuscles` fac
 
 Dalla KB 0.27.0 la copia del piano ha `schemaVersion` `3.0` o `3.1` e `optional` facoltativo sull'esercizio (finisher dell'addome). Origine: commit `fc14a5b` dell'app (merge di barbl#126, 14 novembre 2026).
 
-Dalla KB 0.32.0 la copia del piano ha `schemaVersion` fino a `3.3` e il gruppo facoltativo `parameters.stall` (regola di stallo). Origine: ramo `claude/project-thread-vwacxy` dell'app, da aggiornare con il commit del merge.
+Dalla KB 0.32.0 la copia del piano ha `schemaVersion` da `3.0` a `3.3`: la `3.2` del livello avanzato (`lastSet`, `rirFloor`, `parameters.intensityTechniques`) e il gruppo facoltativo `parameters.stall` della `3.3` (regola di stallo, regola 19 dell'app). Origine: commit `5f58bf1` dell'app (merge di barbl#132, 16 novembre 2026).

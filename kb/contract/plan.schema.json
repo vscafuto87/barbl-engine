@@ -18,6 +18,15 @@
     "parameters"
   ],
   "$defs": {
+    "repsRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": "integer", "minimum": 1 },
+        "max": { "type": "integer", "minimum": 1 }
+      }
+    },
     "source": {
       "type": "object",
       "additionalProperties": false,
@@ -202,6 +211,15 @@
           "type": "boolean",
           "default": false,
           "description": "true = esercizio facoltativo (dal contratto 3.1): si può saltare senza lasciare la seduta a metà. Il motore lo scrive solo quando è vero"
+        },
+        "lastSet": {
+          "enum": ["failure", "drop_set", "myo_reps"],
+          "description": "Tecnica dell'ultima serie (dal contratto 3.2): cedimento, drop set o myo-reps. Il motore la scrive solo quando c'è. Vale dalla settimana intensityTechniques.fromWeek, mai nello scarico"
+        },
+        "rirFloor": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "RIR minimo dell'esercizio (dal contratto 3.2): vale max(RIR della settimana, rirFloor). Il motore lo scrive solo quando c'è"
         },
         "alternatives": {
           "type": "array",
@@ -605,6 +623,31 @@
             }
           }
         },
+        "intensityTechniques": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "fromWeek",
+            "dropLoadReductionPct",
+            "dropDrops",
+            "myoActivationReps",
+            "myoMiniSetReps",
+            "myoRestSeconds",
+            "myoMaxMiniSets",
+            "myoStopWhenRepsBelow"
+          ],
+          "description": "Valori delle tecniche dell'ultima serie (dal contratto 3.2). Facoltativo: assente nei piani senza tecniche",
+          "properties": {
+            "fromWeek": { "type": "integer", "minimum": 1 },
+            "dropLoadReductionPct": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 },
+            "dropDrops": { "type": "integer", "minimum": 1 },
+            "myoActivationReps": { "$ref": "#/$defs/repsRange" },
+            "myoMiniSetReps": { "$ref": "#/$defs/repsRange" },
+            "myoRestSeconds": { "type": "integer", "minimum": 0 },
+            "myoMaxMiniSets": { "type": "integer", "minimum": 1 },
+            "myoStopWhenRepsBelow": { "type": "integer", "minimum": 1 }
+          }
+        },
         "stall": {
           "type": "object",
           "additionalProperties": false,
@@ -615,7 +658,7 @@
             "ruleId",
             "returnRuleId"
           ],
-          "description": "Regola di stallo (regola 16, piano 3.3). Facoltativo: senza il blocco la regola non c'è",
+          "description": "Regola di stallo (regola 19, piano 3.3). Facoltativo: senza il blocco la regola non c'è",
           "properties": {
             "sessions": {
               "type": "integer",
@@ -752,7 +795,7 @@
   },
   "properties": {
     "schemaVersion": {
-      "enum": ["3.0", "3.1", "3.3"]
+      "enum": ["3.0", "3.1", "3.2", "3.3"]
     },
     "id": {
       "type": "string"
