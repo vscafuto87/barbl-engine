@@ -14,6 +14,7 @@ Map<String, Object?> _exercise(
   List<String> requires = const ['bench'],
   bool heavy = false,
   String primary = 'quadriceps',
+  List<String> substitutes = const [],
 }) => {
   'id': id,
   'name': {'it': id, 'en': id},
@@ -23,6 +24,7 @@ Map<String, Object?> _exercise(
   'muscles': {'primary': primary, 'secondary': <String>[]},
   'loading': {'stepKg': 2.5, 'whenLoadUnknown': 'manual'},
   if (heavy) 'heavyCompound': true,
+  if (substitutes.isNotEmpty) 'substitutes': substitutes,
 };
 
 Map<String, Object?> _slot(
@@ -101,12 +103,30 @@ KnowledgeBase _kb({
 }) {
   final b = minimalBundle(
     exercises: {
-      'squat': _exercise('squat', requires: ['barbell', 'rack'], heavy: true),
-      'leg_ext': _exercise('leg_ext'),
+      'squat': _exercise(
+        'squat',
+        requires: ['barbell', 'rack'],
+        heavy: true,
+        substitutes: ['front_squat', 'sissy_squat'],
+      ),
+      'leg_ext': _exercise(
+        'leg_ext',
+        substitutes: ['front_squat', 'sissy_squat'],
+      ),
+      'calf_raise': _exercise(
+        'calf_raise',
+        primary: 'calves',
+        substitutes: ['front_squat', 'sissy_squat'],
+      ),
+      'front_squat': _exercise(
+        'front_squat',
+        requires: ['barbell', 'rack'],
+        heavy: true,
+      ),
+      'sissy_squat': _exercise('sissy_squat'),
       'leg_ext_machine': _exercise('leg_ext_machine', requires: ['machine']),
       'hack_squat': _exercise('hack_squat', heavy: true),
       'leg_curl': _exercise('leg_curl', primary: 'hamstrings'),
-      'calf_raise': _exercise('calf_raise', primary: 'calves'),
     },
     templates: {
       't_4d': _template('t_4d', [
@@ -366,6 +386,46 @@ void main() {
         'leg_curl',
       ]);
       expect(_session(plan)['estimatedDurationMin'], 24);
+    });
+  });
+
+  group('alternative e multiarticolari pesanti', () {
+    List<String> alternativeIds(Map<String, Object?> plan, String id) => [
+      for (final a in (_byId(plan, id)['alternatives'] as List?) ?? const [])
+        (a as Map)['exerciseId'] as String,
+    ];
+
+    test('esercizio con tecnica: niente alternative heavyCompound', () {
+      final plan = _plan(
+        _kb(heavyFloor: false),
+        testProfile(equipment: _withMachine),
+      );
+      expect(_byId(plan, 'leg_ext')['lastSet'], 'drop_set');
+      expect(alternativeIds(plan, 'leg_ext'), ['sissy_squat']);
+    });
+
+    test('piano con RIR minimo, esercizio non pesante senza tecnica: niente '
+        'alternative heavyCompound', () {
+      final plan = _plan(_kb(), testProfile(equipment: _withMachine));
+      expect(_byId(plan, 'calf_raise').containsKey('lastSet'), isFalse);
+      expect(alternativeIds(plan, 'calf_raise'), ['sissy_squat']);
+    });
+
+    test('esercizio heavyCompound: tutte le alternative', () {
+      final plan = _plan(_kb(), testProfile(equipment: _withMachine));
+      expect(_byId(plan, 'squat')['rirFloor'], 1);
+      expect(alternativeIds(plan, 'squat'), ['front_squat', 'sissy_squat']);
+    });
+
+    test('senza tecnica né RIR minimo: tutte le alternative', () {
+      final plan = _plan(
+        _kb(heavyFloor: false),
+        testProfile(equipment: _withMachine),
+      );
+      expect(alternativeIds(plan, 'calf_raise'), [
+        'front_squat',
+        'sissy_squat',
+      ]);
     });
   });
 

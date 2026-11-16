@@ -25,14 +25,12 @@ const Map<String, String> _lastSetRuleIds = {
   lastSetDropSet: 'ADV-DROP-SET',
   lastSetMyoReps: 'ADV-MYO-REPS',
 };
-const Set<String> _onlyWhenCited = {
+final Set<String> _onlyWhenCited = {
   emphasisRuleId,
   extensionRuleId,
   _supersetRuleId,
   _advancedMesocycleRuleId,
-  'ADV-FAILURE-LAST-SET',
-  'ADV-DROP-SET',
-  'ADV-MYO-REPS',
+  ..._lastSetRuleIds.values,
 };
 const List<String> _weekDays = [
   'mon',
@@ -73,17 +71,23 @@ List<Map<String, Object?>> _schedule(KbTemplate template, Profile profile) {
 /// della KB, solo se eseguibili con l'attrezzatura del profilo e non già
 /// presenti nella stessa seduta. Il carico non si converte (nessun rapporto
 /// tra esercizi ha ancora una fonte): `manual`, scelto dall'utente in seduta.
+///
+/// Con [withoutHeavy] i multiarticolari pesanti (`heavyCompound`) restano
+/// fuori: il contratto non permette all'app di togliere `lastSet` o di
+/// aggiungere `rirFloor` dopo una sostituzione.
 List<Map<String, Object?>> _alternatives(
   KbExercise ex,
   Set<String> inSession,
   Profile profile,
-  KnowledgeBase kb,
-) {
+  KnowledgeBase kb, {
+  bool withoutHeavy = false,
+}) {
   final out = <Map<String, Object?>>[];
   for (final id in ex.substitutes) {
     final alt = kb.exercises[id];
     if (alt == null || id == ex.id || inSession.contains(id)) continue;
     if (!alt.requires.every(profile.equipment.contains)) continue;
+    if (withoutHeavy && alt.heavyCompound) continue;
     out.add({
       'exerciseId': alt.id,
       'name': {'it': alt.nameIt, 'en': alt.nameEn},
@@ -157,7 +161,21 @@ Map<String, Object?> _exercise(
     if (pe.optional) 'optional': true,
     if (pe.lastSet != null) 'lastSet': pe.lastSet,
     'rirFloor': ?floor,
-    ..._withAlternatives(_alternatives(ex, inSession, profile, kb)),
+    ..._withAlternatives(
+      _alternatives(
+        ex,
+        inSession,
+        profile,
+        kb,
+        // Un esercizio con una tecnica, o senza il RIR minimo in un piano che
+        // lo applica, non si sostituisce con un multiarticolare pesante: la
+        // tecnica o la mancanza del minimo passerebbero all'alternativa. Un
+        // esercizio pesante tiene tutte le alternative (il minimo resta sullo
+        // slot: prudente).
+        withoutHeavy:
+            !ex.heavyCompound && (pe.lastSet != null || rirFloor != null),
+      ),
+    ),
   };
 }
 
