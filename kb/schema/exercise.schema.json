@@ -275,6 +275,10 @@
       "enum": [
         "high"
       ]
+    },
+    "heavyCompound": {
+      "type": "boolean",
+      "description": "Multiarticolare pesante: non riceve una tecnica dell'ultima serie (lastSet). Predefinito false."
     }
   }
 }

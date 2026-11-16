@@ -13,3 +13,5 @@ Dalla KB 0.23.0 la copia del profilo ha `schemaVersion` `1.5` e `weekdays` facol
 Dalla KB 0.26.0 la copia del piano ha `parameters.belowBand.excludedMuscles` facoltativo (muscoli a cui la fascia di volume non si applica); `schemaVersion` del piano resta `3.0`. Origine: ramo `claude/project-thread-zcc9ni` dell'app, da aggiornare con il commit del merge.
 
 Dalla KB 0.27.0 la copia del piano ha `schemaVersion` `3.0` o `3.1` e `optional` facoltativo sull'esercizio (finisher dell'addome). Origine: commit `fc14a5b` dell'app (merge di barbl#126, 14 novembre 2026).
+
+Dalla KB 0.31.0 la copia del piano è quella del commit `8c096d1` dell'app (merge della pull request #131, 15 novembre 2026): contratto 3.2, con `schemaVersion` `3.2`, `lastSet` e `rirFloor` facoltativi sull'esercizio e `parameters.intensityTechniques` facoltativo (livello avanzato). Il profilo è invariato.

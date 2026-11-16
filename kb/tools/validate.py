@@ -242,6 +242,36 @@ def main() -> int:
                         if not any(c in exercises and available(exercises[c], gym) for c in slot["candidates"]):
                             r.error(where, f"{sess['id']}, slot {slot['pattern']}: nessun candidato per la palestra '{gt}'")
 
+    # Tecniche dell'ultima serie (lastSet, livello avanzato): stesse regole di `_checkLastSets` del motore.
+    max_techniques = parameters.get("intensityTechniques", {}).get("engineConstraints", {}).get("maxTechniquesPerSession")
+    for k, t in templates.items():
+        where = t["_file"]
+        for sess in t["sessions"]:
+            extended = 0
+            for bi, block in enumerate(sess["blocks"]):
+                for si, slot in enumerate(block["slots"]):
+                    last = slot.get("lastSet")
+                    if last is None:
+                        continue
+                    ctx = f"{sess['id']} blocco {bi + 1} slot {si + 1}: lastSet {last}"
+                    if slot["role"] == "main":
+                        r.error(where, f"{ctx} vietato su role main")
+                    if last in ("drop_set", "myo_reps"):
+                        if slot["role"] != "accessory":
+                            r.error(where, f"{ctx} solo su role accessory")
+                        if block["type"] != "single":
+                            r.error(where, f"{ctx} solo in un blocco single")
+                        extended += 1
+                    for gt, gym in gym_types.items():
+                        first = next((exercises[c] for c in slot["candidates"] if c in exercises and available(exercises[c], gym)), None)
+                        if first and first.get("heavyCompound"):
+                            r.error(where, f"{ctx}: il primo candidato per la palestra '{gt}' ({first['id']}) è heavyCompound")
+            if extended:
+                if not isinstance(max_techniques, int):
+                    r.error("parameters/intensityTechniques.yaml", f"manca engineConstraints.maxTechniquesPerSession ma {k}.{sess['id']} ha drop_set o myo_reps")
+                elif extended > max_techniques:
+                    r.error(where, f"{sess['id']}: {extended} slot con drop_set o myo_reps, al più {max_techniques}")
+
     # Enfasi (M1-M2 del piano dell'enfasi): un file per valore di `emphasis` del profilo, al massimo
     # due sedute per template e uno slot per seduta, slot complementari con candidati per ogni palestra.
     emphasis_enum = profile_schema["properties"].get("emphasis", {}).get("items", {}).get("enum", [])
