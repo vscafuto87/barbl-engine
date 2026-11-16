@@ -2,6 +2,11 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.32.0 — 2026-11-16
+
+- Regola di stallo (scelta di Vincenzo del 15/11/2026, dalla ricerca web): gruppo nuovo `stall` dei `parameters` (`sessions` 2, `dropPct` 10, provvisorio), principio `P-STALL-RESET` (Helms, Pyramid v2 Training, p. 241) e motivazioni `STALL` e `STALL-RETURN`. Due sedute di fila mancate allo stesso carico → la seduta dopo il carico scende del 10% (per difetto sui passi); se va bene si torna subito al carico dello stallo. Il meccanismo è nell'app (regola 16 di `docs/logica-progressione.md`).
+- Piano `schemaVersion` `3.3` (contratto copiato dall'app). Sedute ed esercizi non cambiano.
+
 ## 0.30.1 — 2026-11-15
 
 - Ricerca web sulle evidenze 2022–2026 (report in `/mnt/project-files/ricerca-kb/` del progetto): 12 fonti nuove, dati bibliografici verificati su Crossref. I piani generati non cambiano.

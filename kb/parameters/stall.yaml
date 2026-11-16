@@ -1,0 +1,10 @@
+group: stall
+target: parameters
+ruleId: STALL
+values:
+  sessions: 2
+  dropPct: 10
+  returnRuleId: STALL-RETURN
+provisional: true
+principles:
+- P-STALL-RESET

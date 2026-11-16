@@ -10,7 +10,7 @@ import 'prescribe.dart';
 import 'rationales.dart';
 
 // Costanti di formato del contratto del piano.
-const String _planSchemaVersion = '3.1';
+const String _planSchemaVersion = '3.3';
 const String _trialRuleId = 'TRIAL-LOAD';
 const Set<String> _onlyWhenCited = {emphasisRuleId, extensionRuleId};
 const List<String> _weekDays = [
