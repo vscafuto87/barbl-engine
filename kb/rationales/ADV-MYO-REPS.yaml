@@ -1,0 +1,13 @@
+ruleId: ADV-MYO-REPS
+key: advanced.myoReps
+level: set
+text:
+  it: 'Myo-reps sull''ultima serie: la porti al cedimento, poi fai mini-serie da 3-4 ripetizioni con lo
+    stesso carico e pochi secondi di pausa, finché non ne completi meno di 3. Accumuli ripetizioni vicino
+    al limite in poco tempo. Vale dalla settimana 3, mai nello scarico.'
+  en: 'Myo-reps on the last set: take it to failure, then do mini-sets of 3-4 reps with the same load and
+    a few seconds of rest, until you complete fewer than 3. You pile up reps close to your limit in little
+    time. It applies from week 3, never in the deload.'
+principles:
+- P-MYO-REPS
+- P-ADV-STRUCTURE

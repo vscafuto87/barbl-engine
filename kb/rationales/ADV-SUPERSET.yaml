@@ -1,0 +1,10 @@
+ruleId: ADV-SUPERSET
+key: advanced.superset
+level: set
+text:
+  it: Alterni due esercizi per muscoli diversi senza pausa tra l'uno e l'altro, poi recuperi. Un muscolo
+    riposa mentre lavora l'altro, quindi le ripetizioni restano quelle e la seduta dura meno.
+  en: You alternate two exercises for different muscles with no rest between them, then recover. One muscle
+    rests while the other works, so your reps hold up and the session is shorter.
+principles:
+- P-SUPERSET-ANTAGONIST
