@@ -1,0 +1,26 @@
+id: P-ADV-FAILURE-PERIODIZED
+topic: intensity
+statement:
+  it: 'Nel mesociclo avanzato il cedimento arriva per gradi: le prime settimane si resta a 1-2 ripetizioni
+    dal cedimento, poi l''ultima serie va a cedimento e l''ultima settimana di carico è a RIR 0. Sequenza
+    scelta da Barbl: RIR 2, 1, 1, 0 e scarico a 4; tecniche dell''ultima serie dalla settimana 3, mai nello
+    scarico; i multiarticolari pesanti non scendono sotto RIR 1.'
+  en: 'In the advanced mesocycle, failure comes in steps: in the first weeks you stay 1-2 reps from failure,
+    then the last set goes to failure and the last loading week is at RIR 0. Sequence chosen by Barbl: RIR
+    2, 1, 1, 0 and deload at 4; last-set techniques from week 3, never in the deload; heavy compound lifts
+    do not go below RIR 1.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- parameters/mesocycle
+- parameters/intensityTechniques
+sources:
+- id: barbl-design
+  access: full_text
+- id: schoenfeld-hypertrophy-2e
+  pages:
+  - 140
+  access: full_text
+  note: periodizzazione del cedimento, dalla fase senza cedimento all'ultima serie a cedimento; la maggior
+    parte delle serie a RIR 1-2; meno cedimento sui multiarticolari

@@ -1,0 +1,23 @@
+id: P-TIME-TECHNIQUE
+topic: structure
+statement:
+  it: 'Una tecnica dell''ultima serie allunga la seduta: un drop set o un blocco di myo-reps costano circa
+    un minuto in più della serie normale, perché si cambia il carico o si fanno pause di pochi secondi. Valore
+    di Barbl, stimato dai tempi descritti dalle fonti.'
+  en: 'A last-set technique makes the session longer: a drop set or a myo-reps block costs about one minute
+    more than a normal set, because you change the load or take rests of a few seconds. Barbl value, estimated
+    from the times described by the sources.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- prescriptions
+sources:
+- id: barbl-design
+  access: full_text
+- id: helms-pyramid-training-v2
+  pages:
+  - 181
+  - 183
+  access: full_text
+  note: un protocollo a drop set o rest-pause dura circa 2 minuti in tutto

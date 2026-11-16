@@ -1,0 +1,44 @@
+id: P-ADV-FAILURE-LAST-SET
+topic: intensity
+statement:
+  it: Per chi si allena da anni il cedimento ha senso se è selettivo, cioè solo sull'ultima serie di un
+    esercizio, con più libertà sugli esercizi di isolamento e con prudenza sui multiarticolari pesanti,
+    che affaticano tutto il corpo. Il cedimento non dà più ipertrofia del fermarsi vicino (Refalo 2023),
+    ma la crescita aumenta man mano che ci si avvicina (Robinson 2024); è una scelta per chi vuole sedute
+    più dure, non un requisito.
+  en: For lifters with years of training, failure makes sense when it is selective, that is only on the
+    last set of an exercise, more freely on isolation exercises and with caution on heavy compound lifts,
+    which tire the whole body. Failure does not give more hypertrophy than stopping close to it (Refalo
+    2023), but growth rises as you get closer (Robinson 2024); it is a choice for those who want harder
+    sessions, not a requirement.
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+- parameters/mesocycle
+sources:
+- id: schoenfeld-hypertrophy-2e
+  pages:
+  - 140
+  - 141
+  access: full_text
+- id: refalo-2023-failure-hypertrophy
+  access: full_text
+- id: robinson-2024-proximity-failure
+  access: full_text_preprint
+- id: helms-pyramid-training-v2
+  pages:
+  - 183
+  - 184
+  access: full_text
+  note: il cedimento sui multiarticolari principali costa recupero; meglio sugli esercizi accessori
+- id: nippard-bodybuilding-transformation
+  pages:
+  - 9
+  - 10
+  access: full_text
+  note: struttura con serie iniziali a 1-2 RIR e ultima serie a cedimento
+conflicts:
+- with: conflicts.yaml#C-ADVANCED-FAILURE
+  status: resolved
