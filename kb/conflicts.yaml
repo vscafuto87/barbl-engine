@@ -162,3 +162,20 @@ conflicts:
     it: 'Chiuso da Vincenzo il 14 novembre 2026: il ruolo core va da 10 a 20 ripetizioni, così gli esercizi
       a corpo libero progrediscono con le ripetizioni. Costo accettato: sopra le 12 ripetizioni il RIR
       si stima peggio. Vale solo per il finisher facoltativo; gli altri ruoli restano con il tetto a 12.'
+- id: C-MUSCLE-LENGTH-REGIONAL
+  status: open
+  date: '2026-11-15'
+  between:
+  - P-MUSCLE-LENGTH
+  - varovic-2025-muscle-length-regional
+  summary:
+    it: P-MUSCLE-LENGTH mette per primi tra i candidati intercambiabili gli esercizi che caricano il muscolo
+      da allungato, sulla base di singoli studi (tricipiti, polpacci, ischiocrurali, bicipiti). Una
+      meta-analisi del 2025 (12 studi) non trova un vantaggio apprezzabile delle lunghezze maggiori sulla
+      crescita delle singole regioni del muscolo.
+  resolution:
+    it: 'Aperto: la meta-analisi guarda la crescita per regione, mentre gli studi di P-MUSCLE-LENGTH
+      misurano anche la crescita totale del muscolo, e i casi dei tricipiti e degli ischiocrurali restano
+      tra i più solidi. L''ordine dei candidati non cambia (non toglie nulla: gli esercizi in
+      allungamento restano validi), ma l''evidenza resta bassa. Da rivedere con il coach e quando la
+      versione pubblicata sarà letta per intero.'

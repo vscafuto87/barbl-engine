@@ -1,9 +1,13 @@
 id: P-REST-NEUTRAL
 topic: recovery
 statement:
-  it: Per la forza, recuperi sotto o sopra un minuto danno risultati simili; per l'ipertrofia i dati non
-    bastano.
-  en: For strength, rests under or over one minute give similar results; data are insufficient for hypertrophy.
+  it: 'Per la forza, recuperi sotto o sopra un minuto danno risultati simili. Per l''ipertrofia una
+    meta-analisi bayesiana del 2024 vede un piccolo vantaggio, incerto, per le pause oltre i 60 secondi
+    e nessuna differenza oltre i 90 circa: i recuperi della KB, tutti da 90 secondi in su, stanno già
+    in questa zona.'
+  en: 'For strength, rests under or over one minute give similar results. For hypertrophy a 2024 Bayesian
+    meta-analysis sees a small, uncertain advantage for rests longer than 60 seconds and no difference
+    beyond about 90: the rests in the KB, all 90 seconds or more, already sit in this range.'
 evidence: medium
 status: provisional
 reviewedBy: null
@@ -14,3 +18,7 @@ sources:
   pages:
   - 855
   access: full_text
+- id: singer-2024-rest-hypertrophy
+  access: full_text
+  note: 9 studi; soglia a 60 s, effetto standardizzato di circa 0,1-0,2 a favore della pausa lunga con
+    intervalli di credibilità che includono lo zero; oltre 90 s nessuna differenza apprezzabile.
