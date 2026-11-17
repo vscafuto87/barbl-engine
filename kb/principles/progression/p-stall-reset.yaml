@@ -1,0 +1,26 @@
+id: P-STALL-RESET
+topic: progression
+statement:
+  it: 'Se per due sedute di fila non si fanno le ripetizioni previste con lo stesso carico, conviene
+    alleggerirlo di circa il 10% nella seduta dopo e, se va bene, tornare subito al carico su cui ci si
+    era bloccati: un passo indietro breve sblocca la progressione senza perdere settimane. Nessuno
+    studio sperimentale confronta questa regola con altre; è la pratica di un autore evidence-based,
+    proposta per chi progredisce di seduta in seduta, e regole simili si trovano in programmi molto
+    diffusi.'
+  en: 'If the target reps are missed for two sessions in a row at the same load, it pays to lighten it
+    by about 10% the next session and, if that goes well, go straight back to the load where progress
+    stalled: a short step back unlocks progression without losing weeks. No experimental study compares
+    this rule with others; it is the practice of an evidence-based author, given for lifters who progress
+    from session to session, and similar rules appear in widely used programs.'
+evidence: low
+status: provisional
+reviewedBy: null
+feeds:
+- parameters/stall
+sources:
+- id: helms-pyramid-training-v2
+  pages:
+  - 241
+  access: full_text
+  note: Progressione dei principianti nei programmi di esempio; pagina del PDF. Il dimezzamento dei passi
+    dopo un secondo stallo, proposto dall'autore, non entra nella KB.

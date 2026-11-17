@@ -648,6 +648,42 @@
             "myoStopWhenRepsBelow": { "type": "integer", "minimum": 1 }
           }
         },
+        "stall": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sessions",
+            "dropPct",
+            "provisional",
+            "ruleId",
+            "returnRuleId"
+          ],
+          "description": "Regola di stallo (regola 19, piano 3.3). Facoltativo: senza il blocco la regola non c'è",
+          "properties": {
+            "sessions": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Sedute di fila mancate allo stesso carico che fanno uno stallo"
+            },
+            "dropPct": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "exclusiveMaximum": 100,
+              "description": "Percentuale tolta al carico dello stallo per la seduta dopo"
+            },
+            "provisional": {
+              "type": "boolean",
+              "description": "true = valore provvisorio, da confermare con la knowledge base"
+            },
+            "ruleId": {
+              "type": "string"
+            },
+            "returnRuleId": {
+              "type": "string",
+              "description": "Motivazione del ritorno al carico dello stallo"
+            }
+          }
+        },
         "workoutEnergy": {
           "type": "object",
           "additionalProperties": false,
@@ -759,7 +795,7 @@
   },
   "properties": {
     "schemaVersion": {
-      "enum": ["3.0", "3.1", "3.2"]
+      "enum": ["3.0", "3.1", "3.2", "3.3"]
     },
     "id": {
       "type": "string"

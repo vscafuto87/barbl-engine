@@ -10,11 +10,9 @@ import 'prescribe.dart';
 import 'rationales.dart';
 
 // Costanti di formato del contratto del piano.
-const String _planSchemaVersion = '3.1';
-
-/// Versione del piano con `lastSet` o `rirFloor` (contratto 3.2): solo i piani
-/// che li hanno la dichiarano, così gli altri restano identici.
-const String _advancedPlanSchemaVersion = '3.2';
+/// Ogni piano ha il gruppo `stall` (contratto 3.3, che contiene anche i campi
+/// della 3.2 del livello avanzato): una sola versione per tutti.
+const String _planSchemaVersion = '3.3';
 const String _trialRuleId = 'TRIAL-LOAD';
 
 // Motivazioni del livello avanzato (identificativi della KB).
@@ -293,19 +291,13 @@ Map<String, Object?> assemblePlan({
         r,
   ];
 
-  final exercises = [
+  final hasLastSet = [
     for (final s in sessionsJson)
       for (final b in s['blocks']! as List<Object?>)
-        for (final e
-            in (b! as Map<String, Object?>)['exercises']! as List<Object?>)
-          e! as Map<String, Object?>,
-  ];
-  final hasLastSet = exercises.any((e) => e.containsKey('lastSet'));
-  final hasRirFloor = exercises.any((e) => e.containsKey('rirFloor'));
+        ...(b! as Map<String, Object?>)['exercises']! as List<Object?>,
+  ].any((e) => (e! as Map<String, Object?>).containsKey('lastSet'));
   final plan = <String, Object?>{
-    'schemaVersion': hasLastSet || hasRirFloor
-        ? _advancedPlanSchemaVersion
-        : _planSchemaVersion,
+    'schemaVersion': _planSchemaVersion,
     'id': '${template.id}-${profile.gymType}',
     'generatedBy': {
       'engine': 'barbl-engine $engineVersion',

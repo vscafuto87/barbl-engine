@@ -1,0 +1,13 @@
+ruleId: STALL
+key: progression.stall
+level: set
+text:
+  it: '{sessions} sedute di fila sotto le ripetizioni previste a {kg} kg: oggi un carico più leggero, circa
+    il {dropPct}% in meno, per ripartire. La volta dopo si torna a {kg} kg.'
+  en: '{sessions} sessions in a row short of the target reps at {kg} kg: today a lighter load, about {dropPct}%
+    less, to get going again. Next time you go back to {kg} kg.'
+exampleValues:
+  kg: 80
+  sessions: 2
+  dropPct: 10
+sourcesFrom: parameters/stall

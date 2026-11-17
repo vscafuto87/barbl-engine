@@ -317,10 +317,8 @@ List<String> _planViolations(
   for (final e in planSchemaErrors(plan, _planSchema)) {
     out.add('schema: $e');
   }
-  // Il livello avanzato (over_2_years) scrive lastSet o rirFloor: piano 3.2.
-  final wantedVersion = c.experience == _advancedExperience ? '3.2' : '3.1';
-  if (plan['schemaVersion'] != wantedVersion) {
-    out.add('schemaVersion ${plan['schemaVersion']} invece di $wantedVersion');
+  if (plan['schemaVersion'] != '3.3') {
+    out.add('schemaVersion ${plan['schemaVersion']} invece di 3.3');
   }
   if (c.experience == _advancedExperience) {
     out.addAll(_advancedViolations(c, plan));

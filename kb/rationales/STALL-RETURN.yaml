@@ -1,0 +1,9 @@
+ruleId: STALL-RETURN
+key: progression.stallReturn
+level: set
+text:
+  it: 'La seduta più leggera è andata: si torna a {kg} kg, il carico su cui ti eri fermato.'
+  en: 'The lighter session went well: back to {kg} kg, the load you had stalled at.'
+exampleValues:
+  kg: 80
+sourcesFrom: parameters/stall

@@ -296,7 +296,7 @@ void main() {
   group('piano avanzato', () {
     test('lastSet sugli esercizi, schemaVersion 3.2 e intensityTechniques', () {
       final plan = _plan(_kb(), testProfile(equipment: _withMachine));
-      expect(plan['schemaVersion'], '3.2');
+      expect(plan['schemaVersion'], '3.3');
       expect(_byId(plan, 'leg_ext')['lastSet'], 'drop_set');
       expect(_byId(plan, 'leg_ext_machine')['lastSet'], 'myo_reps');
       expect(_byId(plan, 'leg_curl')['lastSet'], 'failure');
@@ -515,12 +515,12 @@ void main() {
   });
 
   group('piani senza tecniche', () {
-    test('schemaVersion 3.1, niente intensityTechniques né ADV-*', () {
+    test('schemaVersion 3.3, niente intensityTechniques né ADV-*', () {
       final plan = _plan(
         _kb(heavyFloor: false),
         testProfile(experience: '6_months_2_years'),
       );
-      expect(plan['schemaVersion'], '3.1');
+      expect(plan['schemaVersion'], '3.3');
       expect(
         (plan['parameters']! as Map).containsKey('intensityTechniques'),
         isFalse,
@@ -530,12 +530,12 @@ void main() {
       expect(weeks, hasLength(2));
     });
 
-    test('rirFloor da solo porta lo schemaVersion a 3.2', () {
+    test('rirFloor da solo: schemaVersion 3.3 come ogni piano', () {
       // Il template normale scelto da un avanzato (nessun avanzato in KB):
       // nessuna tecnica, ma lo squat riceve il RIR minimo dell'esperienza.
       final plan = _plan(_kb(advanced: false), testProfile());
       expect(_byId(plan, 'squat')['rirFloor'], 1);
-      expect(plan['schemaVersion'], '3.2');
+      expect(plan['schemaVersion'], '3.3');
       expect(
         (plan['parameters']! as Map).containsKey('intensityTechniques'),
         isFalse,

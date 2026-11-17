@@ -2,6 +2,11 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.32.0 — 2026-11-16
+
+- Regola di stallo (scelta di Vincenzo del 15/11/2026, dalla ricerca web): gruppo nuovo `stall` dei `parameters` (`sessions` 2, `dropPct` 10, provvisorio), principio `P-STALL-RESET` (Helms, Pyramid v2 Training, p. 241) e motivazioni `STALL` e `STALL-RETURN`. Due sedute di fila mancate allo stesso carico → la seduta dopo il carico scende del 10% (per difetto sui passi); se va bene si torna subito al carico dello stallo. Il meccanismo è nell'app (regola 19 di `docs/logica-progressione.md`).
+- Piano `schemaVersion` `3.3` per tutti i piani, anche quelli avanzati: il gruppo `stall` c'è sempre e la 3.3 contiene i campi della 3.2 (contratto copiato da barbl#132). Sedute ed esercizi non cambiano.
+
 ## 0.31.0 — 2026-11-16
 
 - Livello avanzato per chi si allena da più di 2 anni (`experience: over_2_years`, specifica `docs/superpowers/specs/2026-11-15-livello-avanzato-design.md`): template `advanced_full_body_3d`, `advanced_upper_lower_4d` e `advanced_ul_ppl_5d` per tutti gli obiettivi, palestre e durate; prescrizioni `advanced_muscle_gain` e `advanced_strength` (2-3 serie per esercizio, superset a 90 s, un minuto in più per drop set e myo-reps). I 324 profili restano coperti.
