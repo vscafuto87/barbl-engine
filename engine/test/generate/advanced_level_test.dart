@@ -13,6 +13,8 @@ Map<String, Object?> _exercise(
   String id, {
   List<String> requires = const ['bench'],
   bool heavy = false,
+  bool noFailure = false,
+  String mechanics = 'isolation',
   String primary = 'quadriceps',
   List<String> substitutes = const [],
 }) => {
@@ -23,7 +25,9 @@ Map<String, Object?> _exercise(
   'pattern': 'squat',
   'muscles': {'primary': primary, 'secondary': <String>[]},
   'loading': {'stepKg': 2.5, 'whenLoadUnknown': 'manual'},
+  'mechanics': mechanics,
   if (heavy) 'heavyCompound': true,
+  if (noFailure) 'noFailure': true,
   if (substitutes.isNotEmpty) 'substitutes': substitutes,
 };
 
@@ -100,6 +104,7 @@ KnowledgeBase _kb({
   bool rationales = true,
   bool heavyFloor = true,
   bool advancedWeeks = true,
+  List<Map<String, Object?>>? advancedBlocks,
 }) {
   final b = minimalBundle(
     exercises: {
@@ -126,7 +131,23 @@ KnowledgeBase _kb({
       'sissy_squat': _exercise('sissy_squat'),
       'leg_ext_machine': _exercise('leg_ext_machine', requires: ['machine']),
       'hack_squat': _exercise('hack_squat', heavy: true),
-      'leg_curl': _exercise('leg_curl', primary: 'hamstrings'),
+      'leg_curl': _exercise(
+        'leg_curl',
+        primary: 'hamstrings',
+        substitutes: ['goblet', 'nordic', 'leg_ext'],
+      ),
+      'nordic': _exercise(
+        'nordic',
+        primary: 'hamstrings',
+        noFailure: true,
+        substitutes: ['leg_curl'],
+      ),
+      'split_squat': _exercise(
+        'split_squat',
+        mechanics: 'compound',
+        substitutes: ['nordic', 'goblet', 'leg_ext'],
+      ),
+      'goblet': _exercise('goblet', mechanics: 'compound'),
     },
     templates: {
       't_4d': _template('t_4d', [
@@ -135,24 +156,25 @@ KnowledgeBase _kb({
       if (advanced)
         'adv_4d': _template(
           'adv_4d',
-          [
-            _single(_slot('main', ['squat'])),
-            _single(_slot('accessory', ['leg_ext'], lastSet: 'drop_set')),
-            _single(
-              _slot('accessory', [
-                'leg_ext_machine',
-                'hack_squat',
-              ], lastSet: 'myo_reps'),
-            ),
-            {
-              'type': 'superset',
-              'label': 'A',
-              'slots': [
-                _slot('accessory', ['leg_curl'], lastSet: 'failure'),
-                _slot('accessory', ['calf_raise']),
+          advancedBlocks ??
+              [
+                _single(_slot('main', ['squat'])),
+                _single(_slot('accessory', ['leg_ext'], lastSet: 'drop_set')),
+                _single(
+                  _slot('accessory', [
+                    'leg_ext_machine',
+                    'hack_squat',
+                  ], lastSet: 'myo_reps'),
+                ),
+                {
+                  'type': 'superset',
+                  'label': 'A',
+                  'slots': [
+                    _slot('accessory', ['leg_curl'], lastSet: 'failure'),
+                    _slot('accessory', ['calf_raise']),
+                  ],
+                },
               ],
-            },
-          ],
           experience: ['over_2_years'],
         ),
     },
@@ -386,6 +408,69 @@ void main() {
         'leg_curl',
       ]);
       expect(_session(plan)['estimatedDurationMin'], 24);
+    });
+  });
+
+  group('esercizi rischiosi e tecniche', () {
+    List<String> alternativeIds(Map<String, Object?> plan, String id) => [
+      for (final a in (_byId(plan, id)['alternatives'] as List?) ?? const [])
+        (a as Map)['exerciseId'] as String,
+    ];
+
+    KnowledgeBase risky() => _kb(
+      heavyFloor: false,
+      advancedBlocks: [
+        _single(_slot('main', ['squat'])),
+        _single(_slot('accessory', ['nordic'], lastSet: 'failure')),
+        _single(_slot('accessory', ['split_squat'], lastSet: 'drop_set')),
+      ],
+    );
+
+    test('noFailure: l\'esercizio resta, la tecnica no', () {
+      final plan = _plan(risky(), testProfile(equipment: _withMachine));
+      expect(_byId(plan, 'nordic').containsKey('lastSet'), isFalse);
+    });
+
+    test(
+      'drop set su un complementare non rischioso: diventa il cedimento',
+      () {
+        final plan = _plan(risky(), testProfile(equipment: _withMachine));
+        expect(_byId(plan, 'split_squat')['lastSet'], 'failure');
+        final rules = _byId(plan, 'split_squat')['rules']! as List;
+        expect(rules, contains('ADV-FAILURE-LAST-SET'));
+        expect(rules, isNot(contains('ADV-DROP-SET')));
+      },
+    );
+
+    test('con la forza il drop set su un complementare non diventa il '
+        'cedimento', () {
+      final plan = _plan(
+        risky(),
+        testProfile(equipment: _withMachine, goal: 'strength'),
+      );
+      expect(_byId(plan, 'split_squat').containsKey('lastSet'), isFalse);
+    });
+
+    test('alternative: solo quelle che ricevono la stessa tecnica', () {
+      final plan = _plan(risky(), testProfile(equipment: _withMachine));
+      // Cedimento: niente nordic (noFailure); goblet e leg_ext lo ricevono.
+      expect(alternativeIds(plan, 'split_squat'), ['goblet', 'leg_ext']);
+    });
+
+    test('drop set: alternative solo tra gli isolamenti sicuri', () {
+      final plan = _plan(
+        _kb(
+          heavyFloor: false,
+          advancedBlocks: [
+            _single(_slot('main', ['squat'])),
+            _single(_slot('accessory', ['leg_curl'], lastSet: 'drop_set')),
+          ],
+        ),
+        testProfile(equipment: _withMachine),
+      );
+      expect(_byId(plan, 'leg_curl')['lastSet'], 'drop_set');
+      // goblet non è un isolamento, nordic è noFailure.
+      expect(alternativeIds(plan, 'leg_curl'), ['leg_ext']);
     });
   });
 

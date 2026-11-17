@@ -633,7 +633,23 @@ List<String> _advancedViolations(_Combo c, Map<String, Object?> plan) {
           out.add('$id: pesante senza rirFloor');
         }
         if (lastSet == null) continue;
+        final kbExercise = _kb.exercises[id]!;
         if (heavy) out.add('$id: $lastSet su un multiarticolare pesante');
+        if (kbExercise.noFailure) {
+          out.add('$id: $lastSet su un esercizio noFailure');
+        }
+        if (lastSet != 'failure' && !kbExercise.isIsolation) {
+          out.add('$id: $lastSet su un esercizio non di isolamento');
+        }
+        for (final a in (ex['alternatives'] as List<Object?>?) ?? const []) {
+          final altId = (a! as Map<String, Object?>)['exerciseId']! as String;
+          final alt = _kb.exercises[altId]!;
+          if (alt.heavyCompound ||
+              alt.noFailure ||
+              (lastSet != 'failure' && !alt.isIsolation)) {
+            out.add('$id: alternativa $altId non adatta a $lastSet');
+          }
+        }
         if (c.goal == 'strength' && lastSet != 'failure') {
           out.add('$id: $lastSet con l\'obiettivo forza');
         }
@@ -890,6 +906,18 @@ void main() {
       _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length,
     );
     expect((stats.all, stats.some, stats.none), (431, 54, 271));
+  });
+
+  test('nessuno slot main dei template ha una tecnica dell\'ultima serie', () {
+    final found = [
+      for (final t in _kb.templates)
+        for (final s in t.sessions)
+          for (final b in s.blocks)
+            for (final slot in b.slots)
+              if (slot.role == roleMain && slot.lastSet != null)
+                '${t.id}.${s.id}: ${slot.pattern}',
+    ];
+    expect(found, isEmpty);
   });
 
   test('la copertura coincide con la mappa attesa', () {

@@ -25,6 +25,7 @@ expect:
   techniques:
     atLeast: 3
     noneOnHeavyCompound: true
+    onlySafe: true
     beforeDeload: true
   differsWithVariantSeed: 7
   weeklySetsAtLeast:

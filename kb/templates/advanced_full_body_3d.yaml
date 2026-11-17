@@ -81,7 +81,6 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
-      - jm_press
       - close_grip_push_up
     - pattern: elbow_flexion
       role: accessory
@@ -121,15 +120,12 @@ sessions:
       role: accessory
       equivalent: 5
       lastSet: drop_set
-      candidates: &id001
+      candidates: &id002
       - seated_leg_curl
       - standing_leg_curl
       - dumbbell_leg_curl
-      - glute_ham_raise
       - single_leg_curl
       - leg_curl
-      - nordic_curl
-      - single_leg_dumbbell_romanian_deadlift
   - type: single
     slots:
     - pattern: trunk_flexion
@@ -232,7 +228,7 @@ sessions:
       role: accessory
       equivalent: 2
       lastSet: drop_set
-      candidates:
+      candidates: &id001
       - leg_extension
       - reverse_nordic
       - sissy_squat
@@ -316,17 +312,12 @@ sessions:
       role: accessory
       equivalent: 2
       lastSet: failure
-      candidates:
-      - leg_extension
-      - reverse_nordic
-      - sissy_squat
-      - bulgarian_split_squat
-      - goblet_squat
+      candidates: *id001
     - pattern: knee_flexion
       role: accessory
       equivalent: 5
       lastSet: failure
-      candidates: *id001
+      candidates: *id002
   - type: superset
     label: B
     slots:
@@ -360,7 +351,6 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
-      - jm_press
       - close_grip_push_up
   - type: single
     slots:
@@ -410,7 +400,8 @@ notes:
   it: Template del livello avanzato (P-ADV-STRUCTURE), giorni di full_body_3d. Ogni seduta ha uno o due
     multiarticolari pesanti senza tecniche, un complementare, un superset di isolamenti tra muscoli diversi
     e al più due drop set o myo-reps su isolamenti in blocchi singoli. Full B ha lo stacco come principale.
-    I polpacci entrano in Full C come isolamento con myo-reps.
+    I polpacci entrano in Full C come isolamento con myo-reps. Le estensioni in coda (deltoidi posteriori,
+    abduttori, stacco rumeno con manubri, affondo) usano i 90 minuti per spalle, femorali e glutei (C-ADVANCED-VOLUME).
 extensions:
 - session: full_b
   slot:
@@ -421,6 +412,61 @@ extensions:
     - straight_arm_lat_pulldown
     - machine_pullover
     - dumbbell_pullover
+- session: full_a
+  slot:
+    pattern: hip_extension
+    role: accessory
+    equivalent: 5
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - machine_hip_thrust
+    - smith_machine_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+- session: full_a
+  slot:
+    pattern: calf_raise
+    role: accessory
+    equivalent: 6
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - single_leg_dumbbell_calf_raise
+    - donkey_calf_raise
+    - seated_calf_raise
+- session: full_b
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    equivalent: 6
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - cable_y_raise
+    - lean_in_lateral_raise
+    - egyptian_lateral_raise
+    - machine_lateral_raise
+    - cable_upright_row
+- session: full_b
+  slot:
+    pattern: knee_flexion
+    role: accessory
+    equivalent: 5
+    candidates:
+    - seated_leg_curl
+    - standing_leg_curl
+    - dumbbell_leg_curl
+    - glute_ham_raise
+    - single_leg_curl
+    - single_leg_dumbbell_romanian_deadlift
+    - leg_curl
+    - dumbbell_romanian_deadlift
+    - nordic_curl
 - session: full_c
   slot:
     pattern: calf_raise
@@ -573,3 +619,48 @@ extensions:
     - dumbbell_wrist_extension
     - ez_bar_reverse_curl
     equivalent: 3
+- session: full_c
+  slot:
+    pattern: rear_delt_fly
+    role: accessory
+    candidates:
+    - cable_rear_delt_fly
+    - dumbbell_rear_delt_fly
+    - face_pull
+    - incline_bench_rear_delt_fly
+    - reverse_pec_deck
+    equivalent: 3
+- session: full_a
+  slot:
+    pattern: hip_abduction
+    role: accessory
+    candidates:
+    - machine_hip_abduction
+    - cable_hip_abduction
+    equivalent: 2
+- session: full_c
+  slot:
+    pattern: hinge
+    role: accessory
+    candidates:
+    - dumbbell_romanian_deadlift
+- session: full_c
+  slot:
+    pattern: hip_abduction
+    role: accessory
+    candidates:
+    - machine_hip_abduction
+    - cable_hip_abduction
+    equivalent: 2
+- session: full_a
+  slot:
+    pattern: lunge
+    role: accessory
+    equivalent: 5
+    candidates:
+    - bulgarian_split_squat
+    - dumbbell_walking_lunge
+    - dumbbell_reverse_lunge
+    - smith_machine_split_squat
+    - barbell_lunge
+    - dumbbell_step_up

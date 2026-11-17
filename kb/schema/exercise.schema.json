@@ -279,6 +279,10 @@
     "heavyCompound": {
       "type": "boolean",
       "description": "Multiarticolare pesante: non riceve una tecnica dell'ultima serie (lastSet). Predefinito false."
+    },
+    "noFailure": {
+      "type": "boolean",
+      "description": "Esercizio rischioso vicino al cedimento (eccentrici a corpo libero, monopodalici in equilibrio, bilanciere sopra il viso, squat con il carico davanti): non riceve nessuna tecnica dell'ultima serie (lastSet), né come esercizio scelto né come alternativa di uno slot con una tecnica (P-ADV-FAILURE-LAST-SET). Predefinito false."
     }
   }
 }

@@ -95,7 +95,6 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
-      - jm_press
       - close_grip_push_up
     - pattern: elbow_flexion
       role: accessory
@@ -119,7 +118,7 @@ sessions:
     - pattern: chest_isolation
       role: accessory
       equivalent: 5
-      lastSet: drop_set
+      lastSet: failure
       candidates: &id001
       - cable_fly
       - dumbbell_fly
@@ -128,19 +127,18 @@ sessions:
       - low_to_high_cable_fly
   - type: single
     slots:
-    - pattern: lateral_raise
+    - pattern: calf_raise
       role: accessory
       equivalent: 6
-      lastSet: myo_reps
+      lastSet: failure
       candidates:
-      - cable_lateral_raise
-      - dumbbell_lateral_raise
-      - lying_incline_lateral_raise
-      - cable_y_raise
-      - lean_in_lateral_raise
-      - egyptian_lateral_raise
-      - machine_lateral_raise
-      - cable_upright_row
+      - standing_calf_raise
+      - dumbbell_calf_raise
+      - leg_press_calf_raise
+      - smith_machine_calf_raise
+      - single_leg_dumbbell_calf_raise
+      - donkey_calf_raise
+      - seated_calf_raise
 - id: lower_a
   name:
     it: Lower A
@@ -191,7 +189,7 @@ sessions:
       role: accessory
       equivalent: 2
       lastSet: failure
-      candidates:
+      candidates: &id003
       - leg_extension
       - reverse_nordic
       - sissy_squat
@@ -205,11 +203,8 @@ sessions:
       - seated_leg_curl
       - standing_leg_curl
       - dumbbell_leg_curl
-      - glute_ham_raise
       - single_leg_curl
       - leg_curl
-      - nordic_curl
-      - single_leg_dumbbell_romanian_deadlift
   - type: single
     slots:
     - pattern: calf_raise
@@ -345,7 +340,6 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
-      - jm_press
       - close_grip_push_up
   - type: single
     slots:
@@ -405,12 +399,7 @@ sessions:
       role: accessory
       equivalent: 2
       lastSet: failure
-      candidates:
-      - leg_extension
-      - reverse_nordic
-      - sissy_squat
-      - bulgarian_split_squat
-      - goblet_squat
+      candidates: *id003
   - type: single
     slots:
     - pattern: hip_extension
@@ -470,9 +459,10 @@ notes:
   it: Template del livello avanzato (P-ADV-STRUCTURE), sedute e calendario di upper_lower_4d. Upper A
     e Lower A sono il giro pesante, Upper B il giro più leggero (principale a 8-12). Ogni seduta ha almeno
     un superset tra isolamenti di muscoli diversi e l'ultima serie degli isolamenti a cedimento, con al
-    più due drop set o myo-reps (blocchi singoli, P-DROP-SET, P-MYO-REPS). Nessuna tecnica sui principali
-    né sui multiarticolari pesanti (heavyCompound). A 60 minuti, con le tecniche, Upper A perde l'ultimo
-    isolamento.
+    più due drop set o myo-reps (blocchi singoli, P-DROP-SET, P-MYO-REPS). Nessuna tecnica sui principali,
+    sui multiarticolari pesanti (heavyCompound) né sugli esercizi rischiosi vicino al cedimento (noFailure).
+    Upper A chiude con i polpacci senza drop set e Lower A prende per prima un'estensione d'anca, così
+    a 60 minuti polpacci e glutei restano almeno come nel template normale (C-ADVANCED-VOLUME).
 extensions:
 - session: lower_a
   slot:
@@ -490,6 +480,19 @@ extensions:
     - dumbbell_triceps_kickback
     - jm_press
     - close_grip_push_up
+- session: lower_a
+  slot:
+    pattern: hip_extension
+    role: accessory
+    equivalent: 5
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - machine_hip_thrust
+    - smith_machine_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
 - session: lower_a
   slot:
     pattern: lateral_raise

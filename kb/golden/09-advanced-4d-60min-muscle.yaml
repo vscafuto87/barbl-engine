@@ -24,6 +24,7 @@ expect:
   techniques:
     atLeast: 3
     noneOnHeavyCompound: true
+    onlySafe: true
     beforeDeload: true
   differsWithVariantSeed: 7
   weeklySetsAtLeast:
@@ -34,6 +35,10 @@ expect:
       quadriceps: 10
       biceps: 10
       triceps: 10
+      shoulders: 9
+      hamstrings: 11.5
+      glutes: 10
+      calves: 6
   validAgainst: contract/plan.schema.json
 origin:
   it: 'Livello avanzato (KB 0.31.0, P-ADV-STRUCTURE). Mesociclo RIR 2, 1, 1, 0 e scarico; tecniche

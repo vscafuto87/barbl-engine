@@ -266,6 +266,11 @@ def main() -> int:
                         first = next((exercises[c] for c in slot["candidates"] if c in exercises and available(exercises[c], gym)), None)
                         if first and first.get("heavyCompound"):
                             r.error(where, f"{ctx}: il primo candidato per la palestra '{gt}' ({first['id']}) è heavyCompound")
+                        elif first and first.get("noFailure"):
+                            # Il motore toglie la tecnica; meglio un candidato adatto prima, se esiste.
+                            r.warn(where, f"{ctx}: per la palestra '{gt}' il primo candidato ({first['id']}) è noFailure e resta senza tecnica")
+                        elif first and last in ("drop_set", "myo_reps") and first.get("mechanics") != "isolation":
+                            r.warn(where, f"{ctx}: per la palestra '{gt}' il primo candidato ({first['id']}) non è un isolamento e riceve il cedimento")
             if extended:
                 if not isinstance(max_techniques, int):
                     r.error("parameters/intensityTechniques.yaml", f"manca engineConstraints.maxTechniquesPerSession ma {k}.{sess['id']} ha drop_set o myo_reps")
@@ -593,11 +598,15 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
         def last_set_of(slot, pick):
             # Come effectiveLastSet del motore: niente tecnica su un multiarticolare pesante; con la
             # forza resta solo il cedimento.
+            # Niente tecnica neanche su un esercizio rischioso vicino al cedimento (noFailure); drop set e
+            # myo-reps solo sugli isolamenti, altrove diventano il cedimento.
             last = slot.get("lastSet")
-            if not last or pick.get("heavyCompound"):
+            if not last or pick.get("heavyCompound") or pick.get("noFailure"):
                 return None
             if profile["goal"] == "strength" and last != "failure":
                 return None
+            if last in ("drop_set", "myo_reps") and pick.get("mechanics") != "isolation":
+                return "failure"
             return last
 
         removal_rank = {"core": 0, "accessory": 1, "secondary": 2}
@@ -634,9 +643,10 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
             # Slot facoltativi (ruolo con optional, il finisher di P-CORE-FINISHER). Un ruolo con
             # countsTowardDuration falso non conta nel tempo ed entra sempre; altrimenti il motore lo toglie
             # per primo quando la seduta non sta nel tempo (fitToDuration) e qui entra solo se ci sta.
+            # Solo gli slot rimasti dopo il taglio, come `kept`.
             required_sets = sum(
                 timed(pr["roles"][slot["role"]])
-                for block in sess["blocks"] for slot in block["slots"]
+                for slot in kept
                 if not pr["roles"][slot["role"]].get("optional")
             )
             for block in sess["blocks"]:

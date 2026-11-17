@@ -130,13 +130,24 @@ int estimatedMinutes(
   int techniqueMinutes = 0,
 ]) => totalSets * prescription.minutesPerSet + techniqueMinutes;
 
-/// Tecnica dell'ultima serie di [slot] con l'esercizio scelto [exercise]:
-/// quella dello slot, tolta se l'esercizio è un multiarticolare pesante
-/// (`heavyCompound`) e, con l'obiettivo forza, se non è il cedimento.
-String? effectiveLastSet(KbSlot slot, KbExercise exercise, Profile profile) {
-  final lastSet = slot.lastSet;
-  if (lastSet == null || exercise.heavyCompound) return null;
+/// Tecnica dell'ultima serie di [slot] con l'esercizio scelto [exercise]
+/// (vedi [lastSetFor]).
+String? effectiveLastSet(KbSlot slot, KbExercise exercise, Profile profile) =>
+    lastSetFor(slot.lastSet, exercise, profile);
+
+/// Tecnica [lastSet] dello slot applicata a [exercise]: tolta se l'esercizio è
+/// un multiarticolare pesante (`heavyCompound`) o rischioso vicino al cedimento
+/// (`noFailure`) e, con l'obiettivo forza, se non è il cedimento. Drop set e
+/// myo-reps valgono solo sugli isolamenti: su un altro esercizio diventano il
+/// cedimento. L'esercizio resta in ogni caso.
+String? lastSetFor(String? lastSet, KbExercise exercise, Profile profile) {
+  if (lastSet == null || exercise.heavyCompound || exercise.noFailure) {
+    return null;
+  }
   if (profile.goal == _goalStrength && lastSet != lastSetFailure) return null;
+  if (extendedLastSets.contains(lastSet) && !exercise.isIsolation) {
+    return lastSetFailure;
+  }
   return lastSet;
 }
 

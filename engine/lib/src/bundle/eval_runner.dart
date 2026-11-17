@@ -7,7 +7,7 @@ import 'package:yaml/yaml.dart';
 import '../generate/generate_plan.dart';
 import '../generate/result.dart';
 import '../kb/knowledge_base.dart';
-import '../kb/models.dart' show emphasisRuleId;
+import '../kb/models.dart' show emphasisRuleId, lastSetFailure;
 import 'bundle_builder.dart';
 
 /// Esito di un caso d'oro.
@@ -334,8 +334,11 @@ int? _int(Object? v) => v is int ? v : null;
 /// - `supersetsPerSessionAtLeast: N`: ogni seduta ha almeno N superset;
 /// - `techniques`: `atLeast` (esercizi con `lastSet` nel piano),
 ///   `noneOnHeavyCompound` (nessun `lastSet` su un esercizio `heavyCompound`
-///   della KB), `beforeDeload` (`intensityTechniques.fromWeek` non oltre
-///   l'ultima settimana di carico, quindi mai nello scarico);
+///   della KB), `onlySafe` (nessun `lastSet` su un esercizio `noFailure`,
+///   drop set e myo-reps solo sugli isolamenti, e le alternative di un
+///   esercizio con una tecnica la ricevono uguale), `beforeDeload`
+///   (`intensityTechniques.fromWeek` non oltre l'ultima settimana di carico,
+///   quindi mai nello scarico);
 /// - `differsWithVariantSeed: N`: con `variantSeed` N gli esercizi cambiano.
 void _checkAdvanced(
   Map<String, Object?> plan,
@@ -384,7 +387,7 @@ void _checkAdvanced(
     } else {
       _unknownKeys(
         raw,
-        const {'atLeast', 'noneOnHeavyCompound', 'beforeDeload'},
+        const {'atLeast', 'noneOnHeavyCompound', 'onlySafe', 'beforeDeload'},
         'expect.techniques',
         failures,
       );
@@ -409,6 +412,30 @@ void _checkAdvanced(
             failures.add(
               'techniques.noneOnHeavyCompound: $id ha ${e['lastSet']}',
             );
+          }
+        }
+      }
+      if (raw['onlySafe'] == true) {
+        bool fits(String id, String lastSet) {
+          final ex = kb.exercises[id];
+          if (ex == null || ex.heavyCompound || ex.noFailure) return false;
+          return lastSet == lastSetFailure || ex.isIsolation;
+        }
+
+        for (final e in withLastSet) {
+          final id = e['exerciseId'] as String;
+          final lastSet = e['lastSet'] as String;
+          if (!fits(id, lastSet)) {
+            failures.add('techniques.onlySafe: $id ha $lastSet');
+          }
+          for (final a in (e['alternatives'] as List?) ?? const []) {
+            final altId = (a as Map)['exerciseId'] as String;
+            if (!fits(altId, lastSet)) {
+              failures.add(
+                'techniques.onlySafe: alternativa $altId di $id non adatta '
+                'a $lastSet',
+              );
+            }
           }
         }
       }

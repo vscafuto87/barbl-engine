@@ -74,13 +74,17 @@ List<Map<String, Object?>> _schedule(KbTemplate template, Profile profile) {
 ///
 /// Con [withoutHeavy] i multiarticolari pesanti (`heavyCompound`) restano
 /// fuori: il contratto non permette all'app di togliere `lastSet` o di
-/// aggiungere `rirFloor` dopo una sostituzione.
+/// aggiungere `rirFloor` dopo una sostituzione. Per lo stesso motivo, con una
+/// tecnica [lastSet] restano solo le alternative che la ricevono uguale
+/// ([lastSetFor]: niente esercizi `noFailure`, drop set e myo-reps solo sugli
+/// isolamenti).
 List<Map<String, Object?>> _alternatives(
   KbExercise ex,
   Set<String> inSession,
   Profile profile,
   KnowledgeBase kb, {
   bool withoutHeavy = false,
+  String? lastSet,
 }) {
   final out = <Map<String, Object?>>[];
   for (final id in ex.substitutes) {
@@ -88,6 +92,11 @@ List<Map<String, Object?>> _alternatives(
     if (alt == null || id == ex.id || inSession.contains(id)) continue;
     if (!alt.requires.every(profile.equipment.contains)) continue;
     if (withoutHeavy && alt.heavyCompound) continue;
+    // Con una tecnica, l'alternativa deve riceverla uguale: il contratto non
+    // permette all'app di cambiare `lastSet` dopo una sostituzione.
+    if (lastSet != null && lastSetFor(lastSet, alt, profile) != lastSet) {
+      continue;
+    }
     out.add({
       'exerciseId': alt.id,
       'name': {'it': alt.nameIt, 'en': alt.nameEn},
@@ -174,6 +183,7 @@ Map<String, Object?> _exercise(
         // slot: prudente).
         withoutHeavy:
             !ex.heavyCompound && (pe.lastSet != null || rirFloor != null),
+        lastSet: pe.lastSet,
       ),
     ),
   };

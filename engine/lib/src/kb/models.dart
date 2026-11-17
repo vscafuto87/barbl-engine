@@ -18,6 +18,7 @@ const String extensionRuleId = 'TIME-EXTEND';
 
 /// Valori di `mechanics` e `technicalDemand` degli esercizi (formato della KB).
 const String mechanicsCompound = 'compound';
+const String mechanicsIsolation = 'isolation';
 const String technicalDemandHighValue = 'high';
 
 /// Gruppo di parametri e campo che dicono il volume massimo per muscolo.
@@ -72,6 +73,7 @@ class KbExercise {
     this.mechanics,
     this.technicalDemandHigh = false,
     this.heavyCompound = false,
+    this.noFailure = false,
   });
 
   factory KbExercise.fromJson(Map<String, Object?> json, String path) {
@@ -94,6 +96,7 @@ class KbExercise {
           stringOrNull(json, 'technicalDemand', path) ==
           technicalDemandHighValue,
       heavyCompound: boolOr(json, 'heavyCompound', path, false),
+      noFailure: boolOr(json, 'noFailure', path, false),
       technique: json['technique'] == null
           ? null
           : KbTechnique.fromJson(
@@ -115,8 +118,16 @@ class KbExercise {
 
   bool get isCompound => mechanics == mechanicsCompound;
 
+  /// Vero solo se la KB dice `isolation`: drop set e myo-reps solo qui.
+  bool get isIsolation => mechanics == mechanicsIsolation;
+
   /// Multiarticolare pesante: non riceve una tecnica dell'ultima serie.
   final bool heavyCompound;
+
+  /// Esercizio rischioso vicino al cedimento (eccentrici a corpo libero,
+  /// monopodalici in equilibrio, bilanciere sopra il viso): non riceve nessuna
+  /// tecnica dell'ultima serie (`P-ADV-FAILURE-LAST-SET`).
+  final bool noFailure;
 
   final String id;
   final String nameIt;

@@ -92,7 +92,6 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
-      - jm_press
       - close_grip_push_up
   - type: single
     slots:
@@ -250,7 +249,7 @@ sessions:
       role: accessory
       equivalent: 2
       lastSet: failure
-      candidates:
+      candidates: &id002
       - leg_extension
       - reverse_nordic
       - sissy_squat
@@ -264,11 +263,8 @@ sessions:
       - seated_leg_curl
       - standing_leg_curl
       - dumbbell_leg_curl
-      - glute_ham_raise
       - single_leg_curl
       - leg_curl
-      - nordic_curl
-      - single_leg_dumbbell_romanian_deadlift
   - type: single
     slots:
     - pattern: hip_extension
@@ -377,7 +373,6 @@ sessions:
       - barbell_skull_crusher
       - cable_triceps_kickback
       - dumbbell_triceps_kickback
-      - jm_press
       - close_grip_push_up
   - type: single
     slots:
@@ -453,12 +448,7 @@ sessions:
       role: accessory
       equivalent: 2
       lastSet: failure
-      candidates:
-      - leg_extension
-      - reverse_nordic
-      - sissy_squat
-      - bulgarian_split_squat
-      - goblet_squat
+      candidates: *id002
   - type: single
     slots:
     - pattern: calf_raise
