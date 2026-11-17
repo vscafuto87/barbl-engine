@@ -51,7 +51,11 @@ ChosenSession _fit(
   while (true) {
     final sets = total();
     if (sets == null) return session;
-    if (estimatedMinutes(sets, prescription) <= profile.sessionDurationMin) {
+    // Le tecniche dell'ultima serie seguono lo slot: se lo slot salta, salta
+    // anche il loro tempo.
+    final extra = blocksTechniqueMinutes(blocks, profile, prescription);
+    if (estimatedMinutes(sets, prescription, extra) <=
+        profile.sessionDurationMin) {
       break;
     }
     // L'ultimo slot, nell'ordine della seduta, del ruolo più sacrificabile.

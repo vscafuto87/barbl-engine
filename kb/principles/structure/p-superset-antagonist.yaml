@@ -1,0 +1,39 @@
+id: P-SUPERSET-ANTAGONIST
+topic: structure
+statement:
+  it: 'Un superset tra muscoli diversi (antagonisti, come bicipiti e tricipiti, o non collegati) accorcia
+    la seduta senza perdere ripetizioni né volume; due esercizi per lo stesso muscolo invece riducono il
+    volume. Barbl mette in superset solo esercizi di isolamento o complementari, mai i multiarticolari pesanti,
+    con circa un minuto e mezzo tra un giro e l''altro.'
+  en: 'A superset between different muscles (antagonists, like biceps and triceps, or unrelated ones) shortens
+    the session without losing reps or volume; two exercises for the same muscle instead reduce volume. Barbl
+    only pairs isolation or accessory exercises, never heavy compound lifts, with about a minute and a half
+    between rounds.'
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+- prescriptions
+sources:
+- id: zhang-2025-supersets
+  access: abstract_only
+- id: helms-pyramid-training-v2
+  pages:
+  - 177
+  - 178
+  - 179
+  - 180
+  - 181
+  access: full_text
+  note: coppie di antagonisti, circa un minuto tra le serie di isolamento, non con squat e stacchi
+- id: nippard-muscle-ladder
+  pages:
+  - 431
+  - 432
+  - 433
+  access: full_text
+  note: superset tra muscoli separati sì, sullo stesso muscolo no; non sui multiarticolari pesanti
+- id: barbl-design
+  access: full_text
+  note: 90 secondi tra i giri, tra il minuto delle fonti e i recuperi degli isolamenti della KB

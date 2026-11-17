@@ -1,0 +1,77 @@
+id: advanced_muscle_gain
+appliesTo:
+- muscle_gain
+- both
+experience:
+- over_2_years
+roles:
+  main:
+    sets: 3
+    reps:
+      min: 6
+      max: 8
+    restSeconds:
+      upper: 150
+      lower: 180
+    rirFollowsMesocycle: true
+    warmup: true
+  secondary:
+    sets: 3
+    reps:
+      min: 8
+      max: 12
+    restSeconds:
+      upper: 120
+      lower: 120
+    rirFollowsMesocycle: true
+    warmup: firstCompoundOfPattern
+  accessory:
+    sets: 2
+    reps:
+      min: 10
+      max: 12
+    restSeconds:
+      upper: 90
+      lower: 90
+    rirFollowsMesocycle: true
+    warmup: false
+  core:
+    sets: 2
+    reps:
+      min: 10
+      max: 20
+    restSeconds:
+      upper: 90
+      lower: 90
+    rirFollowsMesocycle: true
+    warmup: false
+    optional: true
+    # Finisher invariato rispetto alla prescrizione muscle_gain (P-CORE-FINISHER).
+    countsTowardDuration: false
+    rules:
+    - CORE-FINISHER
+supersetRestSeconds: 90
+timeBudget:
+  minutesPerSet: 3
+  techniqueMinutes:
+    drop_set: 1
+    myo_reps: 1
+provisional: true
+principles:
+- P-ADV-STRUCTURE
+- P-ADV-FAILURE-LAST-SET
+- P-SUPERSET-ANTAGONIST
+- P-TIME-TECHNIQUE
+- P-CORE-FINISHER
+- P-VOL-MIN-10
+- P-SETS-MIN-2
+- P-RIR-ACCURACY
+- P-REST-NEUTRAL
+- P-TIME-PER-SET
+notes:
+  it: 'Livello avanzato (over_2_years), massa ed entrambi. Più esercizi e meno serie ciascuno (P-ADV-STRUCTURE):
+    principale 3 × 6-8 (una serie in meno della prescrizione muscle_gain), complementari 3 × 8-12, isolamenti
+    2 × 10-12 (almeno 2 serie, P-SETS-MIN-2; tetto a 12 per P-RIR-ACCURACY). Recuperi come muscle_gain
+    (P-REST-NEUTRAL). Superset tra isolamenti di muscoli diversi con 90 s tra i giri (P-SUPERSET-ANTAGONIST).
+    Durata: 3 minuti per serie (P-TIME-PER-SET) più 1 minuto per un drop set o un blocco di myo-reps (P-TIME-TECHNIQUE);
+    il cedimento non aggiunge tempo. Finisher degli addominali invariato.'

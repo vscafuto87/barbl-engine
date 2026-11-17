@@ -1,0 +1,51 @@
+id: P-MYO-REPS
+topic: intensity
+statement:
+  it: 'Nei myo-reps l''ultima serie va a cedimento (serie di attivazione) e poi seguono mini-serie di poche
+    ripetizioni con lo stesso carico e pochi secondi di pausa, finché non si riescono più a fare. Il metodo
+    rest-pause, che gli somiglia, dà adattamenti simili alle serie tradizionali in meno tempo; sui myo-reps
+    non ci sono studi diretti. Valori di Barbl: attivazione 10-12, mini-serie da 3-4 con 5 secondi di pausa,
+    stop sotto le 3 ripetizioni, al massimo 4 mini-serie (tetto scelto da Barbl per la durata).'
+  en: 'In myo-reps the last set goes to failure (activation set), followed by mini-sets of a few reps with
+    the same load and a few seconds of rest, until you can no longer complete them. Rest-pause, a similar
+    method, gives adaptations similar to traditional sets in less time; there are no direct studies on myo-reps.
+    Barbl values: activation 10-12, mini-sets of 3-4 with 5 seconds of rest, stop below 3 reps, at most 4
+    mini-sets (a cap chosen by Barbl for session length).'
+evidence: low
+status: provisional
+reviewedBy: null
+feeds:
+- parameters/intensityTechniques
+- templates
+sources:
+- id: nippard-bodybuilding-transformation
+  pages:
+  - 17
+  - 19
+  access: full_text
+  note: attivazione 10-12 a cedimento, pause di circa 5 secondi, mini-serie da 3-4, fine quando non si arriva
+    a 3; tecniche solo dopo l'ultima serie
+- id: nippard-muscle-ladder
+  pages:
+  - 443
+  - 444
+  access: full_text
+  note: pausa di pochi secondi e mini-serie da 4; nessuna ricerca diretta sui myo-reps
+- id: nippard-min-max
+  pages:
+  - 18
+  access: full_text
+  note: versione Phase 2, pausa di 5 secondi tra le mini-serie
+- id: helms-pyramid-training-v2
+  pages:
+  - 182
+  - 183
+  - 184
+  access: full_text
+  note: rest-pause, pause di 20-30 secondi; da riservare agli accessori
+- id: fonseca-2023-advanced-paradigms
+  access: abstract_only
+  note: rest-pause senza vantaggio sull'ipertrofia rispetto alle serie tradizionali
+- id: barbl-design
+  access: full_text
+  note: tetto di 4 mini-serie

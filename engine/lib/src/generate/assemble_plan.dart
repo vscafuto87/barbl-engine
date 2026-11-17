@@ -10,9 +10,26 @@ import 'prescribe.dart';
 import 'rationales.dart';
 
 // Costanti di formato del contratto del piano.
+/// Ogni piano ha il gruppo `stall` (contratto 3.3, che contiene anche i campi
+/// della 3.2 del livello avanzato): una sola versione per tutti.
 const String _planSchemaVersion = '3.3';
 const String _trialRuleId = 'TRIAL-LOAD';
-const Set<String> _onlyWhenCited = {emphasisRuleId, extensionRuleId};
+
+// Motivazioni del livello avanzato (identificativi della KB).
+const String _supersetRuleId = 'ADV-SUPERSET';
+const String _advancedMesocycleRuleId = 'ADV-MESOCYCLE';
+const Map<String, String> _lastSetRuleIds = {
+  lastSetFailure: 'ADV-FAILURE-LAST-SET',
+  lastSetDropSet: 'ADV-DROP-SET',
+  lastSetMyoReps: 'ADV-MYO-REPS',
+};
+final Set<String> _onlyWhenCited = {
+  emphasisRuleId,
+  extensionRuleId,
+  _supersetRuleId,
+  _advancedMesocycleRuleId,
+  ..._lastSetRuleIds.values,
+};
 const List<String> _weekDays = [
   'mon',
   'tue',
@@ -52,17 +69,32 @@ List<Map<String, Object?>> _schedule(KbTemplate template, Profile profile) {
 /// della KB, solo se eseguibili con l'attrezzatura del profilo e non già
 /// presenti nella stessa seduta. Il carico non si converte (nessun rapporto
 /// tra esercizi ha ancora una fonte): `manual`, scelto dall'utente in seduta.
+///
+/// Con [withoutHeavy] i multiarticolari pesanti (`heavyCompound`) restano
+/// fuori: il contratto non permette all'app di togliere `lastSet` o di
+/// aggiungere `rirFloor` dopo una sostituzione. Per lo stesso motivo, con una
+/// tecnica [lastSet] restano solo le alternative che la ricevono uguale
+/// ([lastSetFor]: niente esercizi `noFailure`, drop set e myo-reps solo sugli
+/// isolamenti).
 List<Map<String, Object?>> _alternatives(
   KbExercise ex,
   Set<String> inSession,
   Profile profile,
-  KnowledgeBase kb,
-) {
+  KnowledgeBase kb, {
+  bool withoutHeavy = false,
+  String? lastSet,
+}) {
   final out = <Map<String, Object?>>[];
   for (final id in ex.substitutes) {
     final alt = kb.exercises[id];
     if (alt == null || id == ex.id || inSession.contains(id)) continue;
     if (!alt.requires.every(profile.equipment.contains)) continue;
+    if (withoutHeavy && alt.heavyCompound) continue;
+    // Con una tecnica, l'alternativa deve riceverla uguale: il contratto non
+    // permette all'app di cambiare `lastSet` dopo una sostituzione.
+    if (lastSet != null && lastSetFor(lastSet, alt, profile) != lastSet) {
+      continue;
+    }
     out.add({
       'exerciseId': alt.id,
       'name': {'it': alt.nameIt, 'en': alt.nameEn},
@@ -81,8 +113,10 @@ Map<String, Object?> _exercise(
   List<String> everyExerciseRules,
   KnowledgeBase kb,
   Set<String> inSession,
-  Profile profile,
-) {
+  Profile profile, {
+  required bool advancedSuperset,
+  required int? rirFloor,
+}) {
   final ex = pe.exercise;
   if (!kb.exercises.containsKey(ex.id)) {
     throw StateError('planned exercise ${ex.id} is not in the KB');
@@ -104,6 +138,19 @@ Map<String, Object?> _exercise(
   for (final rule in pe.ruleIds) {
     if (!rules.contains(rule)) rules.add(rule);
   }
+  // Le motivazioni delle tecniche si citano solo se la KB le ha.
+  final lastSetRule = _lastSetRuleIds[pe.lastSet];
+  if (lastSetRule != null &&
+      _hasRationale(kb, lastSetRule) &&
+      !rules.contains(lastSetRule)) {
+    rules.add(lastSetRule);
+  }
+  if (advancedSuperset &&
+      _hasRationale(kb, _supersetRuleId) &&
+      !rules.contains(_supersetRuleId)) {
+    rules.add(_supersetRuleId);
+  }
+  final floor = ex.heavyCompound ? rirFloor : null;
   return {
     'exerciseId': ex.id,
     'name': {'it': ex.nameIt, 'en': ex.nameEn},
@@ -119,7 +166,24 @@ Map<String, Object?> _exercise(
     'rules': rules,
     if (pe.askLoad) 'askLoad': true,
     if (pe.optional) 'optional': true,
-    ..._withAlternatives(_alternatives(ex, inSession, profile, kb)),
+    if (pe.lastSet != null) 'lastSet': pe.lastSet,
+    'rirFloor': ?floor,
+    ..._withAlternatives(
+      _alternatives(
+        ex,
+        inSession,
+        profile,
+        kb,
+        // Un esercizio con una tecnica, o senza il RIR minimo in un piano che
+        // lo applica, non si sostituisce con un multiarticolare pesante: la
+        // tecnica o la mancanza del minimo passerebbero all'alternativa. Un
+        // esercizio pesante tiene tutte le alternative (il minimo resta sullo
+        // slot: prudente).
+        withoutHeavy:
+            !ex.heavyCompound && (pe.lastSet != null || rirFloor != null),
+        lastSet: pe.lastSet,
+      ),
+    ),
   };
 }
 
@@ -132,8 +196,10 @@ Map<String, Object?> _block(
   List<String> rules,
   KnowledgeBase kb,
   Set<String> inSession,
-  Profile profile,
-) {
+  Profile profile, {
+  required bool advancedTemplate,
+  required int? rirFloor,
+}) {
   final isSuperset = block.type == 'superset';
   return {
     'type': block.type,
@@ -141,7 +207,16 @@ Map<String, Object?> _block(
     if (isSuperset) 'restSeconds': block.restSeconds,
     'exercises': [
       for (final pe in block.exercises)
-        _exercise(pe, loads, rules, kb, inSession, profile),
+        _exercise(
+          pe,
+          loads,
+          rules,
+          kb,
+          inSession,
+          profile,
+          advancedSuperset: advancedTemplate && isSuperset,
+          rirFloor: rirFloor,
+        ),
     ],
   };
 }
@@ -160,6 +235,13 @@ Map<String, Object?> assemblePlan({
     for (final r in kb.rationales)
       if (r.everyExercise) r.ruleId,
   ]..sort();
+  // Template dichiarato per un livello di esperienza (il livello avanzato):
+  // i suoi superset citano `ADV-SUPERSET`.
+  final advancedTemplate = template.experience.isNotEmpty;
+  // RIR minimo dei multiarticolari pesanti: solo per l'esperienza che lo ha
+  // nella KB (`minRirHeavyCompoundByExperience`), cioè chi segue il mesociclo
+  // avanzato con il RIR che scende a 0.
+  final rirFloor = heavyCompoundRirFloor(kb, profile);
   final sessionsJson = <Map<String, Object?>>[
     for (final s in sessions)
       {
@@ -169,10 +251,19 @@ Map<String, Object?> assemblePlan({
         'estimatedDurationMin': s.estimatedDurationMin,
         'blocks': [
           for (final b in s.blocks)
-            _block(b, loads, everyExerciseRules, kb, {
-              for (final bb in s.blocks)
-                for (final e in bb.exercises) e.exercise.id,
-            }, profile),
+            _block(
+              b,
+              loads,
+              everyExerciseRules,
+              kb,
+              {
+                for (final bb in s.blocks)
+                  for (final e in bb.exercises) e.exercise.id,
+              },
+              profile,
+              advancedTemplate: advancedTemplate,
+              rirFloor: rirFloor,
+            ),
         ],
       },
   ];
@@ -180,6 +271,13 @@ Map<String, Object?> assemblePlan({
   // le usano, così un piano senza enfasi né estensioni resta identico a quello
   // di una KB che non le ha.
   final cited = _citedRules(sessionsJson);
+  // La motivazione del mesociclo avanzato entra con le settimane per
+  // esperienza (`weeksByExperience`), non citata da un esercizio.
+  final mesocycleGroup = kb.parameterGroups['mesocycle'];
+  if (mesocycleGroup != null &&
+      experienceWeeks(mesocycleGroup, profile) != null) {
+    cited.add(_advancedMesocycleRuleId);
+  }
   // Anche le regole dei ruoli (il finisher dell'addome) entrano solo se un
   // esercizio le cita.
   final onlyWhenCited = {
@@ -193,6 +291,11 @@ Map<String, Object?> assemblePlan({
         r,
   ];
 
+  final hasLastSet = [
+    for (final s in sessionsJson)
+      for (final b in s['blocks']! as List<Object?>)
+        ...(b! as Map<String, Object?>)['exercises']! as List<Object?>,
+  ].any((e) => (e! as Map<String, Object?>).containsKey('lastSet'));
   final plan = <String, Object?>{
     'schemaVersion': _planSchemaVersion,
     'id': '${template.id}-${profile.gymType}',
@@ -206,12 +309,15 @@ Map<String, Object?> assemblePlan({
     'schedule': _schedule(template, profile),
     'sessions': sessionsJson,
     'rationales': rationales,
-    'parameters': buildParameters(kb),
+    'parameters': buildParameters(kb, withTechniques: hasLastSet),
   };
 
   _checkRules(plan, rationales);
   return plan;
 }
+
+bool _hasRationale(KnowledgeBase kb, String ruleId) =>
+    kb.rationales.any((r) => r.ruleId == ruleId && r.inPlan);
 
 /// Regole citate dagli esercizi delle sedute.
 Set<String> _citedRules(List<Map<String, Object?>> sessions) => {

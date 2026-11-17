@@ -7,7 +7,7 @@ import 'package:yaml/yaml.dart';
 import '../generate/generate_plan.dart';
 import '../generate/result.dart';
 import '../kb/knowledge_base.dart';
-import '../kb/models.dart' show emphasisRuleId;
+import '../kb/models.dart' show emphasisRuleId, lastSetFailure;
 import 'bundle_builder.dart';
 
 /// Esito di un caso d'oro.
@@ -327,7 +327,167 @@ void _checkEmphasisExercises(
   }
 }
 
+int? _int(Object? v) => v is int ? v : null;
+
+/// Proprietà del livello avanzato (KB 0.31.0):
+/// - `durationWithinProfile: true`: ogni seduta sta nella durata del profilo;
+/// - `supersetsPerSessionAtLeast: N`: ogni seduta ha almeno N superset;
+/// - `techniques`: `atLeast` (esercizi con `lastSet` nel piano),
+///   `noneOnHeavyCompound` (nessun `lastSet` su un esercizio `heavyCompound`
+///   della KB), `onlySafe` (nessun `lastSet` su un esercizio `noFailure`,
+///   drop set e myo-reps solo sugli isolamenti, e le alternative di un
+///   esercizio con una tecnica la ricevono uguale), `beforeDeload`
+///   (`intensityTechniques.fromWeek` non oltre l'ultima settimana di carico,
+///   quindi mai nello scarico);
+/// - `differsWithVariantSeed: N`: con `variantSeed` N gli esercizi cambiano.
+void _checkAdvanced(
+  Map<String, Object?> plan,
+  Map<String, Object?> expect,
+  Map<String, Object?> profileJson,
+  KnowledgeBase kb,
+  List<String> failures,
+) {
+  final sessions = [
+    for (final s in plan['sessions'] as List) s as Map<String, Object?>,
+  ];
+  if (expect['durationWithinProfile'] == true) {
+    final limit = _num(profileJson['sessionDurationMin']);
+    for (final s in sessions) {
+      final minutes = _num(s['estimatedDurationMin']);
+      if (limit == null || minutes == null || minutes > limit) {
+        failures.add(
+          'durationWithinProfile: seduta ${s['id']} di $minutes minuti, '
+          'limite $limit',
+        );
+      }
+    }
+  }
+  if (expect.containsKey('supersetsPerSessionAtLeast')) {
+    final minimum = _int(expect['supersetsPerSessionAtLeast']);
+    if (minimum == null) {
+      failures.add('expect.supersetsPerSessionAtLeast: forma non valida');
+    } else {
+      for (final s in sessions) {
+        final n = (s['blocks'] as List)
+            .where((b) => (b as Map)['type'] == 'superset')
+            .length;
+        if (n < minimum) {
+          failures.add(
+            'supersetsPerSessionAtLeast: seduta ${s['id']} con $n superset, '
+            'attesi almeno $minimum',
+          );
+        }
+      }
+    }
+  }
+  if (expect.containsKey('techniques')) {
+    final raw = expect['techniques'];
+    if (raw is! Map) {
+      failures.add('expect.techniques: forma non valida');
+    } else {
+      _unknownKeys(
+        raw,
+        const {'atLeast', 'noneOnHeavyCompound', 'onlySafe', 'beforeDeload'},
+        'expect.techniques',
+        failures,
+      );
+      final withLastSet = <Map>[
+        for (final s in sessions)
+          for (final b in s['blocks'] as List)
+            for (final e in (b as Map)['exercises'] as List)
+              if ((e as Map)['lastSet'] != null) e,
+      ];
+      final atLeast = _int(raw['atLeast']);
+      if (raw.containsKey('atLeast') &&
+          (atLeast == null || withLastSet.length < atLeast)) {
+        failures.add(
+          'techniques.atLeast: attesi almeno ${raw['atLeast']}, '
+          'ottenuti ${withLastSet.length}',
+        );
+      }
+      if (raw['noneOnHeavyCompound'] == true) {
+        for (final e in withLastSet) {
+          final id = e['exerciseId'] as String;
+          if (kb.exercises[id]?.heavyCompound ?? false) {
+            failures.add(
+              'techniques.noneOnHeavyCompound: $id ha ${e['lastSet']}',
+            );
+          }
+        }
+      }
+      if (raw['onlySafe'] == true) {
+        bool fits(String id, String lastSet) {
+          final ex = kb.exercises[id];
+          if (ex == null || ex.heavyCompound || ex.noFailure) return false;
+          return lastSet == lastSetFailure || ex.isIsolation;
+        }
+
+        for (final e in withLastSet) {
+          final id = e['exerciseId'] as String;
+          final lastSet = e['lastSet'] as String;
+          if (!fits(id, lastSet)) {
+            failures.add('techniques.onlySafe: $id ha $lastSet');
+          }
+          for (final a in (e['alternatives'] as List?) ?? const []) {
+            final altId = (a as Map)['exerciseId'] as String;
+            if (!fits(altId, lastSet)) {
+              failures.add(
+                'techniques.onlySafe: alternativa $altId di $id non adatta '
+                'a $lastSet',
+              );
+            }
+          }
+        }
+      }
+      if (raw['beforeDeload'] == true) {
+        final weeks = (plan['mesocycle'] as Map)['weeks'] as List;
+        final loads = [
+          for (final w in weeks)
+            if ((w as Map)['type'] == 'load') _num(w['number']),
+        ];
+        final params = plan['parameters'] as Map;
+        final techniques = params['intensityTechniques'];
+        final fromWeek = techniques is Map
+            ? _num(techniques['fromWeek'])
+            : null;
+        final lastLoad = loads.isEmpty ? null : loads.last;
+        if (fromWeek == null || lastLoad == null || fromWeek > lastLoad) {
+          failures.add(
+            'techniques.beforeDeload: fromWeek ${_describe(fromWeek)}, '
+            'ultima settimana di carico ${_describe(lastLoad)}',
+          );
+        }
+      }
+    }
+  }
+  if (expect.containsKey('differsWithVariantSeed')) {
+    final seed = _int(expect['differsWithVariantSeed']);
+    if (seed == null) {
+      failures.add('expect.differsWithVariantSeed: forma non valida');
+      return;
+    }
+    final other = generatePlan({...profileJson, 'variantSeed': seed}, kb);
+    if (other is! Generated) {
+      failures.add('differsWithVariantSeed: nessun piano con il seme $seed');
+      return;
+    }
+    List<String> ids(Map<String, Object?> p) => [
+      for (final s in p['sessions'] as List)
+        for (final b in (s as Map)['blocks'] as List)
+          for (final e in (b as Map)['exercises'] as List)
+            (e as Map)['exerciseId'] as String,
+    ];
+    if (ids(other.plan).join(',') == ids(plan).join(',')) {
+      failures.add('differsWithVariantSeed: stessi esercizi con il seme $seed');
+    }
+  }
+}
+
 const Set<String> _knownKeys = {
+  'durationWithinProfile',
+  'supersetsPerSessionAtLeast',
+  'techniques',
+  'differsWithVariantSeed',
   'split',
   'sessions',
   'scheduleDays',
@@ -380,6 +540,7 @@ EvalCase _runCase(File file, Directory kbDir, KnowledgeBase kb) {
     _checkInitialLoad(plan, expectRaw, failures);
     _checkWeeklySets(plan, expectRaw, kb, failures);
     _checkEmphasisExercises(plan, expectRaw, failures);
+    _checkAdvanced(plan, expectRaw, profileJson, kb, failures);
     final schemaPath = expectRaw['validAgainst'];
     if (schemaPath is String) {
       final schemaFile = File('${kbDir.path}/$schemaPath');

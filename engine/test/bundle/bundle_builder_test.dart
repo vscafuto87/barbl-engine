@@ -31,9 +31,9 @@ void main() {
     final kb = KnowledgeBase.fromJson(result.json);
     expect(kb.rulesVersion, '0.32.0');
     expect(kb.exercises, hasLength(153));
-    expect(kb.templates, hasLength(3));
-    expect(kb.parameterGroups, hasLength(12));
-    expect(kb.rationales, hasLength(22));
+    expect(kb.templates, hasLength(6));
+    expect(kb.parameterGroups, hasLength(13));
+    expect(kb.rationales, hasLength(27));
     expect(kb.emphases.keys, [
       'arms',
       'back',
@@ -45,7 +45,14 @@ void main() {
     for (final em in kb.emphases.values) {
       expect(
         em.placements.keys,
-        containsAll(['full_body_3d', 'upper_lower_4d', 'ppl_ul_5d']),
+        containsAll([
+          'full_body_3d',
+          'upper_lower_4d',
+          'ppl_ul_5d',
+          'advanced_full_body_3d',
+          'advanced_upper_lower_4d',
+          'advanced_ul_ppl_5d',
+        ]),
       );
     }
   });

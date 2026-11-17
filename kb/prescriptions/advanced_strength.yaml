@@ -1,0 +1,80 @@
+id: advanced_strength
+appliesTo:
+- strength
+experience:
+- over_2_years
+roles:
+  main:
+    sets: 3
+    reps:
+      min: 3
+      max: 5
+    restSeconds:
+      upper: 180
+      lower: 240
+    rirFollowsMesocycle: true
+    warmup: true
+  secondary:
+    sets: 2
+    reps:
+      min: 4
+      max: 6
+    restSeconds:
+      upper: 150
+      lower: 180
+    rirFollowsMesocycle: true
+    warmup: firstCompoundOfPattern
+  accessory:
+    sets: 2
+    reps:
+      min: 8
+      max: 12
+    restSeconds:
+      upper: 90
+      lower: 90
+    rirFollowsMesocycle: true
+    warmup: false
+  core:
+    sets: 2
+    reps:
+      min: 10
+      max: 20
+    restSeconds:
+      upper: 90
+      lower: 90
+    rirFollowsMesocycle: true
+    warmup: false
+    optional: true
+    # Finisher invariato rispetto alla prescrizione strength (P-CORE-FINISHER).
+    countsTowardDuration: false
+    rules:
+    - CORE-FINISHER
+supersetRestSeconds: 90
+timeBudget:
+  minutesPerSet: 4
+  techniqueMinutes:
+    drop_set: 1
+    myo_reps: 1
+provisional: true
+principles:
+- P-ADV-STRUCTURE
+- P-ADV-FAILURE-LAST-SET
+- P-SUPERSET-ANTAGONIST
+- P-TIME-TECHNIQUE
+- P-CORE-FINISHER
+- P-STRENGTH-PRESCRIPTION
+- P-STRENGTH-REP-ZONE
+- P-RIR-STR
+- P-RIR-ACCURACY
+- P-SETS-MIN-2
+- P-REST-LONG-COMPOUND
+- P-REST-MAIN-STR
+- P-WARMUP-HEAVY
+- P-TIME-PER-SET-STR
+notes:
+  it: 'Livello avanzato (over_2_years), forza. Principale come la prescrizione strength (3 × 3-5, P-STRENGTH-PRESCRIPTION,
+    P-STRENGTH-REP-ZONE), complementari e isolamenti con 2 serie (P-ADV-STRUCTURE, minimo di P-SETS-MIN-2) per
+    far stare più esercizi nella seduta. Recuperi e minuti per serie come strength (P-REST-LONG-COMPOUND, P-REST-MAIN-STR,
+    P-TIME-PER-SET-STR). Con l''obiettivo forza il motore tiene solo il cedimento sull''ultima serie degli
+    isolamenti: drop set e myo-reps si tolgono. I minuti delle tecniche restano dichiarati per coerenza
+    con la prescrizione di massa.'

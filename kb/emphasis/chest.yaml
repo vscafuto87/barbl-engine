@@ -58,6 +58,59 @@ placements:
       - dumbbell_fly
       - incline_dumbbell_fly
       - low_to_high_cable_fly
+  advanced_full_body_3d:
+  - session: full_a
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - cable_fly
+      - pec_deck_fly
+      - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
+  - session: full_c
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - pec_deck_fly
+      - cable_fly
+      - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
+  advanced_upper_lower_4d:
+  - session: upper_a
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - cable_fly
+      - pec_deck_fly
+      - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
+  advanced_ul_ppl_5d:
+  - session: push
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - cable_fly
+      - pec_deck_fly
+      - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
+  - session: upper
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - pec_deck_fly
+      - cable_fly
+      - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

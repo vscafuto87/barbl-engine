@@ -1,0 +1,666 @@
+id: advanced_full_body_3d
+split: full_body
+daysPerWeek: 3
+goals:
+- muscle_gain
+- both
+- strength
+experience:
+- over_2_years
+defaultSchedule:
+  mon: full_a
+  wed: full_b
+  fri: full_c
+sessions:
+- id: full_a
+  name:
+    it: Full body A
+    en: Full body A
+  focus: full_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: main
+      askLoad: true
+      candidates:
+      - barbell_bench_press
+      - dumbbell_bench_press
+      - machine_chest_press
+      - push_up
+      - incline_barbell_bench_press
+      - incline_machine_press
+      - dip
+      - smith_machine_incline_press
+      - deficit_push_up
+      - dumbbell_floor_press
+      - close_grip_bench_press
+  - type: single
+    slots:
+    - pattern: squat
+      role: main
+      askLoad: true
+      candidates:
+      - squat
+      - leg_press
+      - goblet_squat
+      - front_squat
+      - pendulum_squat
+      - belt_squat
+      - single_leg_press
+  - type: single
+    slots:
+    - pattern: horizontal_pull
+      role: secondary
+      equivalent: 2
+      askLoad: true
+      candidates:
+      - dumbbell_row
+      - seated_cable_row
+      - barbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
+      - chest_supported_t_bar_row
+      - pendlay_row
+      - meadows_row
+      - elbows_out_cable_row
+  - type: superset
+    label: A
+    slots:
+    - pattern: elbow_extension
+      role: accessory
+      equivalent: 4
+      lastSet: failure
+      candidates:
+      - overhead_cable_triceps_extension
+      - dumbbell_overhead_triceps_extension
+      - barbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
+      - cable_triceps_pushdown
+      - barbell_skull_crusher
+      - cable_triceps_kickback
+      - dumbbell_triceps_kickback
+      - close_grip_push_up
+    - pattern: elbow_flexion
+      role: accessory
+      equivalent: 8
+      lastSet: failure
+      candidates:
+      - incline_dumbbell_curl
+      - dumbbell_preacher_curl
+      - cable_curl
+      - dumbbell_curl
+      - behind_the_body_cable_curl
+      - machine_preacher_curl
+      - ez_bar_curl
+      - ez_bar_preacher_curl
+      - hammer_curl
+      - barbell_curl
+      - spider_curl
+      - concentration_curl
+  - type: single
+    slots:
+    - pattern: lateral_raise
+      role: accessory
+      equivalent: 6
+      lastSet: myo_reps
+      candidates:
+      - cable_lateral_raise
+      - dumbbell_lateral_raise
+      - lying_incline_lateral_raise
+      - cable_y_raise
+      - lean_in_lateral_raise
+      - egyptian_lateral_raise
+      - machine_lateral_raise
+      - cable_upright_row
+  - type: single
+    slots:
+    - pattern: knee_flexion
+      role: accessory
+      equivalent: 5
+      lastSet: drop_set
+      candidates: &id002
+      - seated_leg_curl
+      - standing_leg_curl
+      - dumbbell_leg_curl
+      - single_leg_curl
+      - leg_curl
+  - type: single
+    slots:
+    - pattern: trunk_flexion
+      role: core
+      equivalent: 5
+      candidates:
+      - cable_crunch
+      - machine_crunch
+      - weighted_crunch
+      - decline_sit_up
+      - bicycle_crunch
+- id: full_b
+  name:
+    it: Full body B
+    en: Full body B
+  focus: full_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: hinge
+      role: main
+      candidates:
+      - romanian_deadlift
+      - dumbbell_romanian_deadlift
+      - good_morning
+      - stiff_leg_deadlift
+      - deadlift
+      - sumo_deadlift
+  - type: single
+    slots:
+    - pattern: vertical_pull
+      role: secondary
+      equivalent: 4
+      candidates:
+      - lat_pulldown
+      - neutral_grip_pulldown
+      - single_arm_lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
+      - pull_up
+      - chin_up
+      - chest_supported_dumbbell_row
+      - dumbbell_row
+      - neutral_grip_pull_up
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: secondary
+      equivalent: 6
+      candidates:
+      - incline_dumbbell_press
+      - machine_chest_press
+      - incline_barbell_bench_press
+      - incline_machine_press
+      - smith_machine_incline_press
+      - deficit_push_up
+      - push_up
+      - dip
+      - dumbbell_floor_press
+      - close_grip_bench_press
+  - type: single
+    slots:
+    - pattern: vertical_push
+      role: secondary
+      equivalent: 6
+      candidates:
+      - seated_dumbbell_shoulder_press
+      - dumbbell_arnold_press
+      - machine_shoulder_press
+      - standing_dumbbell_shoulder_press
+      - landmine_press
+      - smith_machine_shoulder_press
+      - military_press
+  - type: superset
+    label: A
+    slots:
+    - pattern: chest_isolation
+      role: accessory
+      equivalent: 5
+      lastSet: failure
+      candidates:
+      - cable_fly
+      - dumbbell_fly
+      - pec_deck_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
+    - pattern: rear_delt_fly
+      role: accessory
+      equivalent: 3
+      lastSet: failure
+      candidates:
+      - cable_rear_delt_fly
+      - dumbbell_rear_delt_fly
+      - face_pull
+      - incline_bench_rear_delt_fly
+      - reverse_pec_deck
+  - type: single
+    slots:
+    - pattern: knee_extension
+      role: accessory
+      equivalent: 2
+      lastSet: drop_set
+      candidates: &id001
+      - leg_extension
+      - reverse_nordic
+      - sissy_squat
+      - bulgarian_split_squat
+      - goblet_squat
+  - type: single
+    slots:
+    - pattern: elbow_flexion
+      role: accessory
+      equivalent: 8
+      lastSet: myo_reps
+      candidates:
+      - incline_dumbbell_curl
+      - dumbbell_preacher_curl
+      - cable_curl
+      - dumbbell_curl
+      - behind_the_body_cable_curl
+      - machine_preacher_curl
+      - ez_bar_curl
+      - ez_bar_preacher_curl
+      - hammer_curl
+      - barbell_curl
+      - spider_curl
+      - concentration_curl
+- id: full_c
+  name:
+    it: Full body C
+    en: Full body C
+  focus: full_body
+  blocks:
+  - type: single
+    slots:
+    - pattern: horizontal_pull
+      role: main
+      askLoad: true
+      candidates:
+      - barbell_row
+      - chest_supported_dumbbell_row
+      - seated_cable_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
+      - chest_supported_t_bar_row
+      - pendlay_row
+      - meadows_row
+      - elbows_out_cable_row
+  - type: single
+    slots:
+    - pattern: horizontal_push
+      role: secondary
+      equivalent: 6
+      candidates:
+      - machine_chest_press
+      - dumbbell_bench_press
+      - incline_barbell_bench_press
+      - incline_machine_press
+      - smith_machine_incline_press
+      - deficit_push_up
+      - push_up
+      - dip
+      - dumbbell_floor_press
+      - close_grip_bench_press
+  - type: single
+    slots:
+    - pattern: squat
+      role: secondary
+      equivalent: 5
+      candidates:
+      - leg_press
+      - hack_squat
+      - front_squat
+      - pendulum_squat
+      - belt_squat
+      - smith_machine_squat
+      - goblet_squat
+      - single_leg_press
+  - type: superset
+    label: A
+    slots:
+    - pattern: knee_extension
+      role: accessory
+      equivalent: 2
+      lastSet: failure
+      candidates: *id001
+    - pattern: knee_flexion
+      role: accessory
+      equivalent: 5
+      lastSet: failure
+      candidates: *id002
+  - type: superset
+    label: B
+    slots:
+    - pattern: elbow_flexion
+      role: accessory
+      equivalent: 8
+      lastSet: failure
+      candidates:
+      - incline_dumbbell_curl
+      - dumbbell_preacher_curl
+      - cable_curl
+      - dumbbell_curl
+      - behind_the_body_cable_curl
+      - machine_preacher_curl
+      - ez_bar_curl
+      - ez_bar_preacher_curl
+      - hammer_curl
+      - barbell_curl
+      - spider_curl
+      - concentration_curl
+    - pattern: elbow_extension
+      role: accessory
+      equivalent: 4
+      lastSet: failure
+      candidates:
+      - overhead_cable_triceps_extension
+      - dumbbell_overhead_triceps_extension
+      - barbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
+      - cable_triceps_pushdown
+      - barbell_skull_crusher
+      - cable_triceps_kickback
+      - dumbbell_triceps_kickback
+      - close_grip_push_up
+  - type: single
+    slots:
+    - pattern: calf_raise
+      role: accessory
+      equivalent: 6
+      lastSet: myo_reps
+      candidates:
+      - standing_calf_raise
+      - dumbbell_calf_raise
+      - leg_press_calf_raise
+      - smith_machine_calf_raise
+      - single_leg_dumbbell_calf_raise
+      - donkey_calf_raise
+      - seated_calf_raise
+  - type: single
+    slots:
+    - pattern: trunk_flexion
+      role: core
+      equivalent: 5
+      candidates:
+      - hanging_leg_raise
+      - reverse_crunch
+      - roman_chair_leg_raise
+      - barbell_rollout
+      - cable_pallof_press
+principles:
+- P-ADV-STRUCTURE
+- P-ADV-FAILURE-LAST-SET
+- P-DROP-SET
+- P-MYO-REPS
+- P-SUPERSET-ANTAGONIST
+- P-SPLIT-FULL-BODY-3D
+- P-FREQ-MIN-2
+- P-PATTERNS
+- P-VOL-MIN-10
+- P-RECOVERY-48H
+structureSources:
+- id: nippard-bodybuilding-transformation
+  note: 'pp. 9-10 e 19: serie iniziali vicine al cedimento, ultima serie a cedimento e tecniche solo dopo
+    l''ultima serie'
+- id: nippard-pure-bodybuilding-2
+  note: 'solo struttura: più esercizi con meno serie, tecniche sugli isolamenti'
+- id: helms-pyramid-training-v2
+  note: 'pp. 177-181: coppie di antagonisti tra isolamenti, mai con squat e stacchi'
+notes:
+  it: Template del livello avanzato (P-ADV-STRUCTURE), giorni di full_body_3d. Ogni seduta ha uno o due
+    multiarticolari pesanti senza tecniche, un complementare, un superset di isolamenti tra muscoli diversi
+    e al più due drop set o myo-reps su isolamenti in blocchi singoli. Full B ha lo stacco come principale.
+    I polpacci entrano in Full C come isolamento con myo-reps. Le estensioni in coda (deltoidi posteriori,
+    abduttori, stacco rumeno con manubri, affondo) usano i 90 minuti per spalle, femorali e glutei (C-ADVANCED-VOLUME).
+extensions:
+- session: full_b
+  slot:
+    pattern: shoulder_extension
+    role: accessory
+    equivalent: 2
+    candidates:
+    - straight_arm_lat_pulldown
+    - machine_pullover
+    - dumbbell_pullover
+- session: full_a
+  slot:
+    pattern: hip_extension
+    role: accessory
+    equivalent: 5
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - machine_hip_thrust
+    - smith_machine_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+- session: full_a
+  slot:
+    pattern: calf_raise
+    role: accessory
+    equivalent: 6
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - single_leg_dumbbell_calf_raise
+    - donkey_calf_raise
+    - seated_calf_raise
+- session: full_b
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    equivalent: 6
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - cable_y_raise
+    - lean_in_lateral_raise
+    - egyptian_lateral_raise
+    - machine_lateral_raise
+    - cable_upright_row
+- session: full_b
+  slot:
+    pattern: knee_flexion
+    role: accessory
+    equivalent: 5
+    candidates:
+    - seated_leg_curl
+    - standing_leg_curl
+    - dumbbell_leg_curl
+    - glute_ham_raise
+    - single_leg_curl
+    - single_leg_dumbbell_romanian_deadlift
+    - leg_curl
+    - dumbbell_romanian_deadlift
+    - nordic_curl
+- session: full_c
+  slot:
+    pattern: calf_raise
+    role: accessory
+    equivalent: 6
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - single_leg_dumbbell_calf_raise
+    - donkey_calf_raise
+    - seated_calf_raise
+- session: full_a
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    equivalent: 6
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - cable_y_raise
+    - lean_in_lateral_raise
+    - egyptian_lateral_raise
+    - machine_lateral_raise
+    - cable_upright_row
+- session: full_b
+  slot:
+    pattern: calf_raise
+    role: accessory
+    equivalent: 6
+    candidates:
+    - standing_calf_raise
+    - dumbbell_calf_raise
+    - leg_press_calf_raise
+    - smith_machine_calf_raise
+    - single_leg_dumbbell_calf_raise
+    - donkey_calf_raise
+    - seated_calf_raise
+- session: full_b
+  slot:
+    pattern: rear_delt_fly
+    role: accessory
+    candidates:
+    - cable_rear_delt_fly
+    - dumbbell_rear_delt_fly
+    - face_pull
+    - incline_bench_rear_delt_fly
+    - reverse_pec_deck
+    equivalent: 3
+- session: full_a
+  slot:
+    pattern: knee_flexion
+    role: accessory
+    equivalent: 5
+    candidates:
+    - seated_leg_curl
+    - standing_leg_curl
+    - dumbbell_leg_curl
+    - glute_ham_raise
+    - single_leg_curl
+    - single_leg_dumbbell_romanian_deadlift
+    - leg_curl
+    - dumbbell_romanian_deadlift
+    - nordic_curl
+- session: full_c
+  slot:
+    pattern: hip_extension
+    role: accessory
+    equivalent: 5
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - machine_hip_thrust
+    - smith_machine_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+- session: full_a
+  slot:
+    pattern: rear_delt_fly
+    role: accessory
+    candidates:
+    - cable_rear_delt_fly
+    - dumbbell_rear_delt_fly
+    - face_pull
+    - incline_bench_rear_delt_fly
+    - reverse_pec_deck
+    equivalent: 3
+- session: full_c
+  slot:
+    pattern: lateral_raise
+    role: accessory
+    equivalent: 6
+    candidates:
+    - cable_lateral_raise
+    - dumbbell_lateral_raise
+    - lying_incline_lateral_raise
+    - cable_y_raise
+    - lean_in_lateral_raise
+    - egyptian_lateral_raise
+    - machine_lateral_raise
+    - cable_upright_row
+- session: full_b
+  slot:
+    pattern: hip_extension
+    role: accessory
+    equivalent: 5
+    candidates:
+    - barbell_hip_thrust
+    - dumbbell_hip_thrust
+    - machine_hip_thrust
+    - smith_machine_hip_thrust
+    - single_leg_hip_thrust
+    - back_extension_45
+    - cable_glute_kickback
+- session: full_b
+  slot:
+    pattern: hip_abduction
+    role: accessory
+    candidates:
+    - machine_hip_abduction
+    - cable_hip_abduction
+    equivalent: 2
+- session: full_c
+  slot:
+    pattern: hip_adduction
+    role: accessory
+    candidates:
+    - machine_hip_adduction
+    - cable_hip_adduction
+    equivalent: 2
+- session: full_b
+  slot:
+    pattern: scapular_elevation
+    role: accessory
+    candidates:
+    - dumbbell_shrug
+    - cable_shrug_in
+    - barbell_shrug
+    - machine_shrug
+    equivalent: 4
+- session: full_a
+  slot:
+    pattern: forearm_isolation
+    role: accessory
+    candidates:
+    - dumbbell_wrist_curl
+    - dumbbell_wrist_extension
+    - ez_bar_reverse_curl
+    equivalent: 3
+- session: full_c
+  slot:
+    pattern: rear_delt_fly
+    role: accessory
+    candidates:
+    - cable_rear_delt_fly
+    - dumbbell_rear_delt_fly
+    - face_pull
+    - incline_bench_rear_delt_fly
+    - reverse_pec_deck
+    equivalent: 3
+- session: full_a
+  slot:
+    pattern: hip_abduction
+    role: accessory
+    candidates:
+    - machine_hip_abduction
+    - cable_hip_abduction
+    equivalent: 2
+- session: full_c
+  slot:
+    pattern: hinge
+    role: accessory
+    candidates:
+    - dumbbell_romanian_deadlift
+- session: full_c
+  slot:
+    pattern: hip_abduction
+    role: accessory
+    candidates:
+    - machine_hip_abduction
+    - cable_hip_abduction
+    equivalent: 2
+- session: full_a
+  slot:
+    pattern: lunge
+    role: accessory
+    equivalent: 5
+    candidates:
+    - bulgarian_split_squat
+    - dumbbell_walking_lunge
+    - dumbbell_reverse_lunge
+    - smith_machine_split_squat
+    - barbell_lunge
+    - dumbbell_step_up

@@ -1,0 +1,9 @@
+ruleId: ADV-DROP-SET
+key: advanced.dropSet
+level: set
+text:
+  it: 'Drop set sull''ultima serie: arrivi al cedimento, togli una parte del carico e continui subito fino a un nuovo cedimento. Fa crescere quanto le serie normali in meno tempo e rende la seduta più dura. Vale nelle ultime settimane di carico, mai nello scarico, e solo sugli esercizi di isolamento.'
+  en: 'Drop set on the last set: reach failure, remove part of the load and keep going right away to a new failure. It builds muscle as well as normal sets in less time and makes the session harder. It applies in the last loading weeks, never in the deload, and only on isolation exercises.'
+principles:
+- P-DROP-SET
+- P-ADV-STRUCTURE

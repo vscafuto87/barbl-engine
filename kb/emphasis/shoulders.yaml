@@ -56,6 +56,57 @@ placements:
       - dumbbell_rear_delt_fly
       - cable_rear_delt_fly
       - face_pull
+  advanced_full_body_3d:
+  - session: full_a
+    slot:
+      pattern: lateral_raise
+      role: accessory
+      candidates:
+      - cable_lateral_raise
+      - dumbbell_lateral_raise
+      - lying_incline_lateral_raise
+  - session: full_c
+    slot:
+      pattern: rear_delt_fly
+      role: accessory
+      candidates:
+      - cable_rear_delt_fly
+      - dumbbell_rear_delt_fly
+      - face_pull
+  advanced_upper_lower_4d:
+  - session: upper_a
+    slot:
+      pattern: lateral_raise
+      role: accessory
+      candidates:
+      - cable_lateral_raise
+      - dumbbell_lateral_raise
+      - lying_incline_lateral_raise
+  - session: upper_b
+    slot:
+      pattern: rear_delt_fly
+      role: accessory
+      candidates:
+      - cable_rear_delt_fly
+      - dumbbell_rear_delt_fly
+      - face_pull
+  advanced_ul_ppl_5d:
+  - session: push
+    slot:
+      pattern: lateral_raise
+      role: accessory
+      candidates:
+      - dumbbell_lateral_raise
+      - cable_lateral_raise
+      - lying_incline_lateral_raise
+  - session: upper
+    slot:
+      pattern: rear_delt_fly
+      role: accessory
+      candidates:
+      - dumbbell_rear_delt_fly
+      - cable_rear_delt_fly
+      - face_pull
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

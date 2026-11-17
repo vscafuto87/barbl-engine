@@ -37,6 +37,11 @@ List<ChosenSession> extendToDuration(
   final totalSets = <int?>[
     for (final s in sessions) _sessionSets(s, prescription),
   ];
+  // Minuti delle tecniche dell'ultima serie di ogni seduta.
+  final extra = [
+    for (final s in sessions)
+      blocksTechniqueMinutes(s.blocks, profile, prescription),
+  ];
   final volume = weeklyVolume(sessions, prescription, kb);
   final added = <int, List<ChosenBlock>>{};
   final usedInWeek = <String>{
@@ -82,7 +87,7 @@ List<ChosenSession> extendToDuration(
     if (current == null) continue;
     final role = prescription.roles[extension.slot.role];
     if (role == null) continue;
-    if (estimatedMinutes(current + role.timedSets, prescription) >
+    if (estimatedMinutes(current + role.timedSets, prescription, extra[i]) >
         profile.sessionDurationMin) {
       continue;
     }
@@ -115,6 +120,20 @@ List<ChosenSession> extendToDuration(
       '${variantKey(profile, withDuration: false)}|ext|'
       '${sessions[i].session.id}|$n',
     );
+    final slotMinutes = slotTechniqueMinutes(
+      ChosenSlot(extension.slot, exercise),
+      profile,
+      prescription,
+    );
+    if (slotMinutes > 0 &&
+        estimatedMinutes(
+              current + role.timedSets,
+              prescription,
+              extra[i] + slotMinutes,
+            ) >
+            profile.sessionDurationMin) {
+      continue;
+    }
     final next = Map<String, double>.of(volume);
     addSets(next, exercise, role.sets, kb);
     final muscles = [exercise.primaryMuscle, ...exercise.secondaryMuscles];
@@ -124,6 +143,7 @@ List<ChosenSession> extendToDuration(
       ..clear()
       ..addAll(next);
     totalSets[i] = current + role.timedSets;
+    extra[i] += slotMinutes;
     inSession[i]!.add(exercise.id);
     patternsInSession[i]!.add(exercise.pattern);
     usedInWeek.add(exercise.id);

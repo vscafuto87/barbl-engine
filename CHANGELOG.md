@@ -5,7 +5,21 @@ Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia u
 ## 0.32.0 — 2026-11-16
 
 - Regola di stallo (scelta di Vincenzo del 15/11/2026, dalla ricerca web): gruppo nuovo `stall` dei `parameters` (`sessions` 2, `dropPct` 10, provvisorio), principio `P-STALL-RESET` (Helms, Pyramid v2 Training, p. 241) e motivazioni `STALL` e `STALL-RETURN`. Due sedute di fila mancate allo stesso carico → la seduta dopo il carico scende del 10% (per difetto sui passi); se va bene si torna subito al carico dello stallo. Il meccanismo è nell'app (regola 19 di `docs/logica-progressione.md`).
-- Piano `schemaVersion` `3.3` (contratto copiato dall'app). Sedute ed esercizi non cambiano.
+- Piano `schemaVersion` `3.3` per tutti i piani, anche quelli avanzati: il gruppo `stall` c'è sempre e la 3.3 contiene i campi della 3.2 (contratto copiato da barbl#132). Sedute ed esercizi non cambiano.
+
+## 0.31.0 — 2026-11-16
+
+- Livello avanzato per chi si allena da più di 2 anni (`experience: over_2_years`, specifica `docs/superpowers/specs/2026-11-15-livello-avanzato-design.md`): template `advanced_full_body_3d`, `advanced_upper_lower_4d` e `advanced_ul_ppl_5d` per tutti gli obiettivi, palestre e durate; prescrizioni `advanced_muscle_gain` e `advanced_strength` (2-3 serie per esercizio, superset a 90 s, un minuto in più per drop set e myo-reps). I 324 profili restano coperti.
+- Tecniche dell'ultima serie negli slot (`lastSet`): cedimento sugli isolamenti e sui complementari leggeri, drop set e myo-reps in blocchi singoli, al più 2 per seduta; solo il cedimento con la forza. Parametri nuovi `intensityTechniques` (dalla settimana 3, drop del 25%, myo-reps con attivazione 10-12, mini-serie da 3-4, 5 s di pausa, al più 4, stop sotto 3).
+- Mesociclo avanzato: RIR 2, 1, 1, 0 e scarico a 4; i multiarticolari pesanti (`heavyCompound`, segnato su 14 esercizi con bilanciere, affondo compreso) restano a RIR 1 o più e non ricevono tecniche.
+- Esercizi rischiosi vicino al cedimento (`noFailure`, nuovo campo dello schema: nordic curl, glute-ham raise, reverse nordic, sissy squat, stacco rumeno a una gamba, split squat bulgaro e al multipower, goblet squat, JM press, Copenhagen): restano nel piano ma senza tecnica. Drop set e myo-reps solo sugli isolamenti (altrove diventano il cedimento); le alternative di «Sostituisci» di un esercizio con una tecnica la ricevono uguale. Negli slot con una tecnica dei template avanzati i candidati sicuri vengono prima e i più rischiosi sono tolti dove c'è un'alternativa.
+- Volume dei template avanzati almeno come quello normale per spalle, femorali, glutei e polpacci a 4 giorni da 60 minuti e a 3 giorni da 90 (glutei a 13,5 contro 14 a 3 giorni: conflitto nuovo `C-ADVANCED-VOLUME`, risolto).
+- Fonti nuove: Sødal 2023 (drop set), Fonseca 2023 (metodi avanzati in soggetti allenati, PMC11022786), Zhang 2025 (superset), Cowley 2026 (network meta-analisi dei metodi avanzati), Nippard Bodybuilding Transformation System. Principi nuovi `P-ADV-FAILURE-LAST-SET`, `P-ADV-FAILURE-PERIODIZED`, `P-DROP-SET`, `P-MYO-REPS`, `P-SUPERSET-ANTAGONIST`, `P-ADV-STRUCTURE`, `P-TIME-TECHNIQUE`, tutti provvisori.
+- Conflitti: `C-RIR-BY-ROLE` riaperto e richiuso il 15/11/2026 per il solo livello avanzato; nuovo `C-ADVANCED-FAILURE` (risolto).
+- Motivazioni `ADV-FAILURE-LAST-SET`, `ADV-DROP-SET`, `ADV-MYO-REPS`, `ADV-SUPERSET`, `ADV-MESOCYCLE`; posti dell'enfasi anche nei template avanzati.
+- Motivazioni senza i numeri che stanno nei parametri (settimana di inizio, riduzione del drop set, mini-serie dei myo-reps).
+- Casi d'oro 09-14 (avanzati) con le chiavi nuove `durationWithinProfile`, `supersetsPerSessionAtLeast`, `techniques` (con `onlySafe`) e `differsWithVariantSeed`; il validatore sceglie template e prescrizione per esperienza e accorcia le sedute come il motore.
+- I piani di principianti e intermedi non cambiano (verificato su tutti i 216 profili; cambia solo `rulesVersion`).
 
 ## 0.30.1 — 2026-11-15
 
