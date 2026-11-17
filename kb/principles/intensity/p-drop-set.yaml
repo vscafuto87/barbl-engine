@@ -1,0 +1,39 @@
+id: P-DROP-SET
+topic: intensity
+statement:
+  it: 'Il drop set (dopo il cedimento si toglie una parte del carico e si continua fino a un nuovo cedimento)
+    fa crescere il muscolo quanto le serie tradizionali e richiede meno tempo. Va usato sull''ultima serie
+    degli esercizi di isolamento o alle macchine, dove il rischio è basso. Barbl prevede una sola riduzione
+    del 25% circa: le fonti indicano riduzioni tra il 20 e il 30%.'
+  en: 'A drop set (after failure you remove part of the load and keep going to a new failure) grows muscle
+    as well as traditional sets and takes less time. It belongs on the last set of isolation or machine
+    exercises, where risk is low. Barbl uses a single reduction of about 25%: the sources point to reductions
+    between 20 and 30%.'
+evidence: medium
+status: provisional
+reviewedBy: null
+feeds:
+- parameters/intensityTechniques
+- templates
+sources:
+- id: sodal-2023-drop-sets
+  access: abstract_only
+- id: fonseca-2023-advanced-paradigms
+  access: abstract_only
+  note: drop set degli studi inclusi con riduzioni del 20-30%; nessun vantaggio sull'ipertrofia
+- id: nippard-muscle-ladder
+  pages:
+  - 441
+  - 442
+  - 443
+  - 445
+  access: full_text
+  note: solo sull'ultima serie, su isolamenti e macchine; riduzione del 20-30%
+- id: helms-pyramid-training-v2
+  pages:
+  - 181
+  - 182
+  - 183
+  - 184
+  access: full_text
+  note: risparmio di tempo, più fatica, solo sugli esercizi accessori

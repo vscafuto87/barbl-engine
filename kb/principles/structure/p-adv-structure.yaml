@@ -1,0 +1,49 @@
+id: P-ADV-STRUCTURE
+topic: structure
+statement:
+  it: 'Il livello avanzato (più di 2 anni) usa sedute con più esercizi e 2-3 serie ciascuno, superset in
+    ogni seduta e tecniche sull''ultima serie degli isolamenti, al massimo due drop set o myo-reps per seduta.
+    I metodi avanzati non fanno crescere più delle serie tradizionali: sono una scelta per sedute più dure
+    e più brevi, chiesta da Vincenzo il 15/11/2026, con la struttura dei programmi per intermedi e avanzati.'
+  en: 'The advanced level (more than 2 years) uses sessions with more exercises and 2-3 sets each, supersets
+    in every session and techniques on the last set of isolation exercises, at most two drop sets or myo-reps
+    per session. Advanced methods do not build more muscle than traditional sets: they are a choice for harder
+    and shorter sessions, requested by Vincenzo on 15/11/2026, with the structure of intermediate and advanced
+    programs.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+- prescriptions
+- parameters/intensityTechniques
+sources:
+- id: barbl-design
+  access: full_text
+- id: cowley-2026-advanced-methods
+  access: abstract_only
+- id: fonseca-2023-advanced-paradigms
+  access: abstract_only
+- id: nippard-bodybuilding-transformation
+  pages:
+  - 19
+  access: full_text
+  note: tecniche solo dopo l'ultima serie
+- id: nippard-pure-bodybuilding-2
+  pages:
+  - 2
+  - 6
+  - 12
+  access: full_text
+  note: solo struttura (serie iniziali e ultima serie, tecnica dell'ultima serie per esercizio, drop set su
+    un isolamento)
+- id: nippard-min-max
+  pages:
+  - 10
+  - 14
+  - 17
+  access: full_text
+  note: solo struttura (poche serie per esercizio, tecniche sull'ultima serie dal secondo blocco)
+conflicts:
+- with: conflicts.yaml#C-ADVANCED-VOLUME
+  status: resolved

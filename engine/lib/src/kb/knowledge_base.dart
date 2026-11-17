@@ -18,6 +18,7 @@ class KnowledgeBase {
     required this.sources,
     required this.patternRegions,
     required this.emphases,
+    required this.gymTypes,
   });
 
   /// Formato del pacchetto che questa versione del motore sa leggere.
@@ -78,6 +79,18 @@ class KnowledgeBase {
         ),
     };
 
+    // `equipment.gymTypes` è facoltativo: senza, nessuna palestra è nota.
+    final equipment = json['equipment'] == null
+        ? const <String, Object?>{}
+        : mapAt(json, 'equipment', root);
+    final gymRaw = equipment['gymTypes'] == null
+        ? const <String, Object?>{}
+        : mapAt(equipment, 'gymTypes', 'equipment');
+    final gymTypes = <String, List<String>>{
+      for (final id in gymRaw.keys.toList()..sort())
+        id: stringsAt(gymRaw, id, 'equipment.gymTypes'),
+    };
+
     final kb = KnowledgeBase._(
       rulesVersion: stringAt(json, 'rulesVersion', root),
       kbCommit: stringOrNull(json, 'kbCommit', root),
@@ -92,6 +105,7 @@ class KnowledgeBase {
       sources: collection('sources', KbSource.fromJson),
       patternRegions: patternRegions,
       emphases: emphases,
+      gymTypes: gymTypes,
     );
     _checkInvariants(kb);
     return kb;
@@ -146,6 +160,7 @@ class KnowledgeBase {
     }
     _checkEmphases(kb);
     _checkExtensions(kb);
+    _checkLastSets(kb);
     final meso = kb.parameterGroups['mesocycle'];
     if (meso == null) {
       throw KbFormatException('parameters.mesocycle: gruppo mancante');
@@ -268,6 +283,95 @@ class KnowledgeBase {
     }
   }
 
+  /// Tecniche dell'ultima serie negli slot dei template: mai su `main`;
+  /// `drop_set` e `myo_reps` solo su `accessory` in un blocco `single` e al più
+  /// `maxTechniquesPerSession` per seduta (vincolo del gruppo
+  /// `intensityTechniques`); mai se per una palestra il primo candidato
+  /// disponibile è un multiarticolare pesante.
+  static void _checkLastSets(KnowledgeBase kb) {
+    for (final t in kb.templates) {
+      for (final s in t.sessions) {
+        final sessionPath = 'templates.${t.id}.${s.id}';
+        var extended = 0;
+        for (var bi = 0; bi < s.blocks.length; bi++) {
+          final b = s.blocks[bi];
+          for (var si = 0; si < b.slots.length; si++) {
+            final slot = b.slots[si];
+            final lastSet = slot.lastSet;
+            if (lastSet == null) continue;
+            final path = '$sessionPath.blocks[$bi].slots[$si].lastSet';
+            if (slot.role == roleMain) {
+              throw KbFormatException('$path: vietato su role $roleMain');
+            }
+            if (extendedLastSets.contains(lastSet)) {
+              if (slot.role != roleAccessory) {
+                throw KbFormatException(
+                  '$path: $lastSet solo su role $roleAccessory',
+                );
+              }
+              if (b.type != blockSingle) {
+                throw KbFormatException(
+                  '$path: $lastSet solo in un blocco $blockSingle',
+                );
+              }
+              extended++;
+            }
+            _checkNotHeavy(kb, slot, path);
+          }
+        }
+        if (extended == 0) continue;
+        final max = kb.maxTechniquesPerSession;
+        if (max == null) {
+          throw KbFormatException(
+            'parameters.$intensityTechniquesGroup.engineConstraints.'
+            '$maxTechniquesPerSessionKey: manca ma $sessionPath ha slot con '
+            '${extendedLastSets.join(' o ')}',
+          );
+        }
+        if (extended > max) {
+          throw KbFormatException(
+            '$sessionPath: $extended slot con ${extendedLastSets.join(' o ')}, '
+            'al più $max',
+          );
+        }
+      }
+    }
+  }
+
+  /// Per ogni palestra, il primo candidato disponibile di [slot] non è un
+  /// multiarticolare pesante. Senza palestre note vale il primo candidato.
+  static void _checkNotHeavy(KnowledgeBase kb, KbSlot slot, String path) {
+    final gyms = kb.gymTypes.isEmpty
+        ? const {'': null}
+        : {for (final e in kb.gymTypes.entries) e.key: e.value};
+    for (final gym in gyms.entries) {
+      KbExercise? first;
+      for (final id in slot.candidates) {
+        final ex = kb.exercises[id];
+        if (ex == null) continue;
+        final equipment = gym.value;
+        if (equipment == null || ex.requires.every(equipment.contains)) {
+          first = ex;
+          break;
+        }
+      }
+      if (first != null && first.heavyCompound) {
+        final where = gym.key.isEmpty ? '' : ' per la palestra ${gym.key}';
+        throw KbFormatException(
+          '$path: il primo candidato$where (${first.id}) è heavyCompound',
+        );
+      }
+    }
+  }
+
+  /// Tetto di drop set e myo-reps per seduta
+  /// (`parameters/intensityTechniques`, `engineConstraints`); nullo se manca.
+  int? get maxTechniquesPerSession {
+    final v = parameterGroups[intensityTechniquesGroup]
+        ?.engineConstraints[maxTechniquesPerSessionKey];
+    return v is int ? v : null;
+  }
+
   /// Tetto di serie settimanali per muscolo oltre cui le estensioni non
   /// aggiungono lavoro (`parameters/belowBand`, `bandMax`); nullo se manca.
   double? get weeklyVolumeCap {
@@ -292,4 +396,8 @@ class KnowledgeBase {
 
   /// Enfasi per id (valore di `emphasis` del profilo).
   final Map<String, KbEmphasis> emphases;
+
+  /// Attrezzatura di ogni tipo di palestra (`equipment.gymTypes`); vuota se
+  /// il pacchetto non la ha.
+  final Map<String, List<String>> gymTypes;
 }

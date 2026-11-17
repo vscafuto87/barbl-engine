@@ -350,7 +350,17 @@ void main() {
     expect(ruleIds, isNot(contains('EMPHASIS')));
     // Le motivazioni di `scope: suggestion` non entrano mai in un piano.
     expect(ruleIds, isNot(contains(startsWith('PHOTO-EMPHASIS'))));
-    expect(ruleIds, hasLength(kb.rationales.where((r) => r.inPlan).length - 1));
+    // Le motivazioni del livello avanzato (ADV-*) entrano solo se citate.
+    expect(ruleIds, isNot(contains(startsWith('ADV-'))));
+    expect(
+      ruleIds,
+      hasLength(
+        kb.rationales
+                .where((r) => r.inPlan && !r.ruleId.startsWith('ADV-'))
+                .length -
+            1,
+      ),
+    );
   });
 
   test('un profilo senza gym è non valido', () {

@@ -59,6 +59,59 @@ placements:
       - single_leg_hip_thrust
       - back_extension_45
       - cable_glute_kickback
+  advanced_full_body_3d:
+  - session: full_a
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+      - single_leg_hip_thrust
+      - back_extension_45
+      - cable_glute_kickback
+  - session: full_c
+    slot:
+      pattern: knee_flexion
+      role: accessory
+      candidates:
+      - leg_curl
+      - standing_leg_curl
+      - dumbbell_leg_curl
+      - romanian_deadlift
+      - dumbbell_romanian_deadlift
+  advanced_upper_lower_4d:
+  - session: lower_a
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+      - single_leg_hip_thrust
+      - back_extension_45
+      - cable_glute_kickback
+  - session: lower_b
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+      - single_leg_hip_thrust
+      - back_extension_45
+      - cable_glute_kickback
+  advanced_ul_ppl_5d:
+  - session: legs
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+      - single_leg_hip_thrust
+      - back_extension_45
+      - cable_glute_kickback
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

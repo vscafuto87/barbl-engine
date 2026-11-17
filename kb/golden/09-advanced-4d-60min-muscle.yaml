@@ -1,0 +1,46 @@
+id: golden-09
+name:
+  it: Avanzato, 4 giorni da 60 minuti, massa, palestra completa
+profile: golden/profile-4d-60min-advanced.json
+expect:
+  split: upper_lower
+  sessions: 4
+  scheduleDays:
+  - mon
+  - wed
+  - thu
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      1: 2
+      2: 1
+      3: 1
+      4: 0
+      5: 4
+  durationWithinProfile: true
+  supersetsPerSessionAtLeast: 1
+  techniques:
+    atLeast: 3
+    noneOnHeavyCompound: true
+    onlySafe: true
+    beforeDeload: true
+  differsWithVariantSeed: 7
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      quadriceps: 10
+      biceps: 10
+      triceps: 10
+      shoulders: 9
+      hamstrings: 11.5
+      glutes: 10
+      calves: 6
+  validAgainst: contract/plan.schema.json
+origin:
+  it: 'Livello avanzato (KB 0.31.0, P-ADV-STRUCTURE). Mesociclo RIR 2, 1, 1, 0 e scarico; tecniche
+    dell''ultima serie dalla settimana 3, mai su un multiarticolare pesante; la durata resta un
+    vincolo.'

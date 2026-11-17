@@ -18,6 +18,7 @@ const String extensionRuleId = 'TIME-EXTEND';
 
 /// Valori di `mechanics` e `technicalDemand` degli esercizi (formato della KB).
 const String mechanicsCompound = 'compound';
+const String mechanicsIsolation = 'isolation';
 const String technicalDemandHighValue = 'high';
 
 /// Gruppo di parametri e campo che dicono il volume massimo per muscolo.
@@ -27,6 +28,32 @@ const String bandMaxKey = 'bandMax';
 /// Livello di esperienza del profilo a cui si applicano le regole per chi
 /// comincia (formato del contratto del profilo).
 const String experienceBeginner = 'under_6_months';
+
+/// Tecniche dell'ultima serie (`lastSet` dello slot e del contratto 3.2).
+const String lastSetFailure = 'failure';
+const String lastSetDropSet = 'drop_set';
+const String lastSetMyoReps = 'myo_reps';
+const Set<String> lastSetValues = {
+  lastSetFailure,
+  lastSetDropSet,
+  lastSetMyoReps,
+};
+
+/// Tecniche che allungano la serie (drop set e myo-reps): solo su `accessory`,
+/// in blocchi `single`, al più `maxTechniquesPerSession` per seduta.
+const Set<String> extendedLastSets = {lastSetDropSet, lastSetMyoReps};
+
+/// Ruoli degli slot (formato della KB).
+const String roleMain = 'main';
+const String roleAccessory = 'accessory';
+
+/// Tipo di blocco con un solo slot.
+const String blockSingle = 'single';
+
+/// Gruppo di parametri delle tecniche e vincolo del motore con il tetto di
+/// drop set e myo-reps per seduta (valore della KB, non scritto nel piano).
+const String intensityTechniquesGroup = 'intensityTechniques';
+const String maxTechniquesPerSessionKey = 'maxTechniquesPerSession';
 
 /// Esercizio della KB.
 class KbExercise {
@@ -45,6 +72,8 @@ class KbExercise {
     this.technique,
     this.mechanics,
     this.technicalDemandHigh = false,
+    this.heavyCompound = false,
+    this.noFailure = false,
   });
 
   factory KbExercise.fromJson(Map<String, Object?> json, String path) {
@@ -66,6 +95,8 @@ class KbExercise {
       technicalDemandHigh:
           stringOrNull(json, 'technicalDemand', path) ==
           technicalDemandHighValue,
+      heavyCompound: boolOr(json, 'heavyCompound', path, false),
+      noFailure: boolOr(json, 'noFailure', path, false),
       technique: json['technique'] == null
           ? null
           : KbTechnique.fromJson(
@@ -86,6 +117,17 @@ class KbExercise {
   final bool technicalDemandHigh;
 
   bool get isCompound => mechanics == mechanicsCompound;
+
+  /// Vero solo se la KB dice `isolation`: drop set e myo-reps solo qui.
+  bool get isIsolation => mechanics == mechanicsIsolation;
+
+  /// Multiarticolare pesante: non riceve una tecnica dell'ultima serie.
+  final bool heavyCompound;
+
+  /// Esercizio rischioso vicino al cedimento (eccentrici a corpo libero,
+  /// monopodalici in equilibrio, bilanciere sopra il viso): non riceve nessuna
+  /// tecnica dell'ultima serie (`P-ADV-FAILURE-LAST-SET`).
+  final bool noFailure;
 
   final String id;
   final String nameIt;
@@ -195,6 +237,7 @@ class KbSlot {
     required this.askLoad,
     required this.repsOverride,
     this.equivalent = 1,
+    this.lastSet,
   });
 
   factory KbSlot.fromJson(Map<String, Object?> json, String path) {
@@ -207,7 +250,15 @@ class KbSlot {
         max: intAt(m, 'max', '$path.repsOverride'),
       );
     }
+    final lastSet = stringOrNull(json, 'lastSet', path);
+    if (lastSet != null && !lastSetValues.contains(lastSet)) {
+      throw KbFormatException(
+        '$path.lastSet: valore $lastSet sconosciuto (ammessi '
+        '${(lastSetValues.toList()..sort()).join(', ')})',
+      );
+    }
     return KbSlot(
+      lastSet: lastSet,
       pattern: stringAt(json, 'pattern', path),
       role: stringAt(json, 'role', path),
       candidates: stringsAt(json, 'candidates', path),
@@ -223,6 +274,10 @@ class KbSlot {
   /// il motore ne assegna uno in modo deterministico (vedi `chooseExercises`).
   /// 1 = vale il primo disponibile.
   final int equivalent;
+
+  /// Tecnica dell'ultima serie (`failure`, `drop_set`, `myo_reps`); nulla se
+  /// lo slot non ne ha.
+  final String? lastSet;
 
   final String pattern;
   final String role;
@@ -296,6 +351,7 @@ class KbTemplate {
     required this.defaultSchedule,
     required this.sessions,
     this.extensions = const [],
+    this.experience = const [],
   });
 
   factory KbTemplate.fromJson(Map<String, Object?> json, String path) {
@@ -316,6 +372,7 @@ class KbTemplate {
       split: stringAt(json, 'split', path),
       daysPerWeek: intAt(json, 'daysPerWeek', path),
       goals: stringsAt(json, 'goals', path),
+      experience: stringsOrEmpty(json, 'experience', path),
       defaultSchedule: {
         for (final e in schedule.entries)
           e.key: asString(e.value, '$path.defaultSchedule.${e.key}'),
@@ -334,6 +391,9 @@ class KbTemplate {
   final String split;
   final int daysPerWeek;
   final List<String> goals;
+
+  /// Livelli di esperienza del profilo a cui vale il template; vuota = tutti.
+  final List<String> experience;
   final Map<String, String> defaultSchedule;
   final List<KbSession> sessions;
 
@@ -489,13 +549,26 @@ class KbPrescription {
     required this.roles,
     required this.supersetRestSeconds,
     required this.minutesPerSet,
+    this.experience = const [],
+    this.techniqueMinutes = const {},
   });
 
   factory KbPrescription.fromJson(Map<String, Object?> json, String path) {
     final roles = mapAt(json, 'roles', path);
+    final budget = mapAt(json, 'timeBudget', path);
+    final techniques = mapOrEmpty(
+      budget,
+      'techniqueMinutes',
+      '$path.timeBudget',
+    );
     return KbPrescription(
       id: stringAt(json, 'id', path),
       appliesTo: stringsAt(json, 'appliesTo', path),
+      experience: stringsOrEmpty(json, 'experience', path),
+      techniqueMinutes: {
+        for (final k in techniques.keys)
+          k: intAt(techniques, k, '$path.timeBudget.techniqueMinutes'),
+      },
       roles: {
         for (final e in roles.entries)
           e.key: KbRole.fromJson(
@@ -504,19 +577,22 @@ class KbPrescription {
           ),
       },
       supersetRestSeconds: intAt(json, 'supersetRestSeconds', path),
-      minutesPerSet: intAt(
-        mapAt(json, 'timeBudget', path),
-        'minutesPerSet',
-        '$path.timeBudget',
-      ),
+      minutesPerSet: intAt(budget, 'minutesPerSet', '$path.timeBudget'),
     );
   }
 
   final String id;
   final List<String> appliesTo;
+
+  /// Livelli di esperienza a cui vale la prescrizione; vuota = tutti.
+  final List<String> experience;
   final Map<String, KbRole> roles;
   final int supersetRestSeconds;
   final int minutesPerSet;
+
+  /// Minuti in più per la tecnica dell'ultima serie di un esercizio, per
+  /// valore di `lastSet` (`timeBudget.techniqueMinutes`); vuota se assente.
+  final Map<String, int> techniqueMinutes;
 }
 
 /// Gruppo del blocco `parameters` del contratto (o il mesociclo).

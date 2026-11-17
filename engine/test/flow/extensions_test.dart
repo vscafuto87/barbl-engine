@@ -303,7 +303,8 @@ void main() {
     });
 
     test('chi ha più esperienza ha il mesociclo di prima', () {
-      for (final level in const ['6_months_2_years', 'over_2_years']) {
+      // over_2_years ha il mesociclo avanzato (weeksByExperience, KB 0.31.0).
+      for (final level in const ['6_months_2_years']) {
         final plan = _plan(
           _profile(
             goal: 'muscle_gain',

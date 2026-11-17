@@ -1,6 +1,7 @@
 import '../contract/profile.dart';
 import '../kb/knowledge_base.dart';
 import 'prescribe.dart';
+import 'plan_parameters.dart' show mesocycleWeeksFor;
 
 /// Origine del carico iniziale di un esercizio.
 enum LoadSource {
@@ -26,11 +27,9 @@ class InitialLoad {
 }
 
 /// RIR più alto tra le settimane di tipo `load` del mesociclo, o null.
-int? _maxLoadRir(KnowledgeBase kb) {
-  final group = kb.parameterGroups['mesocycle'];
-  if (group == null) return null;
-  final weeks = group.values['weeks'];
-  if (weeks is! List) return null;
+int? _maxLoadRir(KnowledgeBase kb, Profile profile) {
+  final weeks = mesocycleWeeksFor(kb, profile);
+  if (weeks == null) return null;
   int? best;
   for (final w in weeks) {
     if (w is! Map) continue;
@@ -69,9 +68,9 @@ _Conversion? _conversion(KnowledgeBase kb) {
 }
 
 /// RIR target della prima settimana di tipo `load`, o null.
-int? _firstLoadRir(KnowledgeBase kb) {
-  final weeks = kb.parameterGroups['mesocycle']?.values['weeks'];
-  if (weeks is! List) return null;
+int? _firstLoadRir(KnowledgeBase kb, Profile profile) {
+  final weeks = mesocycleWeeksFor(kb, profile);
+  if (weeks == null) return null;
   for (final w in weeks) {
     if (w is Map && w['type'] == 'load' && w['rirTarget'] is num) {
       return (w['rirTarget'] as num).toInt();
@@ -124,9 +123,9 @@ Map<String, InitialLoad> assignLoads(
   KnowledgeBase kb,
 ) {
   final conversion = _conversion(kb);
-  final firstRir = _firstLoadRir(kb);
+  final firstRir = _firstLoadRir(kb, profile);
   final limit = _trialLimit(kb);
-  final maxRir = _maxLoadRir(kb);
+  final maxRir = _maxLoadRir(kb, profile);
   final result = <String, InitialLoad>{};
   for (final session in sessions) {
     for (final block in session.blocks) {
