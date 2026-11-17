@@ -19,7 +19,7 @@ sources:
 - id: sodal-2023-drop-sets
   access: abstract_only
 - id: fonseca-2023-advanced-paradigms
-  access: full_text
+  access: abstract_only
   note: drop set degli studi inclusi con riduzioni del 20-30%; nessun vantaggio sull'ipertrofia
 - id: nippard-muscle-ladder
   pages:

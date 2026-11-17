@@ -44,7 +44,7 @@ sources:
   access: full_text
   note: rest-pause, pause di 20-30 secondi; da riservare agli accessori
 - id: fonseca-2023-advanced-paradigms
-  access: full_text
+  access: abstract_only
   note: rest-pause senza vantaggio sull'ipertrofia rispetto alle serie tradizionali
 - id: barbl-design
   access: full_text

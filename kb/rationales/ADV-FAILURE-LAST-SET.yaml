@@ -2,12 +2,8 @@ ruleId: ADV-FAILURE-LAST-SET
 key: advanced.failureLastSet
 level: set
 text:
-  it: Ti alleni da anni, quindi in questo esercizio l'ultima serie va fino al cedimento, dalla settimana
-    3 e mai nello scarico. Le serie prima restano a una o due ripetizioni dal limite, così il volume non
-    cala. Lo uso solo su esercizi a basso rischio, non sui multiarticolari pesanti.
-  en: You have been training for years, so on this exercise the last set goes to failure, from week 3 and
-    never in the deload. The sets before stay one or two reps short, so volume does not drop. I only use
-    it on low-risk exercises, not on heavy compound lifts.
+  it: 'Ti alleni da anni, quindi in questo esercizio l''ultima serie va fino al cedimento, nelle ultime settimane di carico e mai nello scarico. Le serie prima seguono il RIR target della settimana, così il volume non cala. Lo uso solo su esercizi a basso rischio, non sui multiarticolari pesanti né su quelli in cui vicino al cedimento la tecnica si perde.'
+  en: 'You have been training for years, so on this exercise the last set goes to failure, in the last loading weeks and never in the deload. The sets before follow the week''s target RIR, so volume does not drop. I only use it on low-risk exercises, not on heavy compound lifts or on those where form breaks down close to failure.'
 principles:
 - P-ADV-FAILURE-LAST-SET
 - P-ADV-FAILURE-PERIODIZED

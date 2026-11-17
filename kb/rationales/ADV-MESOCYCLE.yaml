@@ -2,12 +2,8 @@ ruleId: ADV-MESOCYCLE
 key: advanced.mesocycle
 level: mesocycle
 text:
-  it: 'Settimana {week} di {totalWeeks}: RIR target {rir}. Mesociclo avanzato: si parte a 2, si arriva
-    a 0 nell''ultima settimana di carico e dalla settimana 3 l''ultima serie degli isolamenti va a cedimento.
-    I multiarticolari pesanti restano ad almeno 1. Poi lo scarico.'
-  en: 'Week {week} of {totalWeeks}: target {rir} RIR. Advanced mesocycle: you start at 2, reach 0 in the
-    last loading week and from week 3 the last set of isolation exercises goes to failure. Heavy compound
-    lifts stay at 1 or more. Then the deload.'
+  it: 'Settimana {week} di {totalWeeks}: RIR target {rir}. Mesociclo avanzato: si parte con un piccolo margine, si arriva al cedimento nell''ultima settimana di carico e nelle ultime settimane l''ultima serie degli isolamenti va a cedimento. I multiarticolari pesanti tengono sempre un margine. Poi lo scarico.'
+  en: 'Week {week} of {totalWeeks}: target {rir} RIR. Advanced mesocycle: you start with a small margin, reach failure in the last loading week and in the last weeks the last set of isolation exercises goes to failure. Heavy compound lifts always keep a margin. Then the deload.'
 exampleValues:
   week: 4
   totalWeeks: 5
