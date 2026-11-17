@@ -196,4 +196,29 @@ conflicts:
       sull''ultima serie, solo su esercizi di isolamento e complementari (mai sui multiarticolari pesanti,
       heavyCompound, né sui principali), solo dalla settimana 3 (intensityTechniques.fromWeek) e mai nello
       scarico; solo per experience over_2_years. Il cedimento resta una scelta, non un requisito: è coerente
-      con l''ACSM, che lo dice non necessario.'
+      con l''ACSM, che lo dice non necessario. Precisato nella revisione del 17 novembre 2026: nessuna
+      tecnica sugli esercizi rischiosi vicino al cedimento (noFailure: eccentrici a corpo libero come nordic
+      curl, glute-ham raise, reverse nordic e sissy squat, monopodalici in equilibrio come stacco a una
+      gamba e split squat, goblet squat, JM press, Copenhagen), che restano nel piano senza tecnica; drop
+      set e myo-reps solo sugli isolamenti, altrove diventano il cedimento.'
+- id: C-ADVANCED-VOLUME
+  status: resolved
+  date: '2026-11-17'
+  between:
+  - P-ADV-STRUCTURE
+  - P-TIME-TECHNIQUE
+  - P-VOL-MIN-10
+  summary:
+    it: Il livello avanzato dà 2 serie agli accessori e spende tempo nelle tecniche (P-TIME-TECHNIQUE), quindi
+      con la stessa durata alcuni muscoli ricevono meno serie che nel template normale. Con 4 giorni da 60
+      minuti i polpacci scendevano a 4 e i glutei a 9,5 (6 e 10 nel normale); con 3 giorni da 90 minuti
+      spalle, femorali e glutei erano sotto il normale (15, 12 e 14).
+  resolution:
+    it: 'Deciso nella revisione del Task 5 del 17 novembre 2026, da confermare con Vincenzo: a 4 giorni da
+      60 minuti Upper A chiude con i polpacci al posto delle alzate laterali e senza drop set, e Lower A
+      prende un''estensione d''anca prima delle altre estensioni (polpacci 6, glutei 11,5, femorali 12,
+      spalle 9: almeno come il normale). A 3 giorni da 90 minuti le estensioni in coda (deltoidi
+      posteriori, abduttori, stacco rumeno con manubri, affondo) riportano spalle a 15 e femorali a 13; i
+      glutei restano a 13,5 contro 14, perché le sedute sono piene. I casi d''oro 09 e 13 controllano
+      questi valori (per i glutei del 13 il controllo statico del validatore, che sceglie il primo
+      candidato, vale 12,5).'

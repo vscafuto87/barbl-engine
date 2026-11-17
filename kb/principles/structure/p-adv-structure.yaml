@@ -23,15 +23,27 @@ sources:
 - id: cowley-2026-advanced-methods
   access: abstract_only
 - id: fonseca-2023-advanced-paradigms
-  access: full_text
+  access: abstract_only
 - id: nippard-bodybuilding-transformation
   pages:
   - 19
   access: full_text
   note: tecniche solo dopo l'ultima serie
 - id: nippard-pure-bodybuilding-2
+  pages:
+  - 2
+  - 6
+  - 12
   access: full_text
-  note: solo struttura (meno serie per esercizio, tecniche sugli isolamenti)
+  note: solo struttura (serie iniziali e ultima serie, tecnica dell'ultima serie per esercizio, drop set su
+    un isolamento)
 - id: nippard-min-max
+  pages:
+  - 10
+  - 14
+  - 17
   access: full_text
-  note: solo struttura (poche serie per esercizio, tecniche sull'ultima serie)
+  note: solo struttura (poche serie per esercizio, tecniche sull'ultima serie dal secondo blocco)
+conflicts:
+- with: conflicts.yaml#C-ADVANCED-VOLUME
+  status: resolved
