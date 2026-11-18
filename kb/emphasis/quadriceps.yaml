@@ -103,6 +103,26 @@ placements:
       - sissy_squat
       - bulgarian_split_squat
       - dumbbell_step_up
+  advanced_ppl_6d:
+  - session: legs_a
+    slot:
+      pattern: knee_extension
+      role: accessory
+      candidates:
+      - leg_extension
+      - sissy_squat
+      - goblet_squat
+      - dumbbell_step_up
+      - dumbbell_reverse_lunge
+  - session: legs_b
+    slot:
+      pattern: knee_extension
+      role: accessory
+      candidates:
+      - leg_extension
+      - sissy_squat
+      - bulgarian_split_squat
+      - dumbbell_step_up
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

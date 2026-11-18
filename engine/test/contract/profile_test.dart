@@ -74,9 +74,33 @@ void main() {
     expect(readProfile(m), isA<ProfileErrors>());
   });
 
-  test('daysPerWeek 6 è un errore', () {
-    final m = example()..['daysPerWeek'] = 6;
+  test('daysPerWeek 7 è un errore', () {
+    final m = example()..['daysPerWeek'] = 7;
     expect(readProfile(m), isA<ProfileErrors>());
+  });
+
+  test('profilo 1.6: daysPerWeek 6 si legge', () {
+    final m = example()
+      ..['schemaVersion'] = '1.6'
+      ..['daysPerWeek'] = 6
+      ..['experience'] = 'over_2_years';
+    final r = readProfile(m);
+    expect(
+      r,
+      isA<ProfileOk>(),
+      reason: r is ProfileErrors ? '${r.errors}' : null,
+    );
+    expect((r as ProfileOk).profile.daysPerWeek, 6);
+  });
+
+  test('profilo 1.6: sei giorni scelti con daysPerWeek 6', () {
+    final days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    final m = example()
+      ..['schemaVersion'] = '1.6'
+      ..['daysPerWeek'] = 6
+      ..['weekdays'] = days;
+    final p = (readProfile(m) as ProfileOk).profile;
+    expect(p.weekdays, days);
   });
 
   test('campo sconosciuto è un errore', () {
@@ -228,7 +252,7 @@ void main() {
   test('raccoglie tutti gli errori e non lancia con valori null', () {
     final m = example()
       ..['goal'] = 'bulk'
-      ..['daysPerWeek'] = 6
+      ..['daysPerWeek'] = 7
       ..['gym'] = null
       ..['knownLoads'] = [null];
     final r = readProfile(m);

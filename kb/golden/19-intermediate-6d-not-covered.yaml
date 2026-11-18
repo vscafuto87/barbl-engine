@@ -1,0 +1,10 @@
+id: golden-19
+name:
+  it: Intermedio, 6 giorni da 60 minuti, massa
+profile: golden/profile-6d-60min-intermediate.json
+expect:
+  notCovered: goal
+origin:
+  it: 'Sei giorni a settimana solo per chi si allena da più di due anni (P-SPLIT-PPL-6D): l''app non offre
+    la scelta agli altri e il motore non ha un template a 6 giorni per loro, quindi il profilo non è
+    coperto.'

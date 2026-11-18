@@ -1,8 +1,8 @@
 # Eval a matrice di profili
 
-`engine/test/flow/profile_matrix_test.dart` genera 324 profili validi dagli enum di `kb/contract/profile.schema.json` e li passa a `generatePlan` con la KB vera:
+`engine/test/flow/profile_matrix_test.dart` genera 324 profili validi dagli enum di `kb/contract/profile.schema.json` e li passa a `generatePlan` con la KB vera, più i 36 profili a 6 giorni del solo livello `over_2_years` (KB 0.33.0, profilo `1.6`): 360 in tutto. I 6 giorni per gli altri livelli non sono coperti e li controlla `engine/test/flow/advanced_6d_test.dart`, con le proprietà proprie del template a 6 giorni (nessun muscolo primario in due giorni consecutivi, finisher in due sedute non consecutive, volume nella fascia da 60 minuti in su):
 
-- giorni 3, 4, 5; durate 45, 60, 75, 90; obiettivi `muscle_gain`, `strength`, `both`;
+- giorni 3, 4, 5 (6 solo con `over_2_years`); durate 45, 60, 75, 90; obiettivi `muscle_gain`, `strength`, `both`;
 - palestre `full`, `home`, `dumbbells`, con l'attrezzatura di `kb/vocab/equipment.yaml` (`gymTypes`);
 - livelli `under_6_months` (nessun carico noto), `6_months_2_years` (panca 80 kg e squat «Non lo so»), `over_2_years` (quattro carichi noti).
 
@@ -20,7 +20,7 @@ Per ogni profilo, `generatePlan` non lancia e dà o un rifiuto `NotCovered` (mot
 4. ha una motivazione per ogni regola citata dagli esercizi;
 5. ha `initialLoad` coerente: con un carico noto `source: profile` e quei kg; senza, `kg` nullo con `trial_set` o `manual`; `trial_set` solo se l'esercizio lo ammette nella KB; stesso carico in tutte le occorrenze dello stesso esercizio;
 6. ha `name.it` e `name.en` per ogni esercizio;
-7. per gli obiettivi `muscle_gain` e `both`, raggiunge per petto, dorso, quadricipiti, bicipiti e tricipiti la soglia di serie frazionarie settimanali di `parameters/belowBand` (`bandMin`, alimentata da `P-VOL-MIN-10`); a 5 giorni anche per spalle, femorali e glutei (`_extraVolumeMusclesByDays`); i deficit noti sono in `_knownDeficits` (oggi i polpacci, `C-CALVES-BAND`). Per `strength` la soglia non si controlla: è dell'ipertrofia, per la forza il volume utile è molto più basso (`P-VOL-DOSE-STR`) e il principale a 3 serie porta petto, dorso e quadricipiti a 9 (`C-STRENGTH-VOLUME`);
+7. per gli obiettivi `muscle_gain` e `both`, raggiunge per petto, dorso, quadricipiti, bicipiti e tricipiti la soglia di serie frazionarie settimanali di `parameters/belowBand` (`bandMin`, alimentata da `P-VOL-MIN-10`); a 5 e 6 giorni anche per spalle, femorali e glutei (`_extraVolumeMusclesByDays`); i deficit noti sono in `_knownDeficits` (oggi i polpacci, `C-CALVES-BAND`). Per `strength` la soglia non si controlla: è dell'ipertrofia, per la forza il volume utile è molto più basso (`P-VOL-DOSE-STR`) e il principale a 3 serie porta petto, dorso e quadricipiti a 9 (`C-STRENGTH-VOLUME`);
 8. propone la serie di prova solo se le ripetizioni minime dell'esercizio più il RIR più alto delle settimane di carico restano entro `maxRepsPlusRir` di `parameters/trialLoad`;
 9. è identico, come JSON, generandolo due volte dallo stesso profilo.
 

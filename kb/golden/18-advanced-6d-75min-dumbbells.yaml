@@ -1,0 +1,38 @@
+id: golden-18
+name:
+  it: Avanzato, 6 giorni da 75 minuti, massa, solo manubri
+profile: golden/profile-6d-75min-advanced-dumbbells.json
+expect:
+  split: push_pull_legs
+  sessions: 6
+  scheduleDays:
+  - mon
+  - tue
+  - wed
+  - thu
+  - fri
+  - sat
+  durationWithinProfile: true
+  supersetsPerSessionAtLeast: 1
+  techniques:
+    atLeast: 6
+    noneOnHeavyCompound: true
+    onlySafe: true
+    beforeDeload: true
+  differsWithVariantSeed: 7
+  noPrimaryMuscleOnConsecutiveDays: true
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      quadriceps: 10
+      biceps: 10
+      triceps: 10
+      shoulders: 10
+      hamstrings: 10
+      glutes: 10
+  validAgainst: contract/plan.schema.json
+origin:
+  it: 'Piano a 6 giorni del livello avanzato con soli manubri e panca (KB 0.33.0): ogni slot ha un
+    candidato con manubri; il volume resta nella fascia.'

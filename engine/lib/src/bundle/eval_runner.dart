@@ -329,6 +329,79 @@ void _checkEmphasisExercises(
 
 int? _int(Object? v) => v is int ? v : null;
 
+/// `notCovered: <motivo>`: il profilo non è coperto, con quel
+/// `NotCoveredReason` (per nome). Le altre chiavi del caso non si controllano.
+void _checkNotCovered(
+  Object result,
+  Map<String, Object?> expect,
+  List<String> failures,
+) {
+  final want = expect['notCovered'];
+  final names = {for (final r in NotCoveredReason.values) r.name};
+  if (want is! String || !names.contains(want)) {
+    failures.add('expect.notCovered: motivo non valido (${_describe(want)})');
+    return;
+  }
+  if (result is! NotCovered) {
+    failures.add('notCovered: atteso non coperto ($want), ottenuto un piano');
+    return;
+  }
+  if (result.reason.name != want) {
+    failures.add(
+      'notCovered: atteso $want, ottenuto ${result.reason.name} '
+      '(${result.detail})',
+    );
+  }
+}
+
+const List<String> _weekDayOrder = [
+  'mon',
+  'tue',
+  'wed',
+  'thu',
+  'fri',
+  'sat',
+  'sun',
+];
+
+/// `noPrimaryMuscleOnConsecutiveDays: true`: due sedute del calendario in
+/// giorni consecutivi (domenica e lunedì compresi: la settimana si ripete) non
+/// hanno un muscolo primario in comune.
+void _checkConsecutiveDays(
+  Map<String, Object?> plan,
+  Map<String, Object?> expect,
+  List<String> failures,
+) {
+  if (expect['noPrimaryMuscleOnConsecutiveDays'] != true) return;
+  final primaries = <String, Set<String>>{};
+  for (final s in plan['sessions'] as List) {
+    final m = s as Map;
+    primaries[m['id'] as String] = {
+      for (final b in m['blocks'] as List)
+        for (final e in (b as Map)['exercises'] as List)
+          ((e as Map)['muscles'] as List).first.toString(),
+    };
+  }
+  final byDay = <int, String>{
+    for (final e in plan['schedule'] as List)
+      _weekDayOrder.indexOf((e as Map)['day'] as String):
+          e['sessionId'] as String,
+  };
+  for (final entry in byDay.entries) {
+    final next = byDay[(entry.key + 1) % _weekDayOrder.length];
+    if (next == null) continue;
+    final shared = (primaries[entry.value] ?? const <String>{}).intersection(
+      primaries[next] ?? const <String>{},
+    );
+    if (shared.isNotEmpty) {
+      failures.add(
+        'noPrimaryMuscleOnConsecutiveDays: ${entry.value} e $next in giorni '
+        'consecutivi con ${(shared.toList()..sort()).join(', ')}',
+      );
+    }
+  }
+}
+
 /// Proprietà del livello avanzato (KB 0.31.0):
 /// - `durationWithinProfile: true`: ogni seduta sta nella durata del profilo;
 /// - `supersetsPerSessionAtLeast: N`: ogni seduta ha almeno N superset;
@@ -484,6 +557,8 @@ void _checkAdvanced(
 }
 
 const Set<String> _knownKeys = {
+  'notCovered',
+  'noPrimaryMuscleOnConsecutiveDays',
   'durationWithinProfile',
   'supersetsPerSessionAtLeast',
   'techniques',
@@ -530,6 +605,10 @@ EvalCase _runCase(File file, Directory kbDir, KnowledgeBase kb) {
       failures.add('profilo non valido: ${result.errors.join('; ')}');
       return EvalCase(id, failures);
     }
+    if (expectRaw.containsKey('notCovered')) {
+      _checkNotCovered(result, expectRaw, failures);
+      return EvalCase(id, failures);
+    }
     if (result is NotCovered) {
       failures.add('non coperto (${result.reason.name}): ${result.detail}');
       return EvalCase(id, failures);
@@ -541,6 +620,7 @@ EvalCase _runCase(File file, Directory kbDir, KnowledgeBase kb) {
     _checkWeeklySets(plan, expectRaw, kb, failures);
     _checkEmphasisExercises(plan, expectRaw, failures);
     _checkAdvanced(plan, expectRaw, profileJson, kb, failures);
+    _checkConsecutiveDays(plan, expectRaw, failures);
     final schemaPath = expectRaw['validAgainst'];
     if (schemaPath is String) {
       final schemaFile = File('${kbDir.path}/$schemaPath');

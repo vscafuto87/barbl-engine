@@ -112,6 +112,27 @@ placements:
       - single_leg_hip_thrust
       - back_extension_45
       - cable_glute_kickback
+  advanced_ppl_6d:
+  - session: legs_a
+    slot:
+      pattern: hip_extension
+      role: accessory
+      candidates:
+      - barbell_hip_thrust
+      - dumbbell_hip_thrust
+      - single_leg_hip_thrust
+      - back_extension_45
+      - cable_glute_kickback
+  - session: legs_b
+    slot:
+      pattern: knee_flexion
+      role: accessory
+      candidates:
+      - seated_leg_curl
+      - standing_leg_curl
+      - dumbbell_leg_curl
+      - single_leg_curl
+      - leg_curl
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

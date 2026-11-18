@@ -1,0 +1,29 @@
+id: golden-17
+name:
+  it: Avanzato, 6 giorni da 90 minuti, forza, palestra completa
+profile: golden/profile-6d-90min-advanced-strength.json
+expect:
+  split: push_pull_legs
+  sessions: 6
+  scheduleDays:
+  - mon
+  - tue
+  - wed
+  - thu
+  - fri
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+  durationWithinProfile: true
+  supersetsPerSessionAtLeast: 1
+  techniques:
+    atLeast: 6
+    noneOnHeavyCompound: true
+    onlySafe: true
+    beforeDeload: true
+  noPrimaryMuscleOnConsecutiveDays: true
+  validAgainst: contract/plan.schema.json
+origin:
+  it: 'Piano a 6 giorni del livello avanzato con la forza (KB 0.33.0): restano solo il cedimento sugli
+    isolamenti e la soglia di volume non si controlla (P-VOL-DOSE-STR).'

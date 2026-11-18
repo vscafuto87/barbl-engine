@@ -111,6 +111,27 @@ placements:
       - dumbbell_fly
       - incline_dumbbell_fly
       - low_to_high_cable_fly
+  advanced_ppl_6d:
+  - session: push_a
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - pec_deck_fly
+      - cable_fly
+      - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
+  - session: push_b
+    slot:
+      pattern: chest_isolation
+      role: accessory
+      candidates:
+      - cable_fly
+      - pec_deck_fly
+      - dumbbell_fly
+      - incline_dumbbell_fly
+      - low_to_high_cable_fly
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

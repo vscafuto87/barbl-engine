@@ -531,6 +531,12 @@ def check_golden(r, principles, exercises, templates, prescriptions, parameters,
             t for t in templates.values()
             if t["daysPerWeek"] == profile["daysPerWeek"] and profile["goal"] in t["goals"]
         ], profile["experience"])
+        if "notCovered" in g["expect"]:
+            # Caso d'oro di un profilo che il motore non copre (per esempio 6 giorni senza il livello
+            # avanzato): nessun template deve sceglierlo, il resto del caso non si controlla.
+            if matching:
+                r.error(where, f"atteso non coperto, ma il template {matching[0]['id']} copre il profilo")
+            continue
         if len(matching) != 1:
             r.error(where, f"servono un solo template per il profilo, trovati {len(matching)}")
             continue
