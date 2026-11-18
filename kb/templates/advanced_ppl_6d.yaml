@@ -290,15 +290,7 @@ sessions:
           inclinata o con manubri e si allena a 8-12 ripetizioni, mentre il primo giro resta pesante.'
       candidates:
       - incline_dumbbell_press
-      - incline_machine_press
       - smith_machine_incline_press
-      - incline_barbell_bench_press
-      - dumbbell_bench_press
-      - machine_chest_press
-      - deficit_push_up
-      - push_up
-      - dip
-      - dumbbell_floor_press
   - type: single
     slots:
     - pattern: vertical_push

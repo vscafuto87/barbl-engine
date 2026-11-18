@@ -52,8 +52,14 @@ void main() {
           'advanced_full_body_3d',
           'advanced_upper_lower_4d',
           'advanced_ul_ppl_5d',
-          'advanced_ppl_6d',
         ]),
+      );
+      // Nel 6 giorni i quadricipiti sono già al tetto di belowBand: nessun
+      // posto (kb/emphasis/quadriceps.yaml).
+      expect(
+        em.placements.containsKey('advanced_ppl_6d'),
+        em.id != 'quadriceps',
+        reason: em.id,
       );
     }
   });

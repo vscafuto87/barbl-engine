@@ -182,6 +182,8 @@ void main() {
               reason: '${s['id']}',
             );
             final exercises = _exercisesOf(s);
+            final ids = [for (final e in exercises) e['exerciseId']];
+            expect(ids.toSet(), hasLength(ids.length), reason: '$ids');
             for (final e in exercises) {
               final lastSet = e['lastSet'] as String?;
               if (lastSet == null) continue;
@@ -274,12 +276,15 @@ void main() {
     test('enfasi $emphasis a 75 minuti: posti applicati, nessun primario in '
         'giorni consecutivi', () {
       final plan = _plan(_profile(duration: 75, emphasis: [emphasis]));
+      // I quadricipiti sono già al tetto di belowBand: nessun posto
+      // (kb/emphasis/quadriceps.yaml).
+      final expectAdded = emphasis != 'quadriceps';
       final added = [
         for (final s in _sessions(plan))
           for (final e in _exercisesOf(s))
             if ((e['rules']! as List).contains(emphasisRuleId)) e,
       ];
-      expect(added, isNotEmpty);
+      expect(added.isNotEmpty, expectAdded);
       final days = _dayOf(plan);
       final primaries = {
         for (final s in _sessions(plan))
@@ -295,6 +300,68 @@ void main() {
         }
       }
     });
+  }
+
+  // Varianti con un seme: volume, doppioni e giorni consecutivi valgono
+  // anche quando il seme cambia gli esercizi intercambiabili.
+  for (final seed in [3, 11]) {
+    for (final goal in _goals) {
+      for (final gym in _gyms) {
+        for (final duration in _durations) {
+          test('seme $seed, $goal $gym $duration min: volume, doppioni e '
+              'giorni consecutivi', () {
+            final plan = _plan(
+              _profile(
+                goal: goal,
+                gym: gym,
+                duration: duration,
+                variantSeed: seed,
+              ),
+            );
+            final days = _dayOf(plan);
+            final primaries = <String, Set<String>>{};
+            for (final s in _sessions(plan)) {
+              final ids = [
+                for (final e in _exercisesOf(s)) e['exerciseId']! as String,
+              ];
+              expect(
+                ids.toSet(),
+                hasLength(ids.length),
+                reason: '${s['id']}: esercizio ripetuto in $ids',
+              );
+              expect(
+                s['estimatedDurationMin']! as num,
+                lessThanOrEqualTo(duration),
+              );
+              primaries[s['id']! as String] = {
+                for (final e in _exercisesOf(s))
+                  (e['muscles']! as List).first as String,
+              };
+            }
+            for (final a in _sessionIds) {
+              for (final b in _sessionIds) {
+                if (days[b]! - days[a]! != 1) continue;
+                expect(
+                  primaries[a]!.intersection(primaries[b]!),
+                  isEmpty,
+                  reason: '$a e $b in giorni consecutivi',
+                );
+              }
+            }
+            if (goal != 'strength' && duration >= 60) {
+              final weekly = _weeklySets(plan);
+              for (final m in _bandMuscles) {
+                expect(
+                  weekly[m] ?? 0,
+                  inInclusiveRange(_bandMin, _bandMax),
+                  reason: '$m: ${weekly[m]} serie frazionarie a settimana',
+                );
+              }
+            }
+          });
+        }
+      }
+    }
   }
 
   test('due semi diversi danno piani diversi', () {

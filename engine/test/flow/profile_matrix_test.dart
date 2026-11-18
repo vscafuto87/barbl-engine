@@ -3,7 +3,7 @@
 /// giorni del solo livello avanzato: 4 x 3 x 3 = 36, in tutto 360) con la KB
 /// vera dà o un piano che rispetta le proprietà attese o un rifiuto motivato,
 /// mai un'eccezione. In più la dimensione enfasi (4 varianti per un livello:
-/// 756 profili). Vedi `docs/eval-matrice.md`.
+/// 756 profili, più 252 a 6 giorni del livello avanzato). Vedi `docs/eval-matrice.md`.
 library;
 
 import 'dart:convert';
@@ -211,6 +211,13 @@ final List<_Combo> _emphasisCombos = [
         for (final gym in _gymTypes)
           for (final e in _emphasisVariants)
             _Combo(d, dur, g, gym, _emphasisExperience, e),
+  // I 6 giorni esistono solo per il livello avanzato (profilo 1.6).
+  for (final d in _advancedOnlyDays)
+    for (final dur in _durations)
+      for (final g in _goals)
+        for (final gym in _gymTypes)
+          for (final e in _emphasisVariants)
+            _Combo(d, dur, g, gym, _advancedExperience, e),
 ];
 
 late KnowledgeBase _kb;
@@ -568,7 +575,7 @@ List<String> _emphasisViolations(
   final template = _templateOf(c, plan);
   final placed = _placementCounts(c, template);
   final added = _emphasisCounts(plan);
-  final prescription = _prescriptionOf(c.goal);
+  final prescription = _prescriptionOf(c.goal, c.experience);
   final slotMinutes =
       prescription.roles['accessory']!.sets * prescription.minutesPerSet;
   for (final s in plan['sessions']! as List<Object?>) {
@@ -608,12 +615,18 @@ List<String> _emphasisViolations(
   return out;
 }
 
-/// Prescrizione dell'obiettivo per i livelli senza prescrizione propria (la
-/// matrice dell'enfasi usa `6_months_2_years`).
-KbPrescription _prescriptionOf(String goal) =>
-    ([..._kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id))).firstWhere(
-      (p) => p.appliesTo.contains(goal) && p.experience.isEmpty,
-    );
+/// Prescrizione dell'obiettivo per il livello [experience], come il motore:
+/// quella che dichiara il livello, altrimenti quella senza livello (la
+/// matrice dell'enfasi usa `6_months_2_years`, e `over_2_years` a 6 giorni).
+KbPrescription _prescriptionOf(String goal, String experience) {
+  final byGoal = ([..._kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id)))
+      .where((p) => p.appliesTo.contains(goal))
+      .toList();
+  return byGoal.firstWhere(
+    (p) => p.experience.contains(experience),
+    orElse: () => byGoal.firstWhere((p) => p.experience.isEmpty),
+  );
+}
 
 /// Livello con i template avanzati (KB 0.31.0).
 const String _advancedExperience = 'over_2_years';
@@ -700,6 +713,13 @@ List<String> _advancedViolations(_Combo c, Map<String, Object?> plan) {
 /// profili coperti della matrice dell'enfasi. Va cambiata solo di proposito,
 /// insieme alla KB (`kb/emphasis/`, template o prescrizioni).
 const Map<String, (int, int)> _expectedEmphasis = {
+  // 6 giorni, solo over_2_years (KB 0.33.0): oltre i 60 minuti i posti che
+  // restano non si applicano perché la seduta ha già l'esercizio o il tempo
+  // è finito (controllato da _emphasisViolations).
+  'advanced_ppl_6d 45': (46, 126),
+  'advanced_ppl_6d 60': (105, 126),
+  'advanced_ppl_6d 75': (105, 126),
+  'advanced_ppl_6d 90': (105, 126),
   'full_body_3d 45': (0, 144),
   'full_body_3d 60': (78, 144),
   'full_body_3d 75': (135, 144),
@@ -744,7 +764,8 @@ String _emphasisReport() {
   final stats = _emphasisStats();
   final keys = stats.byKey.keys.toList()..sort();
   return [
-    'Enfasi (${_emphasisCombos.length} profili, livello $_emphasisExperience):',
+    'Enfasi (${_emphasisCombos.length} profili, livello $_emphasisExperience; '
+        '6 giorni con $_advancedExperience):',
     for (final k in keys)
       '  ${k.padRight(20)} posti applicati '
           '${stats.byKey[k]!.$1}/${stats.byKey[k]!.$2}',
@@ -835,9 +856,9 @@ void main() {
     }
   });
 
-  test('la matrice dell\'enfasi ha 756 profili', () {
-    expect(_emphasisCombos, hasLength(756));
-    expect(_emphasisCombos.map((c) => c.key).toSet(), hasLength(756));
+  test('la matrice dell\'enfasi ha 1008 profili', () {
+    expect(_emphasisCombos, hasLength(1008));
+    expect(_emphasisCombos.map((c) => c.key).toSet(), hasLength(1008));
     expect(
       _emphasisCombos
           .map((c) => c.key)
@@ -931,7 +952,7 @@ void main() {
       stats.all + stats.some + stats.none,
       _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length,
     );
-    expect((stats.all, stats.some, stats.none), (431, 54, 271));
+    expect((stats.all, stats.some, stats.none), (583, 121, 304));
   });
 
   test('nessuno slot main dei template ha una tecnica dell\'ultima serie', () {
