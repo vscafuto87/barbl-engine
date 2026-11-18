@@ -155,6 +155,31 @@ placements:
       - pull_up
       - chin_up
       - dumbbell_row
+  advanced_ppl_6d:
+  - session: pull_a
+    slot:
+      pattern: horizontal_pull
+      role: accessory
+      candidates:
+      - seated_cable_row
+      - machine_row
+      - chest_supported_dumbbell_row
+      - incline_bench_barbell_row
+      - single_arm_cable_row
+      - inverted_row
+  - session: pull_b
+    slot:
+      pattern: vertical_pull
+      role: accessory
+      candidates:
+      - single_arm_lat_pulldown
+      - neutral_grip_pulldown
+      - lat_pulldown
+      - underhand_lat_pulldown
+      - machine_pulldown
+      - pull_up
+      - chin_up
+      - dumbbell_row
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

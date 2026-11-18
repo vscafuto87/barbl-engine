@@ -1,8 +1,9 @@
 /// Eval a matrice: ogni profilo valido dell'enum dello schema del profilo
-/// (3 giorni x 4 durate x 3 obiettivi x 3 palestre x 3 livelli = 324) con la KB
+/// (3 giorni x 4 durate x 3 obiettivi x 3 palestre x 3 livelli = 324, più i 6
+/// giorni del solo livello avanzato: 4 x 3 x 3 = 36, in tutto 360) con la KB
 /// vera dà o un piano che rispetta le proprietà attese o un rifiuto motivato,
 /// mai un'eccezione. In più la dimensione enfasi (4 varianti per un livello:
-/// 756 profili). Vedi `docs/eval-matrice.md`.
+/// 756 profili, più 252 a 6 giorni del livello avanzato). Vedi `docs/eval-matrice.md`.
 library;
 
 import 'dart:convert';
@@ -16,6 +17,10 @@ import 'package:yaml/yaml.dart';
 
 // Dimensioni della matrice: gli enum di kb/contract/profile.schema.json.
 const List<int> _days = [3, 4, 5];
+
+/// Giorni ammessi solo con il livello avanzato (profilo 1.6): l'app non li
+/// offre agli altri e il motore non li copre (`advanced_6d_test.dart`).
+const List<int> _advancedOnlyDays = [6];
 const List<int> _durations = [45, 60, 75, 90];
 const List<String> _goals = ['muscle_gain', 'strength', 'both'];
 const List<String> _gymTypes = ['full', 'home', 'dumbbells'];
@@ -59,6 +64,7 @@ const List<String> _volumeMuscles = [
 /// template a 5 giorni); a 3 e 4 giorni restano sotto e non sono controllati.
 const Map<int, List<String>> _extraVolumeMusclesByDays = {
   5: ['shoulders', 'hamstrings', 'glutes'],
+  6: ['shoulders', 'hamstrings', 'glutes'],
 };
 
 /// Obiettivi per cui si controlla la soglia di volume.
@@ -116,6 +122,18 @@ const Map<(int, String, int), String> _expectedCoverage = {
   (5, 'both', 60): 'covered',
   (5, 'both', 75): 'covered',
   (5, 'both', 90): 'covered',
+  (6, 'muscle_gain', 45): 'covered',
+  (6, 'muscle_gain', 60): 'covered',
+  (6, 'muscle_gain', 75): 'covered',
+  (6, 'muscle_gain', 90): 'covered',
+  (6, 'strength', 45): 'covered',
+  (6, 'strength', 60): 'covered',
+  (6, 'strength', 75): 'covered',
+  (6, 'strength', 90): 'covered',
+  (6, 'both', 45): 'covered',
+  (6, 'both', 60): 'covered',
+  (6, 'both', 75): 'covered',
+  (6, 'both', 90): 'covered',
 };
 
 /// Varianti di `emphasis` della matrice dell'enfasi (la variante «nessuna» è
@@ -179,6 +197,11 @@ final List<_Combo> _combos = [
       for (final g in _goals)
         for (final gym in _gymTypes)
           for (final x in _experiences) _Combo(d, dur, g, gym, x),
+  for (final d in _advancedOnlyDays)
+    for (final dur in _durations)
+      for (final g in _goals)
+        for (final gym in _gymTypes)
+          _Combo(d, dur, g, gym, _advancedExperience),
 ];
 
 final List<_Combo> _emphasisCombos = [
@@ -188,6 +211,13 @@ final List<_Combo> _emphasisCombos = [
         for (final gym in _gymTypes)
           for (final e in _emphasisVariants)
             _Combo(d, dur, g, gym, _emphasisExperience, e),
+  // I 6 giorni esistono solo per il livello avanzato (profilo 1.6).
+  for (final d in _advancedOnlyDays)
+    for (final dur in _durations)
+      for (final g in _goals)
+        for (final gym in _gymTypes)
+          for (final e in _emphasisVariants)
+            _Combo(d, dur, g, gym, _advancedExperience, e),
 ];
 
 late KnowledgeBase _kb;
@@ -200,7 +230,11 @@ final File _planSchema = File('../kb/contract/plan.schema.json');
 final Map<String, Object> _outcomes = {};
 
 Map<String, Object?> _profileJson(_Combo c) => {
-  'schemaVersion': c.emphasis.isEmpty ? '1.0' : '1.2',
+  'schemaVersion': c.days == 6
+      ? '1.6'
+      : c.emphasis.isEmpty
+      ? '1.0'
+      : '1.2',
   'goal': c.goal,
   'gym': {
     'type': c.gym,
@@ -274,7 +308,7 @@ const Map<String, List<double>> _dumbbellSeries = {
 
 Map<String, Object?> _profileJson14(_Combo c, List<double> series) {
   final json = _profileJson(c.base);
-  json['schemaVersion'] = '1.4';
+  json['schemaVersion'] = c.days == 6 ? '1.6' : '1.4';
   (json['gym']! as Map<String, Object?>)['dumbbellsKg'] = series;
   return json;
 }
@@ -541,7 +575,7 @@ List<String> _emphasisViolations(
   final template = _templateOf(c, plan);
   final placed = _placementCounts(c, template);
   final added = _emphasisCounts(plan);
-  final prescription = _prescriptionOf(c.goal);
+  final prescription = _prescriptionOf(c.goal, c.experience);
   final slotMinutes =
       prescription.roles['accessory']!.sets * prescription.minutesPerSet;
   for (final s in plan['sessions']! as List<Object?>) {
@@ -581,12 +615,18 @@ List<String> _emphasisViolations(
   return out;
 }
 
-/// Prescrizione dell'obiettivo per i livelli senza prescrizione propria (la
-/// matrice dell'enfasi usa `6_months_2_years`).
-KbPrescription _prescriptionOf(String goal) =>
-    ([..._kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id))).firstWhere(
-      (p) => p.appliesTo.contains(goal) && p.experience.isEmpty,
-    );
+/// Prescrizione dell'obiettivo per il livello [experience], come il motore:
+/// quella che dichiara il livello, altrimenti quella senza livello (la
+/// matrice dell'enfasi usa `6_months_2_years`, e `over_2_years` a 6 giorni).
+KbPrescription _prescriptionOf(String goal, String experience) {
+  final byGoal = ([..._kb.prescriptions]..sort((a, b) => a.id.compareTo(b.id)))
+      .where((p) => p.appliesTo.contains(goal))
+      .toList();
+  return byGoal.firstWhere(
+    (p) => p.experience.contains(experience),
+    orElse: () => byGoal.firstWhere((p) => p.experience.isEmpty),
+  );
+}
 
 /// Livello con i template avanzati (KB 0.31.0).
 const String _advancedExperience = 'over_2_years';
@@ -673,6 +713,13 @@ List<String> _advancedViolations(_Combo c, Map<String, Object?> plan) {
 /// profili coperti della matrice dell'enfasi. Va cambiata solo di proposito,
 /// insieme alla KB (`kb/emphasis/`, template o prescrizioni).
 const Map<String, (int, int)> _expectedEmphasis = {
+  // 6 giorni, solo over_2_years (KB 0.33.0): oltre i 60 minuti i posti che
+  // restano non si applicano perché la seduta ha già l'esercizio o il tempo
+  // è finito (controllato da _emphasisViolations).
+  'advanced_ppl_6d 45': (46, 126),
+  'advanced_ppl_6d 60': (105, 126),
+  'advanced_ppl_6d 75': (105, 126),
+  'advanced_ppl_6d 90': (105, 126),
   'full_body_3d 45': (0, 144),
   'full_body_3d 60': (78, 144),
   'full_body_3d 75': (135, 144),
@@ -717,7 +764,8 @@ String _emphasisReport() {
   final stats = _emphasisStats();
   final keys = stats.byKey.keys.toList()..sort();
   return [
-    'Enfasi (${_emphasisCombos.length} profili, livello $_emphasisExperience):',
+    'Enfasi (${_emphasisCombos.length} profili, livello $_emphasisExperience; '
+        '6 giorni con $_advancedExperience):',
     for (final k in keys)
       '  ${k.padRight(20)} posti applicati '
           '${stats.byKey[k]!.$1}/${stats.byKey[k]!.$2}',
@@ -733,11 +781,12 @@ String _coverageTable() {
     counts.update(_label(_outcomes[c.key]!), (n) => n + 1, ifAbsent: () => 1);
   }
   lines.add('Copertura della matrice (${_combos.length} profili):');
-  for (final d in _days) {
+  for (final d in [..._days, ..._advancedOnlyDays]) {
     for (final g in _goals) {
+      final x = d > _days.last ? _advancedExperience : _experiences.first;
       final cells = [
         for (final dur in _durations)
-          '$dur:${_label(_outcomes[_Combo(d, dur, g, 'full', _experiences.first).key]!)}',
+          '$dur:${_label(_outcomes[_Combo(d, dur, g, 'full', x).key]!)}',
       ];
       lines.add('  $d giorni, ${g.padRight(11)} ${cells.join('  ')}');
     }
@@ -779,9 +828,9 @@ void main() {
     }
   });
 
-  test('la matrice ha 324 profili', () {
-    expect(_combos, hasLength(324));
-    expect(_combos.map((c) => c.key).toSet(), hasLength(324));
+  test('la matrice ha 360 profili', () {
+    expect(_combos, hasLength(360));
+    expect(_combos.map((c) => c.key).toSet(), hasLength(360));
   });
 
   group('profili', () {
@@ -807,9 +856,9 @@ void main() {
     }
   });
 
-  test('la matrice dell\'enfasi ha 756 profili', () {
-    expect(_emphasisCombos, hasLength(756));
-    expect(_emphasisCombos.map((c) => c.key).toSet(), hasLength(756));
+  test('la matrice dell\'enfasi ha 1008 profili', () {
+    expect(_emphasisCombos, hasLength(1008));
+    expect(_emphasisCombos.map((c) => c.key).toSet(), hasLength(1008));
     expect(
       _emphasisCombos
           .map((c) => c.key)
@@ -903,7 +952,7 @@ void main() {
       stats.all + stats.some + stats.none,
       _emphasisCombos.where((c) => _outcomes[c.key] is Generated).length,
     );
-    expect((stats.all, stats.some, stats.none), (431, 54, 271));
+    expect((stats.all, stats.some, stats.none), (583, 121, 304));
   });
 
   test('nessuno slot main dei template ha una tecnica dell\'ultima serie', () {
@@ -931,7 +980,11 @@ void main() {
     }
     expect(
       _expectedCoverage,
-      hasLength(_days.length * _goals.length * _durations.length),
+      hasLength(
+        (_days.length + _advancedOnlyDays.length) *
+            _goals.length *
+            _durations.length,
+      ),
     );
     expect(diffs, isEmpty, reason: diffs.join('\n'));
   });

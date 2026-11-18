@@ -144,6 +144,29 @@ placements:
       - dumbbell_overhead_triceps_extension
       - lying_dumbbell_triceps_extension
       - cable_triceps_kickback
+  advanced_ppl_6d:
+  - session: pull_b
+    slot:
+      pattern: elbow_flexion
+      role: accessory
+      candidates:
+      - dumbbell_curl
+      - barbell_curl
+      - cable_curl
+      - hammer_curl
+      - incline_dumbbell_curl
+      - behind_the_body_cable_curl
+      - spider_curl
+  - session: push_a
+    slot:
+      pattern: elbow_extension
+      role: accessory
+      candidates:
+      - overhead_cable_triceps_extension
+      - barbell_skull_crusher
+      - dumbbell_overhead_triceps_extension
+      - lying_dumbbell_triceps_extension
+      - cable_triceps_kickback
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

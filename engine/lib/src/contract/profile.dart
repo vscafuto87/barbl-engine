@@ -12,6 +12,7 @@ const Set<String> _profileSchemaVersions = {
   '1.3',
   '1.4',
   '1.5',
+  '1.6',
 };
 const Set<String> _equipmentValues = {
   'barbell',
@@ -26,7 +27,7 @@ const Set<String> _equipmentValues = {
 };
 const Set<String> _goalValues = {'muscle_gain', 'strength', 'both'};
 const Set<String> _gymTypeValues = {'full', 'home', 'dumbbells'};
-const Set<int> _daysPerWeekValues = {3, 4, 5};
+const Set<int> _daysPerWeekValues = {3, 4, 5, 6};
 const Set<int> _sessionDurationValues = {45, 60, 75, 90};
 const Set<String> _experienceValues = {
   'under_6_months',
@@ -210,7 +211,8 @@ ProfileRead readProfile(Map<String, Object?> json) {
   if (json.containsKey('schemaVersion') &&
       !_profileSchemaVersions.contains(json['schemaVersion'])) {
     errors.add(
-      'schemaVersion: deve essere "1.0", "1.1", "1.2", "1.3", "1.4" o "1.5", '
+      'schemaVersion: deve essere "1.0", "1.1", "1.2", "1.3", "1.4", "1.5" o '
+      '"1.6", '
       'trovato ${_describe(json['schemaVersion'])}',
     );
   }

@@ -1,0 +1,45 @@
+id: P-SPLIT-PPL-6D
+topic: structure
+statement:
+  it: 'Con sei giorni a settimana si sceglie spinta, trazione e gambe ripetute due volte, da lunedì a
+    sabato, e solo per chi si allena da più di due anni. Ogni muscolo riceve due stimoli a settimana a
+    circa 72 ore di distanza e i muscoli primari cambiano ogni giorno, quindi nessun distretto lavora da
+    primario in due giorni di fila. Il primo giro è più pesante (principali a poche ripetizioni), il
+    secondo usa varianti diverse e più ripetizioni. Le sedute sono più corte di quelle a cinque giorni,
+    perché il volume settimanale si divide su sei sedute e resta nella fascia. Sei sedute chiedono di
+    gestire bene fatica e recupero: chi ha meno esperienza ottiene lo stesso volume con meno giorni. È
+    una scelta di design di Barbl, presa come struttura da due programmi a sei sedute per intermedi e
+    avanzati, non un risultato di uno studio.'
+  en: 'With six days a week, the choice is push, pull and legs repeated twice, Monday to Saturday, and
+    only for people training for more than two years. Each muscle gets two stimuli a week about 72 hours
+    apart and the primary muscles change every day, so no muscle group works as a primary on two days in
+    a row. The first round is heavier (main lifts at low reps), the second uses different variations and
+    higher reps. Sessions are shorter than the five-day ones, because weekly volume is split over six
+    sessions and stays within the band. Six sessions require managing fatigue and recovery well: less
+    experienced lifters get the same volume with fewer days. This is a Barbl design choice, taking its
+    structure from two six-session programmes for intermediate and advanced lifters, not a study finding.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: barbl-design
+  access: full_text
+- id: nippard-ppl-6x
+  pages:
+  - 35
+  - 36
+  - 37
+  - 38
+  - 39
+  - 40
+  access: full_text
+  note: solo struttura della settimana a sei sedute
+- id: nippard-powerbuilding-2-6x
+  pages:
+  - 18
+  - 19
+  - 20
+  access: full_text
+  note: settimane a spinta, trazione e gambe per intermedi e avanzati; ordine di grandezza del volume settimanale

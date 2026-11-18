@@ -107,6 +107,23 @@ placements:
       - dumbbell_rear_delt_fly
       - cable_rear_delt_fly
       - face_pull
+  advanced_ppl_6d:
+  - session: push_a
+    slot:
+      pattern: rear_delt_fly
+      role: accessory
+      candidates:
+      - dumbbell_rear_delt_fly
+      - cable_rear_delt_fly
+      - face_pull
+  - session: push_b
+    slot:
+      pattern: lateral_raise
+      role: accessory
+      candidates:
+      - dumbbell_lateral_raise
+      - cable_lateral_raise
+      - lying_incline_lateral_raise
 principles:
 - P-EMPHASIS
 - P-VOL-DOSE-HYP

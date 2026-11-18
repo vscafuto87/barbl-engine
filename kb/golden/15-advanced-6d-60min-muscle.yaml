@@ -1,0 +1,52 @@
+id: golden-15
+name:
+  it: Avanzato, 6 giorni da 60 minuti, massa, palestra completa
+profile: golden/profile-6d-60min-advanced.json
+expect:
+  split: push_pull_legs
+  sessions: 6
+  scheduleDays:
+  - mon
+  - tue
+  - wed
+  - thu
+  - fri
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+    rirTargetByWeek:
+      1: 2
+      2: 1
+      3: 1
+      4: 0
+      5: 4
+  durationWithinProfile: true
+  supersetsPerSessionAtLeast: 1
+  techniques:
+    atLeast: 6
+    noneOnHeavyCompound: true
+    onlySafe: true
+    beforeDeload: true
+  differsWithVariantSeed: 7
+  noPrimaryMuscleOnConsecutiveDays: true
+  initialLoad:
+    barbell_bench_press:
+      kg: 92.5
+      source: estimate
+  weeklySetsAtLeast:
+    counting: fractional
+    values:
+      chest: 10
+      back: 10
+      quadriceps: 10
+      biceps: 10
+      triceps: 10
+      shoulders: 10
+      hamstrings: 10
+      glutes: 10
+  validAgainst: contract/plan.schema.json
+origin:
+  it: 'Piano a 6 giorni del livello avanzato (KB 0.33.0, P-SPLIT-PPL-6D): Push, Pull e Gambe due volte da
+    lunedì a sabato, nessun muscolo primario in due giorni di fila, tecniche dell''ultima serie dalla
+    settimana 3 e mai su un multiarticolare pesante; volume settimanale nella fascia di P-VOL-MIN-10.'

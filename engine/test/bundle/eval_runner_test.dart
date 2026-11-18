@@ -122,6 +122,71 @@ void main() {
     });
   });
 
+  group('piano a 6 giorni (KB 0.33.0)', () {
+    EvalCase runCase(String file, String id, String Function(String) edit) {
+      final tmp = Directory.systemTemp.createTempSync('eval_copy');
+      addTearDown(() => tmp.deleteSync(recursive: true));
+      copyDir(Directory('../kb'), tmp);
+      final f = File('${tmp.path}/golden/$file');
+      f.writeAsStringSync(edit(f.readAsStringSync()));
+      return runEval(tmp).firstWhere((c) => c.id == id);
+    }
+
+    test('i casi d\'oro a 6 giorni passano sulla KB vera', () {
+      final cases = runEval(Directory('../kb'));
+      for (final id in [
+        'golden-15',
+        'golden-16',
+        'golden-17',
+        'golden-18',
+        'golden-19',
+      ]) {
+        final c = cases.firstWhere((c) => c.id == id);
+        expect(c.failures, isEmpty, reason: id);
+      }
+    });
+
+    test('notCovered: un intermedio a 6 giorni non è coperto', () {
+      final c = runEval(Directory('../kb'))
+          .firstWhere((c) => c.id == 'golden-19');
+      expect(c.failures, isEmpty);
+    });
+
+    test('notCovered su un profilo coperto fa fallire', () {
+      final c = runCase(
+        '01-intermediate-4d-muscle.yaml',
+        'golden-01',
+        (t) => replaceOnce(t, 'expect:\n', 'expect:\n  notCovered: goal\n'),
+      );
+      expect(mentions(c, 'notCovered'), isTrue);
+    });
+
+    test('notCovered con un altro motivo fa fallire', () {
+      final c = runCase(
+        '19-intermediate-6d-not-covered.yaml',
+        'golden-19',
+        (t) => replaceOnce(t, 'notCovered: goal', 'notCovered: days'),
+      );
+      expect(mentions(c, 'notCovered'), isTrue);
+    });
+
+    test('noPrimaryMuscleOnConsecutiveDays fa fallire un calendario che '
+        'ripete un primario il giorno dopo', () {
+      // Nel 5 giorni Push (giovedì) e Pull (venerdì) allenano entrambe le
+      // spalle come primario (alzate laterali e deltoidi posteriori).
+      final c = runCase(
+        '14-advanced-5d-60min-dumbbells.yaml',
+        'golden-14',
+        (t) => replaceOnce(
+          t,
+          'durationWithinProfile: true',
+          'durationWithinProfile: true\n  noPrimaryMuscleOnConsecutiveDays: true',
+        ),
+      );
+      expect(mentions(c, 'noPrimaryMuscleOnConsecutiveDays'), isTrue);
+    });
+  });
+
   test('emphasisExercises sbagliato o mancante fa fallire', () {
     EvalCase run05(String Function(String) edit) {
       final tmp = Directory.systemTemp.createTempSync('eval_copy');

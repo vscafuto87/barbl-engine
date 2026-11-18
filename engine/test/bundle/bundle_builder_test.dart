@@ -29,9 +29,9 @@ void main() {
     final result = buildBundle(Directory('../kb'));
     expect(result.errors, isEmpty);
     final kb = KnowledgeBase.fromJson(result.json);
-    expect(kb.rulesVersion, '0.32.0');
+    expect(kb.rulesVersion, '0.33.0');
     expect(kb.exercises, hasLength(153));
-    expect(kb.templates, hasLength(6));
+    expect(kb.templates, hasLength(7));
     expect(kb.parameterGroups, hasLength(13));
     expect(kb.rationales, hasLength(27));
     expect(kb.emphases.keys, [
@@ -53,6 +53,13 @@ void main() {
           'advanced_upper_lower_4d',
           'advanced_ul_ppl_5d',
         ]),
+      );
+      // Nel 6 giorni i quadricipiti sono già al tetto di belowBand: nessun
+      // posto (kb/emphasis/quadriceps.yaml).
+      expect(
+        em.placements.containsKey('advanced_ppl_6d'),
+        em.id != 'quadriceps',
+        reason: em.id,
       );
     }
   });

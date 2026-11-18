@@ -1,0 +1,29 @@
+id: golden-16
+name:
+  it: Avanzato, 6 giorni da 45 minuti, massa e forza, palestra completa
+profile: golden/profile-6d-45min-advanced-both.json
+expect:
+  split: push_pull_legs
+  sessions: 6
+  scheduleDays:
+  - mon
+  - tue
+  - wed
+  - thu
+  - fri
+  - sat
+  mesocycle:
+    weeks: 5
+    lastWeekType: deload
+  durationWithinProfile: true
+  techniques:
+    atLeast: 6
+    noneOnHeavyCompound: true
+    onlySafe: true
+    beforeDeload: true
+  noPrimaryMuscleOnConsecutiveDays: true
+  validAgainst: contract/plan.schema.json
+origin:
+  it: 'Piano a 6 giorni del livello avanzato (KB 0.33.0). Con 45 minuti il motore toglie gli ultimi
+    isolamenti (P-TIME-TRIM) e qualche muscolo può restare sotto la fascia (C-TIME-VOLUME); la durata
+    resta un vincolo e il calendario non cambia.'
