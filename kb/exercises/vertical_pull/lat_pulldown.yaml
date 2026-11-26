@@ -59,6 +59,7 @@ technique:
     fix:
       it: Riduci il peso e inclinati solo un po', senza dondolare.
       en: Lower the weight and lean back only slightly, without swinging.
+    figure: torso_back
   - what:
       it: Tiri la barra dietro la testa.
       en: You pull the bar behind your head.
@@ -77,6 +78,7 @@ technique:
     fix:
       it: Lascia salire la barra finché le braccia sono tese.
       en: Let the bar rise until your arms are straight.
+    figure: half_range
   - what:
       it: Le cosce non sono bloccate e il corpo si solleva dal sedile.
       en: Your thighs aren't locked and your body lifts off the seat.

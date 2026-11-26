@@ -51,6 +51,7 @@ technique:
     fix:
       it: Riduci il peso e premi i fianchi sulla panca.
       en: Use less weight and press your hips into the bench.
+    figure: hips_pike
   - what:
       it: Lanci il peso e poi lo lasci cadere.
       en: You swing the weight and then let it drop.
@@ -63,6 +64,7 @@ technique:
     fix:
       it: Scendi fino a gambe quasi tese a ogni ripetizione.
       en: Lower until your legs are nearly straight every rep.
+    figure: half_range
   sources:
   - id: nippard-muscle-ladder
     pages:

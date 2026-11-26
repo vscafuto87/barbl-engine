@@ -56,6 +56,7 @@ technique:
     fix:
       it: Porta i manubri fino all'altezza delle spalle.
       en: Bring the dumbbells all the way to shoulder height.
+    figure: half_range
   sources:
   - id: nippard-muscle-ladder
     pages:

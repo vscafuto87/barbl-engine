@@ -45,6 +45,7 @@ technique:
     fix:
       it: Scendi più in basso e fermati un secondo nell'allungamento.
       en: Lower further and pause for a second in the stretch.
+    figure: half_range
   - what:
       it: Rimbalzi in basso e usi lo slancio per risalire.
       en: You bounce at the bottom and use momentum to come up.

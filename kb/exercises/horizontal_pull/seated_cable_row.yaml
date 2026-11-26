@@ -48,6 +48,7 @@ technique:
     fix:
       it: Riduci il peso e muovi solo le braccia, busto fermo.
       en: Lower the weight and move only your arms, torso still.
+    figure: torso_back
   - what:
       it: La schiena si arrotonda quando allunghi le braccia.
       en: Your back rounds when you reach forward.

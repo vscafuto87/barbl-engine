@@ -45,6 +45,7 @@ technique:
     fix:
       it: Riduci il peso e tieni piedi e busto fermi.
       en: Lower the weight and keep your feet and torso still.
+    figure: torso_back
   - what:
       it: I gomiti scivolano in avanti e le spalle fanno il lavoro.
       en: Your elbows drift forward and your shoulders take over.
@@ -63,6 +64,7 @@ technique:
     fix:
       it: Scendi fino ad avere le braccia tese a ogni ripetizione.
       en: Lower until your arms are straight on every rep.
+    figure: half_range
   sources:
   - id: nippard-muscle-ladder
     pages:

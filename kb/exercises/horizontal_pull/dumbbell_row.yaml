@@ -77,6 +77,7 @@ technique:
     fix:
       it: Allunga il braccio fino in fondo a ogni ripetizione.
       en: Fully extend your arm at the bottom of every rep.
+    figure: half_range
   sources:
   - id: nippard-muscle-ladder
     pages:

@@ -52,6 +52,7 @@ void main() {
           {
             'what': {'it': 'Talloni su', 'en': 'Heels up'},
             'fix': {'it': 'Talloni giù', 'en': 'Heels down'},
+            'figure': 'half_range',
           },
         ],
         'sources': [
@@ -72,6 +73,7 @@ void main() {
       expect(t.cueFocus.first!.at, KbCueMoment.whole);
       expect(t.cueFocus.last, isNull);
       expect(t.mistakes.single.fix.it, 'Talloni giù');
+      expect(t.mistakes.single.figure, KbMistakeFigure.halfRange);
       expect(t.sourceIds, ['s1']);
       expect(t.confirmed, isFalse);
       expect(

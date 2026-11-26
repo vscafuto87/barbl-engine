@@ -64,6 +64,7 @@ technique:
     fix:
       it: Scendi finché controlli la schiena dritta.
       en: Go down as far as you can with a flat back.
+    figure: half_range
   sources:
   - id: nippard-muscle-ladder
     pages:

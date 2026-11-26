@@ -56,6 +56,7 @@ technique:
     fix:
       it: Stringi glutei e addome e riduci il carico.
       en: Squeeze your glutes and abs and lower the load.
+    figure: torso_back
   - what:
       it: Le gambe aiutano a spingere il bilanciere.
       en: Your legs help drive the bar.

@@ -60,6 +60,7 @@ technique:
     fix:
       it: Regola il sedile e scendi fino in fondo.
       en: Adjust the seat and go all the way down.
+    figure: half_range
   - what:
       it: Il cuscino preme sul collo del piede.
       en: The pad presses on the top of your foot.

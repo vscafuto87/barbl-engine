@@ -67,6 +67,7 @@ technique:
     fix:
       it: Riduci il peso e scendi fino a dove controlli.
       en: Lower the weight and go as deep as you control.
+    figure: half_range
   sources:
   - id: nippard-ultimate-exercise-guide
     pages:

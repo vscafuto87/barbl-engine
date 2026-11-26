@@ -73,6 +73,7 @@ technique:
     fix:
       it: Resta inclinato di circa 45 gradi per tutta la serie.
       en: Hold your lean at about 45 degrees for the whole set.
+    figure: torso_back
   - what:
       it: I gomiti si aprono troppo e le spalle si alzano verso le orecchie.
       en: Your elbows flare wide and your shoulders creep up.
