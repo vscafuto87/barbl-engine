@@ -159,16 +159,43 @@ class KbText {
 
 /// Errore comune di esecuzione: cosa succede e come si corregge.
 class KbMistake {
-  const KbMistake({required this.what, required this.fix});
+  const KbMistake({required this.what, required this.fix, this.figure});
 
-  factory KbMistake.fromJson(Map<String, Object?> json, String path) =>
-      KbMistake(
-        what: KbText.fromJson(mapAt(json, 'what', path), '$path.what'),
-        fix: KbText.fromJson(mapAt(json, 'fix', path), '$path.fix'),
-      );
+  factory KbMistake.fromJson(Map<String, Object?> json, String path) {
+    final figure = json['figure'];
+    KbMistakeFigure? kind;
+    if (figure != null) {
+      kind = KbMistakeFigure.values.where((v) => v.code == figure).firstOrNull;
+      if (kind == null) {
+        throw KbFormatException('$path.figure: valore sconosciuto «$figure»');
+      }
+    }
+    return KbMistake(
+      what: KbText.fromJson(mapAt(json, 'what', path), '$path.what'),
+      fix: KbText.fromJson(mapAt(json, 'fix', path), '$path.fix'),
+      figure: kind,
+    );
+  }
 
   final KbText what;
   final KbText fix;
+
+  /// Come il disegno del movimento mostra l'errore, o null se non si vede.
+  final KbMistakeFigure? figure;
+}
+
+/// Come il disegno del movimento mostra un errore (`mistakes[].figure`).
+enum KbMistakeFigure {
+  halfRange('half_range'),
+  torsoForward('torso_forward'),
+  torsoBack('torso_back'),
+  hipsSag('hips_sag'),
+  hipsPike('hips_pike');
+
+  const KbMistakeFigure(this.code);
+
+  /// Il valore scritto nella KB.
+  final String code;
 }
 
 /// Parte del corpo a cui si riferisce una frase della scheda.

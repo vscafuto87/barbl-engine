@@ -45,6 +45,7 @@ technique:
     fix:
       it: Riduci il peso e tieni il busto fermo.
       en: Lower the weight and keep your torso still.
+    figure: torso_back
   - what:
       it: Il pollice resta fuori dalla presa e i polsi cedono.
       en: Your thumb stays loose and your wrists give way.
@@ -63,6 +64,7 @@ technique:
     fix:
       it: Scendi finché le braccia sono tese, poi sali.
       en: Lower until your arms are straight, then curl.
+    figure: half_range
   sources:
   - id: nippard-muscle-ladder
     pages:

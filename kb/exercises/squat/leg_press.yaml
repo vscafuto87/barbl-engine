@@ -66,6 +66,7 @@ technique:
     fix:
       it: Togli peso e scendi fino a dove controlli il movimento.
       en: Reduce the load and go as deep as you can control.
+    figure: half_range
   sources:
   - id: nippard-muscle-ladder
     pages:

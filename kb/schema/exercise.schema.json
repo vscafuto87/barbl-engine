@@ -249,6 +249,16 @@
                     "maxLength": 160
                   }
                 }
+              },
+              "figure": {
+                "description": "Come il disegno del movimento mostra l'errore, con una seconda figura tratteggiata: mezza escursione, busto che cade in avanti, busto che va indietro (slancio), bacino che cede, bacino che sale. Facoltativo: solo per gli errori che si vedono di lato.",
+                "enum": [
+                  "half_range",
+                  "torso_forward",
+                  "torso_back",
+                  "hips_sag",
+                  "hips_pike"
+                ]
               }
             }
           }

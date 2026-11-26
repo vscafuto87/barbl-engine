@@ -44,6 +44,7 @@ technique:
     fix:
       it: Riduci il carico e resta dritto.
       en: Lower the load and stay upright.
+    figure: torso_back
   - what:
       it: I gomiti scendono e diventa un rematore.
       en: Your elbows drop and it becomes a row.

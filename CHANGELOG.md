@@ -2,6 +2,12 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.35.0 — 2026-11-26
+
+- Errori delle schede tecniche mostrati sul disegno (proposta 6 «Errore comune a confronto» dell'anteprima «Movimenti più chiari», approvata da Vincenzo il 26/11/2026): campo facoltativo `figure` su un errore di `technique.mistakes`, che dice come l'app disegna la figura sbagliata accanto a quella giusta: `half_range` (mezza escursione), `torso_forward` (il busto cade in avanti), `torso_back` (il busto va indietro, con lo slancio), `hips_sag` (il bacino cede), `hips_pike` (il bacino sale). Solo per gli errori che si vedono di lato, su 20 esercizi tra i più usati nei piani (28 errori). Dato di presentazione, non di dominio: nessuna fonte nuova, i testi non cambiano.
+- Motore: `KbMistake.figure` (`KbMistakeFigure`), null senza `figure`.
+- I piani non cambiano (cambia solo `rulesVersion`).
+
 ## 0.34.0 — 2026-11-26
 
 - Frasi delle schede tecniche legate al corpo (proposta 5 «Punti chiave sul corpo» dell'anteprima «Movimenti più chiari», approvata da Vincenzo il 26/11/2026): campo facoltativo `focus` su ogni frase di `technique.cues`, con `part` (`head`, `chest`, `back`, `core`, `shoulder`, `elbow`, `hand`, `hip`, `knee`, `foot`) e `at` (`stretched` con il muscolo allungato, `contracted` con il muscolo accorciato, `whole` per tutta la ripetizione). 338 frasi su 344 lo hanno; le 6 senza sono frasi generali («Inizia con la gamba più debole»). Dato di presentazione, non di dominio: nessuna fonte nuova, i testi non cambiano.
