@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Piega il gomito portando la mano verso la spalla.
     en: Bend your elbow and bring your hand toward your shoulder.
+    focus:
+      part: elbow
+      at: whole
   - it: Gomito fermo dietro il fianco.
     en: Elbow still, behind your hip.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: Il gomito va avanti e perdi l'allungamento.

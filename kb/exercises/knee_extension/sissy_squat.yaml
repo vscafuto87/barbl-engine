@@ -26,8 +26,14 @@ technique:
   cues:
   - it: Porta le ginocchia avanti e il busto indietro in linea con le cosce.
     en: Push your knees forward and lean back in line with your thighs.
+    focus:
+      part: knee
+      at: whole
   - it: Scendi finché le ginocchia sono ben piegate, poi risali.
     en: Lower until your knees are deeply bent, then rise.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Pieghi le anche e diventa uno squat normale.

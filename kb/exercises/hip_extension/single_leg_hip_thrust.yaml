@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Spingi con il tallone e alza il bacino.
     en: Drive through your heel and lift your hips.
+    focus:
+      part: foot
+      at: whole
   - it: In alto stringi il gluteo, poi scendi lento.
     en: Squeeze your glute at the top, then lower slowly.
+    focus:
+      part: hip
+      at: contracted
   mistakes:
   - what:
       it: Il bacino si inclina da un lato.

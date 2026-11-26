@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Scendi profondo, ginocchia avanti sopra le punte.
     en: Go deep, knees travelling forward over your toes.
+    focus:
+      part: knee
+      at: stretched
   - it: Risali spingendo con tutta la pianta del piede.
     en: Drive up through your whole foot.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Scendi solo a metà.

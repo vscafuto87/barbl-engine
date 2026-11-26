@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Spingi le ginocchia in fuori, sopra le punte.
     en: Push your knees out over your toes.
+    focus:
+      part: knee
+      at: whole
   - it: Allarga il pavimento con i piedi mentre tiri.
     en: Spread the floor with your feet as you pull.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Le ginocchia cadono verso l'interno.

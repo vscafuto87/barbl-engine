@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Porta la barra in alto tenendo i polsi dritti.
     en: Curl the bar up keeping your wrists straight.
+    focus:
+      part: hand
+      at: contracted
   - it: Scendi lento fino alle braccia tese.
     en: Lower slowly to straight arms.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: I polsi cedono e si piegano in giù.

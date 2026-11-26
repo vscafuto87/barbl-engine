@@ -33,10 +33,19 @@ technique:
   cues:
   - it: Porta i fianchi indietro, come per chiudere una porta.
     en: Push your hips back, as if closing a door.
+    focus:
+      part: hip
+      at: whole
   - it: Tieni il bilanciere vicino alle gambe.
     en: Keep the bar close to your legs.
+    focus:
+      part: hand
+      at: whole
   - it: Spingi i fianchi in avanti per risalire.
     en: Drive your hips forward to stand.
+    focus:
+      part: hip
+      at: contracted
   mistakes:
   - what:
       it: La schiena si arrotonda mentre scendi.

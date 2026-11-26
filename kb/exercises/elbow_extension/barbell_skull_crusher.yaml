@@ -33,10 +33,19 @@ technique:
   cues:
   - it: Solo i gomiti si muovono, le spalle restano ferme.
     en: Only your elbows move; your shoulders stay still.
+    focus:
+      part: elbow
+      at: whole
   - it: Le braccia restano con la stessa inclinazione per tutta la serie.
     en: Keep your upper arms at the same angle all set.
+    focus:
+      part: elbow
+      at: whole
   - it: Stendi le braccia senza bloccare i gomiti con forza.
     en: Extend your arms without snapping your elbows.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: I gomiti si aprono ai lati.

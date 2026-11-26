@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Porta le gambe in alto e arrotola il bacino verso il petto.
     en: Raise your legs and curl your pelvis toward your chest.
+    focus:
+      part: hip
+      at: contracted
   - it: Scendi lento senza dondolare.
     en: Lower slowly without swinging.
+    focus:
+      part: hip
+      at: stretched
   mistakes:
   - what:
       it: Dondoli per dare slancio.

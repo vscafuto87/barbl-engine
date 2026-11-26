@@ -39,10 +39,19 @@ technique:
   cues:
   - it: Spingi i manubri in alto e un po' verso il viso.
     en: Press the dumbbells up and slightly toward your face.
+    focus:
+      part: hand
+      at: contracted
   - it: Avambracci verticali, come due colonne.
     en: Forearms vertical, like two pillars.
+    focus:
+      part: elbow
+      at: whole
   - it: Spingi il pavimento con i talloni.
     en: Push the floor away with your heels.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: I manubri scendono troppo e senti la spalla tirare.

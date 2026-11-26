@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Scendi con i talloni e senti l'allungamento.
     en: Drop your heels and feel the stretch.
+    focus:
+      part: foot
+      at: stretched
   - it: Spingi verso il soffitto, poi scendi piano.
     en: Push toward the ceiling, then lower slowly.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Il tallone sale poco e senti poco allungamento in basso.

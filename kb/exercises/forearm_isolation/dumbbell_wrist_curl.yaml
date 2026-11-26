@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Lascia scendere il manubrio fino alle dita, poi richiudi.
     en: Let the dumbbell roll down to your fingers, then curl it back.
+    focus:
+      part: hand
+      at: stretched
   - it: Porta il polso in alto più che puoi.
     en: Curl your wrist up as far as you can.
+    focus:
+      part: hand
+      at: contracted
   mistakes:
   - what:
       it: L'avambraccio si stacca dalla panca.

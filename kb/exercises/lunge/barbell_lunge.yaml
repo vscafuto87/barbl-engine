@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Scendi dritto, il ginocchio dietro sfiora il pavimento.
     en: Drop straight down until your back knee nearly touches the floor.
+    focus:
+      part: knee
+      at: stretched
   - it: Spingi con il piede davanti per tornare su.
     en: Drive through your front foot to come back up.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Perdi l'equilibrio di lato.

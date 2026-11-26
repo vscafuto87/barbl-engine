@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Scendi in avanti tenendo il corpo dritto.
     en: Lower forward keeping your body straight.
+    focus:
+      part: hip
+      at: stretched
   - it: Risali spingendo le punte contro la pedana e tirando con i talloni.
     en: Come back up by pushing your toes into the plate and pulling with your heels.
+    focus:
+      part: foot
+      at: contracted
   mistakes:
   - what:
       it: Ti pieghi ai fianchi e usi la schiena.

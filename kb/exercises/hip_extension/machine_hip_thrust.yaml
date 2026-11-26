@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Spingi con i talloni fino ad anche distese.
     en: Drive through your heels until your hips are straight.
+    focus:
+      part: foot
+      at: whole
   - it: Scendi controllando fino a sentire l'allungamento.
     en: Lower under control until you feel a stretch.
+    focus:
+      part: hip
+      at: stretched
   mistakes:
   - what:
       it: Inarchi la schiena invece di estendere le anche.

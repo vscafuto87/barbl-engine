@@ -36,10 +36,19 @@ technique:
   cues:
   - it: Spingi il bilanciere dritto sopra la testa.
     en: Press the bar straight up over your head.
+    focus:
+      part: hand
+      at: contracted
   - it: 'Ginocchia e anche ferme: niente spinta con le gambe.'
     en: 'Knees and hips still: no push from your legs.'
+    focus:
+      part: knee
+      at: whole
   - it: In alto il bilanciere è sopra spalle, bacino e metà piede.
     en: At the top the bar stacks over shoulders, hips and mid-foot.
+    focus:
+      part: hand
+      at: contracted
   mistakes:
   - what:
       it: La schiena si inarca molto all'indietro.

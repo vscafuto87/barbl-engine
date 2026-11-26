@@ -36,10 +36,19 @@ technique:
   cues:
   - it: Porta i gomiti indietro e in alto, verso il soffitto.
     en: Drive your elbows back and up toward the ceiling.
+    focus:
+      part: elbow
+      at: contracted
   - it: Petto incollato alla panca.
     en: Keep your chest glued to the bench.
+    focus:
+      part: chest
+      at: whole
   - it: Stringi le scapole in alto, poi scendi piano.
     en: Squeeze your shoulder blades at the top, then lower slowly.
+    focus:
+      part: shoulder
+      at: contracted
   mistakes:
   - what:
       it: Il petto si stacca dalla panca a ogni ripetizione.

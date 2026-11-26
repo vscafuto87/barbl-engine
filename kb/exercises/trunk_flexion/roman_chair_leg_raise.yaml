@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Porta le ginocchia verso il petto staccando il bacino dallo schienale.
     en: Bring your knees to your chest, lifting your pelvis off the backrest.
+    focus:
+      part: knee
+      at: contracted
   - it: Scendi lento fino a gambe distese.
     en: Lower slowly until your legs hang straight.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Le ginocchia salgono ma il bacino resta fermo.

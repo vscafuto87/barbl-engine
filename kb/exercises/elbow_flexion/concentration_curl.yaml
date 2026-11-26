@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta il manubrio verso la spalla tenendo fermo il braccio.
     en: Curl the dumbbell toward your shoulder keeping your upper arm still.
+    focus:
+      part: hand
+      at: contracted
   - it: Scendi fino a distendere il gomito.
     en: Lower until your elbow is straight.
+    focus:
+      part: elbow
+      at: stretched
   mistakes:
   - what:
       it: Il braccio si stacca dalla coscia.

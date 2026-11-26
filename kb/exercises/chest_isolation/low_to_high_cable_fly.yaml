@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta le mani in alto e verso il centro, all'altezza del mento.
     en: Sweep your hands up and in to chin height.
+    focus:
+      part: hand
+      at: contracted
   - it: Torna lento finché il petto si allunga.
     en: Return slowly until your chest stretches.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: Tiri con le braccia piegando molto i gomiti.

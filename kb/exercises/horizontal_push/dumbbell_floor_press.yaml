@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Scendi finché i tricipiti toccano piano il pavimento.
     en: Lower until your upper arms touch the floor lightly.
+    focus:
+      part: elbow
+      at: stretched
   - it: Fermati un attimo e spingi su.
     en: Pause briefly and press up.
+    focus:
+      part: elbow
+      at: stretched
   mistakes:
   - what:
       it: Rimbalzi con i gomiti a terra.

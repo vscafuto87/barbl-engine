@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Scendi finché senti allungare il petto.
     en: Lower until you feel your chest stretch.
+    focus:
+      part: chest
+      at: stretched
   - it: Spingi in alto fino alle braccia tese.
     en: Press back up to straight arms.
+    focus:
+      part: hand
+      at: contracted
   mistakes:
   - what:
       it: Scendi troppo e senti fastidio alla spalla.

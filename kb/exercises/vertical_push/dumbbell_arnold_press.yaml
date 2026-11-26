@@ -34,10 +34,19 @@ technique:
   cues:
   - it: Ruota i palmi mentre spingi in alto.
     en: Turn your palms as you press up.
+    focus:
+      part: hand
+      at: whole
   - it: Spingi i manubri dritti sopra la testa.
     en: Press the dumbbells straight overhead.
+    focus:
+      part: hand
+      at: contracted
   - it: Scendi piano e ruota i palmi indietro.
     en: Lower slowly and turn your palms back.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: La rotazione è veloce e il peso dondola.

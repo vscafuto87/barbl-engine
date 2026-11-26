@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta le spalle su verso le orecchie, un po' all'interno.
     en: Shrug your shoulders up toward your ears, slightly inward.
+    focus:
+      part: shoulder
+      at: contracted
   - it: Fermati in alto e scendi fino a sentire l'allungamento.
     en: Pause at the top and lower until you feel a stretch.
+    focus:
+      part: shoulder
+      at: contracted
   mistakes:
   - what:
       it: Ruoti le spalle in cerchio.

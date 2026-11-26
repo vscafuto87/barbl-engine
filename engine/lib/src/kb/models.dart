@@ -171,11 +171,53 @@ class KbMistake {
   final KbText fix;
 }
 
+/// Parte del corpo a cui si riferisce una frase della scheda.
+enum KbBodyPart {
+  head,
+  chest,
+  back,
+  core,
+  shoulder,
+  elbow,
+  hand,
+  hip,
+  knee,
+  foot,
+}
+
+/// Momento della ripetizione di una frase: muscolo allungato, accorciato o
+/// tutta la ripetizione.
+enum KbCueMoment { stretched, contracted, whole }
+
+/// Dove si guarda una frase sul disegno del movimento (`cues[].focus`).
+class KbCueFocus {
+  const KbCueFocus({required this.part, required this.at});
+
+  factory KbCueFocus.fromJson(Map<String, Object?> json, String path) {
+    T pick<T extends Enum>(List<T> values, String key) {
+      final name = stringAt(json, key, path);
+      for (final v in values) {
+        if (v.name == name) return v;
+      }
+      throw KbFormatException('$path.$key: valore sconosciuto «$name»');
+    }
+
+    return KbCueFocus(
+      part: pick(KbBodyPart.values, 'part'),
+      at: pick(KbCueMoment.values, 'at'),
+    );
+  }
+
+  final KbBodyPart part;
+  final KbCueMoment at;
+}
+
 /// Scheda tecnica di un esercizio (`technique` in `kb/exercises/`).
 class KbTechnique {
   const KbTechnique({
     required this.setup,
     required this.cues,
+    this.cueFocus = const [],
     required this.mistakes,
     required this.sourceIds,
     required this.confirmed,
@@ -192,9 +234,20 @@ class KbTechnique {
 
     final mistakes = listAt(json, 'mistakes', path);
     final sources = listAt(json, 'sources', path);
+    final cues = listAt(json, 'cues', path);
     return KbTechnique(
       setup: texts('setup'),
       cues: texts('cues'),
+      cueFocus: [
+        for (var i = 0; i < cues.length; i++)
+          switch (asMap(cues[i], '$path.cues[$i]')['focus']) {
+            null => null,
+            final Object focus => KbCueFocus.fromJson(
+              asMap(focus, '$path.cues[$i].focus'),
+              '$path.cues[$i].focus',
+            ),
+          },
+      ],
       mistakes: [
         for (var i = 0; i < mistakes.length; i++)
           KbMistake.fromJson(
@@ -219,6 +272,11 @@ class KbTechnique {
 
   /// Frasi brevi da ricordare durante la serie.
   final List<KbText> cues;
+
+  /// Per ogni frase di [cues], nello stesso ordine, dove si guarda sul
+  /// disegno; null per una frase generale. Vuota in una scheda costruita a
+  /// mano senza.
+  final List<KbCueFocus?> cueFocus;
   final List<KbMistake> mistakes;
 
   /// Fonti della scheda (id di `kb/sources/`).

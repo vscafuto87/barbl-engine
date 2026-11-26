@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Alza il braccio di lato fino all'altezza della spalla.
     en: Raise your arm out to the side up to shoulder height.
+    focus:
+      part: elbow
+      at: contracted
   - it: Scendi lento senza appoggiare il manubrio alla gamba.
     en: Lower slowly without resting the dumbbell on your leg.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: In basso il braccio si riposa contro il fianco.

@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Tira i gomiti indietro verso i fianchi.
     en: Drive your elbows back toward your hips.
+    focus:
+      part: elbow
+      at: contracted
   - it: Scendi lento fino ad allungare la schiena.
     en: Lower slowly until your back is stretched.
+    focus:
+      part: back
+      at: stretched
   mistakes:
   - what:
       it: Il petto si stacca dal cuscino.

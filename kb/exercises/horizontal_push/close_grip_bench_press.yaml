@@ -32,8 +32,14 @@ technique:
   cues:
   - it: Gomiti vicini al busto mentre scendi.
     en: Keep your elbows close to your body on the way down.
+    focus:
+      part: elbow
+      at: stretched
   - it: Tocca la parte bassa del petto e spingi su.
     en: Touch your lower chest and press up.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: Mani troppo vicine e polsi doloranti.

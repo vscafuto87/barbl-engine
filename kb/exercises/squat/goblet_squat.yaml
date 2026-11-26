@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Porta i fianchi indietro e scendi tra le gambe.
     en: Sit your hips back and down between your legs.
+    focus:
+      part: hip
+      at: stretched
   - it: Petto alto e mento su per tutta la serie.
     en: Chest up and chin up for the whole set.
+    focus:
+      part: chest
+      at: whole
   mistakes:
   - what:
       it: I talloni si sollevano da terra.

@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Fletti le braccia senza staccarle dal cuscino.
     en: Curl without lifting your arms off the pad.
+    focus:
+      part: hand
+      at: whole
   - it: Scendi lento fino quasi a braccia tese.
     en: Lower slowly to nearly straight arms.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Sedile troppo basso e spalle sollevate.

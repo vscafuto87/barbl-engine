@@ -35,8 +35,14 @@ technique:
   cues:
   - it: Porta i fianchi indietro e scendi tra le gambe.
     en: Sit your hips back and down between your legs.
+    focus:
+      part: hip
+      at: stretched
   - it: Tieni il bilanciere sopra metà piede.
     en: Keep the bar above your mid-foot.
+    focus:
+      part: hand
+      at: whole
   mistakes:
   - what:
       it: I talloni si sollevano da terra.

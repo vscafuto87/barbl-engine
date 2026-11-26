@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Porta la gamba libera indietro mentre scendi.
     en: Reach your free leg back as you lower.
+    focus:
+      part: hip
+      at: stretched
   - it: Tieni i fianchi paralleli al pavimento.
     en: Keep your hips level with the floor.
+    focus:
+      part: hip
+      at: whole
   mistakes:
   - what:
       it: Il bacino ruota e si apre da un lato.

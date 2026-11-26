@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Scendi dritto tra le ginocchia, busto alto.
     en: Sit straight down between your knees, chest up.
+    focus:
+      part: knee
+      at: stretched
   - it: Spingi il pavimento lontano per risalire.
     en: Push the floor away to stand up.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Tiri con le braccia sulle maniglie.

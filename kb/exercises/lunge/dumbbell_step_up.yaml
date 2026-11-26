@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Spingi il box con il piede davanti per salire.
     en: Push through the box with your front foot to rise.
+    focus:
+      part: foot
+      at: whole
   - it: Scendi piano e senza lasciarti cadere.
     en: Lower slowly without dropping.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Spingi con la gamba che resta a terra.

@@ -41,7 +41,12 @@ void main() {
           {'it': 'Piedi larghi', 'en': 'Feet wide'},
         ],
         'cues': [
-          {'it': 'Spingi il pavimento', 'en': 'Push the floor'},
+          {
+            'it': 'Spingi il pavimento',
+            'en': 'Push the floor',
+            'focus': {'part': 'foot', 'at': 'whole'},
+          },
+          {'it': 'Respira', 'en': 'Breathe'},
         ],
         'mistakes': [
           {
@@ -62,7 +67,10 @@ void main() {
       final kb = KnowledgeBase.fromJson(json);
       final t = kb.exercises['squat']!.technique!;
       expect(t.setup.single.it, 'Piedi larghi');
-      expect(t.cues.single.en, 'Push the floor');
+      expect(t.cues.first.en, 'Push the floor');
+      expect(t.cueFocus.first!.part, KbBodyPart.foot);
+      expect(t.cueFocus.first!.at, KbCueMoment.whole);
+      expect(t.cueFocus.last, isNull);
       expect(t.mistakes.single.fix.it, 'Talloni giù');
       expect(t.sourceIds, ['s1']);
       expect(t.confirmed, isFalse);

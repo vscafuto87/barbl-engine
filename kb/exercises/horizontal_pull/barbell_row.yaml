@@ -35,10 +35,19 @@ technique:
   cues:
   - it: Porta il bilanciere verso l'ombelico.
     en: Pull the bar toward your belly button.
+    focus:
+      part: hand
+      at: contracted
   - it: Gomiti a 45 gradi dal busto.
     en: Elbows about 45 degrees from your torso.
+    focus:
+      part: elbow
+      at: whole
   - it: Busto fermo, come un tavolo.
     en: Hold your torso still, like a tabletop.
+    focus:
+      part: back
+      at: whole
   mistakes:
   - what:
       it: 'Ti aiuti con lo slancio del busto: il bilanciere sale con una spinta.'

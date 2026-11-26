@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Solleva le spalle arrotolando il busto verso il bacino.
     en: Lift your shoulders by curling your torso toward your pelvis.
+    focus:
+      part: shoulder
+      at: contracted
   - it: Scendi lento fino a toccare con le spalle.
     en: Lower slowly until your shoulders touch down.
+    focus:
+      part: shoulder
+      at: stretched
   mistakes:
   - what:
       it: Tiri la testa con le mani o con il collo.

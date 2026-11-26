@@ -2,6 +2,12 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.34.0 — 2026-11-26
+
+- Frasi delle schede tecniche legate al corpo (proposta 5 «Punti chiave sul corpo» dell'anteprima «Movimenti più chiari», approvata da Vincenzo il 26/11/2026): campo facoltativo `focus` su ogni frase di `technique.cues`, con `part` (`head`, `chest`, `back`, `core`, `shoulder`, `elbow`, `hand`, `hip`, `knee`, `foot`) e `at` (`stretched` con il muscolo allungato, `contracted` con il muscolo accorciato, `whole` per tutta la ripetizione). 338 frasi su 344 lo hanno; le 6 senza sono frasi generali («Inizia con la gamba più debole»). Dato di presentazione, non di dominio: nessuna fonte nuova, i testi non cambiano.
+- Motore: `KbTechnique.cueFocus` (`KbCueFocus`, `KbBodyPart`, `KbCueMoment`), una voce per frase, null senza `focus`.
+- I piani non cambiano (cambia solo `rulesVersion`).
+
 ## 0.33.0 — 2026-11-18
 
 - Piano a 6 giorni per il livello avanzato (richiesta di Vincenzo del 18/11/2026, specifica `docs/superpowers/specs/2026-11-18-piano-6-giorni-avanzati-design.md`): template nuovo `advanced_ppl_6d` (`split: push_pull_legs`, `daysPerWeek: 6`, `experience: [over_2_years]`, tutti gli obiettivi), sedute `push_a`, `pull_a`, `legs_a`, `push_b`, `pull_b`, `legs_b` da lunedì a sabato, domenica di riposo.

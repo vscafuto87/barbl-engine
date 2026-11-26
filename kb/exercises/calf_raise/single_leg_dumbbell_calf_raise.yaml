@@ -27,8 +27,14 @@ technique:
   cues:
   - it: Scendi fino a sentire i polpacci allungati e fermati un attimo.
     en: Lower until your calf is stretched and pause briefly.
+    focus:
+      part: foot
+      at: stretched
   - it: Sali sulle punte più in alto che puoi.
     en: Rise onto your toes as high as you can.
+    focus:
+      part: foot
+      at: contracted
   mistakes:
   - what:
       it: Rimbalzi in basso.

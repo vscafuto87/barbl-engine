@@ -37,10 +37,19 @@ technique:
   cues:
   - it: Porta i gomiti giù e vicini ai fianchi.
     en: Drive your elbows down and in toward your sides.
+    focus:
+      part: elbow
+      at: contracted
   - it: Vai incontro alla maniglia con il petto.
     en: Meet the handle with your chest.
+    focus:
+      part: chest
+      at: contracted
   - it: Risali piano, braccia ben tese.
     en: Return slowly until your arms are straight.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Ti butti all'indietro e tiri con lo slancio.

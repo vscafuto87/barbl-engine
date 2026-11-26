@@ -33,8 +33,14 @@ technique:
   cues:
   - it: Estendi le ginocchia e stringi in alto.
     en: Straighten your knees and squeeze at the top.
+    focus:
+      part: knee
+      at: contracted
   - it: Scendi piano senza far toccare i pesi.
     en: Lower slowly without letting the weights touch.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Lanci il peso con la schiena e i fianchi sollevati.

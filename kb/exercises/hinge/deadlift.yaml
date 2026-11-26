@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Spingi il pavimento lontano, la barra resta attaccata alle gambe.
     en: Push the floor away and keep the bar against your legs.
+    focus:
+      part: foot
+      at: whole
   - it: In alto chiudi con i glutei, senza inarcarti.
     en: Finish with your glutes at the top, without leaning back.
+    focus:
+      part: hip
+      at: contracted
   mistakes:
   - what:
       it: La schiena si arrotonda quando la barra si stacca.

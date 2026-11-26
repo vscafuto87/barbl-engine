@@ -34,8 +34,14 @@ technique:
   cues:
   - it: Spingi la pedana con tutto il piede, talloni compresi.
     en: Drive the platform with your whole foot, heels included.
+    focus:
+      part: foot
+      at: whole
   - it: Ginocchia nella direzione delle punte.
     en: Knees in line with your toes.
+    focus:
+      part: knee
+      at: whole
   mistakes:
   - what:
       it: I talloni si sollevano dalla pedana.

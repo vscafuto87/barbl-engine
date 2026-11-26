@@ -33,8 +33,14 @@ technique:
   cues:
   - it: Spingi il mignolo contro il manubrio mentre sali.
     en: Press your pinky into the dumbbell as you curl.
+    focus:
+      part: hand
+      at: whole
   - it: Gomiti fermi, solo l'avambraccio si muove.
     en: Elbows still, only your forearm moves.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: Ondeggi col busto per sollevare i manubri.

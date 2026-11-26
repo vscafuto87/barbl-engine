@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Spingi in avanti e in alto senza bloccare di colpo i gomiti.
     en: Press forward and up without snapping your elbows locked.
+    focus:
+      part: hand
+      at: contracted
   - it: Torna lento finché il petto si allunga.
     en: Return slowly until your chest stretches.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: Il sedile è troppo basso e lavorano le spalle.

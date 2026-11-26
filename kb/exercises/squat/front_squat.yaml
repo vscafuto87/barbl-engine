@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Busto alto, scendi tra le ginocchia.
     en: Chest tall, sit down between your knees.
+    focus:
+      part: chest
+      at: stretched
   - it: Gomiti alti per tutta la ripetizione.
     en: Elbows high through the whole rep.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: I gomiti cadono e il bilanciere scivola in avanti.

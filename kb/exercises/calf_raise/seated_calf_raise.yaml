@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Spingi la pedana mantenendo i ginocchi premuti contro i cuscini.
     en: Press the footpad while keeping your knees against the pads.
+    focus:
+      part: knee
+      at: whole
   - it: Fermati un secondo in basso, poi alza i talloni al massimo.
     en: Pause a second at the bottom, then raise your heels as far as possible.
+    focus:
+      part: foot
+      at: stretched
   mistakes:
   - what:
       it: Il tallone sale poco e senti poco allungamento in basso.

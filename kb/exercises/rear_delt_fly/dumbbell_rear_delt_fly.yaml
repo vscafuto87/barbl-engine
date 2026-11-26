@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Apri le braccia come ali, verso i lati.
     en: Open your arms like wings, out to the sides.
+    focus:
+      part: hand
+      at: stretched
   - it: Braccia quasi tese, gomiti fermi.
     en: Arms nearly straight, elbows fixed.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: Sollevi il busto a ogni ripetizione per aiutarti.

@@ -26,8 +26,14 @@ technique:
   cues:
   - it: Porta la gamba in fuori di lato, busto dritto.
     en: Swing your leg out to the side, torso upright.
+    focus:
+      part: back
+      at: whole
   - it: Torna lento fino a incrociare.
     en: Return slowly until it crosses again.
+    focus:
+      part: foot
+      at: stretched
   mistakes:
   - what:
       it: Ti pieghi di lato per alzare di più.

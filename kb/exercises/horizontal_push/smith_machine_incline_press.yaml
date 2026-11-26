@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Scendi controllando fino a sfiorare il petto.
     en: Lower under control until the bar brushes your chest.
+    focus:
+      part: chest
+      at: stretched
   - it: Spingi in alto senza staccare le spalle dalla panca.
     en: Press up without lifting your shoulders off the bench.
+    focus:
+      part: shoulder
+      at: contracted
   mistakes:
   - what:
       it: La barra scende sul collo o sulla pancia.

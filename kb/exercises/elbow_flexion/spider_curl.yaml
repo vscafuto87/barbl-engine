@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Piega i gomiti e porta i manubri verso le spalle.
     en: Bend your elbows and curl the dumbbells toward your shoulders.
+    focus:
+      part: elbow
+      at: whole
   - it: Gomiti fermi sotto le spalle.
     en: Elbows still, under your shoulders.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: I gomiti vanno avanti per aiutarti.

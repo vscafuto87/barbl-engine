@@ -29,10 +29,19 @@ technique:
   cues:
   - it: Stringi glutei e addome prima di partire.
     en: Squeeze your glutes and abs before you start.
+    focus:
+      part: core
+      at: whole
   - it: Fai rotolare la barra in avanti solo finché la schiena resta piatta.
     en: Roll the bar forward only as far as your back stays flat.
+    focus:
+      part: back
+      at: whole
   - it: Torna indietro tirando con l'addome, non con le anche.
     en: Come back by pulling with your abs, not your hips.
+    focus:
+      part: core
+      at: whole
   mistakes:
   - what:
       it: La zona lombare si inarca in fondo al movimento.

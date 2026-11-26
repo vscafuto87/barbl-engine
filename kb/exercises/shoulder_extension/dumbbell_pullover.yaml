@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Porta il manubrio dietro la testa finché senti allungare i dorsali.
     en: Take the dumbbell behind your head until your lats stretch.
+    focus:
+      part: hand
+      at: stretched
   - it: Riportalo sopra il petto tirando con i gomiti.
     en: Bring it back over your chest, pulling with your elbows.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: Pieghi e distendi i gomiti a ogni ripetizione.

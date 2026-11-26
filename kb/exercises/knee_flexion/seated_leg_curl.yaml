@@ -36,10 +36,19 @@ technique:
   cues:
   - it: Porta i talloni sotto di te.
     en: Pull your heels down and back under you.
+    focus:
+      part: foot
+      at: contracted
   - it: Risali piano fino ad allungare le cosce.
     en: Rise slowly until your legs are stretched.
+    focus:
+      part: knee
+      at: stretched
   - it: Se vuoi più allungamento, porta il busto un po' in avanti sopra il cuscino delle cosce.
     en: For a deeper stretch, lean your torso slightly forward over the thigh pad.
+    focus:
+      part: back
+      at: stretched
   mistakes:
   - what:
       it: Il sedere si solleva dal sedile.

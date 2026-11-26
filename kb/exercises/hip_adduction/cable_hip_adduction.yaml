@@ -27,8 +27,14 @@ technique:
   cues:
   - it: Porta la gamba davanti all'altra, incrociando.
     en: Sweep the leg across in front of the other.
+    focus:
+      part: foot
+      at: contracted
   - it: Torna lento fino a sentire l'interno coscia allungato.
     en: Return slowly until your inner thigh stretches.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Ruoti il bacino per aiutarti.

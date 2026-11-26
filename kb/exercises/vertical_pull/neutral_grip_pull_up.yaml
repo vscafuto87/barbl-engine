@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta il petto verso le maniglie spingendo i gomiti in basso.
     en: Bring your chest to the handles by driving your elbows down.
+    focus:
+      part: elbow
+      at: contracted
   - it: Scendi lento fino alle braccia tese.
     en: Lower slowly to straight arms.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Dondoli e usi lo slancio delle gambe.

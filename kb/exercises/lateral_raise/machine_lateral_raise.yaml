@@ -32,10 +32,19 @@ technique:
   cues:
   - it: Spingi i gomiti verso l'esterno.
     en: Push your elbows out to the sides.
+    focus:
+      part: elbow
+      at: whole
   - it: Sali fino all'altezza delle spalle.
     en: Lift up to shoulder height.
+    focus:
+      part: elbow
+      at: contracted
   - it: Scendi piano senza far appoggiare i pesi.
     en: Lower slowly without letting the weights rest.
+    focus:
+      part: elbow
+      at: stretched
   mistakes:
   - what:
       it: Il sedile è troppo alto o basso e il movimento è scomodo.

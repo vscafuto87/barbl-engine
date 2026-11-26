@@ -32,10 +32,19 @@ technique:
   cues:
   - it: Porta le maniglie una verso l'altra.
     en: Bring the handles toward each other.
+    focus:
+      part: hand
+      at: contracted
   - it: Gomiti sempre un po' piegati.
     en: Keep a slight bend in your elbows.
+    focus:
+      part: elbow
+      at: whole
   - it: Torna indietro piano fino all'allungamento.
     en: Return slowly until you feel the stretch.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: Il sedile è troppo alto o basso e le spalle tirano.

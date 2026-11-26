@@ -34,10 +34,19 @@ technique:
   cues:
   - it: Spingi il bilanciere lontano dal petto.
     en: Push the bar away from your chest.
+    focus:
+      part: hand
+      at: whole
   - it: Piedi piantati, come se spingessi il pavimento.
     en: Feet planted, as if pushing the floor away.
+    focus:
+      part: foot
+      at: whole
   - it: Scendi piano fino a sfiorare il petto.
     en: Lower slowly until the bar just touches your chest.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: La panca è troppo avanti o indietro e il bilanciere cade male.

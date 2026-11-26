@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Spingi la maniglia in avanti a braccia tese senza farti girare.
     en: Press the handle straight out without letting your torso turn.
+    focus:
+      part: hand
+      at: contracted
   - it: Tieni un secondo, poi riporta la maniglia al petto.
     en: Hold for a second, then bring the handle back to your chest.
+    focus:
+      part: hand
+      at: whole
   - it: Fai tutte le ripetizioni da un lato, poi cambia lato.
     en: Do all your reps on one side, then switch sides.
   mistakes:

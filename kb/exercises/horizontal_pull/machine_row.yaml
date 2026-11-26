@@ -35,10 +35,19 @@ technique:
   cues:
   - it: Spingi i gomiti indietro, oltre la schiena.
     en: Drive your elbows back behind you.
+    focus:
+      part: elbow
+      at: contracted
   - it: Petto contro l'imbottitura per tutta la serie.
     en: Chest against the pad for the whole set.
+    focus:
+      part: chest
+      at: whole
   - it: Scendi piano, braccia ben tese.
     en: Lower slowly until your arms are straight.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Il petto si stacca dall'imbottitura e ti butti all'indietro.

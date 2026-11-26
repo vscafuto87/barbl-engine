@@ -32,8 +32,14 @@ technique:
   cues:
   - it: Scendi tra le gambe, con il petto alto.
     en: Sit down between your legs with your chest up.
+    focus:
+      part: chest
+      at: stretched
   - it: Spingi il pavimento con tutto il piede.
     en: Push the floor away with your whole foot.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: I talloni si sollevano da terra.

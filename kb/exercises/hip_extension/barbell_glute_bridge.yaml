@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Spingi i piedi nel pavimento e porta i fianchi verso il soffitto.
     en: Push your feet into the floor and drive your hips toward the ceiling.
+    focus:
+      part: hip
+      at: whole
   - it: In alto resta dritto dal petto alle ginocchia.
     en: At the top, stay straight from chest to knees.
+    focus:
+      part: hip
+      at: contracted
   mistakes:
   - what:
       it: In alto la schiena si inarca troppo.

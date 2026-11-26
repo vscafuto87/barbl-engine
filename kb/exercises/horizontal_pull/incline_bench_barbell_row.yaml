@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Tira la barra verso la parte bassa del petto.
     en: Row the bar toward your lower chest.
+    focus:
+      part: hand
+      at: contracted
   - it: Scendi fino alle braccia tese.
     en: Lower to straight arms.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Il petto si stacca dalla panca.

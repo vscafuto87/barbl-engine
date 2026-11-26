@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Tira il gomito in alto e indietro, lontano dal corpo.
     en: Drive your elbow up and back, away from your body.
+    focus:
+      part: elbow
+      at: contracted
   - it: Scendi fino ad allungare bene il dorso.
     en: Lower until your back is well stretched.
+    focus:
+      part: back
+      at: stretched
   mistakes:
   - what:
       it: Ruoti il busto per sollevare.

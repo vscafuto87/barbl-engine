@@ -36,10 +36,19 @@ technique:
   cues:
   - it: Spingi i manubri in alto e un po' verso l'interno.
     en: Press the dumbbells up and slightly inward.
+    focus:
+      part: hand
+      at: contracted
   - it: In alto mani, gomiti e spalle sono in linea.
     en: At the top your hands, elbows and shoulders line up.
+    focus:
+      part: elbow
+      at: contracted
   - it: Scendi piano lungo lo stesso percorso.
     en: Lower slowly along the same path.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: La schiena si stacca dallo schienale e si inarca.

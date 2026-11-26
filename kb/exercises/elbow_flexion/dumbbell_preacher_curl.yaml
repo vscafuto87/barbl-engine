@@ -34,8 +34,14 @@ technique:
   cues:
   - it: Gomito incollato all'imbottitura.
     en: Keep your elbow glued to the pad.
+    focus:
+      part: elbow
+      at: whole
   - it: Scendi piano fino ad avere il braccio disteso.
     en: Lower slowly until your arm is straight.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Il gomito si stacca dall'imbottitura quando sali.

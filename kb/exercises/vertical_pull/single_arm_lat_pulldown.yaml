@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Tira il gomito verso il fianco, non dietro la schiena.
     en: Pull your elbow toward your hip, not behind your back.
+    focus:
+      part: elbow
+      at: contracted
   - it: Busto fermo, risali lento fino al braccio teso.
     en: Torso still, go back up slowly to a straight arm.
+    focus:
+      part: back
+      at: whole
   mistakes:
   - what:
       it: Ruoti il busto per tirare più peso.

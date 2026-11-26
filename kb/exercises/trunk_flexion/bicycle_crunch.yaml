@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta un gomito verso il ginocchio opposto mentre l'altra gamba si allunga.
     en: Bring one elbow toward the opposite knee while the other leg extends.
+    focus:
+      part: elbow
+      at: whole
   - it: Ruota dal busto, non dal collo.
     en: Rotate from your torso, not your neck.
+    focus:
+      part: chest
+      at: whole
   - it: Una ripetizione vale un lato; alterna con ritmo controllato.
     en: One rep is one side; alternate at a controlled pace.
   mistakes:

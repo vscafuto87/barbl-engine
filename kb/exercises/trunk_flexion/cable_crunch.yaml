@@ -33,8 +33,14 @@ technique:
   cues:
   - it: Arrotola la colonna portando i gomiti verso le cosce.
     en: Curl your spine, bringing your elbows toward your thighs.
+    focus:
+      part: elbow
+      at: contracted
   - it: Risali lento fino ad allungare l'addome.
     en: Come back up slowly until your abs stretch.
+    focus:
+      part: core
+      at: stretched
   mistakes:
   - what:
       it: Ti siedi sui talloni invece di piegare la colonna.

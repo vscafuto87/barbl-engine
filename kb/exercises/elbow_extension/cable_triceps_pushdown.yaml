@@ -34,10 +34,19 @@ technique:
   cues:
   - it: Premi verso il basso muovendo solo i gomiti.
     en: Press down moving only at the elbows.
+    focus:
+      part: elbow
+      at: whole
   - it: Gomiti fermi ai fianchi.
     en: Keep your elbows pinned to your sides.
+    focus:
+      part: elbow
+      at: whole
   - it: Risali piano tenendo il cavo teso.
     en: Return slowly, keeping the cable tight.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: I gomiti si spostano in avanti e indietro.

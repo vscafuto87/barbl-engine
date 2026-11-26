@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Spingi la pedana con la parte anteriore del piede.
     en: Press the footplate with the ball of your foot.
+    focus:
+      part: foot
+      at: whole
   - it: Fermati un secondo in basso, poi sali.
     en: Pause a second at the bottom, then rise.
+    focus:
+      part: foot
+      at: stretched
   mistakes:
   - what:
       it: Il tallone sale poco e senti poco allungamento in basso.

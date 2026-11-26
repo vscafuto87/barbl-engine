@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Distendi il braccio indietro muovendo solo il gomito.
     en: Straighten your arm back, moving only at the elbow.
+    focus:
+      part: elbow
+      at: whole
   - it: Fermati un attimo a braccio teso.
     en: Pause briefly with the arm straight.
+    focus:
+      part: hand
+      at: contracted
   mistakes:
   - what:
       it: Il braccio oscilla avanti e indietro.

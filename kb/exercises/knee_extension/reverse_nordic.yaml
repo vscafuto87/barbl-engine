@@ -26,8 +26,14 @@ technique:
   cues:
   - it: Inclinati all'indietro come un blocco unico, dalle ginocchia alla testa.
     en: Lean back as one piece from knees to head.
+    focus:
+      part: hip
+      at: whole
   - it: Torna su spingendo le tibie nel pavimento.
     en: Come back up by pressing your shins into the floor.
+    focus:
+      part: knee
+      at: contracted
   mistakes:
   - what:
       it: Pieghi i fianchi mentre vai indietro.

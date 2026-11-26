@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Spingi con i talloni e chiudi forte con i glutei.
     en: Drive through your heels and squeeze your glutes hard.
+    focus:
+      part: hip
+      at: contracted
   - it: Mento verso il petto, costole giù.
     en: Chin tucked, ribs down.
+    focus:
+      part: head
+      at: whole
   mistakes:
   - what:
       it: Inarchi la zona lombare in alto.

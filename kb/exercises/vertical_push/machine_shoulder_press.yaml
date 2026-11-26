@@ -33,10 +33,19 @@ technique:
   cues:
   - it: Spingi le maniglie dritte verso il soffitto.
     en: Push the handles straight toward the ceiling.
+    focus:
+      part: hand
+      at: contracted
   - it: Spalle basse, lontane dalle orecchie.
     en: Keep your shoulders down, away from your ears.
+    focus:
+      part: shoulder
+      at: whole
   - it: Torna giù piano lungo lo stesso percorso.
     en: Lower slowly along the same path.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Il sedile è troppo basso e le spalle tirano in partenza.

@@ -29,10 +29,19 @@ technique:
   cues:
   - it: Arrotola il bacino e porta le ginocchia verso il petto.
     en: Curl your pelvis and bring your knees toward your chest.
+    focus:
+      part: knee
+      at: contracted
   - it: Stacca da terra la parte bassa della schiena.
     en: Lift your lower back off the floor.
+    focus:
+      part: back
+      at: contracted
   - it: Scendi lento fino a cosce verticali.
     en: Lower slowly until your thighs are vertical again.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Lanci le gambe e sfrutti lo slancio.

@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Distendi il gomito portando il manubrio indietro.
     en: Straighten your elbow, moving the dumbbell back.
+    focus:
+      part: elbow
+      at: whole
   - it: Il braccio resta fermo, si muove solo l'avambraccio.
     en: Your upper arm stays still; only the forearm moves.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: Il gomito scende mentre spingi.

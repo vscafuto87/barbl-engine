@@ -27,8 +27,14 @@ technique:
   cues:
   - it: Scendi fino al massimo allungamento e fermati.
     en: Lower to a full stretch and pause.
+    focus:
+      part: foot
+      at: stretched
   - it: Spingi in alto sulle punte.
     en: Press up high onto your toes.
+    focus:
+      part: foot
+      at: contracted
   mistakes:
   - what:
       it: Muovi i fianchi per alzare il carico.

@@ -32,10 +32,19 @@ technique:
   cues:
   - it: Il corpo è una tavola dritta.
     en: Your body is one straight plank.
+    focus:
+      part: hip
+      at: whole
   - it: Spingi il pavimento lontano da te.
     en: Push the floor away from you.
+    focus:
+      part: hand
+      at: whole
   - it: Petto quasi a terra, poi risali forte.
     en: Chest almost to the floor, then drive up.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: Il bacino cede e la schiena si inarca.

@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Piega i gomiti e porta i manubri ai lati della testa.
     en: Bend your elbows and lower the dumbbells beside your head.
+    focus:
+      part: elbow
+      at: whole
   - it: Distendi le braccia senza muovere i gomiti.
     en: Straighten your arms without moving your elbows.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: I gomiti si aprono verso l'esterno.
