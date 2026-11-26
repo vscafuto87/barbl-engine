@@ -27,8 +27,14 @@ technique:
   cues:
   - it: Scendi più piano che puoi, corpo dritto dalle ginocchia alla testa.
     en: Lower as slowly as you can, body straight from knees to head.
+    focus:
+      part: knee
+      at: stretched
   - it: Risali tirando con i talloni, aiutandoti poco con le mani.
     en: Pull back up with your heels, using your hands as little as possible.
+    focus:
+      part: foot
+      at: contracted
   mistakes:
   - what:
       it: Pieghi i fianchi per accorciare la leva.

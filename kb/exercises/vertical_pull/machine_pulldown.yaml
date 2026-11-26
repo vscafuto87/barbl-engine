@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Tira i gomiti verso i fianchi.
     en: Pull your elbows toward your hips.
+    focus:
+      part: elbow
+      at: contracted
   - it: Petto alto, risali lento.
     en: Chest up, return slowly.
+    focus:
+      part: chest
+      at: whole
   mistakes:
   - what:
       it: Il sedile è troppo alto e le braccia non si distendono.

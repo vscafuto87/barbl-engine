@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Scendi piano con il ginocchio in linea con le dita del piede.
     en: Lower slowly with your knee tracking over your toes.
+    focus:
+      part: knee
+      at: stretched
   - it: Spingi con tutto il piede senza bloccare il ginocchio in alto.
     en: Push through your whole foot without locking your knee at the top.
+    focus:
+      part: knee
+      at: contracted
   - it: Inizia con la gamba più debole.
     en: Start with your weaker leg.
   mistakes:

@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Porta la barra verso la parte alta del petto.
     en: Bring the bar toward your upper chest.
+    focus:
+      part: chest
+      at: contracted
   - it: Gomiti giù e vicini al corpo.
     en: Elbows down and close to your body.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: Ti butti indietro e tiri con il peso del corpo.

@@ -35,10 +35,19 @@ technique:
   cues:
   - it: Spingi le maniglie lontano dal petto.
     en: Push the handles away from your chest.
+    focus:
+      part: hand
+      at: whole
   - it: Spalle basse, lontane dalle orecchie.
     en: Keep your shoulders down, away from your ears.
+    focus:
+      part: shoulder
+      at: whole
   - it: Torna indietro piano, senza far sbattere i pesi.
     en: Return slowly, without letting the weights slam.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Il sedile è troppo basso e senti le spalle sotto sforzo.

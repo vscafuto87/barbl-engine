@@ -162,6 +162,38 @@
                 "type": "string",
                 "minLength": 1,
                 "maxLength": 160
+              },
+              "focus": {
+                "description": "Dove si guarda la frase sul disegno del movimento: la parte del corpo e il momento (muscolo allungato, accorciato o tutta la ripetizione). Facoltativo: una frase generale non ne ha.",
+                "type": "object",
+                "required": [
+                  "part",
+                  "at"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "part": {
+                    "enum": [
+                      "head",
+                      "chest",
+                      "back",
+                      "core",
+                      "shoulder",
+                      "elbow",
+                      "hand",
+                      "hip",
+                      "knee",
+                      "foot"
+                    ]
+                  },
+                  "at": {
+                    "enum": [
+                      "stretched",
+                      "contracted",
+                      "whole"
+                    ]
+                  }
+                }
               }
             }
           }

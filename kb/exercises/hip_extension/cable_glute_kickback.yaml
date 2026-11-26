@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta la gamba indietro spingendo con il gluteo.
     en: Drive your leg back, pushing with your glute.
+    focus:
+      part: hip
+      at: whole
   - it: Torna lento fino a sotto il bacino.
     en: Return slowly to under your hips.
+    focus:
+      part: hip
+      at: stretched
   mistakes:
   - what:
       it: Inarchi la schiena per portare la gamba più in alto.

@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Punte dei piedi tirate verso le tibie, stringi il manubrio.
     en: Toes pulled toward your shins, squeeze the dumbbell.
+    focus:
+      part: foot
+      at: whole
   - it: Sali fino a gambe verticali, scendi lento.
     en: Curl until your shins are vertical, lower slowly.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Il manubrio scivola tra i piedi.

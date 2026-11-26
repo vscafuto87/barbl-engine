@@ -32,8 +32,14 @@ technique:
   cues:
   - it: Apri le braccia come ali, verso i lati.
     en: Open your arms like wings, out to the sides.
+    focus:
+      part: hand
+      at: whole
   - it: Petto fermo sulla panca.
     en: Keep your chest still on the bench.
+    focus:
+      part: chest
+      at: whole
   mistakes:
   - what:
       it: Sollevi il petto dalla panca per aiutarti.

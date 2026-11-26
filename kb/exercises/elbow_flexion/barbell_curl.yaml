@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Porta il bilanciere in alto con un arco, gomiti fermi.
     en: Curl the bar up in an arc with your elbows still.
+    focus:
+      part: elbow
+      at: whole
   - it: Spingi con il mignolo e l'anulare.
     en: Press through your pinky and ring fingers.
+    focus:
+      part: hand
+      at: whole
   mistakes:
   - what:
       it: Ondeggi col busto e spingi con i fianchi per sollevare.

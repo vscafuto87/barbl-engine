@@ -38,10 +38,19 @@ technique:
   cues:
   - it: Spingi il bilanciere lontano dal petto.
     en: Push the bar away from your chest.
+    focus:
+      part: hand
+      at: whole
   - it: Gomiti a 45 gradi, non aperti a T.
     en: Elbows at 45 degrees, not flared into a T.
+    focus:
+      part: elbow
+      at: whole
   - it: Piedi piantati, come se spingessi il pavimento.
     en: Feet planted, as if pushing the floor away.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Il bilanciere rimbalza sul petto e la serie sembra più facile.

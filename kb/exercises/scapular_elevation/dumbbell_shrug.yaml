@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Alza le spalle verso le orecchie e tieni un attimo.
     en: Shrug toward your ears and hold briefly.
+    focus:
+      part: shoulder
+      at: contracted
   - it: Scendi lento fino in fondo.
     en: Lower slowly all the way.
+    focus:
+      part: shoulder
+      at: stretched
   mistakes:
   - what:
       it: Il collo si allunga in avanti.

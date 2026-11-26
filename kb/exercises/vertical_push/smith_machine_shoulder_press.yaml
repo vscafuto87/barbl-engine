@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Scendi fino al mento tenendo tensione sulle spalle.
     en: Lower to your chin keeping tension on your shoulders.
+    focus:
+      part: hand
+      at: stretched
   - it: Spingi in alto senza inarcare la schiena.
     en: Press up without arching your back.
+    focus:
+      part: back
+      at: whole
   mistakes:
   - what:
       it: Inarchi la schiena per spingere.

@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Sali spingendo il bacino avanti, barra vicina alle gambe.
     en: Stand up by driving your hips forward, bar close to your legs.
+    focus:
+      part: hip
+      at: contracted
   - it: A ogni ripetizione torna a toccare terra senza rimbalzare.
     en: Touch the floor on every rep without bouncing.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Arrotondi la schiena per arrivare a terra.

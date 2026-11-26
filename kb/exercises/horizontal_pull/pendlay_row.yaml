@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Tira la barra in modo esplosivo verso la parte bassa del petto.
     en: Pull the bar explosively to your lower chest.
+    focus:
+      part: hand
+      at: contracted
   - it: Riappoggiala a terra a ogni ripetizione, busto fermo.
     en: Set it back on the floor every rep, torso still.
+    focus:
+      part: back
+      at: whole
   mistakes:
   - what:
       it: Il busto si alza per tirare.

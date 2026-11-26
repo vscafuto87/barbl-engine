@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Alza il braccio di lato fino a sopra la spalla.
     en: Raise your arm out to the side to just above shoulder level.
+    focus:
+      part: elbow
+      at: contracted
   - it: Scendi lento fino in basso.
     en: Lower slowly all the way down.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Usi un carico troppo alto e il busto si muove.

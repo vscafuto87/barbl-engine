@@ -33,8 +33,14 @@ technique:
   cues:
   - it: Porta i gomiti indietro, lungo i fianchi.
     en: Pull your elbows back along your sides.
+    focus:
+      part: elbow
+      at: whole
   - it: Siediti alto, busto fermo.
     en: Sit tall and keep your torso still.
+    focus:
+      part: back
+      at: whole
   mistakes:
   - what:
       it: Dondoli avanti e indietro con tutto il busto.

@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta le spalle in alto e un poco verso l'interno.
     en: Shrug your shoulders up and slightly in.
+    focus:
+      part: shoulder
+      at: contracted
   - it: Scendi lento fino ad allungare i trapezi.
     en: Lower slowly until your traps stretch.
+    focus:
+      part: shoulder
+      at: stretched
   mistakes:
   - what:
       it: Pieghi le braccia.

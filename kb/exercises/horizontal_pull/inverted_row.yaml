@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Tira il petto verso la barra.
     en: Pull your chest to the bar.
+    focus:
+      part: chest
+      at: contracted
   - it: Scendi lento fino alle braccia tese.
     en: Lower slowly to straight arms.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Il bacino cade e il corpo si piega.

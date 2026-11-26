@@ -27,8 +27,14 @@ technique:
   cues:
   - it: Chiudi le gambe fino a far toccare i cuscinetti.
     en: Squeeze your legs together until the pads meet.
+    focus:
+      part: knee
+      at: contracted
   - it: Riapri lento fino a sentire l'interno coscia allungato.
     en: Open slowly until your inner thighs stretch.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Parti troppo aperto e senti fastidio all'inguine.

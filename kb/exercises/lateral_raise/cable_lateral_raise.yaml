@@ -35,8 +35,14 @@ technique:
   cues:
   - it: Tira il gomito verso l'esterno, non la mano.
     en: Lead with your elbow, not your hand.
+    focus:
+      part: elbow
+      at: whole
   - it: Sali fino all'altezza della spalla.
     en: Lift up to shoulder height.
+    focus:
+      part: elbow
+      at: contracted
   - it: Mantieni il cavo sempre teso.
     en: Keep the cable tight at all times.
   mistakes:

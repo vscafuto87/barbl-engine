@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Spingi la barra verso le cosce con le braccia dritte.
     en: Sweep the bar down to your thighs with straight arms.
+    focus:
+      part: hand
+      at: whole
   - it: Lascia salire le braccia fino a sentire i dorsali allungati.
     en: Let your arms rise until your lats stretch.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Pieghi i gomiti e diventa una spinta in basso.

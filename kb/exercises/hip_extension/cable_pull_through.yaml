@@ -32,8 +32,14 @@ technique:
   cues:
   - it: Porta i fianchi indietro, come per chiudere una porta.
     en: Push your hips back, as if closing a door.
+    focus:
+      part: hip
+      at: whole
   - it: Spingi i fianchi in avanti e stringi i glutei.
     en: Drive your hips forward and squeeze your glutes.
+    focus:
+      part: hip
+      at: contracted
   mistakes:
   - what:
       it: Pieghi molto le ginocchia e fai uno squat.

@@ -26,8 +26,14 @@ technique:
   cues:
   - it: Apri le gambe più che puoi e fermati un attimo.
     en: Push your legs apart as far as you can and pause.
+    focus:
+      part: knee
+      at: contracted
   - it: Richiudi lento senza far toccare il pacco pesi.
     en: Bring them back slowly without letting the stack touch.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Ti dondoli con il busto.

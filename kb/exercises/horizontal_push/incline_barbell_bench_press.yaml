@@ -33,8 +33,14 @@ technique:
   cues:
   - it: Porta la barra alla parte alta del petto.
     en: Lower the bar to your upper chest.
+    focus:
+      part: chest
+      at: stretched
   - it: Spingi in alto e un po' indietro, sopra le spalle.
     en: Press up and slightly back, over your shoulders.
+    focus:
+      part: hand
+      at: contracted
   mistakes:
   - what:
       it: Lo schienale è troppo dritto e lavorano soprattutto le spalle.

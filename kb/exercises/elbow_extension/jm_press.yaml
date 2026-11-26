@@ -30,10 +30,19 @@ technique:
   cues:
   - it: Scendi piegando i gomiti e portando la barra verso il mento.
     en: Lower by bending your elbows and bringing the bar toward your chin.
+    focus:
+      part: elbow
+      at: stretched
   - it: Gli avambracci finiscono quasi a contatto con i bicipiti.
     en: Your forearms end up nearly touching your biceps.
+    focus:
+      part: elbow
+      at: stretched
   - it: Spingi indietro fino alle braccia tese.
     en: Press back up to straight arms.
+    focus:
+      part: hand
+      at: contracted
   mistakes:
   - what:
       it: Diventa una panca stretta con i gomiti che scendono.

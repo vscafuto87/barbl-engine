@@ -33,8 +33,14 @@ technique:
   cues:
   - it: Porta la maniglia verso la spalla, gomito fermo.
     en: Curl the handle toward your shoulder, elbow still.
+    focus:
+      part: elbow
+      at: whole
   - it: Scendi piano, braccio ben disteso.
     en: Lower slowly until your arm is fully stretched.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Ti inclini all'indietro per tirare il cavo.

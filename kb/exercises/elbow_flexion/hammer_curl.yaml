@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Porta i manubri verso le spalle, polsi dritti.
     en: Curl the dumbbells toward your shoulders, wrists straight.
+    focus:
+      part: hand
+      at: whole
   - it: Gomiti fermi ai fianchi.
     en: Elbows still at your sides.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: Ondeggi col busto per sollevare i manubri.

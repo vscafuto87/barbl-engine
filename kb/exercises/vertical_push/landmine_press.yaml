@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Spingi in alto e in avanti seguendo l'arco della barra.
     en: Press up and forward along the bar's arc.
+    focus:
+      part: hand
+      at: contracted
   - it: Torna lento fino alla spalla.
     en: Lower slowly back to your shoulder.
+    focus:
+      part: shoulder
+      at: stretched
   mistakes:
   - what:
       it: Ruoti il busto per spingere.

@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Tira i gomiti indietro e in fuori, a circa 45 gradi dal busto.
     en: Pull your elbows back and out, about 45 degrees from your torso.
+    focus:
+      part: elbow
+      at: contracted
   - it: Stringi le scapole in fondo e torna lento.
     en: Squeeze your shoulder blades at the end and return slowly.
+    focus:
+      part: shoulder
+      at: contracted
   mistakes:
   - what:
       it: Ti butti indietro con il busto.

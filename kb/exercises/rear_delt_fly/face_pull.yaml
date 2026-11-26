@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Tira la corda verso il viso aprendo le mani ai lati.
     en: Pull the rope toward your face, spreading your hands apart.
+    focus:
+      part: hand
+      at: contracted
   - it: Gomiti alti, all'altezza delle spalle.
     en: Elbows high, level with your shoulders.
+    focus:
+      part: elbow
+      at: contracted
   mistakes:
   - what:
       it: Ti butti indietro con il busto.

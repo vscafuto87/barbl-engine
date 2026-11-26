@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Parte alta della schiena incollata alla panca.
     en: Keep your upper back glued to the bench.
+    focus:
+      part: back
+      at: whole
   - it: Porta i manubri in alto, spalle ferme.
     en: Curl the dumbbells up with your shoulders still.
+    focus:
+      part: shoulder
+      at: whole
   mistakes:
   - what:
       it: Le spalle vanno in avanti mentre sali.

@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Spingi i gomiti in basso verso i fianchi.
     en: Drive your elbows down toward your hips.
+    focus:
+      part: elbow
+      at: contracted
   - it: Risali lento fino a sentire i dorsali allungati.
     en: Go back up slowly until your lats stretch.
+    focus:
+      part: elbow
+      at: stretched
   mistakes:
   - what:
       it: Tiri con le mani e pieghi i gomiti.

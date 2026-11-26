@@ -30,10 +30,19 @@ technique:
   cues:
   - it: Sali arrotolando la colonna, una vertebra alla volta.
     en: Come up curling your spine, one vertebra at a time.
+    focus:
+      part: back
+      at: whole
   - it: Fermati quando il busto è quasi verticale.
     en: Stop when your torso is almost upright.
+    focus:
+      part: chest
+      at: contracted
   - it: Scendi lento finché tutta la schiena tocca la panca.
     en: Lower slowly until your whole back rests on the pad.
+    focus:
+      part: back
+      at: stretched
   mistakes:
   - what:
       it: Sali con la schiena dritta tirando con le anche.

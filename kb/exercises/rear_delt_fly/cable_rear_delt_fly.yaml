@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Apri le braccia come per fare un grande cerchio.
     en: Sweep your arms out as if drawing a big arc.
+    focus:
+      part: hand
+      at: whole
   - it: Gomiti appena piegati e fermi.
     en: Keep your elbows softly bent and fixed.
+    focus:
+      part: elbow
+      at: whole
   mistakes:
   - what:
       it: 'Pieghi e stendi i gomiti: sembra un rematore.'

@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Porta la barra in alto senza staccare le braccia.
     en: Curl the bar up without lifting your arms.
+    focus:
+      part: hand
+      at: contracted
   - it: Scendi lento fino al bicipite allungato.
     en: Lower slowly until your biceps stretch.
+    focus:
+      part: elbow
+      at: stretched
   mistakes:
   - what:
       it: Le braccia si staccano dall'imbottitura.

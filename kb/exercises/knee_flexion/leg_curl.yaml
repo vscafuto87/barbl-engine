@@ -36,8 +36,14 @@ technique:
   cues:
   - it: Porta i talloni verso i glutei.
     en: Bring your heels toward your glutes.
+    focus:
+      part: foot
+      at: contracted
   - it: Scendi piano fino in basso.
     en: Lower slowly all the way down.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: I fianchi si alzano dalla panca mentre pieghi.

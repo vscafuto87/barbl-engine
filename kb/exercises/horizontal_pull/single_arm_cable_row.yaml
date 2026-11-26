@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Porta il gomito indietro, vicino al fianco.
     en: Drive your elbow back, close to your side.
+    focus:
+      part: elbow
+      at: contracted
   - it: Torna lento lasciando allungare la schiena.
     en: Return slowly, letting your back stretch.
+    focus:
+      part: back
+      at: stretched
   mistakes:
   - what:
       it: Ruoti molto il busto per tirare.

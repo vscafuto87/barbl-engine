@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Scendi con i gomiti vicini ai fianchi.
     en: Lower with your elbows close to your sides.
+    focus:
+      part: elbow
+      at: stretched
   - it: Spingi fino alle braccia tese.
     en: Press up to straight arms.
+    focus:
+      part: hand
+      at: contracted
   mistakes:
   - what:
       it: I gomiti si aprono a T.

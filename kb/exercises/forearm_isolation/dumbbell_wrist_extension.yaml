@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Lascia scendere il dorso della mano, poi sollevalo più che puoi.
     en: Let the back of your hand drop, then lift it as high as you can.
+    focus:
+      part: hand
+      at: whole
   - it: Scendi lento.
     en: Lower slowly.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Peso eccessivo.

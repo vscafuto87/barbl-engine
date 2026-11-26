@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Porta le spalle in alto e un po' verso l'interno, verso le orecchie, e fermati in alto.
     en: Shrug up and slightly in, toward your ears, and pause at the top.
+    focus:
+      part: shoulder
+      at: contracted
   - it: Scendi fino a sentire i trapezi allungati.
     en: Lower until your traps stretch.
+    focus:
+      part: shoulder
+      at: stretched
   mistakes:
   - what:
       it: Ruoti le spalle in cerchio.

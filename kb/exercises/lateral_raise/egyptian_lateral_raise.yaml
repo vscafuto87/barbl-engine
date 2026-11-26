@@ -28,10 +28,19 @@ technique:
   cues:
   - it: Alza il braccio di lato fino all'altezza della spalla.
     en: Raise your arm out to the side up to shoulder height.
+    focus:
+      part: elbow
+      at: contracted
   - it: Pensa a stringere il deltoide laterale.
     en: Focus on squeezing your side delt.
+    focus:
+      part: shoulder
+      at: contracted
   - it: Torna lento oltre la linea del corpo.
     en: Return slowly past your midline.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Resti dritto invece di inclinarti.

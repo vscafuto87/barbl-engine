@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Solleva i gomiti larghi e alti mentre allarghi la corda.
     en: Raise your elbows wide and high while spreading the rope.
+    focus:
+      part: elbow
+      at: contracted
   - it: Fermati quando i gomiti arrivano all'altezza delle spalle.
     en: Stop when your elbows reach shoulder height.
+    focus:
+      part: elbow
+      at: contracted
   mistakes:
   - what:
       it: Sali oltre le spalle con le mani sopra la testa.

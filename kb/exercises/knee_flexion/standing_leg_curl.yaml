@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta il tallone verso il gluteo.
     en: Bring your heel toward your glute.
+    focus:
+      part: foot
+      at: contracted
   - it: Scendi lento fino alla gamba tesa.
     en: Lower slowly to a straight leg.
+    focus:
+      part: knee
+      at: stretched
   mistakes:
   - what:
       it: Spingi l'anca in avanti per aiutarti.

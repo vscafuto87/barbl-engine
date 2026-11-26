@@ -32,10 +32,19 @@ technique:
   cues:
   - it: Apri le braccia come per abbracciare un albero.
     en: Open your arms as if hugging a big tree.
+    focus:
+      part: hand
+      at: stretched
   - it: Gomiti sempre un po' piegati.
     en: Keep your elbows slightly bent.
+    focus:
+      part: elbow
+      at: whole
   - it: Risali dal punto di massimo allungamento.
     en: Reverse from the deepest stretch.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: I gomiti si piegano e diventa una spinta.

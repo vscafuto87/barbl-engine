@@ -35,8 +35,14 @@ technique:
   cues:
   - it: Scendi dritto, come lungo una colonna.
     en: Lower straight down, as if along a pole.
+    focus:
+      part: back
+      at: stretched
   - it: Spingi il pavimento con il piede davanti.
     en: Push the floor away with your front foot.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Il ginocchio davanti cade verso l'interno.

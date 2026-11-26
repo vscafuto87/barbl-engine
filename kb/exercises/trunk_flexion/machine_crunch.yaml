@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Avvicina lo sterno al bacino arrotolando la colonna.
     en: Bring your breastbone toward your pelvis by curling your spine.
+    focus:
+      part: chest
+      at: contracted
   - it: Torna su piano.
     en: Return slowly.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: Spingi con le braccia.

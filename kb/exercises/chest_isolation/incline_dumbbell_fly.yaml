@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Apri le braccia ad arco finché senti allungare il petto.
     en: Open your arms in an arc until your chest stretches.
+    focus:
+      part: chest
+      at: stretched
   - it: Richiudi come per abbracciare un albero.
     en: Bring them back as if hugging a tree.
+    focus:
+      part: hand
+      at: whole
   mistakes:
   - what:
       it: Pieghi molto i gomiti e diventa una distensione.

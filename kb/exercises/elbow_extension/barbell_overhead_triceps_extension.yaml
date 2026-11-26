@@ -31,10 +31,19 @@ technique:
   cues:
   - it: Muovi solo gli avambracci, i gomiti restano fermi.
     en: Move only your forearms; your elbows stay still.
+    focus:
+      part: elbow
+      at: whole
   - it: Gomiti puntati in alto, vicini alla testa.
     en: Elbows pointing up, close to your head.
+    focus:
+      part: elbow
+      at: contracted
   - it: Senti un buon allungamento in basso, poi stendi.
     en: Feel a good stretch at the bottom, then extend.
+    focus:
+      part: elbow
+      at: stretched
   mistakes:
   - what:
       it: I gomiti si aprono ai lati.

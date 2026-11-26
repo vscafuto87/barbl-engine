@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Porta il tallone verso il gluteo e stringi in fondo.
     en: Bring your heel toward your glutes and squeeze at the end.
+    focus:
+      part: foot
+      at: contracted
   - it: Torna lento fino alla gamba quasi tesa.
     en: Return slowly until your leg is nearly straight.
+    focus:
+      part: knee
+      at: stretched
   - it: Inizia con la gamba più debole.
     en: Start with your weaker leg.
   mistakes:

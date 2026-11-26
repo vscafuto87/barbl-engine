@@ -32,10 +32,19 @@ technique:
   cues:
   - it: Versa l'acqua da due brocche ai lati.
     en: Pour water out of two jugs to your sides.
+    focus:
+      part: hand
+      at: whole
   - it: Alza i gomiti, non le mani.
     en: Lift your elbows, not your hands.
+    focus:
+      part: elbow
+      at: whole
   - it: Fermati all'altezza delle spalle.
     en: Stop at shoulder height.
+    focus:
+      part: elbow
+      at: contracted
   mistakes:
   - what:
       it: Dondoli con il busto per alzare i manubri.

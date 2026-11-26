@@ -30,8 +30,14 @@ technique:
   cues:
   - it: Apri le braccia in un grande arco.
     en: Sweep your arms out in a wide arc.
+    focus:
+      part: hand
+      at: whole
   - it: Spalle basse, lontane dalle orecchie.
     en: Keep your shoulders down, away from your ears.
+    focus:
+      part: shoulder
+      at: whole
   mistakes:
   - what:
       it: Le spalle salgono verso le orecchie mentre apri le braccia.

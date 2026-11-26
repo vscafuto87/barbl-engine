@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Scendi piegando le anche, schiena dritta.
     en: Lower by bending at the hips, back flat.
+    focus:
+      part: hip
+      at: stretched
   - it: Risali stringendo i glutei finché il corpo è in linea.
     en: Rise by squeezing your glutes until your body is in line.
+    focus:
+      part: hip
+      at: contracted
   mistakes:
   - what:
       it: Il cuscino è troppo alto e le anche non si piegano.

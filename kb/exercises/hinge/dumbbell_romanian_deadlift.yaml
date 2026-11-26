@@ -31,8 +31,14 @@ technique:
   cues:
   - it: Porta i fianchi indietro e fai scorrere i manubri lungo le gambe.
     en: Push your hips back and slide the dumbbells down your legs.
+    focus:
+      part: hip
+      at: whole
   - it: Spingi i fianchi in avanti per risalire.
     en: Drive your hips forward to stand.
+    focus:
+      part: hip
+      at: contracted
   mistakes:
   - what:
       it: La schiena si arrotonda mentre scendi.

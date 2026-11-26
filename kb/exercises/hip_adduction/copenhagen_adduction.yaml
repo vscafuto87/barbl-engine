@@ -28,8 +28,14 @@ technique:
   cues:
   - it: Solleva il bacino spingendo la gamba di sopra contro la panca.
     en: Lift your hips by pressing your top leg into the bench.
+    focus:
+      part: hip
+      at: contracted
   - it: Porta la gamba di sotto a toccare la panca, poi scendi lento.
     en: Bring the bottom leg up to the bench, then lower slowly.
+    focus:
+      part: hip
+      at: stretched
   mistakes:
   - what:
       it: Il bacino cade all'indietro.

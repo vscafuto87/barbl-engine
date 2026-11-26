@@ -32,8 +32,14 @@ technique:
   cues:
   - it: Abbraccia un albero grande.
     en: Hug a big tree.
+    focus:
+      part: hand
+      at: whole
   - it: Gomiti sempre un po' piegati, mai tesi.
     en: Keep a soft bend in your elbows, never locked.
+    focus:
+      part: elbow
+      at: whole
   - it: Senti il cavo teso dall'inizio alla fine.
     en: Keep the cable tight from start to finish.
   mistakes:

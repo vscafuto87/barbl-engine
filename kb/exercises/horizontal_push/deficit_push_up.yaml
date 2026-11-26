@@ -27,8 +27,14 @@ technique:
   cues:
   - it: Scendi con il petto sotto il livello delle mani.
     en: Lower your chest below the level of your hands.
+    focus:
+      part: chest
+      at: stretched
   - it: Spingi via il pavimento tenendo l'addome contratto.
     en: Push the floor away with your abs braced.
+    focus:
+      part: core
+      at: whole
   mistakes:
   - what:
       it: I fianchi cadono.

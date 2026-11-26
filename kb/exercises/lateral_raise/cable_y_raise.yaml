@@ -27,8 +27,14 @@ technique:
   cues:
   - it: Porta le braccia in alto e in fuori, a forma di Y.
     en: Raise your arms up and out into a Y shape.
+    focus:
+      part: hand
+      at: contracted
   - it: Fermati all'altezza delle orecchie e scendi lento.
     en: Stop around ear height and lower slowly.
+    focus:
+      part: hand
+      at: contracted
   mistakes:
   - what:
       it: Alzi le spalle verso le orecchie.

@@ -37,10 +37,19 @@ technique:
   cues:
   - it: Spingi i manubri in alto e un po' verso il viso.
     en: Press the dumbbells up and slightly toward your face.
+    focus:
+      part: hand
+      at: contracted
   - it: Avambracci verticali per tutta la corsa.
     en: Keep your forearms vertical the whole way.
+    focus:
+      part: elbow
+      at: whole
   - it: Scendi piano, poi spingi forte.
     en: Lower slowly, then press hard.
+    focus:
+      part: chest
+      at: stretched
   mistakes:
   - what:
       it: 'Panca troppo inclinata: lavorano soprattutto le spalle.'

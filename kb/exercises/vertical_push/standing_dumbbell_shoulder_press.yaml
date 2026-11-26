@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Spingi in alto finché le braccia sono quasi tese.
     en: Press up until your arms are nearly straight.
+    focus:
+      part: hand
+      at: contracted
   - it: Scendi lento fino alle spalle.
     en: Lower slowly back to your shoulders.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Inarchi la schiena per spingere.

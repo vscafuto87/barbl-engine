@@ -39,10 +39,19 @@ technique:
   cues:
   - it: Tira il manubrio verso il fianco, come per metterlo in tasca.
     en: Pull the dumbbell toward your hip, as if putting it in your back pocket.
+    focus:
+      part: hand
+      at: contracted
   - it: Gomito vicino al corpo.
     en: Keep your elbow close to your body.
+    focus:
+      part: elbow
+      at: whole
   - it: Busto fermo, solo il braccio si muove.
     en: Torso still, only your arm moves.
+    focus:
+      part: back
+      at: whole
   mistakes:
   - what:
       it: Il busto ruota e si apre verso il soffitto.

@@ -32,10 +32,19 @@ technique:
   cues:
   - it: 'Muovi solo i gomiti: spingi la barra dritta in alto.'
     en: 'Move only at the elbows: press the bar straight up.'
+    focus:
+      part: elbow
+      at: whole
   - it: Gomiti in alto e vicini alla testa.
     en: Elbows up and close to your head.
+    focus:
+      part: elbow
+      at: whole
   - it: Torna piano sentendo l'allungamento.
     en: Return slowly and feel the stretch.
+    focus:
+      part: elbow
+      at: stretched
   mistakes:
   - what:
       it: I gomiti si aprono ai lati.

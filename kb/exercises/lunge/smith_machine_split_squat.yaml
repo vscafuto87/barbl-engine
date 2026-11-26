@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Scendi in verticale finché il ginocchio dietro sfiora terra.
     en: Drop straight down until your back knee nearly touches the floor.
+    focus:
+      part: knee
+      at: stretched
   - it: Spingi con il piede davanti.
     en: Drive up through your front foot.
+    focus:
+      part: foot
+      at: whole
   mistakes:
   - what:
       it: Il passo è troppo corto e il tallone davanti si stacca da terra.

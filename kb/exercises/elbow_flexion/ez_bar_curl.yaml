@@ -29,8 +29,14 @@ technique:
   cues:
   - it: Porta la barra verso le spalle senza spostare i gomiti.
     en: Curl the bar toward your shoulders without moving your elbows.
+    focus:
+      part: elbow
+      at: whole
   - it: Scendi fino a braccia tese.
     en: Lower until your arms are straight.
+    focus:
+      part: hand
+      at: stretched
   mistakes:
   - what:
       it: Dondoli con la schiena.
