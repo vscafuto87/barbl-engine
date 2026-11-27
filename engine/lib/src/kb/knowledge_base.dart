@@ -19,6 +19,8 @@ class KnowledgeBase {
     required this.patternRegions,
     required this.emphases,
     required this.gymTypes,
+    this.supersetPortableRequires = const {},
+    this.supersetSharedStation = const {},
   });
 
   /// Formato del pacchetto che questa versione del motore sa leggere.
@@ -91,6 +93,15 @@ class KnowledgeBase {
         id: stringsAt(gymRaw, id, 'equipment.gymTypes'),
     };
 
+    // `equipment.supersetProximity` è facoltativo: senza, i superset non
+    // guardano la vicinanza degli attrezzi (P-SUPERSET-NEARBY).
+    final proximity = equipment['supersetProximity'] == null
+        ? const <String, Object?>{}
+        : mapAt(equipment, 'supersetProximity', 'equipment');
+    Set<String> proximityGroup(String key) => proximity[key] == null
+        ? const <String>{}
+        : stringsAt(proximity, key, 'equipment.supersetProximity').toSet();
+
     final kb = KnowledgeBase._(
       rulesVersion: stringAt(json, 'rulesVersion', root),
       kbCommit: stringOrNull(json, 'kbCommit', root),
@@ -106,6 +117,8 @@ class KnowledgeBase {
       patternRegions: patternRegions,
       emphases: emphases,
       gymTypes: gymTypes,
+      supersetPortableRequires: proximityGroup('portableRequires'),
+      supersetSharedStation: proximityGroup('sharedStation'),
     );
     _checkInvariants(kb);
     return kb;
@@ -400,4 +413,28 @@ class KnowledgeBase {
   /// Attrezzatura di ogni tipo di palestra (`equipment.gymTypes`); vuota se
   /// il pacchetto non la ha.
   final Map<String, List<String>> gymTypes;
+
+  /// Attrezzatura del profilo che si porta accanto a qualunque altro attrezzo
+  /// (`equipment.supersetProximity.portableRequires`): un esercizio che
+  /// richiede solo queste cose, o niente, sta vicino a tutti.
+  final Set<String> supersetPortableRequires;
+
+  bool _portable(KbExercise e) =>
+      e.requires.every(supersetPortableRequires.contains);
+
+  /// Valori di `equipment` con cui due esercizi si fanno nella stessa
+  /// stazione (`equipment.supersetProximity.sharedStation`).
+  final Set<String> supersetSharedStation;
+
+  /// Vero se [a] e [b] si fanno nello stesso posto della palestra
+  /// (P-SUPERSET-NEARBY): uno dei due è portatile, o hanno lo stesso
+  /// attrezzo e quell'attrezzo è una stazione condivisa.
+  /// Senza `supersetProximity` nel pacchetto tutto è vicino: la scelta non
+  /// cambia.
+  bool nearby(KbExercise a, KbExercise b) =>
+      (supersetPortableRequires.isEmpty && supersetSharedStation.isEmpty) ||
+      _portable(a) ||
+      _portable(b) ||
+      (a.equipment == b.equipment &&
+          supersetSharedStation.contains(a.equipment));
 }

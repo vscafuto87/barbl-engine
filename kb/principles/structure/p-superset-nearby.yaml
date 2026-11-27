@@ -1,0 +1,26 @@
+id: P-SUPERSET-NEARBY
+topic: structure
+statement:
+  it: 'Un superset fa risparmiare tempo solo se si passa subito da un esercizio all''altro. Per questo Barbl
+    sceglie gli esercizi di un superset nello stesso posto della palestra: due esercizi al cavo, al bilanciere
+    o al multipower, oppure un esercizio con i manubri o a corpo libero, che si fa accanto all''altro attrezzo. Se i
+    candidati equivalenti non offrono una coppia così, la scelta resta quella di sempre. Nessuno studio confronta
+    attrezzi vicini e lontani: è una scelta di design che segue dal guadagno di tempo dei superset.'
+  en: 'A superset only saves time if you move straight from one exercise to the next. For this reason Barbl
+    picks the exercises of a superset in the same spot of the gym: two exercises on the cable, the barbell
+    or the Smith machine, or one with dumbbells or bodyweight, which you can do next to the other station. When the equivalent
+    candidates offer no such pair, the usual choice stands. No study compares nearby and distant equipment:
+    it is a design choice that follows from the time saved by supersets.'
+evidence: design
+status: provisional
+reviewedBy: null
+feeds:
+- templates
+sources:
+- id: barbl-design
+  access: full_text
+  note: richiesta di Vincenzo del 27/11/2026 (face pull al cavo con il donkey calf raise alla macchina)
+- id: iversen-2021-time-efficient
+  access: abstract_only
+- id: zhang-2025-supersets
+  access: abstract_only

@@ -22,3 +22,12 @@ gymTypes:
 
 # Valori di `equipment` dell'esercizio nel piano (enum del contratto).
 planEquipment: [barbell, dumbbell, machine, cable, smith_machine, bodyweight, other]
+
+# Vicinanza degli attrezzi nei superset (P-SUPERSET-NEARBY).
+# `portableRequires` (valori di `profileEquipment`): un esercizio che richiede solo queste cose
+# (o niente, come i piegamenti) si fa accanto a qualunque altro attrezzo, quindi sta vicino a tutti.
+# `sharedStation` (valori di `planEquipment`): due esercizi con lo stesso attrezzo si fanno nella
+# stessa stazione. Le macchine no: due macchine sono due posti diversi della palestra.
+supersetProximity:
+  portableRequires: [dumbbells, bench]
+  sharedStation: [cable, barbell, smith_machine]

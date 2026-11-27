@@ -165,6 +165,7 @@ BundleResult buildBundle(Directory kbDir, {String? kbCommit}) {
   final planEquipment = _asListOrEmpty(equipmentVocab?['planEquipment']);
   final gymTypes =
       _asMapOrNull(equipmentVocab?['gymTypes']) ?? <String, Object?>{};
+  final supersetProximity = _asMapOrNull(equipmentVocab?['supersetProximity']);
 
   final sourceDocs = _readDir(kbDir, 'sources', errors, recursive: false);
   final principleDocs = _readDir(kbDir, 'principles', errors, recursive: true);
@@ -431,6 +432,10 @@ BundleResult buildBundle(Directory kbDir, {String? kbCommit}) {
     'equipment': _sortedMap(<String, Object?>{
       'gymTypes': gymTypes,
       'plan': planEquipment,
+      if (supersetProximity != null)
+        'supersetProximity': _sortedMap(<String, Object?>{
+          for (final e in supersetProximity.entries) e.key: e.value,
+        }),
       'profile': [
         for (final e in profileEquipment)
           if (e is Map && e['id'] is String) e['id'] as String,

@@ -140,13 +140,21 @@ Result<List<ChosenSession>> chooseExercises(
         // Per la forza la specificità vince: gli esercizi principali e
         // secondari non si scambiano (P-STRENGTH-SPECIFICITY); l'isolamento sì.
         final width = equivalentWidth(slot, profile, pool.length);
+        final hashKey = '${variantKey(profile)}|${session.id}|$slotIndex';
+        // In un superset, tra i candidati equivalenti si preferiscono quelli
+        // vicini agli esercizi già scelti del blocco (P-SUPERSET-NEARBY); se
+        // nessuno lo è, la scelta resta quella di sempre.
+        final near = block.type == 'superset' && slots.isNotEmpty
+            ? [
+                for (final e in pool.take(width))
+                  if (slots.every((s) => kb.nearby(s.exercise, e))) e,
+              ]
+            : const <KbExercise>[];
         final found = pool.isEmpty
             ? null
-            : pickFromPool(
-                pool,
-                width,
-                '${variantKey(profile)}|${session.id}|$slotIndex',
-              );
+            : near.isNotEmpty
+            ? pickFromPool(near, near.length, hashKey)
+            : pickFromPool(pool, width, hashKey);
         if (found == null) {
           return Rejected(
             NotCovered(
