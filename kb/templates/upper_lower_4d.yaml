@@ -367,6 +367,7 @@ sessions:
       - cable_pallof_press
 principles:
 - P-FREQ-MIN-2
+- P-SUPERSET-NEARBY
 - P-FREQ-HYP-NEUTRAL
 - P-PATTERNS
 - P-VOL-MIN-10

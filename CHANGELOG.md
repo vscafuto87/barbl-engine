@@ -2,6 +2,13 @@
 
 Versioni della knowledge base (`kb/VERSION`, semver). Ogni modifica che cambia un piano generato alza la versione. Il tag di rilascio ha la forma `vX.Y.Z` e coincide con `kb/VERSION`. Si crea con il workflow «Crea tag» (Actions, Run workflow), che controlla `kb/VERSION` e questa pagina; il workflow «Tag di rilascio» lo ricontrolla a tag creato.
 
+## 0.36.0 — 2026-11-27
+
+- Superset con attrezzi vicini (richiesta di Vincenzo del 27/11/2026, che aveva trovato face pull al cavo con donkey calf raise alla macchina): principio nuovo `P-SUPERSET-NEARBY` (scelta di design, provvisorio). Un superset fa risparmiare tempo solo se si passa subito da un esercizio all'altro (`iversen-2021-time-efficient`, fonte nuova, e `zhang-2025-supersets`); nessuno studio confronta attrezzi vicini e lontani, quindi la regola è dichiarata come design.
+- `kb/vocab/equipment.yaml`, gruppo nuovo `supersetProximity`: `portableRequires` (`dumbbells`, `bench`: un esercizio che richiede solo queste cose, o niente, si fa accanto a qualunque attrezzo) e `sharedStation` (`cable`, `barbell`, `smith_machine`: due esercizi con lo stesso attrezzo stanno nella stessa stazione; le macchine no). Il validatore controlla i valori.
+- Motore: nei blocchi `superset`, dal secondo slot in poi, tra i candidati equivalenti (`equivalent`) si sceglie tra quelli vicini a tutti gli esercizi già scelti del blocco; senza un candidato vicino la scelta resta quella di prima. `KnowledgeBase.nearby`; senza `supersetProximity` nel pacchetto nulla cambia.
+- Cambiano i piani con superset: su 2040 superset dei piani in palestra completa (intermedi e avanzati, 3-6 giorni, tre obiettivi, quattro durate, otto semi) le coppie lontane passano da 642 a 64. Restano quelle senza un candidato equivalente vicino (rematore al cavo con military press, curl alla panca Scott con pullover alla macchina o al cavo). Test: `superset_nearby_test.dart` e `flow/superset_nearby_flow_test.dart`.
+
 ## 0.35.0 — 2026-11-26
 
 - Errori delle schede tecniche mostrati sul disegno (proposta 6 «Errore comune a confronto» dell'anteprima «Movimenti più chiari», approvata da Vincenzo il 26/11/2026): campo facoltativo `figure` su un errore di `technique.mistakes`, che dice come l'app disegna la figura sbagliata accanto a quella giusta: `half_range` (mezza escursione), `torso_forward` (il busto cade in avanti), `torso_back` (il busto va indietro, con lo slancio), `hips_sag` (il bacino cede), `hips_pike` (il bacino sale). Solo per gli errori che si vedono di lato, su 20 esercizi tra i più usati nei piani (28 errori). Dato di presentazione, non di dominio: nessuna fonte nuova, i testi non cambiano.

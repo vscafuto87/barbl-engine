@@ -108,6 +108,14 @@ def main() -> int:
             if e not in profile_equipment:
                 r.error("vocab/equipment.yaml", f"'{e}' in gymTypes.{gt} non è in profileEquipment")
 
+    proximity = equipment_doc.get("supersetProximity") or {}
+    for e in proximity.get("portableRequires", []):
+        if e not in profile_equipment:
+            r.error("vocab/equipment.yaml", f"'{e}' in supersetProximity.portableRequires non è in profileEquipment")
+    for e in proximity.get("sharedStation", []):
+        if e not in plan_equipment:
+            r.error("vocab/equipment.yaml", f"'{e}' in supersetProximity.sharedStation non è in planEquipment")
+
     # File
     sources = load_dir(r, "sources", "source", "id")
     principles = load_dir(r, "principles", "principle", "id", recursive=True)
